@@ -1,0 +1,27 @@
+using System;
+using System.Collections.Generic;
+
+namespace Warp.Data.Models
+{
+    public partial class CallInLog
+    {
+        public CallInLog()
+        {
+            this.AssessorCallInLogs = new List<AssessorCallInLog>();
+            this.ClientCallInLogs = new List<ClientCallInLog>();
+            this.VisitCallInLogs = new List<VisitCallInLog>();
+        }
+
+        public int CallInLogID { get; set; }
+        public int EnteredByAdminID { get; set; }
+        public System.DateTime TimeStamp { get; set; }
+        public string Notes { get; set; }
+        public System.DateTime ValidUntil { get; set; }
+        public bool HighPriority { get; set; }
+        public bool Active { get; set; }
+        public bool Visible { get; set; }
+        public virtual ICollection<AssessorCallInLog> AssessorCallInLogs { get; set; }
+        public virtual ICollection<ClientCallInLog> ClientCallInLogs { get; set; }
+        public virtual ICollection<VisitCallInLog> VisitCallInLogs { get; set; }
+    }
+}

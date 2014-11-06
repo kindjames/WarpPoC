@@ -1,0 +1,19 @@
+using System;
+using System.Collections.Generic;
+
+namespace Warp.Data.Models
+{
+    public partial class BranchAccountingProduct
+    {
+        public int BranchAccountingProductID { get; set; }
+        public int BranchID { get; set; }
+        public int AccountingProductID { get; set; }
+        public Nullable<decimal> DefaultValue { get; set; }
+        public int KashFlowID { get; set; }
+        public System.DateTime ValidFrom { get; set; }
+        public Nullable<System.DateTime> ValidTo { get; set; }
+        public bool Active { get; set; }
+        public virtual Branch Branch { get; set; }
+        public virtual AccountingProduct AccountingProduct { get; set; }
+    }
+}

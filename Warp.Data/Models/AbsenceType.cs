@@ -1,0 +1,18 @@
+using System;
+using System.Collections.Generic;
+
+namespace Warp.Data.Models
+{
+    public partial class AbsenceType
+    {
+        public AbsenceType()
+        {
+            this.AbsenceInstances = new List<AbsenceInstance>();
+        }
+
+        public byte AbsenceTypeID { get; set; }
+        public string Type { get; set; }
+        public bool Active { get; set; }
+        public virtual ICollection<AbsenceInstance> AbsenceInstances { get; set; }
+    }
+}

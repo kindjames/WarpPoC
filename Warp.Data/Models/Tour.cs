@@ -1,0 +1,25 @@
+using System;
+using System.Collections.Generic;
+
+namespace Warp.Data.Models
+{
+    public partial class Tour
+    {
+        public Tour()
+        {
+            this.PageTours = new List<PageTour>();
+            this.TourSteps = new List<TourStep>();
+            this.TourUserRoles = new List<TourUserRole>();
+        }
+
+        public int TourID { get; set; }
+        public string TourName { get; set; }
+        public bool AlwaysShow { get; set; }
+        public System.DateTime LastUpdate { get; set; }
+        public System.DateTime Created { get; set; }
+        public bool Active { get; set; }
+        public virtual ICollection<PageTour> PageTours { get; set; }
+        public virtual ICollection<TourStep> TourSteps { get; set; }
+        public virtual ICollection<TourUserRole> TourUserRoles { get; set; }
+    }
+}

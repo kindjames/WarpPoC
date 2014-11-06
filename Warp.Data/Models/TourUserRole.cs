@@ -1,0 +1,27 @@
+using System;
+using System.Collections.Generic;
+
+namespace Warp.Data.Models
+{
+    public partial class TourUserRole
+    {
+        public TourUserRole()
+        {
+            this.TourUserRoleTourSteps = new List<TourUserRoleTourStep>();
+        }
+
+        public int TourUserRoleID { get; set; }
+        public int TourID { get; set; }
+        public int UserRoleID { get; set; }
+        public bool HasViewedTour { get; set; }
+        public bool PermanentlySkipTour { get; set; }
+        public bool DelayTourTillNextLogin { get; set; }
+        public string SessionId { get; set; }
+        public System.DateTime LastUpdate { get; set; }
+        public System.DateTime Created { get; set; }
+        public bool Active { get; set; }
+        public virtual Tour Tour { get; set; }
+        public virtual UserRole UserRole { get; set; }
+        public virtual ICollection<TourUserRoleTourStep> TourUserRoleTourSteps { get; set; }
+    }
+}
