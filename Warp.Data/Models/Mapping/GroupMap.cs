@@ -22,6 +22,9 @@ namespace Warp.Data.Models.Mapping
             this.ToTable("Group");
             this.Property(t => t.GroupID).HasColumnName("GroupID");
             this.Property(t => t.Name).HasColumnName("Name");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            this.Property(t => t.Active).HasColumnName("Active");
         }
     }
 }

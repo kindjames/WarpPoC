@@ -1,14 +1,14 @@
-﻿using Warp.Core.Infrastructure;
+﻿using Warp.Core.Infrastructure.IoC;
 
 namespace Warp.Core.Command
 {
     public class CommandDispatcher : ICommandDispatcher
     {
-        private readonly IDependencyResolver _dependencyResolver;
+        private readonly IServiceLocator _serviceLocator;
 
-        public CommandDispatcher(IDependencyResolver dependencyResolver)
+        public CommandDispatcher(IServiceLocator serviceLocator)
         {
-            _dependencyResolver = dependencyResolver;
+            _serviceLocator = serviceLocator;
         }
 
         //public TResult Execute<TResult>(IQuery<TResult> query)

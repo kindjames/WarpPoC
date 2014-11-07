@@ -16,6 +16,9 @@ namespace Warp.Data.Models.Mapping
             this.Property(t => t.PageArticleID).HasColumnName("PageArticleID");
             this.Property(t => t.PageID).HasColumnName("PageID");
             this.Property(t => t.ArticleID).HasColumnName("ArticleID");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
             this.HasRequired(t => t.Article)

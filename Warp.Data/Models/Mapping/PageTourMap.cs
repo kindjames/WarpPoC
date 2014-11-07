@@ -16,14 +16,17 @@ namespace Warp.Data.Models.Mapping
             this.Property(t => t.PageTourID).HasColumnName("PageTourID");
             this.Property(t => t.PageID).HasColumnName("PageID");
             this.Property(t => t.TourID).HasColumnName("TourID");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.Tour)
-                .WithMany(t => t.PageTours)
-                .HasForeignKey(d => d.TourID);
             this.HasRequired(t => t.Page)
                 .WithMany(t => t.PageTours)
                 .HasForeignKey(d => d.PageID);
+            this.HasRequired(t => t.Tour)
+                .WithMany(t => t.PageTours)
+                .HasForeignKey(d => d.TourID);
 
         }
     }

@@ -31,6 +31,8 @@ namespace Warp.Data.Models.Mapping
             this.Property(t => t.Active).HasColumnName("Active");
             this.Property(t => t.XCoordinate).HasColumnName("XCoordinate");
             this.Property(t => t.YCoordinate).HasColumnName("YCoordinate");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
 
             // Relationships
             this.HasRequired(t => t.GeographicPostCode)

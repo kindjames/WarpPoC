@@ -12,8 +12,8 @@ namespace Warp.Data.Models
 
         public int PersonStatusId { get; set; }
         public string Status { get; set; }
-        public System.DateTime LastUpdated { get; set; }
-        public System.DateTime Created { get; set; }
+        public System.DateTime DateUpdated { get; set; }
+        public System.DateTime DateCreated { get; set; }
         public bool Active { get; set; }
         public virtual ICollection<Person> People { get; set; }
     }

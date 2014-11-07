@@ -41,9 +41,10 @@ namespace Warp.Data.Models.Mapping
             this.Property(t => t.MaxAnswer).HasColumnName("MaxAnswer");
             this.Property(t => t.Dynamic).HasColumnName("Dynamic");
             this.Property(t => t.Hint).HasColumnName("Hint");
-            this.Property(t => t.DateAdded).HasColumnName("DateAdded");
-            this.Property(t => t.DateActive).HasColumnName("DateActive");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
             this.Property(t => t.AddedByAdminID).HasColumnName("AddedByAdminID");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            this.Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
             this.HasRequired(t => t.Benchmark)

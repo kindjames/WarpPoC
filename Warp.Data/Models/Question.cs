@@ -23,8 +23,10 @@ namespace Warp.Data.Models
         public short DefaultQuestionDepartmentID { get; set; }
         public string DefaultHint { get; set; }
         public Nullable<int> ClientID { get; set; }
-        public bool Active { get; set; }
         public Nullable<int> TrackingQuestionID { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
+        public bool Active { get; set; }
         public virtual Client Client { get; set; }
         public virtual Benchmark Benchmark { get; set; }
         public virtual ManagementCategory ManagementCategory { get; set; }

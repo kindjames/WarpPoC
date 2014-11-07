@@ -26,6 +26,8 @@ namespace Warp.Data.Models.Mapping
             this.Property(t => t.NoteTypeID).HasColumnName("NoteTypeID");
             this.Property(t => t.Name).HasColumnName("Name");
             this.Property(t => t.Description).HasColumnName("Description");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
             this.Property(t => t.Active).HasColumnName("Active");
         }
     }

@@ -12,6 +12,7 @@ namespace Warp.Data.Models.Mapping
 
             // Properties
             this.Property(t => t.ElementID)
+                .IsRequired()
                 .HasMaxLength(50);
 
             this.Property(t => t.StepTitle)
@@ -22,15 +23,15 @@ namespace Warp.Data.Models.Mapping
                 .IsRequired();
 
             // Table & Column Mappings
-            this.ToTable("TourStep");
+            this.ToTable("TourStep", "Help");
             this.Property(t => t.TourStepID).HasColumnName("TourStepID");
             this.Property(t => t.TourID).HasColumnName("TourID");
             this.Property(t => t.ElementID).HasColumnName("ElementID");
             this.Property(t => t.StepNumber).HasColumnName("StepNumber");
             this.Property(t => t.StepTitle).HasColumnName("StepTitle");
             this.Property(t => t.StepText).HasColumnName("StepText");
-            this.Property(t => t.LastUpdate).HasColumnName("LastUpdate");
-            this.Property(t => t.Created).HasColumnName("Created");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
             this.Property(t => t.Active).HasColumnName("Active");
             this.Property(t => t.TourStepPlacementId).HasColumnName("TourStepPlacementId");
 
@@ -38,7 +39,7 @@ namespace Warp.Data.Models.Mapping
             this.HasRequired(t => t.Tour)
                 .WithMany(t => t.TourSteps)
                 .HasForeignKey(d => d.TourID);
-            this.HasRequired(t => t.TourStepPlacement)
+            this.HasOptional(t => t.TourStepPlacement)
                 .WithMany(t => t.TourSteps)
                 .HasForeignKey(d => d.TourStepPlacementId);
 

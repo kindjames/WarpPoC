@@ -22,12 +22,13 @@ namespace Warp.Data.Models.Mapping
             this.ToTable("CallInLog");
             this.Property(t => t.CallInLogID).HasColumnName("CallInLogID");
             this.Property(t => t.EnteredByAdminID).HasColumnName("EnteredByAdminID");
-            this.Property(t => t.TimeStamp).HasColumnName("TimeStamp");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
             this.Property(t => t.Notes).HasColumnName("Notes");
-            this.Property(t => t.ValidUntil).HasColumnName("ValidUntil");
+            this.Property(t => t.DateValidTo).HasColumnName("DateValidTo");
             this.Property(t => t.HighPriority).HasColumnName("HighPriority");
             this.Property(t => t.Active).HasColumnName("Active");
             this.Property(t => t.Visible).HasColumnName("Visible");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
         }
     }
 }

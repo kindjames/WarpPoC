@@ -22,7 +22,9 @@ namespace Warp.Data.Queries.Brands
         public IEnumerable<Brand> Execute(GetBrandsForClientQuery query)
         {
             return _dbContext.Brands
-                .Where(b => b.ClientID == query.ClientId);
+                .Where(b => b.ClientID == query.ClientId)
+                .ToArray()
+                .AsEnumerable();
         }
     }
 }

@@ -11,7 +11,7 @@ namespace Warp.Data.Models
         public string Token { get; set; }
         public int UserID { get; set; }
         public bool Active { get; set; }
-        public System.DateTime LastUpdated { get; set; }
-        public System.DateTime Created { get; set; }
+        public System.DateTime DateUpdated { get; set; }
+        public System.DateTime DateCreated { get; set; }
     }
 }

@@ -21,8 +21,10 @@ namespace Warp.Data.Models.Mapping
             this.Property(t => t.AccountingProductID).HasColumnName("AccountingProductID");
             this.Property(t => t.DefaultValue).HasColumnName("DefaultValue");
             this.Property(t => t.KashFlowID).HasColumnName("KashFlowID");
-            this.Property(t => t.ValidFrom).HasColumnName("ValidFrom");
-            this.Property(t => t.ValidTo).HasColumnName("ValidTo");
+            this.Property(t => t.DateValidFrom).HasColumnName("DateValidFrom");
+            this.Property(t => t.DateValidTo).HasColumnName("DateValidTo");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
             this.Property(t => t.Active).HasColumnName("Active");
 
             // Relationships

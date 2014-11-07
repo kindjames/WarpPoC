@@ -14,12 +14,13 @@ namespace Warp.Data.Models
 
         public int CallInLogID { get; set; }
         public int EnteredByAdminID { get; set; }
-        public System.DateTime TimeStamp { get; set; }
+        public System.DateTime DateCreated { get; set; }
         public string Notes { get; set; }
-        public System.DateTime ValidUntil { get; set; }
+        public Nullable<System.DateTime> DateValidTo { get; set; }
         public bool HighPriority { get; set; }
         public bool Active { get; set; }
         public bool Visible { get; set; }
+        public System.DateTime DateUpdated { get; set; }
         public virtual ICollection<AssessorCallInLog> AssessorCallInLogs { get; set; }
         public virtual ICollection<ClientCallInLog> ClientCallInLogs { get; set; }
         public virtual ICollection<VisitCallInLog> VisitCallInLogs { get; set; }

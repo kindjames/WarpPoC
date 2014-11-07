@@ -11,11 +11,13 @@ namespace Warp.Data.Models
         }
 
         public int ReportProblemActionID { get; set; }
-        public System.DateTime TimeStamp { get; set; }
         public short ReportProblemActionTypeID { get; set; }
         public System.TimeSpan StartTime { get; set; }
         public Nullable<System.TimeSpan> EndTime { get; set; }
         public int AddedByAdminID { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
+        public bool Active { get; set; }
         public virtual ReportProblemActionType ReportProblemActionType { get; set; }
         public virtual ICollection<ReportProblemTrackingAction> ReportProblemTrackingActions { get; set; }
     }

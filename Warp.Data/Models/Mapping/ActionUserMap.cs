@@ -25,14 +25,16 @@ namespace Warp.Data.Models.Mapping
             this.Property(t => t.CommentPermission).HasColumnName("CommentPermission");
             this.Property(t => t.Active).HasColumnName("Active");
             this.Property(t => t.AddedByUserID).HasColumnName("AddedByUserID");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
 
             // Relationships
-            this.HasRequired(t => t.Action)
-                .WithMany(t => t.ActionUsers)
-                .HasForeignKey(d => d.ActionID);
             this.HasRequired(t => t.User)
                 .WithMany(t => t.ActionUsers)
                 .HasForeignKey(d => d.UserID);
+            this.HasRequired(t => t.Action)
+                .WithMany(t => t.ActionUsers)
+                .HasForeignKey(d => d.ActionID);
 
         }
     }

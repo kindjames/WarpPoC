@@ -10,6 +10,8 @@ namespace Warp.Data.Models
         public int BrandID { get; set; }
         public bool Permission { get; set; }
         public bool Active { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
         public virtual BriefConfiguration BriefConfiguration { get; set; }
     }
 }

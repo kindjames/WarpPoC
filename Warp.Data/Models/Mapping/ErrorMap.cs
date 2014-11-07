@@ -23,6 +23,9 @@ namespace Warp.Data.Models.Mapping
             this.Property(t => t.CauseBy).HasColumnName("CauseBy");
             this.Property(t => t.Url).HasColumnName("Url");
             this.Property(t => t.Exception).HasColumnName("Exception");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            this.Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
             this.HasOptional(t => t.User)

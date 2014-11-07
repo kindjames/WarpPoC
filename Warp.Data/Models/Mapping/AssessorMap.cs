@@ -57,7 +57,10 @@ namespace Warp.Data.Models.Mapping
             this.Property(t => t.AccountNumber).HasColumnName("AccountNumber");
             this.Property(t => t.Occupation).HasColumnName("Occupation");
             this.Property(t => t.GenderID).HasColumnName("GenderID");
-            this.Property(t => t.LastUpdatedProfile).HasColumnName("LastUpdatedProfile");
+            this.Property(t => t.DateOfLastProfileUpdate).HasColumnName("DateOfLastProfileUpdate");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            this.Property(t => t.Active).HasColumnName("Active");
         }
     }
 }

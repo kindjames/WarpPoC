@@ -2,6 +2,7 @@
 using Warp.Core.Infrastructure;
 using Warp.Core.Services;
 using Warp.Core.Services.Dtos.Client;
+using Warp.Core.Util;
 using Warp.Data.Commands.Clients;
 using Warp.Data.Models;
 
@@ -10,17 +11,19 @@ namespace Warp.Services
     public sealed class ClientService : IClientService
     {
         private readonly ICommandDispatcher _commandDispatcher;
-        private readonly IMapper _mapper;
+        private readonly IObjectMapper _objectMapper;
 
-        public ClientService(ICommandDispatcher commandDispatcher, IMapper mapper)
+        public ClientService(ICommandDispatcher commandDispatcher, IObjectMapper objectMapper)
         {
             _commandDispatcher = commandDispatcher;
-            _mapper = mapper;
+            _objectMapper = objectMapper;
         }
 
-        public void SaveClient(SaveClientDto dto)
+        public void SaveClient(SaveClientDto saveClientDto)
         {
-            var client = _mapper.Map<Client>(dto);
+            Check.NotNull(saveClientDto, "saveClientDto");
+
+            var client = _objectMapper.Map<SaveClientDto, Client>(saveClientDto);
 
             _commandDispatcher.Execute(new SaveClientCommand { Client = client });
         }

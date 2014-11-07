@@ -16,25 +16,22 @@ namespace Warp.Data.Models.Mapping
                 .HasMaxLength(150);
 
             this.Property(t => t.Code)
-                .IsRequired()
-                .HasMaxLength(10);
+                .HasMaxLength(100);
 
             // Table & Column Mappings
             this.ToTable("Region", "Client");
             this.Property(t => t.RegionID).HasColumnName("RegionID");
             this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.Code).HasColumnName("Code");
             this.Property(t => t.RegionStatusID).HasColumnName("RegionStatusID");
+            this.Property(t => t.AreaID).HasColumnName("AreaID");
             this.Property(t => t.RegionGroupID).HasColumnName("RegionGroupID");
             this.Property(t => t.ClientID).HasColumnName("ClientID");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
             this.Property(t => t.Active).HasColumnName("Active");
-            this.Property(t => t.Created).HasColumnName("Created");
-            this.Property(t => t.LastUpdated).HasColumnName("LastUpdated");
+            this.Property(t => t.Code).HasColumnName("Code");
 
             // Relationships
-            this.HasRequired(t => t.Client)
-                .WithMany(t => t.Regions)
-                .HasForeignKey(d => d.ClientID);
             this.HasOptional(t => t.RegionGroup)
                 .WithMany(t => t.Regions)
                 .HasForeignKey(d => d.RegionGroupID);

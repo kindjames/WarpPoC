@@ -19,10 +19,11 @@ namespace Warp.Data.Models
         public int PossibleAnswerID { get; set; }
         public string Comment { get; set; }
         public decimal Score { get; set; }
-        public System.DateTime Timestamp { get; set; }
         public int CheckedByAdminID { get; set; }
-        public System.DateTime ValidFrom { get; set; }
-        public Nullable<System.DateTime> ValidTo { get; set; }
+        public System.DateTime DateValidFrom { get; set; }
+        public Nullable<System.DateTime> DateValidTo { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual Assessment Assessment { get; set; }
         public virtual Assessor Assessor { get; set; }

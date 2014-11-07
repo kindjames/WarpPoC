@@ -17,6 +17,8 @@ namespace Warp.Data.Models
         public string AdminName { get; set; }
         public string ClientName { get; set; }
         public string AssessorName { get; set; }
+        public System.DateTime DateUpdated { get; set; }
+        public System.DateTime DateCreated { get; set; }
         public bool Active { get; set; }
         public virtual ICollection<SimpleVisit> SimpleVisits { get; set; }
         public virtual ICollection<Visit> Visits { get; set; }

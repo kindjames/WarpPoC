@@ -19,6 +19,7 @@ namespace Warp.Data.Models
             this.ClientContactTrackings = new List<ClientContactTracking>();
             this.ClientLegacyUsers = new List<ClientLegacyUser>();
             this.ClientNotes = new List<ClientNote>();
+            this.ClientOrganisations = new List<ClientOrganisation>();
             this.ClientQuestionnaires = new List<ClientQuestionnaire>();
             this.ClientSocialNetworks = new List<ClientSocialNetwork>();
             this.ClientHistories = new List<ClientHistory>();
@@ -30,24 +31,24 @@ namespace Warp.Data.Models
             this.PersonClients = new List<PersonClient>();
             this.Questions = new List<Question>();
             this.QuestionTrackers = new List<QuestionTracker>();
-            this.Regions = new List<Region>();
+            this.ReportRestrictionClients = new List<ReportRestrictionClient>();
             this.TerminologyClients = new List<TerminologyClient>();
         }
 
         public int ClientID { get; set; }
         public string Name { get; set; }
-        public int CustomerID { get; set; }
         public short ClientStatusID { get; set; }
         public string Code { get; set; }
         public bool Active { get; set; }
-        public System.DateTime Created { get; set; }
-        public System.DateTime LastUpdated { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
+        public int CustomerID { get; set; }
+        public Nullable<System.DateTime> DateValidFrom { get; set; }
         public virtual ICollection<Brand> Brands { get; set; }
         public virtual ICollection<AccountingClient> AccountingClients { get; set; }
         public virtual ICollection<AccountingPeriod> AccountingPeriods { get; set; }
         public virtual ICollection<BriefClient> BriefClients { get; set; }
         public virtual ClientStatu ClientStatu { get; set; }
-        public virtual Customer Customer { get; set; }
         public virtual ICollection<ClientAccountingProduct> ClientAccountingProducts { get; set; }
         public virtual ICollection<ClientAccountManager> ClientAccountManagers { get; set; }
         public virtual ICollection<BanClient> BanClients { get; set; }
@@ -56,6 +57,7 @@ namespace Warp.Data.Models
         public virtual ICollection<ClientContactTracking> ClientContactTrackings { get; set; }
         public virtual ICollection<ClientLegacyUser> ClientLegacyUsers { get; set; }
         public virtual ICollection<ClientNote> ClientNotes { get; set; }
+        public virtual ICollection<ClientOrganisation> ClientOrganisations { get; set; }
         public virtual ICollection<ClientQuestionnaire> ClientQuestionnaires { get; set; }
         public virtual ICollection<ClientSocialNetwork> ClientSocialNetworks { get; set; }
         public virtual ICollection<ClientHistory> ClientHistories { get; set; }
@@ -67,7 +69,7 @@ namespace Warp.Data.Models
         public virtual ICollection<PersonClient> PersonClients { get; set; }
         public virtual ICollection<Question> Questions { get; set; }
         public virtual ICollection<QuestionTracker> QuestionTrackers { get; set; }
-        public virtual ICollection<Region> Regions { get; set; }
+        public virtual ICollection<ReportRestrictionClient> ReportRestrictionClients { get; set; }
         public virtual ICollection<TerminologyClient> TerminologyClients { get; set; }
     }
 }

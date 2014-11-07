@@ -10,14 +10,26 @@ namespace Warp.Data
     public interface IHospitalityGemDbContext
     {
         int SaveChanges();
-        
+
         // Hooks into the DbContext.
         Database Database { get; }
         DbEntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;
 
-        IDbSet<ActionCategory> ActionCategories { get; set; }
-        IDbSet<ActionEvent> ActionEvents { get; set; }
+        IDbSet<AuditingDatabase> AuditingDatabases { get; set; }
+
+        IDbSet<PasswordQuestion> PasswordQuestions { get; set; }
+        IDbSet<PasswordReset> PasswordResets { get; set; }
+        IDbSet<Permission> Permissions { get; set; }
+        IDbSet<PermissionGroup> PermissionGroups { get; set; }
+        IDbSet<PermissionGroupPermission> PermissionGroupPermissions { get; set; }
+        IDbSet<PermissionGroupUser> PermissionGroupUsers { get; set; }
+        IDbSet<Role> Roles { get; set; }
+        IDbSet<User> Users { get; set; }
+        IDbSet<UserImpersonationUserRole> UserImpersonationUserRoles { get; set; }
+        IDbSet<UserRole> UserRoles { get; set; }
+        IDbSet<AuditAction> AuditActions { get; set; }
         IDbSet<Event> Events { get; set; }
+        IDbSet<EventCategory> EventCategories { get; set; }
         IDbSet<Operation> Operations { get; set; }
         IDbSet<Severity> Severities { get; set; }
         IDbSet<Area> Areas { get; set; }
@@ -25,23 +37,35 @@ namespace Warp.Data
         IDbSet<AreaStatu> AreaStatus { get; set; }
         IDbSet<Branch> Branches { get; set; }
         IDbSet<BranchHistory> BranchHistories { get; set; }
-        IDbSet<BranchLogo> BranchLogos { get; set; }
-        IDbSet<Logo> Logos { get; set; }
+        IDbSet<BranchLogo> BranchLogoes { get; set; }
         IDbSet<BranchStatu> BranchStatus { get; set; }
         IDbSet<Brand> Brands { get; set; }
         IDbSet<BrandHistory> BrandHistories { get; set; }
+        IDbSet<BrandLogo> BrandLogoes { get; set; }
         IDbSet<BrandStatu> BrandStatus { get; set; }
         IDbSet<Client> Clients { get; set; }
         IDbSet<ClientAccountManager> ClientAccountManagers { get; set; }
         IDbSet<ClientContactStatu> ClientContactStatus { get; set; }
-        IDbSet<ClientLogo> ClientLogos { get; set; }
+        IDbSet<ClientHistory> ClientHistories { get; set; }
+        IDbSet<ClientLogo> ClientLogoes { get; set; }
+        IDbSet<ClientOrganisation> ClientOrganisations { get; set; }
         IDbSet<ClientStatu> ClientStatus { get; set; }
         IDbSet<ContactAddressBranch> ContactAddressBranches { get; set; }
         IDbSet<ContactAddressBrand> ContactAddressBrands { get; set; }
-        IDbSet<ContactAddressGeoLocation> ContactAddressGeoLocations { get; set; }
+        IDbSet<ContactAddressClient> ContactAddressClients { get; set; }
+        IDbSet<ContactAddressUserRole> ContactAddressUserRoles { get; set; }
+        IDbSet<Currency> Currencies { get; set; }
+        IDbSet<IndustrySector> IndustrySectors { get; set; }
         IDbSet<Location> Locations { get; set; }
         IDbSet<LocationStatu> LocationStatus { get; set; }
+        IDbSet<Logo> Logoes { get; set; }
+        IDbSet<PermissionType> PermissionTypes { get; set; }
         IDbSet<Person> People { get; set; }
+        IDbSet<PersonArea> PersonAreas { get; set; }
+        IDbSet<PersonBranch> PersonBranches { get; set; }
+        IDbSet<PersonBrand> PersonBrands { get; set; }
+        IDbSet<PersonClient> PersonClients { get; set; }
+        IDbSet<PersonRegion> PersonRegions { get; set; }
         IDbSet<PersonStatu> PersonStatus { get; set; }
         IDbSet<Region> Regions { get; set; }
         IDbSet<RegionGroup> RegionGroups { get; set; }
@@ -54,6 +78,7 @@ namespace Warp.Data
         IDbSet<AccountingPeriod> AccountingPeriods { get; set; }
         IDbSet<AccountingProduct> AccountingProducts { get; set; }
         IDbSet<AccountingTransaction> AccountingTransactions { get; set; }
+        IDbSet<Action> Actions { get; set; }
         IDbSet<ActionComment> ActionComments { get; set; }
         IDbSet<ActionPriority> ActionPriorities { get; set; }
         IDbSet<ActionStatu> ActionStatus { get; set; }
@@ -61,11 +86,7 @@ namespace Warp.Data
         IDbSet<ActionUser> ActionUsers { get; set; }
         IDbSet<AdminClientContactTracking> AdminClientContactTrackings { get; set; }
         IDbSet<Airport> Airports { get; set; }
-        IDbSet<ApplicationLanguage> ApplicationLanguages { get; set; }
-        IDbSet<Area1> Area1 { get; set; }
-        IDbSet<AreaHistory1> AreaHistory1 { get; set; }
         IDbSet<AreaQuestionnaire> AreaQuestionnaires { get; set; }
-        IDbSet<AreaStatus1> AreaStatus1 { get; set; }
         IDbSet<Assessment> Assessments { get; set; }
         IDbSet<AssessmentArea> AssessmentAreas { get; set; }
         IDbSet<AssessmentAreaBranch> AssessmentAreaBranches { get; set; }
@@ -85,28 +106,20 @@ namespace Warp.Data
         IDbSet<AssessorStatu> AssessorStatus { get; set; }
         IDbSet<AssessorStatusChangeReason> AssessorStatusChangeReasons { get; set; }
         IDbSet<AssessorTimeTracker> AssessorTimeTrackers { get; set; }
-        IDbSet<AuditAction> AuditActions { get; set; }
         IDbSet<AuditAdminEvent> AuditAdminEvents { get; set; }
         IDbSet<AuditAssessorEvent> AuditAssessorEvents { get; set; }
-        IDbSet<AuditManagerEvent> AuditManagerEvents { get; set; }
         IDbSet<AuditPersonEvent> AuditPersonEvents { get; set; }
         IDbSet<AuditTable> AuditTables { get; set; }
         IDbSet<BanBranch> BanBranches { get; set; }
         IDbSet<BanBrand> BanBrands { get; set; }
         IDbSet<BanClient> BanClients { get; set; }
         IDbSet<Benchmark> Benchmarks { get; set; }
-        IDbSet<Branch1> Branch1 { get; set; }
         IDbSet<BranchAccountingProduct> BranchAccountingProducts { get; set; }
-        IDbSet<BranchHistory1> BranchHistory1 { get; set; }
         IDbSet<BranchNote> BranchNotes { get; set; }
         IDbSet<BranchQuestionnaire> BranchQuestionnaires { get; set; }
-        IDbSet<BranchStatus1> BranchStatus1 { get; set; }
-        IDbSet<Brand1> Brand1 { get; set; }
         IDbSet<BrandAccountingProduct> BrandAccountingProducts { get; set; }
-        IDbSet<BrandHistory1> BrandHistory1 { get; set; }
         IDbSet<BrandNote> BrandNotes { get; set; }
         IDbSet<BrandQuestionnaire> BrandQuestionnaires { get; set; }
-        IDbSet<BrandStatus1> BrandStatus1 { get; set; }
         IDbSet<Brief> Briefs { get; set; }
         IDbSet<BriefBranch> BriefBranches { get; set; }
         IDbSet<BriefBrand> BriefBrands { get; set; }
@@ -121,17 +134,13 @@ namespace Warp.Data
         IDbSet<CallBackRequest> CallBackRequests { get; set; }
         IDbSet<CallInLog> CallInLogs { get; set; }
         IDbSet<CCTFurtherNote> CCTFurtherNotes { get; set; }
-        IDbSet<Client1> Client1 { get; set; }
         IDbSet<ClientAccountingProduct> ClientAccountingProducts { get; set; }
         IDbSet<ClientCallBackRequest> ClientCallBackRequests { get; set; }
         IDbSet<ClientCallInLog> ClientCallInLogs { get; set; }
         IDbSet<ClientCommunicationLog> ClientCommunicationLogs { get; set; }
-        IDbSet<ClientContactStatus1> ClientContactStatus1 { get; set; }
         IDbSet<ClientContactTracking> ClientContactTrackings { get; set; }
-        IDbSet<ClientHistory> ClientHistories { get; set; }
         IDbSet<ClientNote> ClientNotes { get; set; }
         IDbSet<ClientQuestionnaire> ClientQuestionnaires { get; set; }
-        IDbSet<ClientStatus1> ClientStatus1 { get; set; }
         IDbSet<CommunicationPreference> CommunicationPreferences { get; set; }
         IDbSet<CommunicationStatu> CommunicationStatus { get; set; }
         IDbSet<CommunicationType> CommunicationTypes { get; set; }
@@ -139,19 +148,12 @@ namespace Warp.Data
         IDbSet<ConfigurationItem> ConfigurationItems { get; set; }
         IDbSet<ConfigurationSystem> ConfigurationSystems { get; set; }
         IDbSet<ConfigurationType> ConfigurationTypes { get; set; }
-        IDbSet<ContactAddress> ContactAddresses { get; set; }
-        IDbSet<ContactAddressBranch1> ContactAddressBranch1 { get; set; }
-        IDbSet<ContactAddressBrand1> ContactAddressBrand1 { get; set; }
-        IDbSet<ContactAddressClient> ContactAddressClients { get; set; }
         IDbSet<ContactAddressCustomer> ContactAddressCustomers { get; set; }
-        IDbSet<ContactAddressType> ContactAddressTypes { get; set; }
-        IDbSet<ContactAddressUserRole> ContactAddressUserRoles { get; set; }
         IDbSet<CriteriaAssessorAttribute> CriteriaAssessorAttributes { get; set; }
         IDbSet<CriteriaConfig> CriteriaConfigs { get; set; }
         IDbSet<CriteriaOperator> CriteriaOperators { get; set; }
         IDbSet<CriteriaOption> CriteriaOptions { get; set; }
         IDbSet<CriteriaSet> CriteriaSets { get; set; }
-        IDbSet<Currency> Currencies { get; set; }
         IDbSet<CurrencyExchangeRate> CurrencyExchangeRates { get; set; }
         IDbSet<Customer> Customers { get; set; }
         IDbSet<CustomerClient> CustomerClients { get; set; }
@@ -169,30 +171,14 @@ namespace Warp.Data
         IDbSet<FurtherActionComment> FurtherActionComments { get; set; }
         IDbSet<FurtherNote> FurtherNotes { get; set; }
         IDbSet<Gender> Genders { get; set; }
-        IDbSet<GeographicCountry> GeographicCountries { get; set; }
-        IDbSet<GeographicCounty> GeographicCounties { get; set; }
-        IDbSet<GeographicLocation> GeographicLocations { get; set; }
-        IDbSet<GeographicPostalArea> GeographicPostalAreas { get; set; }
-        IDbSet<GeographicPostCode> GeographicPostCodes { get; set; }
-        IDbSet<GeographicRegion> GeographicRegions { get; set; }
-        IDbSet<GeographicWorldArea> GeographicWorldAreas { get; set; }
         IDbSet<Group> Groups { get; set; }
         IDbSet<GroupUser> GroupUsers { get; set; }
-        IDbSet<IndustrySector> IndustrySectors { get; set; }
         IDbSet<Log> Logs { get; set; }
         IDbSet<Login> Logins { get; set; }
         IDbSet<Maintenance> Maintenances { get; set; }
         IDbSet<MaintenanceCategory> MaintenanceCategories { get; set; }
         IDbSet<MaintenanceCustomer> MaintenanceCustomers { get; set; }
         IDbSet<ManagementCategory> ManagementCategories { get; set; }
-        IDbSet<ManagerArea> ManagerAreas { get; set; }
-        IDbSet<ManagerBranch> ManagerBranches { get; set; }
-        IDbSet<ManagerBrand> ManagerBrands { get; set; }
-        IDbSet<ManagerCallBackRequest> ManagerCallBackRequests { get; set; }
-        IDbSet<ManagerClient> ManagerClients { get; set; }
-        IDbSet<ManagerClientContactTracking> ManagerClientContactTrackings { get; set; }
-        IDbSet<ManagerRegion> ManagerRegions { get; set; }
-        IDbSet<ManagerTimeTracker> ManagerTimeTrackers { get; set; }
         IDbSet<Menu> Menus { get; set; }
         IDbSet<MenuConfig> MenuConfigs { get; set; }
         IDbSet<MenuConfigBranch> MenuConfigBranches { get; set; }
@@ -208,22 +194,11 @@ namespace Warp.Data
         IDbSet<Notification> Notifications { get; set; }
         IDbSet<NotificationCategory> NotificationCategories { get; set; }
         IDbSet<PandoraCache> PandoraCaches { get; set; }
-        IDbSet<PasswordQuestion> PasswordQuestions { get; set; }
-        IDbSet<PasswordReset> PasswordResets { get; set; }
         IDbSet<Period> Periods { get; set; }
         IDbSet<PeriodBrand> PeriodBrands { get; set; }
         IDbSet<PeriodClient> PeriodClients { get; set; }
-        IDbSet<Permission> Permissions { get; set; }
-        IDbSet<PermissionGroup> PermissionGroups { get; set; }
-        IDbSet<PermissionGroupPermission> PermissionGroupPermissions { get; set; }
-        IDbSet<PermissionGroupUser> PermissionGroupUsers { get; set; }
-        IDbSet<PersonArea> PersonAreas { get; set; }
-        IDbSet<PersonBranch> PersonBranches { get; set; }
-        IDbSet<PersonBrand> PersonBrands { get; set; }
         IDbSet<PersonCallBackRequest> PersonCallBackRequests { get; set; }
-        IDbSet<PersonClient> PersonClients { get; set; }
         IDbSet<PersonClientContactTracking> PersonClientContactTrackings { get; set; }
-        IDbSet<PersonRegion> PersonRegions { get; set; }
         IDbSet<PersonTimeTracker> PersonTimeTrackers { get; set; }
         IDbSet<Point> Points { get; set; }
         IDbSet<PointReason> PointReasons { get; set; }
@@ -244,10 +219,7 @@ namespace Warp.Data
         IDbSet<QuestionTracker> QuestionTrackers { get; set; }
         IDbSet<QuestionType> QuestionTypes { get; set; }
         IDbSet<RailStation> RailStations { get; set; }
-        IDbSet<Region1> Region1 { get; set; }
-        IDbSet<RegionHistory1> RegionHistory1 { get; set; }
         IDbSet<RegionQuestionnaire> RegionQuestionnaires { get; set; }
-        IDbSet<RegionStatus1> RegionStatus1 { get; set; }
         IDbSet<RemovalReason> RemovalReasons { get; set; }
         IDbSet<ReportProblemAction> ReportProblemActions { get; set; }
         IDbSet<ReportProblemActionType> ReportProblemActionTypes { get; set; }
@@ -256,7 +228,6 @@ namespace Warp.Data
         IDbSet<ReportProblemTrackingAction> ReportProblemTrackingActions { get; set; }
         IDbSet<ReportProblemType> ReportProblemTypes { get; set; }
         IDbSet<ResultComment> ResultComments { get; set; }
-        IDbSet<Role> Roles { get; set; }
         IDbSet<SimpleVisit> SimpleVisits { get; set; }
         IDbSet<SimpleVisitQuestionResult> SimpleVisitQuestionResults { get; set; }
         IDbSet<SimpleVisitTemplate> SimpleVisitTemplates { get; set; }
@@ -287,15 +258,7 @@ namespace Warp.Data
         IDbSet<TerminologyClient> TerminologyClients { get; set; }
         IDbSet<TimeTracker> TimeTrackers { get; set; }
         IDbSet<TimeTrackerType> TimeTrackerTypes { get; set; }
-        IDbSet<Tour> Tours { get; set; }
-        IDbSet<TourStep> TourSteps { get; set; }
-        IDbSet<TourStepPlacement> TourStepPlacements { get; set; }
-        IDbSet<TourUserRole> TourUserRoles { get; set; }
-        IDbSet<TourUserRoleTourStep> TourUserRoleTourSteps { get; set; }
         IDbSet<TradeLevel> TradeLevels { get; set; }
-        IDbSet<User> Users { get; set; }
-        IDbSet<UserImpersonationUserRole> UserImpersonationUserRoles { get; set; }
-        IDbSet<UserRole> UserRoles { get; set; }
         IDbSet<Visit> Visits { get; set; }
         IDbSet<VisitAction> VisitActions { get; set; }
         IDbSet<VisitAssessor> VisitAssessors { get; set; }
@@ -310,16 +273,40 @@ namespace Warp.Data
         IDbSet<VisitType> VisitTypes { get; set; }
         IDbSet<VisitTypeExpenseType> VisitTypeExpenseTypes { get; set; }
         IDbSet<Weather> Weathers { get; set; }
+        IDbSet<ContactAddress> ContactAddresses { get; set; }
+        IDbSet<ContactAddressGeoLocation> ContactAddressGeoLocations { get; set; }
+        IDbSet<ContactAddressType> ContactAddressTypes { get; set; }
+        IDbSet<GeographicCountry> GeographicCountries { get; set; }
+        IDbSet<GeographicCounty> GeographicCounties { get; set; }
+        IDbSet<GeographicLocation> GeographicLocations { get; set; }
+        IDbSet<GeographicPostalArea> GeographicPostalAreas { get; set; }
+        IDbSet<GeographicPostCode> GeographicPostCodes { get; set; }
+        IDbSet<GeographicRegion> GeographicRegions { get; set; }
+        IDbSet<GeographicWorldArea> GeographicWorldAreas { get; set; }
         IDbSet<Article> Articles { get; set; }
         IDbSet<ArticlePermission> ArticlePermissions { get; set; }
         IDbSet<Page> Pages { get; set; }
         IDbSet<PageArticle> PageArticles { get; set; }
         IDbSet<PageTour> PageTours { get; set; }
+        IDbSet<Tour> Tours { get; set; }
+        IDbSet<TourStep> TourSteps { get; set; }
+        IDbSet<TourStepPlacement> TourStepPlacements { get; set; }
+        IDbSet<TourUserRole> TourUserRoles { get; set; }
+        IDbSet<TourUserRoleTourStep> TourUserRoleTourSteps { get; set; }
         IDbSet<AreaLegacyUser> AreaLegacyUsers { get; set; }
         IDbSet<BranchLegacyUser> BranchLegacyUsers { get; set; }
         IDbSet<BrandLegacyUser> BrandLegacyUsers { get; set; }
         IDbSet<ClientLegacyUser> ClientLegacyUsers { get; set; }
         IDbSet<RegionLegacyUser> RegionLegacyUsers { get; set; }
+        IDbSet<Report> Reports { get; set; }
+        IDbSet<ReportCategory> ReportCategories { get; set; }
+        IDbSet<ReportParameterType> ReportParameterTypes { get; set; }
+        IDbSet<ReportParameterValue> ReportParameterValues { get; set; }
+        IDbSet<ReportReportType> ReportReportTypes { get; set; }
+        IDbSet<ReportRestrictionClient> ReportRestrictionClients { get; set; }
+        IDbSet<ReportSection> ReportSections { get; set; }
+        IDbSet<ReportSource> ReportSources { get; set; }
+        IDbSet<ReportType> ReportTypes { get; set; }
         IDbSet<Messages_0> Messages_0 { get; set; }
         IDbSet<Messages_0_Id> Messages_0_Id { get; set; }
         IDbSet<Schema> Schemata { get; set; }
@@ -327,5 +314,54 @@ namespace Warp.Data
         IDbSet<BrandSocialNetwork> BrandSocialNetworks { get; set; }
         IDbSet<ClientSocialNetwork> ClientSocialNetworks { get; set; }
         IDbSet<SocialNetwork> SocialNetworks { get; set; }
+        IDbSet<CustomCalendar> CustomCalendars { get; set; }
+        IDbSet<CustomCalendarDate> CustomCalendarDates { get; set; }
+        IDbSet<DayOfWeek> DayOfWeeks { get; set; }
+        IDbSet<DelayType> DelayTypes { get; set; }
+        IDbSet<Destination> Destinations { get; set; }
+        IDbSet<DestinationEmail> DestinationEmails { get; set; }
+        IDbSet<DestinationFileShare> DestinationFileShares { get; set; }
+        IDbSet<DestinationFTP> DestinationFTPs { get; set; }
+        IDbSet<DestinationType> DestinationTypes { get; set; }
+        IDbSet<DynamicText> DynamicTexts { get; set; }
+        IDbSet<EmailRecipient> EmailRecipients { get; set; }
+        IDbSet<Month> Months { get; set; }
+        IDbSet<ParameterOption> ParameterOptions { get; set; }
+        IDbSet<Quarter> Quarters { get; set; }
+        IDbSet<ReportFormat> ReportFormats { get; set; }
+        IDbSet<Schedule> Schedules { get; set; }
+        IDbSet<ScheduleCustomCalendar> ScheduleCustomCalendars { get; set; }
+        IDbSet<ScheduleDaily> ScheduleDailies { get; set; }
+        IDbSet<ScheduleMonthly> ScheduleMonthlies { get; set; }
+        IDbSet<ScheduleMonthlyMonth> ScheduleMonthlyMonths { get; set; }
+        IDbSet<ScheduleQuarterly> ScheduleQuarterlies { get; set; }
+        IDbSet<ScheduleQuarterlyQuarter> ScheduleQuarterlyQuarters { get; set; }
+        IDbSet<ScheduleSpecific> ScheduleSpecifics { get; set; }
+        IDbSet<ScheduleSubType> ScheduleSubTypes { get; set; }
+        IDbSet<ScheduleType> ScheduleTypes { get; set; }
+        IDbSet<ScheduleWeekly> ScheduleWeeklies { get; set; }
+        IDbSet<ScheduleWeeklyDayOfWeek> ScheduleWeeklyDayOfWeeks { get; set; }
+        IDbSet<ScheduleYearly> ScheduleYearlies { get; set; }
+        IDbSet<Subscription> Subscriptions { get; set; }
+        IDbSet<SubscriptionDestination> SubscriptionDestinations { get; set; }
+        IDbSet<SubscriptionDocument> SubscriptionDocuments { get; set; }
+        IDbSet<SubscriptionEvent> SubscriptionEvents { get; set; }
+        IDbSet<SubscriptionEventType> SubscriptionEventTypes { get; set; }
+        IDbSet<SubscriptionReport> SubscriptionReports { get; set; }
+        IDbSet<SubscriptionReportDestination> SubscriptionReportDestinations { get; set; }
+        IDbSet<SubscriptionReportParameter> SubscriptionReportParameters { get; set; }
+        IDbSet<SubscriptionStatu> SubscriptionStatus { get; set; }
+        IDbSet<SubscriptionStatusType> SubscriptionStatusTypes { get; set; }
+        IDbSet<Trigger> Triggers { get; set; }
+        IDbSet<TriggerCheck> TriggerChecks { get; set; }
+        IDbSet<TriggerEvent> TriggerEvents { get; set; }
+        IDbSet<TriggerHistory> TriggerHistories { get; set; }
+        IDbSet<TriggerInstance> TriggerInstances { get; set; }
+        IDbSet<TriggerInstanceReport> TriggerInstanceReports { get; set; }
+        IDbSet<TriggerInstanceReportStatusType> TriggerInstanceReportStatusTypes { get; set; }
+        IDbSet<ApplicationLanguage> ApplicationLanguages { get; set; }
+        IDbSet<CodeResource> CodeResources { get; set; }
+        IDbSet<CodeResourceType> CodeResourceTypes { get; set; }
+        IDbSet<Translation> Translations { get; set; }
     }
 }

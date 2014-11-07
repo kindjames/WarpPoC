@@ -15,7 +15,7 @@ namespace Warp.Data.Models.Mapping
                 .IsRequired();
 
             // Table & Column Mappings
-            this.ToTable("TourUserRole");
+            this.ToTable("TourUserRole", "Help");
             this.Property(t => t.TourUserRoleID).HasColumnName("TourUserRoleID");
             this.Property(t => t.TourID).HasColumnName("TourID");
             this.Property(t => t.UserRoleID).HasColumnName("UserRoleID");
@@ -23,17 +23,17 @@ namespace Warp.Data.Models.Mapping
             this.Property(t => t.PermanentlySkipTour).HasColumnName("PermanentlySkipTour");
             this.Property(t => t.DelayTourTillNextLogin).HasColumnName("DelayTourTillNextLogin");
             this.Property(t => t.SessionId).HasColumnName("SessionId");
-            this.Property(t => t.LastUpdate).HasColumnName("LastUpdate");
-            this.Property(t => t.Created).HasColumnName("Created");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
             this.Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.Tour)
-                .WithMany(t => t.TourUserRoles)
-                .HasForeignKey(d => d.TourID);
             this.HasRequired(t => t.UserRole)
                 .WithMany(t => t.TourUserRoles)
                 .HasForeignKey(d => d.UserRoleID);
+            this.HasRequired(t => t.Tour)
+                .WithMany(t => t.TourUserRoles)
+                .HasForeignKey(d => d.TourID);
 
         }
     }

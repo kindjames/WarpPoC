@@ -8,9 +8,9 @@ namespace Warp.Data.Models
         public int VisitAssessorID { get; set; }
         public int VisitID { get; set; }
         public int AssessorID { get; set; }
-        public System.DateTime DateAdded { get; set; }
+        public System.DateTime DateCreated { get; set; }
         public int AddedByAdminID { get; set; }
-        public Nullable<System.DateTime> DateRemoved { get; set; }
+        public System.DateTime DateUpdated { get; set; }
         public Nullable<int> RemovedByAdminID { get; set; }
         public bool Active { get; set; }
         public bool PreviewedQuestionnaire { get; set; }

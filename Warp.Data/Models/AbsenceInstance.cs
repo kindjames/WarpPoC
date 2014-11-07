@@ -7,11 +7,13 @@ namespace Warp.Data.Models
     {
         public int AbsenceInstanceID { get; set; }
         public byte AbsenceTypeID { get; set; }
-        public System.DateTime DateAdded { get; set; }
         public int AdminID { get; set; }
-        public System.DateTime ValidFromDate { get; set; }
-        public System.DateTime ValidToDate { get; set; }
+        public System.DateTime DateValidFrom { get; set; }
+        public System.DateTime DateValidTo { get; set; }
         public int ApprovedByAdminID { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
+        public bool Active { get; set; }
         public virtual AbsenceType AbsenceType { get; set; }
     }
 }

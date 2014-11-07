@@ -9,6 +9,7 @@ namespace Warp.Data.Models
         public int SimpleVisitTemplateID { get; set; }
         public int BranchID { get; set; }
         public bool Active { get; set; }
-        public virtual Branch Branch { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
     }
 }

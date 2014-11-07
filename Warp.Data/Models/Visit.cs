@@ -29,29 +29,31 @@ namespace Warp.Data.Models
         public short VisitTypeID { get; set; }
         public int BranchID { get; set; }
         public System.DateTime DateAdded { get; set; }
-        public System.DateTime AvailableFrom { get; set; }
-        public System.DateTime AvailableTo { get; set; }
+        public System.DateTime DateAvailableFrom { get; set; }
+        public Nullable<System.DateTime> DateAvailableTo { get; set; }
         public short AddedByAdminID { get; set; }
         public short OwnerAdminID { get; set; }
-        public System.DateTime DisplayDate { get; set; }
+        public System.DateTime DateDisplay { get; set; }
         public string BestContactNo { get; set; }
         public string PublicNotes { get; set; }
         public bool LockedForEditing { get; set; }
         public Nullable<short> LockedByAdminID { get; set; }
-        public Nullable<System.DateTime> LastLockDate { get; set; }
-        public Nullable<System.DateTime> CheckOutDate { get; set; }
+        public Nullable<System.DateTime> DateLastLocked { get; set; }
+        public Nullable<System.DateTime> DateCheckedOut { get; set; }
         public Nullable<short> CheckOutAdminID { get; set; }
-        public Nullable<System.DateTime> CheckOutInvalidDate { get; set; }
+        public Nullable<System.DateTime> DateCheckOutInvalid { get; set; }
         public string CheckOutKey { get; set; }
         public bool Analyse { get; set; }
         public bool Release { get; set; }
         public Nullable<int> ReleasedByAdminID { get; set; }
-        public Nullable<System.DateTime> ReleaseDate { get; set; }
+        public Nullable<System.DateTime> DateReleased { get; set; }
         public Nullable<double> Score { get; set; }
-        public Nullable<System.DateTime> ScoreCalculated { get; set; }
+        public Nullable<System.DateTime> DateScoreCalculated { get; set; }
         public Nullable<int> CriteriaSetID { get; set; }
         public bool Invoiced { get; set; }
-        public virtual Branch Branch { get; set; }
+        public System.DateTime DateUpdated { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public bool Active { get; set; }
         public virtual AccountingPeriod AccountingPeriod { get; set; }
         public virtual ICollection<AccountingTransaction> AccountingTransactions { get; set; }
         public virtual ICollection<Assessment> Assessments { get; set; }

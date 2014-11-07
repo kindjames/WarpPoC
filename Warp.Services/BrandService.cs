@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using Warp.Core.Exceptions;
 using Warp.Core.Infrastructure;
 using Warp.Core.Query;
 using Warp.Core.Services;
-using Warp.Core.Services.Dtos;
 using Warp.Core.Services.Dtos.Brand;
+using Warp.Data.Models;
 using Warp.Data.Queries.Brands;
 using Warp.Data.Queries.Clients;
 using Warp.Data.Queries.Customers;
@@ -14,12 +15,12 @@ namespace Warp.Services
     public class BrandService : IBrandService
     {
         private readonly IQueryDispatcher _queryDispatcher;
-        private readonly IMapper _mapper;
+        private readonly IObjectMapper _objectMapper;
 
-        public BrandService(IQueryDispatcher queryDispatcher, IMapper mapper)
+        public BrandService(IQueryDispatcher queryDispatcher, IObjectMapper objectMapper)
         {
             _queryDispatcher = queryDispatcher;
-            _mapper = mapper;
+            _objectMapper = objectMapper;
         }
 
         public BrandSummaryListDto GetBrandSummaryListForClient(int clientId)
@@ -34,10 +35,10 @@ namespace Warp.Services
             var brands = _queryDispatcher.Execute(new GetBrandsForClientQuery {ClientId = clientId});
 
             var customerName = _queryDispatcher.Execute(new GetCustomerNameQuery {CustomerId = client.CustomerID});
-            
+
             return new BrandSummaryListDto
             {
-                Brands = _mapper.Map<IEnumerable<BrandSummaryDto>>(brands),
+                Brands = _objectMapper.MapMany<Brand, BrandSummaryDto>(brands),
                 CustomerName = customerName,
                 ClientName = client.Name,
             };

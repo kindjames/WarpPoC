@@ -18,11 +18,13 @@ namespace Warp.Data.Models.Mapping
             this.ToTable("AbsenceInstance");
             this.Property(t => t.AbsenceInstanceID).HasColumnName("AbsenceInstanceID");
             this.Property(t => t.AbsenceTypeID).HasColumnName("AbsenceTypeID");
-            this.Property(t => t.DateAdded).HasColumnName("DateAdded");
             this.Property(t => t.AdminID).HasColumnName("AdminID");
-            this.Property(t => t.ValidFromDate).HasColumnName("ValidFromDate");
-            this.Property(t => t.ValidToDate).HasColumnName("ValidToDate");
+            this.Property(t => t.DateValidFrom).HasColumnName("DateValidFrom");
+            this.Property(t => t.DateValidTo).HasColumnName("DateValidTo");
             this.Property(t => t.ApprovedByAdminID).HasColumnName("ApprovedByAdminID");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            this.Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
             this.HasRequired(t => t.AbsenceType)

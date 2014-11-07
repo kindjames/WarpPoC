@@ -16,11 +16,14 @@ namespace Warp.Data.Models.Mapping
                 .HasMaxLength(50);
 
             // Table & Column Mappings
-            this.ToTable("GeographicCountry");
+            this.ToTable("GeographicCountry", "Geographic");
             this.Property(t => t.GeographicCountryID).HasColumnName("GeographicCountryID");
             this.Property(t => t.GeographicWorldAreaID).HasColumnName("GeographicWorldAreaID");
             this.Property(t => t.Name).HasColumnName("Name");
             this.Property(t => t.CurrencyID).HasColumnName("CurrencyID");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            this.Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
             this.HasRequired(t => t.Currency)

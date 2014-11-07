@@ -15,6 +15,9 @@ namespace Warp.Data.Models
         public short AssessmentAreaID { get; set; }
         public string Name { get; set; }
         public short AssessmentTypeID { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
+        public bool Active { get; set; }
         public virtual ICollection<AccountingTransaction> AccountingTransactions { get; set; }
         public virtual ICollection<Assessment> Assessments { get; set; }
         public virtual AssessmentType AssessmentType { get; set; }

@@ -22,20 +22,18 @@ namespace Warp.Data.Models.Mapping
             this.ToTable("Client", "Client");
             this.Property(t => t.ClientID).HasColumnName("ClientID");
             this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.CustomerID).HasColumnName("CustomerID");
             this.Property(t => t.ClientStatusID).HasColumnName("ClientStatusID");
             this.Property(t => t.Code).HasColumnName("Code");
             this.Property(t => t.Active).HasColumnName("Active");
-            this.Property(t => t.Created).HasColumnName("Created");
-            this.Property(t => t.LastUpdated).HasColumnName("LastUpdated");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            this.Property(t => t.CustomerID).HasColumnName("CustomerID");
+            this.Property(t => t.DateValidFrom).HasColumnName("DateValidFrom");
 
             // Relationships
             this.HasRequired(t => t.ClientStatu)
                 .WithMany(t => t.Clients)
                 .HasForeignKey(d => d.ClientStatusID);
-            this.HasRequired(t => t.Customer)
-                .WithMany(t => t.Clients)
-                .HasForeignKey(d => d.CustomerID);
 
         }
     }

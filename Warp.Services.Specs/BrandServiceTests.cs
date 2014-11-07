@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using Warp.Core.Exceptions;
 using Warp.Core.Query;
-using Warp.Core.Services.Dtos;
 using Warp.Core.Services.Dtos.Brand;
 using Warp.Data.Models;
 using Warp.Data.Queries.Brands;

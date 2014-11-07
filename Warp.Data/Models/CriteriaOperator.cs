@@ -14,6 +14,8 @@ namespace Warp.Data.Models
         public string Name { get; set; }
         public string SQLOperatorStart { get; set; }
         public string SQLOperatorEnd { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual ICollection<CriteriaConfig> CriteriaConfigs { get; set; }
     }

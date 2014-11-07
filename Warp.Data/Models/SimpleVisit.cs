@@ -15,12 +15,13 @@ namespace Warp.Data.Models
         public short VisitStatusID { get; set; }
         public short VisitTypeID { get; set; }
         public int BranchID { get; set; }
-        public System.DateTime DateAdded { get; set; }
         public int AssessorID { get; set; }
         public string IP { get; set; }
         public System.DateTime StartTime { get; set; }
         public Nullable<System.DateTime> EndTime { get; set; }
-        public virtual Branch Branch { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
+        public bool Active { get; set; }
         public virtual Assessor Assessor { get; set; }
         public virtual SimpleVisitTemplate SimpleVisitTemplate { get; set; }
         public virtual VisitStatu VisitStatu { get; set; }

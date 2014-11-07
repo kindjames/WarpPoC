@@ -16,9 +16,12 @@ namespace Warp.Data.Models.Mapping
                 .HasMaxLength(100);
 
             // Table & Column Mappings
-            this.ToTable("Role");
+            this.ToTable("Role", "Account");
             this.Property(t => t.RoleID).HasColumnName("RoleID");
             this.Property(t => t.Name).HasColumnName("Name");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            this.Property(t => t.Active).HasColumnName("Active");
         }
     }
 }

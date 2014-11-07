@@ -12,13 +12,15 @@ namespace Warp.Data.Models.Mapping
 
             // Properties
             // Table & Column Mappings
-            this.ToTable("ContactAddressUserRole");
+            this.ToTable("ContactAddressUserRole", "Client");
             this.Property(t => t.ContactAddressUserRoleID).HasColumnName("ContactAddressUserRoleID");
             this.Property(t => t.ContactAddressID).HasColumnName("ContactAddressID");
             this.Property(t => t.UserRoleID).HasColumnName("UserRoleID");
             this.Property(t => t.ContactAddressTypeID).HasColumnName("ContactAddressTypeID");
-            this.Property(t => t.ValidFrom).HasColumnName("ValidFrom");
-            this.Property(t => t.ValidTo).HasColumnName("ValidTo");
+            this.Property(t => t.DateValidFrom).HasColumnName("DateValidFrom");
+            this.Property(t => t.DateValidTo).HasColumnName("DateValidTo");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
             this.Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
@@ -28,9 +30,6 @@ namespace Warp.Data.Models.Mapping
             this.HasRequired(t => t.ContactAddressType)
                 .WithMany(t => t.ContactAddressUserRoles)
                 .HasForeignKey(d => d.ContactAddressTypeID);
-            this.HasRequired(t => t.UserRole)
-                .WithMany(t => t.ContactAddressUserRoles)
-                .HasForeignKey(d => d.UserRoleID);
 
         }
     }

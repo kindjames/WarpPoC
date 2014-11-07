@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Warp.Core.Util
 {
@@ -10,8 +13,18 @@ namespace Warp.Core.Util
             {
                 throw new ArgumentNullException(parameterName);
             }
-            
+
             return value;
+        }
+
+        public static void NotNullAndHasItems<T>(IEnumerable<T> collection, string parameterName) where T : class
+        {
+            NotNull(collection, parameterName);
+
+            if (collection.Any())
+            {
+                throw new ArgumentException("Collection has no items.", parameterName);
+            }
         }
 
         public static T? NotNull<T>(T? value, string parameterName) where T : struct

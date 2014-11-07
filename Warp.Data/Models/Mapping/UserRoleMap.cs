@@ -12,20 +12,17 @@ namespace Warp.Data.Models.Mapping
 
             // Properties
             // Table & Column Mappings
-            this.ToTable("UserRole");
+            this.ToTable("UserRole", "Account");
             this.Property(t => t.UserRoleID).HasColumnName("UserRoleID");
             this.Property(t => t.UserID).HasColumnName("UserID");
             this.Property(t => t.CustomerID).HasColumnName("CustomerID");
             this.Property(t => t.RoleID).HasColumnName("RoleID");
             this.Property(t => t.LegacyUserID).HasColumnName("LegacyUserID");
-            this.Property(t => t.Created).HasColumnName("Created");
-            this.Property(t => t.LastUpdated).HasColumnName("LastUpdated");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
             this.Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.Customer)
-                .WithMany(t => t.UserRoles)
-                .HasForeignKey(d => d.CustomerID);
             this.HasRequired(t => t.Role)
                 .WithMany(t => t.UserRoles)
                 .HasForeignKey(d => d.RoleID);

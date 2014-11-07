@@ -8,7 +8,7 @@ namespace Warp.Data.Models.Mapping
         public TourStepPlacementMap()
         {
             // Primary Key
-            this.HasKey(t => t.TourStepPlacementId);
+            this.HasKey(t => t.TourStepPlacementID);
 
             // Properties
             this.Property(t => t.Placement)
@@ -16,9 +16,12 @@ namespace Warp.Data.Models.Mapping
                 .HasMaxLength(10);
 
             // Table & Column Mappings
-            this.ToTable("TourStepPlacement");
-            this.Property(t => t.TourStepPlacementId).HasColumnName("TourStepPlacementId");
+            this.ToTable("TourStepPlacement", "Help");
+            this.Property(t => t.TourStepPlacementID).HasColumnName("TourStepPlacementID");
             this.Property(t => t.Placement).HasColumnName("Placement");
+            this.Property(t => t.Active).HasColumnName("Active");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
         }
     }
 }

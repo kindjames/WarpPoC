@@ -19,8 +19,10 @@ namespace Warp.Data.Models.Mapping
             this.Property(t => t.BanBranchID).HasColumnName("BanBranchID");
             this.Property(t => t.BranchID).HasColumnName("BranchID");
             this.Property(t => t.AssessorID).HasColumnName("AssessorID");
-            this.Property(t => t.ValidFrom).HasColumnName("ValidFrom");
-            this.Property(t => t.ValidTo).HasColumnName("ValidTo");
+            this.Property(t => t.DateValidFrom).HasColumnName("DateValidFrom");
+            this.Property(t => t.DateValidTo).HasColumnName("DateValidTo");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
             this.Property(t => t.Active).HasColumnName("Active");
 
             // Relationships

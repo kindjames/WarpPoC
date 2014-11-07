@@ -28,10 +28,12 @@ namespace Warp.Data.Models.Mapping
             this.Property(t => t.AdminID).HasColumnName("AdminID");
             this.Property(t => t.NoteTypeID).HasColumnName("NoteTypeID");
             this.Property(t => t.Note1).HasColumnName("Note");
-            this.Property(t => t.Active).HasColumnName("Active");
             this.Property(t => t.DeactivatedByAdminID).HasColumnName("DeactivatedByAdminID");
-            this.Property(t => t.DeactivatedTimeStamp).HasColumnName("DeactivatedTimeStamp");
+            this.Property(t => t.DateDeactivated).HasColumnName("DateDeactivated");
             this.Property(t => t.DeactivateReason).HasColumnName("DeactivateReason");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            this.Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
             this.HasRequired(t => t.NoteType)

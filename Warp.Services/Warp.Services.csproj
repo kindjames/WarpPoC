@@ -38,7 +38,6 @@
     <Compile Include="BrandService.cs" />
     <Compile Include="ClientService.cs" />
     <Compile Include="Mappings\BrandMapping.cs" />
-    <Compile Include="Mappings\Copy of BrandMapping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

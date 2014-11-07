@@ -15,9 +15,12 @@ namespace Warp.Data.Models
         public Nullable<decimal> Quantity { get; set; }
         public int CurrencyID { get; set; }
         public int CurrencyExchangeRateID { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
+        public bool Active { get; set; }
+        public virtual Currency Currency { get; set; }
         public virtual AccountingProduct AccountingProduct { get; set; }
         public virtual AssessmentArea AssessmentArea { get; set; }
-        public virtual Currency Currency { get; set; }
         public virtual Visit Visit { get; set; }
     }
 }

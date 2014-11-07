@@ -16,12 +16,15 @@ namespace Warp.Data.Models.Mapping
                 .HasMaxLength(50);
 
             // Table & Column Mappings
-            this.ToTable("GeographicPostCode");
+            this.ToTable("GeographicPostCode", "Geographic");
             this.Property(t => t.GeographicPostCodeID).HasColumnName("GeographicPostCodeID");
             this.Property(t => t.GeographicPostalAreaID).HasColumnName("GeographicPostalAreaID");
             this.Property(t => t.Name).HasColumnName("Name");
             this.Property(t => t.XCoordinate).HasColumnName("XCoordinate");
             this.Property(t => t.YCoordinate).HasColumnName("YCoordinate");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            this.Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
             this.HasRequired(t => t.GeographicPostalArea)

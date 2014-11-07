@@ -16,6 +16,8 @@ namespace Warp.Data.Models
         public string Description { get; set; }
         public string ImagePath { get; set; }
         public bool Active { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
         public virtual ICollection<MenuConfig> MenuConfigs { get; set; }
         public virtual ICollection<MenuItemPossibleAnswer> MenuItemPossibleAnswers { get; set; }
     }

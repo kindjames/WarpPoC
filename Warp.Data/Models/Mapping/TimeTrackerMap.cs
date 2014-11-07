@@ -17,11 +17,13 @@ namespace Warp.Data.Models.Mapping
             // Table & Column Mappings
             this.ToTable("TimeTracker");
             this.Property(t => t.TimeTrackerID).HasColumnName("TimeTrackerID");
-            this.Property(t => t.TimeStamp).HasColumnName("TimeStamp");
             this.Property(t => t.AdminID).HasColumnName("AdminID");
             this.Property(t => t.TimeTrackerTypeID).HasColumnName("TimeTrackerTypeID");
             this.Property(t => t.StartTime).HasColumnName("StartTime");
             this.Property(t => t.EndTime).HasColumnName("EndTime");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            this.Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
             this.HasRequired(t => t.TimeTrackerType)

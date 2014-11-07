@@ -22,6 +22,9 @@ namespace Warp.Data.Models.Mapping
             this.ToTable("CustomerLinkStatus");
             this.Property(t => t.CustomerLinkStatusID).HasColumnName("CustomerLinkStatusID");
             this.Property(t => t.Name).HasColumnName("Name");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            this.Property(t => t.Active).HasColumnName("Active");
         }
     }
 }

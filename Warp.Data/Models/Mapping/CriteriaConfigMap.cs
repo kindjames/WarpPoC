@@ -30,6 +30,9 @@ namespace Warp.Data.Models.Mapping
             this.Property(t => t.CriteriaOperatorID).HasColumnName("CriteriaOperatorID");
             this.Property(t => t.Value).HasColumnName("Value");
             this.Property(t => t.SQL).HasColumnName("SQL");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            this.Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
             this.HasRequired(t => t.CriteriaOperator)

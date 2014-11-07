@@ -28,10 +28,11 @@ namespace Warp.Data.Models.Mapping
             this.Property(t => t.AssessorID).HasColumnName("AssessorID");
             this.Property(t => t.Title).HasColumnName("Title");
             this.Property(t => t.Description).HasColumnName("Description");
-            this.Property(t => t.DateAdded).HasColumnName("DateAdded");
             this.Property(t => t.SuggestionStatusID).HasColumnName("SuggestionStatusID");
             this.Property(t => t.AllowComments).HasColumnName("AllowComments");
             this.Property(t => t.DisplayComments).HasColumnName("DisplayComments");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
             this.Property(t => t.Active).HasColumnName("Active");
 
             // Relationships

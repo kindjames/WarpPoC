@@ -42,17 +42,17 @@ namespace Warp.Data.Models.Mapping
             this.Property(t => t.HyperlinkText).HasColumnName("HyperlinkText");
             this.Property(t => t.DisplayOnActionMessage).HasColumnName("DisplayOnActionMessage");
             this.Property(t => t.HasBeenRead).HasColumnName("HasBeenRead");
-            this.Property(t => t.LastUpdated).HasColumnName("LastUpdated");
-            this.Property(t => t.Created).HasColumnName("Created");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
             this.Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.NotificationCategory)
-                .WithMany(t => t.Notifications)
-                .HasForeignKey(d => d.NotificationCategoryID);
             this.HasRequired(t => t.UserRole)
                 .WithMany(t => t.Notifications)
                 .HasForeignKey(d => d.UserRoleID);
+            this.HasRequired(t => t.NotificationCategory)
+                .WithMany(t => t.Notifications)
+                .HasForeignKey(d => d.NotificationCategoryID);
 
         }
     }

@@ -28,6 +28,8 @@ namespace Warp.Data.Models.Mapping
             this.Property(t => t.Active).HasColumnName("Active");
             this.Property(t => t.GenderID).HasColumnName("GenderID");
             this.Property(t => t.ImagePath).HasColumnName("ImagePath");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
 
             // Relationships
             this.HasRequired(t => t.Gender)

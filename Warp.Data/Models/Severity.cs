@@ -7,14 +7,14 @@ namespace Warp.Data.Models
     {
         public Severity()
         {
-            this.ActionEvents = new List<ActionEvent>();
+            this.Events = new List<Event>();
         }
 
         public int SeverityID { get; set; }
         public string Severity1 { get; set; }
-        public Nullable<System.DateTime> Created { get; set; }
-        public Nullable<System.DateTime> LastUpdated { get; set; }
-        public Nullable<bool> Active { get; set; }
-        public virtual ICollection<ActionEvent> ActionEvents { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
+        public bool Active { get; set; }
+        public virtual ICollection<Event> Events { get; set; }
     }
 }

@@ -30,8 +30,8 @@ namespace Warp.Data.Models
         public int IndustrySectorID { get; set; }
         public bool Visible { get; set; }
         public bool Active { get; set; }
-        public System.DateTime Created { get; set; }
-        public System.DateTime LastUpdated { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
         public virtual ICollection<Branch> Branches { get; set; }
         public virtual ICollection<BanBrand> BanBrands { get; set; }
         public virtual BrandStatu BrandStatu { get; set; }

@@ -19,6 +19,8 @@ namespace Warp.Data.Models.Mapping
             this.Property(t => t.MenuItemPossibleAnswerID).HasColumnName("MenuItemPossibleAnswerID");
             this.Property(t => t.MenuItemID).HasColumnName("MenuItemID");
             this.Property(t => t.PossibleAnswerID).HasColumnName("PossibleAnswerID");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
             this.Property(t => t.Active).HasColumnName("Active");
 
             // Relationships

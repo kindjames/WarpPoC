@@ -33,8 +33,10 @@ namespace Warp.Data.Models.Mapping
             this.Property(t => t.DefaultQuestionDepartmentID).HasColumnName("DefaultQuestionDepartmentID");
             this.Property(t => t.DefaultHint).HasColumnName("DefaultHint");
             this.Property(t => t.ClientID).HasColumnName("ClientID");
-            this.Property(t => t.Active).HasColumnName("Active");
             this.Property(t => t.TrackingQuestionID).HasColumnName("TrackingQuestionID");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            this.Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
             this.HasOptional(t => t.Client)

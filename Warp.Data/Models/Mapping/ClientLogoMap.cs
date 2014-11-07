@@ -11,15 +11,20 @@ namespace Warp.Data.Models.Mapping
             this.HasKey(t => t.ClientLogoID);
 
             // Properties
-            this.Property(t => t.LogoPath)
-                .IsRequired()
-                .HasMaxLength(500);
-
             // Table & Column Mappings
             this.ToTable("ClientLogo", "Client");
             this.Property(t => t.ClientLogoID).HasColumnName("ClientLogoID");
             this.Property(t => t.ClientID).HasColumnName("ClientID");
-            this.Property(t => t.LogoPath).HasColumnName("LogoPath");
+            this.Property(t => t.LogoID).HasColumnName("LogoID");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            this.Property(t => t.Active).HasColumnName("Active");
+
+            // Relationships
+            this.HasRequired(t => t.Logo)
+                .WithMany(t => t.ClientLogoes)
+                .HasForeignKey(d => d.LogoID);
+
         }
     }
 }

@@ -1,15 +1,15 @@
 ﻿using Warp.Core.Exceptions;
-using Warp.Core.Infrastructure;
+using Warp.Core.Infrastructure.IoC;
 
 namespace Warp.Core.Query
 {
     public class QueryDispatcher : IQueryDispatcher
     {
-        private readonly IDependencyResolver _dependencyResolver;
+        private readonly IServiceLocator _serviceLocator;
 
-        public QueryDispatcher(IDependencyResolver dependencyResolver)
+        public QueryDispatcher(IServiceLocator serviceLocator)
         {
-            _dependencyResolver = dependencyResolver;
+            _serviceLocator = serviceLocator;
         }
 
         public TResult Execute<TResult>(IQuery<TResult> query)
@@ -17,21 +17,14 @@ namespace Warp.Core.Query
             var handlerType = typeof(IQueryHandler<,>)
                 .MakeGenericType(query.GetType(), typeof(TResult));
 
-            var handler = _dependencyResolver.TryResolve(handlerType);
+            var handler = _serviceLocator.TryResolve(handlerType);
             
             if (handler == null)
             {
                 throw new QueryHandlerNotFoundException<TResult>(query);
             }
 
-            try
-            {
-                return (TResult)((dynamic)handler).Execute((dynamic)query);
-            }
-            finally
-            {
-                _dependencyResolver.Release(handler);
-            }
+            return (TResult)((dynamic)handler).Execute((dynamic)query);
         }
     }
 }

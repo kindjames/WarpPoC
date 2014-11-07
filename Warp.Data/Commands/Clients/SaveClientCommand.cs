@@ -31,44 +31,44 @@ namespace Warp.Data.Commands.Clients
 
             var client = command.Client;
 
-            if (client.ClientID == 0)
-            {
-                var query = new CheckClientExistsForCodeQuery {CustomerId = client.CustomerID, ClientCode = client.Code};
+            //if (client.ClientID == 0)
+            //{
+            //    var query = new CheckClientExistsForCodeQuery {CustomerId = client.CustomerID, ClientCode = client.Code};
 
-                if (_queryDispatcher.Execute(query))
-                {
-                    throw new ClientAlreadyExistsException(query.CustomerId, query.ClientCode);
-                }
+            //    if (_queryDispatcher.Execute(query))
+            //    {
+            //        throw new ClientAlreadyExistsException(query.CustomerId, query.ClientCode);
+            //    }
 
-                client.ClientHistories.Add(new ClientHistory
-                {
-                    ClientStatusID = client.ClientStatusID;
-                    History.ClientName = client.Name;
-                    if (Request.Code == null)
-                    {
-                        var code = Convert.ToString(Response.ClientID);
-                        History.Code = code;
-                        Response.ClientCode = code;
-                    }
-                    else
-                    {
-                        History.Code = client.Code;
-                        Response.ClientCode = client.Code;
-                    }
-                    History.DateValidTo = (DateTime?)null;
-                    History.DateValidFrom = NewDateValidFrom;
-                    History.EnteredByAdminID = Request.userId;
-                    History.Notes = "Record Created";
-                    History.Active = true;
-                });
+            //    client.ClientHistories.Add(new ClientHistory
+            //    {
+            //        ClientStatusID = client.ClientStatusID;
+            //        History.ClientName = client.Name;
+            //        if (Request.Code == null)
+            //        {
+            //            var code = Convert.ToString(Response.ClientID);
+            //            History.Code = code;
+            //            Response.ClientCode = code;
+            //        }
+            //        else
+            //        {
+            //            History.Code = client.Code;
+            //            Response.ClientCode = client.Code;
+            //        }
+            //        History.DateValidTo = (DateTime?)null;
+            //        History.DateValidFrom = NewDateValidFrom;
+            //        History.EnteredByAdminID = Request.userId;
+            //        History.Notes = "Record Created";
+            //        History.Active = true;
+            //    });
 
-                _dbContext.Clients.Add(client);
-            }
-            else
-            {
-                _dbContext.Clients.Attach(client);
-                _dbContext.Entry(client).State = EntityState.Modified;
-            }
+            //    _dbContext.Clients.Add(client);
+            //}
+            //else
+            //{
+            //    _dbContext.Clients.Attach(client);
+            //    _dbContext.Entry(client).State = EntityState.Modified;
+            //}
         }
     }
 }

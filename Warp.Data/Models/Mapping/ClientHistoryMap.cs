@@ -11,9 +11,6 @@ namespace Warp.Data.Models.Mapping
             this.HasKey(t => t.ClientHistoryID);
 
             // Properties
-            this.Property(t => t.ClientHistoryID)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
-
             this.Property(t => t.ClientName)
                 .IsRequired()
                 .HasMaxLength(100);
@@ -26,18 +23,18 @@ namespace Warp.Data.Models.Mapping
                 .HasMaxLength(200);
 
             // Table & Column Mappings
-            this.ToTable("ClientHistory");
+            this.ToTable("ClientHistory", "Client");
             this.Property(t => t.ClientHistoryID).HasColumnName("ClientHistoryID");
             this.Property(t => t.ClientID).HasColumnName("ClientID");
             this.Property(t => t.ClientStatusID).HasColumnName("ClientStatusID");
             this.Property(t => t.ClientName).HasColumnName("ClientName");
             this.Property(t => t.Code).HasColumnName("Code");
-            this.Property(t => t.ValidFrom).HasColumnName("ValidFrom");
-            this.Property(t => t.ValidTo).HasColumnName("ValidTo");
-            this.Property(t => t.EnteredByAdminID).HasColumnName("EnteredByAdminID");
+            this.Property(t => t.DateValidFrom).HasColumnName("DateValidFrom");
+            this.Property(t => t.DateValidTo).HasColumnName("DateValidTo");
+            this.Property(t => t.EnteredByUserRoleID).HasColumnName("EnteredByUserRoleID");
             this.Property(t => t.Notes).HasColumnName("Notes");
-            this.Property(t => t.Created).HasColumnName("Created");
-            this.Property(t => t.LastUpdated).HasColumnName("LastUpdated");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
             this.Property(t => t.Active).HasColumnName("Active");
 
             // Relationships

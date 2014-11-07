@@ -11,7 +11,6 @@ namespace Warp.Data.Models
         }
 
         public int AssessorExpenseID { get; set; }
-        public System.DateTime TimeStamp { get; set; }
         public int VisitID { get; set; }
         public int AssessorID { get; set; }
         public short ExpenseTypeID { get; set; }
@@ -20,10 +19,13 @@ namespace Warp.Data.Models
         public int CurrencyExchangeRateID { get; set; }
         public short CurrentExpenseStatusID { get; set; }
         public Nullable<decimal> ApprovedAmount { get; set; }
-        public System.DateTime ApprovedDate { get; set; }
+        public System.DateTime DateApproved { get; set; }
         public int ApproveByAdminID { get; set; }
-        public virtual Assessor Assessor { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
+        public bool Active { get; set; }
         public virtual Currency Currency { get; set; }
+        public virtual Assessor Assessor { get; set; }
         public virtual ExpenseStatu ExpenseStatu { get; set; }
         public virtual ExpenseType ExpenseType { get; set; }
         public virtual Visit Visit { get; set; }

@@ -9,6 +9,9 @@ namespace Warp.Data.Models
         public Nullable<int> CauseBy { get; set; }
         public string Url { get; set; }
         public string Exception { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
+        public bool Active { get; set; }
         public virtual User User { get; set; }
     }
 }

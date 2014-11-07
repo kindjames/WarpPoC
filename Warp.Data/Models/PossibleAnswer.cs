@@ -22,6 +22,9 @@ namespace Warp.Data.Models
         public string Value { get; set; }
         public decimal Score { get; set; }
         public short PossibleAnswerTypeID { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
+        public bool Active { get; set; }
         public virtual ICollection<DynamicQuestion> DynamicQuestions { get; set; }
         public virtual ICollection<MenuItemPossibleAnswer> MenuItemPossibleAnswers { get; set; }
         public virtual ICollection<MenuSectionPossibleAnswer> MenuSectionPossibleAnswers { get; set; }

@@ -16,10 +16,11 @@ namespace Warp.Data.Models
         public int MenuID { get; set; }
         public int MenuSectionID { get; set; }
         public int MenuItemID { get; set; }
-        public System.DateTime DateAdded { get; set; }
         public int AddedByAdminID { get; set; }
-        public System.DateTime ValidFrom { get; set; }
-        public Nullable<System.DateTime> ValidTo { get; set; }
+        public System.DateTime DateValidFrom { get; set; }
+        public Nullable<System.DateTime> DateValidTo { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual Menu Menu { get; set; }
         public virtual MenuItem MenuItem { get; set; }

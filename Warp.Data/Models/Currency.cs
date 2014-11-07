@@ -18,6 +18,8 @@ namespace Warp.Data.Models
         public string Name { get; set; }
         public string Code { get; set; }
         public string Symbol { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual ICollection<Branch> Branches { get; set; }
         public virtual ICollection<AccountingTransaction> AccountingTransactions { get; set; }

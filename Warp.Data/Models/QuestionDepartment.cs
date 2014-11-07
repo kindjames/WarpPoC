@@ -13,6 +13,8 @@ namespace Warp.Data.Models
 
         public short QuestionDepartmentID { get; set; }
         public string Title { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual ICollection<QuestionnaireQuestion> QuestionnaireQuestions { get; set; }
         public virtual ICollection<SubQuestionnaireQuestionOverwrite> SubQuestionnaireQuestionOverwrites { get; set; }

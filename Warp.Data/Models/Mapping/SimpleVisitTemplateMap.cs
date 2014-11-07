@@ -17,14 +17,15 @@ namespace Warp.Data.Models.Mapping
             // Table & Column Mappings
             this.ToTable("SimpleVisitTemplate");
             this.Property(t => t.SimpleVisitTemplateID).HasColumnName("SimpleVisitTemplateID");
-            this.Property(t => t.DateAdded).HasColumnName("DateAdded");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
             this.Property(t => t.AddedByAdminID).HasColumnName("AddedByAdminID");
             this.Property(t => t.QuestionnaireID).HasColumnName("QuestionnaireID");
-            this.Property(t => t.ValidFrom).HasColumnName("ValidFrom");
-            this.Property(t => t.ValidTo).HasColumnName("ValidTo");
-            this.Property(t => t.Active).HasColumnName("Active");
+            this.Property(t => t.DateValidFrom).HasColumnName("DateValidFrom");
+            this.Property(t => t.DateValidTo).HasColumnName("DateValidTo");
             this.Property(t => t.RequiredCount).HasColumnName("RequiredCount");
-            this.Property(t => t.CountReached).HasColumnName("CountReached");
+            this.Property(t => t.DateCountReached).HasColumnName("DateCountReached");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            this.Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
             this.HasRequired(t => t.Questionnaire)

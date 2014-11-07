@@ -14,10 +14,10 @@ namespace Warp.Data.Models
         public string HyperlinkText { get; set; }
         public string DisplayOnActionMessage { get; set; }
         public bool HasBeenRead { get; set; }
-        public Nullable<System.DateTime> LastUpdated { get; set; }
-        public Nullable<System.DateTime> Created { get; set; }
+        public System.DateTime DateUpdated { get; set; }
+        public System.DateTime DateCreated { get; set; }
         public bool Active { get; set; }
-        public virtual NotificationCategory NotificationCategory { get; set; }
         public virtual UserRole UserRole { get; set; }
+        public virtual NotificationCategory NotificationCategory { get; set; }
     }
 }

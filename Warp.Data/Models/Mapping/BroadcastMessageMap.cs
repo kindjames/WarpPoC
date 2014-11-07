@@ -18,13 +18,14 @@ namespace Warp.Data.Models.Mapping
             // Table & Column Mappings
             this.ToTable("BroadcastMessage");
             this.Property(t => t.BroadcastMessageID).HasColumnName("BroadcastMessageID");
-            this.Property(t => t.DateAdded).HasColumnName("DateAdded");
             this.Property(t => t.AddedByAdminID).HasColumnName("AddedByAdminID");
             this.Property(t => t.DateChecked).HasColumnName("DateChecked");
             this.Property(t => t.CheckedByAdminID).HasColumnName("CheckedByAdminID");
             this.Property(t => t.Message).HasColumnName("Message");
-            this.Property(t => t.RemovedDate).HasColumnName("RemovedDate");
+            this.Property(t => t.DateRemoved).HasColumnName("DateRemoved");
             this.Property(t => t.RemovedByAdminID).HasColumnName("RemovedByAdminID");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
             this.Property(t => t.Active).HasColumnName("Active");
         }
     }

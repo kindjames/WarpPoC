@@ -26,6 +26,8 @@ namespace Warp.Data.Models.Mapping
             this.Property(t => t.ForecRequirement).HasColumnName("ForecRequirement");
             this.Property(t => t.Display).HasColumnName("Display");
             this.Property(t => t.Active).HasColumnName("Active");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
         }
     }
 }

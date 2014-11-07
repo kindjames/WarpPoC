@@ -16,10 +16,10 @@ namespace Warp.Data.Models
         public int StepNumber { get; set; }
         public string StepTitle { get; set; }
         public string StepText { get; set; }
-        public System.DateTime LastUpdate { get; set; }
-        public System.DateTime Created { get; set; }
+        public System.DateTime DateUpdated { get; set; }
+        public System.DateTime DateCreated { get; set; }
         public bool Active { get; set; }
-        public int TourStepPlacementId { get; set; }
+        public Nullable<int> TourStepPlacementId { get; set; }
         public virtual Tour Tour { get; set; }
         public virtual TourStepPlacement TourStepPlacement { get; set; }
         public virtual ICollection<TourUserRoleTourStep> TourUserRoleTourSteps { get; set; }

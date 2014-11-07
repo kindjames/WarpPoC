@@ -20,8 +20,8 @@ namespace Warp.Data.Models.Mapping
             this.Property(t => t.SocialNetworkID).HasColumnName("SocialNetworkID");
             this.Property(t => t.BrandID).HasColumnName("BrandID");
             this.Property(t => t.Active).HasColumnName("Active");
-            this.Property(t => t.Created).HasColumnName("Created");
-            this.Property(t => t.LastUpdated).HasColumnName("LastUpdated");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
             this.Property(t => t.Value).HasColumnName("Value");
 
             // Relationships

@@ -27,6 +27,8 @@ namespace Warp.Data.Models.Mapping
             this.Property(t => t.QuestionTypeID).HasColumnName("QuestionTypeID");
             this.Property(t => t.Name).HasColumnName("Name");
             this.Property(t => t.Value).HasColumnName("Value");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
             this.Property(t => t.Active).HasColumnName("Active");
         }
     }

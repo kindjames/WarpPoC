@@ -19,13 +19,15 @@ namespace Warp.Data.Models
         public int SubQuestionnaireID { get; set; }
         public int BriefID { get; set; }
         public int AddedByAdminID { get; set; }
-        public System.DateTime AddedDate { get; set; }
-        public System.DateTime LastUpdated { get; set; }
+        public System.DateTime DateAdded { get; set; }
+        public System.DateTime DateUpdated { get; set; }
         public int LastUpdatedAdminID { get; set; }
         public Nullable<double> Score { get; set; }
         public Nullable<double> MaxScore { get; set; }
-        public Nullable<System.DateTime> ScoreCalculated { get; set; }
+        public Nullable<System.DateTime> DateScoreCalculated { get; set; }
         public bool Invoiced { get; set; }
+        public bool Active { get; set; }
+        public System.DateTime DateCreated { get; set; }
         public virtual AssessmentArea AssessmentArea { get; set; }
         public virtual Brief Brief { get; set; }
         public virtual Questionnaire Questionnaire { get; set; }

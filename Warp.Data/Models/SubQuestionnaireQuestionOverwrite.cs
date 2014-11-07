@@ -27,7 +27,9 @@ namespace Warp.Data.Models
         public byte MinAnswer { get; set; }
         public byte MaxAnswer { get; set; }
         public string Hint { get; set; }
-        public System.DateTime LastUpdated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public bool Active { get; set; }
         public virtual Benchmark Benchmark { get; set; }
         public virtual ManagementCategory ManagementCategory { get; set; }
         public virtual QuestionDepartment QuestionDepartment { get; set; }

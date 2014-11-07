@@ -5,9 +5,19 @@ namespace Warp.Data.Models
 {
     public partial class ApplicationLanguage
     {
-        public int ApplicationLanguageId { get; set; }
+        public ApplicationLanguage()
+        {
+            this.Translations = new List<Translation>();
+        }
+
+        public int ApplicationLanguageID { get; set; }
+        public string NeutralCulture { get; set; }
+        public string Locale { get; set; }
+        public string Culture { get; set; }
         public string DisplayName { get; set; }
-        public string LanguageCode { get; set; }
-        public string FriendlyName { get; set; }
+        public bool Active { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
+        public virtual ICollection<Translation> Translations { get; set; }
     }
 }

@@ -21,7 +21,6 @@ namespace Warp.Data.Models.Mapping
             // Table & Column Mappings
             this.ToTable("CallBackRequest");
             this.Property(t => t.CallBackRequestID).HasColumnName("CallBackRequestID");
-            this.Property(t => t.DateAdded).HasColumnName("DateAdded");
             this.Property(t => t.StartTime).HasColumnName("StartTime");
             this.Property(t => t.EndTime).HasColumnName("EndTime");
             this.Property(t => t.Notes).HasColumnName("Notes");
@@ -29,8 +28,10 @@ namespace Warp.Data.Models.Mapping
             this.Property(t => t.CallBackByAdminID).HasColumnName("CallBackByAdminID");
             this.Property(t => t.Shared).HasColumnName("Shared");
             this.Property(t => t.OwnedByAdminID).HasColumnName("OwnedByAdminID");
-            this.Property(t => t.Active).HasColumnName("Active");
             this.Property(t => t.Visible).HasColumnName("Visible");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            this.Property(t => t.Active).HasColumnName("Active");
         }
     }
 }

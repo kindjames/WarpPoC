@@ -16,16 +16,12 @@ namespace Warp.Data.Models.Mapping
                 .HasMaxLength(50);
 
             // Table & Column Mappings
-            this.ToTable("GeographicLocation");
+            this.ToTable("GeographicLocation", "Geographic");
             this.Property(t => t.GeographicLocationID).HasColumnName("GeographicLocationID");
-            this.Property(t => t.GeographicCounty).HasColumnName("GeographicCounty");
             this.Property(t => t.Name).HasColumnName("Name");
-
-            // Relationships
-            this.HasRequired(t => t.GeographicCounty1)
-                .WithMany(t => t.GeographicLocations)
-                .HasForeignKey(d => d.GeographicCounty);
-
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            this.Property(t => t.Active).HasColumnName("Active");
         }
     }
 }

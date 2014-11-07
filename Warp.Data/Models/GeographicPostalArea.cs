@@ -13,7 +13,9 @@ namespace Warp.Data.Models
         public int GeographicPostalAreaID { get; set; }
         public int GeographicLocationID { get; set; }
         public string Name { get; set; }
-        public virtual GeographicLocation GeographicLocation { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
+        public bool Active { get; set; }
         public virtual ICollection<GeographicPostCode> GeographicPostCodes { get; set; }
     }
 }

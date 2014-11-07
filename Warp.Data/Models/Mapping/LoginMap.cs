@@ -19,9 +19,11 @@ namespace Warp.Data.Models.Mapping
             this.ToTable("Login");
             this.Property(t => t.LoginID).HasColumnName("LoginID");
             this.Property(t => t.UserID).HasColumnName("UserID");
-            this.Property(t => t.Timestamp).HasColumnName("Timestamp");
             this.Property(t => t.Success).HasColumnName("Success");
             this.Property(t => t.IP).HasColumnName("IP");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            this.Property(t => t.Active).HasColumnName("Active");
         }
     }
 }

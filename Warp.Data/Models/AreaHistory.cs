@@ -11,12 +11,12 @@ namespace Warp.Data.Models
         public int AreaStatusID { get; set; }
         public int RegionID { get; set; }
         public string Code { get; set; }
-        public System.DateTime ValidFrom { get; set; }
-        public Nullable<System.DateTime> ValidTo { get; set; }
-        public int EnteredByAdminID { get; set; }
+        public System.DateTime DateValidFrom { get; set; }
+        public Nullable<System.DateTime> DateValidTo { get; set; }
+        public int EnteredByUserRoleID { get; set; }
         public string Notes { get; set; }
-        public System.DateTime Created { get; set; }
-        public System.DateTime LastUpdated { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual Area Area { get; set; }
         public virtual Region Region { get; set; }

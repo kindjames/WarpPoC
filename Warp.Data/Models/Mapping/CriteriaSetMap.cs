@@ -17,7 +17,8 @@ namespace Warp.Data.Models.Mapping
             // Table & Column Mappings
             this.ToTable("CriteriaSet");
             this.Property(t => t.CriteriaSetID).HasColumnName("CriteriaSetID");
-            this.Property(t => t.DateAdded).HasColumnName("DateAdded");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
             this.Property(t => t.Active).HasColumnName("Active");
         }
     }

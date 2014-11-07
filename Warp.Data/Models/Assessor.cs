@@ -50,7 +50,10 @@ namespace Warp.Data.Models
         public string AccountNumber { get; set; }
         public string Occupation { get; set; }
         public Nullable<byte> GenderID { get; set; }
-        public System.DateTime LastUpdatedProfile { get; set; }
+        public System.DateTime DateOfLastProfileUpdate { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
+        public bool Active { get; set; }
         public virtual ICollection<AssessorAttribute> AssessorAttributes { get; set; }
         public virtual ICollection<AssessorCallBackRequest> AssessorCallBackRequests { get; set; }
         public virtual ICollection<AssessorCallInLog> AssessorCallInLogs { get; set; }

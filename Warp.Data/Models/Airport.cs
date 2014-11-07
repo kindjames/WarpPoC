@@ -12,6 +12,8 @@ namespace Warp.Data.Models
         public bool Active { get; set; }
         public decimal XCoordinate { get; set; }
         public decimal YCoordinate { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
         public virtual GeographicPostCode GeographicPostCode { get; set; }
     }
 }

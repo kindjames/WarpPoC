@@ -19,11 +19,12 @@ namespace Warp.Data.Models.Mapping
             this.Property(t => t.MenuConfigClientID).HasColumnName("MenuConfigClientID");
             this.Property(t => t.MenuConfigID).HasColumnName("MenuConfigID");
             this.Property(t => t.ClientID).HasColumnName("ClientID");
-            this.Property(t => t.DateAdded).HasColumnName("DateAdded");
             this.Property(t => t.AddedByAdminID).HasColumnName("AddedByAdminID");
-            this.Property(t => t.ValidFrom).HasColumnName("ValidFrom");
-            this.Property(t => t.ValidTo).HasColumnName("ValidTo");
+            this.Property(t => t.DateValidFrom).HasColumnName("DateValidFrom");
+            this.Property(t => t.DateValidTo).HasColumnName("DateValidTo");
             this.Property(t => t.Permission).HasColumnName("Permission");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
             this.Property(t => t.Active).HasColumnName("Active");
 
             // Relationships

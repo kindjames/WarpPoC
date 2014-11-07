@@ -11,19 +11,26 @@ namespace Warp.Data.Models.Mapping
             this.HasKey(t => t.PersonAreaID);
 
             // Properties
-            this.Property(t => t.PersonAreaID)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
-
             // Table & Column Mappings
-            this.ToTable("PersonArea");
+            this.ToTable("PersonArea", "Client");
             this.Property(t => t.PersonAreaID).HasColumnName("PersonAreaID");
             this.Property(t => t.PersonID).HasColumnName("PersonID");
             this.Property(t => t.AreaID).HasColumnName("AreaID");
+            this.Property(t => t.PermissionTypeID).HasColumnName("PermissionTypeID");
+            this.Property(t => t.Active).HasColumnName("Active");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
 
             // Relationships
             this.HasRequired(t => t.Area)
                 .WithMany(t => t.PersonAreas)
                 .HasForeignKey(d => d.AreaID);
+            this.HasOptional(t => t.PermissionType)
+                .WithMany(t => t.PersonAreas)
+                .HasForeignKey(d => d.PermissionTypeID);
+            this.HasRequired(t => t.Person)
+                .WithMany(t => t.PersonAreas)
+                .HasForeignKey(d => d.PersonID);
 
         }
     }

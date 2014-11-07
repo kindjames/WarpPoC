@@ -19,7 +19,9 @@ namespace Warp.Data.Models
         public string Description { get; set; }
         public decimal DefaultValue { get; set; }
         public Nullable<int> KashFlowID { get; set; }
-        public System.DateTime LastUpdated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public bool Active { get; set; }
         public virtual ICollection<AccountingTransaction> AccountingTransactions { get; set; }
         public virtual ICollection<BranchAccountingProduct> BranchAccountingProducts { get; set; }
         public virtual ICollection<BrandAccountingProduct> BrandAccountingProducts { get; set; }

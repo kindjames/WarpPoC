@@ -19,8 +19,8 @@ namespace Warp.Data.Models.Mapping
             this.ToTable("Operation", "Auditing");
             this.Property(t => t.OperationId).HasColumnName("OperationId");
             this.Property(t => t.Method).HasColumnName("Method");
-            this.Property(t => t.Created).HasColumnName("Created");
-            this.Property(t => t.LastUpdated).HasColumnName("LastUpdated");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
             this.Property(t => t.Active).HasColumnName("Active");
         }
     }

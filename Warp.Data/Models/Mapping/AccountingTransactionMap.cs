@@ -26,17 +26,20 @@ namespace Warp.Data.Models.Mapping
             this.Property(t => t.Quantity).HasColumnName("Quantity");
             this.Property(t => t.CurrencyID).HasColumnName("CurrencyID");
             this.Property(t => t.CurrencyExchangeRateID).HasColumnName("CurrencyExchangeRateID");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            this.Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
+            this.HasRequired(t => t.Currency)
+                .WithMany(t => t.AccountingTransactions)
+                .HasForeignKey(d => d.CurrencyID);
             this.HasRequired(t => t.AccountingProduct)
                 .WithMany(t => t.AccountingTransactions)
                 .HasForeignKey(d => d.AccountingProductID);
             this.HasRequired(t => t.AssessmentArea)
                 .WithMany(t => t.AccountingTransactions)
                 .HasForeignKey(d => d.AssessmentAreaID);
-            this.HasRequired(t => t.Currency)
-                .WithMany(t => t.AccountingTransactions)
-                .HasForeignKey(d => d.CurrencyID);
             this.HasRequired(t => t.Visit)
                 .WithMany(t => t.AccountingTransactions)
                 .HasForeignKey(d => d.VisitID);

@@ -20,7 +20,8 @@ namespace Warp.Data.Models.Mapping
             this.Property(t => t.AssessorID).HasColumnName("AssessorID");
             this.Property(t => t.AssessorAttributeItemID).HasColumnName("AssessorAttributeItemID");
             this.Property(t => t.AssessorAttributeOptionID).HasColumnName("AssessorAttributeOptionID");
-            this.Property(t => t.DateAdded).HasColumnName("DateAdded");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
             this.Property(t => t.Active).HasColumnName("Active");
 
             // Relationships

@@ -20,6 +20,9 @@ namespace Warp.Data.Models
         public int SubQuestionnaireID { get; set; }
         public int QuestionnaireID { get; set; }
         public string Title { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
+        public bool Active { get; set; }
         public virtual ICollection<AreaQuestionnaire> AreaQuestionnaires { get; set; }
         public virtual ICollection<Assessment> Assessments { get; set; }
         public virtual ICollection<BranchQuestionnaire> BranchQuestionnaires { get; set; }

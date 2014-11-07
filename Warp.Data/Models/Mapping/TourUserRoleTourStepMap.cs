@@ -12,12 +12,12 @@ namespace Warp.Data.Models.Mapping
 
             // Properties
             // Table & Column Mappings
-            this.ToTable("TourUserRoleTourStep");
+            this.ToTable("TourUserRoleTourStep", "Help");
             this.Property(t => t.TourUserRoleTourStepID).HasColumnName("TourUserRoleTourStepID");
             this.Property(t => t.TourUserRoleID).HasColumnName("TourUserRoleID");
             this.Property(t => t.TourStepID).HasColumnName("TourStepID");
-            this.Property(t => t.LastUpdate).HasColumnName("LastUpdate");
-            this.Property(t => t.Created).HasColumnName("Created");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
             this.Property(t => t.Active).HasColumnName("Active");
 
             // Relationships

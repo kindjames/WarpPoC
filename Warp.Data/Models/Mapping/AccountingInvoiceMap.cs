@@ -19,14 +19,17 @@ namespace Warp.Data.Models.Mapping
             this.Property(t => t.AccountingInvoiceID).HasColumnName("AccountingInvoiceID");
             this.Property(t => t.AccountingClientID).HasColumnName("AccountingClientID");
             this.Property(t => t.AccountingPeriodID).HasColumnName("AccountingPeriodID");
-            this.Property(t => t.InvoiceDate).HasColumnName("InvoiceDate");
+            this.Property(t => t.DateOfInvoice).HasColumnName("DateOfInvoice");
             this.Property(t => t.Amount).HasColumnName("Amount");
             this.Property(t => t.CurrencyID).HasColumnName("CurrencyID");
             this.Property(t => t.CurrencyExchangeRateID).HasColumnName("CurrencyExchangeRateID");
-            this.Property(t => t.GeneratedDate).HasColumnName("GeneratedDate");
+            this.Property(t => t.DateGenerated).HasColumnName("DateGenerated");
             this.Property(t => t.GeneratedByAdminID).HasColumnName("GeneratedByAdminID");
-            this.Property(t => t.CancelledDate).HasColumnName("CancelledDate");
+            this.Property(t => t.DateCancelled).HasColumnName("DateCancelled");
             this.Property(t => t.CancelledByAdminID).HasColumnName("CancelledByAdminID");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            this.Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
             this.HasRequired(t => t.AccountingClient)

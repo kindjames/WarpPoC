@@ -21,10 +21,12 @@ namespace Warp.Data.Models
         public int AdminID { get; set; }
         public short NoteTypeID { get; set; }
         public string Note1 { get; set; }
-        public bool Active { get; set; }
         public Nullable<short> DeactivatedByAdminID { get; set; }
-        public Nullable<System.DateTime> DeactivatedTimeStamp { get; set; }
+        public Nullable<System.DateTime> DateDeactivated { get; set; }
         public string DeactivateReason { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
+        public bool Active { get; set; }
         public virtual ICollection<AssessorNote> AssessorNotes { get; set; }
         public virtual ICollection<BranchNote> BranchNotes { get; set; }
         public virtual ICollection<BrandNote> BrandNotes { get; set; }

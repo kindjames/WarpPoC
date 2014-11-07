@@ -18,6 +18,9 @@ namespace Warp.Data.Models
         public bool Resolved { get; set; }
         public string Notes { get; set; }
         public Nullable<int> CreatedQuestionResultID { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
+        public bool Active { get; set; }
         public virtual QuestionResult QuestionResult { get; set; }
         public virtual QuestionResult QuestionResult1 { get; set; }
         public virtual ReportProblemCause ReportProblemCause { get; set; }

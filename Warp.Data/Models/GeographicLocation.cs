@@ -7,13 +7,14 @@ namespace Warp.Data.Models
     {
         public GeographicLocation()
         {
-            this.GeographicPostalAreas = new List<GeographicPostalArea>();
+            this.ContactAddressGeoLocations = new List<ContactAddressGeoLocation>();
         }
 
         public int GeographicLocationID { get; set; }
-        public int GeographicCounty { get; set; }
         public string Name { get; set; }
-        public virtual GeographicCounty GeographicCounty1 { get; set; }
-        public virtual ICollection<GeographicPostalArea> GeographicPostalAreas { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
+        public bool Active { get; set; }
+        public virtual ICollection<ContactAddressGeoLocation> ContactAddressGeoLocations { get; set; }
     }
 }

@@ -35,28 +35,31 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Command\CommandDispatcher.cs" />
     <Compile Include="Command\ICommand.cs" />
     <Compile Include="Command\ICommandDispatcher.cs" />
     <Compile Include="Command\ICommandHandler.cs" />
-    <Compile Include="Command\CommandDispatcher.cs" />
     <Compile Include="Exceptions\ClientAlreadyExistsException.cs" />
     <Compile Include="Exceptions\ClientNotFoundException.cs" />
+    <Compile Include="Exceptions\ObjectMappingConfigurationNotFound.cs" />
     <Compile Include="Exceptions\QueryHandlerNotFoundException.cs" />
+    <Compile Include="Infrastructure\DateTimeProvider.cs" />
     <Compile Include="Infrastructure\IDateTimeProvider.cs" />
     <Compile Include="Infrastructure\IMappingConfiguration.cs" />
-    <Compile Include="Services\Dtos\ContactAddressAssignedDto.cs" />
-    <Compile Include="Services\IClientService.cs" />
+    <Compile Include="Infrastructure\IoC\IServiceLocator.cs" />
+    <Compile Include="Infrastructure\ObjectMapper.cs" />
+    <Compile Include="Query\QueryDispatcher.cs" />
     <Compile Include="Services\Dtos\Brand\BrandSummaryDto.cs" />
     <Compile Include="Services\Dtos\Brand\BrandSummaryListDto.cs" />
-    <Compile Include="Services\IBranchLogoService.cs" />
-    <Compile Include="Infrastructure\IDependancyResolver.cs" />
-    <Compile Include="Infrastructure\IMapper.cs" />
-    <Compile Include="Query\QueryDispatcher.cs" />
+    <Compile Include="Services\Dtos\Client\SaveClientDto.cs" />
+    <Compile Include="Services\Dtos\ContactAddressAssignedDto.cs" />
+    <Compile Include="Services\IClientService.cs" />
+    <Compile Include="Services\IBrandService.cs" />
+    <Compile Include="Infrastructure\IObjectMapper.cs" />
     <Compile Include="Query\IQuery.cs" />
     <Compile Include="Query\IQueryDispatcher.cs" />
     <Compile Include="Query\IQueryHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\Dtos\Client\SaveClientDto.cs" />
     <Compile Include="Util\Check.cs" />
   </ItemGroup>
   <ItemGroup />

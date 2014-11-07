@@ -13,7 +13,8 @@ namespace Warp.Data.Models
         }
 
         public int CriteriaSetID { get; set; }
-        public System.DateTime DateAdded { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual ICollection<CriteriaAssessorAttribute> CriteriaAssessorAttributes { get; set; }
         public virtual ICollection<CriteriaConfig> CriteriaConfigs { get; set; }

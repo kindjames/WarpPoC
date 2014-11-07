@@ -22,11 +22,12 @@ namespace Warp.Data.Models.Mapping
             this.Property(t => t.ForumReportedReplyID).HasColumnName("ForumReportedReplyID");
             this.Property(t => t.ForumAssessorReplyID).HasColumnName("ForumAssessorReplyID");
             this.Property(t => t.AssessorID).HasColumnName("AssessorID");
-            this.Property(t => t.DateAdded).HasColumnName("DateAdded");
             this.Property(t => t.ReportText).HasColumnName("ReportText");
-            this.Property(t => t.ReportAdded).HasColumnName("ReportAdded");
+            this.Property(t => t.DateReportAdded).HasColumnName("DateReportAdded");
             this.Property(t => t.CheckedByAdminID).HasColumnName("CheckedByAdminID");
             this.Property(t => t.Reviewed).HasColumnName("Reviewed");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
             this.Property(t => t.Remove).HasColumnName("Remove");
 
             // Relationships

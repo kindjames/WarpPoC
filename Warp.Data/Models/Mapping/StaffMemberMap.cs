@@ -24,7 +24,7 @@ namespace Warp.Data.Models.Mapping
             this.ToTable("StaffMember");
             this.Property(t => t.StaffMemberID).HasColumnName("StaffMemberID");
             this.Property(t => t.VisitID).HasColumnName("VisitID");
-            this.Property(t => t.DateAdded).HasColumnName("DateAdded");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
             this.Property(t => t.AssessorID).HasColumnName("AssessorID");
             this.Property(t => t.Name).HasColumnName("Name");
             this.Property(t => t.Notes).HasColumnName("Notes");
@@ -37,7 +37,7 @@ namespace Warp.Data.Models.Mapping
             this.Property(t => t.CheckedByAdminID).HasColumnName("CheckedByAdminID");
             this.Property(t => t.Active).HasColumnName("Active");
             this.Property(t => t.Approved).HasColumnName("Approved");
-            this.Property(t => t.LastUpdated).HasColumnName("LastUpdated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
 
             // Relationships
             this.HasRequired(t => t.Gender)

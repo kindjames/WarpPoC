@@ -15,8 +15,8 @@ namespace Warp.Data.Models
         public int TourID { get; set; }
         public string TourName { get; set; }
         public bool AlwaysShow { get; set; }
-        public System.DateTime LastUpdate { get; set; }
-        public System.DateTime Created { get; set; }
+        public System.DateTime DateUpdated { get; set; }
+        public System.DateTime DateCreated { get; set; }
         public bool Active { get; set; }
         public virtual ICollection<PageTour> PageTours { get; set; }
         public virtual ICollection<TourStep> TourSteps { get; set; }

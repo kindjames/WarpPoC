@@ -25,7 +25,8 @@ namespace Warp.Data.Models.Mapping
             this.Property(t => t.ConfigurationSystemID).HasColumnName("ConfigurationSystemID");
             this.Property(t => t.Value).HasColumnName("Value");
             this.Property(t => t.LastUpdateAdminID).HasColumnName("LastUpdateAdminID");
-            this.Property(t => t.LastUpdateDate).HasColumnName("LastUpdateDate");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
             this.Property(t => t.Active).HasColumnName("Active");
 
             // Relationships

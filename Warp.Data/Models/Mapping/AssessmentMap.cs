@@ -23,13 +23,15 @@ namespace Warp.Data.Models.Mapping
             this.Property(t => t.SubQuestionnaireID).HasColumnName("SubQuestionnaireID");
             this.Property(t => t.BriefID).HasColumnName("BriefID");
             this.Property(t => t.AddedByAdminID).HasColumnName("AddedByAdminID");
-            this.Property(t => t.AddedDate).HasColumnName("AddedDate");
-            this.Property(t => t.LastUpdated).HasColumnName("LastUpdated");
+            this.Property(t => t.DateAdded).HasColumnName("DateAdded");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
             this.Property(t => t.LastUpdatedAdminID).HasColumnName("LastUpdatedAdminID");
             this.Property(t => t.Score).HasColumnName("Score");
             this.Property(t => t.MaxScore).HasColumnName("MaxScore");
-            this.Property(t => t.ScoreCalculated).HasColumnName("ScoreCalculated");
+            this.Property(t => t.DateScoreCalculated).HasColumnName("DateScoreCalculated");
             this.Property(t => t.Invoiced).HasColumnName("Invoiced");
+            this.Property(t => t.Active).HasColumnName("Active");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
 
             // Relationships
             this.HasRequired(t => t.AssessmentArea)

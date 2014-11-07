@@ -22,9 +22,12 @@ namespace Warp.Data.Models.Mapping
             this.Property(t => t.SuggestionVoteID).HasColumnName("SuggestionVoteID");
             this.Property(t => t.SuggestionID).HasColumnName("SuggestionID");
             this.Property(t => t.AssessorID).HasColumnName("AssessorID");
-            this.Property(t => t.VoteDate).HasColumnName("VoteDate");
+            this.Property(t => t.DateOfVote).HasColumnName("DateOfVote");
             this.Property(t => t.Vote).HasColumnName("Vote");
             this.Property(t => t.Comment).HasColumnName("Comment");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            this.Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
             this.HasRequired(t => t.Assessor)

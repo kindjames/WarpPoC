@@ -19,6 +19,9 @@ namespace Warp.Data.Models.Mapping
             this.Property(t => t.PersonCallBackRequestID).HasColumnName("PersonCallBackRequestID");
             this.Property(t => t.PersonID).HasColumnName("PersonID");
             this.Property(t => t.CallBackRequestID).HasColumnName("CallBackRequestID");
+            this.Property(t => t.Active).HasColumnName("Active");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
 
             // Relationships
             this.HasRequired(t => t.CallBackRequest)

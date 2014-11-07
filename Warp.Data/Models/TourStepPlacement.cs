@@ -10,8 +10,11 @@ namespace Warp.Data.Models
             this.TourSteps = new List<TourStep>();
         }
 
-        public int TourStepPlacementId { get; set; }
+        public int TourStepPlacementID { get; set; }
         public string Placement { get; set; }
+        public bool Active { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
         public virtual ICollection<TourStep> TourSteps { get; set; }
     }
 }

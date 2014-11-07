@@ -20,10 +20,13 @@ namespace Warp.Data.Models
         public short ActionPriorityID { get; set; }
         public short ActionTypeID { get; set; }
         public short ActionStatusID { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
+        public bool Active { get; set; }
+        public virtual User User { get; set; }
         public virtual ActionPriority ActionPriority { get; set; }
         public virtual ActionStatu ActionStatu { get; set; }
         public virtual ActionType ActionType { get; set; }
-        public virtual User User { get; set; }
         public virtual ICollection<ActionComment> ActionComments { get; set; }
         public virtual ICollection<ActionUser> ActionUsers { get; set; }
         public virtual ICollection<QuestionResultAction> QuestionResultActions { get; set; }

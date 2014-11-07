@@ -12,8 +12,8 @@ namespace Warp.Data.Models
 
         public int MaintenanceCategoryID { get; set; }
         public string Name { get; set; }
-        public System.DateTime Created { get; set; }
-        public System.DateTime LastUpdated { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual ICollection<Maintenance> Maintenances { get; set; }
     }

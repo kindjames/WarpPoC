@@ -12,24 +12,15 @@ namespace Warp.Data.Models.Mapping
 
             // Properties
             // Table & Column Mappings
-            this.ToTable("UserImpersonationUserRole");
+            this.ToTable("UserImpersonationUserRole", "Account");
             this.Property(t => t.UserImpersonationUserRoleID).HasColumnName("UserImpersonationUserRoleID");
-            this.Property(t => t.StartDate).HasColumnName("StartDate");
-            this.Property(t => t.EndDate).HasColumnName("EndDate");
+            this.Property(t => t.DateStart).HasColumnName("DateStart");
+            this.Property(t => t.DateEnd).HasColumnName("DateEnd");
             this.Property(t => t.UserID).HasColumnName("UserID");
             this.Property(t => t.UserRoleID).HasColumnName("UserRoleID");
-            this.Property(t => t.Created).HasColumnName("Created");
-            this.Property(t => t.LastUpdated).HasColumnName("LastUpdated");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
             this.Property(t => t.Active).HasColumnName("Active");
-
-            // Relationships
-            this.HasRequired(t => t.User)
-                .WithMany(t => t.UserImpersonationUserRoles)
-                .HasForeignKey(d => d.UserID);
-            this.HasRequired(t => t.UserRole)
-                .WithMany(t => t.UserImpersonationUserRoles)
-                .HasForeignKey(d => d.UserRoleID);
-
         }
     }
 }

@@ -11,13 +11,14 @@ namespace Warp.Data.Models
         }
 
         public int BroadcastMessageID { get; set; }
-        public System.DateTime DateAdded { get; set; }
         public int AddedByAdminID { get; set; }
         public Nullable<System.DateTime> DateChecked { get; set; }
         public Nullable<int> CheckedByAdminID { get; set; }
         public string Message { get; set; }
-        public Nullable<System.DateTime> RemovedDate { get; set; }
+        public Nullable<System.DateTime> DateRemoved { get; set; }
         public Nullable<int> RemovedByAdminID { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual ICollection<BroadcastMessageUser> BroadcastMessageUsers { get; set; }
     }

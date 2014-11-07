@@ -7,12 +7,14 @@ namespace Warp.Data.Models
     {
         public Operation()
         {
+            this.AuditingDatabases = new List<AuditingDatabase>();
         }
 
         public int OperationId { get; set; }
         public string Method { get; set; }
-        public Nullable<System.DateTime> Created { get; set; }
-        public Nullable<System.DateTime> LastUpdated { get; set; }
-        public Nullable<bool> Active { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
+        public bool Active { get; set; }
+        public virtual ICollection<AuditingDatabase> AuditingDatabases { get; set; }
     }
 }

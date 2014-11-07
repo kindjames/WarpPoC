@@ -13,7 +13,7 @@ namespace Warp.Data.Models
 
         public int StaffMemberID { get; set; }
         public int VisitID { get; set; }
-        public System.DateTime DateAdded { get; set; }
+        public System.DateTime DateCreated { get; set; }
         public int AssessorID { get; set; }
         public string Name { get; set; }
         public string Notes { get; set; }
@@ -26,7 +26,7 @@ namespace Warp.Data.Models
         public Nullable<int> CheckedByAdminID { get; set; }
         public bool Active { get; set; }
         public bool Approved { get; set; }
-        public System.DateTime LastUpdated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
         public virtual Gender Gender { get; set; }
         public virtual StaffAge StaffAge { get; set; }
         public virtual StaffHairColour StaffHairColour { get; set; }

@@ -16,7 +16,7 @@ namespace Warp.Data.Models.Mapping
 
             this.Property(t => t.Code)
                 .IsRequired()
-                .HasMaxLength(5);
+                .HasMaxLength(50);
 
             this.Property(t => t.Notes)
                 .IsRequired()
@@ -30,12 +30,12 @@ namespace Warp.Data.Models.Mapping
             this.Property(t => t.AreaStatusID).HasColumnName("AreaStatusID");
             this.Property(t => t.RegionID).HasColumnName("RegionID");
             this.Property(t => t.Code).HasColumnName("Code");
-            this.Property(t => t.ValidFrom).HasColumnName("ValidFrom");
-            this.Property(t => t.ValidTo).HasColumnName("ValidTo");
-            this.Property(t => t.EnteredByAdminID).HasColumnName("EnteredByAdminID");
+            this.Property(t => t.DateValidFrom).HasColumnName("DateValidFrom");
+            this.Property(t => t.DateValidTo).HasColumnName("DateValidTo");
+            this.Property(t => t.EnteredByUserRoleID).HasColumnName("EnteredByUserRoleID");
             this.Property(t => t.Notes).HasColumnName("Notes");
-            this.Property(t => t.Created).HasColumnName("Created");
-            this.Property(t => t.LastUpdated).HasColumnName("LastUpdated");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
             this.Property(t => t.Active).HasColumnName("Active");
 
             // Relationships

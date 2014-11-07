@@ -19,9 +19,11 @@ namespace Warp.Data.Models.Mapping
             this.Property(t => t.AssessorExpenseHistoryID).HasColumnName("AssessorExpenseHistoryID");
             this.Property(t => t.AssessorExpenseID).HasColumnName("AssessorExpenseID");
             this.Property(t => t.AdminID).HasColumnName("AdminID");
-            this.Property(t => t.TimeStamp).HasColumnName("TimeStamp");
             this.Property(t => t.ExpenseStatusID).HasColumnName("ExpenseStatusID");
             this.Property(t => t.ApprovedAmount).HasColumnName("ApprovedAmount");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            this.Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
             this.HasRequired(t => t.AssessorExpense)

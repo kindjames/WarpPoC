@@ -38,9 +38,8 @@ namespace Warp.Data.Models.Mapping
             this.Property(t => t.IndustrySectorID).HasColumnName("IndustrySectorID");
             this.Property(t => t.PersonID).HasColumnName("PersonID");
             this.Property(t => t.Active).HasColumnName("Active");
-            this.Property(t => t.Created).HasColumnName("Created");
-            this.Property(t => t.LastUpdated).HasColumnName("LastUpdated");
-            this.Property(t => t.LocationID).HasColumnName("LocationID");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
             this.Property(t => t.Code).HasColumnName("Code");
             this.Property(t => t.Website).HasColumnName("Website");
             this.Property(t => t.Telephone).HasColumnName("Telephone");
@@ -59,9 +58,6 @@ namespace Warp.Data.Models.Mapping
             this.HasRequired(t => t.Currency)
                 .WithMany(t => t.Branches)
                 .HasForeignKey(d => d.CurrencyID);
-            this.HasRequired(t => t.Location)
-                .WithMany(t => t.Branches)
-                .HasForeignKey(d => d.LocationID);
             this.HasOptional(t => t.Person)
                 .WithMany(t => t.Branches)
                 .HasForeignKey(d => d.PersonID);

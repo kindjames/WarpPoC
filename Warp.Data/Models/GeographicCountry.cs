@@ -14,6 +14,9 @@ namespace Warp.Data.Models
         public int GeographicWorldAreaID { get; set; }
         public string Name { get; set; }
         public int CurrencyID { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
+        public bool Active { get; set; }
         public virtual Currency Currency { get; set; }
         public virtual GeographicWorldArea GeographicWorldArea { get; set; }
         public virtual ICollection<GeographicRegion> GeographicRegions { get; set; }

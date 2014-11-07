@@ -11,14 +11,15 @@ namespace Warp.Data.Models
         }
 
         public int SimpleVisitTemplateID { get; set; }
-        public System.DateTime DateAdded { get; set; }
+        public System.DateTime DateCreated { get; set; }
         public int AddedByAdminID { get; set; }
         public int QuestionnaireID { get; set; }
-        public System.DateTime ValidFrom { get; set; }
-        public Nullable<System.DateTime> ValidTo { get; set; }
-        public bool Active { get; set; }
+        public System.DateTime DateValidFrom { get; set; }
+        public Nullable<System.DateTime> DateValidTo { get; set; }
         public Nullable<int> RequiredCount { get; set; }
-        public Nullable<System.DateTime> CountReached { get; set; }
+        public Nullable<System.DateTime> DateCountReached { get; set; }
+        public System.DateTime DateUpdated { get; set; }
+        public bool Active { get; set; }
         public virtual Questionnaire Questionnaire { get; set; }
         public virtual ICollection<SimpleVisit> SimpleVisits { get; set; }
     }

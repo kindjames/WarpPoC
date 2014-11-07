@@ -24,9 +24,11 @@ namespace Warp.Data.Models.Mapping
             this.Property(t => t.Name).HasColumnName("Name");
             this.Property(t => t.Underground).HasColumnName("Underground");
             this.Property(t => t.GeographicPostCodeID).HasColumnName("GeographicPostCodeID");
-            this.Property(t => t.Active).HasColumnName("Active");
             this.Property(t => t.XCoordinate).HasColumnName("XCoordinate");
             this.Property(t => t.YCoordinate).HasColumnName("YCoordinate");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            this.Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
             this.HasRequired(t => t.GeographicPostCode)

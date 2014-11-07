@@ -22,11 +22,11 @@ namespace Warp.Data.Models.Mapping
             this.ToTable("Period");
             this.Property(t => t.PeriodID).HasColumnName("PeriodID");
             this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.StartDate).HasColumnName("StartDate");
-            this.Property(t => t.EndDate).HasColumnName("EndDate");
+            this.Property(t => t.DateStart).HasColumnName("DateStart");
+            this.Property(t => t.DateEnd).HasColumnName("DateEnd");
             this.Property(t => t.ExcludeFromAnalysis).HasColumnName("ExcludeFromAnalysis");
-            this.Property(t => t.Created).HasColumnName("Created");
-            this.Property(t => t.LastUpdated).HasColumnName("LastUpdated");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
             this.Property(t => t.Active).HasColumnName("Active");
         }
     }

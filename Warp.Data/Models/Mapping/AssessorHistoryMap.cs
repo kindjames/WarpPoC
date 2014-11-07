@@ -21,12 +21,14 @@ namespace Warp.Data.Models.Mapping
             this.ToTable("AssessorHistory");
             this.Property(t => t.AssessorHistoryID).HasColumnName("AssessorHistoryID");
             this.Property(t => t.AssessorID).HasColumnName("AssessorID");
-            this.Property(t => t.TimeStamp).HasColumnName("TimeStamp");
             this.Property(t => t.AssessorStatusID).HasColumnName("AssessorStatusID");
             this.Property(t => t.AdminID).HasColumnName("AdminID");
             this.Property(t => t.AssessorStatusChangeReasonID).HasColumnName("AssessorStatusChangeReasonID");
             this.Property(t => t.AssessorLevelID).HasColumnName("AssessorLevelID");
             this.Property(t => t.Comment).HasColumnName("Comment");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            this.Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
             this.HasRequired(t => t.Assessor)

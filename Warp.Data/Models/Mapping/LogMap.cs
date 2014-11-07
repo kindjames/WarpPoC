@@ -18,20 +18,16 @@ namespace Warp.Data.Models.Mapping
             this.Property(t => t.behaviour)
                 .HasMaxLength(50);
 
-            this.Property(t => t.timestamp)
-                .IsRequired()
-                .IsFixedLength()
-                .HasMaxLength(8)
-                .IsRowVersion();
-
             // Table & Column Mappings
             this.ToTable("Log");
             this.Property(t => t.LogID).HasColumnName("LogID");
             this.Property(t => t.context).HasColumnName("context");
             this.Property(t => t.context_id).HasColumnName("context_id");
             this.Property(t => t.behaviour).HasColumnName("behaviour");
-            this.Property(t => t.timestamp).HasColumnName("timestamp");
             this.Property(t => t.user_id).HasColumnName("user_id");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            this.Property(t => t.Active).HasColumnName("Active");
         }
     }
 }

@@ -16,6 +16,8 @@ namespace Warp.Data.Models
         public string ID { get; set; }
         public string Description { get; set; }
         public bool Search { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual ICollection<CriteriaConfig> CriteriaConfigs { get; set; }
     }

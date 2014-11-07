@@ -23,6 +23,8 @@ namespace Warp.Data.Models.Mapping
             this.Property(t => t.StaffFeatureID).HasColumnName("StaffFeatureID");
             this.Property(t => t.Name).HasColumnName("Name");
             this.Property(t => t.Active).HasColumnName("Active");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
         }
     }
 }

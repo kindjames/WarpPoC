@@ -16,6 +16,9 @@ namespace Warp.Data.Models
         public short BriefSectionID { get; set; }
         public int BriefItemID { get; set; }
         public string Text { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
+        public bool Active { get; set; }
         public virtual Brief Brief { get; set; }
         public virtual BriefItem BriefItem { get; set; }
         public virtual BriefSection BriefSection { get; set; }

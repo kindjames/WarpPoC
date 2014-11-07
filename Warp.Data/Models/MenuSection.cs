@@ -13,6 +13,8 @@ namespace Warp.Data.Models
 
         public int MenuSectionID { get; set; }
         public string Name { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual ICollection<MenuConfig> MenuConfigs { get; set; }
         public virtual ICollection<MenuSectionPossibleAnswer> MenuSectionPossibleAnswers { get; set; }

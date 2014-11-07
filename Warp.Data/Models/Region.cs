@@ -17,16 +17,16 @@ namespace Warp.Data.Models
 
         public int RegionID { get; set; }
         public string Name { get; set; }
-        public string Code { get; set; }
         public int RegionStatusID { get; set; }
+        public int AreaID { get; set; }
         public Nullable<int> RegionGroupID { get; set; }
         public int ClientID { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
-        public System.DateTime Created { get; set; }
-        public System.DateTime LastUpdated { get; set; }
+        public string Code { get; set; }
         public virtual ICollection<Area> Areas { get; set; }
         public virtual ICollection<AreaHistory> AreaHistories { get; set; }
-        public virtual Client Client { get; set; }
         public virtual ICollection<PersonRegion> PersonRegions { get; set; }
         public virtual RegionGroup RegionGroup { get; set; }
         public virtual RegionStatu RegionStatu { get; set; }

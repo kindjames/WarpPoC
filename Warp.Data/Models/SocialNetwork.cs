@@ -15,6 +15,8 @@ namespace Warp.Data.Models
         public int SocialNetworkID { get; set; }
         public string Name { get; set; }
         public bool Active { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
         public virtual ICollection<BranchSocialNetwork> BranchSocialNetworks { get; set; }
         public virtual ICollection<BrandSocialNetwork> BrandSocialNetworks { get; set; }
         public virtual ICollection<ClientSocialNetwork> ClientSocialNetworks { get; set; }

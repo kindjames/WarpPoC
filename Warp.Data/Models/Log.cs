@@ -9,7 +9,9 @@ namespace Warp.Data.Models
         public string context { get; set; }
         public int context_id { get; set; }
         public string behaviour { get; set; }
-        public byte[] timestamp { get; set; }
         public int user_id { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
+        public bool Active { get; set; }
     }
 }

@@ -32,7 +32,7 @@ namespace Warp.Data.Models.Mapping
                 .HasMaxLength(50);
 
             // Table & Column Mappings
-            this.ToTable("ContactAddress");
+            this.ToTable("ContactAddress", "Geographic");
             this.Property(t => t.ContactAddressID).HasColumnName("ContactAddressID");
             this.Property(t => t.Address1).HasColumnName("Address1");
             this.Property(t => t.Address2).HasColumnName("Address2");
@@ -41,6 +41,9 @@ namespace Warp.Data.Models.Mapping
             this.Property(t => t.Address5).HasColumnName("Address5");
             this.Property(t => t.Postcode).HasColumnName("Postcode");
             this.Property(t => t.GeographicPostcodeID).HasColumnName("GeographicPostcodeID");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            this.Property(t => t.Active).HasColumnName("Active");
         }
     }
 }

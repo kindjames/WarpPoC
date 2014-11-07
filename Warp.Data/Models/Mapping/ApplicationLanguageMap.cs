@@ -8,24 +8,33 @@ namespace Warp.Data.Models.Mapping
         public ApplicationLanguageMap()
         {
             // Primary Key
-            this.HasKey(t => t.ApplicationLanguageId);
+            this.HasKey(t => t.ApplicationLanguageID);
 
             // Properties
+            this.Property(t => t.NeutralCulture)
+                .IsRequired()
+                .HasMaxLength(50);
+
+            this.Property(t => t.Locale)
+                .HasMaxLength(50);
+
+            this.Property(t => t.Culture)
+                .IsRequired()
+                .HasMaxLength(20);
+
             this.Property(t => t.DisplayName)
                 .IsRequired();
 
-            this.Property(t => t.LanguageCode)
-                .IsRequired();
-
-            this.Property(t => t.FriendlyName)
-                .IsRequired();
-
             // Table & Column Mappings
-            this.ToTable("ApplicationLanguage");
-            this.Property(t => t.ApplicationLanguageId).HasColumnName("ApplicationLanguageId");
+            this.ToTable("ApplicationLanguage", "Translation");
+            this.Property(t => t.ApplicationLanguageID).HasColumnName("ApplicationLanguageID");
+            this.Property(t => t.NeutralCulture).HasColumnName("NeutralCulture");
+            this.Property(t => t.Locale).HasColumnName("Locale");
+            this.Property(t => t.Culture).HasColumnName("Culture");
             this.Property(t => t.DisplayName).HasColumnName("DisplayName");
-            this.Property(t => t.LanguageCode).HasColumnName("LanguageCode");
-            this.Property(t => t.FriendlyName).HasColumnName("FriendlyName");
+            this.Property(t => t.Active).HasColumnName("Active");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
         }
     }
 }

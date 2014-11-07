@@ -10,8 +10,10 @@ namespace Warp.Data.Models
         public int AccountingProductID { get; set; }
         public decimal DefaultValue { get; set; }
         public int KashFlowID { get; set; }
-        public System.DateTime ValidFrom { get; set; }
-        public Nullable<System.DateTime> ValidTo { get; set; }
+        public System.DateTime DateValidFrom { get; set; }
+        public Nullable<System.DateTime> DateValidTo { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual Brand Brand { get; set; }
         public virtual AccountingProduct AccountingProduct { get; set; }

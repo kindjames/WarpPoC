@@ -17,9 +17,12 @@ namespace Warp.Data.Models
         public string Name { get; set; }
         public decimal XCoordinate { get; set; }
         public decimal YCoordinate { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
+        public bool Active { get; set; }
         public virtual ICollection<Airport> Airports { get; set; }
         public virtual ICollection<AssessorGeographicPostCode> AssessorGeographicPostCodes { get; set; }
-        public virtual GeographicPostalArea GeographicPostalArea { get; set; }
         public virtual ICollection<RailStation> RailStations { get; set; }
+        public virtual GeographicPostalArea GeographicPostalArea { get; set; }
     }
 }

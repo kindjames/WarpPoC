@@ -18,14 +18,17 @@ namespace Warp.Data.Models.Mapping
             this.Property(t => t.UserID).HasColumnName("UserID");
             this.Property(t => t.CustomerLinkStatusID).HasColumnName("CustomerLinkStatusID");
             this.Property(t => t.PrimaryCustomer).HasColumnName("PrimaryCustomer");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            this.Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.Customer)
-                .WithMany(t => t.CustomerUsers)
-                .HasForeignKey(d => d.CustomerID);
             this.HasRequired(t => t.User)
                 .WithMany(t => t.CustomerUsers)
                 .HasForeignKey(d => d.UserID);
+            this.HasRequired(t => t.Customer)
+                .WithMany(t => t.CustomerUsers)
+                .HasForeignKey(d => d.CustomerID);
 
         }
     }

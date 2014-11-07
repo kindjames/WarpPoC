@@ -17,7 +17,6 @@ namespace Warp.Data.Models.Mapping
             // Table & Column Mappings
             this.ToTable("AssessorExpense");
             this.Property(t => t.AssessorExpenseID).HasColumnName("AssessorExpenseID");
-            this.Property(t => t.TimeStamp).HasColumnName("TimeStamp");
             this.Property(t => t.VisitID).HasColumnName("VisitID");
             this.Property(t => t.AssessorID).HasColumnName("AssessorID");
             this.Property(t => t.ExpenseTypeID).HasColumnName("ExpenseTypeID");
@@ -26,16 +25,19 @@ namespace Warp.Data.Models.Mapping
             this.Property(t => t.CurrencyExchangeRateID).HasColumnName("CurrencyExchangeRateID");
             this.Property(t => t.CurrentExpenseStatusID).HasColumnName("CurrentExpenseStatusID");
             this.Property(t => t.ApprovedAmount).HasColumnName("ApprovedAmount");
-            this.Property(t => t.ApprovedDate).HasColumnName("ApprovedDate");
+            this.Property(t => t.DateApproved).HasColumnName("DateApproved");
             this.Property(t => t.ApproveByAdminID).HasColumnName("ApproveByAdminID");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            this.Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.Assessor)
-                .WithMany(t => t.AssessorExpenses)
-                .HasForeignKey(d => d.AssessorID);
             this.HasRequired(t => t.Currency)
                 .WithMany(t => t.AssessorExpenses)
                 .HasForeignKey(d => d.CurrencyID);
+            this.HasRequired(t => t.Assessor)
+                .WithMany(t => t.AssessorExpenses)
+                .HasForeignKey(d => d.AssessorID);
             this.HasRequired(t => t.ExpenseStatu)
                 .WithMany(t => t.AssessorExpenses)
                 .HasForeignKey(d => d.CurrentExpenseStatusID);

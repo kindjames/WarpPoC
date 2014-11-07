@@ -20,6 +20,9 @@ namespace Warp.Data.Models.Mapping
             this.Property(t => t.AssessorID).HasColumnName("AssessorID");
             this.Property(t => t.GeographicPostCodeID).HasColumnName("GeographicPostCodeID");
             this.Property(t => t.Radius).HasColumnName("Radius");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            this.Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
             this.HasRequired(t => t.Assessor)

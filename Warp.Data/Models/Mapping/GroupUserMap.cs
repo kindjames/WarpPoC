@@ -19,14 +19,17 @@ namespace Warp.Data.Models.Mapping
             this.Property(t => t.GroupUserID).HasColumnName("GroupUserID");
             this.Property(t => t.GroupID).HasColumnName("GroupID");
             this.Property(t => t.UserID).HasColumnName("UserID");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            this.Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.Group)
-                .WithMany(t => t.GroupUsers)
-                .HasForeignKey(d => d.GroupID);
             this.HasRequired(t => t.User)
                 .WithMany(t => t.GroupUsers)
                 .HasForeignKey(d => d.UserID);
+            this.HasRequired(t => t.Group)
+                .WithMany(t => t.GroupUsers)
+                .HasForeignKey(d => d.GroupID);
 
         }
     }

@@ -22,7 +22,7 @@ namespace Warp.Data.Models.Mapping
             this.ToTable("VisitDetails");
             this.Property(t => t.VisitDetailsID).HasColumnName("VisitDetailsID");
             this.Property(t => t.VisitID).HasColumnName("VisitID");
-            this.Property(t => t.ActualVisitDate).HasColumnName("ActualVisitDate");
+            this.Property(t => t.DateOfActualVisit).HasColumnName("DateOfActualVisit");
             this.Property(t => t.AdultGuests).HasColumnName("AdultGuests");
             this.Property(t => t.ChildGuests).HasColumnName("ChildGuests");
             this.Property(t => t.ChildGuestsNotInvolved).HasColumnName("ChildGuestsNotInvolved");
@@ -30,6 +30,9 @@ namespace Warp.Data.Models.Mapping
             this.Property(t => t.TradeLevelID).HasColumnName("TradeLevelID");
             this.Property(t => t.SeatingLevel).HasColumnName("SeatingLevel");
             this.Property(t => t.WeatherID).HasColumnName("WeatherID");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
             this.HasRequired(t => t.TradeLevel)

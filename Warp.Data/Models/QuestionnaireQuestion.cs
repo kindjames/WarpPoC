@@ -31,9 +31,10 @@ namespace Warp.Data.Models
         public byte MaxAnswer { get; set; }
         public bool Dynamic { get; set; }
         public string Hint { get; set; }
-        public System.DateTime DateAdded { get; set; }
-        public System.DateTime DateActive { get; set; }
+        public System.DateTime DateCreated { get; set; }
         public short AddedByAdminID { get; set; }
+        public System.DateTime DateUpdated { get; set; }
+        public bool Active { get; set; }
         public virtual Benchmark Benchmark { get; set; }
         public virtual ICollection<DynamicQuestion> DynamicQuestions { get; set; }
         public virtual ICollection<DynamicQuestion> DynamicQuestions1 { get; set; }

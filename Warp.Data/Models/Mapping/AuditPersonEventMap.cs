@@ -24,13 +24,15 @@ namespace Warp.Data.Models.Mapping
             // Table & Column Mappings
             this.ToTable("AuditPersonEvent");
             this.Property(t => t.AuditPersonEventID).HasColumnName("AuditPersonEventID");
-            this.Property(t => t.Timestamp).HasColumnName("Timestamp");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
             this.Property(t => t.PersonID).HasColumnName("PersonID");
             this.Property(t => t.AuditTableID).HasColumnName("AuditTableID");
             this.Property(t => t.AuditActionID).HasColumnName("AuditActionID");
             this.Property(t => t.ID).HasColumnName("ID");
             this.Property(t => t.Hidden).HasColumnName("Hidden");
             this.Property(t => t.Note).HasColumnName("Note");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
             this.HasRequired(t => t.AuditAction)

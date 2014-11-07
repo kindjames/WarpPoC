@@ -18,7 +18,9 @@ namespace Warp.Data.Models.Mapping
             this.ToTable("NoteCalendar");
             this.Property(t => t.NoteCalendarID).HasColumnName("NoteCalendarID");
             this.Property(t => t.NoteID).HasColumnName("NoteID");
-            this.Property(t => t.DateStamp).HasColumnName("DateStamp");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            this.Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
             this.HasRequired(t => t.Note)

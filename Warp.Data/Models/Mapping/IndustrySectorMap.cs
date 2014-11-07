@@ -19,11 +19,18 @@ namespace Warp.Data.Models.Mapping
                 .HasMaxLength(200);
 
             // Table & Column Mappings
-            this.ToTable("IndustrySector");
+            this.ToTable("IndustrySector", "Client");
             this.Property(t => t.IndustrySectorID).HasColumnName("IndustrySectorID");
             this.Property(t => t.SectorName).HasColumnName("SectorName");
             this.Property(t => t.SectorNameForAssessor).HasColumnName("SectorNameForAssessor");
             this.Property(t => t.Active).HasColumnName("Active");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+
+            // Relationships
+            this.HasRequired(t => t.IndustrySector2)
+                .WithOptional(t => t.IndustrySector1);
+
         }
     }
 }

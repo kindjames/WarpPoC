@@ -15,6 +15,8 @@ namespace Warp.Data.Models
         public string ExternalName { get; set; }
         public string Description { get; set; }
         public bool Active { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
         public virtual ICollection<AssessorHistory> AssessorHistories { get; set; }
     }
 }

@@ -31,6 +31,9 @@ namespace Warp.Data.Models.Mapping
             this.Property(t => t.Comment1).HasColumnName("Comment1");
             this.Property(t => t.Comment2).HasColumnName("Comment2");
             this.Property(t => t.Comment3).HasColumnName("Comment3");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            this.Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
             this.HasRequired(t => t.ActionComment)

@@ -16,6 +16,8 @@ namespace Warp.Data.Models
 
         public int BriefID { get; set; }
         public string Title { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual ICollection<Assessment> Assessments { get; set; }
         public virtual ICollection<BriefBranch> BriefBranches { get; set; }

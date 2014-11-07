@@ -31,15 +31,15 @@ namespace Warp.Data.Models.Mapping
             this.Property(t => t.Title).HasColumnName("Title");
             this.Property(t => t.Details).HasColumnName("Details");
             this.Property(t => t.MaintenanceCategoryID).HasColumnName("MaintenanceCategoryID");
-            this.Property(t => t.DisplayFrom).HasColumnName("DisplayFrom");
-            this.Property(t => t.DisplayTo).HasColumnName("DisplayTo");
+            this.Property(t => t.DateDisplayFrom).HasColumnName("DateDisplayFrom");
+            this.Property(t => t.DateDisplayTo).HasColumnName("DateDisplayTo");
             this.Property(t => t.HyperlinkURL).HasColumnName("HyperlinkURL");
             this.Property(t => t.HyperlinkText).HasColumnName("HyperlinkText");
             this.Property(t => t.RemovedBy).HasColumnName("RemovedBy");
             this.Property(t => t.AddedBy).HasColumnName("AddedBy");
             this.Property(t => t.Active).HasColumnName("Active");
-            this.Property(t => t.Created).HasColumnName("Created");
-            this.Property(t => t.LastUpdated).HasColumnName("LastUpdated");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
 
             // Relationships
             this.HasRequired(t => t.MaintenanceCategory)

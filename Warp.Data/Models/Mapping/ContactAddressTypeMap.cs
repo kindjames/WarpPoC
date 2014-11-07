@@ -16,9 +16,11 @@ namespace Warp.Data.Models.Mapping
                 .HasMaxLength(50);
 
             // Table & Column Mappings
-            this.ToTable("ContactAddressType");
+            this.ToTable("ContactAddressType", "Geographic");
             this.Property(t => t.ContactAddressTypeID).HasColumnName("ContactAddressTypeID");
             this.Property(t => t.Name).HasColumnName("Name");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
             this.Property(t => t.Active).HasColumnName("Active");
         }
     }

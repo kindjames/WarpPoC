@@ -17,10 +17,12 @@ namespace Warp.Data.Models.Mapping
             // Table & Column Mappings
             this.ToTable("CurrencyExchangeRate");
             this.Property(t => t.CurrencyExchageRateID).HasColumnName("CurrencyExchageRateID");
-            this.Property(t => t.Timestamp).HasColumnName("Timestamp");
             this.Property(t => t.CurrencyID).HasColumnName("CurrencyID");
             this.Property(t => t.Rate).HasColumnName("Rate");
-            this.Property(t => t.ValidUntil).HasColumnName("ValidUntil");
+            this.Property(t => t.DateValidTo).HasColumnName("DateValidTo");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            this.Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
             this.HasRequired(t => t.Currency)

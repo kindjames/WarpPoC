@@ -9,6 +9,9 @@ namespace Warp.Data.Models
         public int MasterQuestionnaireQuestionID { get; set; }
         public int PossibleAnswerID { get; set; }
         public Nullable<int> ChildQuestionnaireQuestionID { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
+        public bool Active { get; set; }
         public virtual PossibleAnswer PossibleAnswer { get; set; }
         public virtual QuestionnaireQuestion QuestionnaireQuestion { get; set; }
         public virtual QuestionnaireQuestion QuestionnaireQuestion1 { get; set; }
