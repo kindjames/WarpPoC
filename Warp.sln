@@ -1,25 +1,25 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warp.Services", "Warp.Services\Warp.Services.csproj", "{5760EB35-8DD5-4C9F-8BF4-097CF0CFA530}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Warp.Services\Services.csproj", "{5760EB35-8DD5-4C9F-8BF4-097CF0CFA530}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{97CE1C0F-3DDF-4083-B2EC-4AC0A068B9B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warp.Core", "Warp.Core\Warp.Core.csproj", "{8031789B-4E8B-4418-8644-EB4ADE65B90B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Warp.Core\Core.csproj", "{8031789B-4E8B-4418-8644-EB4ADE65B90B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warp.Data", "Warp.Data\Warp.Data.csproj", "{14F5DFD0-AED7-4E07-A7C1-B873003943B6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Warp.Data\Data.csproj", "{14F5DFD0-AED7-4E07-A7C1-B873003943B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warp.Services.Specs", "Warp.Services.Specs\Warp.Services.Specs.csproj", "{9DA62365-D86F-4F97-B1B3-0712BB38495F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.Specs", "Warp.Services.Specs\Services.Specs.csproj", "{9DA62365-D86F-4F97-B1B3-0712BB38495F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warp.Data.Specs", "Warp.Data.Specs\Warp.Data.Specs.csproj", "{B9D872C7-5B81-4E0C-90E8-0E47201ACAA4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Specs", "Warp.Data.Specs\Data.Specs.csproj", "{B9D872C7-5B81-4E0C-90E8-0E47201ACAA4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warp.Core.Specs", "Warp.Core.Specs\Warp.Core.Specs.csproj", "{2D2F4F10-841E-497D-ADE0-2B879A4690A8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Specs", "Warp.Core.Specs\Core.Specs.csproj", "{2D2F4F10-841E-497D-ADE0-2B879A4690A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warp.WebUI", "Warp.WebUI\Warp.WebUI.csproj", "{FE025F59-B912-4231-9FA8-4EC7CD56C5D5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebUI", "Warp.WebUI\WebUI.csproj", "{FE025F59-B912-4231-9FA8-4EC7CD56C5D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warp.IoC", "Warp.IoC\Warp.IoC.csproj", "{9FBBC796-0FCF-47EA-9885-BC0CE30FF8D7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IoC", "Warp.IoC\IoC.csproj", "{9FBBC796-0FCF-47EA-9885-BC0CE30FF8D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warp.WebUI.Specs", "Warp.WebUI.Specs\Warp.WebUI.Specs.csproj", "{E61B0859-12FB-4014-80D2-8FD1D669A749}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebUI.Specs", "Warp.WebUI.Specs\WebUI.Specs.csproj", "{E61B0859-12FB-4014-80D2-8FD1D669A749}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

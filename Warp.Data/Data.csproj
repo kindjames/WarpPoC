@@ -764,9 +764,9 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Warp.Core\Warp.Core.csproj">
+    <ProjectReference Include="..\Warp.Core\Core.csproj">
       <Project>{8031789b-4e8b-4418-8644-eb4ade65b90b}</Project>
-      <Name>Warp.Core</Name>
+      <Name>Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

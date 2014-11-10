@@ -136,17 +136,17 @@
     <Folder Include="Infrastructure\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Warp.Core\Warp.Core.csproj">
+    <ProjectReference Include="..\Warp.Core\Core.csproj">
       <Project>{8031789b-4e8b-4418-8644-eb4ade65b90b}</Project>
-      <Name>Warp.Core</Name>
+      <Name>Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Warp.IoC\Warp.IoC.csproj">
+    <ProjectReference Include="..\Warp.IoC\IoC.csproj">
       <Project>{9FBBC796-0FCF-47EA-9885-BC0CE30FF8D7}</Project>
-      <Name>Warp.IoC</Name>
+      <Name>IoC</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Warp.Services\Warp.Services.csproj">
+    <ProjectReference Include="..\Warp.Services\Services.csproj">
       <Project>{5760eb35-8dd5-4c9f-8bf4-097cf0cfa530}</Project>
-      <Name>Warp.Services</Name>
+      <Name>Services</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

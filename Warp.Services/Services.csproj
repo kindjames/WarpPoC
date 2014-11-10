@@ -43,13 +43,13 @@
     <Compile Include="Mappings\SaveClientDtoToSaveClientCommandMapping.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Warp.Core\Warp.Core.csproj">
+    <ProjectReference Include="..\Warp.Core\Core.csproj">
       <Project>{8031789B-4E8B-4418-8644-EB4ADE65B90B}</Project>
-      <Name>Warp.Core</Name>
+      <Name>Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Warp.Data\Warp.Data.csproj">
+    <ProjectReference Include="..\Warp.Data\Data.csproj">
       <Project>{14f5dfd0-aed7-4e07-a7c1-b873003943b6}</Project>
-      <Name>Warp.Data</Name>
+      <Name>Data</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -94,13 +94,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Warp.Core\Warp.Core.csproj">
+    <ProjectReference Include="..\Warp.Core\Core.csproj">
       <Project>{8031789b-4e8b-4418-8644-eb4ade65b90b}</Project>
-      <Name>Warp.Core</Name>
+      <Name>Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Warp.WebUI\Warp.WebUI.csproj">
+    <ProjectReference Include="..\Warp.WebUI\WebUI.csproj">
       <Project>{fe025f59-b912-4231-9fa8-4ec7cd56c5d5}</Project>
-      <Name>Warp.WebUI</Name>
+      <Name>WebUI</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
