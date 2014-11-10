@@ -14,9 +14,9 @@ namespace Warp.WebUI.Controllers
             _brandService = brandService;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
-            var data = _brandService.GetBrandSummaryListForClient(61);
+            var data = _brandService.GetBrandSummaryListForClient(id);
 
             var viewModel = new BrandSummaryListViewModel
             {

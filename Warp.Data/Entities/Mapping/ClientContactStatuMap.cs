@@ -1,0 +1,35 @@
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.ModelConfiguration;
+
+namespace Warp.Data.Entities.Mapping
+{
+    public class ClientContactStatuMap : EntityTypeConfiguration<ClientContactStatu>
+    {
+        public ClientContactStatuMap()
+        {
+            // Primary Key
+            this.HasKey(t => t.ClientContactStatusID);
+
+            // Properties
+            this.Property(t => t.ClientContactStatusID)
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+
+            this.Property(t => t.Name)
+                .IsRequired()
+                .HasMaxLength(50);
+
+            this.Property(t => t.Description)
+                .IsRequired()
+                .HasMaxLength(200);
+
+            // Table & Column Mappings
+            this.ToTable("ClientContactStatus", "Client");
+            this.Property(t => t.ClientContactStatusID).HasColumnName("ClientContactStatusID");
+            this.Property(t => t.Name).HasColumnName("Name");
+            this.Property(t => t.Description).HasColumnName("Description");
+            this.Property(t => t.Active).HasColumnName("Active");
+            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+        }
+    }
+}

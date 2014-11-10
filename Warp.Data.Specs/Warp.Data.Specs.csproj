@@ -68,6 +68,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\Clients\SaveNewClientCommandHandlerTests.cs" />
+    <Compile Include="DataExceptionTests.cs" />
     <Compile Include="Queries\Clients\GetClientQueryHandlerTests.cs" />
     <Compile Include="Queries\Customers\GetCustomerQueryHandlerTests.cs" />
     <Compile Include="Queries\Customers\GetCustomerNameQueryHandlerTests.cs" />

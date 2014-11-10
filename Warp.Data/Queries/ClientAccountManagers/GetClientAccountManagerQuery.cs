@@ -1,0 +1,27 @@
+using System.Linq;
+using Warp.Core.Query;
+using Warp.Data.Context;
+
+namespace Warp.Data.Queries.ClientAccountManagers
+{
+    public class CheckClientAccountManagerExistsQuery : IQuery<bool>
+    {
+        public int AccountManagerId { get; set; }
+    }
+
+    public class CheckClientAccountManagerExistsQueryHandler : IQueryHandler<CheckClientAccountManagerExistsQuery, bool>
+    {
+        private readonly IHospitalityGemDbContext _dbContext;
+
+        public CheckClientAccountManagerExistsQueryHandler(IHospitalityGemDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
+        public bool Execute(CheckClientAccountManagerExistsQuery query)
+        {
+            return _dbContext.ClientAccountManagers
+                .Any(c => c.AccountManagerID == query.AccountManagerId);
+        }
+    }
+}

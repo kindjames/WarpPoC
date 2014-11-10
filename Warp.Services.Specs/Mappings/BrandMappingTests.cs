@@ -2,7 +2,7 @@
 using Machine.Fakes;
 using Machine.Specifications;
 using Warp.Core.Services.Dtos.Brand;
-using Warp.Data.Models;
+using Warp.Data.Entities;
 using Warp.Services.Mappings;
 
 namespace Warp.Services.Specs.Mappings
@@ -10,7 +10,7 @@ namespace Warp.Services.Specs.Mappings
     [Subject("Brand Mapping")]
     public class BrandMappingTests
     {
-        public class When_mapping_from_null_Brand : WithSubject<BrandMapping>
+        public class When_mapping_from_null_Brand : WithSubject<BrandToBrandSummaryDtoMapping>
         {
             static Exception _exception;
 
@@ -29,7 +29,7 @@ namespace Warp.Services.Specs.Mappings
             };
         }
 
-        public class When_mapping_from_valid_Brand : WithSubject<BrandMapping>
+        public class When_mapping_from_valid_Brand : WithSubject<BrandToBrandSummaryDtoMapping>
         {
             static Brand _input;
             static BrandSummaryDto _result;

@@ -4,7 +4,6 @@ using Warp.Core.Services;
 using Warp.Core.Services.Dtos.Client;
 using Warp.Core.Util;
 using Warp.Data.Commands.Clients;
-using Warp.Data.Models;
 
 namespace Warp.Services
 {
@@ -23,9 +22,18 @@ namespace Warp.Services
         {
             Check.NotNull(saveClientDto, "saveClientDto");
 
-            var client = _objectMapper.Map<SaveClientDto, Client>(saveClientDto);
+            ICommand command;
 
-            _commandDispatcher.Execute(new SaveClientCommand { Client = client });
+            if (saveClientDto.Id == 0)
+            {
+                command = _objectMapper.Map<SaveClientDto, SaveNewClientCommand>(saveClientDto);
+            }
+            else
+            {
+                command = _objectMapper.Map<SaveClientDto, UpdateClientCommand>(saveClientDto);
+            }
+            
+            _commandDispatcher.Execute(command);
         }
     }
 }

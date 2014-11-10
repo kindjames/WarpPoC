@@ -1,0 +1,20 @@
+using System.Collections.Generic;
+
+namespace Warp.Data.Entities
+{
+    public partial class AssessorStatusChangeReason
+    {
+        public AssessorStatusChangeReason()
+        {
+            this.AssessorHistories = new List<AssessorHistory>();
+        }
+
+        public short AssessorStatusChangeReasonID { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public bool Active { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
+        public virtual ICollection<AssessorHistory> AssessorHistories { get; set; }
+    }
+}

@@ -1,6 +1,7 @@
 using System.Linq;
 using Warp.Core.Query;
-using Warp.Data.Models;
+using Warp.Data.Context;
+using Warp.Data.Entities;
 
 namespace Warp.Data.Queries.Clients
 {

@@ -2,10 +2,10 @@
 using Machine.Specifications;
 using System;
 using System.Collections.Generic;
-using Warp.Core.Exceptions;
 using Warp.Core.Query;
 using Warp.Core.Services.Dtos.Brand;
-using Warp.Data.Models;
+using Warp.Data.Entities;
+using Warp.Data.Exceptions;
 using Warp.Data.Queries.Brands;
 using MoqIt = Moq.It;
 using ThenIt = Machine.Specifications.It;
@@ -30,7 +30,7 @@ namespace Warp.Services.Specs
             ThenIt should_error = () =>
             {
                 _exception.ShouldNotBeNull();
-                _exception.ShouldBeOfExactType<ClientNotFoundException>();
+                _exception.ShouldBeOfExactType<DataEntityNotFoundException<Client>>();
                 _exception.ShouldContainErrorMessage(NonExistingClientId.ToString());
             };
         }
@@ -51,7 +51,7 @@ namespace Warp.Services.Specs
             ThenIt should = () =>
             {
                 _exception.ShouldNotBeNull();
-                _exception.ShouldBeOfExactType<ClientNotFoundException>();
+                _exception.ShouldBeOfExactType<DataEntityNotFoundException<Client>>();
                 _exception.ShouldContainErrorMessage(ClientId.ToString());
             };
         }

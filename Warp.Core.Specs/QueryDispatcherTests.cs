@@ -2,7 +2,6 @@
 using Machine.Specifications;
 using System;
 using Warp.Core.Exceptions;
-using Warp.Core.Infrastructure;
 using Warp.Core.Infrastructure.IoC;
 using Warp.Core.Query;
 using MoqIt = Moq.It;
@@ -72,9 +71,6 @@ namespace Warp.Core.Specs
 
             ThenIt should_return_result = () =>
                 _result.ShouldEqual(_expectedResult);
-
-            //ThenIt should_release_QueryHandler_from_IoC_container = () =>
-            //    _serviceLocator.WasToldTo(r => r.Release(_mockQueryHandler));
         }
 
         public class When_Execute_is_called_and_QueryHandler_throws_an_exception : WithSubject<QueryDispatcher>
@@ -107,9 +103,6 @@ namespace Warp.Core.Specs
 
             ThenIt should_call_Execute_on_handler = () =>
                 _mockQueryHandler.WasToldTo(h => h.Execute(_mockQuery));
-
-            //ThenIt should_release_QueryHandler_from_IoC_container = () =>
-            //    _serviceLocator.WasToldTo(r => r.Release(_mockQueryHandler));
         }
     }
 }

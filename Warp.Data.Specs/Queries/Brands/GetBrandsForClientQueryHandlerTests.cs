@@ -3,7 +3,8 @@ using System.Linq;
 using FakeDbSet;
 using Machine.Fakes;
 using Machine.Specifications;
-using Warp.Data.Models;
+using Warp.Data.Context;
+using Warp.Data.Entities;
 using Warp.Data.Queries.Brands;
 
 namespace Warp.Data.Specs.Queries.Brands

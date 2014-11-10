@@ -1,0 +1,14 @@
+namespace Warp.Data.Entities
+{
+    public partial class BriefClient
+    {
+        public int BriefClientID { get; set; }
+        public int ClientID { get; set; }
+        public int BriefID { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
+        public bool Active { get; set; }
+        public virtual Client Client { get; set; }
+        public virtual Brief Brief { get; set; }
+    }
+}

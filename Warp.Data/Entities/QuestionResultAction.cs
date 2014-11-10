@@ -1,0 +1,14 @@
+namespace Warp.Data.Entities
+{
+    public partial class QuestionResultAction
+    {
+        public int QuestionResultActionID { get; set; }
+        public int QuestionResultID { get; set; }
+        public int ActionID { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
+        public bool Active { get; set; }
+        public virtual Action Action { get; set; }
+        public virtual QuestionResult QuestionResult { get; set; }
+    }
+}

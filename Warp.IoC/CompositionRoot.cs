@@ -5,14 +5,13 @@ using Warp.Core.Infrastructure;
 using Warp.Core.Infrastructure.IoC;
 using Warp.Core.Query;
 using Warp.Core.Services;
-using Warp.Data;
+using Warp.Data.Context;
 using Warp.Services;
-using Warp.Services.Mappings;
 
 namespace Warp.IoC
 {
     /// <summary>
-    /// Responsible for registering all DI bindings throughout the layers.
+    /// Responsible for registering all DI bindings throughout the layers. Does not, however, include bindings for Web, as this would create cyclic-dependency.
     /// </summary>
     public static class CompositionRoot
     {
@@ -31,7 +30,7 @@ namespace Warp.IoC
             container.Register<IQueryDispatcher, QueryDispatcher>();
             container.RegisterManyForOpenGeneric(typeof(ICommandHandler<>), dataAssembly);
             container.RegisterManyForOpenGeneric(typeof(IQueryHandler<,>), dataAssembly);
-            container.RegisterPerWebRequest<IHospitalityGemDbContext, HospitalityGemDbContext>();
+            container.RegisterPerWebRequest(() => new HospitalityGemDbContextFactory().Build());
 
             // Services
             var serviceAssembly = typeof (ClientService).Assembly;

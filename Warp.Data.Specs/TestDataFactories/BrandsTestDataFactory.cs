@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Warp.Data.Models;
+using Warp.Data.Entities;
 
 namespace Warp.Data.Specs.TestDataFactories
 {

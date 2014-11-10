@@ -8,8 +8,8 @@ namespace Warp.Core.Services.Dtos.Client
         public int Id { get; set; }
         public int CustomerId { get; set; }
         public string Name { get; set; }
-        public int Status { get; set; }
-        public int AccountManager { get; set; }
+        public short StatusId { get; set; }
+        public int AccountManagerId { get; set; }
         public string Code { get; set; }
         public int LegacyId { get; set; }
         public string InternalUseOnly { get; set; }

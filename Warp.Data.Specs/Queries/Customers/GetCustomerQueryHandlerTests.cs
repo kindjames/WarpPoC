@@ -2,7 +2,8 @@
 using Machine.Fakes;
 using Machine.Specifications;
 using System;
-using Warp.Data.Models;
+using Warp.Data.Context;
+using Warp.Data.Entities;
 using Warp.Data.Queries.Customers;
 
 namespace Warp.Data.Specs.Queries.Customers

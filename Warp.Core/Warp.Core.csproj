@@ -40,7 +40,6 @@
     <Compile Include="Command\ICommandDispatcher.cs" />
     <Compile Include="Command\ICommandHandler.cs" />
     <Compile Include="Exceptions\ClientAlreadyExistsException.cs" />
-    <Compile Include="Exceptions\ClientNotFoundException.cs" />
     <Compile Include="Exceptions\ObjectMappingConfigurationNotFound.cs" />
     <Compile Include="Exceptions\QueryHandlerNotFoundException.cs" />
     <Compile Include="Infrastructure\DateTimeProvider.cs" />

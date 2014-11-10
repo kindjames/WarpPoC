@@ -1,0 +1,19 @@
+using System.Collections.Generic;
+
+namespace Warp.Data.Entities
+{
+    public partial class StaffAge
+    {
+        public StaffAge()
+        {
+            this.StaffMembers = new List<StaffMember>();
+        }
+
+        public byte StaffAgeID { get; set; }
+        public string Name { get; set; }
+        public bool Active { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateUpdated { get; set; }
+        public virtual ICollection<StaffMember> StaffMembers { get; set; }
+    }
+}

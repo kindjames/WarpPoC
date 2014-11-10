@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Warp.Core.Exceptions;
-using Warp.Core.Infrastructure;
+﻿using Warp.Core.Infrastructure;
 using Warp.Core.Query;
 using Warp.Core.Services;
 using Warp.Core.Services.Dtos.Brand;
-using Warp.Data.Models;
+using Warp.Data.Entities;
+using Warp.Data.Exceptions;
 using Warp.Data.Queries.Brands;
 using Warp.Data.Queries.Clients;
 using Warp.Data.Queries.Customers;
@@ -29,7 +27,7 @@ namespace Warp.Services
 
             if (client == null)
             {
-                throw new ClientNotFoundException(clientId);
+                throw new DataEntityNotFoundException<Client>(clientId);
             }
 
             var brands = _queryDispatcher.Execute(new GetBrandsForClientQuery {ClientId = clientId});
