@@ -70,7 +70,6 @@ namespace Warp.Data.Specs.Commands.Clients
 
         public class When_saving_new_client : WithSubject<SaveNewClientCommandHandler>
         {
-            static Exception _exception;
             static IDbSet<Client> _clientRepository;
 
             private Establish that = () =>

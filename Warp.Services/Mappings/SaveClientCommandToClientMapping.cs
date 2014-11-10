@@ -17,7 +17,7 @@ namespace Warp.Services.Mappings
 
         public Client Map(SaveNewClientCommand source)
         {
-            Check.NotNull(source, "source");
+            CheckArgument.NotNull(source, "source");
 
             var now = _dateTimeProvider.UtcNow();
 

@@ -9,7 +9,7 @@ namespace Warp.Services.Mappings
     {
         public BrandSummaryDto Map(Brand source)
         {
-            Check.NotNull(source, "source");
+            CheckArgument.NotNull(source, "source");
 
             return new BrandSummaryDto
             {

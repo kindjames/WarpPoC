@@ -57,7 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CheckTests.cs" />
+    <Compile Include="CheckArgumentTests.cs" />
     <Compile Include="CoreExceptionTests.cs" />
     <Compile Include="QueryDispatcherTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

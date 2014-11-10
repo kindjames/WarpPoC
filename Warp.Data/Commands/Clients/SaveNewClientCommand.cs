@@ -50,9 +50,9 @@ namespace Warp.Data.Commands.Clients
 
         public void Execute(SaveNewClientCommand command)
         {
-            Check.NotNull(command, "command");
+            CheckArgument.NotNull(command, "command");
             
-            // Check client exists for customer id and client code.
+            // CheckArgument client exists for customer id and client code.
             var clientExistsQuery = new CheckClientExistsForCodeQuery { CustomerId = command.CustomerId, ClientCode = command.ClientCode };
 
             if (_queryDispatcher.Execute(clientExistsQuery))
@@ -60,7 +60,7 @@ namespace Warp.Data.Commands.Clients
                 throw new ClientAlreadyExistsException(clientExistsQuery.CustomerId, clientExistsQuery.ClientCode);
             }
 
-            // Check account manager exists.
+            // CheckArgument account manager exists.
             var accountManagerExistsQuery = new CheckClientAccountManagerExistsQuery { AccountManagerId = command.AccountMangerAdminId };
 
             if (!_queryDispatcher.Execute(accountManagerExistsQuery))

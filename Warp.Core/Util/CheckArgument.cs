@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Warp.Core.Util
 {
-    public class Check
+    public class CheckArgument
     {
         public static T NotNull<T>(T value, string parameterName) where T : class
         {
@@ -18,11 +18,11 @@ namespace Warp.Core.Util
 
         public static IEnumerable<T> NotNullAndHasItems<T>(IEnumerable<T> collection, string parameterName) where T : class
         {
+            NotNull(collection, parameterName);
+
             var enumerable = collection as List<T> ?? collection.ToList();
-
-            NotNull(enumerable, parameterName);
-
-            if (enumerable.Any())
+            
+            if (!enumerable.Any())
             {
                 throw new ArgumentException("Collection has no items.", parameterName);
             }
@@ -44,7 +44,7 @@ namespace Warp.Core.Util
         {
             if (string.IsNullOrWhiteSpace(value))
             {
-                throw new ArgumentException("String is empty or whitespace -> "+ (object)parameterName);
+                throw new ArgumentException("Parameter '" + parameterName + "' is null, empty or contains only whitespace.");
             }
 
             return value;
@@ -54,7 +54,7 @@ namespace Warp.Core.Util
         {
             if (value == 0)
             {
-                throw new Exception("Parameter '"+ parameterName + "' cannot be zero.");
+                throw new ArgumentException("Parameter '"+ parameterName + "' cannot be zero.");
             }
 
             return value;

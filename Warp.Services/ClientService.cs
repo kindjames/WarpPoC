@@ -20,7 +20,7 @@ namespace Warp.Services
 
         public void SaveClient(SaveClientDto saveClientDto)
         {
-            Check.NotNull(saveClientDto, "saveClientDto");
+            CheckArgument.NotNull(saveClientDto, "saveClientDto");
 
             ICommand command;
 

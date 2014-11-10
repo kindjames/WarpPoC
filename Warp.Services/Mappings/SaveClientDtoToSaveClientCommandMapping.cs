@@ -10,7 +10,7 @@ namespace Warp.Services.Mappings
     {
         public SaveNewClientCommand Map(SaveClientDto source)
         {
-            Check.NotNull(source, "source");
+            CheckArgument.NotNull(source, "source");
 
             return new SaveNewClientCommand
             {

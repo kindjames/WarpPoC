@@ -57,7 +57,7 @@ namespace Warp.Data.Commands.Clients
 
         public void Execute(UpdateClientCommand command)
         {
-            Check.NotNull(command, "command");
+            CheckArgument.NotNull(command, "command");
         }
     }
 }
