@@ -1,18 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using Warp.Core.Infrastructure;
+using Warp.Core.Services;
+using Warp.Core.Services.Dtos.Client;
+using Warp.WebUI.ViewModels.Clients;
 
 namespace Warp.WebUI.Controllers
 {
     public class ClientsController : Controller
     {
-        //
-        // GET: /Client/
-        public ActionResult Index()
+        private readonly IClientService _clientService;
+        private readonly IObjectMapper _objectMapper;
+
+        public ClientsController(IClientService clientService, IObjectMapper objectMapper)
         {
-            return View();
+            _clientService = clientService;
+            _objectMapper = objectMapper;
+        }
+
+        [Route("{clientId:int}")]
+        public ActionResult GetClient(int clientId)
+        {
+            var client = _clientService.GetClient(clientId);
+
+            var viewModel = _objectMapper.Map<GetClientDto, GetClientViewModel>(client);
+
+            return View(viewModel);
         }
 	}
 }

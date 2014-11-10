@@ -4,7 +4,7 @@ using Warp.Core.Util;
 using Warp.Data.Commands.Clients;
 using Warp.Data.Entities;
 
-namespace Warp.Services.Mappings
+namespace Warp.Services.Mappings.Clients
 {
     public sealed class SaveClientCommandToClientMapping : IMappingConfiguration<SaveNewClientCommand, Client>
     {

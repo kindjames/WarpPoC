@@ -3,7 +3,7 @@ using Warp.Core.Services.Dtos.Brand;
 using Warp.Core.Util;
 using Warp.Data.Entities;
 
-namespace Warp.Services.Mappings
+namespace Warp.Services.Mappings.Brands
 {
     public sealed class BrandToBrandSummaryDtoMapping : IMappingConfiguration<Brand, BrandSummaryDto>
     {

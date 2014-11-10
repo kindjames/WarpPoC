@@ -1,6 +1,8 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
+using Warp.Core.Infrastructure;
 using Warp.Core.Services;
+using Warp.Core.Services.Dtos.Brand;
 using Warp.WebUI.ViewModels;
 
 namespace Warp.WebUI.Controllers
@@ -8,22 +10,19 @@ namespace Warp.WebUI.Controllers
     public class HomeController : Controller
     {
         private readonly IBrandService _brandService;
+        private readonly IObjectMapper _objectMapper;
 
-        public HomeController(IBrandService brandService)
+        public HomeController(IBrandService brandService, IObjectMapper objectMapper)
         {
             _brandService = brandService;
+            _objectMapper = objectMapper;
         }
 
         public ActionResult Index(int id)
         {
-            var data = _brandService.GetBrandSummaryListForClient(id);
+            var dto = _brandService.GetBrandSummaryListForClient(id);
 
-            var viewModel = new BrandSummaryListViewModel
-            {
-                ClientName = data.ClientName,
-                CustomerName = data.CustomerName,
-                BrandNames = data.Brands.Select(b => b.BrandName),
-            };
+            var viewModel = _objectMapper.Map<BrandSummaryListDto, BrandSummaryListViewModel>(dto);
 
             return View(viewModel);
         }

@@ -4,7 +4,7 @@ using Warp.Core.Services.Dtos.Client;
 using Warp.Core.Util;
 using Warp.Data.Commands.Clients;
 
-namespace Warp.Services.Mappings
+namespace Warp.Services.Mappings.Clients
 {
     public sealed class SaveClientDtoToSaveClientCommandMapping : IMappingConfiguration<SaveClientDto, SaveNewClientCommand>
     {

@@ -4,6 +4,7 @@ using Machine.Specifications;
 using Warp.Core.Services.Dtos.Brand;
 using Warp.Data.Entities;
 using Warp.Services.Mappings;
+using Warp.Services.Mappings.Brands;
 
 namespace Warp.Services.Specs.Mappings
 {

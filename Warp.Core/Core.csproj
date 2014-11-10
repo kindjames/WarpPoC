@@ -58,6 +58,7 @@
     <Compile Include="Services\Dtos\Brand\BrandSummaryListDto.cs" />
     <Compile Include="Services\Dtos\Client\SaveClientDto.cs" />
     <Compile Include="Services\Dtos\ContactAddressAssignedDto.cs" />
+    <Compile Include="Services\Dtos\Client\GetClientDto.cs" />
     <Compile Include="Services\IClientService.cs" />
     <Compile Include="Services\IBrandService.cs" />
     <Compile Include="Infrastructure\IObjectMapper.cs" />

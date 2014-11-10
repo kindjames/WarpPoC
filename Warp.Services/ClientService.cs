@@ -1,5 +1,4 @@
-﻿using System;
-using Warp.Core.Command;
+﻿using Warp.Core.Command;
 using Warp.Core.Infrastructure;
 using Warp.Core.Query;
 using Warp.Core.Services;
@@ -56,15 +55,5 @@ namespace Warp.Services
             
             _commandDispatcher.Execute(command);
         }
-    }
-
-    public class GetClientDto
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public short StatusId { get; set; }
-        public string Code { get; set; }
-        public int CustomerId { get; set; }
-        public DateTime? DateValidFrom { get; set; }
     }
 }

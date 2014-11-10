@@ -37,10 +37,10 @@
   <ItemGroup>
     <Compile Include="BrandService.cs" />
     <Compile Include="ClientService.cs" />
-    <Compile Include="Mappings\BrandToBrandSummaryDtoMapping.cs" />
-    <Compile Include="Mappings\SaveClientCommandToClientMapping.cs" />
+    <Compile Include="Mappings\Brands\BrandToBrandSummaryDtoMapping.cs" />
+    <Compile Include="Mappings\Clients\SaveClientCommandToClientMapping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Mappings\SaveClientDtoToSaveClientCommandMapping.cs" />
+    <Compile Include="Mappings\Clients\SaveClientDtoToSaveClientCommandMapping.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Warp.Core\Core.csproj">
