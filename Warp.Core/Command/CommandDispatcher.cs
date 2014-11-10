@@ -1,4 +1,8 @@
-﻿using Warp.Core.Infrastructure.IoC;
+﻿using System;
+using System.Diagnostics;
+using FluentValidation;
+using Warp.Core.Exceptions;
+using Warp.Core.Infrastructure.IoC;
 
 namespace Warp.Core.Command
 {
@@ -11,32 +15,38 @@ namespace Warp.Core.Command
             _serviceLocator = serviceLocator;
         }
 
-        //public TResult Execute<TResult>(IQuery<TResult> query)
-        //    where TResult : class
-        //{
-        //    var handlerType = typeof(IQueryHandler<,>)
-        //        .MakeGenericType(query.GetType(), typeof(TResult));
-
-        //    var handler = _dependencyResolver.TryResolve(handlerType);
-            
-        //    if (handler == null)
-        //    {
-        //        throw new QueryHandlerNotFoundException<TResult>(query);
-        //    }
-
-        //    try
-        //    {
-        //        return (TResult)((dynamic)handler).Execute((dynamic)query);
-        //    }
-        //    finally
-        //    {
-        //        _dependencyResolver.Release(handler);
-        //    }
-        //}
-
         public void Execute(ICommand command)
         {
-            throw new System.NotImplementedException();
+            Validate(command);
+
+            var handlerType = typeof(ICommandHandler<>)
+                .MakeGenericType(command.GetType());
+
+            var handler = _serviceLocator.TryResolve(handlerType);
+
+            if (handler == null)
+            {
+                throw new CommandHandlerNotFoundException(command);
+            }
+
+            ((dynamic)handler).Execute((dynamic)command);
+        }
+
+        private void Validate(ICommand command)
+        {
+            var validatorType = typeof(AbstractValidator<>)
+                .MakeGenericType(command.GetType());
+
+            var validator = _serviceLocator.TryResolve(validatorType);
+
+            if (validator != null)
+            {
+                ((dynamic)validator).Validate((dynamic)command);
+            }
+            else if (Debugger.IsAttached)
+            {
+                throw new ValidatorNotFoundForEntityException(command.GetType());
+            }
         }
     }
 }

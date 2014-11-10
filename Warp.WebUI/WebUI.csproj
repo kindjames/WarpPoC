@@ -114,6 +114,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IoCConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="ViewModels\BrandSummaryListViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -134,6 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Infrastructure\" />
+    <Folder Include="Views\Client\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Warp.Core\Core.csproj">

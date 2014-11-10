@@ -1,4 +1,5 @@
-﻿using SimpleInjector;
+﻿using FluentValidation;
+using SimpleInjector;
 using SimpleInjector.Extensions;
 using Warp.Core.Command;
 using Warp.Core.Infrastructure;
@@ -30,6 +31,7 @@ namespace Warp.IoC
             container.Register<IQueryDispatcher, QueryDispatcher>();
             container.RegisterManyForOpenGeneric(typeof(ICommandHandler<>), dataAssembly);
             container.RegisterManyForOpenGeneric(typeof(IQueryHandler<,>), dataAssembly);
+            container.RegisterManyForOpenGeneric(typeof(AbstractValidator<>), dataAssembly);
             container.RegisterPerWebRequest(() => new HospitalityGemDbContextFactory().Build());
 
             // Services
@@ -37,6 +39,7 @@ namespace Warp.IoC
             container.Register<IClientService, ClientService>();
             container.Register<IBrandService, BrandService>();
             container.RegisterManyForOpenGeneric(typeof(IMappingConfiguration<,>), serviceAssembly);
+            container.RegisterManyForOpenGeneric(typeof(AbstractValidator<>), serviceAssembly);
         }
     }
 }

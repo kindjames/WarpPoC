@@ -7,6 +7,7 @@ using Warp.Data.Exceptions;
 using Warp.Data.Queries.Brands;
 using Warp.Data.Queries.Clients;
 using Warp.Data.Queries.Customers;
+using Warp.Data.QueryValidators.Clients;
 
 namespace Warp.Services
 {

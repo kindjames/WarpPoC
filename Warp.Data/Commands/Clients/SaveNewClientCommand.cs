@@ -39,9 +39,9 @@ namespace Warp.Data.Commands.Clients
     {
         private readonly IHospitalityGemDbContext _dbContext;
         private readonly IQueryDispatcher _queryDispatcher;
-        private readonly IObjectMapper _objectMapper;
+        private readonly IMappingConfiguration<SaveNewClientCommand, Client> _objectMapper;
 
-        public SaveNewClientCommandHandler(IHospitalityGemDbContext dbContext, IQueryDispatcher queryDispatcher, IObjectMapper objectMapper)
+        public SaveNewClientCommandHandler(IHospitalityGemDbContext dbContext, IQueryDispatcher queryDispatcher, IMappingConfiguration<SaveNewClientCommand, Client> objectMapper)
         {
             _dbContext = dbContext;
             _queryDispatcher = queryDispatcher;
@@ -68,7 +68,7 @@ namespace Warp.Data.Commands.Clients
                 throw new DataEntityNotFoundException<ClientAccountManager>(command.AccountMangerAdminId);
             }
 
-            var clientEntity = _objectMapper.Map<SaveNewClientCommand, Client>(command);
+            var clientEntity = _objectMapper.Map(command);
             
             _dbContext.Clients.Add(clientEntity);
 
