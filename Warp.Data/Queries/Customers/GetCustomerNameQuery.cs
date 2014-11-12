@@ -1,11 +1,13 @@
 using System.Linq;
 using Warp.Core.Query;
+using Warp.Core.Validation;
 using Warp.Data.Context;
 
 namespace Warp.Data.Queries.Customers
 {
     public class GetCustomerNameQuery : IQuery<string>
     {
+        [IdRequired]
         public int CustomerId { get; set; }
     }
 

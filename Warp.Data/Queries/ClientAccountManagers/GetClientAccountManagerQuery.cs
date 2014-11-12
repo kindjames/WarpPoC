@@ -1,11 +1,13 @@
 using System.Linq;
 using Warp.Core.Query;
+using Warp.Core.Validation;
 using Warp.Data.Context;
 
 namespace Warp.Data.Queries.ClientAccountManagers
 {
     public class CheckClientAccountManagerExistsQuery : IQuery<bool>
     {
+        [IdRequired]
         public int AccountManagerId { get; set; }
     }
 

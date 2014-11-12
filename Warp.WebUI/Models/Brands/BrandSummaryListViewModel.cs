@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Warp.WebUI.ViewModels
+namespace Warp.WebUI.Models.Brands
 {
     public class BrandSummaryListViewModel
     {

@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using System.Reflection;
+using AutoMapper;
 using SimpleInjector;
 using SimpleInjector.Extensions;
 using Warp.Core.Command;
@@ -8,38 +9,51 @@ using Warp.Core.Query;
 using Warp.Core.Services;
 using Warp.Data.Context;
 using Warp.Services;
+using IObjectMapper = Warp.Core.Infrastructure.IObjectMapper;
 
 namespace Warp.IoC
 {
-    /// <summary>
-    /// Responsible for registering all DI bindings throughout the layers. Does not, however, include bindings for Web, as this would create cyclic-dependency.
-    /// </summary>
     public static class CompositionRoot
     {
+        /// <summary>
+        /// Responsible for registering all DI bindings within the project.
+        /// </summary>
+        /// <param name="container">The SimpleInjector Container</param>
         public static void RegisterBindings(Container container)
         {
+            // AutoMapper
+            container.Register(typeof(IMappingEngine), () => Mapper.Engine);
+
             // IoC
             container.Register<IServiceLocator, ServiceLocator>();
 
             // Core
             container.Register<IDateTimeProvider, DateTimeProvider>();
             container.Register<IObjectMapper, ObjectMapper>();
+            container.Register<IValidator, DataAnnotationsValidator>();
 
             // Data
-            var dataAssembly = typeof (IHospitalityGemDbContext).Assembly;
+            var dataAssembly = typeof(IHospitalityGemDbContext).Assembly;
             container.Register<ICommandDispatcher, CommandDispatcher>();
             container.Register<IQueryDispatcher, QueryDispatcher>();
             container.RegisterManyForOpenGeneric(typeof(ICommandHandler<>), dataAssembly);
             container.RegisterManyForOpenGeneric(typeof(IQueryHandler<,>), dataAssembly);
-            container.RegisterManyForOpenGeneric(typeof(AbstractValidator<>), dataAssembly);
+            container.RegisterManyForOpenGeneric(typeof(IMappingConfiguration<,>), dataAssembly);
             container.RegisterPerWebRequest(() => new HospitalityGemDbContextFactory().Build());
 
             // Services
-            var serviceAssembly = typeof (ClientService).Assembly;
+            var serviceAssembly = typeof(ClientService).Assembly;
             container.Register<IClientService, ClientService>();
             container.Register<IBrandService, BrandService>();
             container.RegisterManyForOpenGeneric(typeof(IMappingConfiguration<,>), serviceAssembly);
-            container.RegisterManyForOpenGeneric(typeof(AbstractValidator<>), serviceAssembly);
+
+            // MVC
+            var mvcAssembly = Assembly.GetCallingAssembly();
+            container.RegisterMvcControllers(mvcAssembly);
+            container.RegisterMvcIntegratedFilterProvider();
+            container.RegisterManyForOpenGeneric(typeof(IMappingConfiguration<,>), mvcAssembly);
+
+            container.Verify();
         }
     }
 }

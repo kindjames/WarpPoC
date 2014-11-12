@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Warp.Core.Query;
+using Warp.Core.Validation;
 using Warp.Data.Context;
 using Warp.Data.Entities;
 
@@ -8,6 +9,7 @@ namespace Warp.Data.Queries.Brands
 {
     public class GetBrandsForClientQuery : IQuery<IEnumerable<Brand>>
     {
+        [IdRequired]
         public int ClientId { get; set; }
     }
 

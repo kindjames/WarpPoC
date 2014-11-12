@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using AutoMapper;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
-using Warp.Core.Exceptions;
 using Warp.Core.Infrastructure.IoC;
 
 namespace Warp.Core.Infrastructure
@@ -11,10 +12,12 @@ namespace Warp.Core.Infrastructure
     public class ObjectMapper : IObjectMapper
     {
         private readonly IServiceLocator _serviceLocator;
+        private readonly IMappingEngine _mappingEngine;
 
-        public ObjectMapper(IServiceLocator serviceLocator)
+        public ObjectMapper(IServiceLocator serviceLocator, IMappingEngine mappingEngine)
         {
             _serviceLocator = serviceLocator;
+            _mappingEngine = mappingEngine;
         }
 
         public TTo Map<TFrom, TTo>(TFrom from)
@@ -23,7 +26,10 @@ namespace Warp.Core.Infrastructure
 
             if (mapper == null)
             {
-                throw new ObjectMappingConfigurationNotFound<TFrom, TTo>();
+                Debug.WriteLine("INFO: Could not find IMappingConfiguration<{0}, {1}> -> defaulting to AutoMapper.",
+                    typeof (TFrom).Name, typeof (TTo).Name);
+
+                return _mappingEngine.DynamicMap<TFrom, TTo>(from);
             }
 
             return mapper.Map(from);
@@ -31,14 +37,7 @@ namespace Warp.Core.Infrastructure
         
         public IEnumerable<TTo> MapMany<TFrom, TTo>(IEnumerable<TFrom> from)
         {
-            var mapper = _serviceLocator.TryResolve<IMappingConfiguration<TFrom, TTo>>();
-
-            if (mapper == null)
-            {
-                throw new ObjectMappingConfigurationNotFound<TFrom, TTo>();
-            }
-
-            return from.Select(mapper.Map);
+            return from.Select(Map<TFrom,TTo>);
         }
     }
 }

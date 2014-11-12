@@ -1,7 +1,5 @@
-﻿using System;
-using System.Diagnostics;
-using FluentValidation;
-using Warp.Core.Exceptions;
+﻿using Warp.Core.Exceptions;
+using Warp.Core.Infrastructure;
 using Warp.Core.Infrastructure.IoC;
 
 namespace Warp.Core.Command
@@ -9,15 +7,17 @@ namespace Warp.Core.Command
     public class CommandDispatcher : ICommandDispatcher
     {
         private readonly IServiceLocator _serviceLocator;
+        private readonly IValidator _validator;
 
-        public CommandDispatcher(IServiceLocator serviceLocator)
+        public CommandDispatcher(IServiceLocator serviceLocator, IValidator validator)
         {
             _serviceLocator = serviceLocator;
+            _validator = validator;
         }
 
         public void Execute(ICommand command)
         {
-            Validate(command);
+            _validator.Validate(command);
 
             var handlerType = typeof(ICommandHandler<>)
                 .MakeGenericType(command.GetType());
@@ -30,23 +30,6 @@ namespace Warp.Core.Command
             }
 
             ((dynamic)handler).Execute((dynamic)command);
-        }
-
-        private void Validate(ICommand command)
-        {
-            var validatorType = typeof(AbstractValidator<>)
-                .MakeGenericType(command.GetType());
-
-            var validator = _serviceLocator.TryResolve(validatorType);
-
-            if (validator != null)
-            {
-                ((dynamic)validator).Validate((dynamic)command);
-            }
-            else if (Debugger.IsAttached)
-            {
-                throw new ValidatorNotFoundForEntityException(command.GetType());
-            }
         }
     }
 }

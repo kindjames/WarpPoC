@@ -38,9 +38,7 @@
     <Compile Include="BrandService.cs" />
     <Compile Include="ClientService.cs" />
     <Compile Include="Mappings\Brands\BrandToBrandSummaryDtoMapping.cs" />
-    <Compile Include="Mappings\Clients\SaveClientCommandToClientMapping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Mappings\Clients\SaveClientDtoToSaveClientCommandMapping.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Warp.Core\Core.csproj">
@@ -53,7 +51,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Validators\" />
+    <Folder Include="Mappings\Clients\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

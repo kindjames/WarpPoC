@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Linq;
 using Warp.Core.Command;
@@ -8,6 +9,7 @@ using Warp.Core.Exceptions;
 using Warp.Core.Infrastructure;
 using Warp.Core.Query;
 using Warp.Core.Util;
+using Warp.Core.Validation;
 using Warp.Data.Context;
 using Warp.Data.Entities;
 using Warp.Data.Exceptions;
@@ -18,19 +20,14 @@ namespace Warp.Data.Commands.Clients
 {
     public sealed class UpdateClientCommand : ICommand
     {
-        public class ContactAddressClient
-        {
-            public int AssignedByAdminId { get; set; }
-            public int ContactAddressId { get; set; }
-            public int ContactAddressTypeId { get; set; }
-        }
-
         public UpdateClientCommand()
         {
             ContactAddresses = new List<ContactAddressClient>();
         }
 
+        [IdRequired]
         public int ClientId { get; set; }
+        
         public string ClientName { get; set; }
         public int CustomerId { get; set; }
         public string ClientCode { get; set; }
@@ -58,6 +55,12 @@ namespace Warp.Data.Commands.Clients
         public void Execute(UpdateClientCommand command)
         {
             CheckArgument.NotNull(command, "command");
+
+            var clientEntity = _objectMapper.Map<UpdateClientCommand, Client>(command);
+
+            _dbContext.Clients.Attach(clientEntity);
+
+            _dbContext.SaveChanges();
         }
     }
 }

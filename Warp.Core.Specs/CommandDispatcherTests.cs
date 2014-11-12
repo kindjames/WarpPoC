@@ -1,8 +1,8 @@
-﻿using FluentValidation;
-using Machine.Fakes;
+﻿using Machine.Fakes;
 using Machine.Specifications;
 using System;
 using Warp.Core.Exceptions;
+using Warp.Core.Infrastructure;
 using Warp.Core.Infrastructure.IoC;
 using Warp.Core.Command;
 using Param = Moq.It;
@@ -46,13 +46,6 @@ namespace Warp.Core.Specs
 
                 _mockCommand = An<ICommand>();
                 
-                // Mock command Validator
-                _mockCommandValidator = An<AbstractValidator<ICommand>>();
-
-                _serviceLocator
-                    .WhenToldTo(r => r.TryResolve(typeof(AbstractValidator<>).MakeGenericType(_mockCommand.GetType())))
-                    .Return(_mockCommandValidator);
-                
                 // Mock command Handler
                 _mockCommandHandler = An<ICommandHandler<ICommand>>();
 
@@ -64,14 +57,13 @@ namespace Warp.Core.Specs
             Because of = () => Subject.Execute(_mockCommand);
 
             ThenIt should_call__Validate__on_handler = () =>
-                _mockCommandValidator.WasToldTo(v => v.Validate(_mockCommand));
+                The<IValidator>().WasToldTo(v => v.Validate(_mockCommand));
 
             ThenIt should_call__Execute__on_handler = () =>
                 _mockCommandHandler.WasToldTo(h => h.Execute(_mockCommand));
 
             static ICommand _mockCommand;
             static ICommandHandler<ICommand> _mockCommandHandler;
-            static AbstractValidator<ICommand> _mockCommandValidator;
             static IServiceLocator _serviceLocator;
             static string _expectedResult;
         }
@@ -84,13 +76,6 @@ namespace Warp.Core.Specs
                 _serviceLocator = The<IServiceLocator>();
 
                 _mockCommand = An<ICommand>();
-
-                // Mock command Validator
-                _mockCommandValidator = An<AbstractValidator<ICommand>>();
-
-                _serviceLocator
-                    .WhenToldTo(r => r.TryResolve(typeof(AbstractValidator<>).MakeGenericType(_mockCommand.GetType())))
-                    .Return(_mockCommandValidator);
 
                 // Mock command Handler
                 _mockCommandHandler = An<ICommandHandler<ICommand>>();
@@ -112,7 +97,6 @@ namespace Warp.Core.Specs
 
             static ICommand _mockCommand;
             static ICommandHandler<ICommand> _mockCommandHandler;
-            static AbstractValidator<ICommand> _mockCommandValidator;
             static IServiceLocator _serviceLocator;
             static Exception _exception;
         }

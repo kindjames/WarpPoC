@@ -1,8 +1,8 @@
-﻿using FluentValidation;
-using Machine.Fakes;
+﻿using Machine.Fakes;
 using Machine.Specifications;
 using System;
 using Warp.Core.Exceptions;
+using Warp.Core.Infrastructure;
 using Warp.Core.Infrastructure.IoC;
 using Warp.Core.Query;
 using Param = Moq.It;
@@ -68,13 +68,6 @@ namespace Warp.Core.Specs
 
                 _mockQuery = An<IQuery<string>>();
                 
-                // Mock query Validator
-                _mockQueryValidator = An<AbstractValidator<IQuery<string>>>();
-
-                _serviceLocator
-                    .WhenToldTo(r => r.TryResolve(typeof(AbstractValidator<>).MakeGenericType(_mockQuery.GetType(), typeof(string))))
-                    .Return(_mockQueryValidator);
-                
                 // Mock query Handler
                 _mockQueryHandler = An<IQueryHandler<IQuery<string>, string>>();
 
@@ -90,7 +83,7 @@ namespace Warp.Core.Specs
             Because of = () => _result = Subject.Execute(_mockQuery);
 
             ThenIt should_call__Validate__on_handler = () =>
-                _mockQueryValidator.WasToldTo(v => v.Validate(_mockQuery));
+                The<IValidator>().WasToldTo(v => v.Validate(_mockQuery));
 
             ThenIt should_call__Execute__on_handler = () =>
                 _mockQueryHandler.WasToldTo(h => h.Execute(_mockQuery));
@@ -100,7 +93,6 @@ namespace Warp.Core.Specs
 
             static IQuery<string> _mockQuery;
             static IQueryHandler<IQuery<string>, string> _mockQueryHandler;
-            static AbstractValidator<IQuery<string>> _mockQueryValidator;
             static IServiceLocator _serviceLocator;
             static string _result;
             static string _expectedResult;
@@ -114,13 +106,6 @@ namespace Warp.Core.Specs
                 _serviceLocator = The<IServiceLocator>();
 
                 _mockQuery = An<IQuery<string>>();
-
-                // Mock query Validator
-                _mockQueryValidator = An<AbstractValidator<IQuery<string>>>();
-
-                _serviceLocator
-                    .WhenToldTo(r => r.TryResolve(typeof(AbstractValidator<>).MakeGenericType(_mockQuery.GetType(), typeof(string))))
-                    .Return(_mockQueryValidator);
 
                 // Mock query Handler
                 _mockQueryHandler = An<IQueryHandler<IQuery<string>, string>>();
@@ -142,7 +127,6 @@ namespace Warp.Core.Specs
 
             static IQuery<string> _mockQuery;
             static IQueryHandler<IQuery<string>, string> _mockQueryHandler;
-            static AbstractValidator<IQuery<string>> _mockQueryValidator;
             static IServiceLocator _serviceLocator;
             static Exception _exception;
         }

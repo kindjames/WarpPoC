@@ -26,7 +26,7 @@ namespace Warp.Data.Entities.Mapping
             this.Property(t => t.ClientHistoryID).HasColumnName("ClientHistoryID");
             this.Property(t => t.ClientID).HasColumnName("ClientID");
             this.Property(t => t.ClientStatusID).HasColumnName("ClientStatusID");
-            this.Property(t => t.ClientName).HasColumnName("ClientName");
+            this.Property(t => t.ClientName).HasColumnName("Name");
             this.Property(t => t.Code).HasColumnName("Code");
             this.Property(t => t.DateValidFrom).HasColumnName("DateValidFrom");
             this.Property(t => t.DateValidTo).HasColumnName("DateValidTo");

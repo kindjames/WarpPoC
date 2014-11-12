@@ -6,7 +6,7 @@ namespace Warp.WebUI
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new Elmah.Contrib.Mvc.ElmahHandleErrorAttribute());
+            //filters.Add(new Elmah.Contrib.Mvc.ElmahHandleErrorAttribute());
         }
     }
 }

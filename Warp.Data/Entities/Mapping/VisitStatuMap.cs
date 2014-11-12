@@ -30,7 +30,7 @@ namespace Warp.Data.Entities.Mapping
             this.ToTable("VisitStatus");
             this.Property(t => t.VisitStatusID).HasColumnName("VisitStatusID");
             this.Property(t => t.AdminName).HasColumnName("AdminName");
-            this.Property(t => t.ClientName).HasColumnName("ClientName");
+            this.Property(t => t.ClientName).HasColumnName("Name");
             this.Property(t => t.AssessorName).HasColumnName("AssessorName");
             this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
             this.Property(t => t.DateCreated).HasColumnName("DateCreated");

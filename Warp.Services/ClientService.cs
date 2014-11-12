@@ -41,19 +41,21 @@ namespace Warp.Services
         public void SaveClient(SaveClientDto saveClientDto)
         {
             CheckArgument.NotNull(saveClientDto, "saveClientDto");
-
-            ICommand command;
-
+            
             if (saveClientDto.Id == 0)
             {
-                command = _objectMapper.Map<SaveClientDto, SaveNewClientCommand>(saveClientDto);
+                var command = _objectMapper.Map<SaveClientDto, SaveNewClientCommand>(saveClientDto);
+
+                _commandDispatcher.Execute(command);
+
+                saveClientDto.Id = command.ClientId;
             }
             else
             {
-                command = _objectMapper.Map<SaveClientDto, UpdateClientCommand>(saveClientDto);
+                var command = _objectMapper.Map<SaveClientDto, UpdateClientCommand>(saveClientDto);
+
+                _commandDispatcher.Execute(command);
             }
-            
-            _commandDispatcher.Execute(command);
         }
     }
 }

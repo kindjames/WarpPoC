@@ -25,7 +25,7 @@ namespace Warp.Data.Specs.Commands.Clients
 
             private Establish that = () =>
             {
-                _command = new SaveNewClientCommand { ClientCode = "TESTYEAH", CustomerId = 69 };
+                _command = new SaveNewClientCommand { Code = "TESTYEAH", CustomerId = 69 };
 
                 The<IQueryDispatcher>()
                     .WhenToldTo(d => d.Execute(MoqIt.IsAny<CheckClientExistsForCodeQuery>()))
@@ -48,7 +48,7 @@ namespace Warp.Data.Specs.Commands.Clients
 
             private Establish that = () =>
             {
-                _command = new SaveNewClientCommand { AccountMangerAdminId = 32 };
+                _command = new SaveNewClientCommand { AccountManagerAdminId = 32 };
 
                 The<IQueryDispatcher>()
                     .WhenToldTo(d => d.Execute(MoqIt.IsAny<CheckClientExistsForCodeQuery>()))

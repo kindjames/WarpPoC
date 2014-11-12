@@ -2,10 +2,11 @@
 using Warp.Core.Infrastructure;
 using Warp.Core.Services;
 using Warp.Core.Services.Dtos.Client;
-using Warp.WebUI.ViewModels.Clients;
+using Warp.WebUI.Models.Clients;
 
 namespace Warp.WebUI.Controllers
 {
+    [RoutePrefix("clients")]
     public class ClientsController : Controller
     {
         private readonly IClientService _clientService;
@@ -17,14 +18,33 @@ namespace Warp.WebUI.Controllers
             _objectMapper = objectMapper;
         }
 
-        [Route("{clientId:int}")]
+        [HttpGet, Route("create")]
+        public ActionResult CreateClient()
+        {
+            return View("Client", new ClientViewModel());
+        }
+
+        [HttpGet, Route("{clientId:int}")]
         public ActionResult GetClient(int clientId)
         {
             var client = _clientService.GetClient(clientId);
 
-            var viewModel = _objectMapper.Map<GetClientDto, GetClientViewModel>(client);
+            var viewModel = _objectMapper.Map<GetClientDto, ClientViewModel>(client);
 
-            return View(viewModel);
+            return View("Client", viewModel);
+        }
+
+        [HttpPost, Route("{clientId:int?}")]
+        public ActionResult SaveClient(ClientInputModel model)
+        {
+            //if (ModelState.IsValid)
+            {
+                var dto = _objectMapper.Map<ClientInputModel, SaveClientDto>(model);
+
+                _clientService.SaveClient(dto);
+
+                return RedirectToAction("GetClient", new {clientId = dto.Id});
+            }
         }
 	}
 }
