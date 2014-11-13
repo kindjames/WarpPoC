@@ -1,7 +1,9 @@
 ﻿using System.Reflection;
+using System.Web.Mvc;
 using AutoMapper;
 using SimpleInjector;
 using SimpleInjector.Extensions;
+using SimpleInjector.Integration.Web.Mvc;
 using Warp.Core.Command;
 using Warp.Core.Infrastructure;
 using Warp.Core.Infrastructure.IoC;
@@ -18,9 +20,10 @@ namespace Warp.IoC
         /// <summary>
         /// Responsible for registering all DI bindings within the project.
         /// </summary>
-        /// <param name="container">The SimpleInjector Container</param>
-        public static void RegisterBindings(Container container)
+        public static IDependencyResolver GetFullyRegisteredContainer()
         {
+            var container = new Container();
+
             // AutoMapper
             container.Register(typeof(IMappingEngine), () => Mapper.Engine);
 
@@ -54,6 +57,8 @@ namespace Warp.IoC
             container.RegisterManyForOpenGeneric(typeof(IMappingConfiguration<,>), mvcAssembly);
 
             container.Verify();
+            
+            return new SimpleInjectorDependencyResolver(container);
         }
     }
 }

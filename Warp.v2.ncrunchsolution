@@ -10,7 +10,11 @@
   <FrameworkUtilisationTypeForXUnitV2>UseStaticAnalysis</FrameworkUtilisationTypeForXUnitV2>
   <MetricsExclusionList>
 Global.asax.cs:Warp.WebUI\WebUI.csproj
+Warp.Core.Specs\Core.Specs.csproj
+Warp.Data.Specs\Data.Specs.csproj
 Warp.Data\Data.csproj\Context
 Warp.Data\Data.csproj\Entities
+Warp.Services.Specs\Services.Specs.csproj
+Warp.WebUI.Specs\WebUI.Specs.csproj
 </MetricsExclusionList>
 </SolutionConfiguration>
