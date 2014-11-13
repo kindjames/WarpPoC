@@ -7,7 +7,7 @@ using Warp.Core.Infrastructure.IoC;
 namespace Warp.Core.Infrastructure
 {
     /// <summary>
-    /// Implementation of IMapper, used for mapping objects.
+    /// Used to map objects. Uses IMappingConfiguration for custom mappings, otherwise, falls back on AutoMapper.
     /// </summary>
     public class ObjectMapper : IObjectMapper
     {
@@ -22,17 +22,20 @@ namespace Warp.Core.Infrastructure
 
         public TTo Map<TFrom, TTo>(TFrom from)
         {
+            // Attempts to find a custom IMappingConfiguration.
             var mapper = _serviceLocator.TryResolve<IMappingConfiguration<TFrom, TTo>>();
 
-            if (mapper == null)
+            if (mapper != null)
             {
-                Debug.WriteLine("INFO: Could not find IMappingConfiguration<{0}, {1}> -> defaulting to AutoMapper.",
-                    typeof (TFrom).Name, typeof (TTo).Name);
-
-                return _mappingEngine.DynamicMap<TFrom, TTo>(from);
+                return mapper.Map(from);
             }
 
-            return mapper.Map(from);
+            // A warning to the developer... do you hear me?!
+            Debug.WriteLine("INFO: Could not find IMappingConfiguration<{0}, {1}> -> defaulting to AutoMapper.",
+                typeof (TFrom).Name, typeof (TTo).Name);
+            
+            // Custom mapping not found, use AutoMapper.
+            return _mappingEngine.DynamicMap<TFrom, TTo>(from);
         }
         
         public IEnumerable<TTo> MapMany<TFrom, TTo>(IEnumerable<TFrom> from)

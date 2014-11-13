@@ -19,32 +19,34 @@ namespace Warp.WebUI.Controllers
         }
 
         [HttpGet, Route("create")]
-        public ActionResult CreateClient()
+        public ActionResult Create()
         {
-            return View("Client", new ClientViewModel());
+            return View(new ClientViewModel());
+        }
+
+        [HttpPost, Route("create")]
+        public ActionResult Create(ClientViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var dto = _objectMapper.Map<ClientViewModel, SaveClientDto>(model);
+
+                _clientService.SaveClient(dto);
+
+                return RedirectToAction("View", new { clientId = dto.Id });
+            }
+
+            return View(model);
         }
 
         [HttpGet, Route("{clientId:int}")]
-        public ActionResult GetClient(int clientId)
+        public ActionResult View(int clientId)
         {
             var client = _clientService.GetClient(clientId);
 
             var viewModel = _objectMapper.Map<GetClientDto, ClientViewModel>(client);
 
-            return View("Client", viewModel);
-        }
-
-        [HttpPost, Route("{clientId:int?}")]
-        public ActionResult SaveClient(ClientInputModel model)
-        {
-            //if (ModelState.IsValid)
-            {
-                var dto = _objectMapper.Map<ClientInputModel, SaveClientDto>(model);
-
-                _clientService.SaveClient(dto);
-
-                return RedirectToAction("GetClient", new {clientId = dto.Id});
-            }
+            return View(viewModel);
         }
 	}
 }

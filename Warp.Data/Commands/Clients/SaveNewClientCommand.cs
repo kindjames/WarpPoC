@@ -67,7 +67,7 @@ namespace Warp.Data.Commands.Clients
         public void Execute(SaveNewClientCommand command)
         {
             CheckArgument.NotNull(command, "command");
-            
+
             // CheckArgument client exists for customer id and client code.
             var clientExistsQuery = new CheckClientExistsForCodeQuery { CustomerId = command.CustomerId, ClientCode = command.Code };
 
@@ -86,6 +86,7 @@ namespace Warp.Data.Commands.Clients
 
             var clientEntity = _objectMapper.Map<SaveNewClientCommand, Client>(command);
 
+            // TODO: Refactor into a factory.
             clientEntity.DateCreated = _dateTimeProvider.UtcNow();
             clientEntity.DateUpdated = _dateTimeProvider.UtcNow();
             clientEntity.DateValidFrom = _dateTimeProvider.UtcNow();

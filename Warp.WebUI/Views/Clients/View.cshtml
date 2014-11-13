@@ -1,0 +1,12 @@
+﻿@model Warp.WebUI.Models.Clients.ClientViewModel
+@{ ViewBag.Title = Model.Name; }
+@using (Html.BeginForm("SaveClient", "Clients", FormMethod.Post, new {clientId = Model.ClientId}))
+{
+    <div>ClientId: @Html.EditorFor(m => Model.ClientId)</div>
+    <div>Name: @Html.EditorFor(m => Model.Name)</div>
+    <div>Code: @Html.EditorFor(m => Model.Code)</div>
+    <div>ClientStatusId: @Html.EditorFor(m => Model.ClientStatusId)</div>
+    <div>AccountManagerAdminClientId: @Html.EditorFor(m => Model.AccountManagerAdminId)</div>
+    <div>CustomerClientId: @Html.EditorFor(m => Model.CustomerId)</div>
+    <input type="submit" value="Update"/>
+}

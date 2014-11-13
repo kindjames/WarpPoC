@@ -106,7 +106,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Mappings\Brands\BrandSummaryListDtoToBrandSummaryListViewModelMapping.cs" />
-    <Compile Include="Models\Clients\ClientInputModel.cs" />
     <Compile Include="Models\Clients\ClientViewModel.cs" />
     <Compile Include="Models\Brands\BrandSummaryListViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -119,7 +118,8 @@
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Clients\Client.cshtml" />
+    <Content Include="Views\Clients\Create.cshtml" />
+    <Content Include="Views\Clients\View.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -143,6 +143,9 @@
       <Project>{5760eb35-8dd5-4c9f-8bf4-097cf0cfa530}</Project>
       <Name>Services</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
