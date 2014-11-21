@@ -1,12 +1,14 @@
+using System;
+
 namespace Warp.Data.Entities
 {
-    public partial class AssessorTimeTracker
+    public class AssessorTimeTracker
     {
-        public int AssessorTimeTrackerID { get; set; }
-        public int AssessorID { get; set; }
-        public int TimeTrackerID { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public int AssessorTimeTrackerId { get; set; }
+        public int AssessorId { get; set; }
+        public int TimeTrackerId { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual Assessor Assessor { get; set; }
         public virtual TimeTracker TimeTracker { get; set; }

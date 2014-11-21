@@ -1,19 +1,20 @@
+using System;
 using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public partial class CriteriaSet
+    public class CriteriaSet
     {
         public CriteriaSet()
         {
-            this.CriteriaAssessorAttributes = new List<CriteriaAssessorAttribute>();
-            this.CriteriaConfigs = new List<CriteriaConfig>();
-            this.Visits = new List<Visit>();
+            CriteriaAssessorAttributes = new List<CriteriaAssessorAttribute>();
+            CriteriaConfigs = new List<CriteriaConfig>();
+            Visits = new List<Visit>();
         }
 
-        public int CriteriaSetID { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public int CriteriaSetId { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual ICollection<CriteriaAssessorAttribute> CriteriaAssessorAttributes { get; set; }
         public virtual ICollection<CriteriaConfig> CriteriaConfigs { get; set; }

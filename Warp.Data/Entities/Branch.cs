@@ -1,9 +1,8 @@
-using System;
 using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public partial class Branch
+    public class Branch : EntityBase
     {
         public Branch()
         {
@@ -21,17 +20,14 @@ namespace Warp.Data.Entities
             this.PersonBranches = new List<PersonBranch>();
         }
 
-        public int BranchID { get; set; }
+        public int BranchId { get; set; }
         public string Name { get; set; }
-        public int BrandID { get; set; }
-        public int AreaID { get; set; }
-        public int BranchStatusID { get; set; }
-        public int CurrencyID { get; set; }
-        public Nullable<int> IndustrySectorID { get; set; }
-        public Nullable<int> PersonID { get; set; }
-        public bool Active { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public int BrandId { get; set; }
+        public int AreaId { get; set; }
+        public int BranchStatusId { get; set; }
+        public int CurrencyId { get; set; }
+        public int? IndustrySectorId { get; set; }
+        public int? PersonId { get; set; }
         public string Code { get; set; }
         public string Website { get; set; }
         public string Telephone { get; set; }
@@ -39,7 +35,7 @@ namespace Warp.Data.Entities
         public virtual Area Area { get; set; }
         public virtual ICollection<AssessmentAreaBranch> AssessmentAreaBranches { get; set; }
         public virtual ICollection<BanBranch> BanBranches { get; set; }
-        public virtual BranchStatu BranchStatu { get; set; }
+        public virtual BranchStatus BranchStatus { get; set; }
         public virtual Brand Brand { get; set; }
         public virtual Currency Currency { get; set; }
         public virtual Person Person { get; set; }

@@ -1,14 +1,16 @@
+using System;
+
 namespace Warp.Data.Entities
 {
-    public partial class ClientOrganisation
+    public class ClientOrganisation
     {
-        public int ClientOrganisationID { get; set; }
-        public int ClientID { get; set; }
+        public int ClientOrganisationId { get; set; }
+        public int ClientId { get; set; }
         public bool RegionActive { get; set; }
         public bool AreaActive { get; set; }
         public int BrandLevel { get; set; }
-        public System.DateTime LastUpdated { get; set; }
-        public System.DateTime Created { get; set; }
+        public DateTime LastUpdated { get; set; }
+        public DateTime Created { get; set; }
         public bool Active { get; set; }
         public bool BrandActive { get; set; }
         public virtual Client Client { get; set; }

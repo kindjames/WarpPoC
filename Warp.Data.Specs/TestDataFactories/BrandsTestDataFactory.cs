@@ -9,13 +9,13 @@ namespace Warp.Data.Specs.TestDataFactories
         {
             return new[]
             {
-                new Brand {ClientID = 123},
-                new Brand {ClientID = 1234433},
-                new Brand {ClientID = 143},
-                new Brand {ClientID = 103},
-                new Brand {ClientID = 100},
-                new Brand {ClientID = 126},
-                new Brand {ClientID = 12},
+                new Brand {ClientId = 123},
+                new Brand {ClientId = 1234433},
+                new Brand {ClientId = 143},
+                new Brand {ClientId = 103},
+                new Brand {ClientId = 100},
+                new Brand {ClientId = 126},
+                new Brand {ClientId = 12},
             };
         }
     }

@@ -3,29 +3,29 @@ using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public partial class Question
+    public class Question
     {
         public Question()
         {
-            this.QuestionnaireQuestions = new List<QuestionnaireQuestion>();
-            this.QuestionPossibleAnswers = new List<QuestionPossibleAnswer>();
-            this.QuestionTags = new List<QuestionTag>();
-            this.QuestionTrackers = new List<QuestionTracker>();
-            this.QuestionTrackers1 = new List<QuestionTracker>();
+            QuestionnaireQuestions = new List<QuestionnaireQuestion>();
+            QuestionPossibleAnswers = new List<QuestionPossibleAnswer>();
+            QuestionTags = new List<QuestionTag>();
+            QuestionTrackers = new List<QuestionTracker>();
+            QuestionTrackers1 = new List<QuestionTracker>();
         }
 
-        public int QuestionID { get; set; }
+        public int QuestionId { get; set; }
         public string Text { get; set; }
-        public short QuestionTypeID { get; set; }
-        public Nullable<int> DefaultQuestionSectionID { get; set; }
-        public short DefaultManagementCategoryID { get; set; }
-        public short DefaultBenchmarkID { get; set; }
-        public short DefaultQuestionDepartmentID { get; set; }
+        public short QuestionTypeId { get; set; }
+        public int? DefaultQuestionSectionId { get; set; }
+        public short DefaultManagementCategoryId { get; set; }
+        public short DefaultBenchmarkId { get; set; }
+        public short DefaultQuestionDepartmentId { get; set; }
         public string DefaultHint { get; set; }
-        public Nullable<int> ClientID { get; set; }
-        public Nullable<int> TrackingQuestionID { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public int? ClientId { get; set; }
+        public int? TrackingQuestionId { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual Client Client { get; set; }
         public virtual Benchmark Benchmark { get; set; }

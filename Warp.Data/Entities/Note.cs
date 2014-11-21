@@ -3,29 +3,29 @@ using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public partial class Note
+    public class Note
     {
         public Note()
         {
-            this.AssessorNotes = new List<AssessorNote>();
-            this.BranchNotes = new List<BranchNote>();
-            this.BrandNotes = new List<BrandNote>();
-            this.ClientNotes = new List<ClientNote>();
-            this.FurtherNotes = new List<FurtherNote>();
-            this.NoteCalendars = new List<NoteCalendar>();
-            this.VisitNotes = new List<VisitNote>();
+            AssessorNotes = new List<AssessorNote>();
+            BranchNotes = new List<BranchNote>();
+            BrandNotes = new List<BrandNote>();
+            ClientNotes = new List<ClientNote>();
+            FurtherNotes = new List<FurtherNote>();
+            NoteCalendars = new List<NoteCalendar>();
+            VisitNotes = new List<VisitNote>();
         }
 
-        public int NoteID { get; set; }
-        public System.DateTime TimeStamp { get; set; }
-        public int AdminID { get; set; }
-        public short NoteTypeID { get; set; }
+        public int NoteId { get; set; }
+        public DateTime TimeStamp { get; set; }
+        public int AdminId { get; set; }
+        public short NoteTypeId { get; set; }
         public string Note1 { get; set; }
-        public Nullable<short> DeactivatedByAdminID { get; set; }
-        public Nullable<System.DateTime> DateDeactivated { get; set; }
+        public short? DeactivatedByAdminId { get; set; }
+        public DateTime? DateDeactivated { get; set; }
         public string DeactivateReason { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual ICollection<AssessorNote> AssessorNotes { get; set; }
         public virtual ICollection<BranchNote> BranchNotes { get; set; }

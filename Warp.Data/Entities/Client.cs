@@ -35,17 +35,17 @@ namespace Warp.Data.Entities
             this.TerminologyClients = new List<TerminologyClient>();
         }
 
-        public int ClientID { get; set; }
+        public int ClientId { get; set; }
         public string Name { get; set; }
-        public short ClientStatusID { get; set; }
+        public short ClientStatusId { get; set; }
         public string Code { get; set; }
-        public int CustomerID { get; set; }
+        public int CustomerId { get; set; }
         public DateTime? DateValidFrom { get; set; }
         public virtual ICollection<Brand> Brands { get; set; }
         public virtual ICollection<AccountingClient> AccountingClients { get; set; }
         public virtual ICollection<AccountingPeriod> AccountingPeriods { get; set; }
         public virtual ICollection<BriefClient> BriefClients { get; set; }
-        public virtual ClientStatu ClientStatu { get; set; }
+        public virtual ClientStatus ClientStatus { get; set; }
         public virtual ICollection<ClientAccountingProduct> ClientAccountingProducts { get; set; }
         public virtual ICollection<ClientAccountManager> ClientAccountManagers { get; set; }
         public virtual ICollection<BanClient> BanClients { get; set; }

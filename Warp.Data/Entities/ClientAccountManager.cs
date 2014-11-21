@@ -1,10 +1,10 @@
 namespace Warp.Data.Entities
 {
-    public partial class ClientAccountManager : EntityBase
+    public class ClientAccountManager : EntityBase
     {
-        public int ClientAccountManagerID { get; set; }
-        public int ClientID { get; set; }
-        public int AccountManagerID { get; set; }
+        public int ClientAccountManagerId { get; set; }
+        public int ClientId { get; set; }
+        public int AccountManagerId { get; set; }
         public virtual Client Client { get; set; }
     }
 }

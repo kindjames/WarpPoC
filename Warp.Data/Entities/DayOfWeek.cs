@@ -1,21 +1,22 @@
+using System;
 using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public partial class DayOfWeek
+    public class DayOfWeek
     {
         public DayOfWeek()
         {
-            this.ScheduleMonthlies = new List<ScheduleMonthly>();
-            this.ScheduleQuarterlies = new List<ScheduleQuarterly>();
-            this.ScheduleWeeklyDayOfWeeks = new List<ScheduleWeeklyDayOfWeek>();
-            this.ScheduleYearlies = new List<ScheduleYearly>();
+            ScheduleMonthlies = new List<ScheduleMonthly>();
+            ScheduleQuarterlies = new List<ScheduleQuarterly>();
+            ScheduleWeeklyDayOfWeeks = new List<ScheduleWeeklyDayOfWeek>();
+            ScheduleYearlies = new List<ScheduleYearly>();
         }
 
         public int DayOfWeekId { get; set; }
         public string Name { get; set; }
-        public System.DateTime DateUpdated { get; set; }
-        public System.DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
+        public DateTime DateCreated { get; set; }
         public bool Active { get; set; }
         public virtual ICollection<ScheduleMonthly> ScheduleMonthlies { get; set; }
         public virtual ICollection<ScheduleQuarterly> ScheduleQuarterlies { get; set; }

@@ -1,12 +1,14 @@
+using System;
+
 namespace Warp.Data.Entities
 {
-    public partial class MaintenanceCustomer
+    public class MaintenanceCustomer
     {
-        public int MaintenanceCustomerID { get; set; }
-        public int CustomerID { get; set; }
-        public int MaintenanceID { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public int MaintenanceCustomerId { get; set; }
+        public int CustomerId { get; set; }
+        public int MaintenanceId { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual Customer Customer { get; set; }
         public virtual Maintenance Maintenance { get; set; }

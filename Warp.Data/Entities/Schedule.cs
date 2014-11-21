@@ -1,25 +1,26 @@
+using System;
 using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public partial class Schedule
+    public class Schedule
     {
         public Schedule()
         {
-            this.ScheduleCustomCalendars = new List<ScheduleCustomCalendar>();
-            this.ScheduleDailies = new List<ScheduleDaily>();
-            this.ScheduleMonthlies = new List<ScheduleMonthly>();
-            this.ScheduleQuarterlies = new List<ScheduleQuarterly>();
-            this.ScheduleSpecifics = new List<ScheduleSpecific>();
-            this.ScheduleWeeklies = new List<ScheduleWeekly>();
-            this.ScheduleYearlies = new List<ScheduleYearly>();
-            this.Triggers = new List<Trigger>();
+            ScheduleCustomCalendars = new List<ScheduleCustomCalendar>();
+            ScheduleDailies = new List<ScheduleDaily>();
+            ScheduleMonthlies = new List<ScheduleMonthly>();
+            ScheduleQuarterlies = new List<ScheduleQuarterly>();
+            ScheduleSpecifics = new List<ScheduleSpecific>();
+            ScheduleWeeklies = new List<ScheduleWeekly>();
+            ScheduleYearlies = new List<ScheduleYearly>();
+            Triggers = new List<Trigger>();
         }
 
         public int ScheduleId { get; set; }
         public int ScheduleTypeId { get; set; }
-        public System.DateTime DateUpdated { get; set; }
-        public System.DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
+        public DateTime DateCreated { get; set; }
         public bool Active { get; set; }
         public virtual ScheduleType ScheduleType { get; set; }
         public virtual ICollection<ScheduleCustomCalendar> ScheduleCustomCalendars { get; set; }

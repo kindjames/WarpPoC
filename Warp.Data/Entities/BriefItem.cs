@@ -1,19 +1,20 @@
+using System;
 using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public partial class BriefItem
+    public class BriefItem
     {
         public BriefItem()
         {
-            this.BriefConfigurations = new List<BriefConfiguration>();
+            BriefConfigurations = new List<BriefConfiguration>();
         }
 
-        public int BriefItemID { get; set; }
+        public int BriefItemId { get; set; }
         public string Name { get; set; }
         public bool Active { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public virtual ICollection<BriefConfiguration> BriefConfigurations { get; set; }
     }
 }

@@ -1,12 +1,14 @@
+using System;
+
 namespace Warp.Data.Entities
 {
-    public partial class Location
+    public class Location
     {
-        public int LocationID { get; set; }
+        public int LocationId { get; set; }
         public string Name { get; set; }
-        public int LocationStatusID { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public int LocationStatusId { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual LocationStatu LocationStatu { get; set; }
     }

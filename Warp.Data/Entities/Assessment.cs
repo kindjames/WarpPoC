@@ -3,31 +3,31 @@ using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public partial class Assessment
+    public class Assessment
     {
         public Assessment()
         {
-            this.QuestionResults = new List<QuestionResult>();
-            this.ResultComments = new List<ResultComment>();
-            this.TelephoneRecordings = new List<TelephoneRecording>();
+            QuestionResults = new List<QuestionResult>();
+            ResultComments = new List<ResultComment>();
+            TelephoneRecordings = new List<TelephoneRecording>();
         }
 
-        public int AssessmentID { get; set; }
-        public int VisitID { get; set; }
-        public short AssessmentAreaID { get; set; }
-        public int QuestionnaireID { get; set; }
-        public int SubQuestionnaireID { get; set; }
-        public int BriefID { get; set; }
-        public int AddedByAdminID { get; set; }
-        public System.DateTime DateAdded { get; set; }
-        public System.DateTime DateUpdated { get; set; }
-        public int LastUpdatedAdminID { get; set; }
-        public Nullable<double> Score { get; set; }
-        public Nullable<double> MaxScore { get; set; }
-        public Nullable<System.DateTime> DateScoreCalculated { get; set; }
+        public int AssessmentId { get; set; }
+        public int VisitId { get; set; }
+        public short AssessmentAreaId { get; set; }
+        public int QuestionnaireId { get; set; }
+        public int SubQuestionnaireId { get; set; }
+        public int BriefId { get; set; }
+        public int AddedByAdminId { get; set; }
+        public DateTime DateAdded { get; set; }
+        public DateTime DateUpdated { get; set; }
+        public int LastUpdatedAdminId { get; set; }
+        public double? Score { get; set; }
+        public double? MaxScore { get; set; }
+        public DateTime? DateScoreCalculated { get; set; }
         public bool Invoiced { get; set; }
         public bool Active { get; set; }
-        public System.DateTime DateCreated { get; set; }
+        public DateTime DateCreated { get; set; }
         public virtual AssessmentArea AssessmentArea { get; set; }
         public virtual Brief Brief { get; set; }
         public virtual Questionnaire Questionnaire { get; set; }

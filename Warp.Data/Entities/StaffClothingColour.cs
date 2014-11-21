@@ -1,19 +1,20 @@
+using System;
 using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public partial class StaffClothingColour
+    public class StaffClothingColour
     {
         public StaffClothingColour()
         {
-            this.StaffMemberClothingItems = new List<StaffMemberClothingItem>();
+            StaffMemberClothingItems = new List<StaffMemberClothingItem>();
         }
 
-        public byte StaffClothingColourID { get; set; }
+        public byte StaffClothingColourId { get; set; }
         public string Name { get; set; }
         public bool Active { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public virtual ICollection<StaffMemberClothingItem> StaffMemberClothingItems { get; set; }
     }
 }

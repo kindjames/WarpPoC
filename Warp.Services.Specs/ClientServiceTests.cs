@@ -109,7 +109,7 @@ namespace Warp.Services.Specs
             Establish context = () =>
             {
                 _clientId = new Random().Next();
-                _client = new Client{ClientID = _clientId};
+                _client = new Client{ClientId = _clientId};
 
                 The<IQueryDispatcher>()
                     .WhenToldTo(d => d.Execute(Param.IsAny<GetClientQuery>()))

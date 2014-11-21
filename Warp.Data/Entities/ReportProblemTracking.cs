@@ -3,23 +3,23 @@ using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public partial class ReportProblemTracking
+    public class ReportProblemTracking
     {
         public ReportProblemTracking()
         {
-            this.ReportProblemTrackingActions = new List<ReportProblemTrackingAction>();
+            ReportProblemTrackingActions = new List<ReportProblemTrackingAction>();
         }
 
-        public int ReportProblemTrackingID { get; set; }
-        public int QuestionResultID { get; set; }
-        public short ReportProblemCauseID { get; set; }
-        public short ReportProblemTypeID { get; set; }
-        public int DetectedByAdminID { get; set; }
+        public int ReportProblemTrackingId { get; set; }
+        public int QuestionResultId { get; set; }
+        public short ReportProblemCauseId { get; set; }
+        public short ReportProblemTypeId { get; set; }
+        public int DetectedByAdminId { get; set; }
         public bool Resolved { get; set; }
         public string Notes { get; set; }
-        public Nullable<int> CreatedQuestionResultID { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public int? CreatedQuestionResultId { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual QuestionResult QuestionResult { get; set; }
         public virtual QuestionResult QuestionResult1 { get; set; }

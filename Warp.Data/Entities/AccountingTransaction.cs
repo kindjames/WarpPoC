@@ -1,22 +1,17 @@
-using System;
-
 namespace Warp.Data.Entities
 {
-    public partial class AccountingTransaction
+    public class AccountingTransaction : EntityBase
     {
-        public int AccountTransactionID { get; set; }
-        public int VisitID { get; set; }
-        public int AccountingProductID { get; set; }
-        public short AssessmentAreaID { get; set; }
-        public int KashFlowID { get; set; }
-        public int AccountingInvoiceID { get; set; }
-        public Nullable<decimal> Amount { get; set; }
-        public Nullable<decimal> Quantity { get; set; }
-        public int CurrencyID { get; set; }
-        public int CurrencyExchangeRateID { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
-        public bool Active { get; set; }
+        public int AccountTransactionId { get; set; }
+        public int VisitId { get; set; }
+        public int AccountingProductId { get; set; }
+        public short AssessmentAreaId { get; set; }
+        public int KashFlowId { get; set; }
+        public int AccountingInvoiceId { get; set; }
+        public decimal? Amount { get; set; }
+        public decimal? Quantity { get; set; }
+        public int CurrencyId { get; set; }
+        public int CurrencyExchangeRateId { get; set; }
         public virtual Currency Currency { get; set; }
         public virtual AccountingProduct AccountingProduct { get; set; }
         public virtual AssessmentArea AssessmentArea { get; set; }

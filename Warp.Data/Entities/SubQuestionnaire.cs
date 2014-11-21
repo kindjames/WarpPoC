@@ -1,26 +1,27 @@
+using System;
 using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public partial class SubQuestionnaire
+    public class SubQuestionnaire
     {
         public SubQuestionnaire()
         {
-            this.AreaQuestionnaires = new List<AreaQuestionnaire>();
-            this.Assessments = new List<Assessment>();
-            this.BranchQuestionnaires = new List<BranchQuestionnaire>();
-            this.BrandQuestionnaires = new List<BrandQuestionnaire>();
-            this.ClientQuestionnaires = new List<ClientQuestionnaire>();
-            this.QuestionnaireAccountingProducts = new List<QuestionnaireAccountingProduct>();
-            this.RegionQuestionnaires = new List<RegionQuestionnaire>();
-            this.SubQuestionnaireQuestionOverwrites = new List<SubQuestionnaireQuestionOverwrite>();
+            AreaQuestionnaires = new List<AreaQuestionnaire>();
+            Assessments = new List<Assessment>();
+            BranchQuestionnaires = new List<BranchQuestionnaire>();
+            BrandQuestionnaires = new List<BrandQuestionnaire>();
+            ClientQuestionnaires = new List<ClientQuestionnaire>();
+            QuestionnaireAccountingProducts = new List<QuestionnaireAccountingProduct>();
+            RegionQuestionnaires = new List<RegionQuestionnaire>();
+            SubQuestionnaireQuestionOverwrites = new List<SubQuestionnaireQuestionOverwrite>();
         }
 
-        public int SubQuestionnaireID { get; set; }
-        public int QuestionnaireID { get; set; }
+        public int SubQuestionnaireId { get; set; }
+        public int QuestionnaireId { get; set; }
         public string Title { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual ICollection<AreaQuestionnaire> AreaQuestionnaires { get; set; }
         public virtual ICollection<Assessment> Assessments { get; set; }

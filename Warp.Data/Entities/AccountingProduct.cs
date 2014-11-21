@@ -1,27 +1,23 @@
-using System;
 using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public partial class AccountingProduct
+    public class AccountingProduct : EntityBase
     {
         public AccountingProduct()
         {
-            this.AccountingTransactions = new List<AccountingTransaction>();
-            this.BranchAccountingProducts = new List<BranchAccountingProduct>();
-            this.BrandAccountingProducts = new List<BrandAccountingProduct>();
-            this.ClientAccountingProducts = new List<ClientAccountingProduct>();
-            this.QuestionnaireAccountingProducts = new List<QuestionnaireAccountingProduct>();
+            AccountingTransactions = new List<AccountingTransaction>();
+            BranchAccountingProducts = new List<BranchAccountingProduct>();
+            BrandAccountingProducts = new List<BrandAccountingProduct>();
+            ClientAccountingProducts = new List<ClientAccountingProduct>();
+            QuestionnaireAccountingProducts = new List<QuestionnaireAccountingProduct>();
         }
 
-        public int AccountingProductID { get; set; }
+        public int AccountingProductId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal DefaultValue { get; set; }
-        public Nullable<int> KashFlowID { get; set; }
-        public System.DateTime DateUpdated { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public bool Active { get; set; }
+        public int? KashFlowId { get; set; }
         public virtual ICollection<AccountingTransaction> AccountingTransactions { get; set; }
         public virtual ICollection<BranchAccountingProduct> BranchAccountingProducts { get; set; }
         public virtual ICollection<BrandAccountingProduct> BrandAccountingProducts { get; set; }

@@ -1,13 +1,10 @@
 namespace Warp.Data.Entities
 {
-    public partial class AssessmentAreaBranch
+    public class AssessmentAreaBranch : EntityBase
     {
-        public int AssessmentAreaBranchID { get; set; }
-        public short AssessmentAreaID { get; set; }
-        public int BranchID { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
-        public bool Active { get; set; }
+        public int AssessmentAreaBranchId { get; set; }
+        public short AssessmentAreaId { get; set; }
+        public int BranchId { get; set; }
         public virtual Branch Branch { get; set; }
         public virtual AssessmentArea AssessmentArea { get; set; }
     }

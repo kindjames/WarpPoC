@@ -1,16 +1,18 @@
+using System;
+
 namespace Warp.Data.Entities
 {
-    public partial class AssessorHistory
+    public class AssessorHistory
     {
-        public int AssessorHistoryID { get; set; }
-        public int AssessorID { get; set; }
-        public short AssessorStatusID { get; set; }
-        public short AdminID { get; set; }
-        public short AssessorStatusChangeReasonID { get; set; }
-        public short AssessorLevelID { get; set; }
+        public int AssessorHistoryId { get; set; }
+        public int AssessorId { get; set; }
+        public short AssessorStatusId { get; set; }
+        public short AdminId { get; set; }
+        public short AssessorStatusChangeReasonId { get; set; }
+        public short AssessorLevelId { get; set; }
         public string Comment { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual Assessor Assessor { get; set; }
         public virtual AssessorLevel AssessorLevel { get; set; }

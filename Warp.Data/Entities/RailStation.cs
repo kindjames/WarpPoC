@@ -1,15 +1,17 @@
+using System;
+
 namespace Warp.Data.Entities
 {
-    public partial class RailStation
+    public class RailStation
     {
-        public short RailStationID { get; set; }
+        public short RailStationId { get; set; }
         public string Name { get; set; }
         public bool Underground { get; set; }
-        public int GeographicPostCodeID { get; set; }
+        public int GeographicPostCodeId { get; set; }
         public decimal XCoordinate { get; set; }
         public decimal YCoordinate { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual GeographicPostCode GeographicPostCode { get; set; }
     }

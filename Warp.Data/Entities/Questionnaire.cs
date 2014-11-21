@@ -1,30 +1,31 @@
+using System;
 using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public partial class Questionnaire
+    public class Questionnaire
     {
         public Questionnaire()
         {
-            this.AreaQuestionnaires = new List<AreaQuestionnaire>();
-            this.Assessments = new List<Assessment>();
-            this.BranchQuestionnaires = new List<BranchQuestionnaire>();
-            this.BrandQuestionnaires = new List<BrandQuestionnaire>();
-            this.ClientQuestionnaires = new List<ClientQuestionnaire>();
-            this.QuestionnaireAccountingProducts = new List<QuestionnaireAccountingProduct>();
-            this.QuestionnaireQuestions = new List<QuestionnaireQuestion>();
-            this.RegionQuestionnaires = new List<RegionQuestionnaire>();
-            this.SimpleVisitTemplates = new List<SimpleVisitTemplate>();
-            this.SubQuestionnaires = new List<SubQuestionnaire>();
+            AreaQuestionnaires = new List<AreaQuestionnaire>();
+            Assessments = new List<Assessment>();
+            BranchQuestionnaires = new List<BranchQuestionnaire>();
+            BrandQuestionnaires = new List<BrandQuestionnaire>();
+            ClientQuestionnaires = new List<ClientQuestionnaire>();
+            QuestionnaireAccountingProducts = new List<QuestionnaireAccountingProduct>();
+            QuestionnaireQuestions = new List<QuestionnaireQuestion>();
+            RegionQuestionnaires = new List<RegionQuestionnaire>();
+            SimpleVisitTemplates = new List<SimpleVisitTemplate>();
+            SubQuestionnaires = new List<SubQuestionnaire>();
         }
 
-        public int QuestionnaireID { get; set; }
+        public int QuestionnaireId { get; set; }
         public string Title { get; set; }
-        public short QuestionnaireStatusID { get; set; }
-        public short QuestionnaireTypeID { get; set; }
-        public short VisitTypeID { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public short QuestionnaireStatusId { get; set; }
+        public short QuestionnaireTypeId { get; set; }
+        public short VisitTypeId { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual ICollection<AreaQuestionnaire> AreaQuestionnaires { get; set; }
         public virtual ICollection<Assessment> Assessments { get; set; }

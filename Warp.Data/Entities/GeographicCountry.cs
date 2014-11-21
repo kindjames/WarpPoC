@@ -1,21 +1,19 @@
+using System;
 using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public partial class GeographicCountry
+    public class GeographicCountry :EntityBase
     {
         public GeographicCountry()
         {
-            this.GeographicRegions = new List<GeographicRegion>();
+            GeographicRegions = new List<GeographicRegion>();
         }
 
-        public short GeographicCountryID { get; set; }
-        public int GeographicWorldAreaID { get; set; }
+        public short GeographicCountryId { get; set; }
+        public int GeographicWorldAreaId { get; set; }
         public string Name { get; set; }
-        public int CurrencyID { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
-        public bool Active { get; set; }
+        public int CurrencyId { get; set; }
         public virtual Currency Currency { get; set; }
         public virtual GeographicWorldArea GeographicWorldArea { get; set; }
         public virtual ICollection<GeographicRegion> GeographicRegions { get; set; }

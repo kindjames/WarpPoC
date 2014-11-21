@@ -18,13 +18,13 @@ namespace Warp.Data.Specs.Queries.ClientAccountManagers
 
             Establish that = () =>
                 // Mock the Clients DbSet.
-                The<IHospitalityGemDbContext>()
+                The<IDomainDbContext>()
                     .WhenToldTo(d => d.ClientAccountManagers)
                     .Return(new InMemoryDbSet<ClientAccountManager>(true)
                     {
-                        new ClientAccountManager {AccountManagerID = 111},
-                        new ClientAccountManager {AccountManagerID = AccountManagerId},
-                        new ClientAccountManager {AccountManagerID = 312},
+                        new ClientAccountManager {AccountManagerId = 111},
+                        new ClientAccountManager {AccountManagerId = AccountManagerId},
+                        new ClientAccountManager {AccountManagerId = 312},
                     });
 
             Because of = () => _result = Subject.Execute(new CheckClientAccountManagerExistsQuery { AccountManagerId = AccountManagerId});
@@ -40,13 +40,13 @@ namespace Warp.Data.Specs.Queries.ClientAccountManagers
 
             Establish that = () =>
                 // Mock the Clients DbSet.
-                The<IHospitalityGemDbContext>()
+                The<IDomainDbContext>()
                     .WhenToldTo(d => d.ClientAccountManagers)
                     .Return(new InMemoryDbSet<ClientAccountManager>(true)
                     {
-                        new ClientAccountManager {AccountManagerID = 111},
-                        new ClientAccountManager {AccountManagerID = 222},
-                        new ClientAccountManager {AccountManagerID = 312},
+                        new ClientAccountManager {AccountManagerId = 111},
+                        new ClientAccountManager {AccountManagerId = 222},
+                        new ClientAccountManager {AccountManagerId = 312},
                     });
 
             Because of = () => _result = Subject.Execute(new CheckClientAccountManagerExistsQuery { AccountManagerId = AccountManagerId });

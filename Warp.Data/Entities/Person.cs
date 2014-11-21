@@ -1,26 +1,27 @@
+using System;
 using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public partial class Person
+    public class Person
     {
         public Person()
         {
-            this.Branches = new List<Branch>();
-            this.PersonAreas = new List<PersonArea>();
-            this.PersonBranches = new List<PersonBranch>();
-            this.PersonBrands = new List<PersonBrand>();
-            this.PersonClients = new List<PersonClient>();
-            this.PersonRegions = new List<PersonRegion>();
+            Branches = new List<Branch>();
+            PersonAreas = new List<PersonArea>();
+            PersonBranches = new List<PersonBranch>();
+            PersonBrands = new List<PersonBrand>();
+            PersonClients = new List<PersonClient>();
+            PersonRegions = new List<PersonRegion>();
         }
 
-        public int PersonID { get; set; }
-        public int UserRoleID { get; set; }
-        public int ClientID { get; set; }
-        public int PersonStatusID { get; set; }
+        public int PersonId { get; set; }
+        public int UserRoleId { get; set; }
+        public int ClientId { get; set; }
+        public int PersonStatusId { get; set; }
         public string JobTitle { get; set; }
-        public System.DateTime DateUpdated { get; set; }
-        public System.DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
+        public DateTime DateCreated { get; set; }
         public bool Active { get; set; }
         public virtual UserRole UserRole { get; set; }
         public virtual ICollection<Branch> Branches { get; set; }

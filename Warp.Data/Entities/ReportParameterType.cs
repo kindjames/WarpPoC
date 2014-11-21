@@ -1,13 +1,14 @@
+using System;
 using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public partial class ReportParameterType
+    public class ReportParameterType
     {
         public ReportParameterType()
         {
-            this.ReportParameterValues = new List<ReportParameterValue>();
-            this.SubscriptionReportParameters = new List<SubscriptionReportParameter>();
+            ReportParameterValues = new List<ReportParameterValue>();
+            SubscriptionReportParameters = new List<SubscriptionReportParameter>();
         }
 
         public int ReportParameterTypeId { get; set; }
@@ -15,8 +16,8 @@ namespace Warp.Data.Entities
         public string Code { get; set; }
         public bool HideByDefault { get; set; }
         public bool UseDefaultValueByDefault { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual ICollection<ReportParameterValue> ReportParameterValues { get; set; }
         public virtual ICollection<SubscriptionReportParameter> SubscriptionReportParameters { get; set; }

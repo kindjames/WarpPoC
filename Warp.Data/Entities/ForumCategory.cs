@@ -3,22 +3,22 @@ using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public partial class ForumCategory
+    public class ForumCategory
     {
         public ForumCategory()
         {
-            this.ForumThreads = new List<ForumThread>();
+            ForumThreads = new List<ForumThread>();
         }
 
-        public short ForumCategoryID { get; set; }
+        public short ForumCategoryId { get; set; }
         public string CategoryName { get; set; }
         public string Description { get; set; }
-        public int AddedByAdminID { get; set; }
+        public int AddedByAdminId { get; set; }
         public bool Locked { get; set; }
-        public Nullable<System.DateTime> DateDeactivated { get; set; }
-        public Nullable<int> DeactivatedByAdminID { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public DateTime? DateDeactivated { get; set; }
+        public int? DeactivatedByAdminId { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual ICollection<ForumThread> ForumThreads { get; set; }
     }

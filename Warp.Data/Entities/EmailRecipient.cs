@@ -1,12 +1,14 @@
+using System;
+
 namespace Warp.Data.Entities
 {
-    public partial class EmailRecipient
+    public class EmailRecipient
     {
         public int EmailRecipientId { get; set; }
         public int DestinationEmailId { get; set; }
         public int UserUId { get; set; }
-        public System.DateTime DateUpdated { get; set; }
-        public System.DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
+        public DateTime DateCreated { get; set; }
         public bool Active { get; set; }
         public virtual DestinationEmail DestinationEmail { get; set; }
     }

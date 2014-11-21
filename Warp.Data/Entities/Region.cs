@@ -3,26 +3,26 @@ using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public partial class Region
+    public class Region
     {
         public Region()
         {
-            this.Areas = new List<Area>();
-            this.AreaHistories = new List<AreaHistory>();
-            this.PersonRegions = new List<PersonRegion>();
-            this.RegionLegacyUsers = new List<RegionLegacyUser>();
-            this.RegionQuestionnaires = new List<RegionQuestionnaire>();
-            this.RegionHistories = new List<RegionHistory>();
+            Areas = new List<Area>();
+            AreaHistories = new List<AreaHistory>();
+            PersonRegions = new List<PersonRegion>();
+            RegionLegacyUsers = new List<RegionLegacyUser>();
+            RegionQuestionnaires = new List<RegionQuestionnaire>();
+            RegionHistories = new List<RegionHistory>();
         }
 
-        public int RegionID { get; set; }
+        public int RegionId { get; set; }
         public string Name { get; set; }
-        public int RegionStatusID { get; set; }
-        public int AreaID { get; set; }
-        public Nullable<int> RegionGroupID { get; set; }
-        public int ClientID { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public int RegionStatusId { get; set; }
+        public int AreaId { get; set; }
+        public int? RegionGroupId { get; set; }
+        public int ClientId { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public string Code { get; set; }
         public virtual ICollection<Area> Areas { get; set; }

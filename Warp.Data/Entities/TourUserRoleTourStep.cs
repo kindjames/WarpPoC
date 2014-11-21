@@ -1,12 +1,14 @@
+using System;
+
 namespace Warp.Data.Entities
 {
-    public partial class TourUserRoleTourStep
+    public class TourUserRoleTourStep
     {
-        public int TourUserRoleTourStepID { get; set; }
-        public int TourUserRoleID { get; set; }
-        public int TourStepID { get; set; }
-        public System.DateTime DateUpdated { get; set; }
-        public System.DateTime DateCreated { get; set; }
+        public int TourUserRoleTourStepId { get; set; }
+        public int TourUserRoleId { get; set; }
+        public int TourStepId { get; set; }
+        public DateTime DateUpdated { get; set; }
+        public DateTime DateCreated { get; set; }
         public bool Active { get; set; }
         public virtual TourStep TourStep { get; set; }
         public virtual TourUserRole TourUserRole { get; set; }

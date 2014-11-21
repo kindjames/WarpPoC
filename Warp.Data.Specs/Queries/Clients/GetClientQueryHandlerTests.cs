@@ -4,6 +4,7 @@ using Machine.Specifications;
 using Warp.Data.Context;
 using Warp.Data.Entities;
 using Warp.Data.Queries.Clients;
+using Client = Warp.Data.Entities.Client;
 
 namespace Warp.Data.Specs.Queries.Clients
 {
@@ -17,13 +18,13 @@ namespace Warp.Data.Specs.Queries.Clients
 
             Establish that = () =>
                 // Mock the Clients DbSet.
-                The<IHospitalityGemDbContext>()
+                The<IDomainDbContext>()
                     .WhenToldTo(d => d.Clients)
                     .Return(new InMemoryDbSet<Client>(true)
                     {
-                        new Client {ClientID = ClientId},
-                        new Client {ClientID = 123},
-                        new Client {ClientID = 312},
+                        new Client {ClientId = ClientId},
+                        new Client {ClientId = 123},
+                        new Client {ClientId = 312},
                     });
 
             Because of = () => _result = Subject.Execute(new GetClientQuery { ClientId = ClientId });
@@ -31,7 +32,7 @@ namespace Warp.Data.Specs.Queries.Clients
             It should_return_a_valid_client = () =>
             {
                 _result.ShouldNotBeNull();
-                _result.ClientID.ShouldEqual(ClientId);
+                _result.ClientId.ShouldEqual(ClientId);
             };
         }
     }

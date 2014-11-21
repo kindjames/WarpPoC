@@ -1,12 +1,14 @@
+using System;
+
 namespace Warp.Data.Entities
 {
-    public partial class VisitCallInLog
+    public class VisitCallInLog
     {
-        public int VisitCallInLogID { get; set; }
-        public int VisitID { get; set; }
-        public int CallInLogID { get; set; }
-        public System.DateTime DateUpdated { get; set; }
-        public System.DateTime DateCreated { get; set; }
+        public int VisitCallInLogId { get; set; }
+        public int VisitId { get; set; }
+        public int CallInLogId { get; set; }
+        public DateTime DateUpdated { get; set; }
+        public DateTime DateCreated { get; set; }
         public bool Active { get; set; }
         public virtual CallInLog CallInLog { get; set; }
         public virtual Visit Visit { get; set; }

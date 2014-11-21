@@ -3,44 +3,44 @@ using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public partial class User
+    public class User
     {
         public User()
         {
-            this.Actions = new List<Action>();
-            this.ActionComments = new List<ActionComment>();
-            this.ActionUsers = new List<ActionUser>();
-            this.BroadcastMessageUsers = new List<BroadcastMessageUser>();
-            this.CustomerUsers = new List<CustomerUser>();
-            this.Errors = new List<Error>();
-            this.Events = new List<Event>();
-            this.GroupUsers = new List<GroupUser>();
-            this.UserRoles = new List<UserRole>();
+            Actions = new List<Action>();
+            ActionComments = new List<ActionComment>();
+            ActionUsers = new List<ActionUser>();
+            BroadcastMessageUsers = new List<BroadcastMessageUser>();
+            CustomerUsers = new List<CustomerUser>();
+            Errors = new List<Error>();
+            Events = new List<Event>();
+            GroupUsers = new List<GroupUser>();
+            UserRoles = new List<UserRole>();
         }
 
-        public int UserID { get; set; }
+        public int UserId { get; set; }
         public string Forename { get; set; }
         public string Surname { get; set; }
         public string Password { get; set; }
         public string Salt { get; set; }
-        public System.DateTime DateLastPasswordChange { get; set; }
+        public DateTime DateLastPasswordChange { get; set; }
         public bool ForcePasswordChange { get; set; }
         public string Email { get; set; }
-        public int CustomerID { get; set; }
-        public int DefaultUserRoleID { get; set; }
-        public int DefaultLanguageID { get; set; }
-        public int LegacyUserID { get; set; }
-        public System.DateTime DateValidFrom { get; set; }
-        public Nullable<System.DateTime> DateValidTo { get; set; }
+        public int CustomerId { get; set; }
+        public int DefaultUserRoleId { get; set; }
+        public int DefaultLanguageId { get; set; }
+        public int LegacyUserId { get; set; }
+        public DateTime DateValidFrom { get; set; }
+        public DateTime? DateValidTo { get; set; }
         public bool AutoCloseToast { get; set; }
-        public int PasswordQuestionID { get; set; }
+        public int PasswordQuestionId { get; set; }
         public string PasswordAnswer { get; set; }
         public bool Active { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
-        public System.DateTime DateOfLastActivity { get; set; }
-        public Nullable<System.DateTime> DateLastLockedOut { get; set; }
-        public System.DateTime DateLastLoggedIn { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
+        public DateTime DateOfLastActivity { get; set; }
+        public DateTime? DateLastLockedOut { get; set; }
+        public DateTime DateLastLoggedIn { get; set; }
         public bool IsApproved { get; set; }
         public bool IsLockedOut { get; set; }
         public string ProvidorName { get; set; }

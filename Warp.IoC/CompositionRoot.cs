@@ -36,13 +36,13 @@ namespace Warp.IoC
             container.Register<IValidator, DataAnnotationsValidator>();
 
             // Data
-            var dataAssembly = typeof(IHospitalityGemDbContext).Assembly;
+            var dataAssembly = typeof(IDomainDbContext).Assembly;
             container.Register<ICommandDispatcher, CommandDispatcher>();
             container.Register<IQueryDispatcher, QueryDispatcher>();
             container.RegisterManyForOpenGeneric(typeof(ICommandHandler<>), dataAssembly);
             container.RegisterManyForOpenGeneric(typeof(IQueryHandler<,>), dataAssembly);
             container.RegisterManyForOpenGeneric(typeof(IMappingConfiguration<,>), dataAssembly);
-            container.RegisterPerWebRequest(() => new HospitalityGemDbContextFactory().Build());
+            container.RegisterPerWebRequest<IDomainDbContext>(() => new DomainDbContext("name=HospitalityGEMLocalContext")); // TODO: make dry.
 
             // Services
             var serviceAssembly = typeof(ClientService).Assembly;

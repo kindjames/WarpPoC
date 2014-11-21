@@ -14,9 +14,9 @@ namespace Warp.Data.Queries.Customers
 
     public class GetCustomerQueryHandler : IQueryHandler<GetCustomerQuery, Customer>
     {
-        private readonly IHospitalityGemDbContext _dbContext;
+        private readonly IDomainDbContext _dbContext;
 
-        public GetCustomerQueryHandler(IHospitalityGemDbContext dbContext)
+        public GetCustomerQueryHandler(IDomainDbContext dbContext)
         {
             _dbContext = dbContext;
         }
@@ -24,7 +24,7 @@ namespace Warp.Data.Queries.Customers
         public Customer Execute(GetCustomerQuery query)
         {
             return _dbContext.Customers
-                .SingleOrDefault(b => b.CustomerID == query.CustomerId);
+                .SingleOrDefault(b => b.CustomerId == query.CustomerId);
         }
     }
 }

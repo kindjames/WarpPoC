@@ -1,12 +1,14 @@
+using System;
+
 namespace Warp.Data.Entities
 {
-    public partial class AssessorNote
+    public class AssessorNote
     {
-        public int AssessorNoteID { get; set; }
-        public int AssessorID { get; set; }
-        public int NoteID { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public int AssessorNoteId { get; set; }
+        public int AssessorId { get; set; }
+        public int NoteId { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual Assessor Assessor { get; set; }
         public virtual Note Note { get; set; }

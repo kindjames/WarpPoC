@@ -2,14 +2,14 @@ using System;
 
 namespace Warp.Data.Entities
 {
-    public partial class PersonBranch
+    public class PersonBranch
     {
-        public int PersonBranchID { get; set; }
-        public int PersonID { get; set; }
-        public int BranchID { get; set; }
-        public Nullable<int> PermissionTypeID { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public int PersonBranchId { get; set; }
+        public int PersonId { get; set; }
+        public int BranchId { get; set; }
+        public int? PermissionTypeId { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual Branch Branch { get; set; }
         public virtual PermissionType PermissionType { get; set; }

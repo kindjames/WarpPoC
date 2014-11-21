@@ -1,25 +1,26 @@
+using System;
 using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public partial class ClientContactTracking
+    public class ClientContactTracking
     {
         public ClientContactTracking()
         {
-            this.AdminClientContactTrackings = new List<AdminClientContactTracking>();
-            this.CCTFurtherNotes = new List<CCTFurtherNote>();
-            this.PersonClientContactTrackings = new List<PersonClientContactTracking>();
+            AdminClientContactTrackings = new List<AdminClientContactTracking>();
+            CCTFurtherNotes = new List<CCTFurtherNote>();
+            PersonClientContactTrackings = new List<PersonClientContactTracking>();
         }
 
-        public int ClientContactTrackingID { get; set; }
-        public int ClientID { get; set; }
-        public short ContactTypeID { get; set; }
-        public short ClientContactStatusID { get; set; }
-        public System.DateTime DateOfContact { get; set; }
+        public int ClientContactTrackingId { get; set; }
+        public int ClientId { get; set; }
+        public short ContactTypeId { get; set; }
+        public short ClientContactStatusId { get; set; }
+        public DateTime DateOfContact { get; set; }
         public string Notes { get; set; }
-        public string AddedByAdminID { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public string AddedByAdminId { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual Client Client { get; set; }
         public virtual ClientContactStatu ClientContactStatu { get; set; }

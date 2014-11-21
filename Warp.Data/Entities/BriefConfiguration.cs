@@ -1,22 +1,23 @@
+using System;
 using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public partial class BriefConfiguration
+    public class BriefConfiguration
     {
         public BriefConfiguration()
         {
-            this.BriefConfigurationBranches = new List<BriefConfigurationBranch>();
-            this.BriefConfigurationBrands = new List<BriefConfigurationBrand>();
+            BriefConfigurationBranches = new List<BriefConfigurationBranch>();
+            BriefConfigurationBrands = new List<BriefConfigurationBrand>();
         }
 
-        public int BriefConfigurationID { get; set; }
-        public int BriefID { get; set; }
-        public short BriefSectionID { get; set; }
-        public int BriefItemID { get; set; }
+        public int BriefConfigurationId { get; set; }
+        public int BriefId { get; set; }
+        public short BriefSectionId { get; set; }
+        public int BriefItemId { get; set; }
         public string Text { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual Brief Brief { get; set; }
         public virtual BriefItem BriefItem { get; set; }

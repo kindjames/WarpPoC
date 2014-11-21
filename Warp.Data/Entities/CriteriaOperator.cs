@@ -1,20 +1,21 @@
+using System;
 using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public partial class CriteriaOperator
+    public class CriteriaOperator
     {
         public CriteriaOperator()
         {
-            this.CriteriaConfigs = new List<CriteriaConfig>();
+            CriteriaConfigs = new List<CriteriaConfig>();
         }
 
-        public short CriteriaOperatorID { get; set; }
+        public short CriteriaOperatorId { get; set; }
         public string Name { get; set; }
         public string SQLOperatorStart { get; set; }
         public string SQLOperatorEnd { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual ICollection<CriteriaConfig> CriteriaConfigs { get; set; }
     }

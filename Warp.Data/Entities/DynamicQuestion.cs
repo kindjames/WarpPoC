@@ -2,14 +2,14 @@ using System;
 
 namespace Warp.Data.Entities
 {
-    public partial class DynamicQuestion
+    public class DynamicQuestion
     {
-        public int DynamicQuestionID { get; set; }
-        public int MasterQuestionnaireQuestionID { get; set; }
-        public int PossibleAnswerID { get; set; }
-        public Nullable<int> ChildQuestionnaireQuestionID { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public int DynamicQuestionId { get; set; }
+        public int MasterQuestionnaireQuestionId { get; set; }
+        public int PossibleAnswerId { get; set; }
+        public int? ChildQuestionnaireQuestionId { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual PossibleAnswer PossibleAnswer { get; set; }
         public virtual QuestionnaireQuestion QuestionnaireQuestion { get; set; }

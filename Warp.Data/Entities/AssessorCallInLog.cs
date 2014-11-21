@@ -1,13 +1,15 @@
+using System;
+
 namespace Warp.Data.Entities
 {
-    public partial class AssessorCallInLog
+    public class AssessorCallInLog
     {
-        public int AssessorCallInLogID { get; set; }
-        public int AssessorID { get; set; }
-        public int CallInLogID { get; set; }
+        public int AssessorCallInLogId { get; set; }
+        public int AssessorId { get; set; }
+        public int CallInLogId { get; set; }
         public bool Active { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public virtual Assessor Assessor { get; set; }
         public virtual CallInLog CallInLog { get; set; }
     }

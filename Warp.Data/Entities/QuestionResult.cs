@@ -3,27 +3,27 @@ using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public partial class QuestionResult
+    public class QuestionResult
     {
         public QuestionResult()
         {
-            this.QuestionResultActions = new List<QuestionResultAction>();
-            this.ReportProblemTrackings = new List<ReportProblemTracking>();
-            this.ReportProblemTrackings1 = new List<ReportProblemTracking>();
+            QuestionResultActions = new List<QuestionResultAction>();
+            ReportProblemTrackings = new List<ReportProblemTracking>();
+            ReportProblemTrackings1 = new List<ReportProblemTracking>();
         }
 
-        public int QuestionResultID { get; set; }
-        public int AssessmentID { get; set; }
-        public int AssessorID { get; set; }
-        public int QuestionnaireQuestionID { get; set; }
-        public int PossibleAnswerID { get; set; }
+        public int QuestionResultId { get; set; }
+        public int AssessmentId { get; set; }
+        public int AssessorId { get; set; }
+        public int QuestionnaireQuestionId { get; set; }
+        public int PossibleAnswerId { get; set; }
         public string Comment { get; set; }
         public decimal Score { get; set; }
-        public int CheckedByAdminID { get; set; }
-        public System.DateTime DateValidFrom { get; set; }
-        public Nullable<System.DateTime> DateValidTo { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public int CheckedByAdminId { get; set; }
+        public DateTime DateValidFrom { get; set; }
+        public DateTime? DateValidTo { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual Assessment Assessment { get; set; }
         public virtual Assessor Assessor { get; set; }

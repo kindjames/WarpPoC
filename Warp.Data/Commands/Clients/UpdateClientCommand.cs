@@ -15,6 +15,7 @@ using Warp.Data.Entities;
 using Warp.Data.Exceptions;
 using Warp.Data.Queries.ClientAccountManagers;
 using Warp.Data.Queries.Clients;
+using Client = Warp.Data.Entities.Client;
 
 namespace Warp.Data.Commands.Clients
 {
@@ -39,12 +40,12 @@ namespace Warp.Data.Commands.Clients
 
     public sealed class UpdateClientCommandHandler : ICommandHandler<UpdateClientCommand>
     {
-        private readonly IHospitalityGemDbContext _dbContext;
+        private readonly IDomainDbContext _dbContext;
         private readonly IQueryDispatcher _queryDispatcher;
         private readonly IDateTimeProvider _dateTimeProvider;
         private readonly IObjectMapper _objectMapper;
 
-        public UpdateClientCommandHandler(IHospitalityGemDbContext dbContext, IQueryDispatcher queryDispatcher, IDateTimeProvider dateTimeProvider, IObjectMapper objectMapper)
+        public UpdateClientCommandHandler(IDomainDbContext dbContext, IQueryDispatcher queryDispatcher, IDateTimeProvider dateTimeProvider, IObjectMapper objectMapper)
         {
             _dbContext = dbContext;
             _queryDispatcher = queryDispatcher;

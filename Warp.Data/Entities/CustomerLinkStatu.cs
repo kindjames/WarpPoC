@@ -1,18 +1,19 @@
+using System;
 using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public partial class CustomerLinkStatu
+    public class CustomerLinkStatu
     {
         public CustomerLinkStatu()
         {
-            this.CustomerClients = new List<CustomerClient>();
+            CustomerClients = new List<CustomerClient>();
         }
 
-        public int CustomerLinkStatusID { get; set; }
+        public int CustomerLinkStatusId { get; set; }
         public string Name { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual ICollection<CustomerClient> CustomerClients { get; set; }
     }

@@ -2,18 +2,18 @@ using System;
 
 namespace Warp.Data.Entities
 {
-    public partial class RegionHistory
+    public class RegionHistory
     {
-        public int RegionHistoryID { get; set; }
-        public int RegionID { get; set; }
+        public int RegionHistoryId { get; set; }
+        public int RegionId { get; set; }
         public string RegionName { get; set; }
-        public int RegionStatusID { get; set; }
-        public System.DateTime DateValidFrom { get; set; }
-        public Nullable<System.DateTime> DateValidTo { get; set; }
-        public int EnteredByUserRoleID { get; set; }
+        public int RegionStatusId { get; set; }
+        public DateTime DateValidFrom { get; set; }
+        public DateTime? DateValidTo { get; set; }
+        public int EnteredByUserRoleId { get; set; }
         public string Notes { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public string Code { get; set; }
         public virtual Region Region { get; set; }

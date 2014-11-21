@@ -1,12 +1,14 @@
+using System;
+
 namespace Warp.Data.Entities
 {
-    public partial class RegionLegacyUser
+    public class RegionLegacyUser
     {
-        public int RegionLegacyID { get; set; }
-        public int RegionID { get; set; }
-        public int LegacyID { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public int RegionLegacyId { get; set; }
+        public int RegionId { get; set; }
+        public int LegacyId { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual Region Region { get; set; }
     }

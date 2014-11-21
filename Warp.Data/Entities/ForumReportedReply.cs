@@ -2,17 +2,17 @@ using System;
 
 namespace Warp.Data.Entities
 {
-    public partial class ForumReportedReply
+    public class ForumReportedReply
     {
-        public int ForumReportedReplyID { get; set; }
-        public int ForumAssessorReplyID { get; set; }
-        public int AssessorID { get; set; }
+        public int ForumReportedReplyId { get; set; }
+        public int ForumAssessorReplyId { get; set; }
+        public int AssessorId { get; set; }
         public string ReportText { get; set; }
-        public Nullable<System.DateTime> DateReportAdded { get; set; }
-        public Nullable<int> CheckedByAdminID { get; set; }
+        public DateTime? DateReportAdded { get; set; }
+        public int? CheckedByAdminId { get; set; }
         public bool Reviewed { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public bool Remove { get; set; }
         public virtual Assessor Assessor { get; set; }
         public virtual ForumAssessorReply ForumAssessorReply { get; set; }

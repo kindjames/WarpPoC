@@ -3,20 +3,20 @@ using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public partial class ReportProblemAction
+    public class ReportProblemAction
     {
         public ReportProblemAction()
         {
-            this.ReportProblemTrackingActions = new List<ReportProblemTrackingAction>();
+            ReportProblemTrackingActions = new List<ReportProblemTrackingAction>();
         }
 
-        public int ReportProblemActionID { get; set; }
-        public short ReportProblemActionTypeID { get; set; }
-        public System.TimeSpan StartTime { get; set; }
-        public Nullable<System.TimeSpan> EndTime { get; set; }
-        public int AddedByAdminID { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public int ReportProblemActionId { get; set; }
+        public short ReportProblemActionTypeId { get; set; }
+        public TimeSpan StartTime { get; set; }
+        public TimeSpan? EndTime { get; set; }
+        public int AddedByAdminId { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual ReportProblemActionType ReportProblemActionType { get; set; }
         public virtual ICollection<ReportProblemTrackingAction> ReportProblemTrackingActions { get; set; }

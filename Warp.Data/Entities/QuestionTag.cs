@@ -1,12 +1,14 @@
+using System;
+
 namespace Warp.Data.Entities
 {
-    public partial class QuestionTag
+    public class QuestionTag
     {
-        public int QuestionTagID { get; set; }
-        public int QuestionID { get; set; }
-        public short TagID { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public int QuestionTagId { get; set; }
+        public int QuestionId { get; set; }
+        public short TagId { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual Question Question { get; set; }
         public virtual Tag Tag { get; set; }

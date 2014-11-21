@@ -51,12 +51,12 @@ namespace Warp.Data.Commands.Clients
 
     public sealed class SaveNewClientCommandHandler : ICommandHandler<SaveNewClientCommand>
     {
-        private readonly IHospitalityGemDbContext _dbContext;
+        private readonly IDomainDbContext _dbContext;
         private readonly IQueryDispatcher _queryDispatcher;
         private readonly IObjectMapper _objectMapper;
         private readonly IDateTimeProvider _dateTimeProvider;
 
-        public SaveNewClientCommandHandler(IHospitalityGemDbContext dbContext, IQueryDispatcher queryDispatcher, IObjectMapper objectMapper, IDateTimeProvider dateTimeProvider)
+        public SaveNewClientCommandHandler(IDomainDbContext dbContext, IQueryDispatcher queryDispatcher, IObjectMapper objectMapper, IDateTimeProvider dateTimeProvider)
         {
             _dbContext = dbContext;
             _queryDispatcher = queryDispatcher;
@@ -96,7 +96,7 @@ namespace Warp.Data.Commands.Clients
 
             _dbContext.SaveChanges();
 
-            command.SetClientId(clientEntity.ClientID);
+            command.SetClientId(clientEntity.ClientId);
         }
     }
 }

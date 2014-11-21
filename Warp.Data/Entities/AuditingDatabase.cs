@@ -1,8 +1,10 @@
+using System;
+
 namespace Warp.Data.Entities
 {
-    public partial class AuditingDatabase
+    public class AuditingDatabase
     {
-        public int DatabaseID { get; set; }
+        public int DatabaseId { get; set; }
         public int UserId { get; set; }
         public int OperationId { get; set; }
         public int IdentityId { get; set; }
@@ -10,8 +12,8 @@ namespace Warp.Data.Entities
         public string ColumnName { get; set; }
         public string PreviousValue { get; set; }
         public string NewValue { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual Operation Operation { get; set; }
     }

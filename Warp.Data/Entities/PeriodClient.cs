@@ -1,12 +1,14 @@
+using System;
+
 namespace Warp.Data.Entities
 {
-    public partial class PeriodClient
+    public class PeriodClient
     {
-        public int PeriodClientID { get; set; }
-        public int PeriodID { get; set; }
-        public int ClientID { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public int PeriodClientId { get; set; }
+        public int PeriodId { get; set; }
+        public int ClientId { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual Client Client { get; set; }
         public virtual Period Period { get; set; }

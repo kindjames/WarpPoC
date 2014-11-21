@@ -1,13 +1,15 @@
+using System;
+
 namespace Warp.Data.Entities
 {
-    public partial class PandoraCache
+    public class PandoraCache
     {
-        public int PandoraCacheID { get; set; }
-        public int AssessmentID { get; set; }
+        public int PandoraCacheId { get; set; }
+        public int AssessmentId { get; set; }
         public string Data { get; set; }
-        public System.DateTime Expiry { get; set; }
-        public System.DateTime DateUpdated { get; set; }
-        public System.DateTime DateCreated { get; set; }
+        public DateTime Expiry { get; set; }
+        public DateTime DateUpdated { get; set; }
+        public DateTime DateCreated { get; set; }
         public bool Active { get; set; }
     }
 }

@@ -3,20 +3,20 @@ using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public partial class Menu
+    public class Menu
     {
         public Menu()
         {
-            this.MenuConfigs = new List<MenuConfig>();
+            MenuConfigs = new List<MenuConfig>();
         }
 
-        public int MenuID { get; set; }
+        public int MenuId { get; set; }
         public string Name { get; set; }
-        public int AddedByAdminID { get; set; }
-        public System.DateTime DateValidFrom { get; set; }
-        public Nullable<System.DateTime> DateValidTo { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public int AddedByAdminId { get; set; }
+        public DateTime DateValidFrom { get; set; }
+        public DateTime? DateValidTo { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual ICollection<MenuConfig> MenuConfigs { get; set; }
     }
