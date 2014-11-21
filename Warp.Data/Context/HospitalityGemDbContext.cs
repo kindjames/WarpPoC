@@ -1,6 +1,49 @@
 using System.Data.Entity;
 using Warp.Data.Entities;
 using Warp.Data.Entities.Mapping;
+using ApplicationLanguage = Warp.Data.Entities.ApplicationLanguage;
+using Area = Warp.Data.Entities.Area;
+using AreaHistory = Warp.Data.Entities.AreaHistory;
+using AreaStatu = Warp.Data.Entities.AreaStatu;
+using Branch = Warp.Data.Entities.Branch;
+using BranchHistory = Warp.Data.Entities.BranchHistory;
+using BranchLogo = Warp.Data.Entities.BranchLogo;
+using BranchStatu = Warp.Data.Entities.BranchStatu;
+using Brand = Warp.Data.Entities.Brand;
+using BrandHistory = Warp.Data.Entities.BrandHistory;
+using BrandLogo = Warp.Data.Entities.BrandLogo;
+using BrandStatu = Warp.Data.Entities.BrandStatu;
+using Client = Warp.Data.Entities.Client;
+using ClientAccountManager = Warp.Data.Entities.ClientAccountManager;
+using ClientContactStatu = Warp.Data.Entities.ClientContactStatu;
+using ClientHistory = Warp.Data.Entities.ClientHistory;
+using ClientLogo = Warp.Data.Entities.ClientLogo;
+using ClientOrganisation = Warp.Data.Entities.ClientOrganisation;
+using ClientStatu = Warp.Data.Entities.ClientStatu;
+using ContactAddressBranch = Warp.Data.Entities.ContactAddressBranch;
+using ContactAddressBrand = Warp.Data.Entities.ContactAddressBrand;
+using ContactAddressClient = Warp.Data.Entities.ContactAddressClient;
+using ContactAddressUserRole = Warp.Data.Entities.ContactAddressUserRole;
+using Currency = Warp.Data.Entities.Currency;
+using IndustrySector = Warp.Data.Entities.IndustrySector;
+using Location = Warp.Data.Entities.Location;
+using LocationStatu = Warp.Data.Entities.LocationStatu;
+using Logo = Warp.Data.Entities.Logo;
+using PermissionType = Warp.Data.Entities.PermissionType;
+using Person = Warp.Data.Entities.Person;
+using PersonArea = Warp.Data.Entities.PersonArea;
+using PersonBranch = Warp.Data.Entities.PersonBranch;
+using PersonBrand = Warp.Data.Entities.PersonBrand;
+using PersonClient = Warp.Data.Entities.PersonClient;
+using PersonRegion = Warp.Data.Entities.PersonRegion;
+using PersonStatu = Warp.Data.Entities.PersonStatu;
+using Region = Warp.Data.Entities.Region;
+using RegionGroup = Warp.Data.Entities.RegionGroup;
+using RegionHistory = Warp.Data.Entities.RegionHistory;
+using RegionStatu = Warp.Data.Entities.RegionStatu;
+//using TextResource = Warp.Data.Entities.TextResource;
+using Translation = Warp.Data.Entities.Translation;
+using User = Warp.Data.Entities.User;
 
 namespace Warp.Data.Context
 {
@@ -366,6 +409,8 @@ namespace Warp.Data.Context
         public IDbSet<CodeResourceType> CodeResourceTypes { get; set; }
         public IDbSet<Translation> Translations { get; set; }
 
+        #region OnModelCreating
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new PasswordQuestionMap());
@@ -716,5 +761,7 @@ namespace Warp.Data.Context
             modelBuilder.Configurations.Add(new CodeResourceTypeMap());
             modelBuilder.Configurations.Add(new TranslationMap());
         }
+
+        #endregion OnModelBuilding
     }
 }
