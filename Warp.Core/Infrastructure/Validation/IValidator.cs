@@ -1,4 +1,4 @@
-﻿namespace Warp.Core.Infrastructure
+﻿namespace Warp.Core.Infrastructure.Validation
 {
     public interface IValidator
     {

@@ -1,4 +1,4 @@
-﻿namespace Warp.Core.Infrastructure
+﻿namespace Warp.Core.Infrastructure.Mapping
 {
     public interface IMappingConfiguration<in TSource, out TDestination>
     {

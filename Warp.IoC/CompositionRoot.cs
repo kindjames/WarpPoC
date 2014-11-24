@@ -7,11 +7,13 @@ using SimpleInjector.Integration.Web.Mvc;
 using Warp.Core.Command;
 using Warp.Core.Infrastructure;
 using Warp.Core.Infrastructure.IoC;
+using Warp.Core.Infrastructure.Mapping;
+using Warp.Core.Infrastructure.Validation;
 using Warp.Core.Query;
 using Warp.Core.Services;
 using Warp.Data.Context;
 using Warp.Services;
-using IObjectMapper = Warp.Core.Infrastructure.IObjectMapper;
+using IObjectMapper = Warp.Core.Infrastructure.Mapping.IObjectMapper;
 
 namespace Warp.IoC
 {

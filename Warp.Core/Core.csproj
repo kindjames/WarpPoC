@@ -53,13 +53,13 @@
     <Compile Include="Exceptions\CommandHandlerNotFoundException.cs" />
     <Compile Include="Exceptions\QueryHandlerNotFoundException.cs" />
     <Compile Include="Infrastructure\Authentication\PasswordHasher.cs" />
-    <Compile Include="Infrastructure\DataAnnotationsValidator.cs" />
+    <Compile Include="Infrastructure\Validation\DataAnnotationsValidator.cs" />
     <Compile Include="Infrastructure\DateTimeProvider.cs" />
     <Compile Include="Infrastructure\IDateTimeProvider.cs" />
-    <Compile Include="Infrastructure\IMappingConfiguration.cs" />
+    <Compile Include="Infrastructure\Mapping\IMappingConfiguration.cs" />
     <Compile Include="Infrastructure\IoC\IServiceLocator.cs" />
-    <Compile Include="Infrastructure\IValidator.cs" />
-    <Compile Include="Infrastructure\ObjectMapper.cs" />
+    <Compile Include="Infrastructure\Validation\IValidator.cs" />
+    <Compile Include="Infrastructure\Mapping\ObjectMapper.cs" />
     <Compile Include="Query\QueryDispatcher.cs" />
     <Compile Include="Services\Dtos\Brand\BrandSummaryDto.cs" />
     <Compile Include="Services\Dtos\Brand\BrandSummaryListDto.cs" />
@@ -68,7 +68,7 @@
     <Compile Include="Services\Dtos\Client\GetClientDto.cs" />
     <Compile Include="Services\IClientService.cs" />
     <Compile Include="Services\IBrandService.cs" />
-    <Compile Include="Infrastructure\IObjectMapper.cs" />
+    <Compile Include="Infrastructure\Mapping\IObjectMapper.cs" />
     <Compile Include="Query\IQuery.cs" />
     <Compile Include="Query\IQueryDispatcher.cs" />
     <Compile Include="Query\IQueryHandler.cs" />

@@ -4,6 +4,7 @@ using Machine.Specifications;
 using System;
 using Warp.Core.Exceptions;
 using Warp.Core.Infrastructure;
+using Warp.Core.Infrastructure.Mapping;
 using Warp.Core.Query;
 using Warp.Data.Commands.Clients;
 using Warp.Data.Context;

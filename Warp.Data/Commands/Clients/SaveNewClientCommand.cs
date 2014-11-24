@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Warp.Core.Command;
 using Warp.Core.Exceptions;
 using Warp.Core.Infrastructure;
+using Warp.Core.Infrastructure.Mapping;
 using Warp.Core.Query;
 using Warp.Core.Util;
 using Warp.Core.Validation;

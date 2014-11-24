@@ -4,6 +4,7 @@ using System;
 using Warp.Core.Exceptions;
 using Warp.Core.Infrastructure;
 using Warp.Core.Infrastructure.IoC;
+using Warp.Core.Infrastructure.Validation;
 using Warp.Core.Query;
 using Param = Moq.It;
 using ThenIt = Machine.Specifications.It;

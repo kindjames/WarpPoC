@@ -4,6 +4,7 @@ using Machine.Specifications;
 using Machine.Specifications.Mvc;
 using System.Web.Mvc;
 using Warp.Core.Infrastructure;
+using Warp.Core.Infrastructure.Mapping;
 using Warp.Core.Services;
 using Warp.Core.Services.Dtos.Client;
 using Warp.WebUI.Controllers;

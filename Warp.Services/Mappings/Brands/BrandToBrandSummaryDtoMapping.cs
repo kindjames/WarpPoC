@@ -1,4 +1,5 @@
 ﻿using Warp.Core.Infrastructure;
+using Warp.Core.Infrastructure.Mapping;
 using Warp.Core.Services.Dtos.Brand;
 using Warp.Core.Util;
 using Warp.Data.Entities;

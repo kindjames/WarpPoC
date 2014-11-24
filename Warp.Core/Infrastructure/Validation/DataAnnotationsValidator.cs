@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Warp.Core.Infrastructure
+namespace Warp.Core.Infrastructure.Validation
 {
     public class DataAnnotationsValidator : IValidator
     {

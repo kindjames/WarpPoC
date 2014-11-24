@@ -1,10 +1,10 @@
-﻿using AutoMapper;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using AutoMapper;
 using Warp.Core.Infrastructure.IoC;
 
-namespace Warp.Core.Infrastructure
+namespace Warp.Core.Infrastructure.Mapping
 {
     /// <summary>
     /// Used to map objects. Uses IMappingConfiguration for custom mappings, otherwise, falls back on AutoMapper.
