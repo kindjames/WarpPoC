@@ -1,6 +1,6 @@
 using System.Linq;
+using Warp.Core.Infrastructure.Validation;
 using Warp.Core.Query;
-using Warp.Core.Validation;
 using Warp.Data.Context;
 
 namespace Warp.Data.Queries.Customers

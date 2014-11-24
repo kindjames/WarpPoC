@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Warp.Core.Infrastructure
+namespace Warp.Core.Util
 {
     public class DateTimeProvider : IDateTimeProvider
     {

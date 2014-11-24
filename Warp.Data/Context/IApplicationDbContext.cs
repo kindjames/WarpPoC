@@ -11,6 +11,7 @@ namespace Warp.Data.Context
 
         // Hooks into the DbContext.
         Database Database { get; }
+        DbContextConfiguration Configuration { get; }
         DbEntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;
     }
 }

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
+using Warp.Core.Infrastructure.Validation;
 using Warp.Core.Query;
-using Warp.Core.Validation;
 using Warp.Data.Context;
 using Warp.Data.Entities;
 

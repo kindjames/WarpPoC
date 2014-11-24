@@ -21,7 +21,7 @@ namespace Warp.Data.Entities
         public int UserId { get; set; }
         public string Forename { get; set; }
         public string Surname { get; set; }
-        public string Password { get; set; }
+        public string PasswordHash { get; set; }
         public string Salt { get; set; }
         public DateTime DateLastPasswordChange { get; set; }
         public bool ForcePasswordChange { get; set; }

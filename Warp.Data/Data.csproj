@@ -36,6 +36,9 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.1.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -51,7 +54,7 @@
     <Compile Include="Context\IApplicationDbContext.cs" />
     <Compile Include="Context\IAuthenticationDbContext.cs" />
     <Compile Include="Context\IDomainDbContext.cs" />
-    <Compile Include="EntityMappingsResolver.cs" />
+    <Compile Include="Infrastructure\EntityMappingsResolver.cs" />
     <Compile Include="Exceptions\DataEntityNotFoundException.cs" />
     <Compile Include="Entities\AbsenceInstance.cs" />
     <Compile Include="Entities\AbsenceType.cs" />
@@ -209,6 +212,8 @@
     <Compile Include="Entities\MaintenanceCategory.cs" />
     <Compile Include="Entities\MaintenanceCustomer.cs" />
     <Compile Include="Entities\ManagementCategory.cs" />
+    <Compile Include="Identity\ApplicationUserStore.cs" />
+    <Compile Include="Infrastructure\IEntityMappingsResolver.cs" />
     <Compile Include="Mapping\AbsenceInstanceMap.cs" />
     <Compile Include="Mapping\AbsenceTypeMap.cs" />
     <Compile Include="Mapping\AccountingClientMap.cs" />

@@ -1,7 +1,9 @@
 using System;
+using System.Collections.Generic;
 using System.Data.Entity;
-using System.Diagnostics;
+using System.Data.Entity.ModelConfiguration;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using Warp.Data.Entities;
 
@@ -14,11 +16,9 @@ namespace Warp.Data.Context
             Database.SetInitializer<AuthenticationDbContext>(null);
         }
 
-        protected ApplicationDbContextBase(string nameOrConnectionString)
-            : base(nameOrConnectionString)
+        protected ApplicationDbContextBase()
+            : base("name=HospitalityGEMLocalContext")
         {
-            Database.Log = s => Debug.Write(s);
-
             var _ = typeof(System.Data.Entity.SqlServer.SqlProviderServices);
         }
 
@@ -54,6 +54,21 @@ namespace Warp.Data.Context
             }
 
             return base.SaveChanges();
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            var entityTypes = new Lazy<IEnumerable<dynamic>>(() =>
+                Assembly.GetExecutingAssembly()
+                    .GetTypes()
+                    .Where(t => t.BaseType != null && t.BaseType.IsGenericType && t.BaseType.GetGenericTypeDefinition() == typeof(EntityTypeConfiguration<>))
+                    .Select(Activator.CreateInstance)
+            );
+
+            foreach (var mapping in entityTypes.Value)
+            {
+                modelBuilder.Configurations.Add(mapping);
+            }
         }
     }
 }

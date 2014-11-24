@@ -19,7 +19,7 @@ namespace Warp.Data.Mapping
                 .IsRequired()
                 .HasMaxLength(100);
 
-            this.Property(t => t.Password)
+            this.Property(t => t.PasswordHash)
                 .IsRequired();
 
             this.Property(t => t.Salt)
@@ -49,7 +49,7 @@ namespace Warp.Data.Mapping
             this.Property(t => t.UserId).HasColumnName("UserID");
             this.Property(t => t.Forename).HasColumnName("Forename");
             this.Property(t => t.Surname).HasColumnName("Surname");
-            this.Property(t => t.Password).HasColumnName("Password");
+            this.Property(t => t.PasswordHash).HasColumnName("Password");
             this.Property(t => t.Salt).HasColumnName("Salt");
             this.Property(t => t.DateLastPasswordChange).HasColumnName("DateLastPasswordChange");
             this.Property(t => t.ForcePasswordChange).HasColumnName("ForcePasswordChange");

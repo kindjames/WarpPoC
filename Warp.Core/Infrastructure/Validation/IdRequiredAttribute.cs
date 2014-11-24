@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Warp.Core.Validation
+namespace Warp.Core.Infrastructure.Validation
 {
     public class IdRequiredAttribute : ValidationAttribute
     {
