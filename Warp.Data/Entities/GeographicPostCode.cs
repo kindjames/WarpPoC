@@ -1,23 +1,24 @@
+using System;
 using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public partial class GeographicPostCode
+    public class GeographicPostCode
     {
         public GeographicPostCode()
         {
-            this.Airports = new List<Airport>();
-            this.AssessorGeographicPostCodes = new List<AssessorGeographicPostCode>();
-            this.RailStations = new List<RailStation>();
+            Airports = new List<Airport>();
+            AssessorGeographicPostCodes = new List<AssessorGeographicPostCode>();
+            RailStations = new List<RailStation>();
         }
 
-        public int GeographicPostCodeID { get; set; }
-        public int GeographicPostalAreaID { get; set; }
+        public int GeographicPostCodeId { get; set; }
+        public int GeographicPostalAreaId { get; set; }
         public string Name { get; set; }
         public decimal XCoordinate { get; set; }
         public decimal YCoordinate { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual ICollection<Airport> Airports { get; set; }
         public virtual ICollection<AssessorGeographicPostCode> AssessorGeographicPostCodes { get; set; }

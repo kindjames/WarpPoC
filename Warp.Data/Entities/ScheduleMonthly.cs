@@ -3,22 +3,22 @@ using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public partial class ScheduleMonthly
+    public class ScheduleMonthly
     {
         public ScheduleMonthly()
         {
-            this.ScheduleMonthlyMonths = new List<ScheduleMonthlyMonth>();
+            ScheduleMonthlyMonths = new List<ScheduleMonthlyMonth>();
         }
 
         public int ScheduleMonthlyId { get; set; }
-        public Nullable<int> ScheduleId { get; set; }
-        public Nullable<int> DayOrdinal { get; set; }
-        public Nullable<int> DayNo { get; set; }
-        public Nullable<int> DayOfWeekId { get; set; }
-        public Nullable<int> MonthInterval { get; set; }
-        public Nullable<int> ScheduleSubTypeId { get; set; }
-        public System.DateTime DateUpdated { get; set; }
-        public System.DateTime DateCreated { get; set; }
+        public int? ScheduleId { get; set; }
+        public int? DayOrdinal { get; set; }
+        public int? DayNo { get; set; }
+        public int? DayOfWeekId { get; set; }
+        public int? MonthInterval { get; set; }
+        public int? ScheduleSubTypeId { get; set; }
+        public DateTime DateUpdated { get; set; }
+        public DateTime DateCreated { get; set; }
         public bool Active { get; set; }
         public virtual DayOfWeek DayOfWeek { get; set; }
         public virtual Schedule Schedule { get; set; }

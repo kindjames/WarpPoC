@@ -3,24 +3,24 @@ using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public partial class MenuConfig
+    public class MenuConfig
     {
         public MenuConfig()
         {
-            this.MenuConfigBranches = new List<MenuConfigBranch>();
-            this.MenuConfigBrands = new List<MenuConfigBrand>();
-            this.MenuConfigClients = new List<MenuConfigClient>();
+            MenuConfigBranches = new List<MenuConfigBranch>();
+            MenuConfigBrands = new List<MenuConfigBrand>();
+            MenuConfigClients = new List<MenuConfigClient>();
         }
 
-        public int MenuConfigID { get; set; }
-        public int MenuID { get; set; }
-        public int MenuSectionID { get; set; }
-        public int MenuItemID { get; set; }
-        public int AddedByAdminID { get; set; }
-        public System.DateTime DateValidFrom { get; set; }
-        public Nullable<System.DateTime> DateValidTo { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public int MenuConfigId { get; set; }
+        public int MenuId { get; set; }
+        public int MenuSectionId { get; set; }
+        public int MenuItemId { get; set; }
+        public int AddedByAdminId { get; set; }
+        public DateTime DateValidFrom { get; set; }
+        public DateTime? DateValidTo { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual Menu Menu { get; set; }
         public virtual MenuItem MenuItem { get; set; }

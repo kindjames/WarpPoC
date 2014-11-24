@@ -23,7 +23,7 @@ namespace Warp.Data.Specs.Commands.Clients
             static Exception _exception;
             static SaveNewClientCommand _command;
 
-            private Establish that = () =>
+            Establish that = () =>
             {
                 _command = new SaveNewClientCommand { Code = "TESTYEAH", CustomerId = 69 };
 
@@ -88,7 +88,7 @@ namespace Warp.Data.Specs.Commands.Clients
                     .WhenToldTo(m => m.Map<SaveNewClientCommand, Client>(MoqIt.IsAny<SaveNewClientCommand>()))
                     .Return(new Client());
                 
-                The<IHospitalityGemDbContext>()
+                The<IDomainDbContext>()
                     .Clients = _clientRepository;
             };
 
@@ -99,7 +99,7 @@ namespace Warp.Data.Specs.Commands.Clients
                     r.Add(MoqIt.IsAny<Client>()));
 
             It should_call_SaveChanges_on_UoW = () =>
-                The<IHospitalityGemDbContext>()
+                The<IDomainDbContext>()
                     .WasToldTo(c => c.SaveChanges());
         }
     }

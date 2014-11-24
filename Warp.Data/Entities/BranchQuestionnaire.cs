@@ -1,14 +1,16 @@
+using System;
+
 namespace Warp.Data.Entities
 {
-    public partial class BranchQuestionnaire
+    public class BranchQuestionnaire
     {
-        public int BranchQuestionnaireID { get; set; }
-        public int BranchID { get; set; }
-        public int QuestionnaireID { get; set; }
+        public int BranchQuestionnaireId { get; set; }
+        public int BranchId { get; set; }
+        public int QuestionnaireId { get; set; }
         public bool Permission { get; set; }
-        public int SubQuestionnaireID { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public int SubQuestionnaireId { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual Branch Branch { get; set; }
         public virtual Questionnaire Questionnaire { get; set; }

@@ -1,13 +1,15 @@
+using System;
+
 namespace Warp.Data.Entities
 {
-    public partial class PersonClientContactTracking
+    public class PersonClientContactTracking
     {
-        public int PersonClientContactTrackingID { get; set; }
-        public int PersonID { get; set; }
-        public int ClientContactTrackingID { get; set; }
+        public int PersonClientContactTrackingId { get; set; }
+        public int PersonId { get; set; }
+        public int ClientContactTrackingId { get; set; }
         public bool Active { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public virtual ClientContactTracking ClientContactTracking { get; set; }
     }
 }

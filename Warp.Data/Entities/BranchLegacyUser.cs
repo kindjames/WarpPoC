@@ -1,12 +1,14 @@
+using System;
+
 namespace Warp.Data.Entities
 {
-    public partial class BranchLegacyUser
+    public class BranchLegacyUser
     {
-        public int BranchLegacyID { get; set; }
-        public int BranchID { get; set; }
-        public int LegacyID { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public int BranchLegacyId { get; set; }
+        public int BranchId { get; set; }
+        public int LegacyId { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual Branch Branch { get; set; }
     }

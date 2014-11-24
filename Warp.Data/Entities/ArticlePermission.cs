@@ -1,12 +1,14 @@
+using System;
+
 namespace Warp.Data.Entities
 {
-    public partial class ArticlePermission
+    public class ArticlePermission
     {
-        public int ArticlePermissionID { get; set; }
-        public int ArticleID { get; set; }
-        public int PermissionID { get; set; }
-        public System.DateTime DateUpdated { get; set; }
-        public System.DateTime DateCreated { get; set; }
+        public int ArticlePermissionId { get; set; }
+        public int ArticleId { get; set; }
+        public int PermissionId { get; set; }
+        public DateTime DateUpdated { get; set; }
+        public DateTime DateCreated { get; set; }
         public bool Active { get; set; }
         public virtual Permission Permission { get; set; }
         public virtual Article Article { get; set; }

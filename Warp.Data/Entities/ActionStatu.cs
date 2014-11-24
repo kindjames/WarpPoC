@@ -1,21 +1,22 @@
+using System;
 using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public partial class ActionStatu
+    public class ActionStatu
     {
         public ActionStatu()
         {
-            this.Actions = new List<Action>();
-            this.ActionComments = new List<ActionComment>();
+            Actions = new List<Action>();
+            ActionComments = new List<ActionComment>();
         }
 
-        public short ActionStatusID { get; set; }
+        public short ActionStatusId { get; set; }
         public string Name { get; set; }
         public bool OpenStatus { get; set; }
         public bool Active { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public virtual ICollection<Action> Actions { get; set; }
         public virtual ICollection<ActionComment> ActionComments { get; set; }
     }

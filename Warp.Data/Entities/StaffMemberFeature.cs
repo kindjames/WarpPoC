@@ -1,12 +1,14 @@
+using System;
+
 namespace Warp.Data.Entities
 {
-    public partial class StaffMemberFeature
+    public class StaffMemberFeature
     {
-        public int StaffMemberFeatureID { get; set; }
-        public int StaffMemberID { get; set; }
-        public short StaffFeatureID { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public int StaffMemberFeatureId { get; set; }
+        public int StaffMemberId { get; set; }
+        public short StaffFeatureId { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual StaffFeature StaffFeature { get; set; }
         public virtual StaffMember StaffMember { get; set; }

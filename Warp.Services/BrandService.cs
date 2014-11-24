@@ -7,6 +7,7 @@ using Warp.Data.Exceptions;
 using Warp.Data.Queries.Brands;
 using Warp.Data.Queries.Clients;
 using Warp.Data.Queries.Customers;
+using Client = Warp.Data.Entities.Client;
 
 namespace Warp.Services
 {
@@ -32,7 +33,7 @@ namespace Warp.Services
 
             var brands = _queryDispatcher.Execute(new GetBrandsForClientQuery {ClientId = clientId});
 
-            var customerName = _queryDispatcher.Execute(new GetCustomerNameQuery {CustomerId = client.CustomerID});
+            var customerName = _queryDispatcher.Execute(new GetCustomerNameQuery {CustomerId = client.CustomerId});
 
             return new BrandSummaryListDto
             {

@@ -3,22 +3,22 @@ using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public partial class TimeTracker
+    public class TimeTracker
     {
         public TimeTracker()
         {
-            this.AssessorTimeTrackers = new List<AssessorTimeTracker>();
-            this.PersonTimeTrackers = new List<PersonTimeTracker>();
-            this.VisitTimeTrackers = new List<VisitTimeTracker>();
+            AssessorTimeTrackers = new List<AssessorTimeTracker>();
+            PersonTimeTrackers = new List<PersonTimeTracker>();
+            VisitTimeTrackers = new List<VisitTimeTracker>();
         }
 
-        public int TimeTrackerID { get; set; }
-        public int AdminID { get; set; }
-        public short TimeTrackerTypeID { get; set; }
-        public System.TimeSpan StartTime { get; set; }
-        public Nullable<System.TimeSpan> EndTime { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public int TimeTrackerId { get; set; }
+        public int AdminId { get; set; }
+        public short TimeTrackerTypeId { get; set; }
+        public TimeSpan StartTime { get; set; }
+        public TimeSpan? EndTime { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual ICollection<AssessorTimeTracker> AssessorTimeTrackers { get; set; }
         public virtual ICollection<PersonTimeTracker> PersonTimeTrackers { get; set; }

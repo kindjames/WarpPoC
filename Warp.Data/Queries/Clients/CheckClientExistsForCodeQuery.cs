@@ -18,9 +18,9 @@ namespace Warp.Data.Queries.Clients
 
     public class CheckClientExistsForCodeQueryHandler : IQueryHandler<CheckClientExistsForCodeQuery, bool>
     {
-        private readonly IHospitalityGemDbContext _dbContext;
+        private readonly IDomainDbContext _dbContext;
 
-        public CheckClientExistsForCodeQueryHandler(IHospitalityGemDbContext dbContext)
+        public CheckClientExistsForCodeQueryHandler(IDomainDbContext dbContext)
         {
             _dbContext = dbContext;
         }
@@ -28,7 +28,7 @@ namespace Warp.Data.Queries.Clients
         public bool Execute(CheckClientExistsForCodeQuery query)
         {
             return _dbContext.Clients
-                .Any(c => c.CustomerID == query.CustomerId && c.Code == query.ClientCode);
+                .Any(c => c.CustomerId == query.CustomerId && c.Code == query.ClientCode);
         }
     }
 }

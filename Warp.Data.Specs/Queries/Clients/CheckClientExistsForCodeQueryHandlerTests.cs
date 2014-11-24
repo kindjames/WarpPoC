@@ -4,6 +4,7 @@ using Machine.Specifications;
 using Warp.Data.Context;
 using Warp.Data.Entities;
 using Warp.Data.Queries.Clients;
+using Client = Warp.Data.Entities.Client;
 
 namespace Warp.Data.Specs.Queries.Clients
 {
@@ -18,13 +19,13 @@ namespace Warp.Data.Specs.Queries.Clients
 
             Establish that = () =>
                 // Mock the Clients DbSet.
-                The<IHospitalityGemDbContext>()
+                The<IDomainDbContext>()
                     .WhenToldTo(d => d.Clients)
                     .Return(new InMemoryDbSet<Client>(true)
                     {
-                        new Client {CustomerID = 111, Code = "qwe"},
-                        new Client {CustomerID = CustomerId, Code = "asd"},
-                        new Client {CustomerID = 312, Code = "zxc"},
+                        new Client {CustomerId = 111, Code = "qwe"},
+                        new Client {CustomerId = CustomerId, Code = "asd"},
+                        new Client {CustomerId = 312, Code = "zxc"},
                     });
 
             Because of = () => _result = Subject.Execute(new CheckClientExistsForCodeQuery { CustomerId = CustomerId, ClientCode = Code });
@@ -41,13 +42,13 @@ namespace Warp.Data.Specs.Queries.Clients
 
             Establish that = () =>
                 // Mock the Clients DbSet.
-                The<IHospitalityGemDbContext>()
+                The<IDomainDbContext>()
                     .WhenToldTo(d => d.Clients)
                     .Return(new InMemoryDbSet<Client>(true)
                     {
-                        new Client {CustomerID = 111, Code = "qwe"},
-                        new Client {CustomerID = 222, Code = "asd"},
-                        new Client {CustomerID = 312, Code = "zxc"},
+                        new Client {CustomerId = 111, Code = "qwe"},
+                        new Client {CustomerId = 222, Code = "asd"},
+                        new Client {CustomerId = 312, Code = "zxc"},
                     });
 
             Because of = () => _result = Subject.Execute(new CheckClientExistsForCodeQuery { CustomerId = CustomerId, ClientCode = Code });

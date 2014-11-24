@@ -1,13 +1,15 @@
+using System;
+
 namespace Warp.Data.Entities
 {
-    public partial class PersonTimeTracker
+    public class PersonTimeTracker
     {
-        public int PersonTimeTrackerID { get; set; }
-        public int PersonID { get; set; }
-        public int TimeTrackerID { get; set; }
+        public int PersonTimeTrackerId { get; set; }
+        public int PersonId { get; set; }
+        public int TimeTrackerId { get; set; }
         public bool Active { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public virtual TimeTracker TimeTracker { get; set; }
     }
 }

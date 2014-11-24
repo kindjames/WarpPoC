@@ -1,13 +1,15 @@
+using System;
+
 namespace Warp.Data.Entities
 {
-    public partial class TerminologyClient
+    public class TerminologyClient
     {
-        public int TerminiologyClientID { get; set; }
-        public short TerminologyID { get; set; }
-        public int ClientID { get; set; }
+        public int TerminiologyClientId { get; set; }
+        public short TerminologyId { get; set; }
+        public int ClientId { get; set; }
         public string ClientTerm { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual Client Client { get; set; }
         public virtual Terminology Terminology { get; set; }

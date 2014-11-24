@@ -2,13 +2,13 @@ using System;
 
 namespace Warp.Data.Entities
 {
-    public partial class ScheduleCustomCalendar
+    public class ScheduleCustomCalendar
     {
         public int ScheduleCustomCalendarId { get; set; }
-        public Nullable<int> ScheduleId { get; set; }
-        public Nullable<int> CustomCalendarId { get; set; }
-        public System.DateTime DateUpdated { get; set; }
-        public System.DateTime DateCreated { get; set; }
+        public int? ScheduleId { get; set; }
+        public int? CustomCalendarId { get; set; }
+        public DateTime DateUpdated { get; set; }
+        public DateTime DateCreated { get; set; }
         public bool Active { get; set; }
         public virtual CustomCalendar CustomCalendar { get; set; }
         public virtual Schedule Schedule { get; set; }

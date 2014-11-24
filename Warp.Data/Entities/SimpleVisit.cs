@@ -3,24 +3,24 @@ using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public partial class SimpleVisit
+    public class SimpleVisit
     {
         public SimpleVisit()
         {
-            this.SimpleVisitQuestionResults = new List<SimpleVisitQuestionResult>();
+            SimpleVisitQuestionResults = new List<SimpleVisitQuestionResult>();
         }
 
-        public int SimpleVisitID { get; set; }
-        public int SimpleVisitTemplateID { get; set; }
-        public short VisitStatusID { get; set; }
-        public short VisitTypeID { get; set; }
-        public int BranchID { get; set; }
-        public int AssessorID { get; set; }
+        public int SimpleVisitId { get; set; }
+        public int SimpleVisitTemplateId { get; set; }
+        public short VisitStatusId { get; set; }
+        public short VisitTypeId { get; set; }
+        public int BranchId { get; set; }
+        public int AssessorId { get; set; }
         public string IP { get; set; }
-        public System.DateTime StartTime { get; set; }
-        public Nullable<System.DateTime> EndTime { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public DateTime StartTime { get; set; }
+        public DateTime? EndTime { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual Assessor Assessor { get; set; }
         public virtual SimpleVisitTemplate SimpleVisitTemplate { get; set; }

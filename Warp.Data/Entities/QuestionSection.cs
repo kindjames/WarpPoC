@@ -1,20 +1,21 @@
+using System;
 using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public partial class QuestionSection
+    public class QuestionSection
     {
         public QuestionSection()
         {
-            this.Questions = new List<Question>();
-            this.QuestionnaireQuestions = new List<QuestionnaireQuestion>();
-            this.SubQuestionnaireQuestionOverwrites = new List<SubQuestionnaireQuestionOverwrite>();
+            Questions = new List<Question>();
+            QuestionnaireQuestions = new List<QuestionnaireQuestion>();
+            SubQuestionnaireQuestionOverwrites = new List<SubQuestionnaireQuestionOverwrite>();
         }
 
-        public int QuestionSectionID { get; set; }
+        public int QuestionSectionId { get; set; }
         public string Title { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual ICollection<Question> Questions { get; set; }
         public virtual ICollection<QuestionnaireQuestion> QuestionnaireQuestions { get; set; }

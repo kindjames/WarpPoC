@@ -1,13 +1,10 @@
 namespace Warp.Data.Entities
 {
-    public partial class ClientNote
+    public class ClientNote : EntityBase
     {
-        public int ClientNoteID { get; set; }
-        public int ClientID { get; set; }
-        public int NoteID { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
-        public bool Active { get; set; }
+        public int ClientNoteId { get; set; }
+        public int ClientId { get; set; }
+        public int NoteId { get; set; }
         public virtual Client Client { get; set; }
         public virtual Note Note { get; set; }
     }

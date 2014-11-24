@@ -1,19 +1,20 @@
+using System;
 using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public partial class Gender
+    public class Gender
     {
         public Gender()
         {
-            this.StaffClothingItems = new List<StaffClothingItem>();
-            this.StaffMembers = new List<StaffMember>();
+            StaffClothingItems = new List<StaffClothingItem>();
+            StaffMembers = new List<StaffMember>();
         }
 
-        public byte GenderID { get; set; }
+        public byte GenderId { get; set; }
         public string Name { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual ICollection<StaffClothingItem> StaffClothingItems { get; set; }
         public virtual ICollection<StaffMember> StaffMembers { get; set; }

@@ -1,19 +1,20 @@
+using System;
 using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public partial class ReportProblemActionType
+    public class ReportProblemActionType
     {
         public ReportProblemActionType()
         {
-            this.ReportProblemActions = new List<ReportProblemAction>();
+            ReportProblemActions = new List<ReportProblemAction>();
         }
 
-        public short ReportProblemActionTypeID { get; set; }
+        public short ReportProblemActionTypeId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual ICollection<ReportProblemAction> ReportProblemActions { get; set; }
     }

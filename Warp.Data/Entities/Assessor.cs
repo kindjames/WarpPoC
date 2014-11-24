@@ -3,43 +3,43 @@ using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public partial class Assessor
+    public class Assessor
     {
         public Assessor()
         {
-            this.AssessorAttributes = new List<AssessorAttribute>();
-            this.AssessorCallBackRequests = new List<AssessorCallBackRequest>();
-            this.AssessorCallInLogs = new List<AssessorCallInLog>();
-            this.AssessorExpenses = new List<AssessorExpense>();
-            this.AssessorGeographicPostCodes = new List<AssessorGeographicPostCode>();
-            this.AssessorHistories = new List<AssessorHistory>();
-            this.AssessorNotes = new List<AssessorNote>();
-            this.AssessorTimeTrackers = new List<AssessorTimeTracker>();
-            this.AuditAssessorEvents = new List<AuditAssessorEvent>();
-            this.BanBranches = new List<BanBranch>();
-            this.BanBrands = new List<BanBrand>();
-            this.BanClients = new List<BanClient>();
-            this.CommunicationPreferences = new List<CommunicationPreference>();
-            this.ForumAssessorReplies = new List<ForumAssessorReply>();
-            this.ForumReportedReplies = new List<ForumReportedReply>();
-            this.ForumThreads = new List<ForumThread>();
-            this.Points = new List<Point>();
-            this.QuestionResults = new List<QuestionResult>();
-            this.ResultComments = new List<ResultComment>();
-            this.SimpleVisits = new List<SimpleVisit>();
-            this.Suggestions = new List<Suggestion>();
-            this.SuggestionVotes = new List<SuggestionVote>();
-            this.TelephoneRecordings = new List<TelephoneRecording>();
-            this.VisitAssessors = new List<VisitAssessor>();
+            AssessorAttributes = new List<AssessorAttribute>();
+            AssessorCallBackRequests = new List<AssessorCallBackRequest>();
+            AssessorCallInLogs = new List<AssessorCallInLog>();
+            AssessorExpenses = new List<AssessorExpense>();
+            AssessorGeographicPostCodes = new List<AssessorGeographicPostCode>();
+            AssessorHistories = new List<AssessorHistory>();
+            AssessorNotes = new List<AssessorNote>();
+            AssessorTimeTrackers = new List<AssessorTimeTracker>();
+            AuditAssessorEvents = new List<AuditAssessorEvent>();
+            BanBranches = new List<BanBranch>();
+            BanBrands = new List<BanBrand>();
+            BanClients = new List<BanClient>();
+            CommunicationPreferences = new List<CommunicationPreference>();
+            ForumAssessorReplies = new List<ForumAssessorReply>();
+            ForumReportedReplies = new List<ForumReportedReply>();
+            ForumThreads = new List<ForumThread>();
+            Points = new List<Point>();
+            QuestionResults = new List<QuestionResult>();
+            ResultComments = new List<ResultComment>();
+            SimpleVisits = new List<SimpleVisit>();
+            Suggestions = new List<Suggestion>();
+            SuggestionVotes = new List<SuggestionVote>();
+            TelephoneRecordings = new List<TelephoneRecording>();
+            VisitAssessors = new List<VisitAssessor>();
         }
 
-        public int AssessorID { get; set; }
-        public int UserID { get; set; }
-        public short AssessorStatusID { get; set; }
-        public short AssessorLevelID { get; set; }
+        public int AssessorId { get; set; }
+        public int UserId { get; set; }
+        public short AssessorStatusId { get; set; }
+        public short AssessorLevelId { get; set; }
         public bool AssessorLevelLock { get; set; }
-        public short CurrencyID { get; set; }
-        public System.DateTime DateOfBirth { get; set; }
+        public short CurrencyId { get; set; }
+        public DateTime DateOfBirth { get; set; }
         public string HomeTelephone { get; set; }
         public string WorkTelephone { get; set; }
         public string Mobile { get; set; }
@@ -49,10 +49,10 @@ namespace Warp.Data.Entities
         public string SortCode { get; set; }
         public string AccountNumber { get; set; }
         public string Occupation { get; set; }
-        public Nullable<byte> GenderID { get; set; }
-        public System.DateTime DateOfLastProfileUpdate { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public byte? GenderId { get; set; }
+        public DateTime DateOfLastProfileUpdate { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual ICollection<AssessorAttribute> AssessorAttributes { get; set; }
         public virtual ICollection<AssessorCallBackRequest> AssessorCallBackRequests { get; set; }

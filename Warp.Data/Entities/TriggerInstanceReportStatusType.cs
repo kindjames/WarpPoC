@@ -2,11 +2,11 @@ using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public partial class TriggerInstanceReportStatusType
+    public class TriggerInstanceReportStatusType
     {
         public TriggerInstanceReportStatusType()
         {
-            this.TriggerInstanceReports = new List<TriggerInstanceReport>();
+            TriggerInstanceReports = new List<TriggerInstanceReport>();
         }
 
         public int TriggerInstanceReportStatusTypeId { get; set; }

@@ -17,11 +17,11 @@ namespace Warp.Data.Specs.Queries.Customers
             static Customer _result;
 
             Establish that = () =>
-                The<IHospitalityGemDbContext>()
+                The<IDomainDbContext>()
                     .WhenToldTo(d => d.Customers)
                     .Return(new InMemoryDbSet<Customer>(true)
                     {
-                        new Customer {CustomerID = 123}
+                        new Customer {CustomerId = 123}
                     });
 
             Because of = () => _result = Subject.Execute(new GetCustomerQuery { CustomerId = CustomerId });
@@ -40,11 +40,11 @@ namespace Warp.Data.Specs.Queries.Customers
             {
                 _customerName = Guid.NewGuid().ToString();
 
-                The<IHospitalityGemDbContext>()
+                The<IDomainDbContext>()
                     .WhenToldTo(d => d.Customers)
                     .Return(new InMemoryDbSet<Customer>(true)
                     {
-                        new Customer {CustomerID = CustomerId, Name = _customerName}
+                        new Customer {CustomerId = CustomerId, Name = _customerName}
                     });
             };
 

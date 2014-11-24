@@ -1,18 +1,19 @@
+using System;
 using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public partial class Tag
+    public class Tag
     {
         public Tag()
         {
-            this.QuestionTags = new List<QuestionTag>();
+            QuestionTags = new List<QuestionTag>();
         }
 
-        public short TagID { get; set; }
+        public short TagId { get; set; }
         public string Name { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual ICollection<QuestionTag> QuestionTags { get; set; }
     }

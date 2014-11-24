@@ -2,16 +2,16 @@ using System;
 
 namespace Warp.Data.Entities
 {
-    public partial class ReportReportType
+    public class ReportReportType
     {
         public int ReportReportTypeId { get; set; }
         public int ReportId { get; set; }
         public int ReportTypeId { get; set; }
-        public System.DateTime DateCreated { get; set; }
+        public DateTime DateCreated { get; set; }
         public int CreatedByUserRoleId { get; set; }
-        public Nullable<System.DateTime> DateRemoved { get; set; }
-        public Nullable<int> RemovedByUserRoleId { get; set; }
-        public Nullable<System.DateTime> DateUpdated { get; set; }
+        public DateTime? DateRemoved { get; set; }
+        public int? RemovedByUserRoleId { get; set; }
+        public DateTime? DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual UserRole UserRole { get; set; }
         public virtual UserRole UserRole1 { get; set; }

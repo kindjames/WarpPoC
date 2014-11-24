@@ -3,14 +3,14 @@ using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public partial class Report
+    public class Report
     {
         public Report()
         {
-            this.ReportParameterValues = new List<ReportParameterValue>();
-            this.ReportReportTypes = new List<ReportReportType>();
-            this.ReportRestrictionClients = new List<ReportRestrictionClient>();
-            this.SubscriptionReports = new List<SubscriptionReport>();
+            ReportParameterValues = new List<ReportParameterValue>();
+            ReportReportTypes = new List<ReportReportType>();
+            ReportRestrictionClients = new List<ReportRestrictionClient>();
+            SubscriptionReports = new List<SubscriptionReport>();
         }
 
         public int ReportId { get; set; }
@@ -18,7 +18,7 @@ namespace Warp.Data.Entities
         public int ReportCategoryId { get; set; }
         public string SSRSName { get; set; }
         public int ReportSourceId { get; set; }
-        public System.DateTime DateLastChecked { get; set; }
+        public DateTime DateLastChecked { get; set; }
         public int DefaultReportSectionId { get; set; }
         public string Description { get; set; }
         public bool HideDescription { get; set; }
@@ -26,11 +26,11 @@ namespace Warp.Data.Entities
         public bool HidePurpose { get; set; }
         public string Notes { get; set; }
         public string PreviewImagePath { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public int CreatedByUserRoleId { get; set; }
-        public Nullable<System.DateTime> DateRemoved { get; set; }
-        public Nullable<int> RemovedbyUserRoleId { get; set; }
+        public DateTime? DateRemoved { get; set; }
+        public int? RemovedbyUserRoleId { get; set; }
         public bool Active { get; set; }
         public virtual UserRole UserRole { get; set; }
         public virtual UserRole UserRole1 { get; set; }

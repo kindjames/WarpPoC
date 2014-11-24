@@ -1,12 +1,14 @@
+using System;
+
 namespace Warp.Data.Entities
 {
-    public partial class ReportProblemTrackingAction
+    public class ReportProblemTrackingAction
     {
-        public int ReportProblemTrackingActionID { get; set; }
-        public int ReportProblemTrackingID { get; set; }
-        public int ReportProblemActionID { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public int ReportProblemTrackingActionId { get; set; }
+        public int ReportProblemTrackingId { get; set; }
+        public int ReportProblemActionId { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual ReportProblemAction ReportProblemAction { get; set; }
         public virtual ReportProblemTracking ReportProblemTracking { get; set; }

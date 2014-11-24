@@ -1,20 +1,21 @@
+using System;
 using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public partial class AuditAction
+    public class AuditAction
     {
         public AuditAction()
         {
-            this.AuditAdminEvents = new List<AuditAdminEvent>();
-            this.AuditAssessorEvents = new List<AuditAssessorEvent>();
-            this.AuditPersonEvents = new List<AuditPersonEvent>();
+            AuditAdminEvents = new List<AuditAdminEvent>();
+            AuditAssessorEvents = new List<AuditAssessorEvent>();
+            AuditPersonEvents = new List<AuditPersonEvent>();
         }
 
-        public byte AuditActionID { get; set; }
+        public byte AuditActionId { get; set; }
         public string ActionName { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual ICollection<AuditAdminEvent> AuditAdminEvents { get; set; }
         public virtual ICollection<AuditAssessorEvent> AuditAssessorEvents { get; set; }

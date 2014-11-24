@@ -13,9 +13,9 @@ namespace Warp.Data.Queries.ClientAccountManagers
 
     public class CheckClientAccountManagerExistsQueryHandler : IQueryHandler<CheckClientAccountManagerExistsQuery, bool>
     {
-        private readonly IHospitalityGemDbContext _dbContext;
+        private readonly IDomainDbContext _dbContext;
 
-        public CheckClientAccountManagerExistsQueryHandler(IHospitalityGemDbContext dbContext)
+        public CheckClientAccountManagerExistsQueryHandler(IDomainDbContext dbContext)
         {
             _dbContext = dbContext;
         }
@@ -23,7 +23,7 @@ namespace Warp.Data.Queries.ClientAccountManagers
         public bool Execute(CheckClientAccountManagerExistsQuery query)
         {
             return _dbContext.ClientAccountManagers
-                .Any(c => c.AccountManagerID == query.AccountManagerId);
+                .Any(c => c.AccountManagerId == query.AccountManagerId);
         }
     }
 }

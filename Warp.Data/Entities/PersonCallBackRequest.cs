@@ -1,13 +1,15 @@
+using System;
+
 namespace Warp.Data.Entities
 {
-    public partial class PersonCallBackRequest
+    public class PersonCallBackRequest
     {
-        public int PersonCallBackRequestID { get; set; }
-        public int PersonID { get; set; }
-        public int CallBackRequestID { get; set; }
+        public int PersonCallBackRequestId { get; set; }
+        public int PersonId { get; set; }
+        public int CallBackRequestId { get; set; }
         public bool Active { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public virtual CallBackRequest CallBackRequest { get; set; }
     }
 }

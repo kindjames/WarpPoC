@@ -3,26 +3,26 @@ using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public partial class Maintenance
+    public class Maintenance
     {
         public Maintenance()
         {
-            this.MaintenanceCustomers = new List<MaintenanceCustomer>();
+            MaintenanceCustomers = new List<MaintenanceCustomer>();
         }
 
-        public int MaintenanceID { get; set; }
+        public int MaintenanceId { get; set; }
         public string Title { get; set; }
         public string Details { get; set; }
-        public int MaintenanceCategoryID { get; set; }
-        public System.DateTime DateDisplayFrom { get; set; }
-        public Nullable<System.DateTime> DateDisplayTo { get; set; }
+        public int MaintenanceCategoryId { get; set; }
+        public DateTime DateDisplayFrom { get; set; }
+        public DateTime? DateDisplayTo { get; set; }
         public string HyperlinkURL { get; set; }
         public string HyperlinkText { get; set; }
-        public Nullable<int> RemovedBy { get; set; }
+        public int? RemovedBy { get; set; }
         public int AddedBy { get; set; }
         public bool Active { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public virtual MaintenanceCategory MaintenanceCategory { get; set; }
         public virtual ICollection<MaintenanceCustomer> MaintenanceCustomers { get; set; }
     }

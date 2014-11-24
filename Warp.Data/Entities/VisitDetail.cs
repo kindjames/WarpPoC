@@ -1,19 +1,21 @@
+using System;
+
 namespace Warp.Data.Entities
 {
-    public partial class VisitDetail
+    public class VisitDetail
     {
-        public int VisitDetailsID { get; set; }
-        public int VisitID { get; set; }
-        public System.DateTime DateOfActualVisit { get; set; }
+        public int VisitDetailsId { get; set; }
+        public int VisitId { get; set; }
+        public DateTime DateOfActualVisit { get; set; }
         public short AdultGuests { get; set; }
         public short ChildGuests { get; set; }
         public short ChildGuestsNotInvolved { get; set; }
         public string ReceiptNumber { get; set; }
-        public short TradeLevelID { get; set; }
+        public short TradeLevelId { get; set; }
         public int SeatingLevel { get; set; }
-        public short WeatherID { get; set; }
-        public System.DateTime DateUpdated { get; set; }
-        public System.DateTime DateCreated { get; set; }
+        public short WeatherId { get; set; }
+        public DateTime DateUpdated { get; set; }
+        public DateTime DateCreated { get; set; }
         public bool Active { get; set; }
         public virtual TradeLevel TradeLevel { get; set; }
         public virtual Visit Visit { get; set; }

@@ -1,24 +1,25 @@
+using System;
 using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public partial class ActionComment
+    public class ActionComment
     {
         public ActionComment()
         {
-            this.FurtherActionComments = new List<FurtherActionComment>();
+            FurtherActionComments = new List<FurtherActionComment>();
         }
 
-        public int ActionCommentID { get; set; }
-        public int ActionID { get; set; }
-        public int UserID { get; set; }
+        public int ActionCommentId { get; set; }
+        public int ActionId { get; set; }
+        public int UserId { get; set; }
         public string Comment { get; set; }
-        public short ActionPriorityID { get; set; }
-        public short ActionTypeID { get; set; }
-        public short ActionStatusID { get; set; }
+        public short ActionPriorityId { get; set; }
+        public short ActionTypeId { get; set; }
+        public short ActionStatusId { get; set; }
         public bool Display { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual User User { get; set; }
         public virtual Action Action { get; set; }

@@ -15,9 +15,9 @@ namespace Warp.Data.Queries.Brands
 
     public class GetBrandsForClientQueryHandler : IQueryHandler<GetBrandsForClientQuery, IEnumerable<Brand>>
     {
-        private readonly IHospitalityGemDbContext _dbContext;
+        private readonly IDomainDbContext _dbContext;
 
-        public GetBrandsForClientQueryHandler(IHospitalityGemDbContext dbContext)
+        public GetBrandsForClientQueryHandler(IDomainDbContext dbContext)
         {
             _dbContext = dbContext;
         }
@@ -25,7 +25,7 @@ namespace Warp.Data.Queries.Brands
         public IEnumerable<Brand> Execute(GetBrandsForClientQuery query)
         {
             return _dbContext.Brands
-                .Where(b => b.ClientID == query.ClientId)
+                .Where(b => b.ClientId == query.ClientId)
                 .ToArray()
                 .AsEnumerable();
         }

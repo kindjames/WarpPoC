@@ -1,10 +1,11 @@
+
 namespace Warp.Data.Entities
 {
-    public partial class ClientLegacyUser : EntityBase
+    public class ClientLegacyUser : EntityBase
     {
-        public int ClientLegacyID { get; set; }
-        public int ClientID { get; set; }
-        public int LegacyID { get; set; }
+        public int ClientLegacyId { get; set; }
+        public int ClientId { get; set; }
+        public int LegacyId { get; set; }
         public virtual Client Client { get; set; }
     }
 }

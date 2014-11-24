@@ -1,9 +1,8 @@
-using System;
 using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public partial class ContactAddress
+    public class ContactAddress : EntityBase
     {
         public ContactAddress()
         {
@@ -15,17 +14,15 @@ namespace Warp.Data.Entities
             this.ContactAddressGeoLocations = new List<ContactAddressGeoLocation>();
         }
 
-        public int ContactAddressID { get; set; }
+        public int ContactAddressId { get; set; }
         public string Address1 { get; set; }
         public string Address2 { get; set; }
         public string Address3 { get; set; }
         public string Address4 { get; set; }
         public string Address5 { get; set; }
         public string Postcode { get; set; }
-        public Nullable<int> GeographicPostcodeID { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
-        public bool Active { get; set; }
+        public int? GeographicPostcodeId { get; set; }
+
         public virtual ICollection<ContactAddressBranch> ContactAddressBranches { get; set; }
         public virtual ICollection<ContactAddressBrand> ContactAddressBrands { get; set; }
         public virtual ICollection<ContactAddressClient> ContactAddressClients { get; set; }

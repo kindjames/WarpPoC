@@ -1,12 +1,14 @@
+using System;
+
 namespace Warp.Data.Entities
 {
-    public partial class SimpleVisitTemplateBranch
+    public class SimpleVisitTemplateBranch
     {
-        public int SimpleVisitTemplateBranchID { get; set; }
-        public int SimpleVisitTemplateID { get; set; }
-        public int BranchID { get; set; }
+        public int SimpleVisitTemplateBranchId { get; set; }
+        public int SimpleVisitTemplateId { get; set; }
+        public int BranchId { get; set; }
         public bool Active { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
     }
 }

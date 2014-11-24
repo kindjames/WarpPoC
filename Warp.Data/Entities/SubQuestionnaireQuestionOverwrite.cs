@@ -1,33 +1,34 @@
+using System;
 using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public partial class SubQuestionnaireQuestionOverwrite
+    public class SubQuestionnaireQuestionOverwrite
     {
         public SubQuestionnaireQuestionOverwrite()
         {
-            this.SQQOPossibleAnswers = new List<SQQOPossibleAnswer>();
-            this.SubDynamicQuestions = new List<SubDynamicQuestion>();
-            this.SubDynamicQuestions1 = new List<SubDynamicQuestion>();
+            SQQOPossibleAnswers = new List<SQQOPossibleAnswer>();
+            SubDynamicQuestions = new List<SubDynamicQuestion>();
+            SubDynamicQuestions1 = new List<SubDynamicQuestion>();
         }
 
-        public int SubQuestionnaireQuestionOverwriteID { get; set; }
-        public int SubQuestionnaireID { get; set; }
-        public int QuestionnaireQuestionID { get; set; }
-        public int QuestionOverwriteID { get; set; }
+        public int SubQuestionnaireQuestionOverwriteId { get; set; }
+        public int SubQuestionnaireId { get; set; }
+        public int QuestionnaireQuestionId { get; set; }
+        public int QuestionOverwriteId { get; set; }
         public bool Dynamic { get; set; }
-        public int QuestionSectionID { get; set; }
+        public int QuestionSectionId { get; set; }
         public byte SectionNumber { get; set; }
         public short QuestionNumber { get; set; }
-        public short ManagementCategoryID { get; set; }
-        public short BenchmarkID { get; set; }
-        public short QuestionDepartmentID { get; set; }
+        public short ManagementCategoryId { get; set; }
+        public short BenchmarkId { get; set; }
+        public short QuestionDepartmentId { get; set; }
         public decimal MaxScore { get; set; }
         public byte MinAnswer { get; set; }
         public byte MaxAnswer { get; set; }
         public string Hint { get; set; }
-        public System.DateTime DateUpdated { get; set; }
-        public System.DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
+        public DateTime DateCreated { get; set; }
         public bool Active { get; set; }
         public virtual Benchmark Benchmark { get; set; }
         public virtual ManagementCategory ManagementCategory { get; set; }

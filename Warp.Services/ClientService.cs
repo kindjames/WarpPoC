@@ -8,6 +8,7 @@ using Warp.Data.Commands.Clients;
 using Warp.Data.Entities;
 using Warp.Data.Exceptions;
 using Warp.Data.Queries.Clients;
+using Client = Warp.Data.Entities.Client;
 
 namespace Warp.Services
 {

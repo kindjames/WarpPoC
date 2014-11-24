@@ -1,11 +1,13 @@
+using System;
+
 namespace Warp.Data.Entities
 {
-    public partial class NoteCalendar
+    public class NoteCalendar
     {
-        public int NoteCalendarID { get; set; }
-        public int NoteID { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public int NoteCalendarId { get; set; }
+        public int NoteId { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual Note Note { get; set; }
     }

@@ -3,30 +3,30 @@ using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public partial class StaffMember
+    public class StaffMember
     {
         public StaffMember()
         {
-            this.StaffMemberClothingItems = new List<StaffMemberClothingItem>();
-            this.StaffMemberFeatures = new List<StaffMemberFeature>();
+            StaffMemberClothingItems = new List<StaffMemberClothingItem>();
+            StaffMemberFeatures = new List<StaffMemberFeature>();
         }
 
-        public int StaffMemberID { get; set; }
-        public int VisitID { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public int AssessorID { get; set; }
+        public int StaffMemberId { get; set; }
+        public int VisitId { get; set; }
+        public DateTime DateCreated { get; set; }
+        public int AssessorId { get; set; }
         public string Name { get; set; }
         public string Notes { get; set; }
-        public byte StaffAgeID { get; set; }
-        public byte StaffHeightID { get; set; }
-        public byte StaffHairColourID { get; set; }
-        public byte StaffHairLengthID { get; set; }
-        public byte StaffHairStyleID { get; set; }
-        public byte GenderID { get; set; }
-        public Nullable<int> CheckedByAdminID { get; set; }
+        public byte StaffAgeId { get; set; }
+        public byte StaffHeightId { get; set; }
+        public byte StaffHairColourId { get; set; }
+        public byte StaffHairLengthId { get; set; }
+        public byte StaffHairStyleId { get; set; }
+        public byte GenderId { get; set; }
+        public int? CheckedByAdminId { get; set; }
         public bool Active { get; set; }
         public bool Approved { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public virtual Gender Gender { get; set; }
         public virtual StaffAge StaffAge { get; set; }
         public virtual StaffHairColour StaffHairColour { get; set; }

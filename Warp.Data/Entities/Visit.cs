@@ -3,56 +3,56 @@ using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public partial class Visit
+    public class Visit
     {
         public Visit()
         {
-            this.AccountingTransactions = new List<AccountingTransaction>();
-            this.Assessments = new List<Assessment>();
-            this.AssessorExpenses = new List<AssessorExpense>();
-            this.StaffMembers = new List<StaffMember>();
-            this.VisitActions = new List<VisitAction>();
-            this.VisitAssessors = new List<VisitAssessor>();
-            this.VisitCallBackRequests = new List<VisitCallBackRequest>();
-            this.VisitCallInLogs = new List<VisitCallInLog>();
-            this.VisitDetails = new List<VisitDetail>();
-            this.VisitNotes = new List<VisitNote>();
-            this.VisitPoints = new List<VisitPoint>();
-            this.VisitStatusHistories = new List<VisitStatusHistory>();
-            this.VisitTimeTrackers = new List<VisitTimeTracker>();
+            AccountingTransactions = new List<AccountingTransaction>();
+            Assessments = new List<Assessment>();
+            AssessorExpenses = new List<AssessorExpense>();
+            StaffMembers = new List<StaffMember>();
+            VisitActions = new List<VisitAction>();
+            VisitAssessors = new List<VisitAssessor>();
+            VisitCallBackRequests = new List<VisitCallBackRequest>();
+            VisitCallInLogs = new List<VisitCallInLog>();
+            VisitDetails = new List<VisitDetail>();
+            VisitNotes = new List<VisitNote>();
+            VisitPoints = new List<VisitPoint>();
+            VisitStatusHistories = new List<VisitStatusHistory>();
+            VisitTimeTrackers = new List<VisitTimeTracker>();
         }
 
-        public int VisitID { get; set; }
-        public int PeriodID { get; set; }
-        public int AccountingPeriodID { get; set; }
-        public short VisitStatusID { get; set; }
-        public short VisitTypeID { get; set; }
-        public int BranchID { get; set; }
-        public System.DateTime DateAdded { get; set; }
-        public System.DateTime DateAvailableFrom { get; set; }
-        public Nullable<System.DateTime> DateAvailableTo { get; set; }
-        public short AddedByAdminID { get; set; }
-        public short OwnerAdminID { get; set; }
-        public System.DateTime DateDisplay { get; set; }
+        public int VisitId { get; set; }
+        public int PeriodId { get; set; }
+        public int AccountingPeriodId { get; set; }
+        public short VisitStatusId { get; set; }
+        public short VisitTypeId { get; set; }
+        public int BranchId { get; set; }
+        public DateTime DateAdded { get; set; }
+        public DateTime DateAvailableFrom { get; set; }
+        public DateTime? DateAvailableTo { get; set; }
+        public short AddedByAdminId { get; set; }
+        public short OwnerAdminId { get; set; }
+        public DateTime DateDisplay { get; set; }
         public string BestContactNo { get; set; }
         public string PublicNotes { get; set; }
         public bool LockedForEditing { get; set; }
-        public Nullable<short> LockedByAdminID { get; set; }
-        public Nullable<System.DateTime> DateLastLocked { get; set; }
-        public Nullable<System.DateTime> DateCheckedOut { get; set; }
-        public Nullable<short> CheckOutAdminID { get; set; }
-        public Nullable<System.DateTime> DateCheckOutInvalid { get; set; }
+        public short? LockedByAdminId { get; set; }
+        public DateTime? DateLastLocked { get; set; }
+        public DateTime? DateCheckedOut { get; set; }
+        public short? CheckOutAdminId { get; set; }
+        public DateTime? DateCheckOutInvalId { get; set; }
         public string CheckOutKey { get; set; }
         public bool Analyse { get; set; }
         public bool Release { get; set; }
-        public Nullable<int> ReleasedByAdminID { get; set; }
-        public Nullable<System.DateTime> DateReleased { get; set; }
-        public Nullable<double> Score { get; set; }
-        public Nullable<System.DateTime> DateScoreCalculated { get; set; }
-        public Nullable<int> CriteriaSetID { get; set; }
+        public int? ReleasedByAdminId { get; set; }
+        public DateTime? DateReleased { get; set; }
+        public double? Score { get; set; }
+        public DateTime? DateScoreCalculated { get; set; }
+        public int? CriteriaSetId { get; set; }
         public bool Invoiced { get; set; }
-        public System.DateTime DateUpdated { get; set; }
-        public System.DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
+        public DateTime DateCreated { get; set; }
         public bool Active { get; set; }
         public virtual AccountingPeriod AccountingPeriod { get; set; }
         public virtual ICollection<AccountingTransaction> AccountingTransactions { get; set; }

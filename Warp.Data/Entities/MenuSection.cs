@@ -1,19 +1,20 @@
+using System;
 using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public partial class MenuSection
+    public class MenuSection
     {
         public MenuSection()
         {
-            this.MenuConfigs = new List<MenuConfig>();
-            this.MenuSectionPossibleAnswers = new List<MenuSectionPossibleAnswer>();
+            MenuConfigs = new List<MenuConfig>();
+            MenuSectionPossibleAnswers = new List<MenuSectionPossibleAnswer>();
         }
 
-        public int MenuSectionID { get; set; }
+        public int MenuSectionId { get; set; }
         public string Name { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual ICollection<MenuConfig> MenuConfigs { get; set; }
         public virtual ICollection<MenuSectionPossibleAnswer> MenuSectionPossibleAnswers { get; set; }

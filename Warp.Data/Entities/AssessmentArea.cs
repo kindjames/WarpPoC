@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public partial class AssessmentArea
+    public class AssessmentArea : EntityBase
     {
         public AssessmentArea()
         {
@@ -11,12 +11,9 @@ namespace Warp.Data.Entities
             this.AssessmentAreaBranches = new List<AssessmentAreaBranch>();
         }
 
-        public short AssessmentAreaID { get; set; }
+        public short AssessmentAreaId { get; set; }
         public string Name { get; set; }
-        public short AssessmentTypeID { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateUpdated { get; set; }
-        public bool Active { get; set; }
+        public short AssessmentTypeId { get; set; }
         public virtual ICollection<AccountingTransaction> AccountingTransactions { get; set; }
         public virtual ICollection<Assessment> Assessments { get; set; }
         public virtual AssessmentType AssessmentType { get; set; }
