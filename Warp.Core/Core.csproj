@@ -36,6 +36,9 @@
     <Reference Include="AutoMapper.Net4">
       <HintPath>..\packages\AutoMapper.3.2.1\lib\net40\AutoMapper.Net4.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.1.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -49,6 +52,7 @@
     <Compile Include="Exceptions\ClientAlreadyExistsException.cs" />
     <Compile Include="Exceptions\CommandHandlerNotFoundException.cs" />
     <Compile Include="Exceptions\QueryHandlerNotFoundException.cs" />
+    <Compile Include="Infrastructure\Authentication\PasswordHasher.cs" />
     <Compile Include="Infrastructure\DataAnnotationsValidator.cs" />
     <Compile Include="Infrastructure\DateTimeProvider.cs" />
     <Compile Include="Infrastructure\IDateTimeProvider.cs" />
