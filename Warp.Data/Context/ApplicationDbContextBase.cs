@@ -11,6 +11,13 @@ namespace Warp.Data.Context
 {
     public abstract class ApplicationDbContextBase : DbContext, IApplicationDbContext
     {
+        static readonly Lazy<IEnumerable<dynamic>> EntityMappings = new Lazy<IEnumerable<dynamic>>(() =>
+                Assembly.GetExecutingAssembly()
+                    .GetTypes()
+                    .Where(t => t.BaseType != null && t.BaseType.IsGenericType && t.BaseType.GetGenericTypeDefinition() == typeof(EntityTypeConfiguration<>))
+                    .Select(Activator.CreateInstance)
+            );
+
         static ApplicationDbContextBase()
         {
             Database.SetInitializer<AuthenticationDbContext>(null);
@@ -58,14 +65,9 @@ namespace Warp.Data.Context
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            var entityTypes = new Lazy<IEnumerable<dynamic>>(() =>
-                Assembly.GetExecutingAssembly()
-                    .GetTypes()
-                    .Where(t => t.BaseType != null && t.BaseType.IsGenericType && t.BaseType.GetGenericTypeDefinition() == typeof(EntityTypeConfiguration<>))
-                    .Select(Activator.CreateInstance)
-            );
+            var mappings = EntityMappings.Value;
 
-            foreach (var mapping in entityTypes.Value)
+            foreach (var mapping in mappings)
             {
                 modelBuilder.Configurations.Add(mapping);
             }
