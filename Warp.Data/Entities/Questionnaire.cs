@@ -32,7 +32,7 @@ namespace Warp.Data.Entities
         public virtual ICollection<BranchQuestionnaire> BranchQuestionnaires { get; set; }
         public virtual ICollection<BrandQuestionnaire> BrandQuestionnaires { get; set; }
         public virtual ICollection<ClientQuestionnaire> ClientQuestionnaires { get; set; }
-        public virtual QuestionnaireStatu QuestionnaireStatu { get; set; }
+        public virtual QuestionnaireStatus QuestionnaireStatus { get; set; }
         public virtual VisitType VisitType { get; set; }
         public virtual ICollection<QuestionnaireAccountingProduct> QuestionnaireAccountingProducts { get; set; }
         public virtual ICollection<QuestionnaireQuestion> QuestionnaireQuestions { get; set; }

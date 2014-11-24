@@ -30,7 +30,7 @@ namespace Warp.Data.Mapping
             this.HasRequired(t => t.AssessorExpense)
                 .WithMany(t => t.AssessorExpenseHistories)
                 .HasForeignKey(d => d.AssessorExpenseId);
-            this.HasRequired(t => t.ExpenseStatu)
+            this.HasRequired(t => t.ExpenseStatus)
                 .WithMany(t => t.AssessorExpenseHistories)
                 .HasForeignKey(d => d.ExpenseStatusId);
 

@@ -3,9 +3,9 @@ using Warp.Data.Entities;
 
 namespace Warp.Data.Mapping
 {
-    public class CommunicationStatuMap : EntityTypeConfiguration<CommunicationStatu>
+    public class CommunicationStatusMap : EntityTypeConfiguration<CommunicationStatus>
     {
-        public CommunicationStatuMap()
+        public CommunicationStatusMap()
         {
             // Primary Key
             this.HasKey(t => t.CommunicationStatusId);

@@ -4,9 +4,9 @@ using Warp.Data.Entities;
 
 namespace Warp.Data.Mapping
 {
-    public class QuestionnaireStatuMap : EntityTypeConfiguration<QuestionnaireStatu>
+    public class QuestionnaireStatusMap : EntityTypeConfiguration<QuestionnaireStatus>
     {
-        public QuestionnaireStatuMap()
+        public QuestionnaireStatusMap()
         {
             // Primary Key
             this.HasKey(t => t.QuestionnaireStatusId);

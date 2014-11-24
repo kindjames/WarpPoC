@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public class LocationStatu
+    public class LocationStatus
     {
-        public LocationStatu()
+        public LocationStatus()
         {
             Locations = new List<Location>();
         }

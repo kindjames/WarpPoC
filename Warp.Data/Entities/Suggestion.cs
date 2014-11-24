@@ -21,7 +21,7 @@ namespace Warp.Data.Entities
         public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual Assessor Assessor { get; set; }
-        public virtual SuggestionStatu SuggestionStatu { get; set; }
+        public virtual SuggestionStatus SuggestionStatus { get; set; }
         public virtual ICollection<SuggestionVote> SuggestionVotes { get; set; }
     }
 }

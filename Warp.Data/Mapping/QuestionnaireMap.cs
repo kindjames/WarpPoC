@@ -31,7 +31,7 @@ namespace Warp.Data.Mapping
             this.Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.QuestionnaireStatu)
+            this.HasRequired(t => t.QuestionnaireStatus)
                 .WithMany(t => t.Questionnaires)
                 .HasForeignKey(d => d.QuestionnaireStatusId);
             this.HasRequired(t => t.VisitType)

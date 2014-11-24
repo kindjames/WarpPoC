@@ -31,7 +31,7 @@ namespace Warp.Data.Mapping
             this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
 
             // Relationships
-            this.HasRequired(t => t.AreaStatu)
+            this.HasRequired(t => t.AreaStatus)
                 .WithMany(t => t.Areas)
                 .HasForeignKey(d => d.AreaStatusId);
             this.HasRequired(t => t.Region)

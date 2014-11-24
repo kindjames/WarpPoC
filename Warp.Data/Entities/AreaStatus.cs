@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public class AreaStatu
+    public class AreaStatus
     {
-        public AreaStatu()
+        public AreaStatus()
         {
             Areas = new List<Area>();
             AreaHistories = new List<AreaHistory>();

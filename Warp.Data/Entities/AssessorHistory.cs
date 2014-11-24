@@ -16,7 +16,7 @@ namespace Warp.Data.Entities
         public bool Active { get; set; }
         public virtual Assessor Assessor { get; set; }
         public virtual AssessorLevel AssessorLevel { get; set; }
-        public virtual AssessorStatu AssessorStatu { get; set; }
+        public virtual AssessorStatus AssessorStatus { get; set; }
         public virtual AssessorStatusChangeReason AssessorStatusChangeReason { get; set; }
     }
 }

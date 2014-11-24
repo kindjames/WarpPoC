@@ -3,7 +3,6 @@ using Warp.Core.Query;
 using Warp.Core.Validation;
 using Warp.Data.Context;
 using Warp.Data.Entities;
-using Client = Warp.Data.Entities.Client;
 
 namespace Warp.Data.Queries.Clients
 {

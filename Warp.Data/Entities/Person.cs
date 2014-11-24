@@ -26,7 +26,7 @@ namespace Warp.Data.Entities
         public virtual UserRole UserRole { get; set; }
         public virtual ICollection<Branch> Branches { get; set; }
         public virtual Client Client { get; set; }
-        public virtual PersonStatu PersonStatu { get; set; }
+        public virtual PersonStatus PersonStatus { get; set; }
         public virtual ICollection<PersonArea> PersonAreas { get; set; }
         public virtual ICollection<PersonBranch> PersonBranches { get; set; }
         public virtual ICollection<PersonBrand> PersonBrands { get; set; }

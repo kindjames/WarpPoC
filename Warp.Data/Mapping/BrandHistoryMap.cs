@@ -31,7 +31,7 @@ namespace Warp.Data.Mapping
             this.HasRequired(t => t.Brand)
                 .WithMany(t => t.BrandHistories)
                 .HasForeignKey(d => d.BrandId);
-            this.HasRequired(t => t.BrandStatu)
+            this.HasRequired(t => t.BrandStatus)
                 .WithMany(t => t.BrandHistories)
                 .HasForeignKey(d => d.BrandStatusId);
 

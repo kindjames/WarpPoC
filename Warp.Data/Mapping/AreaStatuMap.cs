@@ -3,9 +3,9 @@ using Warp.Data.Entities;
 
 namespace Warp.Data.Mapping
 {
-    public class AreaStatuMap : EntityTypeConfiguration<AreaStatu>
+    public class AreaStatusMap : EntityTypeConfiguration<AreaStatus>
     {
-        public AreaStatuMap()
+        public AreaStatusMap()
         {
             // Primary Key
             this.HasKey(t => t.AreaStatusId);

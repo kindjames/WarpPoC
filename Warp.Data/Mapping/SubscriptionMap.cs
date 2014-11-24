@@ -34,7 +34,7 @@ namespace Warp.Data.Mapping
             this.Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasOptional(t => t.SubscriptionStatu)
+            this.HasOptional(t => t.SubscriptionStatus)
                 .WithMany(t => t.Subscriptions)
                 .HasForeignKey(d => d.SubscriptionStatusId);
             this.HasOptional(t => t.Trigger)

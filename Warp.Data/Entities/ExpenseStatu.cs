@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public class ExpenseStatu
+    public class ExpenseStatus
     {
-        public ExpenseStatu()
+        public ExpenseStatus()
         {
             AssessorExpenses = new List<AssessorExpense>();
             AssessorExpenseHistories = new List<AssessorExpenseHistory>();

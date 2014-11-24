@@ -34,7 +34,7 @@ namespace Warp.Data.Entities
         public DateTime DateUpdated { get; set; }
         public virtual ICollection<Branch> Branches { get; set; }
         public virtual ICollection<BanBrand> BanBrands { get; set; }
-        public virtual BrandStatu BrandStatu { get; set; }
+        public virtual BrandStatus BrandStatus { get; set; }
         public virtual Client Client { get; set; }
         public virtual IndustrySector IndustrySector { get; set; }
         public virtual ICollection<BrandAccountingProduct> BrandAccountingProducts { get; set; }

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public class BrandStatu
+    public class BrandStatus
     {
-        public BrandStatu()
+        public BrandStatus()
         {
             Brands = new List<Brand>();
             BrandHistories = new List<BrandHistory>();

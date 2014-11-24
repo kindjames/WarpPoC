@@ -3,9 +3,9 @@ using Warp.Data.Entities;
 
 namespace Warp.Data.Mapping
 {
-    public class SuggestionStatuMap : EntityTypeConfiguration<SuggestionStatu>
+    public class SuggestionStatusMap : EntityTypeConfiguration<SuggestionStatus>
     {
-        public SuggestionStatuMap()
+        public SuggestionStatusMap()
         {
             // Primary Key
             this.HasKey(t => t.SuggestionStatusId);

@@ -50,6 +50,8 @@
     <Compile Include="Context\DomainDbContext.cs" />
     <Compile Include="Context\IApplicationDbContext.cs" />
     <Compile Include="Context\IAuthenticationDbContext.cs" />
+    <Compile Include="Context\IDomainDbContext.cs" />
+    <Compile Include="EntityMappingsResolver.cs" />
     <Compile Include="Exceptions\DataEntityNotFoundException.cs" />
     <Compile Include="Entities\AbsenceInstance.cs" />
     <Compile Include="Entities\AbsenceType.cs" />
@@ -70,7 +72,7 @@
     <Compile Include="Entities\AreaHistory.cs" />
     <Compile Include="Entities\AreaLegacyUser.cs" />
     <Compile Include="Entities\AreaQuestionnaire.cs" />
-    <Compile Include="Entities\AreaStatu.cs" />
+    <Compile Include="Entities\AreaStatus.cs" />
     <Compile Include="Entities\Article.cs" />
     <Compile Include="Entities\ArticlePermission.cs" />
     <Compile Include="Entities\Assessment.cs" />

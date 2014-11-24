@@ -14,7 +14,7 @@ namespace Warp.Data.Entities
         public DateTime DateCreated { get; set; }
         public bool Active { get; set; }
         public virtual Visit Visit { get; set; }
-        public virtual VisitStatu VisitStatu { get; set; }
-        public virtual VisitStatu VisitStatu1 { get; set; }
+        public virtual VisitStatus VisitStatus { get; set; }
+        public virtual VisitStatus VisitStatus1 { get; set; }
     }
 }

@@ -4,9 +4,9 @@ using Warp.Data.Entities;
 
 namespace Warp.Data.Mapping
 {
-    public class VisitStatuMap : EntityTypeConfiguration<VisitStatu>
+    public class VisitStatusMap : EntityTypeConfiguration<VisitStatus>
     {
-        public VisitStatuMap()
+        public VisitStatusMap()
         {
             // Primary Key
             this.HasKey(t => t.VisitStatusId);

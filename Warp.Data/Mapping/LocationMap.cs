@@ -25,7 +25,7 @@ namespace Warp.Data.Mapping
             this.Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.LocationStatu)
+            this.HasRequired(t => t.LocationStatus)
                 .WithMany(t => t.Locations)
                 .HasForeignKey(d => d.LocationStatusId);
 

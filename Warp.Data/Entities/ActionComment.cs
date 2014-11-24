@@ -23,7 +23,7 @@ namespace Warp.Data.Entities
         public bool Active { get; set; }
         public virtual User User { get; set; }
         public virtual Action Action { get; set; }
-        public virtual ActionStatu ActionStatu { get; set; }
+        public virtual ActionStatus ActionStatus { get; set; }
         public virtual ICollection<FurtherActionComment> FurtherActionComments { get; set; }
     }
 }

@@ -24,7 +24,7 @@ namespace Warp.Data.Entities
         public DateTime DateUpdated { get; set; }
         public DateTime DateCreated { get; set; }
         public bool Active { get; set; }
-        public virtual SubscriptionStatu SubscriptionStatu { get; set; }
+        public virtual SubscriptionStatus SubscriptionStatus { get; set; }
         public virtual Trigger Trigger { get; set; }
         public virtual ICollection<SubscriptionDestination> SubscriptionDestinations { get; set; }
         public virtual ICollection<SubscriptionReport> SubscriptionReports { get; set; }

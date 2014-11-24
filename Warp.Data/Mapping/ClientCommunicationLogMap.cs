@@ -30,7 +30,7 @@ namespace Warp.Data.Mapping
             this.Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.CommunicationStatu)
+            this.HasRequired(t => t.CommunicationStatus)
                 .WithMany(t => t.ClientCommunicationLogs)
                 .HasForeignKey(d => d.CommunicationStatusId);
             this.HasRequired(t => t.CommunicationType)

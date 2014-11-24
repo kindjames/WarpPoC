@@ -3,9 +3,9 @@ using Warp.Data.Entities;
 
 namespace Warp.Data.Mapping
 {
-    public class SubscriptionStatuMap : EntityTypeConfiguration<SubscriptionStatu>
+    public class SubscriptionStatusMap : EntityTypeConfiguration<SubscriptionStatus>
     {
-        public SubscriptionStatuMap()
+        public SubscriptionStatusMap()
         {
             // Primary Key
             this.HasKey(t => t.SubscriptionStatusId);

@@ -21,7 +21,7 @@ namespace Warp.Data.Entities
         public bool Active { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime DateUpdated { get; set; }
-        public virtual AreaStatu AreaStatu { get; set; }
+        public virtual AreaStatus AreaStatus { get; set; }
         public virtual Region Region { get; set; }
         public virtual ICollection<AreaLegacyUser> AreaLegacyUsers { get; set; }
         public virtual ICollection<AreaHistory> AreaHistories { get; set; }

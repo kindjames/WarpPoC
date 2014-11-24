@@ -29,7 +29,7 @@ namespace Warp.Data.Entities
         public virtual ICollection<AreaHistory> AreaHistories { get; set; }
         public virtual ICollection<PersonRegion> PersonRegions { get; set; }
         public virtual RegionGroup RegionGroup { get; set; }
-        public virtual RegionStatu RegionStatu { get; set; }
+        public virtual RegionStatus RegionStatus { get; set; }
         public virtual ICollection<RegionLegacyUser> RegionLegacyUsers { get; set; }
         public virtual ICollection<RegionQuestionnaire> RegionQuestionnaires { get; set; }
         public virtual ICollection<RegionHistory> RegionHistories { get; set; }

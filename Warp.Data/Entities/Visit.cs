@@ -61,7 +61,7 @@ namespace Warp.Data.Entities
         public virtual CriteriaSet CriteriaSet { get; set; }
         public virtual Period Period { get; set; }
         public virtual ICollection<StaffMember> StaffMembers { get; set; }
-        public virtual VisitStatu VisitStatu { get; set; }
+        public virtual VisitStatus VisitStatus { get; set; }
         public virtual VisitType VisitType { get; set; }
         public virtual ICollection<VisitAction> VisitActions { get; set; }
         public virtual ICollection<VisitAssessor> VisitAssessors { get; set; }

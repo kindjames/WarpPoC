@@ -15,6 +15,6 @@ namespace Warp.Data.Entities
         public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual Brand Brand { get; set; }
-        public virtual BrandStatu BrandStatu { get; set; }
+        public virtual BrandStatus BrandStatus { get; set; }
     }
 }

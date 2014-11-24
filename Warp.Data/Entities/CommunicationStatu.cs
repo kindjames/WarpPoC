@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public class CommunicationStatu
+    public class CommunicationStatus
     {
-        public CommunicationStatu()
+        public CommunicationStatus()
         {
             ClientCommunicationLogs = new List<ClientCommunicationLog>();
         }

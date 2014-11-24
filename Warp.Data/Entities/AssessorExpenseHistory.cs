@@ -13,6 +13,6 @@ namespace Warp.Data.Entities
         public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual AssessorExpense AssessorExpense { get; set; }
-        public virtual ExpenseStatu ExpenseStatu { get; set; }
+        public virtual ExpenseStatus ExpenseStatus { get; set; }
     }
 }

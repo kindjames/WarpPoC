@@ -31,10 +31,10 @@ namespace Warp.Data.Mapping
             this.HasRequired(t => t.Visit)
                 .WithMany(t => t.VisitStatusHistories)
                 .HasForeignKey(d => d.VisitId);
-            this.HasRequired(t => t.VisitStatu)
+            this.HasRequired(t => t.VisitStatus)
                 .WithMany(t => t.VisitStatusHistories)
                 .HasForeignKey(d => d.VisitStatusId);
-            this.HasRequired(t => t.VisitStatu1)
+            this.HasRequired(t => t.VisitStatus1)
                 .WithMany(t => t.VisitStatusHistories1)
                 .HasForeignKey(d => d.VisitStatusId);
 

@@ -17,6 +17,6 @@ namespace Warp.Data.Entities
         public bool Active { get; set; }
         public string Code { get; set; }
         public virtual Region Region { get; set; }
-        public virtual RegionStatu RegionStatu { get; set; }
+        public virtual RegionStatus RegionStatus { get; set; }
     }
 }

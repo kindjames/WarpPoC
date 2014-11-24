@@ -16,6 +16,6 @@ namespace Warp.Data.Entities
         public bool Active { get; set; }
         public virtual Client Client { get; set; }
         public virtual Customer Customer { get; set; }
-        public virtual CustomerLinkStatu CustomerLinkStatu { get; set; }
+        public virtual CustomerLinkStatus CustomerLinkStatus { get; set; }
     }
 }

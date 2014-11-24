@@ -28,7 +28,7 @@ namespace Warp.Data.Mapping
             this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
 
             // Relationships
-            this.HasRequired(t => t.BrandStatu)
+            this.HasRequired(t => t.BrandStatus)
                 .WithMany(t => t.Brands)
                 .HasForeignKey(d => d.BrandStatusId);
             this.HasRequired(t => t.Client)

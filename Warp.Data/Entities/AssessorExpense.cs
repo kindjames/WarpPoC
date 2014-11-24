@@ -26,7 +26,7 @@ namespace Warp.Data.Entities
         public bool Active { get; set; }
         public virtual Currency Currency { get; set; }
         public virtual Assessor Assessor { get; set; }
-        public virtual ExpenseStatu ExpenseStatu { get; set; }
+        public virtual ExpenseStatus ExpenseStatus { get; set; }
         public virtual ExpenseType ExpenseType { get; set; }
         public virtual Visit Visit { get; set; }
         public virtual ICollection<AssessorExpenseHistory> AssessorExpenseHistories { get; set; }

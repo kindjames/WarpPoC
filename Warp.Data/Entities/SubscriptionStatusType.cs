@@ -7,7 +7,7 @@ namespace Warp.Data.Entities
     {
         public SubscriptionStatusType()
         {
-            SubscriptionStatus = new List<SubscriptionStatu>();
+            SubscriptionStatus = new List<SubscriptionStatus>();
         }
 
         public int SubscriptionStatusTypeId { get; set; }
@@ -16,6 +16,6 @@ namespace Warp.Data.Entities
         public DateTime DateUpdated { get; set; }
         public DateTime DateCreated { get; set; }
         public bool Active { get; set; }
-        public virtual ICollection<SubscriptionStatu> SubscriptionStatus { get; set; }
+        public virtual ICollection<SubscriptionStatus> SubscriptionStatus { get; set; }
     }
 }

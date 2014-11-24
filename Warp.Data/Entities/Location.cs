@@ -10,6 +10,6 @@ namespace Warp.Data.Entities
         public DateTime DateCreated { get; set; }
         public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
-        public virtual LocationStatu LocationStatu { get; set; }
+        public virtual LocationStatus LocationStatus { get; set; }
     }
 }

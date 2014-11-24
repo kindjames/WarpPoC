@@ -4,9 +4,9 @@ using Warp.Data.Entities;
 
 namespace Warp.Data.Mapping
 {
-    public class ClientContactStatuMap : EntityTypeConfiguration<ClientContactStatu>
+    public class ClientContactStatusMap : EntityTypeConfiguration<ClientContactStatus>
     {
-        public ClientContactStatuMap()
+        public ClientContactStatusMap()
         {
             // Primary Key
             this.HasKey(t => t.ClientContactStatusId);

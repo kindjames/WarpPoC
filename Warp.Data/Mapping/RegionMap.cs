@@ -35,7 +35,7 @@ namespace Warp.Data.Mapping
             this.HasOptional(t => t.RegionGroup)
                 .WithMany(t => t.Regions)
                 .HasForeignKey(d => d.RegionGroupId);
-            this.HasRequired(t => t.RegionStatu)
+            this.HasRequired(t => t.RegionStatus)
                 .WithMany(t => t.Regions)
                 .HasForeignKey(d => d.RegionStatusId);
 

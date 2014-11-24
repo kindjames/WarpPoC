@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public class ActionStatu
+    public class ActionStatus
     {
-        public ActionStatu()
+        public ActionStatus()
         {
             Actions = new List<Action>();
             ActionComments = new List<ActionComment>();

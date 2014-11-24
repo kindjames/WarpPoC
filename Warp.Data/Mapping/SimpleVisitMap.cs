@@ -41,7 +41,7 @@ namespace Warp.Data.Mapping
             this.HasRequired(t => t.SimpleVisitTemplate)
                 .WithMany(t => t.SimpleVisits)
                 .HasForeignKey(d => d.SimpleVisitTemplateId);
-            this.HasRequired(t => t.VisitStatu)
+            this.HasRequired(t => t.VisitStatus)
                 .WithMany(t => t.SimpleVisits)
                 .HasForeignKey(d => d.VisitStatusId);
             this.HasRequired(t => t.VisitType)

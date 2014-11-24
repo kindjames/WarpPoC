@@ -40,7 +40,7 @@ namespace Warp.Data.Mapping
             this.HasRequired(t => t.Action)
                 .WithMany(t => t.ActionComments)
                 .HasForeignKey(d => d.ActionId);
-            this.HasRequired(t => t.ActionStatu)
+            this.HasRequired(t => t.ActionStatus)
                 .WithMany(t => t.ActionComments)
                 .HasForeignKey(d => d.ActionStatusId);
 

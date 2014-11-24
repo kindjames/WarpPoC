@@ -4,9 +4,9 @@ using Warp.Data.Entities;
 
 namespace Warp.Data.Mapping
 {
-    public class ExpenseStatuMap : EntityTypeConfiguration<ExpenseStatu>
+    public class ExpenseStatusMap : EntityTypeConfiguration<ExpenseStatus>
     {
-        public ExpenseStatuMap()
+        public ExpenseStatusMap()
         {
             // Primary Key
             this.HasKey(t => t.ExpenseStatusId);

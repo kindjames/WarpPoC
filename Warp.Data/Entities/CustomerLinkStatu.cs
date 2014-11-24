@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public class CustomerLinkStatu
+    public class CustomerLinkStatus
     {
-        public CustomerLinkStatu()
+        public CustomerLinkStatus()
         {
             CustomerClients = new List<CustomerClient>();
         }

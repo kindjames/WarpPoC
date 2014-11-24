@@ -12,7 +12,7 @@ namespace Warp.Data.Entities
         public DateTime DateCreated { get; set; }
         public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
-        public virtual CommunicationStatu CommunicationStatu { get; set; }
+        public virtual CommunicationStatus CommunicationStatus { get; set; }
         public virtual CommunicationType CommunicationType { get; set; }
     }
 }

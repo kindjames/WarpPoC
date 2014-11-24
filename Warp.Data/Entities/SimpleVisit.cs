@@ -24,7 +24,7 @@ namespace Warp.Data.Entities
         public bool Active { get; set; }
         public virtual Assessor Assessor { get; set; }
         public virtual SimpleVisitTemplate SimpleVisitTemplate { get; set; }
-        public virtual VisitStatu VisitStatu { get; set; }
+        public virtual VisitStatus VisitStatus { get; set; }
         public virtual VisitType VisitType { get; set; }
         public virtual ICollection<SimpleVisitQuestionResult> SimpleVisitQuestionResults { get; set; }
     }

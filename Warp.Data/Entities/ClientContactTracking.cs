@@ -23,7 +23,7 @@ namespace Warp.Data.Entities
         public DateTime DateUpdated { get; set; }
         public bool Active { get; set; }
         public virtual Client Client { get; set; }
-        public virtual ClientContactStatu ClientContactStatu { get; set; }
+        public virtual ClientContactStatus ClientContactStatus { get; set; }
         public virtual ICollection<AdminClientContactTracking> AdminClientContactTrackings { get; set; }
         public virtual ICollection<CCTFurtherNote> CCTFurtherNotes { get; set; }
         public virtual ICollection<PersonClientContactTracking> PersonClientContactTrackings { get; set; }

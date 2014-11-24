@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace Warp.Data.Entities
 {
-    public class SubscriptionStatu
+    public class SubscriptionStatus
     {
-        public SubscriptionStatu()
+        public SubscriptionStatus()
         {
             Subscriptions = new List<Subscription>();
         }
