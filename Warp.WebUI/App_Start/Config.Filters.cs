@@ -2,9 +2,9 @@
 
 namespace Warp.WebUI
 {
-    public class FilterConfig
+    public partial class Startup
     {
-        public static void RegisterGlobalFilters(GlobalFilterCollection filters)
+        public void ConfigureGlobalFilters(GlobalFilterCollection filters)
         {
             //filters.Add(new Elmah.Contrib.Mvc.ElmahHandleErrorAttribute());
         }

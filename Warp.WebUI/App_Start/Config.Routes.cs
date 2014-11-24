@@ -3,9 +3,9 @@ using System.Web.Routing;
 
 namespace Warp.WebUI
 {
-    public class RouteConfig
+    public partial class Startup
     {
-        public static void RegisterRoutes(RouteCollection routes)
+        public void ConfigureRouting(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 

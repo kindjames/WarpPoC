@@ -3,9 +3,9 @@ using Warp.IoC;
 
 namespace Warp.WebUI
 {
-    public class IoCConfig
+    public partial class Startup
     {
-        public static void RegisterBindings()
+        public void ConfigureIocBindings()
         {
             DependencyResolver.SetResolver(CompositionRoot.GetFullyRegisteredContainer());
         }
