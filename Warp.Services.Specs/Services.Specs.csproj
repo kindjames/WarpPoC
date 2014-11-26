@@ -73,9 +73,9 @@
       <Project>{8031789B-4E8B-4418-8644-EB4ADE65B90B}</Project>
       <Name>Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Warp.Data\Data.csproj">
+    <ProjectReference Include="..\Warp.Data.CodeFirst\Data %28CodeFirst%29.csproj">
       <Project>{14F5DFD0-AED7-4E07-A7C1-B873003943B6}</Project>
-      <Name>Data</Name>
+      <Name>Data %28CodeFirst%29</Name>
     </ProjectReference>
     <ProjectReference Include="..\Warp.Services\Services.csproj">
       <Project>{5760EB35-8DD5-4C9F-8BF4-097CF0CFA530}</Project>
