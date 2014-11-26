@@ -65,10 +65,8 @@
     <Compile Include="Entities\IndustrySector.cs" />
     <Compile Include="Entities\Role.cs" />
     <Compile Include="Entities\User.cs" />
-    <Compile Include="Infrastructure\EntityMappingsResolver.cs" />
     <Compile Include="Exceptions\DataEntityNotFoundException.cs" />
     <Compile Include="Identity\ApplicationUserStore.cs" />
-    <Compile Include="Infrastructure\IEntityMappingsResolver.cs" />
     <Compile Include="Migrations\201411261102416_InitialCreate.cs" />
     <Compile Include="Migrations\201411261102416_InitialCreate.Designer.cs">
       <DependentUpon>201411261102416_InitialCreate.cs</DependentUpon>

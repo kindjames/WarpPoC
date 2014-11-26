@@ -6,19 +6,11 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using Warp.Data.Entities;
-using Warp.Data.Migrations;
 
 namespace Warp.Data.Context
 {
     public abstract class ApplicationDbContextBase : DbContext, IApplicationDbContext
     {
-        static readonly Lazy<IEnumerable<dynamic>> EntityMappings = new Lazy<IEnumerable<dynamic>>(() =>
-                Assembly.GetExecutingAssembly()
-                    .GetTypes()
-                    .Where(t => t.BaseType != null && t.BaseType.IsGenericType && t.BaseType.GetGenericTypeDefinition() == typeof(EntityTypeConfiguration<>))
-                    .Select(Activator.CreateInstance)
-            );
-
         protected ApplicationDbContextBase()
             : base("name=WarpPoCContext")
         {
@@ -57,16 +49,6 @@ namespace Warp.Data.Context
             }
 
             return base.SaveChanges();
-        }
-
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            var mappings = EntityMappings.Value;
-
-            foreach (var mapping in mappings)
-            {
-                modelBuilder.Configurations.Add(mapping);
-            }
         }
     }
 }

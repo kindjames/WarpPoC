@@ -1,19 +1,22 @@
 using System;
+using Warp.Core.Infrastructure.Authentication;
 using Warp.Data.Entities;
+using System.Data.Entity.Migrations;
 
 namespace Warp.Data.Migrations
 {
-    using System.Data.Entity.Migrations;
-
     internal sealed class Configuration : DbMigrationsConfiguration<InitializationContext>
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(InitializationContext context)
         {
+            var passwordHasher = new PasswordHasher();
+            var hash = passwordHasher.HashPassword("");
+
             context.Users.Add(new User
             {
                 Forename = Guid.NewGuid().ToString(),
