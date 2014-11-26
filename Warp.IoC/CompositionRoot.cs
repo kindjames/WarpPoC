@@ -1,18 +1,11 @@
-﻿using System;
-using AutoMapper;
-using Microsoft.AspNet.Identity;
-using Microsoft.Owin;
-using Microsoft.Owin.Security;
+﻿using AutoMapper;
 using SimpleInjector;
-using SimpleInjector.Advanced;
-using SimpleInjector.Advanced.Extensions;
 using SimpleInjector.Extensions;
 using SimpleInjector.Integration.Web.Mvc;
 using System.Diagnostics;
 using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
-using Warp.Core.Authentication;
 using Warp.Core.Command;
 using Warp.Core.Infrastructure.IoC;
 using Warp.Core.Infrastructure.Mapping;
@@ -21,11 +14,10 @@ using Warp.Core.Query;
 using Warp.Core.Services;
 using Warp.Core.Util;
 using Warp.Data.Context;
-using Warp.Data.Identity;
 using Warp.Data.Infrastructure;
+using Warp.IoC.Factories;
 using Warp.Services;
 using IObjectMapper = Warp.Core.Infrastructure.Mapping.IObjectMapper;
-using PasswordHasher = Warp.Core.Infrastructure.Authentication.PasswordHasher;
 
 namespace Warp.IoC
 {
@@ -79,28 +71,8 @@ namespace Warp.IoC
             c.RegisterPerWebRequest<HttpResponseBase>(() => new HttpResponseWrapper(HttpContext.Current.Response));
 
             // Identity
-            c.Register(() => new UserManager<ApplicationUser, int>(new ApplicationUserStore(c.GetInstance<IAuthenticationDbContext>(), c.GetInstance<IDateTimeProvider>()))
-            {
-                PasswordHasher = new PasswordHasher()
-            });
-            
-            c.RegisterPerWebRequest(() =>
-            {
-                try
-                {
-                    return c.GetInstance<HttpContextBase>()
-                        .GetOwinContext()
-                        .Authentication;
-                }
-                catch (InvalidOperationException)
-                {
-                    if (c.IsVerifying())
-                    {
-                        return new FakeAuthenticationManager();
-                    }
-                    throw;
-                }
-            });
+            c.Register(() => new UserManagerFactory().Build(c));
+            c.RegisterPerWebRequest(() => new AuthenticationManagerFactory().Build(c));
 
             c.Verify();
             

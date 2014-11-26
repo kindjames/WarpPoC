@@ -106,7 +106,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CompositionRoot.cs" />
-    <Compile Include="FakeAuthenticationManager.cs" />
+    <Compile Include="Factories\AuthenticationManagerFactory.cs" />
+    <Compile Include="Factories\UserManagerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceLocator.cs" />
   </ItemGroup>
