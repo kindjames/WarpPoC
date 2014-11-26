@@ -11,6 +11,7 @@ namespace Warp.Data.Entities
         public string PasswordHash { get; set; }
         public string Salt { get; set; }
         public string UserName { get; set; }
+
         public DateTime DateLastPasswordChange { get; set; }
         public bool ForcePasswordChange { get; set; }
         public string Email { get; set; }
@@ -28,7 +29,7 @@ namespace Warp.Data.Entities
         public DateTime DateLastLoggedIn { get; set; }
         public bool IsApproved { get; set; }
         public bool IsLockedOut { get; set; }
-        
+
         public virtual ICollection<Role> Roles { get; set; }
     }
 }

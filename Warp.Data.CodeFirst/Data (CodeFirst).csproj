@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EfEnumToLookup">
+      <HintPath>..\packages\ef-enum-to-lookup.1.2.2\lib\net45\EfEnumToLookup.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -64,15 +67,20 @@
     <Compile Include="Entities\EntityBase.cs" />
     <Compile Include="Entities\IndustrySector.cs" />
     <Compile Include="Entities\Role.cs" />
+    <Compile Include="Entities\RoleEnum.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Exceptions\DataEntityNotFoundException.cs" />
     <Compile Include="Identity\ApplicationUserStore.cs" />
-    <Compile Include="Migrations\201411261102416_InitialCreate.cs" />
-    <Compile Include="Migrations\201411261102416_InitialCreate.Designer.cs">
-      <DependentUpon>201411261102416_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201411261553186_InitialCreate.cs" />
+    <Compile Include="Migrations\201411261553186_InitialCreate.Designer.cs">
+      <DependentUpon>201411261553186_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Migrations\InitializationContext.cs" />
+    <Compile Include="Migrations\DataSeed\DataSeedResolver.cs" />
+    <Compile Include="Migrations\DataSeed\RoleDataFactory.cs" />
+    <Compile Include="Migrations\DataSeed\UserDataFactory.cs" />
+    <Compile Include="Migrations\DataSeed\IDataFactory.cs" />
+    <Compile Include="Migrations\InternalMigrationsInitializationContext.cs" />
     <Compile Include="Queries\Clients\CheckClientExistsForCodeQuery.cs" />
     <Compile Include="Queries\Customers\GetCustomerNameQuery.cs" />
     <Compile Include="Queries\Customers\GetCustomerQuery.cs" />
@@ -94,8 +102,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201411261102416_InitialCreate.resx">
-      <DependentUpon>201411261102416_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201411261553186_InitialCreate.resx">
+      <DependentUpon>201411261553186_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

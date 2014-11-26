@@ -14,7 +14,6 @@ using Warp.Core.Query;
 using Warp.Core.Services;
 using Warp.Core.Util;
 using Warp.Data.Context;
-using Warp.Data.Infrastructure;
 using Warp.IoC.Factories;
 using Warp.Services;
 using IObjectMapper = Warp.Core.Infrastructure.Mapping.IObjectMapper;
@@ -45,7 +44,6 @@ namespace Warp.IoC
             var dataAssembly = typeof(IDomainDbContext).Assembly;
             c.Register<ICommandDispatcher, CommandDispatcher>();
             c.Register<IQueryDispatcher, QueryDispatcher>();
-            c.Register<IEntityMappingsResolver, EntityMappingsResolver>();
             c.RegisterManyForOpenGeneric(typeof(ICommandHandler<>), dataAssembly);
             c.RegisterManyForOpenGeneric(typeof(IQueryHandler<,>), dataAssembly);
             c.RegisterManyForOpenGeneric(typeof(IMappingConfiguration<,>), dataAssembly);

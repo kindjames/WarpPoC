@@ -108,6 +108,7 @@ namespace Warp.Data.Migrations
                     {
                         RoleId = c.Int(nullable: false, identity: true),
                         Name = c.String(),
+                        Description = c.String(),
                         DateUpdated = c.DateTime(nullable: false),
                         DateCreated = c.DateTime(nullable: false),
                         Active = c.Boolean(nullable: false),
