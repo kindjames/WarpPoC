@@ -1,16 +1,14 @@
-﻿using System;
+﻿using System.Linq;
 using AutoMapper;
 using Microsoft.AspNet.Identity;
 using SimpleInjector;
 using SimpleInjector.Advanced;
 using SimpleInjector.Extensions;
 using SimpleInjector.Integration.Web.Mvc;
-using System.Diagnostics;
 using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using Warp.Core.Command;
-using Warp.Core.Infrastructure;
 using Warp.Core.Infrastructure.Configuration;
 using Warp.Core.Infrastructure.IoC;
 using Warp.Core.Infrastructure.Mapping;
@@ -59,9 +57,13 @@ namespace Warp.IoC
 
             // Services
             var serviceAssembly = typeof(ClientService).Assembly;
-            c.Register<IClientService, ClientService>();
-            c.Register<IBrandService, BrandService>();
             c.RegisterManyForOpenGeneric(typeof(IMappingConfiguration<,>), serviceAssembly);
+            
+            serviceAssembly.ExportedTypes
+                .Where(t => t.FullName.EndsWith("Service")) // Name convention of "Service".
+                .Select(t => new { Implementation = t, Service = t.GetInterfaces().Single() })
+                .ToList()
+                .ForEach(t => c.Register(t.Service, t.Implementation));
 
             // MVC
             var mvcAssembly = Assembly.GetCallingAssembly();
