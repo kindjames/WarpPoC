@@ -1,8 +1,7 @@
-using System;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Warp.Core.Infrastructure;
 using Warp.Core.Infrastructure.Configuration;
 using Warp.Core.Util;
 using Warp.Data.Entities;
@@ -17,6 +16,12 @@ namespace Warp.Data.Context
             : base(NameOrConnectionString(applicationConfig))
         {
             _dateTimeProvider = dateTimeProvider;
+
+            if (applicationConfig.IsEntityFrameworkLoggingEnabled)
+            {
+                Database.Log = s => Debug.WriteLine(s);
+            }
+
             var _ = typeof(System.Data.Entity.SqlServer.SqlProviderServices);
         }
 

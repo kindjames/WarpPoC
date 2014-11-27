@@ -16,5 +16,6 @@ namespace Warp.Core.Infrastructure.Configuration
 
         public int MaxFailedAccessAttemptsBeforeLockout { get { return 5; } }
         public bool IsLockoutEnabled { get { return true; } }
+        public bool IsEntityFrameworkLoggingEnabled { get { return true; } }
     }
 }

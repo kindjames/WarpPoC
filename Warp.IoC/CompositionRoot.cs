@@ -56,7 +56,6 @@ namespace Warp.IoC
             c.RegisterManyForOpenGeneric(typeof(IMappingConfiguration<,>), dataAssembly);
             c.RegisterPerWebRequest<IDomainDbContext, DomainDbContext>();
             c.RegisterPerWebRequest<IAuthenticationDbContext, AuthenticationDbContext>();
-            c.RegisterInitializer<IApplicationDbContext>(d => d.Database.Log = s => Debug.Write(s));
 
             // Services
             var serviceAssembly = typeof(ClientService).Assembly;

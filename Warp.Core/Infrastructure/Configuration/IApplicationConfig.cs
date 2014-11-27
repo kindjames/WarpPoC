@@ -8,5 +8,6 @@ namespace Warp.Core.Infrastructure.Configuration
         TimeSpan DefaultAccountLockoutTimeSpan { get; }
         int MaxFailedAccessAttemptsBeforeLockout { get; }
         bool IsLockoutEnabled { get; }
+        bool IsEntityFrameworkLoggingEnabled { get; }
     }
 }

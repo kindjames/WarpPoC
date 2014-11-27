@@ -82,6 +82,10 @@
     <Compile Include="Migrations\201411271112516_RoleConstraints.Designer.cs">
       <DependentUpon>201411271112516_RoleConstraints.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201411271236164_UniqueConstraintOnEmailAddress.cs" />
+    <Compile Include="Migrations\201411271236164_UniqueConstraintOnEmailAddress.Designer.cs">
+      <DependentUpon>201411271236164_UniqueConstraintOnEmailAddress.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\DataSeed\DataFactoryResolver.cs" />
     <Compile Include="Migrations\DataSeed\AuthenticationDataFactory.cs" />
@@ -116,6 +120,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411271112516_RoleConstraints.resx">
       <DependentUpon>201411271112516_RoleConstraints.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411271236164_UniqueConstraintOnEmailAddress.resx">
+      <DependentUpon>201411271236164_UniqueConstraintOnEmailAddress.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -14,9 +14,8 @@ using Warp.Data.Entities;
 
 namespace Warp.Data.Identity
 {
-    public class ApplicationUserStore : IUserStore<ApplicationUser, int>, IUserPasswordStore<ApplicationUser, int>, IUserRoleStore<ApplicationUser, int>, IUserSecurityStampStore<ApplicationUser, int>
-        //, IUserLockoutStore<ApplicationUser, int>
-        //, IUserPasswordStore<ApplicationUser, int>//, 
+    public class ApplicationUserStore : IUserStore<ApplicationUser, int>, IUserPasswordStore<ApplicationUser, int>, IUserRoleStore<ApplicationUser, int>, IUserSecurityStampStore<ApplicationUser, int>, IUserEmailStore<ApplicationUser, int>
+    //, IUserLockoutStore<ApplicationUser, int>
     {
         private IAuthenticationDbContext _dbContext;
         private readonly IDateTimeProvider _dateTimeProvider;
@@ -42,24 +41,12 @@ namespace Warp.Data.Identity
 
                 var user = ToUser(appUser);
 
-                user.Forename = Guid.NewGuid().ToString();
-                user.Surname = Guid.NewGuid().ToString();
-                user.Salt = "reGucpbCPtWBgsFKfNtH";
-                user.Email = "test@" + Guid.NewGuid() + ".com";
-                user.PasswordAnswer = Guid.NewGuid().ToString();
-                user.DateCreated = DateTime.Now;
-                user.DateUpdated = DateTime.Now;
-                user.DateValidFrom = DateTime.Now;
-                user.DateValidTo = DateTime.Now;
-                user.DateLastPasswordChange = DateTime.Now;
-                user.DateLastLoggedIn = DateTime.Now;
-                user.DateOfLastActivity = DateTime.Now;
-                //user.ProvidorName = Guid.NewGuid().ToString();
-                //user.ProvidorUserKey = "0123456789";
-
+                user.DateCreated = _dateTimeProvider.UtcNow();
+                user.DateValidFrom = _dateTimeProvider.UtcNow();
+                user.DateValidTo = _dateTimeProvider.UtcNow();
+                
                 try
                 {
-
                     _dbContext.Users.Add(user);
 
                     _dbContext.SaveChanges();
@@ -74,7 +61,7 @@ namespace Warp.Data.Identity
             });
         }
 
-        public Task UpdateAsync(ApplicationUser appUser)
+        public async Task UpdateAsync(ApplicationUser appUser)
         {
             ThrowIfDisposed();
 
@@ -86,42 +73,45 @@ namespace Warp.Data.Identity
 
             _dbContext.Configuration.ValidateOnSaveEnabled = false;
 
-            return _dbContext.SaveChangesAsync();
+            await _dbContext.SaveChangesAsync();
         }
 
-        public Task DeleteAsync(ApplicationUser appUser)
+        public async Task DeleteAsync(ApplicationUser appUser)
         {
             ThrowIfDisposed();
 
-            return Task.Run(() =>
-            {
-                var userToDelete = _dbContext.Users.SingleOrDefault();
+            var user = ToUser(appUser);
 
-                if (userToDelete != null)
-                {
-                    userToDelete.Active = false;
+            _dbContext.Users.Attach(user);
 
-                    _dbContext.SaveChanges();
-                }
-            });
+            _dbContext.Users.Remove(user);
+
+            await _dbContext.SaveChangesAsync();
         }
 
-        public Task<ApplicationUser> FindByIdAsync(int userId)
+        public async Task<ApplicationUser> FindByIdAsync(int userId)
         {
             ThrowIfDisposed();
 
-            return Task.Run(() => _dbContext.Users
+            return await Task.Run(() => _dbContext.Users
                 .Where(u => u.UserId == userId)
                 .Select(ToApplicationUser)
                 .SingleOrDefault());
         }
 
-        public Task<ApplicationUser> FindByNameAsync(string userName)
+        public async Task<ApplicationUser> FindByNameAsync(string userName)
         {
             ThrowIfDisposed();
 
-            return Task.Run(() => _dbContext.Users
-                .Where(u => u.UserName == userName)
+            var userId = 0;
+
+            if (Int32.TryParse(userName, out userId))
+            {
+                return await FindByIdAsync(userId);
+            }
+
+            return await Task.Run(() => _dbContext.Users
+                .Where(u => u.Email == userName)
                 .Select(ToApplicationUser)
                 .SingleOrDefault());
         }
@@ -163,7 +153,6 @@ namespace Warp.Data.Identity
                 Email = user.Email,
                 FirstName = user.Forename,
                 LastName = user.Surname,
-                UserName = user.UserName,
                 PasswordHash = user.PasswordHash,
             };
         }
@@ -176,7 +165,6 @@ namespace Warp.Data.Identity
                 Email = appUser.Email,
                 Forename = appUser.FirstName,
                 Surname = appUser.LastName,
-                UserName = appUser.UserName,
                 PasswordHash = appUser.PasswordHash,
             };
         }
@@ -187,7 +175,6 @@ namespace Warp.Data.Identity
             user.Email = appUser.Email;
             user.Forename = appUser.FirstName;
             user.Surname = appUser.LastName;
-            user.UserName = appUser.UserName;
             user.PasswordHash = appUser.PasswordHash;
         }
 
@@ -212,8 +199,8 @@ namespace Warp.Data.Identity
 
         public async Task AddToRoleAsync(ApplicationUser appUser, string roleName)
         {
-            var user = _dbContext.Users
-                .Single(u => u.UserId == appUser.Id);
+            var user = await _dbContext.Users
+                .SingleAsync(u => u.UserId == appUser.Id);
 
             var roleEntity = await _dbContext.Roles
                 .SingleOrDefaultAsync(r => r.Name.ToUpper() == roleName.ToUpper());
@@ -230,38 +217,38 @@ namespace Warp.Data.Identity
 
         public async Task RemoveFromRoleAsync(ApplicationUser appUser, string roleName)
         {
-            var user = _dbContext.Users
-                .Single(u => u.UserId == appUser.Id);
+            var user = await _dbContext.Users
+                .SingleAsync(u => u.UserId == appUser.Id);
 
-            var role = _dbContext.Roles
-                .Single(r => r.Name == roleName);
+            var role = await _dbContext.Roles
+                .SingleAsync(r => r.Name == roleName);
 
             user.Roles.Remove(role);
 
             await _dbContext.SaveChangesAsync();
         }
 
-        public Task<IList<string>> GetRolesAsync(ApplicationUser appUser)
+        public async Task<IList<string>> GetRolesAsync(ApplicationUser appUser)
         {
-            var user = _dbContext.Users
-                .Single(u => u.UserId == appUser.Id);
+            var user = await _dbContext.Users
+                .SingleAsync(u => u.UserId == appUser.Id);
 
             var roleNames = user.Roles
                 .Select(r => r.Name)
                 .ToList() as IList<string>;
 
-            return Task.FromResult(roleNames);
+            return await Task.FromResult(roleNames);
         }
 
-        public Task<bool> IsInRoleAsync(ApplicationUser appUser, string roleName)
+        public async Task<bool> IsInRoleAsync(ApplicationUser appUser, string roleName)
         {
-            var user = _dbContext.Users
-                .Single(u => u.UserId == appUser.Id);
+            var user = await _dbContext.Users
+                .SingleAsync(u => u.UserId == appUser.Id);
 
             var isInRole = user.Roles
                 .Any(r => r.Name == roleName);
 
-            return Task.FromResult(isInRole);
+            return await Task.FromResult(isInRole);
         }
 
         public Task SetSecurityStampAsync(ApplicationUser appUser, string stamp)
@@ -275,7 +262,7 @@ namespace Warp.Data.Identity
         {
             CheckArgument.NotNull(appUser, "appUser");
 
-            return Task.FromResult(appUser.SecurityStamp);
+            return Task.FromResult(Guid.NewGuid().ToString());
         }
 
         //public Task<DateTimeOffset> GetLockoutEndDateAsync(ApplicationUser user)
@@ -313,5 +300,32 @@ namespace Warp.Data.Identity
         //{
         //    throw new NotImplementedException();
         //}
+        public Task SetEmailAsync(ApplicationUser user, string email)
+        {
+            return Task.Run(() => user.Email = email);
+        }
+
+        public Task<string> GetEmailAsync(ApplicationUser user)
+        {
+            return Task.FromResult(user.Email);
+        }
+
+        public Task<bool> GetEmailConfirmedAsync(ApplicationUser user)
+        {
+            return Task.FromResult(true);
+        }
+
+        public Task SetEmailConfirmedAsync(ApplicationUser user, bool confirmed)
+        {
+            return Task.FromResult(0);
+        }
+
+        public async Task<ApplicationUser> FindByEmailAsync(string email)
+        {
+            var user = await _dbContext.Users
+                .SingleOrDefaultAsync(u => u.Email == email);
+
+            return await Task.FromResult(ToApplicationUser(user));
+        }
     }
 }
