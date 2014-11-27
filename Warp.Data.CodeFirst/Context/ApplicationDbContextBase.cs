@@ -1,20 +1,30 @@
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Data.Entity.ModelConfiguration;
 using System.Linq;
-using System.Reflection;
 using System.Threading.Tasks;
+using Warp.Core.Infrastructure;
+using Warp.Core.Infrastructure.Configuration;
+using Warp.Core.Util;
 using Warp.Data.Entities;
 
 namespace Warp.Data.Context
 {
     public abstract class ApplicationDbContextBase : DbContext, IApplicationDbContext
     {
-        protected ApplicationDbContextBase()
-            : base("name=WarpPoCContext")
+        private readonly IDateTimeProvider _dateTimeProvider;
+
+        protected ApplicationDbContextBase(IApplicationConfig applicationConfig, IDateTimeProvider dateTimeProvider)
+            : base(NameOrConnectionString(applicationConfig))
         {
+            _dateTimeProvider = dateTimeProvider;
             var _ = typeof(System.Data.Entity.SqlServer.SqlProviderServices);
+        }
+
+        static string NameOrConnectionString(IApplicationConfig applicationConfig)
+        {
+            CheckArgument.NotNull(applicationConfig, "applicationConfig");
+
+            return "name=" + applicationConfig.DbContextName;
         }
 
         public override Task<int> SaveChangesAsync()
@@ -34,7 +44,7 @@ namespace Warp.Data.Context
                 // New entities
                 if (entity.State == EntityState.Added)
                 {
-                    entityBase.DateCreated = DateTime.UtcNow;
+                    entityBase.DateCreated = _dateTimeProvider.UtcNow();
                     entityBase.Active = true;
                 }
 
@@ -45,7 +55,7 @@ namespace Warp.Data.Context
                     entity.State = EntityState.Modified;
                 }
 
-                entityBase.DateUpdated = DateTime.UtcNow;
+                entityBase.DateUpdated = _dateTimeProvider.UtcNow();
             }
 
             return base.SaveChanges();

@@ -1,10 +1,7 @@
-﻿using Warp.Data.Entities;
-
-namespace Warp.Data.Migrations.DataSeed
+﻿namespace Warp.Data.Migrations.DataSeed
 {
-    internal interface IDataFactory<out TEntity>
-        where TEntity : EntityBase
+    internal interface IDataFactory
     {
-        TEntity[] Build();
+        void AddDataToContext(InternalMigrationsInitializationContext context);
     }
 }

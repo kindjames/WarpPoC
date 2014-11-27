@@ -6,24 +6,30 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Warp.Core.Authentication;
+using Warp.Core.Infrastructure;
+using Warp.Core.Infrastructure.Configuration;
 using Warp.Core.Util;
 using Warp.Data.Context;
 using Warp.Data.Entities;
 
 namespace Warp.Data.Identity
 {
-    public class ApplicationUserStore : IUserStore<ApplicationUser, int>, IUserPasswordStore<ApplicationUser, int>, IUserRoleStore<ApplicationUser, int>, IUserSecurityStampStore<ApplicationUser, int> //, IUserPasswordStore<ApplicationUser, int>//, IUserLockoutStore<ApplicationUser, int>
+    public class ApplicationUserStore : IUserStore<ApplicationUser, int>, IUserPasswordStore<ApplicationUser, int>, IUserRoleStore<ApplicationUser, int>, IUserSecurityStampStore<ApplicationUser, int>
+        //, IUserLockoutStore<ApplicationUser, int>
+        //, IUserPasswordStore<ApplicationUser, int>//, 
     {
         private IAuthenticationDbContext _dbContext;
         private readonly IDateTimeProvider _dateTimeProvider;
+        private readonly IApplicationConfig _applicationConfig;
         private bool _disposed;
 
         public bool ShouldDisposeSession { get; set; }
 
-        public ApplicationUserStore(IAuthenticationDbContext dbContext, IDateTimeProvider dateTimeProvider)
+        public ApplicationUserStore(IAuthenticationDbContext dbContext, IDateTimeProvider dateTimeProvider, IApplicationConfig applicationConfig)
         {
             _dbContext = dbContext;
             _dateTimeProvider = dateTimeProvider;
+            _applicationConfig = applicationConfig;
 
             ShouldDisposeSession = true;
         }
@@ -271,5 +277,41 @@ namespace Warp.Data.Identity
 
             return Task.FromResult(appUser.SecurityStamp);
         }
+
+        //public Task<DateTimeOffset> GetLockoutEndDateAsync(ApplicationUser user)
+        //{
+        //    //return Task.FromResult(user.LockoutEndDate);
+        //    throw new NotImplementedException();
+        //}
+
+        //public Task SetLockoutEndDateAsync(ApplicationUser user, DateTimeOffset lockoutEnd)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public Task<int> IncrementAccessFailedCountAsync(ApplicationUser user)
+        //{
+        //    user.AccessFailedCount += 1;
+        //}
+
+        //public Task ResetAccessFailedCountAsync(ApplicationUser user)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public Task<int> GetAccessFailedCountAsync(ApplicationUser user)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public Task<bool> GetLockoutEnabledAsync(ApplicationUser user)
+        //{
+        //    return Task.FromResult(_applicationConfig.IsLockoutEnabled);
+        //}
+
+        //public Task SetLockoutEnabledAsync(ApplicationUser user, bool enabled)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

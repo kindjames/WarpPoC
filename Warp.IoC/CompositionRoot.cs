@@ -1,5 +1,8 @@
-﻿using AutoMapper;
+﻿using System;
+using AutoMapper;
+using Microsoft.AspNet.Identity;
 using SimpleInjector;
+using SimpleInjector.Advanced;
 using SimpleInjector.Extensions;
 using SimpleInjector.Integration.Web.Mvc;
 using System.Diagnostics;
@@ -7,6 +10,8 @@ using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using Warp.Core.Command;
+using Warp.Core.Infrastructure;
+using Warp.Core.Infrastructure.Configuration;
 using Warp.Core.Infrastructure.IoC;
 using Warp.Core.Infrastructure.Mapping;
 using Warp.Core.Infrastructure.Validation;
@@ -17,6 +22,7 @@ using Warp.Data.Context;
 using Warp.IoC.Factories;
 using Warp.Services;
 using IObjectMapper = Warp.Core.Infrastructure.Mapping.IObjectMapper;
+using PasswordHasher = Warp.Core.Infrastructure.Authentication.PasswordHasher;
 
 namespace Warp.IoC
 {
@@ -39,6 +45,7 @@ namespace Warp.IoC
             c.Register<IDateTimeProvider, DateTimeProvider>();
             c.Register<IObjectMapper, ObjectMapper>();
             c.Register<IValidator, DataAnnotationsValidator>();
+            c.Register<IApplicationConfig, ApplicationConfig>();
 
             // Data
             var dataAssembly = typeof(IDomainDbContext).Assembly;
@@ -69,8 +76,9 @@ namespace Warp.IoC
             c.RegisterPerWebRequest<HttpResponseBase>(() => new HttpResponseWrapper(HttpContext.Current.Response));
 
             // Identity
-            c.Register(() => new UserManagerFactory().Build(c));
-            c.RegisterPerWebRequest(() => new AuthenticationManagerFactory().Build(c));
+            c.Register<IPasswordHasher, PasswordHasher>();
+            c.Register(() => c.GetInstance<UserManagerFactory>().Build());
+            c.RegisterPerWebRequest(() => c.GetInstance<AuthenticationManagerFactory>().Build(c.IsVerifying()));
 
             c.Verify();
             

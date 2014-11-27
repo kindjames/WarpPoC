@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using System;
+using Microsoft.AspNet.Identity;
 
 namespace Warp.Core.Authentication
 {
@@ -11,5 +12,7 @@ namespace Warp.Core.Authentication
         public string Email { get; set; }
         public string PasswordHash { get; set; }
         public string SecurityStamp { get; set; }
+        public int AccessFailedCount { get; set; }
+        public DateTime Type { get; set; }
     }
 }

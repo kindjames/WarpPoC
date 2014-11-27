@@ -53,7 +53,9 @@
     <Compile Include="Exceptions\ClientAlreadyExistsException.cs" />
     <Compile Include="Exceptions\CommandHandlerNotFoundException.cs" />
     <Compile Include="Exceptions\QueryHandlerNotFoundException.cs" />
+    <Compile Include="Infrastructure\Configuration\ApplicationConfig.cs" />
     <Compile Include="Infrastructure\Authentication\PasswordHasher.cs" />
+    <Compile Include="Infrastructure\Configuration\IApplicationConfig.cs" />
     <Compile Include="Infrastructure\Validation\DataAnnotationsValidator.cs" />
     <Compile Include="Util\DateTimeProvider.cs" />
     <Compile Include="Util\IDateTimeProvider.cs" />

@@ -1,20 +1,35 @@
 using Microsoft.AspNet.Identity;
-using SimpleInjector;
 using Warp.Core.Authentication;
+using Warp.Core.Infrastructure;
+using Warp.Core.Infrastructure.Configuration;
 using Warp.Core.Util;
 using Warp.Data.Context;
 using Warp.Data.Identity;
-using PasswordHasher = Warp.Core.Infrastructure.Authentication.PasswordHasher;
 
 namespace Warp.IoC.Factories
 {
     internal sealed class UserManagerFactory
     {
-        public UserManager<ApplicationUser, int> Build(Container c)
+        private readonly IAuthenticationDbContext _context;
+        private readonly IDateTimeProvider _dateTimeProvider;
+        private readonly IPasswordHasher _passwordHasher;
+        private readonly IApplicationConfig _applicationConfig;
+
+        public UserManagerFactory(IAuthenticationDbContext context, IDateTimeProvider dateTimeProvider, IPasswordHasher passwordHasher, IApplicationConfig applicationConfig)
         {
-            return new UserManager<ApplicationUser, int>(new ApplicationUserStore(c.GetInstance<IAuthenticationDbContext>(), c.GetInstance<IDateTimeProvider>()))
+            _context = context;
+            _dateTimeProvider = dateTimeProvider;
+            _passwordHasher = passwordHasher;
+            _applicationConfig = applicationConfig;
+        }
+
+        public UserManager<ApplicationUser, int> Build()
+        {
+            return new UserManager<ApplicationUser, int>(new ApplicationUserStore(_context, _dateTimeProvider, _applicationConfig))
             {
-                PasswordHasher = new PasswordHasher()
+                DefaultAccountLockoutTimeSpan = _applicationConfig.DefaultAccountLockoutTimeSpan,
+                MaxFailedAccessAttemptsBeforeLockout = _applicationConfig.MaxFailedAccessAttemptsBeforeLockout,
+                PasswordHasher = _passwordHasher,
             };
         }
     }

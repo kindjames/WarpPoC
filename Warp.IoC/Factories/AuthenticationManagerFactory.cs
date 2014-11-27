@@ -4,13 +4,13 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using Microsoft.Owin.Security;
-using SimpleInjector;
-using SimpleInjector.Advanced;
 
 namespace Warp.IoC.Factories
 {
     internal sealed class AuthenticationManagerFactory
     {
+        private readonly HttpContextBase _httpContext;
+
         internal class FakeAuthenticationManager : IAuthenticationManager
         {
             public IEnumerable<AuthenticationDescription> GetAuthenticationTypes()
@@ -70,17 +70,22 @@ namespace Warp.IoC.Factories
             public AuthenticationResponseRevoke AuthenticationResponseRevoke { get; set; }
         }
 
-        public IAuthenticationManager Build(Container c)
+        public AuthenticationManagerFactory(HttpContextBase httpContext)
+        {
+            _httpContext = httpContext;
+        }
+
+        public IAuthenticationManager Build(bool isVerifying)
         {
             try
             {
-                return c.GetInstance<HttpContextBase>()
+                return _httpContext
                     .GetOwinContext()
                     .Authentication;
             }
             catch (InvalidOperationException)
             {
-                if (c.IsVerifying())
+                if (isVerifying)
                 {
                     return new FakeAuthenticationManager();
                 }

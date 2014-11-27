@@ -1,5 +1,4 @@
-﻿using System.Security.Claims;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using System.Threading.Tasks;
 using System.Web.Mvc;
