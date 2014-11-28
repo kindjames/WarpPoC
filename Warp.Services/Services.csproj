@@ -39,6 +39,7 @@
     <Compile Include="ClientService.cs" />
     <Compile Include="Mappings\Brands\BrandToBrandSummaryDtoMapping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TextResourceService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Warp.Core\Core.csproj">

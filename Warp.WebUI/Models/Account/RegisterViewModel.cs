@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Warp.Core.Attributes;
 
 namespace Warp.WebUI.Models.Account
 {
@@ -16,7 +17,8 @@ namespace Warp.WebUI.Models.Account
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [PopulateWith(0)]
         public string ConfirmPassword { get; set; }
     }
 }

@@ -128,11 +128,14 @@
     <Compile Include="App_Start\Config.Authentication.cs" />
     <Compile Include="App_Start\Config.Filters.cs" />
     <Compile Include="App_Start\Config.IoC.cs" />
+    <Compile Include="App_Start\Config.ModelBinders.cs" />
     <Compile Include="App_Start\Config.Routes.cs" />
     <Compile Include="App_Start\Config.Bundles.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Infrastructure\RequiredRolesAttribute.cs" />
+    <Compile Include="Infrastructure\TranslatingModelBinder.cs" />
     <Compile Include="Mappings\Brands\BrandSummaryListDtoToBrandSummaryListViewModelMapping.cs" />
     <Compile Include="Models\Account\RegisterViewModel.cs" />
     <Compile Include="Models\Authentication\LoginViewModel.cs" />

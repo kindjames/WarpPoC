@@ -12,6 +12,7 @@ using Warp.Core.Command;
 using Warp.Core.Infrastructure.Configuration;
 using Warp.Core.Infrastructure.IoC;
 using Warp.Core.Infrastructure.Mapping;
+using Warp.Core.Infrastructure.Models;
 using Warp.Core.Infrastructure.Validation;
 using Warp.Core.Query;
 using Warp.Core.Services;
@@ -38,6 +39,7 @@ namespace Warp.IoC
 
             // IoC
             c.Register<IServiceLocator, ServiceLocator>();
+            c.Register<ITextResourceModelProvider, TextResourceModelProvider>();
 
             // Core
             c.Register<IDateTimeProvider, DateTimeProvider>();

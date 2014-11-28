@@ -14,10 +14,10 @@ namespace Warp.WebUI
         {
             ConfigureAuthentication(app);
             ConfigureIocBindings();
-            //AreaRegistration.RegisterAllAreas();
             ConfigureGlobalFilters(GlobalFilters.Filters);
             ConfigureRouting(RouteTable.Routes);
             ConfigureBundles(BundleTable.Bundles);
+            ConfigureModelBinders();
         }
     }
 }

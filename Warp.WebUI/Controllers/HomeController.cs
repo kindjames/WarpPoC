@@ -1,22 +1,15 @@
-﻿using System;
-using System.Linq;
+﻿using System.Security.Claims;
 using System.Security.Principal;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using Warp.Core.Infrastructure.Mapping;
 using Warp.Core.Services;
 using Warp.Core.Services.Dtos.Brand;
+using Warp.WebUI.Infrastructure;
 using Warp.WebUI.Models.Brands;
 
 namespace Warp.WebUI.Controllers
 {
-    public sealed class RequiredRolesAttribute : AuthorizeAttribute
-    {
-        public RequiredRolesAttribute(params string[] roleNames)
-        {
-            Roles = String.Join(", ", roleNames);
-        }
-    }
-
     public class HomeController : Controller
     {
         private readonly IBrandService _brandService;
@@ -35,10 +28,12 @@ namespace Warp.WebUI.Controllers
             return View();
         }
 
-        [RequiredRoles("GodMode")]
+        [RequiredRoles("DeleteVisit")]
         public ActionResult AdminTest()
         {
             var a = User.Identity;
+
+            var identity = User.Identity as ClaimsIdentity;
 
             return View();
         }
@@ -52,4 +47,8 @@ namespace Warp.WebUI.Controllers
         //    return View(viewModel);
         //}
 	}
+}
+
+namespace Warp.Services.Providers
+{
 }
