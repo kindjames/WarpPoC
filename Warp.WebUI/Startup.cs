@@ -17,7 +17,6 @@ namespace Warp.WebUI
             ConfigureGlobalFilters(GlobalFilters.Filters);
             ConfigureRouting(RouteTable.Routes);
             ConfigureBundles(BundleTable.Bundles);
-            ConfigureModelBinders();
         }
     }
 }

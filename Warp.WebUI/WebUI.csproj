@@ -42,6 +42,9 @@
     <Reference Include="Antlr3.Runtime">
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="jQuery.Validation.Unobtrusive.Native">
+      <HintPath>..\packages\jQuery.Validation.Unobtrusive.Native.MVC5.1.1.1.0\lib\net45\jQuery.Validation.Unobtrusive.Native.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.1.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -117,25 +120,47 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebActivatorEx">
+      <HintPath>..\packages\WebActivatorEx.2.0.6\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease">
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Styles\Authentication\_Login.css" />
+    <Content Include="Content\Images\HospitalityGemLogo300dpi.png" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-1.9.1.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\Config.Authentication.cs" />
     <Compile Include="App_Start\Config.Filters.cs" />
     <Compile Include="App_Start\Config.IoC.cs" />
-    <Compile Include="App_Start\Config.ModelBinders.cs" />
     <Compile Include="App_Start\Config.Routes.cs" />
     <Compile Include="App_Start\Config.Bundles.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Infrastructure\PopulateTextResourcesOnModelAttribute.cs" />
     <Compile Include="Infrastructure\RequiredRolesAttribute.cs" />
-    <Compile Include="Infrastructure\TranslatingModelBinder.cs" />
     <Compile Include="Mappings\Brands\BrandSummaryListDtoToBrandSummaryListViewModelMapping.cs" />
     <Compile Include="Models\Account\RegisterViewModel.cs" />
     <Compile Include="Models\Authentication\LoginViewModel.cs" />
@@ -158,6 +183,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Authentication\Login.cshtml" />
     <Content Include="Views\Home\AdminTest.cshtml" />
+    <Content Include="Scripts\jquery-1.9.1.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -167,6 +193,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Styles\Shared\" />
     <Folder Include="Mappings\Clients\" />
   </ItemGroup>
   <ItemGroup>

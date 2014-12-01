@@ -1,19 +1,35 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Warp.Core.Attributes;
 
 namespace Warp.WebUI.Models.Authentication
 {
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "User name")]
         public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
+
+        [PopulateWith(0)]
+        public string UserNameLabelText { get; set; }
+
+        [PopulateWith(1)]
+        public string UsernamePlaceholderText { get; set; }
+
+        [PopulateWith(2)]
+        public string PasswordLabelText { get; set; }
+
+        [PopulateWith(2)]
+        public string PasswordPlaceholderText { get; set; }
+
+        [PopulateWith(3)]
+        public string RememberMeLabelText { get; set; }
+
+        [PopulateWith(4)]
+        public string LoginButtonText { get; set; }
     }
 }
