@@ -56,6 +56,7 @@
     <Compile Include="Exceptions\QueryHandlerNotFoundException.cs" />
     <Compile Include="Exceptions\TextResources\SetterNotFoundOnModelException.cs" />
     <Compile Include="Exceptions\TextResources\TextResourceNotFoundException.cs" />
+    <Compile Include="Infrastructure\IoC\InjectDependencyAttribute.cs" />
     <Compile Include="Infrastructure\Models\ITextResourceModelProvider.cs" />
     <Compile Include="Infrastructure\Configuration\ApplicationConfig.cs" />
     <Compile Include="Infrastructure\Authentication\PasswordHasher.cs" />

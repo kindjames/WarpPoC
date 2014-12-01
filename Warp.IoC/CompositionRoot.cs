@@ -15,7 +15,6 @@ using Warp.Core.Infrastructure.Mapping;
 using Warp.Core.Infrastructure.Models;
 using Warp.Core.Infrastructure.Validation;
 using Warp.Core.Query;
-using Warp.Core.Services;
 using Warp.Core.Util;
 using Warp.Data.Context;
 using Warp.IoC.Factories;
@@ -33,6 +32,7 @@ namespace Warp.IoC
         public static IDependencyResolver GetFullyRegisteredContainer()
         {
             var c = new Container();
+            c.Options.PropertySelectionBehavior = new PropertySelectionBehavior<InjectDependencyAttribute>();
 
             // AutoMapper
             c.Register(typeof(IMappingEngine), () => Mapper.Engine);

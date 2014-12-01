@@ -3,11 +3,13 @@ using Microsoft.Owin.Security;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using Warp.Core.Authentication;
+using Warp.WebUI.Infrastructure;
 using Warp.WebUI.Models.Authentication;
 
 namespace Warp.WebUI.Controllers
 {
     [RoutePrefix("authentication")]
+    [PopulateTextResourcesOnModel]
     public class AuthenticationController : Controller
     {
         private readonly IAuthenticationManager _authenticationManager;
@@ -36,7 +38,7 @@ namespace Warp.WebUI.Controllers
         {
             ViewBag.ReturnUrl = returnUrl;
 
-            return View();
+            return View(new LoginViewModel());
         }
 
         [HttpPost]
