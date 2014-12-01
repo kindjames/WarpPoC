@@ -2,7 +2,6 @@
 using Machine.Fakes;
 using Machine.Specifications;
 using Warp.Data.Context;
-using Warp.Data.Entities;
 using Warp.Data.Queries.Clients;
 using Client = Warp.Data.Entities.Client;
 

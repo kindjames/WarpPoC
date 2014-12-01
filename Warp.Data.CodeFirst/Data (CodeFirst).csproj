@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{14F5DFD0-AED7-4E07-A7C1-B873003943B6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Warp.Data</RootNamespace>
+    <AssemblyName>Warp.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EfEnumToLookup">
+      <HintPath>..\packages\ef-enum-to-lookup.1.2.2\lib\net45\EfEnumToLookup.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.1.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Commands\Clients\UpdateClientCommand.cs" />
+    <Compile Include="Commands\Clients\SaveNewClientCommand.cs" />
+    <Compile Include="Context\AuthenticationDbContext.cs" />
+    <Compile Include="Context\DomainDbContext.cs" />
+    <Compile Include="Context\IApplicationDbContext.cs" />
+    <Compile Include="Context\IAuthenticationDbContext.cs" />
+    <Compile Include="Context\IDomainDbContext.cs" />
+    <Compile Include="Entities\Brand.cs" />
+    <Compile Include="Entities\BrandStatus.cs" />
+    <Compile Include="Entities\Client.cs" />
+    <Compile Include="Entities\ClientStatus.cs" />
+    <Compile Include="Entities\ContactAddress.cs" />
+    <Compile Include="Entities\ContactAddressType.cs" />
+    <Compile Include="Entities\Customer.cs" />
+    <Compile Include="Entities\EntityBase.cs" />
+    <Compile Include="Entities\IndustrySector.cs" />
+    <Compile Include="Entities\Role.cs" />
+    <Compile Include="Entities\User.cs" />
+    <Compile Include="Exceptions\DataEntityNotFoundException.cs" />
+    <Compile Include="Identity\ApplicationUserStore.cs" />
+    <Compile Include="Migrations\201411261553186_InitialCreate.cs" />
+    <Compile Include="Migrations\201411261553186_InitialCreate.Designer.cs">
+      <DependentUpon>201411261553186_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411271012343_UserConstraints.cs" />
+    <Compile Include="Migrations\201411271012343_UserConstraints.Designer.cs">
+      <DependentUpon>201411271012343_UserConstraints.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411271112516_RoleConstraints.cs" />
+    <Compile Include="Migrations\201411271112516_RoleConstraints.Designer.cs">
+      <DependentUpon>201411271112516_RoleConstraints.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411271236164_UniqueConstraintOnEmailAddress.cs" />
+    <Compile Include="Migrations\201411271236164_UniqueConstraintOnEmailAddress.Designer.cs">
+      <DependentUpon>201411271236164_UniqueConstraintOnEmailAddress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations\DataSeed\DataFactoryResolver.cs" />
+    <Compile Include="Migrations\DataSeed\AuthenticationDataFactory.cs" />
+    <Compile Include="Migrations\DataSeed\IDataFactory.cs" />
+    <Compile Include="Migrations\InternalMigrationsInitializationContext.cs" />
+    <Compile Include="Queries\Clients\CheckClientExistsForCodeQuery.cs" />
+    <Compile Include="Queries\Customers\GetCustomerNameQuery.cs" />
+    <Compile Include="Queries\Customers\GetCustomerQuery.cs" />
+    <Compile Include="Queries\Clients\GetClientQuery.cs" />
+    <Compile Include="Queries\Brands\GetBrandsForClientQuery.cs" />
+    <Compile Include="Context\ApplicationDbContextBase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Warp.Core\Core.csproj">
+      <Project>{8031789b-4e8b-4418-8644-eb4ade65b90b}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201411261553186_InitialCreate.resx">
+      <DependentUpon>201411261553186_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411271012343_UserConstraints.resx">
+      <DependentUpon>201411271012343_UserConstraints.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411271112516_RoleConstraints.resx">
+      <DependentUpon>201411271112516_RoleConstraints.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411271236164_UniqueConstraintOnEmailAddress.resx">
+      <DependentUpon>201411271236164_UniqueConstraintOnEmailAddress.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

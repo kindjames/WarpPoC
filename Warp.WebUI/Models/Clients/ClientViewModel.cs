@@ -1,6 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using Warp.Core.Validation;
+using Warp.Core.Infrastructure.Validation;
 
 namespace Warp.WebUI.Models.Clients
 {

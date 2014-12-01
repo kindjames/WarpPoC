@@ -1,5 +1,6 @@
 ﻿using Warp.Core.Command;
 using Warp.Core.Infrastructure;
+using Warp.Core.Infrastructure.Mapping;
 using Warp.Core.Query;
 using Warp.Core.Services;
 using Warp.Core.Services.Dtos.Client;

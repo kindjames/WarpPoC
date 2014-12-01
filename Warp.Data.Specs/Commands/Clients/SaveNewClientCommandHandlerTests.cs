@@ -4,12 +4,12 @@ using Machine.Specifications;
 using System;
 using Warp.Core.Exceptions;
 using Warp.Core.Infrastructure;
+using Warp.Core.Infrastructure.Mapping;
 using Warp.Core.Query;
 using Warp.Data.Commands.Clients;
 using Warp.Data.Context;
 using Warp.Data.Entities;
 using Warp.Data.Exceptions;
-using Warp.Data.Queries.ClientAccountManagers;
 using Warp.Data.Queries.Clients;
 using MoqIt = Moq.It;
 
@@ -40,34 +40,7 @@ namespace Warp.Data.Specs.Commands.Clients
                 _exception.ShouldBeOfExactType<ClientAlreadyExistsException>();
             };
         }
-
-        public class When_saving_new_client_and_account_manager_does_not_exist : WithSubject<SaveNewClientCommandHandler>
-        {
-            static Exception _exception;
-            static SaveNewClientCommand _command;
-
-            private Establish that = () =>
-            {
-                _command = new SaveNewClientCommand { AccountManagerAdminId = 32 };
-
-                The<IQueryDispatcher>()
-                    .WhenToldTo(d => d.Execute(MoqIt.IsAny<CheckClientExistsForCodeQuery>()))
-                    .Return(false);
-
-                The<IQueryDispatcher>()
-                    .WhenToldTo(d => d.Execute(MoqIt.IsAny<CheckClientAccountManagerExistsQuery>()))
-                    .Return(false);
-            };
-
-            Because of = () => _exception = Catch.Exception(() => Subject.Execute(_command));
-
-            It should_throw_an_error = () =>
-            {
-                _exception.ShouldNotBeNull();
-                _exception.ShouldBeOfExactType<DataEntityNotFoundException<ClientAccountManager>>();
-            };
-        }
-
+        
         public class When_saving_new_client : WithSubject<SaveNewClientCommandHandler>
         {
             static IDbSet<Client> _clientRepository;
@@ -79,10 +52,6 @@ namespace Warp.Data.Specs.Commands.Clients
                 The<IQueryDispatcher>()
                     .WhenToldTo(d => d.Execute(MoqIt.IsAny<CheckClientExistsForCodeQuery>()))
                     .Return(false);
-
-                The<IQueryDispatcher>()
-                    .WhenToldTo(d => d.Execute(MoqIt.IsAny<CheckClientAccountManagerExistsQuery>()))
-                    .Return(true);
 
                 The<IObjectMapper>()
                     .WhenToldTo(m => m.Map<SaveNewClientCommand, Client>(MoqIt.IsAny<SaveNewClientCommand>()))

@@ -1,8 +1,11 @@
-﻿using System.Linq;
+﻿using System.Security.Claims;
+using System.Security.Principal;
 using System.Web.Mvc;
-using Warp.Core.Infrastructure;
+using Microsoft.AspNet.Identity;
+using Warp.Core.Infrastructure.Mapping;
 using Warp.Core.Services;
 using Warp.Core.Services.Dtos.Brand;
+using Warp.WebUI.Infrastructure;
 using Warp.WebUI.Models.Brands;
 
 namespace Warp.WebUI.Controllers
@@ -18,13 +21,34 @@ namespace Warp.WebUI.Controllers
             _objectMapper = objectMapper;
         }
 
-        public ActionResult Index(int id)
+        public ActionResult Index()
         {
-            var dto = _brandService.GetBrandSummaryListForClient(id);
+            var a = User.Identity;
 
-            var viewModel = _objectMapper.Map<BrandSummaryListDto, BrandSummaryListViewModel>(dto);
-
-            return View(viewModel);
+            return View();
         }
+
+        [RequiredRoles("DeleteVisit")]
+        public ActionResult AdminTest()
+        {
+            var a = User.Identity;
+
+            var identity = User.Identity as ClaimsIdentity;
+
+            return View();
+        }
+
+        //public ActionResult Index(int id)
+        //{
+        //    var dto = _brandService.GetBrandSummaryListForClient(id);
+
+        //    var viewModel = _objectMapper.Map<BrandSummaryListDto, BrandSummaryListViewModel>(dto);
+
+        //    return View(viewModel);
+        //}
 	}
+}
+
+namespace Warp.Services.Providers
+{
 }

@@ -72,7 +72,6 @@
     <Compile Include="DataExceptionTests.cs" />
     <Compile Include="Queries\Clients\CheckClientExistsForCodeQueryHandlerTests.cs" />
     <Compile Include="Queries\Clients\GetClientQueryHandlerTests.cs" />
-    <Compile Include="Queries\ClientAccountManagers\GetBrandsForClientQueryHandlerTests.cs" />
     <Compile Include="Queries\Customers\GetCustomerQueryHandlerTests.cs" />
     <Compile Include="Queries\Customers\GetCustomerNameQueryHandlerTests.cs" />
     <Compile Include="TestDataFactories\BrandsTestDataFactory.cs" />
@@ -89,9 +88,9 @@
       <Project>{8031789B-4E8B-4418-8644-EB4ADE65B90B}</Project>
       <Name>Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Warp.Data\Data.csproj">
+    <ProjectReference Include="..\Warp.Data.CodeFirst\Data %28CodeFirst%29.csproj">
       <Project>{14F5DFD0-AED7-4E07-A7C1-B873003943B6}</Project>
-      <Name>Data</Name>
+      <Name>Data %28CodeFirst%29</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

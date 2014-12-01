@@ -1,17 +1,27 @@
-﻿using System.Reflection;
-using System.Web.Mvc;
+﻿using System.Linq;
 using AutoMapper;
+using Microsoft.AspNet.Identity;
 using SimpleInjector;
+using SimpleInjector.Advanced;
 using SimpleInjector.Extensions;
 using SimpleInjector.Integration.Web.Mvc;
+using System.Reflection;
+using System.Web;
+using System.Web.Mvc;
 using Warp.Core.Command;
-using Warp.Core.Infrastructure;
+using Warp.Core.Infrastructure.Configuration;
 using Warp.Core.Infrastructure.IoC;
+using Warp.Core.Infrastructure.Mapping;
+using Warp.Core.Infrastructure.Models;
+using Warp.Core.Infrastructure.Validation;
 using Warp.Core.Query;
 using Warp.Core.Services;
+using Warp.Core.Util;
 using Warp.Data.Context;
+using Warp.IoC.Factories;
 using Warp.Services;
-using IObjectMapper = Warp.Core.Infrastructure.IObjectMapper;
+using IObjectMapper = Warp.Core.Infrastructure.Mapping.IObjectMapper;
+using PasswordHasher = Warp.Core.Infrastructure.Authentication.PasswordHasher;
 
 namespace Warp.IoC
 {
@@ -22,43 +32,60 @@ namespace Warp.IoC
         /// </summary>
         public static IDependencyResolver GetFullyRegisteredContainer()
         {
-            var container = new Container();
+            var c = new Container();
 
             // AutoMapper
-            container.Register(typeof(IMappingEngine), () => Mapper.Engine);
+            c.Register(typeof(IMappingEngine), () => Mapper.Engine);
 
             // IoC
-            container.Register<IServiceLocator, ServiceLocator>();
+            c.Register<IServiceLocator, ServiceLocator>();
+            c.Register<ITextResourceModelProvider, TextResourceModelProvider>();
 
             // Core
-            container.Register<IDateTimeProvider, DateTimeProvider>();
-            container.Register<IObjectMapper, ObjectMapper>();
-            container.Register<IValidator, DataAnnotationsValidator>();
+            c.Register<IDateTimeProvider, DateTimeProvider>();
+            c.Register<IObjectMapper, ObjectMapper>();
+            c.Register<IValidator, DataAnnotationsValidator>();
+            c.Register<IApplicationConfig, ApplicationConfig>();
 
             // Data
             var dataAssembly = typeof(IDomainDbContext).Assembly;
-            container.Register<ICommandDispatcher, CommandDispatcher>();
-            container.Register<IQueryDispatcher, QueryDispatcher>();
-            container.RegisterManyForOpenGeneric(typeof(ICommandHandler<>), dataAssembly);
-            container.RegisterManyForOpenGeneric(typeof(IQueryHandler<,>), dataAssembly);
-            container.RegisterManyForOpenGeneric(typeof(IMappingConfiguration<,>), dataAssembly);
-            container.RegisterPerWebRequest<IDomainDbContext>(() => new DomainDbContext("name=HospitalityGEMLocalContext")); // TODO: make dry.
+            c.Register<ICommandDispatcher, CommandDispatcher>();
+            c.Register<IQueryDispatcher, QueryDispatcher>();
+            c.RegisterManyForOpenGeneric(typeof(ICommandHandler<>), dataAssembly);
+            c.RegisterManyForOpenGeneric(typeof(IQueryHandler<,>), dataAssembly);
+            c.RegisterManyForOpenGeneric(typeof(IMappingConfiguration<,>), dataAssembly);
+            c.RegisterPerWebRequest<IDomainDbContext, DomainDbContext>();
+            c.RegisterPerWebRequest<IAuthenticationDbContext, AuthenticationDbContext>();
 
             // Services
             var serviceAssembly = typeof(ClientService).Assembly;
-            container.Register<IClientService, ClientService>();
-            container.Register<IBrandService, BrandService>();
-            container.RegisterManyForOpenGeneric(typeof(IMappingConfiguration<,>), serviceAssembly);
+            c.RegisterManyForOpenGeneric(typeof(IMappingConfiguration<,>), serviceAssembly);
+            
+            serviceAssembly.ExportedTypes
+                .Where(t => t.FullName.EndsWith("Service")) // Name convention of "Service".
+                .Select(t => new { Implementation = t, Service = t.GetInterfaces().Single() })
+                .ToList()
+                .ForEach(t => c.Register(t.Service, t.Implementation));
 
             // MVC
             var mvcAssembly = Assembly.GetCallingAssembly();
-            container.RegisterMvcControllers(mvcAssembly);
-            container.RegisterMvcIntegratedFilterProvider();
-            container.RegisterManyForOpenGeneric(typeof(IMappingConfiguration<,>), mvcAssembly);
+            c.RegisterMvcControllers(mvcAssembly);
+            c.RegisterMvcIntegratedFilterProvider();
+            c.RegisterManyForOpenGeneric(typeof(IMappingConfiguration<,>), mvcAssembly);
 
-            container.Verify();
+            // Web
+            c.RegisterPerWebRequest<HttpContextBase>(() => new HttpContextWrapper(HttpContext.Current));
+            c.RegisterPerWebRequest<HttpRequestBase>(() => new HttpRequestWrapper(HttpContext.Current.Request));
+            c.RegisterPerWebRequest<HttpResponseBase>(() => new HttpResponseWrapper(HttpContext.Current.Response));
+
+            // Identity
+            c.Register<IPasswordHasher, PasswordHasher>();
+            c.Register(() => c.GetInstance<UserManagerFactory>().Build());
+            c.RegisterPerWebRequest(() => c.GetInstance<AuthenticationManagerFactory>().Build(c.IsVerifying()));
+
+            c.Verify();
             
-            return new SimpleInjectorDependencyResolver(container);
+            return new SimpleInjectorDependencyResolver(c);
         }
     }
 }
