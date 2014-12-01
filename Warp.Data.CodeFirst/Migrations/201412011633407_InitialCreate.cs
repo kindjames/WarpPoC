@@ -103,40 +103,55 @@ namespace Warp.Data.Migrations
                 .PrimaryKey(t => t.CustomerId);
             
             CreateTable(
-                "dbo.Roles",
+                "dbo.RoleGroups",
                 c => new
                     {
-                        RoleId = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
-                        Description = c.String(),
+                        RoleGroupId = c.Int(nullable: false, identity: true),
+                        Name = c.String(nullable: false),
+                        Description = c.String(nullable: false),
                         DateUpdated = c.DateTime(nullable: false),
                         DateCreated = c.DateTime(nullable: false),
                         Active = c.Boolean(nullable: false),
                     })
-                .PrimaryKey(t => t.RoleId);
+                .PrimaryKey(t => t.RoleGroupId);
+            
+            CreateTable(
+                "dbo.Roles",
+                c => new
+                    {
+                        RoleId = c.Int(nullable: false, identity: true),
+                        Name = c.String(nullable: false),
+                        Description = c.String(nullable: false),
+                        DateUpdated = c.DateTime(nullable: false),
+                        DateCreated = c.DateTime(nullable: false),
+                        Active = c.Boolean(nullable: false),
+                        RoleGroup_RoleGroupId = c.Int(),
+                    })
+                .PrimaryKey(t => t.RoleId)
+                .ForeignKey("dbo.RoleGroups", t => t.RoleGroup_RoleGroupId)
+                .Index(t => t.RoleGroup_RoleGroupId);
             
             CreateTable(
                 "dbo.Users",
                 c => new
                     {
                         UserId = c.Int(nullable: false, identity: true),
-                        Forename = c.String(),
-                        Surname = c.String(),
-                        PasswordHash = c.String(),
-                        Salt = c.String(),
-                        UserName = c.String(),
+                        Forename = c.String(nullable: false, maxLength: 100),
+                        Surname = c.String(nullable: false, maxLength: 100),
+                        PasswordHash = c.String(nullable: false),
+                        Salt = c.String(nullable: false, maxLength: 100),
+                        Email = c.String(nullable: false, maxLength: 255),
+                        PasswordAnswer = c.String(nullable: false, maxLength: 255),
                         DateLastPasswordChange = c.DateTime(nullable: false),
                         ForcePasswordChange = c.Boolean(nullable: false),
-                        Email = c.String(),
                         CustomerId = c.Int(nullable: false),
                         DefaultUserRoleId = c.Int(nullable: false),
                         DefaultLanguageId = c.Int(nullable: false),
-                        LegacyUserId = c.Int(nullable: false),
+                        LegacyUserId = c.Int(),
                         DateValidFrom = c.DateTime(nullable: false),
                         DateValidTo = c.DateTime(),
                         AutoCloseToast = c.Boolean(nullable: false),
                         PasswordQuestionId = c.Int(nullable: false),
-                        PasswordAnswer = c.String(),
                         DateOfLastActivity = c.DateTime(nullable: false),
                         DateLastLockedOut = c.DateTime(),
                         DateLastLoggedIn = c.DateTime(nullable: false),
@@ -146,40 +161,45 @@ namespace Warp.Data.Migrations
                         DateCreated = c.DateTime(nullable: false),
                         Active = c.Boolean(nullable: false),
                     })
-                .PrimaryKey(t => t.UserId);
+                .PrimaryKey(t => t.UserId)
+                .Index(t => t.Email);
             
             CreateTable(
-                "dbo.UserRoles",
+                "dbo.UserRoleGroups",
                 c => new
                     {
                         User_UserId = c.Int(nullable: false),
-                        Role_RoleId = c.Int(nullable: false),
+                        RoleGroup_RoleGroupId = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => new { t.User_UserId, t.Role_RoleId })
+                .PrimaryKey(t => new { t.User_UserId, t.RoleGroup_RoleGroupId })
                 .ForeignKey("dbo.Users", t => t.User_UserId, cascadeDelete: true)
-                .ForeignKey("dbo.Roles", t => t.Role_RoleId, cascadeDelete: true)
+                .ForeignKey("dbo.RoleGroups", t => t.RoleGroup_RoleGroupId, cascadeDelete: true)
                 .Index(t => t.User_UserId)
-                .Index(t => t.Role_RoleId);
+                .Index(t => t.RoleGroup_RoleGroupId);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.UserRoles", "Role_RoleId", "dbo.Roles");
-            DropForeignKey("dbo.UserRoles", "User_UserId", "dbo.Users");
+            DropForeignKey("dbo.UserRoleGroups", "RoleGroup_RoleGroupId", "dbo.RoleGroups");
+            DropForeignKey("dbo.UserRoleGroups", "User_UserId", "dbo.Users");
+            DropForeignKey("dbo.Roles", "RoleGroup_RoleGroupId", "dbo.RoleGroups");
             DropForeignKey("dbo.Brands", "IndustrySectorId", "dbo.IndustrySectors");
             DropForeignKey("dbo.Brands", "ClientId", "dbo.Clients");
             DropForeignKey("dbo.Clients", "ClientStatusId", "dbo.ClientStatus");
             DropForeignKey("dbo.Brands", "BrandStatusId", "dbo.BrandStatus");
-            DropIndex("dbo.UserRoles", new[] { "Role_RoleId" });
-            DropIndex("dbo.UserRoles", new[] { "User_UserId" });
+            DropIndex("dbo.UserRoleGroups", new[] { "RoleGroup_RoleGroupId" });
+            DropIndex("dbo.UserRoleGroups", new[] { "User_UserId" });
+            DropIndex("dbo.Users", new[] { "Email" });
+            DropIndex("dbo.Roles", new[] { "RoleGroup_RoleGroupId" });
             DropIndex("dbo.Clients", new[] { "ClientStatusId" });
             DropIndex("dbo.Brands", new[] { "IndustrySectorId" });
             DropIndex("dbo.Brands", new[] { "BrandStatusId" });
             DropIndex("dbo.Brands", new[] { "ClientId" });
-            DropTable("dbo.UserRoles");
+            DropTable("dbo.UserRoleGroups");
             DropTable("dbo.Users");
             DropTable("dbo.Roles");
+            DropTable("dbo.RoleGroups");
             DropTable("dbo.Customers");
             DropTable("dbo.IndustrySectors");
             DropTable("dbo.ClientStatus");

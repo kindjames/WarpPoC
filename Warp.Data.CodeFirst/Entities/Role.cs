@@ -1,15 +1,9 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Warp.Data.Entities
 {
     public class Role : EntityBase
     {
-        public Role()
-        {
-            Users = new List<User>();
-        }
-
         public int RoleId { get; set; }
         
         [Required]
@@ -18,6 +12,6 @@ namespace Warp.Data.Entities
         [Required]
         public string Description { get; set; }
         
-        public virtual ICollection<User> Users { get; set; }
+        public virtual RoleGroup RoleGroup { get; set; }
     }
 }

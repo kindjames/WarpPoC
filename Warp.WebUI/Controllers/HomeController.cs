@@ -1,12 +1,8 @@
 ﻿using System.Security.Claims;
-using System.Security.Principal;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
 using Warp.Core.Infrastructure.Mapping;
 using Warp.Core.Services;
-using Warp.Core.Services.Dtos.Brand;
 using Warp.WebUI.Infrastructure;
-using Warp.WebUI.Models.Brands;
 
 namespace Warp.WebUI.Controllers
 {
@@ -37,18 +33,5 @@ namespace Warp.WebUI.Controllers
 
             return View();
         }
-
-        //public ActionResult Index(int id)
-        //{
-        //    var dto = _brandService.GetBrandSummaryListForClient(id);
-
-        //    var viewModel = _objectMapper.Map<BrandSummaryListDto, BrandSummaryListViewModel>(dto);
-
-        //    return View(viewModel);
-        //}
 	}
-}
-
-namespace Warp.Services.Providers
-{
 }

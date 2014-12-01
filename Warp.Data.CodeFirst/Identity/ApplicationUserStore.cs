@@ -107,7 +107,10 @@ namespace Warp.Data.Identity
 
             if (Int32.TryParse(userName, out userId))
             {
-                return await FindByIdAsync(userId);
+                return await Task.Run(() => _dbContext.Users
+                    .Where(u => u.LegacyUserId == userId)
+                    .Select(ToApplicationUser)
+                    .SingleOrDefault());
             }
 
             return await Task.Run(() => _dbContext.Users
@@ -199,33 +202,35 @@ namespace Warp.Data.Identity
 
         public async Task AddToRoleAsync(ApplicationUser appUser, string roleName)
         {
-            var user = await _dbContext.Users
-                .SingleAsync(u => u.UserId == appUser.Id);
+            throw new NotImplementedException();
+            //var user = await _dbContext.Users
+            //    .SingleAsync(u => u.UserId == appUser.Id);
 
-            var roleEntity = await _dbContext.Roles
-                .SingleOrDefaultAsync(r => r.Name.ToUpper() == roleName.ToUpper());
+            //var roleEntity = await _dbContext.Roles
+            //    .SingleOrDefaultAsync(r => r.Name.ToUpper() == roleName.ToUpper());
 
-            if (roleEntity == null)
-            {
-                throw new InvalidOperationException(String.Format("Role '{0}' not found.", roleName));
-            }
+            //if (roleEntity == null)
+            //{
+            //    throw new InvalidOperationException(String.Format("Role '{0}' not found.", roleName));
+            //}
 
-            roleEntity.Users.Add(user);
+            //roleEntity.Users.Add(user);
 
-            await _dbContext.SaveChangesAsync();
+            //await _dbContext.SaveChangesAsync();
         }
 
         public async Task RemoveFromRoleAsync(ApplicationUser appUser, string roleName)
         {
-            var user = await _dbContext.Users
-                .SingleAsync(u => u.UserId == appUser.Id);
+            throw new NotImplementedException();
+            //var user = await _dbContext.Users
+            //    .SingleAsync(u => u.UserId == appUser.Id);
 
-            var role = await _dbContext.Roles
-                .SingleAsync(r => r.Name == roleName);
+            //var role = await _dbContext.Roles
+            //    .SingleAsync(r => r.Name == roleName);
 
-            user.Roles.Remove(role);
+            //user.Roles.Remove(role);
 
-            await _dbContext.SaveChangesAsync();
+            //await _dbContext.SaveChangesAsync();
         }
 
         public async Task<IList<string>> GetRolesAsync(ApplicationUser appUser)
@@ -233,7 +238,8 @@ namespace Warp.Data.Identity
             var user = await _dbContext.Users
                 .SingleAsync(u => u.UserId == appUser.Id);
 
-            var roleNames = user.Roles
+            var roleNames = user.RoleGroups
+                .SelectMany(g => g.Roles)
                 .Select(r => r.Name)
                 .ToList() as IList<string>;
 
@@ -245,7 +251,8 @@ namespace Warp.Data.Identity
             var user = await _dbContext.Users
                 .SingleAsync(u => u.UserId == appUser.Id);
 
-            var isInRole = user.Roles
+            var isInRole = user.RoleGroups
+                .SelectMany(g => g.Roles)
                 .Any(r => r.Name == roleName);
 
             return await Task.FromResult(isInRole);
