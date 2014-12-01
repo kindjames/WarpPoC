@@ -1,5 +1,8 @@
 using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using Warp.Core.Attributes;
 using Warp.Core.Exceptions.TextResources;
 using Warp.Core.Services;
@@ -8,7 +11,13 @@ namespace Warp.Core.Infrastructure.Models
 {
     public sealed class TextResourceModelProvider : ITextResourceModelProvider
     {
+        private readonly static ConcurrentDictionary<Type, IEnumerable<PropertyInfo>> CachedModelProperties;
         private readonly ITextResourceService _textResourceService;
+
+        static TextResourceModelProvider()
+        {
+            CachedModelProperties = new ConcurrentDictionary<Type, IEnumerable<PropertyInfo>>();
+        }
 
         public TextResourceModelProvider(ITextResourceService textResourceService)
         {
@@ -17,11 +26,11 @@ namespace Warp.Core.Infrastructure.Models
         
         public object PopulateTextResourcesOnModel(object model)
         {
-            // TODO: Cache reflection.
-            // Get the properties to be translated.
-            var propertyTypes = model.GetType()
-                .GetProperties()
-                .Where(p => p.IsDefined(typeof(PopulateWithAttribute), true));
+            var modelType = model.GetType();
+
+            // Get properties from either cache or invoking reflection.
+            var propertyTypes = CachedModelProperties.GetOrAdd(modelType,
+                t => t.GetProperties().Where(p => p.IsDefined(typeof(PopulateWithAttribute), true)));
 
             foreach (var propertyType in propertyTypes)
             {

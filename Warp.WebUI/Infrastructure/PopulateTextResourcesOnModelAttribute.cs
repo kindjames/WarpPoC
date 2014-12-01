@@ -13,12 +13,15 @@ namespace Warp.WebUI.Infrastructure
 
         public override void OnResultExecuting(ResultExecutingContext filterContext)
         {
-            if (TextResourceModelProvider == null)
+            if (filterContext.Controller.ViewData.Model != null)
             {
-                throw new InvalidOperationException("TextResourceModelProvider is null.");
-            }
+                if (TextResourceModelProvider == null)
+                {
+                    throw new InvalidOperationException("TextResourceModelProvider is null.");
+                }
 
-            TextResourceModelProvider.PopulateTextResourcesOnModel(filterContext.Controller.ViewData.Model);
+                TextResourceModelProvider.PopulateTextResourcesOnModel(filterContext.Controller.ViewData.Model);
+            }
 
             base.OnResultExecuting(filterContext);
         }
