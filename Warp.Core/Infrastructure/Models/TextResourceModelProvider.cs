@@ -6,6 +6,7 @@ using System.Reflection;
 using Warp.Core.Attributes;
 using Warp.Core.Exceptions.TextResources;
 using Warp.Core.Services;
+using Warp.Core.Services.TextResourceService;
 
 namespace Warp.Core.Infrastructure.Models
 {
@@ -42,7 +43,7 @@ namespace Warp.Core.Infrastructure.Models
                 var textResourceId = textResourceAttribute.TextResourceId;
 
                 // Get textResource from service.
-                var textResource = _textResourceService.GetTextResource(textResourceId);
+                var textResource = _textResourceService.GetTextResourceString(textResourceId);
 
                 if (String.IsNullOrEmpty(textResource))
                 {
