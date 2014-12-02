@@ -75,7 +75,13 @@
     <Compile Include="Migrations\201412011633407_InitialCreate.Designer.cs">
       <DependentUpon>201412011633407_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201412011649096_CustomerOnUserEntity.cs" />
+    <Compile Include="Migrations\201412011649096_CustomerOnUserEntity.Designer.cs">
+      <DependentUpon>201412011649096_CustomerOnUserEntity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations\DataSeed\ContextExtensions.cs" />
+    <Compile Include="Migrations\DataSeed\CustomerDataFactory.cs" />
     <Compile Include="Migrations\DataSeed\DataFactoryResolver.cs" />
     <Compile Include="Migrations\DataSeed\AuthenticationDataFactory.cs" />
     <Compile Include="Migrations\DataSeed\IDataFactory.cs" />
@@ -103,6 +109,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201412011633407_InitialCreate.resx">
       <DependentUpon>201412011633407_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412011649096_CustomerOnUserEntity.resx">
+      <DependentUpon>201412011649096_CustomerOnUserEntity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

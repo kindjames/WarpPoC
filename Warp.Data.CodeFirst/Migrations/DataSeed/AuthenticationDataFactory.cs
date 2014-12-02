@@ -8,6 +8,8 @@ namespace Warp.Data.Migrations.DataSeed
 {
     public class AuthenticationDataFactory : IDataFactory
     {
+        public int Order { get { return 2; } }
+
         public void AddDataToContext(InternalMigrationsInitializationContext context)
         {
             var x = new PasswordHasher();
@@ -149,7 +151,15 @@ namespace Warp.Data.Migrations.DataSeed
             //    new Role {Name = "TranslationClientAdministration", Description = "User can create, retrieve, edit and delete Client specific translation resources only"},
             //};
 
-            
+
+            var customers = new[]
+            {
+                new Customer {Name = "Test Customer", UrlName = "http://www.mysterydining.com", DisplayName = "Test", CustomerCode = "TEST", DefaultLanguageId = 1 },
+                new Customer {Name = "HospitalityGEM", UrlName = "http://www.hospitalitygem.com", DisplayName = "hGEM", CustomerCode = "hGEM", DefaultLanguageId = 1 }
+            };
+
+            context.Customers.AddOrUpdate(customers);
+
             var users = new[]
             {
                 new User
@@ -168,6 +178,7 @@ namespace Warp.Data.Migrations.DataSeed
                     DateLastPasswordChange = DateTime.Now,
                     DateLastLoggedIn = DateTime.Now,
                     DateOfLastActivity = DateTime.Now,
+                    Customer = customers[0],
                     RoleGroups = new Collection<RoleGroup>
                     {
                         roleGroups[0],
@@ -190,6 +201,7 @@ namespace Warp.Data.Migrations.DataSeed
                     DateLastPasswordChange = DateTime.Now,
                     DateLastLoggedIn = DateTime.Now,
                     DateOfLastActivity = DateTime.Now,
+                    Customer = customers[0],
                     RoleGroups = new Collection<RoleGroup>
                     {
                         roleGroups[0],
@@ -212,6 +224,7 @@ namespace Warp.Data.Migrations.DataSeed
                     DateLastPasswordChange = DateTime.Now,
                     DateLastLoggedIn = DateTime.Now,
                     DateOfLastActivity = DateTime.Now,
+                    Customer = customers[0],
                     RoleGroups = new Collection<RoleGroup>
                     {
                         roleGroups[0],
