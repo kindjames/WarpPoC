@@ -74,8 +74,15 @@
     <Compile Include="Queries\Clients\GetClientQueryHandlerTests.cs" />
     <Compile Include="Queries\Customers\GetCustomerQueryHandlerTests.cs" />
     <Compile Include="Queries\Customers\GetCustomerNameQueryHandlerTests.cs" />
+    <Compile Include="Queries\Languages\GetLanguageIdByCultureQueryTests.cs" />
+    <Compile Include="Queries\TextResources\DuplicateResourceStringsQueryHandlerTests.cs" />
+    <Compile Include="Queries\TextResources\GetTextResourceQueryHandlerTests.cs" />
+    <Compile Include="Queries\TextResources\GetTextResourceStringQueryHandlerTests.cs" />
+    <Compile Include="Queries\Users\UserDefaultLanguageQueryTests.cs" />
     <Compile Include="TestDataFactories\BrandsTestDataFactory.cs" />
     <Compile Include="Queries\Brands\GetBrandsForClientQueryHandlerTests.cs" />
+    <Compile Include="TestDataFactories\LanguageTestDataFactory.cs" />
+    <Compile Include="Util\EnumerableExtensions.cs" />
     <Compile Include="Util\ITestDataFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

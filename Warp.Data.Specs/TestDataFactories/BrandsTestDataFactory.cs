@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Warp.Data.Entities;
+using Warp.Data.Specs.Util;
 
 namespace Warp.Data.Specs.TestDataFactories
 {
@@ -15,7 +16,7 @@ namespace Warp.Data.Specs.TestDataFactories
                 new Brand {ClientId = 103},
                 new Brand {ClientId = 100},
                 new Brand {ClientId = 126},
-                new Brand {ClientId = 12},
+                new Brand {ClientId = 12}
             };
         }
     }

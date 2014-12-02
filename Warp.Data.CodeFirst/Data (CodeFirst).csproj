@@ -57,6 +57,8 @@
     <Compile Include="Context\IApplicationDbContext.cs" />
     <Compile Include="Context\IAuthenticationDbContext.cs" />
     <Compile Include="Context\IDomainDbContext.cs" />
+    <Compile Include="Context\ITextResourceDbContext.cs" />
+    <Compile Include="Context\TextResourceDbContext.cs" />
     <Compile Include="Entities\Brand.cs" />
     <Compile Include="Entities\BrandStatus.cs" />
     <Compile Include="Entities\Client.cs" />
@@ -67,7 +69,10 @@
     <Compile Include="Entities\EntityBase.cs" />
     <Compile Include="Entities\IndustrySector.cs" />
     <Compile Include="Entities\RoleGroup.cs" />
+    <Compile Include="Entities\Language.cs" />
     <Compile Include="Entities\Role.cs" />
+    <Compile Include="Entities\TextResource.cs" />
+    <Compile Include="Entities\TextResourceCode.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Exceptions\DataEntityNotFoundException.cs" />
     <Compile Include="Identity\ApplicationUserStore.cs" />
@@ -90,6 +95,15 @@
     <Compile Include="Queries\Brands\GetBrandsForClientQuery.cs" />
     <Compile Include="Context\ApplicationDbContextBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queries\Languages\GetLanguageIdByCultureQuery.cs" />
+    <Compile Include="Queries\TextResources\DuplicateResourceCodeExistsQuery.cs" />
+    <Compile Include="Queries\TextResources\DuplicateResourceStringExistsQuery.cs" />
+    <Compile Include="Queries\TextResources\GetTextResourceCodeQuery.cs" />
+    <Compile Include="Queries\TextResources\GetTextResourceQuery.cs" />
+    <Compile Include="Queries\TextResources\GetTextResourceStringQuery.cs" />
+    <Compile Include="Queries\TextResources\ResolveBrowserLanguageQuery.cs" />
+    <Compile Include="Queries\TextResources\ResolveUserLanguageQuery.cs" />
+    <Compile Include="Queries\Users\UserDefaultLanguageQuery.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

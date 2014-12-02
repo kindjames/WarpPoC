@@ -1,7 +1,7 @@
-﻿using FakeDbSet;
+﻿using System;
+using FakeDbSet;
 using Machine.Fakes;
 using Machine.Specifications;
-using System;
 using Warp.Data.Context;
 using Warp.Data.Entities;
 using Warp.Data.Queries.Customers;
