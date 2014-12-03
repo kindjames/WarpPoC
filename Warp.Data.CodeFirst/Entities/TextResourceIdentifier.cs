@@ -1,10 +1,10 @@
 ﻿
 namespace Warp.Data.Entities
 {
-    public class TextResourceCode : EntityBase
+    public class TextResourceIdentifier : EntityBase
     {
         public int TextResourceCodeId { get; set; }
         public string ResourceCode { get; set; }
-        public bool ClientOverride { get; set; }
+        public bool ClientOverridable { get; set; }
     }
 }

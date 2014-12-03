@@ -72,7 +72,7 @@
     <Compile Include="Entities\Language.cs" />
     <Compile Include="Entities\Role.cs" />
     <Compile Include="Entities\TextResource.cs" />
-    <Compile Include="Entities\TextResourceCode.cs" />
+    <Compile Include="Entities\TextResourceIdentifier.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Exceptions\DataEntityNotFoundException.cs" />
     <Compile Include="Identity\ApplicationUserStore.cs" />

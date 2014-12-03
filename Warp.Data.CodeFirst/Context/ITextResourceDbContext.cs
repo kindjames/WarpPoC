@@ -7,7 +7,7 @@ namespace Warp.Data.Context
     public interface ITextResourceDbContext : IApplicationDbContext
     {
         IDbSet<TextResource> TextResources { get; set; }
-        IDbSet<TextResourceCode> TextResourceCodes { get; set; }
+        IDbSet<TextResourceIdentifier> TextResourceCodes { get; set; }
         IDbSet<Language> Languages { get; set; }
         IDbSet<User> Users { get; set; }
     }

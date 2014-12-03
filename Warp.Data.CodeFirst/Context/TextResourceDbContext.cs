@@ -14,7 +14,7 @@ namespace Warp.Data.Context
         }
 
         public IDbSet<TextResource> TextResources { get; set; }
-        public IDbSet<TextResourceCode> TextResourceCodes { get; set; }
+        public IDbSet<TextResourceIdentifier> TextResourceCodes { get; set; }
         public IDbSet<Language> Languages { get; set; }
         public IDbSet<User> Users { get; set; }
     }
