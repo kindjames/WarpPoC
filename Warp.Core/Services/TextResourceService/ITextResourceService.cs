@@ -6,8 +6,8 @@ namespace Warp.Core.Services.TextResourceService
 {
     public interface ITextResourceService
     {
-        string GetTextResourceString(int textResourceId);
-        TextResourceStringDto GetTextResource(int textResourceCodeId);
+        string GetTextResource(int textResourceCodeId);
+        TextResourceStringDto GetTextResourceString(int textResourceCodeId);
         TextResourceCodeDto GetTextResourceCode(int textResourceCodeId);
 
         bool ValidateResourceString(TextResourceStringDto dto);

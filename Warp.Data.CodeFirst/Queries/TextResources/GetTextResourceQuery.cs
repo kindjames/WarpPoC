@@ -6,13 +6,13 @@ using Warp.Data.Entities;
 
 namespace Warp.Data.Queries.TextResources
 {
-    public sealed class GetTextResourceQuery : IQuery<TextResource>
+    public sealed class GetTextResourceQuery : IQuery<string>
     {
         [IdRequired]
         public int TextResourceCodeId { get; set; }
     }
 
-    public sealed class GetTextResourceQueryHandler : IQueryHandler<GetTextResourceQuery, TextResource>
+    public sealed class GetTextResourceQueryHandler : IQueryHandler<GetTextResourceQuery, string>
     {
         readonly ITextResourceDbContext _context;
 
@@ -21,9 +21,11 @@ namespace Warp.Data.Queries.TextResources
             _context = context;
         }
 
-        public TextResource Execute(GetTextResourceQuery query)
+        public string Execute(GetTextResourceQuery query)
         {
-            return _context.TextResources.SingleOrDefault(trc => trc.TextResourceCodeId == query.TextResourceCodeId);
+            return Enumerable.SingleOrDefault(_context.TextResources
+                .Where(t => t.TextResourceCodeId == query.TextResourceCodeId)
+                .Select(t => t.ResourceString));
         }
     }
 }

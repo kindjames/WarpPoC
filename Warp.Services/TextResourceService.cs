@@ -1,53 +1,120 @@
-﻿using Warp.Core.Services;
+﻿using System;
+using Warp.Core.Infrastructure.Mapping;
+using Warp.Core.Query;
+using Warp.Core.Services.Dtos.TextResources;
 using Warp.Core.Services.TextResourceService;
+using Warp.Core.Services.UserService;
+using Warp.Core.Util;
+using Warp.Data.Queries.TextResources;
 
-namespace Warp.Services
+namespace Warp.Services.TextResources
 {
-    public sealed class TextResourceService : ITextResourceService
+    public class TextResourceService : ITextResourceService
     {
-        public string GetTextResourceString(int textResourceId)
+        private readonly ILanguageService _languageService;
+        private readonly IUserService _userService;
+        private readonly IQueryDispatcher _queryDispatcher;
+        readonly IObjectMapper _objectMapper;
+
+        public TextResourceService(ILanguageService languageService, IUserService userService, IQueryDispatcher queryDispatcher, IObjectMapper objectMapper)
         {
-            switch (textResourceId)
+            _languageService = languageService;
+            _userService = userService;
+            _queryDispatcher = queryDispatcher;
+            _objectMapper = objectMapper;
+        }
+
+        #region In Process
+        
+        public string GetTextResource(int textResourceCodeId)
+        {
+            CheckArgument.NotZero(textResourceCodeId, "textResourceCodeId");
+
+            var textResource = _queryDispatcher.Execute(new GetTextResourceQuery { TextResourceCodeId = textResourceCodeId });
+
+            if (textResource == String.Empty)
             {
-                case 0:
-                    return "Username";
-                case 1:
-                    return "E-mail or TMDC ID";
-                case 2:
-                    return "Password";
-                case 3:
-                    return "Remember me for 2 weeks";
-                case 4:
-                    return "Log in";
+                throw new NullReferenceException();
             }
+    
+            return _objectMapper.Map<string, TextResourceDto>(textResource);
+        }
+        #endregion In Process
 
-            return "Resource not found for id: " + textResourceId;
+        #region Next
+
+        public TextResourceStringDto GetTextResourceString(int textResourceCodeId)
+        {
+            CheckArgument.NotZero(textResourceCodeId, "textResourceCodeId");
+
+            var textResourceString = _queryDispatcher.Execute(new GetTextResourceStringQuery { TextResourceCodeId = textResourceCodeId });
+
+            CheckArgument.NotEmpty(textResourceString, "textResourceCodeId");
+
+            return new TextResourceStringDto
+            {
+                TextResourceString = textResourceString
+            };
+        }
+
+        public TextResourceCodeDto GetTextResourceCode(int textResourceCodeId)
+        {
+            CheckArgument.NotZero(textResourceCodeId, "textResourceCodeId");
+
+            string textResourceCode = _queryDispatcher.Execute(new GetTextResourceCodeQuery { TextResourceCodeId = textResourceCodeId });
+
+            CheckArgument.NotEmpty(textResourceCode, "textResourceCode");
+
+            return new TextResourceCodeDto
+            {
+                TextResourceCode = textResourceCode
+            };
         }
 
 
-        public Core.Services.Dtos.TextResources.TextResourceStringDto GetTextResource(int textResourceCodeId)
+
+       
+        public void SaveResource(SaveTextResourceDto saveTextResourceDto)
         {
-            throw new System.NotImplementedException();
+        //    CheckArgument.NotNull(saveTextResourceDto, "saveTextResourceDto");
+
+
+            //var stringExists = _queryDispatcher.Execute(DuplicateResourceStringExistsQuery);
+
+
+            //var codeExists = ValidateResourceCode(new TextResourceCodeDto { TextResourceCode = model.TextResourceCode });
+
+            // Inverted check. If both true then neither phrases exist in the database so safe to save and commit new TextResource
+            //if (!(_queryDispatcher.Execute(textResourceStringQuery)) && !(_queryDispatcher.Execute(textResourceCodeQuery)))
+            //{
+
+            //}
+
+
+            // Verify that the TextResourceString to Save does not already exist.
+            //  If it exists, Query both tables for associated data and return DTO to User
+            // Verify that the TextResourceCode has not already been assigned to another TextResourceString
         }
 
-        public Core.Services.Dtos.TextResources.TextResourceCodeDto GetTextResourceCode(int textResourceCodeId)
+
+        public bool ValidateResourceString(TextResourceStringDto dto)
         {
-            throw new System.NotImplementedException();
+            return true; //_queryDispatcher.Execute(DuplicateResourceStringExistsQuery(dto));
         }
 
-        public bool ValidateResourceString(Core.Services.Dtos.TextResources.TextResourceStringDto dto)
+        public bool ValidateResourceCode(TextResourceCodeDto dto)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
-        public bool ValidateResourceCode(Core.Services.Dtos.TextResources.TextResourceCodeDto dto)
-        {
-            throw new System.NotImplementedException();
-        }
 
-        public void SaveResource(Core.Services.Dtos.TextResources.SaveTextResourceDto saveTextResourceDto)
+        #endregion Next
+
+
+
+        string ITextResourceService.GetTextResourceString(int textResourceId)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }
