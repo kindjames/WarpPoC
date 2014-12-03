@@ -49,7 +49,7 @@
     </ProjectReference>
     <ProjectReference Include="..\Warp.Data.CodeFirst\Data %28CodeFirst%29.csproj">
       <Project>{14f5dfd0-aed7-4e07-a7c1-b873003943b6}</Project>
-      <Name>Data</Name>
+      <Name>Data %28CodeFirst%29</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

@@ -7,7 +7,7 @@ using Warp.Core.Services.UserService;
 using Warp.Core.Util;
 using Warp.Data.Queries.TextResources;
 
-namespace Warp.Services.TextResources
+namespace Warp.Services
 {
     public class TextResourceService : ITextResourceService
     {
@@ -25,7 +25,7 @@ namespace Warp.Services.TextResources
         }
 
         #region In Process
-        
+
         public string GetTextResource(int textResourceCodeId)
         {
             CheckArgument.NotZero(textResourceCodeId, "textResourceCodeId");
@@ -36,14 +36,14 @@ namespace Warp.Services.TextResources
             {
                 throw new NullReferenceException();
             }
-    
-            return _objectMapper.Map<string, TextResourceDto>(textResource);
+
+            return textResource;
         }
         #endregion In Process
 
         #region Next
 
-        public TextResourceStringDto GetTextResourceString(int textResourceCodeId)
+        public ResourceStringDto GetTextResourceString(int textResourceCodeId)
         {
             CheckArgument.NotZero(textResourceCodeId, "textResourceCodeId");
 
@@ -51,13 +51,13 @@ namespace Warp.Services.TextResources
 
             CheckArgument.NotEmpty(textResourceString, "textResourceCodeId");
 
-            return new TextResourceStringDto
+            return new ResourceStringDto
             {
                 TextResourceString = textResourceString
             };
         }
 
-        public TextResourceCodeDto GetTextResourceCode(int textResourceCodeId)
+        public ResourceCodeDto GetTextResourceCode(int textResourceCodeId)
         {
             CheckArgument.NotZero(textResourceCodeId, "textResourceCodeId");
 
@@ -65,18 +65,15 @@ namespace Warp.Services.TextResources
 
             CheckArgument.NotEmpty(textResourceCode, "textResourceCode");
 
-            return new TextResourceCodeDto
+            return new ResourceCodeDto
             {
                 TextResourceCode = textResourceCode
             };
         }
 
-
-
-       
         public void SaveResource(SaveTextResourceDto saveTextResourceDto)
         {
-        //    CheckArgument.NotNull(saveTextResourceDto, "saveTextResourceDto");
+            //    CheckArgument.NotNull(saveTextResourceDto, "saveTextResourceDto");
 
 
             //var stringExists = _queryDispatcher.Execute(DuplicateResourceStringExistsQuery);
@@ -97,24 +94,17 @@ namespace Warp.Services.TextResources
         }
 
 
-        public bool ValidateResourceString(TextResourceStringDto dto)
+        public bool ValidateResourceString(ResourceStringDto dto)
         {
             return true; //_queryDispatcher.Execute(DuplicateResourceStringExistsQuery(dto));
         }
 
-        public bool ValidateResourceCode(TextResourceCodeDto dto)
+        public bool ValidateResourceCode(ResourceCodeDto dto)
         {
             throw new NotImplementedException();
         }
 
 
         #endregion Next
-
-
-
-        string ITextResourceService.GetTextResourceString(int textResourceId)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

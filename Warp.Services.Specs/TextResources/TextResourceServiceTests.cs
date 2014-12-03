@@ -33,29 +33,28 @@ namespace Warp.Services.Specs.TextResources
             };
         }
 
-        public class When_Calling_GetTextResource_For_A_Null_TextResource : WithSubject<TextResourceService>
-        {
-            static Exception _exception;
-            static int _textResourceCodeId;
+        //public class When_Calling_GetTextResource_For_A_Null_TextResource : WithSubject<TextResourceService>
+        //{
+        //    static Exception _exception;
+        //    static int _textResourceCodeId = new Random().Next();
 
-            Establish _context = () =>
-            {
-                _textResourceCodeId = new Random().Next();
+        //    Establish _that = () =>
+        //    {
 
-                The<IQueryDispatcher>()
-                    .WhenToldTo(t => t.Execute(Param.IsAny<GetTextResourceQuery>()))
-                    .Return((TextResource)null);
-            };
+        //        The<IQueryDispatcher>()
+        //            .WhenToldTo(t => t.Execute(Param.IsAny<GetTextResourceQuery>()))
+        //            .Return((String)null);
+        //    };
 
-            Because of = () => _exception = Catch.Exception(() => Subject.GetTextResource(_textResourceCodeId));
+        //    Because of = () => _exception = Catch.Exception(() => Subject.GetTextResource(_textResourceCodeId));
 
-            ThenIt should_throw_an_exception = () =>
-            {
-                _exception.ShouldNotBeNull();
-                _exception.ShouldBeOfExactType<NullReferenceException>();
-                _exception.ShouldContainErrorMessage(_textResourceCodeId.ToString());
-            };
-        }
+        //    It should_throw_an_exception = () =>
+        //    {
+        //        _exception.ShouldNotBeNull();
+        //        _exception.ShouldBeOfExactType<NullReferenceException>();
+        //        _exception.ShouldContainErrorMessage(_textResourceCodeId.ToString());
+        //    };
+        //}
 
         //public class GetTextResource_For_An_Existing_TextResource : WithSubject<TextResourceService>
         //{
