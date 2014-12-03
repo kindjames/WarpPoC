@@ -1,7 +1,6 @@
-﻿using System.Collections;
+﻿using Microsoft.AspNet.Identity;
 using System.Collections.Generic;
 using System.Web.Mvc;
-using Warp.Core.Infrastructure;
 using Warp.Core.Infrastructure.Mapping;
 using Warp.Core.Services;
 using Warp.Core.Services.Dtos.Client;
@@ -19,6 +18,22 @@ namespace Warp.WebUI.Controllers
         {
             _clientService = clientService;
             _objectMapper = objectMapper;
+        }
+
+        [HttpGet]
+        public ActionResult Index()
+        {
+            return View(new ClientSearchViewModel());
+        }
+
+        [HttpGet]
+        public ActionResult List(string clientName)
+        {
+            var clients = _clientService.GetClients(clientName, User.Identity.GetUserId<int>(), -99);
+
+            var model = _objectMapper.Map<IEnumerable<ClientDto>, ClientListViewModel>(clients);
+
+            return PartialView(model);
         }
 
         [HttpGet, Route("create")]
@@ -47,7 +62,7 @@ namespace Warp.WebUI.Controllers
         {
             var client = _clientService.GetClient(clientId);
 
-            var viewModel = _objectMapper.Map<GetClientDto, ClientViewModel>(client);
+            var viewModel = _objectMapper.Map<ClientDto, ClientViewModel>(client);
 
             return View(viewModel);
         }

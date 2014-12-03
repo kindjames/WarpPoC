@@ -13,14 +13,14 @@ namespace Warp.Data.Migrations.DataSeed
             var dataFactories = dataFactoryType.Assembly
                 .GetTypes()
                 .Where(dataFactoryType.IsAssignableFrom)
-                .Where(t => !t.IsInterface);
+                .Where(t => !t.IsInterface)
+                .Select(Activator.CreateInstance)
+                .OfType<IDataFactory>()
+                .OrderBy(d => d.Order);
 
             foreach (var dataFactory in dataFactories)
             {
-                // Create and run factory.
-                var factory = (IDataFactory) Activator.CreateInstance(dataFactory);
-
-                factory.AddDataToContext(context);
+                dataFactory.AddDataToContext(context);
             }
 
             context.SaveChanges();

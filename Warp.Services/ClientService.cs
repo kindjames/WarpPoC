@@ -1,4 +1,5 @@
-﻿using Warp.Core.Command;
+﻿using System.Collections.Generic;
+using Warp.Core.Command;
 using Warp.Core.Infrastructure;
 using Warp.Core.Infrastructure.Mapping;
 using Warp.Core.Query;
@@ -26,7 +27,7 @@ namespace Warp.Services
             _objectMapper = objectMapper;
         }
 
-        public GetClientDto GetClient(int clientId)
+        public ClientDto GetClient(int clientId)
         {
             CheckArgument.NotZero(clientId, "clientId");
 
@@ -37,7 +38,7 @@ namespace Warp.Services
                 throw new DataEntityNotFoundException<Client>(clientId);
             }
 
-            return _objectMapper.Map<Client, GetClientDto>(client);
+            return _objectMapper.Map<Client, ClientDto>(client);
         }
 
         public void SaveClient(SaveClientDto saveClientDto)
@@ -58,6 +59,21 @@ namespace Warp.Services
 
                 _commandDispatcher.Execute(command);
             }
+        }
+
+        public IEnumerable<ClientDto> GetClients(string clientNameQuery, int userId, int customerId)
+        {
+            CheckArgument.NotZero(userId, "userId");
+            CheckArgument.NotZero(customerId, "customerId");
+
+            var clients = _queryDispatcher.Execute(new GetClientsQuery
+            {
+                Query = clientNameQuery,
+                UserId  = userId,
+                CustomerId = customerId,
+            });
+
+            return _objectMapper.MapMany<Client, ClientDto>(clients);
         }
     }
 }

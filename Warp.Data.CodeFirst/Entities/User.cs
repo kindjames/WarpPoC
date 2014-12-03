@@ -30,10 +30,9 @@ namespace Warp.Data.Entities
 
         public DateTime DateLastPasswordChange { get; set; }
         public bool ForcePasswordChange { get; set; }
-        public int CustomerId { get; set; }
         public int DefaultUserRoleId { get; set; }
         public int DefaultLanguageId { get; set; }
-        public int LegacyUserId { get; set; }
+        public int? LegacyUserId { get; set; }
         public DateTime DateValidFrom { get; set; }
         public DateTime? DateValidTo { get; set; }
         public bool AutoCloseToast { get; set; }
@@ -44,6 +43,7 @@ namespace Warp.Data.Entities
         public bool IsApproved { get; set; }
         public bool IsLockedOut { get; set; }
 
-        public virtual ICollection<Role> Roles { get; set; }
+        public Customer Customer { get; set; }
+        public virtual ICollection<RoleGroup> RoleGroups { get; set; }
     }
 }

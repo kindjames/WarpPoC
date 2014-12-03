@@ -66,32 +66,24 @@
     <Compile Include="Entities\Customer.cs" />
     <Compile Include="Entities\EntityBase.cs" />
     <Compile Include="Entities\IndustrySector.cs" />
+    <Compile Include="Entities\RoleGroup.cs" />
     <Compile Include="Entities\Role.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Exceptions\DataEntityNotFoundException.cs" />
     <Compile Include="Identity\ApplicationUserStore.cs" />
-    <Compile Include="Migrations\201411261553186_InitialCreate.cs" />
-    <Compile Include="Migrations\201411261553186_InitialCreate.Designer.cs">
-      <DependentUpon>201411261553186_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201411271012343_UserConstraints.cs" />
-    <Compile Include="Migrations\201411271012343_UserConstraints.Designer.cs">
-      <DependentUpon>201411271012343_UserConstraints.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201411271112516_RoleConstraints.cs" />
-    <Compile Include="Migrations\201411271112516_RoleConstraints.Designer.cs">
-      <DependentUpon>201411271112516_RoleConstraints.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201411271236164_UniqueConstraintOnEmailAddress.cs" />
-    <Compile Include="Migrations\201411271236164_UniqueConstraintOnEmailAddress.Designer.cs">
-      <DependentUpon>201411271236164_UniqueConstraintOnEmailAddress.cs</DependentUpon>
+    <Compile Include="Migrations\201412031125033_InitialCreate.cs" />
+    <Compile Include="Migrations\201412031125033_InitialCreate.Designer.cs">
+      <DependentUpon>201412031125033_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations\DataSeed\ContextExtensions.cs" />
+    <Compile Include="Migrations\DataSeed\CustomerDataFactory.cs" />
     <Compile Include="Migrations\DataSeed\DataFactoryResolver.cs" />
     <Compile Include="Migrations\DataSeed\AuthenticationDataFactory.cs" />
     <Compile Include="Migrations\DataSeed\IDataFactory.cs" />
     <Compile Include="Migrations\InternalMigrationsInitializationContext.cs" />
     <Compile Include="Queries\Clients\CheckClientExistsForCodeQuery.cs" />
+    <Compile Include="Queries\Clients\GetClientsQuery.cs" />
     <Compile Include="Queries\Customers\GetCustomerNameQuery.cs" />
     <Compile Include="Queries\Customers\GetCustomerQuery.cs" />
     <Compile Include="Queries\Clients\GetClientQuery.cs" />
@@ -112,17 +104,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201411261553186_InitialCreate.resx">
-      <DependentUpon>201411261553186_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201411271012343_UserConstraints.resx">
-      <DependentUpon>201411271012343_UserConstraints.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201411271112516_RoleConstraints.resx">
-      <DependentUpon>201411271112516_RoleConstraints.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201411271236164_UniqueConstraintOnEmailAddress.resx">
-      <DependentUpon>201411271236164_UniqueConstraintOnEmailAddress.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201412031125033_InitialCreate.resx">
+      <DependentUpon>201412031125033_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
