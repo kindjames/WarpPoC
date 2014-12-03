@@ -79,13 +79,7 @@
     <Compile Include="Queries\TextResources\GetTextResourceQueryHandlerTests.cs" />
     <Compile Include="Queries\TextResources\GetTextResourceStringQueryHandlerTests.cs" />
     <Compile Include="Queries\Users\UserDefaultLanguageQueryTests.cs" />
-    <Compile Include="TestDataFactories\BrandsTestDataFactory.cs" />
     <Compile Include="Queries\Brands\GetBrandsForClientQueryHandlerTests.cs" />
-    <Compile Include="TestDataFactories\LanguageTestDataFactory.cs" />
-    <Compile Include="TestDataFactories\TextResourceCodeTestDataFactory.cs" />
-    <Compile Include="TestDataFactories\TextResourceTestDataFactory.cs" />
-    <Compile Include="Util\EnumerableExtensions.cs" />
-    <Compile Include="Util\ITestDataFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -93,6 +87,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TestFactory\TestFactory.csproj">
+      <Project>{d16ec09a-e18e-479d-b448-685b9b3f863a}</Project>
+      <Name>TestFactory</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Warp.Core\Core.csproj">
       <Project>{8031789B-4E8B-4418-8644-EB4ADE65B90B}</Project>
       <Name>Core</Name>

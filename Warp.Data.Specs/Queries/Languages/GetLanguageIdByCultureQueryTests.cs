@@ -1,11 +1,11 @@
 ﻿using FakeDbSet;
 using Machine.Fakes;
 using Machine.Specifications;
+using TestFactory.Data;
+using TestFactory.Util;
 using Warp.Data.Context;
 using Warp.Data.Entities;
 using Warp.Data.Queries.Languages;
-using Warp.Data.Specs.TestDataFactories;
-using Warp.Data.Specs.Util;
 
 namespace Warp.Data.Specs.Queries.Languages
 {

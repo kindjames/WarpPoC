@@ -1,6 +1,8 @@
 ﻿using FakeDbSet;
 using Machine.Fakes;
 using Machine.Specifications;
+using TestFactory.Data;
+using TestFactory.Util;
 using Warp.Data.Context;
 using Warp.Data.Entities;
 using Warp.Data.Queries.TextResources;
@@ -10,10 +12,19 @@ namespace Warp.Data.Specs.Queries.TextResources
     [Subject("TextResource => Service => Query Tests")]
     public class GetTextResourceQueryHandlerTests
     {
+        public static TextResourceTestDataFactory _textResourceTestData;
+        public static TextResourceIdentifierTestDataFactory _textResourceCodeTestData;
+
+        public GetTextResourceQueryHandlerTests()
+        {
+            _textResourceTestData = new TextResourceTestDataFactory();
+            _textResourceCodeTestData = new TextResourceIdentifierTestDataFactory();
+        }
+
         public class GetTextResource_That_Exists: WithSubject<GetTextResourceQueryHandler>
         {
 
-            static TextResource _result;
+            static string _result;
             const int _textResourceCodeId = 12;
  
             Establish _that = () =>
@@ -41,27 +52,24 @@ namespace Warp.Data.Specs.Queries.TextResources
             };
         }
 
-        public class When_querying_a_TextResource_for_its_ResourceCodeId : WithSubject<GetTextResourceCodeQueryHandler>
-        {
-            Establish _that = () =>
-            {
-                _query = new GetTextResourceCodeQuery { TextResourceCodeId = 1 };
+        //public class When_querying_a_TextResource_for_its_TextResourceCode :
+        //    WithSubject<GetTextResourceCodeQueryHandler>
+        //{
+            
+        //    Establish _that = () =>
+        //    {
+        //        The<ITextResourceDbContext>()
+        //            .WhenToldTo(d => d.TextResources)
+        //            .Return(_textResourceTestData.BuildMemorySet().ToInMemoryDbSet());
+        //    };
 
-                The<ITextResourceDbContext>()
-                    .WhenToldTo(d => d.TextResources)
-                    .Return(new InMemoryDbSet<TextResource>(true)
-                    {
-                        
-                    });
-            };
+        //    Because _of = () => _result = Subject.Execute(new GetTextResourceCodeQuery { TextResourceCodeId = 1 });
 
-            Because _of = () => _result = Subject.Execute(_query);
+        //    It should_return_the_correct_language_id = () =>
+        //        _result.ShouldEqual("WelcomeText");
 
-            It should_return_the_correct_language_id = () =>
-                _result.ShouldEqual(1);
-
-            static int _result;
-            static GetTextResourceCodeQuery _query;
-        }
+        //    static string _result;
+        //    static GetTextResourceCodeQuery _query;
+        //}
     }
 }
