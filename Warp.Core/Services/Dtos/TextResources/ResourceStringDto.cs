@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Warp.Core.Services.Dtos.TextResources
 {
-    public class TextResourceStringDto
+    public class ResourceStringDto
     {
         public string TextResourceString { get; set; }
     }

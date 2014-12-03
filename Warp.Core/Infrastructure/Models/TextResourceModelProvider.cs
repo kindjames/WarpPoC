@@ -43,7 +43,7 @@ namespace Warp.Core.Infrastructure.Models
                 var textResourceId = textResourceAttribute.TextResourceId;
 
                 // Get textResource from service.
-                var textResource = _textResourceService.GetTextResourceString(textResourceId);
+                var textResource = _textResourceService.GetTextResource(textResourceId);
 
                 if (String.IsNullOrEmpty(textResource))
                 {

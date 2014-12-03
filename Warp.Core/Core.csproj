@@ -75,9 +75,9 @@
     <Compile Include="Services\Dtos\TextResources\LanguageIdDto.cs" />
     <Compile Include="Services\Dtos\TextResources\SaveTextResourceDto.cs" />
     <Compile Include="Services\Dtos\TextResources\SessionLanguageResolvedDto.cs" />
-    <Compile Include="Services\Dtos\TextResources\TextResourceCodeDto.cs" />
+    <Compile Include="Services\Dtos\TextResources\ResourceCodeDto.cs" />
     <Compile Include="Services\Dtos\TextResources\TextResourceDto.cs" />
-    <Compile Include="Services\Dtos\TextResources\TextResourceStringDto.cs" />
+    <Compile Include="Services\Dtos\TextResources\ResourceStringDto.cs" />
     <Compile Include="Services\Dtos\Users\GetUserDto.cs" />
     <Compile Include="Services\Dtos\Users\UserDEtailsDto.cs" />
     <Compile Include="Services\TextResourceService\ILanguageService.cs" />
