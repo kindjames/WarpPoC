@@ -183,3 +183,4 @@ UpgradeLog*.htm
 # Microsoft Fakes
 FakesAssemblies/
 Warp.v2.ncrunchsolution.orig
+Warp.Services/TextResourceServiceOld.cs
