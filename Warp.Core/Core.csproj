@@ -69,7 +69,6 @@
     <Compile Include="Infrastructure\Models\TextResourceModelProvider.cs" />
     <Compile Include="Infrastructure\Validation\DataAnnotationsValidator.cs" />
     <Compile Include="Services\Dtos\Client\ClientDto.cs" />
-    <Compile Include="Services\ITextResourceService.cs" />
     <Compile Include="Services\Dtos\TextResources\GetTextResourceDto.cs" />
     <Compile Include="Services\Dtos\TextResources\LanguageDto.cs" />
     <Compile Include="Services\Dtos\TextResources\LanguageIdDto.cs" />
