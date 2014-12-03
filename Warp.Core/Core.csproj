@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\PopulateWithAttribute.cs" />
+    <Compile Include="Authentication\ApplicationClaimTypes.cs" />
     <Compile Include="Authentication\ApplicationUser.cs" />
     <Compile Include="Command\CommandDispatcher.cs" />
     <Compile Include="Command\ICommand.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="Infrastructure\Configuration\IApplicationConfig.cs" />
     <Compile Include="Infrastructure\Models\TextResourceModelProvider.cs" />
     <Compile Include="Infrastructure\Validation\DataAnnotationsValidator.cs" />
+    <Compile Include="Services\Dtos\Client\ClientDto.cs" />
     <Compile Include="Services\ITextResourceService.cs" />
     <Compile Include="Util\DateTimeProvider.cs" />
     <Compile Include="Util\IDateTimeProvider.cs" />
@@ -75,7 +77,6 @@
     <Compile Include="Services\Dtos\Brand\BrandSummaryListDto.cs" />
     <Compile Include="Services\Dtos\Client\SaveClientDto.cs" />
     <Compile Include="Services\Dtos\ContactAddressAssignedDto.cs" />
-    <Compile Include="Services\Dtos\Client\GetClientDto.cs" />
     <Compile Include="Services\IClientService.cs" />
     <Compile Include="Services\IBrandService.cs" />
     <Compile Include="Infrastructure\Mapping\IObjectMapper.cs" />

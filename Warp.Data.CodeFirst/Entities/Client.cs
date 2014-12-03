@@ -6,10 +6,11 @@ namespace Warp.Data.Entities
     {
         public int ClientId { get; set; }
         public string Name { get; set; }
-        public short ClientStatusId { get; set; }
         public string Code { get; set; }
-        public int CustomerId { get; set; }
         public DateTime? DateValidFrom { get; set; }
-        public virtual ClientStatus ClientStatus { get; set; }
+
+        public ClientStatus ClientStatus { get; set; }
+        public User AccountManager { get; set; }
+        public Customer Customer { get; set; }
     }
 }

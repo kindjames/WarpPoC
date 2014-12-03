@@ -27,7 +27,7 @@ namespace Warp.Data.Queries.Clients
         public bool Execute(CheckClientExistsForCodeQuery query)
         {
             return _dbContext.Clients
-                .Any(c => c.CustomerId == query.CustomerId && c.Code == query.ClientCode);
+                .Any(c => c.Customer.CustomerId == query.CustomerId && c.Code == query.ClientCode);
         }
     }
 }

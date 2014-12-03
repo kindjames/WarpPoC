@@ -34,7 +34,7 @@ namespace Warp.Services
 
             var brands = _queryDispatcher.Execute(new GetBrandsForClientQuery {ClientId = clientId});
 
-            var customerName = _queryDispatcher.Execute(new GetCustomerNameQuery {CustomerId = client.CustomerId});
+            var customerName = _queryDispatcher.Execute(new GetCustomerNameQuery {CustomerId = client.Customer.CustomerId});
 
             return new BrandSummaryListDto
             {

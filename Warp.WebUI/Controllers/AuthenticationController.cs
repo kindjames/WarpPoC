@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using System.Security.Claims;
+using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -56,6 +57,10 @@ namespace Warp.WebUI.Controllers
                     _authenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
 
                     var identity = await _userManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
+
+                    identity.AddClaim(new Claim(ClaimTypes.Email, user.Email));
+                    identity.AddClaim(new Claim(ClaimTypes.GivenName, user.FirstName + " " + user.LastName));
+                    //identity.AddClaim(new Claim(ApplicationClaimTypes.CustomerId, user.CustomerId));
 
                     _authenticationManager.SignIn(new AuthenticationProperties { IsPersistent = model.RememberMe }, identity);
                     

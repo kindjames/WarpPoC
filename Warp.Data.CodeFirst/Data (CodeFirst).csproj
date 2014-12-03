@@ -71,13 +71,9 @@
     <Compile Include="Entities\User.cs" />
     <Compile Include="Exceptions\DataEntityNotFoundException.cs" />
     <Compile Include="Identity\ApplicationUserStore.cs" />
-    <Compile Include="Migrations\201412011633407_InitialCreate.cs" />
-    <Compile Include="Migrations\201412011633407_InitialCreate.Designer.cs">
-      <DependentUpon>201412011633407_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201412011649096_CustomerOnUserEntity.cs" />
-    <Compile Include="Migrations\201412011649096_CustomerOnUserEntity.Designer.cs">
-      <DependentUpon>201412011649096_CustomerOnUserEntity.cs</DependentUpon>
+    <Compile Include="Migrations\201412031125033_InitialCreate.cs" />
+    <Compile Include="Migrations\201412031125033_InitialCreate.Designer.cs">
+      <DependentUpon>201412031125033_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\DataSeed\ContextExtensions.cs" />
@@ -87,6 +83,7 @@
     <Compile Include="Migrations\DataSeed\IDataFactory.cs" />
     <Compile Include="Migrations\InternalMigrationsInitializationContext.cs" />
     <Compile Include="Queries\Clients\CheckClientExistsForCodeQuery.cs" />
+    <Compile Include="Queries\Clients\GetClientsQuery.cs" />
     <Compile Include="Queries\Customers\GetCustomerNameQuery.cs" />
     <Compile Include="Queries\Customers\GetCustomerQuery.cs" />
     <Compile Include="Queries\Clients\GetClientQuery.cs" />
@@ -107,11 +104,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201412011633407_InitialCreate.resx">
-      <DependentUpon>201412011633407_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201412011649096_CustomerOnUserEntity.resx">
-      <DependentUpon>201412011649096_CustomerOnUserEntity.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201412031125033_InitialCreate.resx">
+      <DependentUpon>201412031125033_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

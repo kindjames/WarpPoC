@@ -117,8 +117,8 @@ namespace Warp.Services.Specs
                     .Return(_client);
 
                 The<IObjectMapper>()
-                    .WhenToldTo(m => m.Map<Client, GetClientDto>(_client))
-                    .Return(new GetClientDto { ClientId = _clientId});
+                    .WhenToldTo(m => m.Map<Client, ClientDto>(_client))
+                    .Return(new ClientDto { ClientId = _clientId});
             };
 
             Because of = () => _result = Subject.GetClient(_clientId);
@@ -128,7 +128,7 @@ namespace Warp.Services.Specs
 
             static int _clientId;
             static Client _client;
-            static GetClientDto _result;
+            static ClientDto _result;
         }
     }
 }

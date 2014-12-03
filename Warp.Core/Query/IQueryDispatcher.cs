@@ -1,7 +1,9 @@
 ﻿
 namespace Warp.Core.Query
 {
-    // Interface for the query dispatcher itself
+    /// <summary>
+    /// Used to Execute IQuery<T> objects.
+    /// </summary>
     public interface IQueryDispatcher
     {
         TResult Execute<TResult>(IQuery<TResult> query);

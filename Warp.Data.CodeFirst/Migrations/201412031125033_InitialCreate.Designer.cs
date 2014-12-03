@@ -7,13 +7,13 @@ namespace Warp.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.1-30610")]
-    public sealed partial class CustomerOnUserEntity : IMigrationMetadata
+    public sealed partial class InitialCreate : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(CustomerOnUserEntity));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
         
         string IMigrationMetadata.Id
         {
-            get { return "201412011649096_CustomerOnUserEntity"; }
+            get { return "201412031125033_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

@@ -1,0 +1,31 @@
+﻿@model Warp.WebUI.Models.Clients.ClientSearchViewModel
+
+@*<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="#">Brand</a>
+    </div>
+</nav>
+
+<nav class="navbar navbar-default navbar-left" role="navigation">
+    <ul class="nav navbar-nav">
+        <li id="HomeIcon">
+            <a class=""><span class="glyphicon glyphicon-home"></span></a>
+            <div class="nav-popout">OK</div>
+        </li>
+    </ul>
+</nav>*@
+
+@Html.TextBoxFor(m => m.ClientSearch)
+
+@using (Ajax.BeginForm(new AjaxOptions { }))
+{
+}
+
+@section scripts
+{
+    <script>
+        $('#@Html.IdFor(m => m.ClientSearch)').on('input', function () {
+            alert($(this).val());
+        });
+    </script>
+}
