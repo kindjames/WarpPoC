@@ -6,7 +6,7 @@ namespace Warp.Data.Specs.TestDataFactories
 {
     public class BrandsTestDataFactory : ITestDataFactory<Brand>
     {
-        public IEnumerable<Brand> Build()
+        public IEnumerable<Brand> BuildMemorySet()
         {
             return new[]
             {

@@ -82,6 +82,8 @@
     <Compile Include="TestDataFactories\BrandsTestDataFactory.cs" />
     <Compile Include="Queries\Brands\GetBrandsForClientQueryHandlerTests.cs" />
     <Compile Include="TestDataFactories\LanguageTestDataFactory.cs" />
+    <Compile Include="TestDataFactories\TextResourceCodeTestDataFactory.cs" />
+    <Compile Include="TestDataFactories\TextResourceTestDataFactory.cs" />
     <Compile Include="Util\EnumerableExtensions.cs" />
     <Compile Include="Util\ITestDataFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,7 +1,6 @@
 ﻿using Machine.Fakes;
 using Machine.Specifications;
 using Warp.Core.Services.TextResourceService;
-using Warp.Services.TextResources;
 
 namespace Warp.Services.Specs.TextResources
 {

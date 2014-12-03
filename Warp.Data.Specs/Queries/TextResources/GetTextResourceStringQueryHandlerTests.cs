@@ -44,7 +44,7 @@ namespace Warp.Data.Specs.Queries.TextResources
         public class GetTextResourceString_That_Does_Not_Exists : WithSubject<GetTextResourceStringQueryHandler>
         {
             static string _result = "Text Resource Test String!";
-            static int _textResourceId;
+            static int _textResourceId = 0;
 
             Establish _that = () =>
             {

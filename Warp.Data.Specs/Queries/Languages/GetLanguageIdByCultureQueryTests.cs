@@ -34,7 +34,7 @@ namespace Warp.Data.Specs.Queries.Languages
 
                 The<ITextResourceDbContext>()
                     .WhenToldTo(a => a.Languages)
-                    .Return(_testData.Build().ToInMemoryDbSet());
+                    .Return(_testData.BuildMemorySet().ToInMemoryDbSet());
             };
 
             private Because of = () => _result = Subject.Execute(_query);
@@ -56,7 +56,7 @@ namespace Warp.Data.Specs.Queries.Languages
 
                 The<ITextResourceDbContext>()
                     .WhenToldTo(a => a.Languages)
-                    .Return(_testData.Build().ToInMemoryDbSet());
+                    .Return(_testData.BuildMemorySet().ToInMemoryDbSet());
 
             };
 
@@ -78,7 +78,7 @@ namespace Warp.Data.Specs.Queries.Languages
 
                 The<ITextResourceDbContext>()
                     .WhenToldTo(a => a.Languages)
-                    .Return(_testData.Build().ToInMemoryDbSet());
+                    .Return(_testData.BuildMemorySet().ToInMemoryDbSet());
 
             };
 

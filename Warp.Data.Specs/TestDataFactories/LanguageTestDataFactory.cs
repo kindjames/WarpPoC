@@ -6,7 +6,7 @@ namespace Warp.Data.Specs.TestDataFactories
 {
     public class LanguageTestDataFactory : ITestDataFactory<Language>
     {
-        public IEnumerable<Language> Build()
+        public IEnumerable<Language> BuildMemorySet()
         {
             return new[]
             {

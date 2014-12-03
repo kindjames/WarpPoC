@@ -41,29 +41,27 @@ namespace Warp.Data.Specs.Queries.TextResources
             };
         }
 
-        //public class When_querying_a_TextResource_for_its_ResourceCodeId : WithSubject<GetTextResourceCodeQueryHandler>
-        //{
-        //    Establish _that = () =>
-        //    {
-        //        _query = new GetTextResourceCodeQuery { TextResourceCodeId = 1 };
+        public class When_querying_a_TextResource_for_its_ResourceCodeId : WithSubject<GetTextResourceCodeQueryHandler>
+        {
+            Establish _that = () =>
+            {
+                _query = new GetTextResourceCodeQuery { TextResourceCodeId = 1 };
 
-        //        The<ITextResourceDbContext>()
-        //            .WhenToldTo(d => d.TextResources)
-        //            .Return(new InMemoryDbSet<TextResource>(true)
-        //            {
-        //                new TextResource { TextResourceId = 1, ResourceCodeId = 1,  ResourceCode = "ResourceCodeId_1"},
-        //                new TextResource { TextResourceId = 2, ResourceCodeId = 2},                        
-        //                new TextResource { TextResourceId = 8, ResourceCodeId = 3},
-        //            });
-        //    };
+                The<ITextResourceDbContext>()
+                    .WhenToldTo(d => d.TextResources)
+                    .Return(new InMemoryDbSet<TextResource>(true)
+                    {
+                        
+                    });
+            };
 
-        //    Because _of = () => _result = Subject.Execute(_query);
+            Because _of = () => _result = Subject.Execute(_query);
 
-        //    It should_return_the_correct_language_id = () =>
-        //        _result.ShouldEqual(1);
+            It should_return_the_correct_language_id = () =>
+                _result.ShouldEqual(1);
 
-        //    static int _result;
-        //    static GetTextResourceCodeQuery _query;
-        //}
+            static int _result;
+            static GetTextResourceCodeQuery _query;
+        }
     }
 }

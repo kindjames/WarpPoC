@@ -4,6 +4,6 @@ namespace Warp.Data.Specs.Util
 {
     public interface ITestDataFactory<T>
     {
-        IEnumerable<T> Build();
+        IEnumerable<T> BuildMemorySet();
     }
 }
