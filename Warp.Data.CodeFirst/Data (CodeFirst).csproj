@@ -30,13 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EfEnumToLookup">
-      <HintPath>..\packages\ef-enum-to-lookup.1.2.2\lib\net45\EfEnumToLookup.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework">
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer">
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
@@ -80,9 +79,12 @@
     <Compile Include="Migrations\201412031125033_InitialCreate.Designer.cs">
       <DependentUpon>201412031125033_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201412031552165_TextResources.cs" />
+    <Compile Include="Migrations\201412031552165_TextResources.Designer.cs">
+      <DependentUpon>201412031552165_TextResources.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Migrations\DataSeed\ContextExtensions.cs" />
-    <Compile Include="Migrations\DataSeed\CustomerDataFactory.cs" />
+    <Compile Include="Migrations\DataSeed\TextResourcesDataFactory.cs" />
     <Compile Include="Migrations\DataSeed\DataFactoryResolver.cs" />
     <Compile Include="Migrations\DataSeed\AuthenticationDataFactory.cs" />
     <Compile Include="Migrations\DataSeed\IDataFactory.cs" />
@@ -106,21 +108,25 @@
     <Compile Include="Queries\Users\UserDefaultLanguageQuery.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\201412031125033_InitialCreate.resx">
+      <DependentUpon>201412031125033_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412031552165_TextResources.resx">
+      <DependentUpon>201412031552165_TextResources.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Warp.Core\Core.csproj">
       <Project>{8031789b-4e8b-4418-8644-eb4ade65b90b}</Project>
       <Name>Core</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201412031125033_InitialCreate.resx">
-      <DependentUpon>201412031125033_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
