@@ -32,7 +32,7 @@ namespace Warp.Data.Specs.Queries.TextResources
 
             };
 
-            Because _of = () => _result = Subject.Execute(new GetTextResourceStringQuery { TextResourceCodeId = 10 });
+            Because _of = () => _result = Subject.Execute(new GetTextResourceStringQuery { TextResourceIdentifierId = 10 });
 
             It _should = () =>
             {
@@ -61,7 +61,7 @@ namespace Warp.Data.Specs.Queries.TextResources
 
             };
 
-            Because _of = () => _result = Subject.Execute(new GetTextResourceStringQuery { TextResourceCodeId = _textResourceId });
+            Because _of = () => _result = Subject.Execute(new GetTextResourceStringQuery { TextResourceIdentifierId = _textResourceId });
 
             It _should = () => _result.ShouldBeNull();
         }
