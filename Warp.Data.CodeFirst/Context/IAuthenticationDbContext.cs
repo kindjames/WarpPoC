@@ -5,7 +5,7 @@ namespace Warp.Data.Context
 {
     public interface IAuthenticationDbContext : IApplicationDbContext
     {
-        IDbSet<Role> Roles { get; set; }
+        //IDbSet<RoleGroup> RoleGroups { get; set; }
         IDbSet<User> Users { get; set; }
     }
 }

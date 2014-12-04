@@ -71,9 +71,9 @@
     <Compile Include="Entities\User.cs" />
     <Compile Include="Exceptions\DataEntityNotFoundException.cs" />
     <Compile Include="Identity\ApplicationUserStore.cs" />
-    <Compile Include="Migrations\201412031125033_InitialCreate.cs" />
-    <Compile Include="Migrations\201412031125033_InitialCreate.Designer.cs">
-      <DependentUpon>201412031125033_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201412041603563_InitialCreate.cs" />
+    <Compile Include="Migrations\201412041603563_InitialCreate.Designer.cs">
+      <DependentUpon>201412041603563_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\DataSeed\ContextExtensions.cs" />
@@ -85,6 +85,7 @@
     <Compile Include="Queries\Clients\CheckClientExistsForCodeQuery.cs" />
     <Compile Include="Queries\Clients\GetClientsQuery.cs" />
     <Compile Include="Queries\Customers\GetCustomerNameQuery.cs" />
+    <Compile Include="Queries\Customers\GetCustomerForUserQuery.cs" />
     <Compile Include="Queries\Customers\GetCustomerQuery.cs" />
     <Compile Include="Queries\Clients\GetClientQuery.cs" />
     <Compile Include="Queries\Brands\GetBrandsForClientQuery.cs" />
@@ -104,8 +105,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201412031125033_InitialCreate.resx">
-      <DependentUpon>201412031125033_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201412041603563_InitialCreate.resx">
+      <DependentUpon>201412041603563_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -157,6 +157,7 @@ namespace Warp.Data.Identity
                 FirstName = user.Forename,
                 LastName = user.Surname,
                 PasswordHash = user.PasswordHash,
+                CustomerId = user.Customer.CustomerId,
             };
         }
 
@@ -169,16 +170,8 @@ namespace Warp.Data.Identity
                 Forename = appUser.FirstName,
                 Surname = appUser.LastName,
                 PasswordHash = appUser.PasswordHash,
+                Customer = new Customer { CustomerId = appUser.CustomerId }
             };
-        }
-
-        private void SetUser(ApplicationUser appUser, User user)
-        {
-            user.UserId = appUser.Id;
-            user.Email = appUser.Email;
-            user.Forename = appUser.FirstName;
-            user.Surname = appUser.LastName;
-            user.PasswordHash = appUser.PasswordHash;
         }
 
         private void Dispose(bool disposing)

@@ -12,30 +12,30 @@ namespace Warp.Data.Migrations
                 c => new
                     {
                         BrandId = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
-                        ClientId = c.Int(nullable: false),
-                        BrandStatusId = c.Int(nullable: false),
-                        IndustrySectorId = c.Int(nullable: false),
+                        Name = c.String(nullable: false),
                         Visible = c.Boolean(nullable: false),
                         DateUpdated = c.DateTime(nullable: false),
                         DateCreated = c.DateTime(nullable: false),
                         Active = c.Boolean(nullable: false),
+                        BrandStatus_BrandStatusId = c.Int(nullable: false),
+                        Client_ClientId = c.Int(nullable: false),
+                        IndustrySector_IndustrySectorId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.BrandId)
-                .ForeignKey("dbo.BrandStatus", t => t.BrandStatusId, cascadeDelete: true)
-                .ForeignKey("dbo.Clients", t => t.ClientId, cascadeDelete: true)
-                .ForeignKey("dbo.IndustrySectors", t => t.IndustrySectorId, cascadeDelete: true)
-                .Index(t => t.ClientId)
-                .Index(t => t.BrandStatusId)
-                .Index(t => t.IndustrySectorId);
+                .ForeignKey("dbo.BrandStatus", t => t.BrandStatus_BrandStatusId, cascadeDelete: true)
+                .ForeignKey("dbo.Clients", t => t.Client_ClientId, cascadeDelete: true)
+                .ForeignKey("dbo.IndustrySectors", t => t.IndustrySector_IndustrySectorId, cascadeDelete: true)
+                .Index(t => t.BrandStatus_BrandStatusId)
+                .Index(t => t.Client_ClientId)
+                .Index(t => t.IndustrySector_IndustrySectorId);
             
             CreateTable(
                 "dbo.BrandStatus",
                 c => new
                     {
                         BrandStatusId = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
-                        Description = c.String(),
+                        Name = c.String(nullable: false),
+                        Description = c.String(nullable: false),
                         DateUpdated = c.DateTime(nullable: false),
                         DateCreated = c.DateTime(nullable: false),
                         Active = c.Boolean(nullable: false),
@@ -47,20 +47,20 @@ namespace Warp.Data.Migrations
                 c => new
                     {
                         ClientId = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
-                        Code = c.String(),
+                        Name = c.String(nullable: false),
+                        Code = c.String(nullable: false),
                         DateValidFrom = c.DateTime(),
                         DateUpdated = c.DateTime(nullable: false),
                         DateCreated = c.DateTime(nullable: false),
                         Active = c.Boolean(nullable: false),
-                        AccountManager_UserId = c.Int(),
-                        ClientStatus_ClientStatusId = c.Short(),
-                        Customer_CustomerId = c.Int(),
+                        AccountManager_UserId = c.Int(nullable: false),
+                        ClientStatus_ClientStatusId = c.Short(nullable: false),
+                        Customer_CustomerId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.ClientId)
-                .ForeignKey("dbo.Users", t => t.AccountManager_UserId)
-                .ForeignKey("dbo.ClientStatus", t => t.ClientStatus_ClientStatusId)
-                .ForeignKey("dbo.Customers", t => t.Customer_CustomerId)
+                .ForeignKey("dbo.Users", t => t.AccountManager_UserId, cascadeDelete: true)
+                .ForeignKey("dbo.ClientStatus", t => t.ClientStatus_ClientStatusId, cascadeDelete: true)
+                .ForeignKey("dbo.Customers", t => t.Customer_CustomerId, cascadeDelete: true)
                 .Index(t => t.AccountManager_UserId)
                 .Index(t => t.ClientStatus_ClientStatusId)
                 .Index(t => t.Customer_CustomerId);
@@ -105,10 +105,10 @@ namespace Warp.Data.Migrations
                 c => new
                     {
                         CustomerId = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
-                        UrlName = c.String(),
-                        DisplayName = c.String(),
-                        CustomerCode = c.String(),
+                        Name = c.String(nullable: false),
+                        UrlName = c.String(nullable: false),
+                        DisplayName = c.String(nullable: false),
+                        CustomerCode = c.String(nullable: false),
                         DefaultLanguageId = c.Int(nullable: false),
                         DateUpdated = c.DateTime(nullable: false),
                         DateCreated = c.DateTime(nullable: false),
@@ -139,10 +139,10 @@ namespace Warp.Data.Migrations
                         DateUpdated = c.DateTime(nullable: false),
                         DateCreated = c.DateTime(nullable: false),
                         Active = c.Boolean(nullable: false),
-                        RoleGroup_RoleGroupId = c.Int(),
+                        RoleGroup_RoleGroupId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.RoleId)
-                .ForeignKey("dbo.RoleGroups", t => t.RoleGroup_RoleGroupId)
+                .ForeignKey("dbo.RoleGroups", t => t.RoleGroup_RoleGroupId, cascadeDelete: true)
                 .Index(t => t.RoleGroup_RoleGroupId);
             
             CreateTable(
@@ -150,8 +150,8 @@ namespace Warp.Data.Migrations
                 c => new
                     {
                         ClientStatusId = c.Short(nullable: false, identity: true),
-                        Name = c.String(),
-                        Description = c.String(),
+                        Name = c.String(nullable: false),
+                        Description = c.String(nullable: false),
                         DateUpdated = c.DateTime(nullable: false),
                         DateCreated = c.DateTime(nullable: false),
                         Active = c.Boolean(nullable: false),
@@ -163,8 +163,8 @@ namespace Warp.Data.Migrations
                 c => new
                     {
                         IndustrySectorId = c.Int(nullable: false, identity: true),
-                        SectorName = c.String(),
-                        SectorNameForAssessor = c.String(),
+                        SectorName = c.String(nullable: false),
+                        SectorNameForAssessor = c.String(nullable: false),
                         DateUpdated = c.DateTime(nullable: false),
                         DateCreated = c.DateTime(nullable: false),
                         Active = c.Boolean(nullable: false),
@@ -188,8 +188,8 @@ namespace Warp.Data.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.Brands", "IndustrySectorId", "dbo.IndustrySectors");
-            DropForeignKey("dbo.Brands", "ClientId", "dbo.Clients");
+            DropForeignKey("dbo.Brands", "IndustrySector_IndustrySectorId", "dbo.IndustrySectors");
+            DropForeignKey("dbo.Brands", "Client_ClientId", "dbo.Clients");
             DropForeignKey("dbo.Clients", "Customer_CustomerId", "dbo.Customers");
             DropForeignKey("dbo.Clients", "ClientStatus_ClientStatusId", "dbo.ClientStatus");
             DropForeignKey("dbo.Clients", "AccountManager_UserId", "dbo.Users");
@@ -197,7 +197,7 @@ namespace Warp.Data.Migrations
             DropForeignKey("dbo.RoleGroupUsers", "RoleGroup_RoleGroupId", "dbo.RoleGroups");
             DropForeignKey("dbo.Roles", "RoleGroup_RoleGroupId", "dbo.RoleGroups");
             DropForeignKey("dbo.Users", "Customer_CustomerId", "dbo.Customers");
-            DropForeignKey("dbo.Brands", "BrandStatusId", "dbo.BrandStatus");
+            DropForeignKey("dbo.Brands", "BrandStatus_BrandStatusId", "dbo.BrandStatus");
             DropIndex("dbo.RoleGroupUsers", new[] { "User_UserId" });
             DropIndex("dbo.RoleGroupUsers", new[] { "RoleGroup_RoleGroupId" });
             DropIndex("dbo.Roles", new[] { "RoleGroup_RoleGroupId" });
@@ -206,9 +206,9 @@ namespace Warp.Data.Migrations
             DropIndex("dbo.Clients", new[] { "Customer_CustomerId" });
             DropIndex("dbo.Clients", new[] { "ClientStatus_ClientStatusId" });
             DropIndex("dbo.Clients", new[] { "AccountManager_UserId" });
-            DropIndex("dbo.Brands", new[] { "IndustrySectorId" });
-            DropIndex("dbo.Brands", new[] { "BrandStatusId" });
-            DropIndex("dbo.Brands", new[] { "ClientId" });
+            DropIndex("dbo.Brands", new[] { "IndustrySector_IndustrySectorId" });
+            DropIndex("dbo.Brands", new[] { "Client_ClientId" });
+            DropIndex("dbo.Brands", new[] { "BrandStatus_BrandStatusId" });
             DropTable("dbo.RoleGroupUsers");
             DropTable("dbo.IndustrySectors");
             DropTable("dbo.ClientStatus");

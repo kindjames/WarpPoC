@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using Warp.Core.Command;
 using Warp.Core.Exceptions;
 using Warp.Core.Infrastructure.Mapping;
@@ -8,7 +7,6 @@ using Warp.Core.Query;
 using Warp.Core.Util;
 using Warp.Data.Context;
 using Warp.Data.Entities;
-using Warp.Data.Exceptions;
 using Warp.Data.Queries.Clients;
 
 namespace Warp.Data.Commands.Clients
@@ -76,12 +74,6 @@ namespace Warp.Data.Commands.Clients
             //}
 
             var clientEntity = _objectMapper.Map<SaveNewClientCommand, Client>(command);
-
-            // TODO: Refactor into a factory.
-            clientEntity.DateCreated = _dateTimeProvider.UtcNow();
-            clientEntity.DateUpdated = _dateTimeProvider.UtcNow();
-            clientEntity.DateValidFrom = _dateTimeProvider.UtcNow();
-            clientEntity.Active = true;
             
             _dbContext.Clients.Add(clientEntity);
 

@@ -19,7 +19,7 @@ namespace Warp.Data.Context
 
             if (applicationConfig.IsEntityFrameworkLoggingEnabled)
             {
-                Database.Log = s => Debug.WriteLine(s);
+                Database.Log = s => Debug.Write(s);
             }
 
             var _ = typeof(System.Data.Entity.SqlServer.SqlProviderServices);

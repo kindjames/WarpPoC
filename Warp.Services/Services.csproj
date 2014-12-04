@@ -36,8 +36,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BrandService.cs" />
+    <Compile Include="CustomerService.cs" />
     <Compile Include="ClientService.cs" />
-    <Compile Include="Mappings\Brands\BrandToBrandSummaryDtoMapping.cs" />
+    <Compile Include="Mappings\Client\ClientToClientDtoMapping.cs" />
+    <Compile Include="Mappings\Customer\CustomerToCustomerDtoMapping.cs" />
+    <Compile Include="Mappings\Brand\BrandToBrandSummaryDtoMapping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TextResourceService.cs" />
   </ItemGroup>
@@ -51,7 +54,9 @@
       <Name>Data</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Mappings\Clients\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

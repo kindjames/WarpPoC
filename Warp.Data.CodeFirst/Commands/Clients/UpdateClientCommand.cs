@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-using Warp.Core.Command;
+﻿using Warp.Core.Command;
 using Warp.Core.Infrastructure.Mapping;
 using Warp.Core.Infrastructure.Validation;
-using Warp.Core.Query;
 using Warp.Core.Util;
 using Warp.Data.Context;
 using Warp.Data.Entities;
@@ -25,15 +23,11 @@ namespace Warp.Data.Commands.Clients
     public sealed class UpdateClientCommandHandler : ICommandHandler<UpdateClientCommand>
     {
         private readonly IDomainDbContext _dbContext;
-        private readonly IQueryDispatcher _queryDispatcher;
-        private readonly IDateTimeProvider _dateTimeProvider;
         private readonly IObjectMapper _objectMapper;
 
-        public UpdateClientCommandHandler(IDomainDbContext dbContext, IQueryDispatcher queryDispatcher, IDateTimeProvider dateTimeProvider, IObjectMapper objectMapper)
+        public UpdateClientCommandHandler(IDomainDbContext dbContext, IObjectMapper objectMapper)
         {
             _dbContext = dbContext;
-            _queryDispatcher = queryDispatcher;
-            _dateTimeProvider = dateTimeProvider;
             _objectMapper = objectMapper;
         }
 

@@ -12,6 +12,7 @@ namespace Warp.Data.Entities
         [Required]
         public string Description { get; set; }
         
+        [Required]
         public virtual RoleGroup RoleGroup { get; set; }
     }
 }

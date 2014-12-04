@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using Warp.Core.Authentication;
 using Warp.Core.Infrastructure.Mapping;
 using Warp.Core.Services;
 using Warp.Core.Services.Dtos.Client;
@@ -27,13 +28,15 @@ namespace Warp.WebUI.Controllers
         }
 
         [HttpGet]
-        public ActionResult List(string clientName)
+        public ActionResult List(ClientListInputModel model)
         {
-            var clients = _clientService.GetClients(clientName, User.Identity.GetUserId<int>(), -99);
+            var customerId = User.Identity.GetClaimValueFor<int>(ApplicationClaimTypes.CustomerId);
 
-            var model = _objectMapper.Map<IEnumerable<ClientDto>, ClientListViewModel>(clients);
+            var clients = _clientService.GetClients(model.ClientSearchQuery, customerId);
 
-            return PartialView(model);
+            var viewModel = _objectMapper.Map<IEnumerable<ClientDto>, ClientListViewModel>(clients);
+
+            return PartialView(viewModel);
         }
 
         [HttpGet, Route("create")]

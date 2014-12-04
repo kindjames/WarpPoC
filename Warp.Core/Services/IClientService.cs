@@ -7,6 +7,6 @@ namespace Warp.Core.Services
     {
         ClientDto GetClient(int clientId);
         void SaveClient(SaveClientDto dto);
-        IEnumerable<ClientDto> GetClients(string clientNameQuery, int userId, int customerId);
+        IEnumerable<ClientDto> GetClients(string clientNameQuery, int customerId);
     }
 }

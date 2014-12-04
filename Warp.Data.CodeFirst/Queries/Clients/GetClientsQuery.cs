@@ -11,10 +11,7 @@ namespace Warp.Data.Queries.Clients
     public sealed class GetClientsQuery : IQuery<IEnumerable<Client>>
     {
         public string Query { get; set; }
-
-        [IdRequired]
-        public int UserId { get; set; }
-
+        
         [IdRequired]
         public int CustomerId { get; set; }
     }
@@ -38,7 +35,7 @@ namespace Warp.Data.Queries.Clients
                 result = result.Where(u => u.Name.Contains(query.Query) || u.Code.Contains(query.Query));
             }
 
-            throw new NotImplementedException();
+            return result;
         }
     }
 }

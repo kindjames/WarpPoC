@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Warp.Core.Command;
-using Warp.Core.Infrastructure;
 using Warp.Core.Infrastructure.Mapping;
 using Warp.Core.Query;
 using Warp.Core.Services;
@@ -10,7 +9,6 @@ using Warp.Data.Commands.Clients;
 using Warp.Data.Entities;
 using Warp.Data.Exceptions;
 using Warp.Data.Queries.Clients;
-using Client = Warp.Data.Entities.Client;
 
 namespace Warp.Services
 {
@@ -61,15 +59,13 @@ namespace Warp.Services
             }
         }
 
-        public IEnumerable<ClientDto> GetClients(string clientNameQuery, int userId, int customerId)
+        public IEnumerable<ClientDto> GetClients(string clientNameQuery, int customerId)
         {
-            CheckArgument.NotZero(userId, "userId");
             CheckArgument.NotZero(customerId, "customerId");
-
+            
             var clients = _queryDispatcher.Execute(new GetClientsQuery
             {
                 Query = clientNameQuery,
-                UserId  = userId,
                 CustomerId = customerId,
             });
 

@@ -48,6 +48,7 @@
     <Compile Include="Attributes\PopulateWithAttribute.cs" />
     <Compile Include="Authentication\ApplicationClaimTypes.cs" />
     <Compile Include="Authentication\ApplicationUser.cs" />
+    <Compile Include="Authentication\IdentityExtensions.cs" />
     <Compile Include="Command\CommandDispatcher.cs" />
     <Compile Include="Command\ICommand.cs" />
     <Compile Include="Command\ICommandDispatcher.cs" />
@@ -65,6 +66,8 @@
     <Compile Include="Infrastructure\Models\TextResourceModelProvider.cs" />
     <Compile Include="Infrastructure\Validation\DataAnnotationsValidator.cs" />
     <Compile Include="Services\Dtos\Client\ClientDto.cs" />
+    <Compile Include="Services\Dtos\Customer\CustomerDto.cs" />
+    <Compile Include="Services\ICustomerService.cs" />
     <Compile Include="Services\ITextResourceService.cs" />
     <Compile Include="Util\DateTimeProvider.cs" />
     <Compile Include="Util\IDateTimeProvider.cs" />

@@ -1,16 +1,27 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Warp.Data.Entities
 {
     public class Client : EntityBase
     {
         public int ClientId { get; set; }
+
+        [Required]
         public string Name { get; set; }
+
+        [Required]
         public string Code { get; set; }
+
         public DateTime? DateValidFrom { get; set; }
 
-        public ClientStatus ClientStatus { get; set; }
-        public User AccountManager { get; set; }
-        public Customer Customer { get; set; }
+        [Required]
+        public virtual ClientStatus ClientStatus { get; set; }
+
+        [Required]
+        public virtual User AccountManager { get; set; }
+
+        [Required]
+        public virtual Customer Customer { get; set; }
     }
 }

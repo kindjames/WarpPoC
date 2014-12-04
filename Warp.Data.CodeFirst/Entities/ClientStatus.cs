@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace Warp.Data.Entities
 {
@@ -7,12 +8,17 @@ namespace Warp.Data.Entities
     {
         public ClientStatus()
         {
-            this.Clients = new List<Client>();
+            Clients = new Collection<Client>();
         }
 
         public short ClientStatusId { get; set; }
+
+        [Required]
         public string Name { get; set; }
+
+        [Required]
         public string Description { get; set; }
+
         public virtual ICollection<Client> Clients { get; set; }
     }
 }

@@ -1,14 +1,12 @@
-﻿using Warp.Core.Infrastructure;
-using Warp.Core.Infrastructure.Mapping;
+﻿using Warp.Core.Infrastructure.Mapping;
 using Warp.Core.Services.Dtos.Brand;
 using Warp.Core.Util;
-using Warp.Data.Entities;
 
-namespace Warp.Services.Mappings.Brands
+namespace Warp.Services.Mappings.Brand
 {
-    public sealed class BrandToBrandSummaryDtoMapping : IMappingConfiguration<Brand, BrandSummaryDto>
+    public sealed class BrandToBrandSummaryDtoMapping : IMappingConfiguration<Data.Entities.Brand, BrandSummaryDto>
     {
-        public BrandSummaryDto Map(Brand source)
+        public BrandSummaryDto Map(Data.Entities.Brand source)
         {
             CheckArgument.NotNull(source, "source");
 

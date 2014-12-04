@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -8,6 +9,11 @@ namespace Warp.Data.Entities
 {
     public class User : EntityBase
     {
+        public User()
+        {
+            RoleGroups = new Collection<RoleGroup>();
+        }
+
         public int UserId { get; set; }
 
         [StringLength(100), Required]
@@ -43,7 +49,7 @@ namespace Warp.Data.Entities
         public bool IsApproved { get; set; }
         public bool IsLockedOut { get; set; }
 
-        public Customer Customer { get; set; }
+        public virtual Customer Customer { get; set; }
         public virtual ICollection<RoleGroup> RoleGroups { get; set; }
     }
 }

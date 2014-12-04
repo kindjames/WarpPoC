@@ -62,7 +62,7 @@ namespace Warp.Data.Migrations.DataSeed
                 new RoleGroup {Name = "TranslationClientAdmin", Description = "Contains Client specific admin permissions for the Translation Service"}
             };
 
-            context.RoleGroups.AddOrUpdate(roleGroups);
+            //context.RoleGroups.AddOrUpdate(roleGroups);
 
             //var roles = new[]
             //{
@@ -232,6 +232,43 @@ namespace Warp.Data.Migrations.DataSeed
                     }
                 },
             };
+
+            var clientStatuses = new[]
+            {
+                new ClientStatus { Name = "Active", Description = "Active"},
+                new ClientStatus { Name = "Inactive", Description = "Inactive"},
+                new ClientStatus { Name = "Test", Description = "Test"},
+            };
+
+            var clients = new[]
+            {
+                new Client
+                {
+                    AccountManager = users[0],
+                    ClientStatus = clientStatuses[0],
+                    Name = "Test active client",
+                    Code = "AC10",
+                    Customer = customers[0],
+                },
+                new Client
+                {
+                    AccountManager = users[0],
+                    ClientStatus = clientStatuses[1],
+                    Name = "Test inactive client",
+                    Code = "IC10",
+                    Customer = customers[0],
+                },
+                new Client
+                {
+                    AccountManager = users[0],
+                    ClientStatus = clientStatuses[2],
+                    Name = "Test, test client",
+                    Code = "TC10",
+                    Customer = customers[1],
+                },
+            };
+
+            context.Clients.AddOrUpdate(clients);
 
             context.Users.AddOrUpdate(users);
         }

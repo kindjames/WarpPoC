@@ -14,7 +14,6 @@ namespace Warp.Data.Migrations
         }
 
         public IDbSet<User> Users { get; set; }
-        public IDbSet<RoleGroup> RoleGroups { get; set; }
         public IDbSet<Client> Clients { get; set; }
         public IDbSet<Customer> Customers { get; set; }
         public IDbSet<Brand> Brands { get; set; }

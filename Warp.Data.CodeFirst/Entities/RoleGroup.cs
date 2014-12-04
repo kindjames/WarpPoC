@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace Warp.Data.Entities
@@ -7,8 +8,8 @@ namespace Warp.Data.Entities
     {
         public RoleGroup()
         {
-            Roles = new List<Role>();
-            Users = new List<User>();
+            Roles = new Collection<Role>();
+            Users = new Collection<User>();
         }
 
         public int RoleGroupId { get; set; }

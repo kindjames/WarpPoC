@@ -3,7 +3,7 @@ using Machine.Fakes;
 using Machine.Specifications;
 using Warp.Core.Services.Dtos.Brand;
 using Warp.Data.Entities;
-using Warp.Services.Mappings.Brands;
+using Warp.Services.Mappings.Brand;
 
 namespace Warp.Services.Specs.Mappings
 {

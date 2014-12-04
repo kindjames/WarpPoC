@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace Warp.Data.Entities
 {
@@ -6,12 +8,17 @@ namespace Warp.Data.Entities
     {
         public IndustrySector()
         {
-            Brands = new List<Brand>();
+            Brands = new Collection<Brand>();
         }
 
         public int IndustrySectorId { get; set; }
+
+        [Required]
         public string SectorName { get; set; }
+
+        [Required]
         public string SectorNameForAssessor { get; set; }
+
         public virtual ICollection<Brand> Brands { get; set; }
     }
 }
