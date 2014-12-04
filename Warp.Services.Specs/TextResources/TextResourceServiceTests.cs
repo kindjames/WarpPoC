@@ -1,5 +1,4 @@
 ﻿using System;
-using FakeDbSet;
 using Machine.Fakes;
 using Machine.Specifications;
 using Warp.Core.Infrastructure.Mapping;
@@ -10,17 +9,16 @@ using Warp.Data.Entities;
 using Warp.Data.Queries.TextResources;
 using MoqIt = Moq.It;
 using ThenIt = Machine.Specifications.It;
+using Warp.Core.Services.Dtos.TextResources;
 
 namespace Warp.Services.Specs.TextResources
 {
-    [Subject("TextResourceService Tests")]
+    [Subject("TextResourceService =>")]
     public class TextResourceServiceTests
     {
         #region GetTextResource Tests
 
-        // TextResourceDto GetTextResource(int textResourceCodeId)
-
-        public class GetTextResource_For_A_TextResource_With_Invalid_Id : WithSubject<TextResourceService>
+        public class When_Calling_GetTextResource_For_A_TextResource_With_An_Invalid_Id : WithSubject<TextResourceService>
         {
             static Exception _exception;
 
@@ -33,77 +31,68 @@ namespace Warp.Services.Specs.TextResources
             };
         }
 
-        //public class When_Calling_GetTextResource_For_A_Null_TextResource : WithSubject<TextResourceService>
-        //{
-        //    static Exception _exception;
-        //    static int _textResourceCodeId = new Random().Next();
+        public class When_Calling_GetTextResource_For_A_Null_TextResource : WithSubject<TextResourceService>
+        {
+            static Exception _exception;
 
-        //    Establish _that = () =>
-        //    {
+            Because of = () => _exception = Catch.Exception(() => Subject.GetTextResource(0));
 
-        //        The<IQueryDispatcher>()
-        //            .WhenToldTo(t => t.Execute(Param.IsAny<GetTextResourceQuery>()))
-        //            .Return((String)null);
-        //    };
+            It should_throw_an_exception = () =>
+            {
+                _exception.ShouldNotBeNull();
+                _exception.ShouldBeOfExactType<ArgumentException>();
+            };
+        }
 
-        //    Because of = () => _exception = Catch.Exception(() => Subject.GetTextResource(_textResourceCodeId));
+        public class When_Calling_GetTextResource_For_An_Existing_TextResource : WithSubject<TextResourceService>
+        {
+            private const int _textResourceIdentifierId = 1;
+            static string _result;
 
-        //    It should_throw_an_exception = () =>
-        //    {
-        //        _exception.ShouldNotBeNull();
-        //        _exception.ShouldBeOfExactType<NullReferenceException>();
-        //        _exception.ShouldContainErrorMessage(_textResourceCodeId.ToString());
-        //    };
-        //}
+            Establish _context = () =>
+            {
+            };
 
-        //public class GetTextResource_For_An_Existing_TextResource : WithSubject<TextResourceService>
-        //{
-        //    private static TextResource _input;
-        //    private const int _textResourceCodeId = 10;
-        //    static TextResourceDto _result;
+            Because of = () => _result = Subject.GetTextResource(_textResourceIdentifierId);
 
-        //    Establish _context = () =>
-        //    {
-        //        The<ITextResourceDbContext>()
-        //            .WhenToldTo(tr => tr.TextResources)
-        //            .Return(new InMemoryDbSet<TextResource>(true)
-        //            {
-        //                new TextResource { TextResourceId = 1, TextResourceCodeId = 10, ResourceString = "Text Resource Test String 10.", LanguageId = 1 }
-        //            });
-
-        //        The<IObjectMapper>().WhenToldTo(m => m.Map<TextResource, TextResourceDto>(_input))
-        //            .Return(_result);
-        //    };
-
-        //    Because of = () => _result = Subject.GetTextResourceString(_textResourceCodeId);
-
-        //    It should_return_the_dto = () =>
-        //    {
-        //        _result.TextResourceId.ShouldEqual(_result.TextResourceId);
-        //        _result.TextResourceCodeId.ShouldEqual(_result.TextResourceCodeId);
-        //        _result.ResourceCode.ShouldEqual(_result.ResourceCode);
-        //        _result.ResourceString.ShouldEqual(_result.ResourceString);
-        //    };
-
-
-        //}
+            It should_return_a_string = () =>
+            {
+                The<IQueryDispatcher>()
+                    .WasToldTo(d => d.Execute(Param.IsAny<GetTextResourceQuery>()));
+            };
+        }
 
         #endregion GetTextResource Tests
 
         #region GetTextResourceString Tests
 
-        public class GetTextResourceString_With_Invalid_Id : WithSubject<TextResourceService>
+        public class When_Calling_GetTextResourceString_With_Invalid_Id : WithSubject<TextResourceService>
         {
-            //    private Establish that = () => ;
-            //    private Because of = () => ;
-            //    private It should = () => ;            
+            static Exception _exception;
+            static int _textResourceIdentifierId = 0;
+
+            private Because of = () => _exception = Catch.Exception(() => Subject.GetTextResourceString(_textResourceIdentifierId));
+
+            private It should_throw_an_exception = () => {
+                _exception.ShouldNotBeNull();
+                _exception.ShouldBeOfExactType<ArgumentException>();
+            };
         }
 
         public class GetTextResourceString_That_Does_Not_Exist : WithSubject<TextResourceService>
         {
-            //    private Establish that = () => ;
-            //    private Because of = () => ;
-            //    private It should = () => ;            
+            static int _textResourceIdentifierId = new Random().Next();
+            static Exception _exception;
+            static ResourceStringDto _result;
+
+            private Establish _context = () => {} ;
+
+            private Because _of = () => _result = Subject.GetTextResourceString(_textResourceIdentifierId);
+
+            private It should = () =>
+            {
+                _result.ShouldBeOfExactType(ResourceStringDto);
+            };
         }
 
         #endregion GetTextResourceString Tests

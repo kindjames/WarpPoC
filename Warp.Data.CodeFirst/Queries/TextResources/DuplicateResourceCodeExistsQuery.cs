@@ -27,7 +27,7 @@ namespace Warp.Data.Queries.TextResources
         public bool Execute(DuplicateResourceCodeExistsQuery query)
         {
             return _dbContext.TextResourceCodes
-                .Any(trc => trc.ResourceCode == query.ResourceCode);
+                .Any(trc => trc.TextResourceCode == query.ResourceCode);
         }
     }
 }

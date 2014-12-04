@@ -23,7 +23,7 @@ namespace Warp.Data.Queries.TextResources
         public string Execute(GetTextResourceStringQuery query)
         {
             return _context.TextResources
-                .Where(trs => trs.TextResourceCodeId == query.TextResourceCodeId)
+                .Where(trs => trs.TextResourceIdentifier.TextResourceIdentifierId == query.TextResourceCodeId)
                 .Select(trs => trs.ResourceString)
                 .SingleOrDefault();
         }

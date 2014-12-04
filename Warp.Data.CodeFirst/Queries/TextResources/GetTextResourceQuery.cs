@@ -9,7 +9,7 @@ namespace Warp.Data.Queries.TextResources
     public sealed class GetTextResourceQuery : IQuery<string>
     {
         [IdRequired]
-        public int TextResourceCodeId { get; set; }
+        public int TextResourceIdentifierId { get; set; }
     }
 
     public sealed class GetTextResourceQueryHandler : IQueryHandler<GetTextResourceQuery, string>
@@ -23,9 +23,10 @@ namespace Warp.Data.Queries.TextResources
 
         public string Execute(GetTextResourceQuery query)
         {
-            return Enumerable.SingleOrDefault(_context.TextResources
-                    .Where(t => t.TextResourceCodeId == query.TextResourceCodeId)
-                    .Select(t => t.ResourceString));
+            return _context.TextResources
+                    .Where(t => t.TextResourceIdentifier.TextResourceIdentifierId == query.TextResourceIdentifierId)
+                    .Select(t => t.ResourceString)
+                    .SingleOrDefault();
         }
     }
 }

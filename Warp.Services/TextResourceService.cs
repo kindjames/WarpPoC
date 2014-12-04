@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using Warp.Core.Exceptions.TextResources;
 using Warp.Core.Infrastructure.Mapping;
 using Warp.Core.Query;
 using Warp.Core.Services.Dtos.TextResources;
@@ -30,26 +32,22 @@ namespace Warp.Services
         {
             CheckArgument.NotZero(textResourceCodeId, "textResourceCodeId");
 
-            var textResource = _queryDispatcher.Execute(new GetTextResourceQuery { TextResourceCodeId = textResourceCodeId });
-
-            if (textResource == String.Empty)
-            {
-                throw new NullReferenceException();
-            }
-
-            return textResource;
+            return _queryDispatcher.Execute(new GetTextResourceQuery { TextResourceIdentifierId = textResourceCodeId });
         }
         #endregion In Process
 
         #region Next
 
-        public ResourceStringDto GetTextResourceString(int textResourceCodeId)
+        public ResourceStringDto GetTextResourceString(int textResourceIdentifierId)
         {
-            CheckArgument.NotZero(textResourceCodeId, "textResourceCodeId");
+            CheckArgument.NotZero(textResourceIdentifierId, "textResourceCodeId");
 
-            var textResourceString = _queryDispatcher.Execute(new GetTextResourceStringQuery { TextResourceCodeId = textResourceCodeId });
+            var textResourceString = _queryDispatcher.Execute(new GetTextResourceStringQuery { TextResourceCodeId = textResourceIdentifierId });
 
-            CheckArgument.NotEmpty(textResourceString, "textResourceCodeId");
+            if(String.IsNullOrWhiteSpace(textResourceString))
+            {
+                return null;
+            }
 
             return new ResourceStringDto
             {
