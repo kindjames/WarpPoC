@@ -40,11 +40,11 @@ namespace Warp.Services
 
         public ResourceStringDto GetTextResourceString(int textResourceIdentifierId)
         {
-            CheckArgument.NotZero(textResourceIdentifierId, "textResourceCodeId");
+            CheckArgument.NotZero(textResourceIdentifierId, "textResourceIdentifierId");
 
-            var textResourceString = _queryDispatcher.Execute(new GetTextResourceStringQuery { TextResourceCodeId = textResourceIdentifierId });
+            var textResourceString = _queryDispatcher.Execute(new GetTextResourceStringQuery { TextResourceIdentifierId = textResourceIdentifierId });
 
-            if(String.IsNullOrWhiteSpace(textResourceString))
+            if (String.IsNullOrWhiteSpace(textResourceString))
             {
                 return null;
             }

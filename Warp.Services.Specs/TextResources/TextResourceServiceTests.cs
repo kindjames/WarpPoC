@@ -9,7 +9,6 @@ using Warp.Data.Entities;
 using Warp.Data.Queries.TextResources;
 using MoqIt = Moq.It;
 using ThenIt = Machine.Specifications.It;
-using Warp.Core.Services.Dtos.TextResources;
 
 namespace Warp.Services.Specs.TextResources
 {
@@ -79,22 +78,71 @@ namespace Warp.Services.Specs.TextResources
             };
         }
 
-        public class GetTextResourceString_That_Does_Not_Exist : WithSubject<TextResourceService>
+        public class When_calling_GetTextResourceString_For_A_Nonexistent_TextResource : WithSubject<TextResourceService>
         {
-            static int _textResourceIdentifierId = new Random().Next();
+            static int _textResourceIdentifierId = 0;
+
+                        private Because _of = () => _exception = Catch.Exception(() => Subject.GetTextResourceString(_textResourceIdentifierId));
+
+            private It should_throw_an_exception = () =>
+            {
+                _exception.ShouldNotBeNull();
+                _exception.ShouldBeOfExactType<ArgumentException>();
+            };
+
             static Exception _exception;
+        }
+
+        public class When_Calling_GetTextResourceString_Return_A_ResourceStringDto : WithSubject<TextResourceService>
+        {
+            private const int _textResourceIdentifierId = 1;
             static ResourceStringDto _result;
 
-            private Establish _context = () => {} ;
-
-            private Because _of = () => _result = Subject.GetTextResourceString(_textResourceIdentifierId);
-
-            private It should = () =>
+            Establish _context = () =>
             {
-                _result.ShouldBeOfExactType(ResourceStringDto);
+                The<IQueryDispatcher>()
+                    .WhenToldTo(d => d.Execute(Param.IsAny<GetTextResourceStringQuery>()))
+                    .Return("BEEP");
+            };
+
+            Because of = () => _result = Subject.GetTextResourceString(_textResourceIdentifierId);
+
+            It should_return_a_dto = () =>
+            {
+                The<IQueryDispatcher>()
+                    .WasToldTo(d => d.Execute(Param.IsAny<GetTextResourceStringQuery>()));
+
+                _result.TextResourceString.ShouldEqual("BEEP");
             };
         }
 
+        public class When_Calling_GetTextResourceString_Return_Null : WithSubject<TextResourceService>
+        {
+            private const int _textResourceIdentifierId = 1;
+            static ResourceStringDto _result;
+
+            Establish _context = () =>
+            {
+            };
+
+            Because of = () => _result = Subject.GetTextResourceString(_textResourceIdentifierId);
+
+            It should_return_null = () =>
+            {
+                The<IQueryDispatcher>()
+                    .WasToldTo(d => d.Execute(Param.IsAny<GetTextResourceStringQuery>()));
+
+                _result.ShouldBeNull();
+            };
+        }
+
+
+        //public class : WithSubject<TextResourceService>
+        //{
+        //    Establish _context = () => { };
+        //    Because _of = () =>{};
+        //    It _should = () => { };
+        //}
         #endregion GetTextResourceString Tests
 
         #region GetTextResourceCode Tests
@@ -225,7 +273,7 @@ namespace Warp.Services.Specs.TextResources
         //    };
         //}
 
-        #region Template
+        #region Templates
 
         //public class When_getting_calling_GetTextResource : WithSubject<TextResourceService>
         //{
@@ -242,6 +290,11 @@ namespace Warp.Services.Specs.TextResources
         //    static string result;
         //}
 
-        #endregion Template
+
+        // Establish _context = () => { };
+        // Because _of = () => { };
+        // It _of = () => { };
+
+        #endregion Templates
     }
 }
