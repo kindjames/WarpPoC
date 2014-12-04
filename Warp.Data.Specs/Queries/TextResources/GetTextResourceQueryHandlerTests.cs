@@ -1,11 +1,11 @@
 ﻿using FakeDbSet;
 using Machine.Fakes;
 using Machine.Specifications;
-using TestFactory.Data;
-using TestFactory.Util;
 using Warp.Data.Context;
 using Warp.Data.Entities;
 using Warp.Data.Queries.TextResources;
+using Warp.Data.Specs.Data;
+using Warp.Data.Specs.Util;
 
 namespace Warp.Data.Specs.Queries.TextResources
 {
@@ -23,7 +23,6 @@ namespace Warp.Data.Specs.Queries.TextResources
 
         public class GetTextResource_That_Exists: WithSubject<GetTextResourceQueryHandler>
         {
-
             static string _result;
             const int _textResourceCodeId = 12;
  
@@ -37,14 +36,14 @@ namespace Warp.Data.Specs.Queries.TextResources
                         new TextResource
                         {
                             TextResourceId = 1,
-                            LanguageId = 1,
-                            TextResourceCodeId = 12,
+                            Language = new Language { LanguageId = 1 },
+                            TextResourceIdentifier = new TextResourceIdentifier { TextResourceIdentifierId = 12},
                             ResourceString = "Welcome!"
                         }
                     });
             };
 
-            Because _of = () => _result = Subject.Execute(new GetTextResourceQuery{ TextResourceCodeId = _textResourceCodeId});
+            Because _of = () => _result = Subject.Execute(new GetTextResourceQuery{ TextResourceIdentifierId = _textResourceCodeId});
 
             It should_return_the_TextResource = () =>
             {

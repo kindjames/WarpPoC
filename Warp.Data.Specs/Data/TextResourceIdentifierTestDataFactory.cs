@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using TestFactory.Util;
 using Warp.Data.Entities;
+using Warp.Data.Specs.Util;
 
-namespace TestFactory.Data
+namespace Warp.Data.Specs.Data
 {
     public class TextResourceIdentifierTestDataFactory : ITestDataFactory<TextResourceIdentifier>
     {
@@ -12,38 +12,38 @@ namespace TestFactory.Data
             {
                 new TextResourceIdentifier
                 {
-                    TextResourceCodeId = 1,
+                    TextResourceIdentifierId = 1,
                     TextResourceCode = "WelcomeText",
                     ClientOverridable = true
                 },
                 new TextResourceIdentifier
                 {
-                    TextResourceCodeId = 2,
+                    TextResourceIdentifierId = 2,
                     TextResourceCode = "LoginText",
                     ClientOverridable = true
                 },
                 new TextResourceIdentifier
                 {
-                    TextResourceCodeId = 3,
+                    TextResourceIdentifierId = 3,
                     TextResourceCode = "PasswordText",
                     ClientOverridable = true
                 },
                 new TextResourceIdentifier
                 {
-                    TextResourceCodeId = 4,
+                    TextResourceIdentifierId = 4,
                     TextResourceCode = "UsernameText", 
                     ClientOverridable = true
                 },
 
                 new TextResourceIdentifier
                 {
-                    TextResourceCodeId = 5,
+                    TextResourceIdentifierId = 5,
                     TextResourceCode = "RememberMeFor2WeeksText",
                     ClientOverridable = false
                 },
                 new TextResourceIdentifier
                 {
-                    TextResourceCodeId = 6,
+                    TextResourceIdentifierId = 6,
                     TextResourceCode = "EmailOrTMDCIdText",
                     ClientOverridable = false
                 }

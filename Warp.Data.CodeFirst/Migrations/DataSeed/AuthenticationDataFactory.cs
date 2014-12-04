@@ -144,11 +144,11 @@ namespace Warp.Data.Migrations.DataSeed
             //    new Role {Name = "CanViewSystemSettingsPage", Description = "User can view the systems settings page"},
             //    new Role {Name = "PDFandPrintDashboard", Description = "User can PDF or  Print Dashboard"},
             //    new Role {Name = "PDFandPrintDashboard", Description = "User can PDF or  Print Dashboard"},
-            //    new Role {Name = "TranslationSystemAdministration", Description = "User can create, retrieve, edit and delete all System translation resources"},
-            //    new Role {Name = "TranslationUserAdministration", Description = "User can create, retrieve, edit and delete User specific translation resource s only"},
-            //    new Role {Name = "TranslationUserAdministration", Description = "User can create, retrieve, edit and delete User specific translation resource s only"},
-            //    new Role {Name = "TranslationClientAdministration", Description = "User can create, retrieve, edit and delete Client specific translation resources only"},
-            //    new Role {Name = "TranslationClientAdministration", Description = "User can create, retrieve, edit and delete Client specific translation resources only"},
+            //    new Role {Name = "TextResourceSystemAdministration", Description = "User can create, retrieve, edit and delete all System translation resources"},
+            //    new Role {Name = "TextResourceUserAdministration", Description = "User can create, retrieve, edit and delete User specific translation resource s only"},
+            //    new Role {Name = "TextResourceUserAdministration", Description = "User can create, retrieve, edit and delete User specific translation resource s only"},
+            //    new Role {Name = "TextResourceClientAdministration", Description = "User can create, retrieve, edit and delete Client specific translation resources only"},
+            //    new Role {Name = "TextResourceClientAdministration", Description = "User can create, retrieve, edit and delete Client specific translation resources only"},
             //};
 
 
