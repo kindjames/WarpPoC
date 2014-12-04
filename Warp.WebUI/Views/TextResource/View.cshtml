@@ -1,0 +1,13 @@
+﻿@model Warp.WebUI.Models.TextResources.TextResourceViewModel
+
+@{ ViewBag.Title = Model.TextResourceCode; }
+@using (Html.BeginForm("Create", "TextResource", FormMethod.Post, new {TextResourceId = Model.TextResourceId}))
+{
+    <div>Resource Id: @Html.DisplayFor(m => Model.TextResourceId)</div>
+    <div>Resource String: @Html.EditorFor(model => model.TextResourceString)</div>
+    <div>Resource Code: @Html.EditorFor(model => model.TextResourceCode)</div>
+    <div>Language Id: @Html.EditorFor(model => model.LanguageId)</div>
+    <div>Client Override: @Html.EditorFor(model => Model.ClientOverride)</div>
+}
+<input type="submit" value="Update"/>
+

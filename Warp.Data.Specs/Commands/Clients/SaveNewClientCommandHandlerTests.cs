@@ -1,15 +1,13 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using Machine.Fakes;
 using Machine.Specifications;
-using System;
 using Warp.Core.Exceptions;
-using Warp.Core.Infrastructure;
 using Warp.Core.Infrastructure.Mapping;
 using Warp.Core.Query;
 using Warp.Data.Commands.Clients;
 using Warp.Data.Context;
 using Warp.Data.Entities;
-using Warp.Data.Exceptions;
 using Warp.Data.Queries.Clients;
 using MoqIt = Moq.It;
 

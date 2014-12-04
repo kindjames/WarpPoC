@@ -119,7 +119,7 @@
     </ProjectReference>
     <ProjectReference Include="..\Warp.Data.CodeFirst\Data %28CodeFirst%29.csproj">
       <Project>{14f5dfd0-aed7-4e07-a7c1-b873003943b6}</Project>
-      <Name>Data</Name>
+      <Name>Data %28CodeFirst%29</Name>
     </ProjectReference>
     <ProjectReference Include="..\Warp.Services\Services.csproj">
       <Project>{5760eb35-8dd5-4c9f-8bf4-097cf0cfa530}</Project>

@@ -186,6 +186,7 @@
     <Compile Include="Models\Clients\ClientListViewModel.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\TextResourceController.cs" />
     <Compile Include="Infrastructure\PopulateTextResourcesOnModelAttribute.cs" />
     <Compile Include="Infrastructure\RequiredRolesAttribute.cs" />
     <Compile Include="Mappings\Brands\BrandSummaryListDtoToBrandSummaryListViewModelMapping.cs" />
@@ -194,6 +195,8 @@
     <Compile Include="Models\Clients\ClientViewModel.cs" />
     <Compile Include="Models\Brands\BrandSummaryListViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Models\TextResources\TextResourcePageViewModel.cs" />
+    <Compile Include="Models\TextResources\TextResourceViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -213,6 +216,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.bootstrap.min.js.map" />
     <Content Include="Views\Clients\Index.cshtml" />
     <Content Include="Views\Clients\List.cshtml" />
+    <Content Include="Views\TextResource\Create.cshtml" />
+    <Content Include="Views\TextResource\Index.cshtml" />
+    <Content Include="Views\TextResource\View.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

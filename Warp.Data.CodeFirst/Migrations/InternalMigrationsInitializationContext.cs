@@ -17,5 +17,8 @@ namespace Warp.Data.Migrations
         public IDbSet<Client> Clients { get; set; }
         public IDbSet<Customer> Customers { get; set; }
         public IDbSet<Brand> Brands { get; set; }
+        public IDbSet<TextResource> TextResources { get; set; }
+        public IDbSet<TextResourceIdentifier> TextResourceIdentifiers { get; set; }
+        public IDbSet<Language> Languages { get; set; }
     }
 }

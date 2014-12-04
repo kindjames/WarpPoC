@@ -41,6 +41,7 @@
     <Compile Include="Mappings\Client\ClientToClientDtoMapping.cs" />
     <Compile Include="Mappings\Customer\CustomerToCustomerDtoMapping.cs" />
     <Compile Include="Mappings\Brand\BrandToBrandSummaryDtoMapping.cs" />
+    <Compile Include="LanguageService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TextResourceService.cs" />
   </ItemGroup>
@@ -51,12 +52,10 @@
     </ProjectReference>
     <ProjectReference Include="..\Warp.Data.CodeFirst\Data %28CodeFirst%29.csproj">
       <Project>{14f5dfd0-aed7-4e07-a7c1-b873003943b6}</Project>
-      <Name>Data</Name>
+      <Name>Data %28CodeFirst%29</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Mappings\Clients\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
