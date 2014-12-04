@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Warp.Data.Entities
 {
+    [Table("Users", Schema = "Client")]
     public class User : EntityBase
     {
         public User()

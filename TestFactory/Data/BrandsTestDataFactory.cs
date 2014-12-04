@@ -1,11 +1,12 @@
 using System.Collections.Generic;
+using TestFactory.Util;
 using Warp.Data.Entities;
 
-namespace Warp.Data.Specs.TestDataFactories
+namespace TestFactory.Data
 {
     public class BrandsTestDataFactory : ITestDataFactory<Brand>
     {
-        public IEnumerable<Brand> Build()
+        public IEnumerable<Brand> BuildMemorySet()
         {
             return new[]
             {
