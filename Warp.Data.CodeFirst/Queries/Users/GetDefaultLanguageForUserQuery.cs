@@ -5,13 +5,13 @@ using Warp.Data.Context;
 
 namespace Warp.Data.Queries.Users
 {
-    public class UserDefaultLanguageQuery : IQuery<int>
+    public class GetDefaultLanguageForUserQuery : IQuery<int>
     {
         [IdRequired]
         public int UserId { get; set; }
     }
 
-    public class GetDefaultLanguageForUserQueryHandler : IQueryHandler<UserDefaultLanguageQuery, int>
+    public class GetDefaultLanguageForUserQueryHandler : IQueryHandler<GetDefaultLanguageForUserQuery, int>
     {
         private readonly ITextResourceDbContext _dbContext;
         
@@ -20,7 +20,7 @@ namespace Warp.Data.Queries.Users
             _dbContext = dbContext;
         }
 
-        public int Execute(UserDefaultLanguageQuery query)
+        public int Execute(GetDefaultLanguageForUserQuery query)
         {
             return _dbContext.Users
                 .Where(u => u.UserId == query.UserId)

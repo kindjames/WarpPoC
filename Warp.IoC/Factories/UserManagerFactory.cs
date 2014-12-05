@@ -1,6 +1,5 @@
 using Microsoft.AspNet.Identity;
 using Warp.Core.Authentication;
-using Warp.Core.Infrastructure;
 using Warp.Core.Infrastructure.Configuration;
 using Warp.Core.Util;
 using Warp.Data.Context;

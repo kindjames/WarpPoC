@@ -18,27 +18,23 @@ namespace Warp.IoC
 
         public object TryResolve(Type type)
         {
-            try
+            if (_container.GetRegistration(type, false) != null)
             {
                 return _container.GetInstance(type);
             }
-            catch
-            {
-                return null;
-            }
+
+            return null;
         }
 
         public TService TryResolve<TService>()
             where TService : class
         {
-            try
+            if (_container.GetRegistration(typeof(TService), false) != null)
             {
                 return _container.GetInstance<TService>();
             }
-            catch
-            {
-                return null;
-            }
+
+            return null;
         }
     }
 }

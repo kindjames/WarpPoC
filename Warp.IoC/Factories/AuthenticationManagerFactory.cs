@@ -7,6 +7,9 @@ using Microsoft.Owin.Security;
 
 namespace Warp.IoC.Factories
 {
+    /// <summary>
+    /// Allows DI registration of IAuthenticationManager from the ASP.NET Identity Framework.
+    /// </summary>
     internal sealed class AuthenticationManagerFactory
     {
         private readonly HttpContextBase _httpContext;
@@ -74,7 +77,14 @@ namespace Warp.IoC.Factories
         {
             _httpContext = httpContext;
         }
-
+        
+        /// <summary>
+        /// If Build is called before OwinContext has been created, then will return a 
+        /// FakeAuthenticationManager, otherwise return the IAuthenticationManager from 
+        /// the Owin pipeline.
+        /// </summary>
+        /// <param name="isVerifying">Is the IoC Container currently verifying?</param>
+        /// <returns></returns>
         public IAuthenticationManager Build(bool isVerifying)
         {
             try

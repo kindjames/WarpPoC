@@ -2,7 +2,6 @@
 using Warp.Core.Infrastructure.Validation;
 using Warp.Core.Query;
 using Warp.Data.Context;
-using Warp.Data.Queries.Users;
 
 namespace Warp.Data.Queries.TextResources
 {
@@ -12,16 +11,16 @@ namespace Warp.Data.Queries.TextResources
         public int UserId { get; set; }
     }
 
-    public sealed class UserDefaultLanguageQueryHandler : IQueryHandler<UserDefaultLanguageQuery, int>
+    public sealed class ResolveUserLanguageQueryHandler : IQueryHandler<ResolveUserLanguageQuery, int>
     {
         private readonly ITextResourceDbContext _context;
 
-        public UserDefaultLanguageQueryHandler(ITextResourceDbContext context)
+        public ResolveUserLanguageQueryHandler(ITextResourceDbContext context)
         {
             _context = context;
         }
 
-        public int Execute(UserDefaultLanguageQuery query)
+        public int Execute(ResolveUserLanguageQuery query)
         {
             return _context.Users
                 .Where(u => u.UserId == query.UserId)

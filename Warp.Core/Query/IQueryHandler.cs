@@ -1,7 +1,11 @@
 ﻿
 namespace Warp.Core.Query
 {
-    // Interface for query handlers - has two type parameters for the query and the query result
+    /// <summary>
+    /// Will execute the corresponding IQuery<TQuery>.
+    /// </summary>
+    /// <typeparam name="TQuery"></typeparam>
+    /// <typeparam name="TResult"></typeparam>
     public interface IQueryHandler<in TQuery, out TResult>
         where TQuery : IQuery<TResult>
     {

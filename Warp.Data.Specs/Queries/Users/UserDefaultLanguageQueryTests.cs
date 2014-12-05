@@ -39,7 +39,7 @@ namespace Warp.Data.Specs.Queries.Users
         {
             Establish that = () =>
             {
-                _query = new UserDefaultLanguageQuery { UserId = 25264 };
+                _query = new GetDefaultLanguageForUserQuery { UserId = 25264 };
 
                 The<ITextResourceDbContext>()
                     .WhenToldTo(d => d.Users)
@@ -56,7 +56,7 @@ namespace Warp.Data.Specs.Queries.Users
                 _result.ShouldEqual(1);
 
             static int _result;
-            static UserDefaultLanguageQuery _query;
+            static GetDefaultLanguageForUserQuery _query;
         }
 
     //}

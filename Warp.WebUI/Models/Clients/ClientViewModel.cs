@@ -1,6 +1,4 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
-using Warp.Core.Infrastructure.Validation;
 
 namespace Warp.WebUI.Models.Clients
 {
@@ -8,21 +6,12 @@ namespace Warp.WebUI.Models.Clients
     {
         public int ClientId { get; set; }
 
-        [Required]
         public string Name { get; set; }
 
-        [IdRequired]
-        public short ClientStatusId { get; set; }
-
-        [Required]
         public string Code { get; set; }
 
-        [IdRequired]
-        public int AccountManagerAdminId { get; set; }
+        public string ClientStatusDescription { get; set; }
 
-        [IdRequired]
-        public int CustomerId { get; set; }
-
-        public DateTime? DateValidFrom { get; set; }
+        public string AccountManagerName { get; set; }
     }
 }

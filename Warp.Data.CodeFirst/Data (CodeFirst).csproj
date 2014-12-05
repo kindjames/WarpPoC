@@ -75,16 +75,11 @@
     <Compile Include="Entities\User.cs" />
     <Compile Include="Exceptions\DataEntityNotFoundException.cs" />
     <Compile Include="Identity\ApplicationUserStore.cs" />
-    <Compile Include="Migrations\201412041603563_InitialCreate.cs" />
-    <Compile Include="Migrations\201412041603563_InitialCreate.Designer.cs">
-      <DependentUpon>201412041603563_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201412031552165_TextResources.cs" />
-    <Compile Include="Migrations\201412031552165_TextResources.Designer.cs">
-      <DependentUpon>201412031552165_TextResources.cs</DependentUpon>
+    <Compile Include="Migrations\201412041722068_InitialCreate.cs" />
+    <Compile Include="Migrations\201412041722068_InitialCreate.Designer.cs">
+      <DependentUpon>201412041722068_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Migrations\DataSeed\TextResourcesDataFactory.cs" />
     <Compile Include="Migrations\DataSeed\DataFactoryResolver.cs" />
     <Compile Include="Migrations\DataSeed\AuthenticationDataFactory.cs" />
     <Compile Include="Migrations\DataSeed\IDataFactory.cs" />
@@ -106,7 +101,7 @@
     <Compile Include="Queries\TextResources\GetTextResourceStringQuery.cs" />
     <Compile Include="Queries\TextResources\ResolveBrowserLanguageQuery.cs" />
     <Compile Include="Queries\TextResources\ResolveUserLanguageQuery.cs" />
-    <Compile Include="Queries\Users\UserDefaultLanguageQuery.cs" />
+    <Compile Include="Queries\Users\GetDefaultLanguageForUserQuery.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -116,19 +111,14 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201412031552165_TextResources.resx">
-      <DependentUpon>201412031552165_TextResources.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Warp.Core\Core.csproj">
       <Project>{8031789b-4e8b-4418-8644-eb4ade65b90b}</Project>
       <Name>Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201412041603563_InitialCreate.resx">
-      <DependentUpon>201412041603563_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201412041722068_InitialCreate.resx">
+      <DependentUpon>201412041722068_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

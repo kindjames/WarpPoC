@@ -9,11 +9,6 @@ namespace Warp.Services
     {
         private readonly IQueryDispatcher _queryDispatcher;
 
-        public LanguageService()
-        {
-                
-        }
-
         public LanguageService(IQueryDispatcher queryDispatcher)
         {
             _queryDispatcher = queryDispatcher;
@@ -24,14 +19,14 @@ namespace Warp.Services
             CheckArgument.NotEmpty(invariantCulture, "invariantCulture");
 
             var languageId = _queryDispatcher.Execute(new GetLanguageIdByInvariantCultureQuery { InvariantCulture = invariantCulture });
-
             
             if (languageId > 0)
             {
                 return languageId;
             }
+
             // If the Browser language is not supported, degrade gracefully to English.
-            return languageId = 1;
+            return 1;
         }
     }
 }

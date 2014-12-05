@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Data.Entity.Migrations;
+using System.Linq;
 using Warp.Core.Infrastructure.Authentication;
 using Warp.Data.Entities;
 
@@ -233,6 +234,8 @@ namespace Warp.Data.Migrations.DataSeed
                 },
             };
 
+            context.Users.AddOrUpdate(users);
+
             var clientStatuses = new[]
             {
                 new ClientStatus { Name = "Active", Description = "Active"},
@@ -270,7 +273,102 @@ namespace Warp.Data.Migrations.DataSeed
 
             context.Clients.AddOrUpdate(clients);
 
-            context.Users.AddOrUpdate(users);
+            var languages = new[]
+            {
+                new Language {LanguageId = 1, InvariantCulture = "en", Locale = "GB", Name = "English"},
+                new Language {LanguageId = 2, InvariantCulture = "fr", Locale = "FR", Name = "French"},
+                new Language {LanguageId = 3, InvariantCulture = "nl", Locale = "NL", Name = "Dutch"},
+                new Language {LanguageId = 4, InvariantCulture = "de", Locale = "DE", Name = "German"},
+                new Language {LanguageId = 5, InvariantCulture = "oo", Locale = "AR", Name = "Pirate"}
+            };
+
+            context.Languages.AddOrUpdate(languages);
+
+            var textResourceIdentifiers = new[]
+            {
+                new TextResourceIdentifier
+                {
+                    TextResourceCode = "UsernameLabel",
+                    ClientOverridable = true
+                },
+
+                new TextResourceIdentifier
+                {
+                    TextResourceCode = "UsernameTextPlaceholder",
+                    ClientOverridable = true
+                },
+                new TextResourceIdentifier
+                {
+                    TextResourceCode = "PasswordLabel",
+                    ClientOverridable = true
+                },
+                new TextResourceIdentifier
+                {
+                    TextResourceCode = "PasswordTextPlaceholder",
+                    ClientOverridable = true
+                },
+
+                new TextResourceIdentifier
+                {
+                    TextResourceCode = "RememberMeCheckbox",
+                    ClientOverridable = false
+                },
+                new TextResourceIdentifier
+                {
+                    TextResourceCode = "LoginButton",
+                    ClientOverridable = false
+                }
+            };
+
+            context.TextResourceIdentifiers.AddOrUpdate(textResourceIdentifiers);
+
+            var textResources = new[]
+            {
+                new TextResource
+                {
+                    ResourceString = "Username",
+                    TextResourceIdentifier = textResourceIdentifiers.Single(i => i.TextResourceCode == "UsernameLabel"),
+                    Language = languages[0],
+                    Client = clients[0],
+                },
+                new TextResource
+                {
+                    ResourceString = "E-mail or TMDC Id",
+                    TextResourceIdentifier = textResourceIdentifiers.Single(i => i.TextResourceCode == "UsernameTextPlaceholder"),
+                    Language = languages[0],
+                    Client = clients[0],
+                },
+                new TextResource
+                {
+                    ResourceString = "Password",
+                    TextResourceIdentifier = textResourceIdentifiers.Single(i => i.TextResourceCode == "PasswordLabel"),
+                    Language = languages[0],
+                    Client = clients[0],
+                },
+                new TextResource
+                {
+                    ResourceString = "Password",
+                    TextResourceIdentifier = textResourceIdentifiers.Single(i => i.TextResourceCode == "PasswordTextPlaceholder"),
+                    Language = languages[0],
+                    Client = clients[0],
+                },
+                new TextResource
+                {
+                    ResourceString = "Remember me for 2 weeks",
+                    TextResourceIdentifier = textResourceIdentifiers.Single(i => i.TextResourceCode == "RememberMeCheckbox"),
+                    Language = languages[0],
+                    Client = clients[0],
+                },
+                new TextResource
+                {
+                    ResourceString = "Log in",
+                    TextResourceIdentifier = textResourceIdentifiers.Single(i => i.TextResourceCode == "LoginButton"),
+                    Language = languages[0],
+                    Client = clients[0],
+                }
+            };
+
+            context.TextResources.AddOrUpdate(textResources);
         }
     }
 }

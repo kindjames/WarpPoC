@@ -1,6 +1,9 @@
 ﻿namespace Warp.Core.Query
 {
-    // Marker interface to signify a query - all queries will implement this
+    /// <summary>
+    /// A Query is a POCO that contains all properties that a QueryHandler will need, to perform its data-store query.
+    /// </summary>
+    /// <typeparam name="TResult"></typeparam>
     public interface IQuery<TResult>
     {
     }

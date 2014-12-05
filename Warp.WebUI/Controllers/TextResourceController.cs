@@ -4,7 +4,6 @@ using Warp.Core.Infrastructure.Mapping;
 using Warp.Core.Services.Dtos.TextResources;
 using Warp.Core.Services.TextResourceService;
 using Warp.WebUI.Models.TextResources;
-using TextResourceViewModel = Warp.WebUI.Models.TextResources.TextResourceViewModel;
 
 namespace Warp.WebUI.Controllers
 {
