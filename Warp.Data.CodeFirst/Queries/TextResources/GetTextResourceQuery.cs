@@ -2,7 +2,6 @@
 using Warp.Core.Infrastructure.Validation;
 using Warp.Core.Query;
 using Warp.Data.Context;
-using Warp.Data.Entities;
 
 namespace Warp.Data.Queries.TextResources
 {
@@ -23,6 +22,7 @@ namespace Warp.Data.Queries.TextResources
 
         public string Execute(GetTextResourceQuery query)
         {
+            // TODO: JK -> PG Does this need to filter on language too?
             return _context.TextResources
                     .Where(t => t.TextResourceIdentifier.TextResourceIdentifierId == query.TextResourceIdentifierId)
                     .Select(t => t.ResourceString)

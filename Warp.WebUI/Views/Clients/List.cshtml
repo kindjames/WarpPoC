@@ -1,2 +1,20 @@
-﻿@model Warp.WebUI.Models.Clients.ClientListViewModel
-
+﻿@model IEnumerable<ClientViewModel>
+<table>
+    <thead>
+        <tr>
+            <td>Code</td>
+            <td>Name</td>
+            <td>Account manager</td>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var client in Model)
+    {
+        <tr>
+            <td>@client.Code</td>
+            <td>@client.Name</td>
+            <td>@client.AccountManagerName</td>
+        </tr>
+    }
+    </tbody>
+</table>

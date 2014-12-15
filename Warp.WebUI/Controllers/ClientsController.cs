@@ -34,7 +34,7 @@ namespace Warp.WebUI.Controllers
 
             var clients = _clientService.GetClients(model.ClientSearchQuery, customerId);
 
-            var viewModel = _objectMapper.Map<IEnumerable<ClientDto>, ClientListViewModel>(clients);
+            var viewModel = _objectMapper.MapMany<ClientDto, ClientViewModel>(clients);
 
             return PartialView(viewModel);
         }

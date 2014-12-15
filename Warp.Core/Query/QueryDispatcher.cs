@@ -1,10 +1,12 @@
 ﻿using Warp.Core.Exceptions;
-using Warp.Core.Infrastructure;
 using Warp.Core.Infrastructure.IoC;
 using Warp.Core.Infrastructure.Validation;
 
 namespace Warp.Core.Query
 {
+    /// <summary>
+    /// Given a Query, will validate it, find the appropriate QueryHandler, execute it, and return the result.
+    /// </summary>
     public class QueryDispatcher : IQueryDispatcher
     {
         private readonly IServiceLocator _serviceLocator;
@@ -20,6 +22,7 @@ namespace Warp.Core.Query
         {
             _validator.Validate(query);
 
+            // Attempt to find the QueryHandler
             var handlerType = typeof(IQueryHandler<,>)
                 .MakeGenericType(query.GetType(), typeof(TResult));
 

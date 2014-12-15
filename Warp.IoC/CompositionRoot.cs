@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using AutoMapper;
 using Microsoft.AspNet.Identity;
 using SimpleInjector;
@@ -54,18 +55,12 @@ namespace Warp.IoC
             c.RegisterManyForOpenGeneric(typeof(ICommandHandler<>), dataAssembly);
             c.RegisterManyForOpenGeneric(typeof(IQueryHandler<,>), dataAssembly);
             c.RegisterManyForOpenGeneric(typeof(IMappingConfiguration<,>), dataAssembly);
-            c.RegisterPerWebRequest<IDomainDbContext, DomainDbContext>();
-            c.RegisterPerWebRequest<IAuthenticationDbContext, AuthenticationDbContext>();
-
+            c.RegisterAllImplementationsInAssemblyWithNameEnding("DbContext", dataAssembly);
+            
             // Services
             var serviceAssembly = typeof(ClientService).Assembly;
             c.RegisterManyForOpenGeneric(typeof(IMappingConfiguration<,>), serviceAssembly);
-            
-            serviceAssembly.ExportedTypes
-                .Where(t => t.FullName.EndsWith("Service")) // Name convention of "Service".
-                .Select(t => new { Implementation = t, Service = t.GetInterfaces().Single() })
-                .ToList()
-                .ForEach(t => c.Register(t.Service, t.Implementation));
+            c.RegisterAllImplementationsInAssemblyWithNameEnding("Service", serviceAssembly);
 
             // MVC
             var mvcAssembly = Assembly.GetCallingAssembly();

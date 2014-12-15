@@ -2,7 +2,7 @@
 namespace Warp.Core.Query
 {
     /// <summary>
-    /// Used to Execute IQuery<T> objects.
+    /// Responsible for handling all Query objects.
     /// </summary>
     public interface IQueryDispatcher
     {
