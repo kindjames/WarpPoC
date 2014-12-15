@@ -1,31 +1,37 @@
 ﻿@model Warp.WebUI.Models.Clients.ClientSearchViewModel
 
 @*<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="navbar-header">
-        <a class="navbar-brand" href="#">Brand</a>
-    </div>
-</nav>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Brand</a>
+        </div>
+    </nav>
 
-<nav class="navbar navbar-default navbar-left" role="navigation">
-    <ul class="nav navbar-nav">
-        <li id="HomeIcon">
-            <a class=""><span class="glyphicon glyphicon-home"></span></a>
-            <div class="nav-popout">OK</div>
-        </li>
-    </ul>
-</nav>*@
+    <nav class="navbar navbar-default navbar-left" role="navigation">
+        <ul class="nav navbar-nav">
+            <li id="HomeIcon">
+                <a class=""><span class="glyphicon glyphicon-home"></span></a>
+                <div class="nav-popout">OK</div>
+            </li>
+        </ul>
+    </nav>*@
 
-@Html.TextBoxFor(m => m.ClientSearch)
-
-@using (Ajax.BeginForm(new AjaxOptions { }))
+@using (Ajax.BeginForm("List", "Clients", new AjaxOptions { HttpMethod="GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = "clientList", LoadingElementId = "clientListLoader" }))
 {
+    @Html.TextBoxFor(m => m.ClientSearch)
+    <input type="submit" value="Search" />
 }
+
+<div id="clientList">
+    <img id="clientListLoader" src="@Url.Content("~/Content/SVG/Loaders/tail-spin.svg")" width="30" alt="" style="display:none" />
+    @Html.Action("List", "Clients")
+</div>
 
 @section scripts
 {
+    @Scripts.Render("~/bundles/jquery-val")
     <script>
-        $('#@Html.IdFor(m => m.ClientSearch)').on('input', function () {
-            alert($(this).val());
-        });
+        @*$('#@Html.IdFor(m => m.ClientSearch)').on('input', function () {
+            $(this).parent().submit();
+        });*@
     </script>
 }

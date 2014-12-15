@@ -22,12 +22,13 @@ namespace Warp.WebUI.Controllers
         }
 
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index(ClientSearchViewModel model)
         {
-            return View(new ClientSearchViewModel());
+            return View(model);
         }
 
         [HttpGet]
+        [Route("list")]
         public ActionResult List(ClientListInputModel model)
         {
             var customerId = User.Identity.GetClaimValueFor<int>(ApplicationClaimTypes.CustomerId);
