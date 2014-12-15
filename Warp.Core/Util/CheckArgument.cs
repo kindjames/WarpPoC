@@ -7,7 +7,7 @@ namespace Warp.Core.Util
     /// <summary>
     /// Utility class for checking parameters passed into a method.
     /// </summary>
-    public static class CheckArgument
+    public class CheckArgument
     {
         /// <summary>
         /// Checks that the parameter is not null.
