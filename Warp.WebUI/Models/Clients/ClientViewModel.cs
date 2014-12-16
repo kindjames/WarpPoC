@@ -1,17 +1,14 @@
-﻿using System;
+﻿using Warp.Core.Enum;
+using Warp.WebUI.Models.Users;
 
 namespace Warp.WebUI.Models.Clients
 {
     public class ClientViewModel
     {
-        public int ClientId { get; set; }
-
+        public int Id { get; set; }
         public string Name { get; set; }
-
         public string Code { get; set; }
-
-        public string ClientStatusDescription { get; set; }
-
-        public string AccountManagerName { get; set; }
+        public ClientStatus Status { get; set; }
+        public UserViewModel AccountManager { get; set; }
     }
 }

@@ -1,7 +1,7 @@
-﻿using Machine.Fakes;
-using Machine.Specifications;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Machine.Fakes;
+using Machine.Specifications;
 using Warp.Core.Util;
 
 namespace Warp.Core.Specs

@@ -14,10 +14,15 @@ namespace Warp.WebUI
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include("~/Scripts/jquery-{version}.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/jquery-val")
-                .Include("~/Scripts/jquery.validate.js",
-                "~/Scripts/jquery.validate.unobtrusive.js",
-                "~/Scripts/jquery.validate.unobtrusive.bootstrap.js"));
+            bundles
+                .Add(new ScriptBundle("~/bundles/jquery-val")
+                .Include("~/Scripts/jquery.unobtrusive-ajax.js",
+                         "~/Scripts/jquery.validate.js",
+                         "~/Scripts/jquery.validate.unobtrusive.js",
+                         "~/Scripts/jquery.validate.unobtrusive.bootstrap.js"));
+            bundles
+                .Add(new ScriptBundle("~/bundles/jquery-typewatch")
+                .Include("~/Scripts/jquery.typewatch.js"));
 
             bundles.Add(new StyleBundle("~/bundles/authentication").Include("~/Content/Styles/Authentication/Login.css"));
         }

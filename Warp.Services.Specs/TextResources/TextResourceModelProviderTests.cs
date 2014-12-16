@@ -1,13 +1,4 @@
-﻿using System;
-using Machine.Fakes;
-using Machine.Specifications;
-using Warp.Core.Exceptions.TextResources;
-using Warp.Core.Infrastructure.Models;
-using Warp.Core.Services.Dtos.TextResources;
-using Warp.Core.Services.TextResourceService;
-using Warp.Services.Specs.TextResources.Fakes;
-
-namespace Warp.Services.Specs.TextResources
+﻿namespace Warp.Services.Specs.TextResources
 {
     public static class TextResourceModelProviderTests
     {

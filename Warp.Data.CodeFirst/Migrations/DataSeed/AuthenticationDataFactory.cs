@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Data.Entity.Migrations;
 using System.Linq;
+using Warp.Core.Enum;
 using Warp.Core.Infrastructure.Authentication;
 using Warp.Data.Entities;
 
@@ -236,19 +237,12 @@ namespace Warp.Data.Migrations.DataSeed
 
             context.Users.AddOrUpdate(users);
 
-            var clientStatuses = new[]
-            {
-                new ClientStatus { Name = "Active", Description = "Active"},
-                new ClientStatus { Name = "Inactive", Description = "Inactive"},
-                new ClientStatus { Name = "Test", Description = "Test"},
-            };
-
             var clients = new[]
             {
                 new Client
                 {
                     AccountManager = users[0],
-                    ClientStatus = clientStatuses[0],
+                    Status = ClientStatus.Active,
                     Name = "Test active client",
                     Code = "AC10",
                     Customer = customers[0],
@@ -256,7 +250,7 @@ namespace Warp.Data.Migrations.DataSeed
                 new Client
                 {
                     AccountManager = users[0],
-                    ClientStatus = clientStatuses[1],
+                    Status = ClientStatus.Inactive,
                     Name = "Test inactive client",
                     Code = "IC10",
                     Customer = customers[0],
@@ -264,7 +258,7 @@ namespace Warp.Data.Migrations.DataSeed
                 new Client
                 {
                     AccountManager = users[0],
-                    ClientStatus = clientStatuses[2],
+                    Status = ClientStatus.Test,
                     Name = "Test, test client",
                     Code = "TC10",
                     Customer = customers[1],

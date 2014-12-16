@@ -1,5 +1,4 @@
-﻿using Warp.Core.Infrastructure;
-using Warp.Core.Infrastructure.Mapping;
+﻿using Warp.Core.Infrastructure.Mapping;
 using Warp.Core.Query;
 using Warp.Core.Services;
 using Warp.Core.Services.Dtos.Brand;
@@ -8,7 +7,6 @@ using Warp.Data.Exceptions;
 using Warp.Data.Queries.Brands;
 using Warp.Data.Queries.Clients;
 using Warp.Data.Queries.Customers;
-using Client = Warp.Data.Entities.Client;
 
 namespace Warp.Services
 {

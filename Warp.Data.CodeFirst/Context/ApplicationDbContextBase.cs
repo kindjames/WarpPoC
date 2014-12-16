@@ -1,4 +1,5 @@
 using System.Data.Entity;
+using System.Data.Entity.SqlServer;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
@@ -22,7 +23,7 @@ namespace Warp.Data.Context
                 Database.Log = s => Debug.Write(s);
             }
 
-            var _ = typeof(System.Data.Entity.SqlServer.SqlProviderServices);
+            var _ = typeof(SqlProviderServices);
         }
 
         static string NameOrConnectionString(IApplicationConfig applicationConfig)

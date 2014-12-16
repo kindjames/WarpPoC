@@ -1,5 +1,4 @@
 ﻿
-using Warp.Core.Query;
 using Warp.Core.Services.Dtos.TextResources;
 
 namespace Warp.Core.Services.TextResourceService

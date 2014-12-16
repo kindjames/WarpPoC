@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNet.Identity;
-using System;
+﻿using System;
 using System.Globalization;
 using System.Security.Claims;
 using System.Security.Principal;
+using Microsoft.AspNet.Identity;
 
 namespace Warp.Core.Authentication
 {

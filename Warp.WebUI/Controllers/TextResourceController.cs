@@ -1,7 +1,5 @@
 ﻿using System.Web.Mvc;
-using Warp.Core.Infrastructure;
 using Warp.Core.Infrastructure.Mapping;
-using Warp.Core.Services.Dtos.TextResources;
 using Warp.Core.Services.TextResourceService;
 using Warp.WebUI.Models.TextResources;
 

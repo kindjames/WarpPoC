@@ -7,13 +7,13 @@ using System.Resources;
 namespace Warp.Data.Migrations
 {
     [GeneratedCode("EntityFramework.Migrations", "6.1.1-30610")]
-    public sealed partial class InitialCreate : IMigrationMetadata
+    public sealed partial class ClientStatusEnum : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ClientStatusEnum));
         
         string IMigrationMetadata.Id
         {
-            get { return "201412041722068_InitialCreate"; }
+            get { return "201412161058416_ClientStatusEnum"; }
         }
         
         string IMigrationMetadata.Source

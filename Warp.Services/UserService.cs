@@ -1,4 +1,6 @@
-﻿using Warp.Core.Services.UserService;
+﻿using System;
+using Warp.Core.Services.Dtos.Users;
+using Warp.Core.Services.UserService;
 
 namespace Warp.Services
 {
@@ -6,7 +8,12 @@ namespace Warp.Services
     {
         public int GetDefaultLanguageIdForUser(int userId)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
+        }
+
+        public UserDto GetUser(int accountManagerId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

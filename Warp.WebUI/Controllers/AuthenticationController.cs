@@ -1,10 +1,9 @@
-﻿using System;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Security.Claims;
-using Microsoft.AspNet.Identity;
-using Microsoft.Owin.Security;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using Microsoft.Owin.Security;
 using Warp.Core.Authentication;
 using Warp.WebUI.Infrastructure;
 using Warp.WebUI.Models.Authentication;

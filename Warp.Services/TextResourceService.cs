@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
-using Warp.Core.Exceptions.TextResources;
 using Warp.Core.Infrastructure.Mapping;
 using Warp.Core.Query;
 using Warp.Core.Services.Dtos.TextResources;

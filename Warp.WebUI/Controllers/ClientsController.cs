@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNet.Identity;
-using System.Collections.Generic;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using Warp.Core.Authentication;
 using Warp.Core.Infrastructure.Mapping;
 using Warp.Core.Services;
@@ -9,6 +7,7 @@ using Warp.WebUI.Models.Clients;
 
 namespace Warp.WebUI.Controllers
 {
+    [Authorize]
     [RoutePrefix("clients")]
     public class ClientsController : Controller
     {
@@ -40,13 +39,15 @@ namespace Warp.WebUI.Controllers
             return PartialView(viewModel);
         }
 
-        [HttpGet, Route("create")]
+        [HttpGet]
+        [Route("create")]
         public ActionResult Create()
         {
             return View(new ClientViewModel());
         }
 
-        [HttpPost, Route("create")]
+        [HttpPost]
+        [Route("create")]
         public ActionResult Create(ClientViewModel model)
         {
             if (ModelState.IsValid)
@@ -61,7 +62,8 @@ namespace Warp.WebUI.Controllers
             return View(model);
         }
 
-        [HttpGet, Route("{clientId:int}")]
+        [HttpGet]
+        [Route("{clientId:int}")]
         public ActionResult View(int clientId)
         {
             var client = _clientService.GetClient(clientId);

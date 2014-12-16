@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 
 namespace Warp.Core.Authentication
 {

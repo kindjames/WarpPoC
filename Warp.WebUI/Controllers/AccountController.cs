@@ -1,8 +1,7 @@
-﻿using System.Web;
+﻿using System.Threading.Tasks;
+using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
-using System.Threading.Tasks;
-using System.Web.Mvc;
 using Warp.Core.Authentication;
 using Warp.WebUI.Models.Account;
 

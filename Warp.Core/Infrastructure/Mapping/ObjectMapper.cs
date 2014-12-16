@@ -31,7 +31,7 @@ namespace Warp.Core.Infrastructure.Mapping
 
         public TTo Map<TFrom, TTo>(TFrom from)
         {
-            // TODO: Use static conc dict for caching of mappings.
+            // TODO: Use static concurrent dict for caching of mappings.
 
             // Attempts to find a custom IMappingConfiguration.
             var mapper = _serviceLocator.TryResolve<IMappingConfiguration<TFrom, TTo>>();

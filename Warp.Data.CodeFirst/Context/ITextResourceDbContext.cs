@@ -1,6 +1,5 @@
 ﻿using System.Data.Entity;
 using Warp.Data.Entities;
-using TextResource = Warp.Data.Entities.TextResource;
 
 namespace Warp.Data.Context
 {

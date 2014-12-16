@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Warp.Core.Infrastructure.Models
+﻿namespace Warp.Core.Infrastructure.Models
 {
     public interface ITextResourceModelProvider
     {

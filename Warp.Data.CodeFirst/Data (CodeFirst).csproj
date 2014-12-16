@@ -61,7 +61,6 @@
     <Compile Include="Entities\Brand.cs" />
     <Compile Include="Entities\BrandStatus.cs" />
     <Compile Include="Entities\Client.cs" />
-    <Compile Include="Entities\ClientStatus.cs" />
     <Compile Include="Entities\ContactAddress.cs" />
     <Compile Include="Entities\ContactAddressType.cs" />
     <Compile Include="Entities\Customer.cs" />
@@ -78,6 +77,10 @@
     <Compile Include="Migrations\201412041722068_InitialCreate.cs" />
     <Compile Include="Migrations\201412041722068_InitialCreate.Designer.cs">
       <DependentUpon>201412041722068_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412161058416_ClientStatusEnum.cs" />
+    <Compile Include="Migrations\201412161058416_ClientStatusEnum.Designer.cs">
+      <DependentUpon>201412161058416_ClientStatusEnum.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\DataSeed\DataFactoryResolver.cs" />
@@ -119,6 +122,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201412041722068_InitialCreate.resx">
       <DependentUpon>201412041722068_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412161058416_ClientStatusEnum.resx">
+      <DependentUpon>201412161058416_ClientStatusEnum.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

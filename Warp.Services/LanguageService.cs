@@ -1,7 +1,7 @@
-﻿using Warp.Core.Services.TextResourceService;
+﻿using Warp.Core.Query;
+using Warp.Core.Services.TextResourceService;
 using Warp.Core.Util;
 using Warp.Data.Queries.Languages;
-using Warp.Core.Query;
 
 namespace Warp.Services
 {

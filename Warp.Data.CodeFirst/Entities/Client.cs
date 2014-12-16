@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using Warp.Core.Enum;
 
 namespace Warp.Data.Entities
 {
@@ -16,7 +17,7 @@ namespace Warp.Data.Entities
         public DateTime? DateValidFrom { get; set; }
 
         [Required]
-        public virtual ClientStatus ClientStatus { get; set; }
+        public virtual ClientStatus Status { get; set; }
 
         [Required]
         public virtual User AccountManager { get; set; }

@@ -1,4 +1,4 @@
-﻿@model Warp.WebUI.Models.Clients.ClientViewModel
+﻿@model ClientViewModel
 @{ ViewBag.Title = Model.Name; }
 @using (Html.BeginForm("Create", "Clients", FormMethod.Post, new {clientId = Model.ClientId}))
 {

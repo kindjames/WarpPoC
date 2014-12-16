@@ -2,7 +2,6 @@
 using Warp.Core.Infrastructure.Validation;
 using Warp.Core.Query;
 using Warp.Data.Context;
-using Warp.Data.Entities;
 
 namespace Warp.Data.Queries.TextResources
 {

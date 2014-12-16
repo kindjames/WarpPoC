@@ -11,7 +11,6 @@ namespace Warp.Services.Mappings.Client
             CheckArgument.NotNull(source, "source");
             CheckArgument.NotNull(source.AccountManager, "source.AccountManager");
             CheckArgument.NotNull(source.Customer, "source.Customer");
-            CheckArgument.NotNull(source.ClientStatus, "source.ClientStatus");
 
             return new ClientDto
             {
@@ -19,11 +18,9 @@ namespace Warp.Services.Mappings.Client
                 Code = source.Code,
                 Name = source.Name,
                 DateValidFrom = source.DateValidFrom,
-                AccountManagerId = source.AccountManager.UserId,
-                AccountManagerName = source.AccountManager.Forename + " " + source.AccountManager.Surname,
                 CustomerId = source.Customer.CustomerId,
-                ClientStatusId = source.ClientStatus.ClientStatusId,
-                ClientStatusDescription = source.ClientStatus.Description,
+                Status = source.Status,
+                //AccountManager = source.AccountManager.UserId,
             };
         }
     }

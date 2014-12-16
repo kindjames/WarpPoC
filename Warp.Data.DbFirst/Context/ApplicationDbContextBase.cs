@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration;
+using System.Data.Entity.SqlServer;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -26,7 +27,7 @@ namespace Warp.Data.DbFirst.Context
         protected ApplicationDbContextBase()
             : base("name=HospitalityGEMLocalContext")
         {
-            var _ = typeof(System.Data.Entity.SqlServer.SqlProviderServices);
+            var _ = typeof(SqlProviderServices);
         }
 
         public override Task<int> SaveChangesAsync()

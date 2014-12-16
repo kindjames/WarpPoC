@@ -12,8 +12,8 @@
     {
         <tr>
             <td>@client.Code</td>
-            <td>@client.Name</td>
-            <td>@client.AccountManagerName</td>
+            <td>@Html.ActionLink(client.Name, "View", new { clientId = client.Id })</td>
+            <td>@client.AccountManager</td>
         </tr>
     }
     </tbody>

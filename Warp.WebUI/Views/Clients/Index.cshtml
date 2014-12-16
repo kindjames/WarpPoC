@@ -1,4 +1,4 @@
-﻿@model Warp.WebUI.Models.Clients.ClientSearchViewModel
+﻿@model ClientSearchViewModel
 
 @*<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="navbar-header">
@@ -17,8 +17,7 @@
 
 @using (Ajax.BeginForm("List", "Clients", new AjaxOptions { HttpMethod="GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = "clientList", LoadingElementId = "clientListLoader" }))
 {
-    @Html.TextBoxFor(m => m.ClientSearch)
-    <input type="submit" value="Search" />
+    @Html.Html5TextBoxFor(m => m.ClientSearchQuery, InputTypes.InputType.Search)
 }
 
 <div id="clientList">
@@ -26,12 +25,15 @@
     @Html.Action("List", "Clients")
 </div>
 
-@section scripts
-{
+@section scripts {
     @Scripts.Render("~/bundles/jquery-val")
+    @Scripts.Render("~/bundles/jquery-typewatch")
     <script>
-        @*$('#@Html.IdFor(m => m.ClientSearch)').on('input', function () {
-            $(this).parent().submit();
-        });*@
+        $('#@Html.IdFor(m => m.ClientSearchQuery)').typeWatch({
+            callback: function () { $(this).parent().submit() },
+            wait: 250,
+            highlight: true,
+            captureLength: 2
+        });
     </script>
 }

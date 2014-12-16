@@ -1,9 +1,8 @@
 ﻿using System;
+using System.Web.Mvc;
 using Machine.Fakes;
 using Machine.Specifications;
 using Machine.Specifications.Mvc;
-using System.Web.Mvc;
-using Warp.Core.Infrastructure;
 using Warp.Core.Infrastructure.Mapping;
 using Warp.Core.Services;
 using Warp.Core.Services.Dtos.Client;

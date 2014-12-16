@@ -12,11 +12,11 @@ namespace Warp.WebUI
     {
         public void Configuration(IAppBuilder app)
         {
-            ConfigureAuthentication(app);
             ConfigureIocBindings();
             ConfigureGlobalFilters(GlobalFilters.Filters);
             ConfigureRouting(RouteTable.Routes);
             ConfigureBundles(BundleTable.Bundles);
+            ConfigureAuthentication(app);
         }
     }
 }

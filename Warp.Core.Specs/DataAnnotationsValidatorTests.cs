@@ -1,8 +1,7 @@
-﻿using Machine.Fakes;
-using Machine.Specifications;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
-using Warp.Core.Infrastructure;
+using Machine.Fakes;
+using Machine.Specifications;
 using Warp.Core.Infrastructure.Validation;
 
 namespace Warp.Core.Specs

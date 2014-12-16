@@ -1,5 +1,4 @@
 using System.Data.Entity;
-using Warp.Core.Infrastructure;
 using Warp.Core.Infrastructure.Configuration;
 using Warp.Core.Util;
 using Warp.Data.Entities;

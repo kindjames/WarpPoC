@@ -1,6 +1,6 @@
-﻿using Machine.Fakes;
+﻿using System;
+using Machine.Fakes;
 using Machine.Specifications;
-using System;
 using Warp.Core.Query;
 using Warp.Core.Services.Dtos.TextResources;
 using Warp.Data.Queries.TextResources;

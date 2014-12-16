@@ -53,6 +53,7 @@
     <Compile Include="Command\ICommand.cs" />
     <Compile Include="Command\ICommandDispatcher.cs" />
     <Compile Include="Command\ICommandHandler.cs" />
+    <Compile Include="Enum\ClientStatus.cs" />
     <Compile Include="Exceptions\ClientAlreadyExistsException.cs" />
     <Compile Include="Exceptions\CommandHandlerNotFoundException.cs" />
     <Compile Include="Exceptions\QueryHandlerNotFoundException.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="Infrastructure\Models\TextResourceModelProvider.cs" />
     <Compile Include="Infrastructure\Validation\DataAnnotationsValidator.cs" />
     <Compile Include="Services\Dtos\Client\ClientDto.cs" />
+    <Compile Include="Services\Dtos\Users\UserDto.cs" />
     <Compile Include="Services\Dtos\Customer\CustomerDto.cs" />
     <Compile Include="Services\ICustomerService.cs" />
     <Compile Include="Services\Dtos\TextResources\GetTextResourceDto.cs" />
@@ -80,8 +82,6 @@
     <Compile Include="Services\Dtos\TextResources\ResourceCodeDto.cs" />
     <Compile Include="Services\Dtos\TextResources\TextResourceDto.cs" />
     <Compile Include="Services\Dtos\TextResources\ResourceStringDto.cs" />
-    <Compile Include="Services\Dtos\Users\GetUserDto.cs" />
-    <Compile Include="Services\Dtos\Users\UserDEtailsDto.cs" />
     <Compile Include="Services\TextResourceService\ILanguageService.cs" />
     <Compile Include="Services\TextResourceService\ITextResourceService.cs" />
     <Compile Include="Services\UserService\IUserService.cs" />

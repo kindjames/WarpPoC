@@ -1,8 +1,6 @@
-﻿using FakeDbSet;
-using Machine.Fakes;
+﻿using Machine.Fakes;
 using Machine.Specifications;
 using Warp.Data.Context;
-using Warp.Data.Entities;
 using Warp.Data.Queries.Languages;
 using Warp.Data.Specs.Data;
 using Warp.Data.Specs.Util;

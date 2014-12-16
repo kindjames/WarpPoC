@@ -1,4 +1,6 @@
 ﻿using System;
+using Warp.Core.Enum;
+using Warp.Core.Services.Dtos.Users;
 
 namespace Warp.Core.Services.Dtos.Client
 {
@@ -6,12 +8,10 @@ namespace Warp.Core.Services.Dtos.Client
     {
         public int ClientId { get; set; }
         public string Name { get; set; }
-        public short ClientStatusId { get; set; }
-        public string ClientStatusDescription { get; set; }
+        public ClientStatus Status { get; set; }
         public string Code { get; set; }
         public int CustomerId { get; set; }
         public DateTime? DateValidFrom { get; set; }
-        public int AccountManagerId { get; set; }
-        public string AccountManagerName { get; set; }
+        public UserDto AccountManager { get; set; }
     }
 }

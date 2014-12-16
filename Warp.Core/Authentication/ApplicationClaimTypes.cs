@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Warp.Core.Authentication
+﻿namespace Warp.Core.Authentication
 {
     /// <summary>
     /// Contains the Uri's for custom Identity Claims.

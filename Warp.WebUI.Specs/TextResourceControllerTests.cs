@@ -1,13 +1,4 @@
-﻿using System;
-using System.Web.Mvc;
-using Machine.Fakes;
-using Machine.Specifications;
-using Machine.Specifications.Mvc;
-using Warp.Core.Infrastructure.Mapping;
-using Warp.Core.Services.Dtos.TextResources;
-using Warp.Core.Services.TextResourceService;
-using Warp.WebUI.Controllers;
-using Warp.WebUI.Models.TextResources;
+﻿using Machine.Specifications;
 using Param = Moq.It;
 
 namespace Warp.WebUI.Specs

@@ -2,6 +2,6 @@
 {
     public class ClientSearchViewModel
     {
-        public string ClientSearch { get; set; }
+        public string ClientSearchQuery { get; set; }
     }
 }

@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNet.Identity;
-using System;
+﻿using System;
 using System.Security.Cryptography;
 using System.Text;
+using Microsoft.AspNet.Identity;
 
 namespace Warp.Core.Infrastructure.Authentication
 {
