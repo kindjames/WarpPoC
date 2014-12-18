@@ -21,7 +21,7 @@ namespace Warp.WebUI.Controllers
         }
 
         [HttpGet]
-        public ActionResult Index(ClientSearchViewModel model)
+        public ActionResult Index(ClientSearchModel model)
         {
             return View(model);
         }
@@ -34,7 +34,7 @@ namespace Warp.WebUI.Controllers
 
             var clients = _clientService.GetClients(model.ClientSearchQuery, customerId);
 
-            var viewModel = _objectMapper.MapMany<ClientDto, ClientViewModel>(clients);
+            var viewModel = _objectMapper.MapMany<ClientDto, ClientModel>(clients);
 
             return PartialView(viewModel);
         }
@@ -43,20 +43,20 @@ namespace Warp.WebUI.Controllers
         [Route("create")]
         public ActionResult Create()
         {
-            return View(new ClientViewModel());
+            return View(new CreateClientModel());
         }
 
         [HttpPost]
         [Route("create")]
-        public ActionResult Create(ClientViewModel model)
+        public ActionResult Create(CreateClientModel model)
         {
             if (ModelState.IsValid)
             {
-                var dto = _objectMapper.Map<ClientViewModel, SaveClientDto>(model);
+                var dto = _objectMapper.Map<CreateClientModel, SaveClientDto>(model);
 
                 _clientService.SaveClient(dto);
 
-                return RedirectToAction("View", new { clientId = dto.Id });
+                return RedirectToAction("View", new {clientId = dto.Id});
             }
 
             return View(model);
@@ -68,9 +68,9 @@ namespace Warp.WebUI.Controllers
         {
             var client = _clientService.GetClient(clientId);
 
-            var viewModel = _objectMapper.Map<ClientDto, ClientViewModel>(client);
+            var model = _objectMapper.Map<ClientDto, ClientModel>(client);
 
-            return View(viewModel);
+            return View(model);
         }
-	}
+    }
 }

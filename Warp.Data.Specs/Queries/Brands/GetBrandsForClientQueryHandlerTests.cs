@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using FakeDbSet;
 using Machine.Fakes;
@@ -41,7 +42,7 @@ namespace Warp.Data.Specs.Queries.Brands
         {
             const int ClientId = 100;
             static IEnumerable<Brand> _result;
-                
+
             Establish that = () =>
                 // Add some dummy Brands to the in-memory DbContext.
                 The<IDomainDbContext>()
@@ -60,7 +61,7 @@ namespace Warp.Data.Specs.Queries.Brands
 
             Because of = () => _result = Subject.Execute(new GetBrandsForClientQuery { ClientId = ClientId });
 
-            It should = () =>
+            It should_filter_brands = () =>
             {
                 _result.Count().ShouldEqual(4);
                 _result.All(b => b.Client.ClientId == ClientId).ShouldBeTrue();

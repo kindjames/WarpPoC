@@ -10,8 +10,9 @@ using Warp.WebUI.Models.Authentication;
 
 namespace Warp.WebUI.Controllers
 {
-    [RoutePrefix("authentication")]
+    [Authorize]
     [PopulateTextResourcesOnModel]
+    [RoutePrefix("authentication")]
     public class AuthenticationController : Controller
     {
         private readonly IAuthenticationManager _authenticationManager;
@@ -23,7 +24,6 @@ namespace Warp.WebUI.Controllers
             _authenticationManager = authenticationManager;
         }
 
-        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("log-off")]

@@ -43,14 +43,12 @@ namespace Warp.Data.Commands.Clients
         private readonly IDomainDbContext _dbContext;
         private readonly IQueryDispatcher _queryDispatcher;
         private readonly IObjectMapper _objectMapper;
-        private readonly IDateTimeProvider _dateTimeProvider;
 
-        public SaveNewClientCommandHandler(IDomainDbContext dbContext, IQueryDispatcher queryDispatcher, IObjectMapper objectMapper, IDateTimeProvider dateTimeProvider)
+        public SaveNewClientCommandHandler(IDomainDbContext dbContext, IQueryDispatcher queryDispatcher, IObjectMapper objectMapper)
         {
             _dbContext = dbContext;
             _queryDispatcher = queryDispatcher;
             _objectMapper = objectMapper;
-            _dateTimeProvider = dateTimeProvider;
         }
 
         public void Execute(SaveNewClientCommand command)

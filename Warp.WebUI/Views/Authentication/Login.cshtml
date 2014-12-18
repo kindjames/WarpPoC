@@ -19,9 +19,11 @@
                     @Html.LabelFor(m => m.Password, Model.PasswordLabelText)
                     @Html.PasswordFor(m => m.Password, new { placeholder = Model.PasswordPlaceholderText, @class = "form-control" })
                 </div>
-                <div class="checkbox">
-                    @Html.CheckBoxFor(m => m.RememberMe)
-                    @Html.LabelFor(m => m.RememberMe, Model.RememberMeLabelText)
+                <div class="form-group">
+                    <div class="checkbox">
+                        @Html.CheckBoxFor(m => m.RememberMe)
+                        @Html.LabelFor(m => m.RememberMe, Model.RememberMeLabelText)
+                    </div>
                 </div>
                 <hr />
                 <div class="navbar-form">

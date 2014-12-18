@@ -196,7 +196,8 @@
     <Compile Include="App_Start\Config.Bundles.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Mappings\Clients\ClientDtoToClientViewModelMapping.cs" />
-    <Compile Include="Models\Clients\ClientSearchViewModel.cs" />
+    <Compile Include="Models\Clients\ClientModel.cs" />
+    <Compile Include="Models\Clients\ClientSearchModel.cs" />
     <Compile Include="Models\Clients\ClientListViewModel.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -206,9 +207,10 @@
     <Compile Include="Mappings\Brands\BrandSummaryListDtoToBrandSummaryListViewModelMapping.cs" />
     <Compile Include="Models\Account\RegisterViewModel.cs" />
     <Compile Include="Models\Authentication\LoginViewModel.cs" />
-    <Compile Include="Models\Clients\ClientViewModel.cs" />
+    <Compile Include="Models\Clients\SaveClientModel.cs" />
     <Compile Include="Models\Brands\BrandSummaryListViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Models\Clients\CreateClientModel.cs" />
     <Compile Include="Models\TextResources\TextResourcePageViewModel.cs" />
     <Compile Include="Models\TextResources\TextResourceViewModel.cs" />
     <Compile Include="Models\Users\UserViewModel.cs" />

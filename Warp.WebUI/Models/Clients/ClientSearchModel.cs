@@ -1,6 +1,6 @@
 ﻿namespace Warp.WebUI.Models.Clients
 {
-    public class ClientSearchViewModel
+    public class ClientSearchModel
     {
         public string ClientSearchQuery { get; set; }
     }

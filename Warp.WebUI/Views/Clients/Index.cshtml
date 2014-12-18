@@ -1,4 +1,4 @@
-﻿@model ClientSearchViewModel
+﻿@model ClientSearchModel
 
 @*<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="navbar-header">
@@ -21,8 +21,11 @@
 }
 
 <div id="clientList">
-    <img id="clientListLoader" src="@Url.Content("~/Content/SVG/Loaders/tail-spin.svg")" width="30" alt="" style="display:none" />
+    <img id="clientListLoader" src="@Url.Content("~/Content/SVG/Loaders/tail-spin.svg")" width="30" alt="" style="display: none"/>
     @Html.Action("List", "Clients")
+</div>
+<div>
+    @Html.ActionLink("Create", "Create")
 </div>
 
 @section scripts {

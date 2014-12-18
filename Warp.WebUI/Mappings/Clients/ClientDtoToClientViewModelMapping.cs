@@ -6,7 +6,7 @@ using Warp.WebUI.Models.Users;
 
 namespace Warp.WebUI.Mappings.Clients
 {
-    public class ClientDtoToClientViewModelMapping : IMappingConfiguration<ClientDto, ClientViewModel>
+    public class ClientDtoToClientViewModelMapping : IMappingConfiguration<ClientDto, ClientModel>
     {
         private readonly IObjectMapper _objectMapper;
 
@@ -15,9 +15,9 @@ namespace Warp.WebUI.Mappings.Clients
             _objectMapper = objectMapper;
         }
 
-        public ClientViewModel Map(ClientDto source)
+        public ClientModel Map(ClientDto source)
         {
-            return new ClientViewModel
+            return new ClientModel
             {
                 Id = source.ClientId,
                 Code = source.Code,

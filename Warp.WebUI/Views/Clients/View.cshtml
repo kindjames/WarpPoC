@@ -1,9 +1,5 @@
-﻿@model ClientViewModel
-@*@using (Html.BeginForm("SaveClient", "Clients", FormMethod.Post, new {clientId = Model.ClientId}))
-{*@
-    <div>Name: @Html.EditorFor(m => Model.Name)</div>
-    <div>Code: @Html.EditorFor(m => Model.Code)</div>
-    <div>Status: @Html.EnumDropDownListFor(m => m.Status)</div>
-    <div>Account Manager: @Html.EditorFor(m => Model.AccountManager)</div>
-    <input type="submit" value="Update" />
-@*}*@
+﻿@model ClientModel
+<div>Name: @Html.DisplayFor(m => Model.Name)</div>
+<div>Code: @Html.DisplayFor(m => Model.Code)</div>
+<div>Status: @Html.DisplayFor(m => m.Status)</div>
+<div>Account Manager: @Html.DisplayFor(m => Model.AccountManager)</div>

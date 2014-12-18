@@ -3,7 +3,7 @@ using Warp.WebUI.Models.Users;
 
 namespace Warp.WebUI.Models.Clients
 {
-    public class ClientViewModel
+    public class ClientModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
