@@ -1,22 +1,23 @@
 ﻿@model CreateClientModel
-<section>
-    @using (Html.BeginForm())
-    {
-        <div class="form-group">
-            @Html.LabelFor(m => m.Name, Model.NameLabelText)
-            @Html.TextBoxFor(m => Model.Name)
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.Code, Model.CodeLabelText)
-            @Html.TextBoxFor(m => Model.Code)
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.Status, Model.StatusLabelText)
-            @Html.EnumDropDownListFor(m => m.Status)
-        </div>
-        <hr />
-        <div class="navbar-form">
-            <input type="submit" value="Save" />
-        </div>
-    }
-</section>
+
+@using (var form = Html.Bootstrap().Begin(new Form().LabelWidthSm(2)))
+{
+    @(form.FormGroup().TextBoxFor(m => m.Name)
+          .Label().LabelText(Model.NameLabelText))
+    
+    @(form.FormGroup().TextBoxFor(m => m.Code)
+          .Label().LabelText(Model.CodeLabelText))
+    
+    @(form.FormGroup().DropDownListFromEnumFor(m => m.Status)
+          .Label().LabelText(Model.StatusLabelText))
+    
+    @*@(form.FormGroup().EditorFor(m => m.AccountManager)
+          .Label().LabelText(Model.AccountManagerLabelText))*@
+    
+    @form.FormGroup().CustomControls(Html.Bootstrap().SubmitButton().Text(Model.SaveButtonText))
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jquery-val")
+}

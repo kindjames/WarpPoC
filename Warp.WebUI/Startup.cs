@@ -17,6 +17,7 @@ namespace Warp.WebUI
             ConfigureRouting(RouteTable.Routes);
             ConfigureBundles(BundleTable.Bundles);
             ConfigureAuthentication(app);
+            ConfigureBootstrap();
         }
     }
 }

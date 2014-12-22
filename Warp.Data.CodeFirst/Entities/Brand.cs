@@ -1,5 +1,5 @@
-﻿
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using Warp.Core.Enum;
 
 namespace Warp.Data.Entities
 {
@@ -13,7 +13,7 @@ namespace Warp.Data.Entities
         public bool Visible { get; set; }
 
         [Required]
-        public virtual BrandStatus BrandStatus { get; set; }
+        public virtual BrandStatus Status { get; set; }
 
         [Required]
         public virtual Client Client { get; set; }

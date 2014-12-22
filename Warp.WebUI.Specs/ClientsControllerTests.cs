@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Security.Claims;
+using System.Security.Principal;
 using System.Web.Mvc;
 using Machine.Fakes;
 using Machine.Specifications;
 using Machine.Specifications.Mvc;
+using Warp.Core.Authentication;
 using Warp.Core.Infrastructure.Mapping;
 using Warp.Core.Services;
 using Warp.Core.Services.Dtos.Client;
@@ -40,9 +43,21 @@ namespace Warp.WebUI.Specs
             static readonly int NewClientId = new Random().Next();
 
             Establish that = () =>
+            {
                 The<IObjectMapper>()
                     .WhenToldTo(m => m.Map<CreateClientModel, SaveClientDto>(Param.IsAny<CreateClientModel>()))
-                    .Return(new SaveClientDto{ Id = NewClientId });
+                    .Return(new SaveClientDto {Id = NewClientId});
+
+                var user = An<IPrincipal>();
+                user.WhenToldTo(u => u.Identity)
+                    .Return(new ClaimsIdentity(new[] { new Claim(ApplicationClaimTypes.CustomerId, "99") }));
+
+                var controllerContext = An<ControllerContext>();
+                controllerContext.WhenToldTo(c => c.HttpContext.User)
+                    .Return(user);
+
+                Subject.ControllerContext = controllerContext;
+            };
 
             Because of = () =>
                 _result = Subject.Create(Param.IsAny<CreateClientModel>());
@@ -52,7 +67,7 @@ namespace Warp.WebUI.Specs
                 The<IClientService>()
                     .WasToldTo(c => c.SaveClient(Param.IsAny<SaveClientDto>()));
 
-                _result.ShouldRedirectToAction((ClientsController c) => c.View(NewClientId));
+                _result.ShouldRedirectToAction((ClientsController c) => c.Index(Param.IsAny<ClientSearchModel>()));
             };
         }
     }

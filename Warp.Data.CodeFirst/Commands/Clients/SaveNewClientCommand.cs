@@ -23,7 +23,7 @@ namespace Warp.Data.Commands.Clients
         public string Code { get; set; }
 
         [IdRequired]
-        public short ClientStatusId { get; set; }
+        public short StatusId { get; set; }
 
         [IdRequired]
         public int AccountManagerAdminId { get; set; }
