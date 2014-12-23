@@ -9,30 +9,30 @@ namespace Warp.Data.DbFirst.Mapping
         public AccountingProductMap()
         {
             // Primary Key
-            this.HasKey(t => t.AccountingProductId);
+            HasKey(t => t.AccountingProductId);
 
             // Properties
-            this.Property(t => t.AccountingProductId)
+            Property(t => t.AccountingProductId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            this.Property(t => t.Name)
+            Property(t => t.Name)
                 .IsRequired()
                 .HasMaxLength(50);
 
-            this.Property(t => t.Description)
+            Property(t => t.Description)
                 .IsRequired()
                 .HasMaxLength(200);
 
             // Table & Column Mappings
-            this.ToTable("AccountingProduct");
-            this.Property(t => t.AccountingProductId).HasColumnName("AccountingProductID");
-            this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.Description).HasColumnName("Description");
-            this.Property(t => t.DefaultValue).HasColumnName("DefaultValue");
-            this.Property(t => t.KashFlowId).HasColumnName("KashFlowID");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("AccountingProduct");
+            Property(t => t.AccountingProductId).HasColumnName("AccountingProductID");
+            Property(t => t.Name).HasColumnName("Name");
+            Property(t => t.Description).HasColumnName("Description");
+            Property(t => t.DefaultValue).HasColumnName("DefaultValue");
+            Property(t => t.KashFlowId).HasColumnName("KashFlowID");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.Active).HasColumnName("Active");
         }
     }
 }

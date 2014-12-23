@@ -9,26 +9,26 @@ namespace Warp.Data.DbFirst.Mapping
         public QuestionTagMap()
         {
             // Primary Key
-            this.HasKey(t => t.QuestionTagId);
+            HasKey(t => t.QuestionTagId);
 
             // Properties
-            this.Property(t => t.QuestionTagId)
+            Property(t => t.QuestionTagId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
             // Table & Column Mappings
-            this.ToTable("QuestionTag");
-            this.Property(t => t.QuestionTagId).HasColumnName("QuestionTagID");
-            this.Property(t => t.QuestionId).HasColumnName("QuestionID");
-            this.Property(t => t.TagId).HasColumnName("TagID");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("QuestionTag");
+            Property(t => t.QuestionTagId).HasColumnName("QuestionTagID");
+            Property(t => t.QuestionId).HasColumnName("QuestionID");
+            Property(t => t.TagId).HasColumnName("TagID");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.Question)
+            HasRequired(t => t.Question)
                 .WithMany(t => t.QuestionTags)
                 .HasForeignKey(d => d.QuestionId);
-            this.HasRequired(t => t.Tag)
+            HasRequired(t => t.Tag)
                 .WithMany(t => t.QuestionTags)
                 .HasForeignKey(d => d.TagId);
 

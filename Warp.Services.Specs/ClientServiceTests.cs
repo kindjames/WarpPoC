@@ -47,7 +47,7 @@ namespace Warp.Services.Specs
 
                 The<ICommandDispatcher>()
                     .WhenToldTo(d => d.Execute(Param.IsAny<ICommand>()))
-                    .Callback(() => _command.SetClientId(new Random().Next()));
+                    .Callback(() => _command.SetWithNewIdFromDatabase(new Random().Next()));
             };
 
             Because of = () => Subject.SaveClient(_dto);
@@ -61,7 +61,7 @@ namespace Warp.Services.Specs
                     .WasToldTo(d => d.Execute(MoqIt.IsAny<ICommand>()));
 
             ThenIt should_assign_the_new__ClientId__to_the__SaveClientDto__ = () =>
-                _dto.Id.ShouldEqual(_command.ClientId);
+                _dto.Id.ShouldEqual(_command.Id);
 
             static SaveClientDto _dto;
             static SaveNewClientCommand _command;
@@ -109,7 +109,7 @@ namespace Warp.Services.Specs
             Establish context = () =>
             {
                 _clientId = new Random().Next();
-                _client = new Client{ClientId = _clientId};
+                _client = new Client { Id = _clientId };
 
                 The<IQueryDispatcher>()
                     .WhenToldTo(d => d.Execute(Param.IsAny<GetClientQuery>()))
@@ -117,13 +117,13 @@ namespace Warp.Services.Specs
 
                 The<IObjectMapper>()
                     .WhenToldTo(m => m.Map<Client, ClientDto>(_client))
-                    .Return(new ClientDto { ClientId = _clientId});
+                    .Return(new ClientDto { Id = _clientId });
             };
 
             Because of = () => _result = Subject.GetClient(_clientId);
 
             ThenIt should_return_the_dto = () =>
-                _result.ClientId.ShouldEqual(_clientId);
+                _result.Id.ShouldEqual(_clientId);
 
             static int _clientId;
             static Client _client;

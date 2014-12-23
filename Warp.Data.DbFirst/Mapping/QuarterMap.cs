@@ -8,19 +8,19 @@ namespace Warp.Data.DbFirst.Mapping
         public QuarterMap()
         {
             // Primary Key
-            this.HasKey(t => t.QuarterId);
+            HasKey(t => t.QuarterId);
 
             // Properties
-            this.Property(t => t.QuarterName)
+            Property(t => t.QuarterName)
                 .HasMaxLength(10);
 
             // Table & Column Mappings
-            this.ToTable("Quarter", "Subscriptions");
-            this.Property(t => t.QuarterId).HasColumnName("QuarterId");
-            this.Property(t => t.QuarterName).HasColumnName("QuarterName");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("Quarter", "Subscriptions");
+            Property(t => t.QuarterId).HasColumnName("QuarterId");
+            Property(t => t.QuarterName).HasColumnName("QuarterName");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.Active).HasColumnName("Active");
         }
     }
 }

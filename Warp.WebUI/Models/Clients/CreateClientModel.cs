@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Warp.Core.Attributes;
 using Warp.Core.Enum;
-using Warp.WebUI.Models.Users;
 
 namespace Warp.WebUI.Models.Clients
 {

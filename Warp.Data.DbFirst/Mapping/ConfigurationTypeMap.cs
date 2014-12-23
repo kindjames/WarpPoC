@@ -8,20 +8,20 @@ namespace Warp.Data.DbFirst.Mapping
         public ConfigurationTypeMap()
         {
             // Primary Key
-            this.HasKey(t => t.ConfigurationTypeId);
+            HasKey(t => t.ConfigurationTypeId);
 
             // Properties
-            this.Property(t => t.Name)
+            Property(t => t.Name)
                 .IsRequired()
                 .HasMaxLength(50);
 
             // Table & Column Mappings
-            this.ToTable("ConfigurationType");
-            this.Property(t => t.ConfigurationTypeId).HasColumnName("ConfigurationTypeID");
-            this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("ConfigurationType");
+            Property(t => t.ConfigurationTypeId).HasColumnName("ConfigurationTypeID");
+            Property(t => t.Name).HasColumnName("Name");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
         }
     }
 }

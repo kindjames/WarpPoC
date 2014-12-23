@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using Warp.Core.Data;
 
 namespace Warp.Data.Entities
 {
     public class TextResourceIdentifier : EntityBase
     {
-        public int TextResourceIdentifierId { get; set; }
-
         [Required]
         public string TextResourceCode { get; set; }
 

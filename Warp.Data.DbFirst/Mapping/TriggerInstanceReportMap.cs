@@ -8,28 +8,28 @@ namespace Warp.Data.DbFirst.Mapping
         public TriggerInstanceReportMap()
         {
             // Primary Key
-            this.HasKey(t => t.TriggerInstanceReportId);
+            HasKey(t => t.TriggerInstanceReportId);
 
             // Properties
             // Table & Column Mappings
-            this.ToTable("TriggerInstanceReport", "Subscriptions");
-            this.Property(t => t.TriggerInstanceReportId).HasColumnName("TriggerInstanceReportId");
-            this.Property(t => t.TriggerInstanceId).HasColumnName("TriggerInstanceId");
-            this.Property(t => t.SubscriptionReportId).HasColumnName("SubscriptionReportId");
-            this.Property(t => t.TriggerInstanceReportStatusTypeId).HasColumnName("TriggerInstanceReportStatusTypeId");
-            this.Property(t => t.Notes).HasColumnName("Notes");
-            this.Property(t => t.Active).HasColumnName("Active");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            ToTable("TriggerInstanceReport", "Subscriptions");
+            Property(t => t.TriggerInstanceReportId).HasColumnName("TriggerInstanceReportId");
+            Property(t => t.TriggerInstanceId).HasColumnName("TriggerInstanceId");
+            Property(t => t.SubscriptionReportId).HasColumnName("SubscriptionReportId");
+            Property(t => t.TriggerInstanceReportStatusTypeId).HasColumnName("TriggerInstanceReportStatusTypeId");
+            Property(t => t.Notes).HasColumnName("Notes");
+            Property(t => t.Active).HasColumnName("Active");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
 
             // Relationships
-            this.HasRequired(t => t.SubscriptionReport)
+            HasRequired(t => t.SubscriptionReport)
                 .WithMany(t => t.TriggerInstanceReports)
                 .HasForeignKey(d => d.SubscriptionReportId);
-            this.HasRequired(t => t.TriggerInstance)
+            HasRequired(t => t.TriggerInstance)
                 .WithMany(t => t.TriggerInstanceReports)
                 .HasForeignKey(d => d.TriggerInstanceId);
-            this.HasRequired(t => t.TriggerInstanceReportStatusType)
+            HasRequired(t => t.TriggerInstanceReportStatusType)
                 .WithMany(t => t.TriggerInstanceReports)
                 .HasForeignKey(d => d.TriggerInstanceReportStatusTypeId);
 

@@ -8,20 +8,20 @@ namespace Warp.Data.DbFirst.Mapping
         public GeographicLocationMap()
         {
             // Primary Key
-            this.HasKey(t => t.GeographicLocationId);
+            HasKey(t => t.GeographicLocationId);
 
             // Properties
-            this.Property(t => t.Name)
+            Property(t => t.Name)
                 .IsRequired()
                 .HasMaxLength(50);
 
             // Table & Column Mappings
-            this.ToTable("GeographicLocation", "Geographic");
-            this.Property(t => t.GeographicLocationId).HasColumnName("GeographicLocationID");
-            this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("GeographicLocation", "Geographic");
+            Property(t => t.GeographicLocationId).HasColumnName("GeographicLocationID");
+            Property(t => t.Name).HasColumnName("Name");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
         }
     }
 }

@@ -49,7 +49,7 @@ namespace Warp.Services
 
                 _commandDispatcher.Execute(command);
 
-                saveClientDto.Id = command.ClientId;
+                saveClientDto.Id = command.Id;
             }
             else
             {
@@ -66,7 +66,7 @@ namespace Warp.Services
             var clients = _queryDispatcher.Execute(new GetClientsQuery
             {
                 Query = clientNameQuery,
-                CustomerId = customerId,
+                CustomerId = customerId
             });
 
             return _objectMapper.MapMany<Client, ClientDto>(clients);

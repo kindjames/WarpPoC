@@ -9,18 +9,18 @@ namespace Warp.Data.DbFirst.Mapping
         public CriteriaSetMap()
         {
             // Primary Key
-            this.HasKey(t => t.CriteriaSetId);
+            HasKey(t => t.CriteriaSetId);
 
             // Properties
-            this.Property(t => t.CriteriaSetId)
+            Property(t => t.CriteriaSetId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
             // Table & Column Mappings
-            this.ToTable("CriteriaSet");
-            this.Property(t => t.CriteriaSetId).HasColumnName("CriteriaSetID");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("CriteriaSet");
+            Property(t => t.CriteriaSetId).HasColumnName("CriteriaSetID");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
         }
     }
 }

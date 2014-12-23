@@ -6,11 +6,11 @@ namespace Warp.Data.DbFirst.Entities
     {
         public Currency()
         {
-            this.Branches = new List<Branch>();
-            this.AccountingTransactions = new List<AccountingTransaction>();
-            this.AssessorExpenses = new List<AssessorExpense>();
-            this.CurrencyExchangeRates = new List<CurrencyExchangeRate>();
-            this.GeographicCountries = new List<GeographicCountry>();
+            Branches = new List<Branch>();
+            AccountingTransactions = new List<AccountingTransaction>();
+            AssessorExpenses = new List<AssessorExpense>();
+            CurrencyExchangeRates = new List<CurrencyExchangeRate>();
+            GeographicCountries = new List<GeographicCountry>();
         }
 
         public int CurrencyId { get; set; }

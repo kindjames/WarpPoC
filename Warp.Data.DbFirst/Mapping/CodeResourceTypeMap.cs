@@ -8,20 +8,20 @@ namespace Warp.Data.DbFirst.Mapping
         public CodeResourceTypeMap()
         {
             // Primary Key
-            this.HasKey(t => t.CodeResourceTypeId);
+            HasKey(t => t.CodeResourceTypeId);
 
             // Properties
-            this.Property(t => t.ResourceTypeDescription)
+            Property(t => t.ResourceTypeDescription)
                 .IsRequired()
                 .HasMaxLength(50);
 
             // Table & Column Mappings
-            this.ToTable("CodeResourceType", "Translation");
-            this.Property(t => t.CodeResourceTypeId).HasColumnName("CodeResourceTypeID");
-            this.Property(t => t.ResourceTypeDescription).HasColumnName("ResourceTypeDescription");
-            this.Property(t => t.Active).HasColumnName("Active");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            ToTable("CodeResourceType", "Translation");
+            Property(t => t.CodeResourceTypeId).HasColumnName("CodeResourceTypeID");
+            Property(t => t.ResourceTypeDescription).HasColumnName("ResourceTypeDescription");
+            Property(t => t.Active).HasColumnName("Active");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
         }
     }
 }

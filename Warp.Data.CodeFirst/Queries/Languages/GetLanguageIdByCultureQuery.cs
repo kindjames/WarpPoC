@@ -22,7 +22,7 @@ namespace Warp.Data.Queries.Languages
         {
             return _dbContext.Languages
                 .Where(l => l.InvariantCulture == query.InvariantCulture)
-                .Select(l => l.LanguageId)
+                .Select(l => l.Id)
                 .SingleOrDefault();
         }
     }

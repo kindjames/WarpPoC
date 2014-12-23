@@ -9,32 +9,32 @@ namespace Warp.Data.DbFirst.Mapping
         public ConfigurationMap()
         {
             // Primary Key
-            this.HasKey(t => t.ConfigurationId);
+            HasKey(t => t.ConfigurationId);
 
             // Properties
-            this.Property(t => t.ConfigurationId)
+            Property(t => t.ConfigurationId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            this.Property(t => t.Value)
+            Property(t => t.Value)
                 .IsRequired()
                 .HasMaxLength(2000);
 
             // Table & Column Mappings
-            this.ToTable("Configuration");
-            this.Property(t => t.ConfigurationId).HasColumnName("ConfigurationID");
-            this.Property(t => t.ConfigurationItemId).HasColumnName("ConfigurationItemID");
-            this.Property(t => t.ConfigurationSystemId).HasColumnName("ConfigurationSystemID");
-            this.Property(t => t.Value).HasColumnName("Value");
-            this.Property(t => t.LastUpdateAdminId).HasColumnName("LastUpdateAdminID");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("Configuration");
+            Property(t => t.ConfigurationId).HasColumnName("ConfigurationID");
+            Property(t => t.ConfigurationItemId).HasColumnName("ConfigurationItemID");
+            Property(t => t.ConfigurationSystemId).HasColumnName("ConfigurationSystemID");
+            Property(t => t.Value).HasColumnName("Value");
+            Property(t => t.LastUpdateAdminId).HasColumnName("LastUpdateAdminID");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.ConfigurationItem)
+            HasRequired(t => t.ConfigurationItem)
                 .WithMany(t => t.Configurations)
                 .HasForeignKey(d => d.ConfigurationItemId);
-            this.HasRequired(t => t.ConfigurationSystem)
+            HasRequired(t => t.ConfigurationSystem)
                 .WithMany(t => t.Configurations)
                 .HasForeignKey(d => d.ConfigurationSystemId);
 

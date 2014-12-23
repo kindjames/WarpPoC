@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using FakeDbSet;
 using Machine.Fakes;
@@ -24,9 +23,9 @@ namespace Warp.Data.Specs.Queries.Brands
                     .WhenToldTo(d => d.Brands)
                     .Return(new InMemoryDbSet<Brand>(true)
                     {
-                        new Brand {Client = new Client {ClientId = ClientId}},
-                        new Brand {Client = new Client {ClientId = 123}},
-                        new Brand {Client = new Client {ClientId = 312}},
+                        new Brand {Client = new Client {Id = ClientId}},
+                        new Brand {Client = new Client {Id = 123}},
+                        new Brand {Client = new Client {Id = 312}}
                     });
 
             Because of = () => _result = Subject.Execute(new GetBrandsForClientQuery { ClientId = ClientId });
@@ -34,7 +33,7 @@ namespace Warp.Data.Specs.Queries.Brands
             It should = () =>
             {
                 _result.Count().ShouldEqual(1);
-                _result.Single().Client.ClientId.ShouldEqual(ClientId);
+                _result.Single().Client.Id.ShouldEqual(ClientId);
             };
         }
 
@@ -49,14 +48,14 @@ namespace Warp.Data.Specs.Queries.Brands
                     .WhenToldTo(d => d.Brands)
                     .Return(new InMemoryDbSet<Brand>(true)
                     {
-                        new Brand {Client = new Client {ClientId = 65}},
-                        new Brand {Client = new Client {ClientId = 34}},
-                        new Brand {Client = new Client {ClientId = ClientId}},
-                        new Brand {Client = new Client {ClientId = ClientId}},
-                        new Brand {Client = new Client {ClientId = 123}},
-                        new Brand {Client = new Client {ClientId = 312}},
-                        new Brand {Client = new Client {ClientId = ClientId}},
-                        new Brand {Client = new Client {ClientId = ClientId}},
+                        new Brand {Client = new Client {Id = 65}},
+                        new Brand {Client = new Client {Id = 34}},
+                        new Brand {Client = new Client {Id = ClientId}},
+                        new Brand {Client = new Client {Id = ClientId}},
+                        new Brand {Client = new Client {Id = 123}},
+                        new Brand {Client = new Client {Id = 312}},
+                        new Brand {Client = new Client {Id = ClientId}},
+                        new Brand {Client = new Client {Id = ClientId}}
                     });
 
             Because of = () => _result = Subject.Execute(new GetBrandsForClientQuery { ClientId = ClientId });
@@ -64,7 +63,7 @@ namespace Warp.Data.Specs.Queries.Brands
             It should_filter_brands = () =>
             {
                 _result.Count().ShouldEqual(4);
-                _result.All(b => b.Client.ClientId == ClientId).ShouldBeTrue();
+                _result.All(b => b.Client.Id == ClientId).ShouldBeTrue();
             };
         }
     }

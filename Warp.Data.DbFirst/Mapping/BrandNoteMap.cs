@@ -9,26 +9,26 @@ namespace Warp.Data.DbFirst.Mapping
         public BrandNoteMap()
         {
             // Primary Key
-            this.HasKey(t => t.BrandNoteId);
+            HasKey(t => t.BrandNoteId);
 
             // Properties
-            this.Property(t => t.BrandNoteId)
+            Property(t => t.BrandNoteId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
             // Table & Column Mappings
-            this.ToTable("BrandNote");
-            this.Property(t => t.BrandNoteId).HasColumnName("BrandNoteID");
-            this.Property(t => t.BrandId).HasColumnName("BrandID");
-            this.Property(t => t.NoteId).HasColumnName("NoteID");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("BrandNote");
+            Property(t => t.BrandNoteId).HasColumnName("BrandNoteID");
+            Property(t => t.BrandId).HasColumnName("BrandID");
+            Property(t => t.NoteId).HasColumnName("NoteID");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.Brand)
+            HasRequired(t => t.Brand)
                 .WithMany(t => t.BrandNotes)
                 .HasForeignKey(d => d.BrandId);
-            this.HasRequired(t => t.Note)
+            HasRequired(t => t.Note)
                 .WithMany(t => t.BrandNotes)
                 .HasForeignKey(d => d.NoteId);
 

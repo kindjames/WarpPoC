@@ -9,27 +9,27 @@ namespace Warp.Data.DbFirst.Mapping
         public SimpleVisitTemplateMap()
         {
             // Primary Key
-            this.HasKey(t => t.SimpleVisitTemplateId);
+            HasKey(t => t.SimpleVisitTemplateId);
 
             // Properties
-            this.Property(t => t.SimpleVisitTemplateId)
+            Property(t => t.SimpleVisitTemplateId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
             // Table & Column Mappings
-            this.ToTable("SimpleVisitTemplate");
-            this.Property(t => t.SimpleVisitTemplateId).HasColumnName("SimpleVisitTemplateID");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.AddedByAdminId).HasColumnName("AddedByAdminID");
-            this.Property(t => t.QuestionnaireId).HasColumnName("QuestionnaireID");
-            this.Property(t => t.DateValidFrom).HasColumnName("DateValidFrom");
-            this.Property(t => t.DateValidTo).HasColumnName("DateValidTo");
-            this.Property(t => t.RequiredCount).HasColumnName("RequiredCount");
-            this.Property(t => t.DateCountReached).HasColumnName("DateCountReached");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("SimpleVisitTemplate");
+            Property(t => t.SimpleVisitTemplateId).HasColumnName("SimpleVisitTemplateID");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.AddedByAdminId).HasColumnName("AddedByAdminID");
+            Property(t => t.QuestionnaireId).HasColumnName("QuestionnaireID");
+            Property(t => t.DateValidFrom).HasColumnName("DateValidFrom");
+            Property(t => t.DateValidTo).HasColumnName("DateValidTo");
+            Property(t => t.RequiredCount).HasColumnName("RequiredCount");
+            Property(t => t.DateCountReached).HasColumnName("DateCountReached");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.Questionnaire)
+            HasRequired(t => t.Questionnaire)
                 .WithMany(t => t.SimpleVisitTemplates)
                 .HasForeignKey(d => d.QuestionnaireId);
 

@@ -9,28 +9,28 @@ namespace Warp.Data.DbFirst.Mapping
         public AssessorStatusChangeReasonMap()
         {
             // Primary Key
-            this.HasKey(t => t.AssessorStatusChangeReasonId);
+            HasKey(t => t.AssessorStatusChangeReasonId);
 
             // Properties
-            this.Property(t => t.AssessorStatusChangeReasonId)
+            Property(t => t.AssessorStatusChangeReasonId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            this.Property(t => t.Name)
+            Property(t => t.Name)
                 .IsRequired()
                 .HasMaxLength(50);
 
-            this.Property(t => t.Description)
+            Property(t => t.Description)
                 .IsRequired()
                 .HasMaxLength(200);
 
             // Table & Column Mappings
-            this.ToTable("AssessorStatusChangeReason");
-            this.Property(t => t.AssessorStatusChangeReasonId).HasColumnName("AssessorStatusChangeReasonID");
-            this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.Description).HasColumnName("Description");
-            this.Property(t => t.Active).HasColumnName("Active");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            ToTable("AssessorStatusChangeReason");
+            Property(t => t.AssessorStatusChangeReasonId).HasColumnName("AssessorStatusChangeReasonID");
+            Property(t => t.Name).HasColumnName("Name");
+            Property(t => t.Description).HasColumnName("Description");
+            Property(t => t.Active).HasColumnName("Active");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
         }
     }
 }

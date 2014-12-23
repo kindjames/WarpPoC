@@ -9,39 +9,39 @@ namespace Warp.Data.DbFirst.Mapping
         public AccountingTransactionMap()
         {
             // Primary Key
-            this.HasKey(t => t.AccountTransactionId);
+            HasKey(t => t.AccountTransactionId);
 
             // Properties
-            this.Property(t => t.AccountTransactionId)
+            Property(t => t.AccountTransactionId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
             // Table & Column Mappings
-            this.ToTable("AccountingTransaction");
-            this.Property(t => t.AccountTransactionId).HasColumnName("AccountTransactionID");
-            this.Property(t => t.VisitId).HasColumnName("VisitID");
-            this.Property(t => t.AccountingProductId).HasColumnName("AccountingProductID");
-            this.Property(t => t.AssessmentAreaId).HasColumnName("AssessmentAreaID");
-            this.Property(t => t.KashFlowId).HasColumnName("KashFlowID");
-            this.Property(t => t.AccountingInvoiceId).HasColumnName("AccountingInvoiceID");
-            this.Property(t => t.Amount).HasColumnName("Amount");
-            this.Property(t => t.Quantity).HasColumnName("Quantity");
-            this.Property(t => t.CurrencyId).HasColumnName("CurrencyID");
-            this.Property(t => t.CurrencyExchangeRateId).HasColumnName("CurrencyExchangeRateID");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("AccountingTransaction");
+            Property(t => t.AccountTransactionId).HasColumnName("AccountTransactionID");
+            Property(t => t.VisitId).HasColumnName("VisitID");
+            Property(t => t.AccountingProductId).HasColumnName("AccountingProductID");
+            Property(t => t.AssessmentAreaId).HasColumnName("AssessmentAreaID");
+            Property(t => t.KashFlowId).HasColumnName("KashFlowID");
+            Property(t => t.AccountingInvoiceId).HasColumnName("AccountingInvoiceID");
+            Property(t => t.Amount).HasColumnName("Amount");
+            Property(t => t.Quantity).HasColumnName("Quantity");
+            Property(t => t.CurrencyId).HasColumnName("CurrencyID");
+            Property(t => t.CurrencyExchangeRateId).HasColumnName("CurrencyExchangeRateID");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.Currency)
+            HasRequired(t => t.Currency)
                 .WithMany(t => t.AccountingTransactions)
                 .HasForeignKey(d => d.CurrencyId);
-            this.HasRequired(t => t.AccountingProduct)
+            HasRequired(t => t.AccountingProduct)
                 .WithMany(t => t.AccountingTransactions)
                 .HasForeignKey(d => d.AccountingProductId);
-            this.HasRequired(t => t.AssessmentArea)
+            HasRequired(t => t.AssessmentArea)
                 .WithMany(t => t.AccountingTransactions)
                 .HasForeignKey(d => d.AssessmentAreaId);
-            this.HasRequired(t => t.Visit)
+            HasRequired(t => t.Visit)
                 .WithMany(t => t.AccountingTransactions)
                 .HasForeignKey(d => d.VisitId);
 

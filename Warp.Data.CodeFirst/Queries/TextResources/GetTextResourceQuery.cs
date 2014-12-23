@@ -24,7 +24,7 @@ namespace Warp.Data.Queries.TextResources
         {
             // TODO: JK -> PG Does this need to filter on language too?
             return _context.TextResources
-                    .Where(t => t.TextResourceIdentifier.TextResourceIdentifierId == query.TextResourceIdentifierId)
+                    .Where(t => t.TextResourceIdentifier.Id == query.TextResourceIdentifierId)
                     .Select(t => t.ResourceString)
                     .SingleOrDefault();
         }

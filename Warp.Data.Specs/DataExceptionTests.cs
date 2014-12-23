@@ -1,6 +1,6 @@
 ﻿using Machine.Fakes;
 using Machine.Specifications;
-using Warp.Data.Entities;
+using Warp.Core.Data;
 using Warp.Data.Exceptions;
 using MoqIt = Moq.It;
 using ThenIt = Machine.Specifications.It;

@@ -8,19 +8,19 @@ namespace Warp.Data.DbFirst.Mapping
         public MonthMap()
         {
             // Primary Key
-            this.HasKey(t => t.MonthId);
+            HasKey(t => t.MonthId);
 
             // Properties
-            this.Property(t => t.Name)
+            Property(t => t.Name)
                 .HasMaxLength(10);
 
             // Table & Column Mappings
-            this.ToTable("Month", "Subscriptions");
-            this.Property(t => t.MonthId).HasColumnName("MonthId");
-            this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("Month", "Subscriptions");
+            Property(t => t.MonthId).HasColumnName("MonthId");
+            Property(t => t.Name).HasColumnName("Name");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.Active).HasColumnName("Active");
         }
     }
 }

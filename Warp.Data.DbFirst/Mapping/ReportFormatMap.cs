@@ -8,20 +8,20 @@ namespace Warp.Data.DbFirst.Mapping
         public ReportFormatMap()
         {
             // Primary Key
-            this.HasKey(t => t.ReportFormatId);
+            HasKey(t => t.ReportFormatId);
 
             // Properties
-            this.Property(t => t.Type)
+            Property(t => t.Type)
                 .IsRequired()
                 .HasMaxLength(25);
 
             // Table & Column Mappings
-            this.ToTable("ReportFormat", "Subscriptions");
-            this.Property(t => t.ReportFormatId).HasColumnName("ReportFormatId");
-            this.Property(t => t.Type).HasColumnName("Type");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("ReportFormat", "Subscriptions");
+            Property(t => t.ReportFormatId).HasColumnName("ReportFormatId");
+            Property(t => t.Type).HasColumnName("Type");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.Active).HasColumnName("Active");
         }
     }
 }

@@ -21,7 +21,7 @@ namespace Warp.Data.Specs.Queries.Customers
                     .WhenToldTo(d => d.Customers)
                     .Return(new InMemoryDbSet<Customer>(true)
                     {
-                        new Customer {CustomerId = 123}
+                        new Customer {Id = 123}
                     });
 
             Because of = () => _result = Subject.Execute(new GetCustomerQuery { CustomerId = CustomerId });
@@ -44,7 +44,7 @@ namespace Warp.Data.Specs.Queries.Customers
                     .WhenToldTo(d => d.Customers)
                     .Return(new InMemoryDbSet<Customer>(true)
                     {
-                        new Customer {CustomerId = CustomerId, Name = _customerName}
+                        new Customer {Id = CustomerId, Name = _customerName}
                     });
             };
 

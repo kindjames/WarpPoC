@@ -9,28 +9,28 @@ namespace Warp.Data.DbFirst.Mapping
         public BanBrandMap()
         {
             // Primary Key
-            this.HasKey(t => t.BanBrandId);
+            HasKey(t => t.BanBrandId);
 
             // Properties
-            this.Property(t => t.BanBrandId)
+            Property(t => t.BanBrandId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
             // Table & Column Mappings
-            this.ToTable("BanBrand");
-            this.Property(t => t.BanBrandId).HasColumnName("BanBrandID");
-            this.Property(t => t.BrandId).HasColumnName("BrandID");
-            this.Property(t => t.AssessorId).HasColumnName("AssessorID");
-            this.Property(t => t.DateValidFrom).HasColumnName("DateValidFrom");
-            this.Property(t => t.DateValidTo).HasColumnName("DateValidTo");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("BanBrand");
+            Property(t => t.BanBrandId).HasColumnName("BanBrandID");
+            Property(t => t.BrandId).HasColumnName("BrandID");
+            Property(t => t.AssessorId).HasColumnName("AssessorID");
+            Property(t => t.DateValidFrom).HasColumnName("DateValidFrom");
+            Property(t => t.DateValidTo).HasColumnName("DateValidTo");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.Brand)
+            HasRequired(t => t.Brand)
                 .WithMany(t => t.BanBrands)
                 .HasForeignKey(d => d.BrandId);
-            this.HasRequired(t => t.Assessor)
+            HasRequired(t => t.Assessor)
                 .WithMany(t => t.BanBrands)
                 .HasForeignKey(d => d.AssessorId);
 

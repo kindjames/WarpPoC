@@ -9,23 +9,23 @@ namespace Warp.Data.DbFirst.Mapping
         public TagMap()
         {
             // Primary Key
-            this.HasKey(t => t.TagId);
+            HasKey(t => t.TagId);
 
             // Properties
-            this.Property(t => t.TagId)
+            Property(t => t.TagId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            this.Property(t => t.Name)
+            Property(t => t.Name)
                 .IsRequired()
                 .HasMaxLength(50);
 
             // Table & Column Mappings
-            this.ToTable("Tag");
-            this.Property(t => t.TagId).HasColumnName("TagID");
-            this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("Tag");
+            Property(t => t.TagId).HasColumnName("TagID");
+            Property(t => t.Name).HasColumnName("Name");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
         }
     }
 }

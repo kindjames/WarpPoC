@@ -8,41 +8,41 @@ namespace Warp.Data.DbFirst.Mapping
         public MaintenanceMap()
         {
             // Primary Key
-            this.HasKey(t => t.MaintenanceId);
+            HasKey(t => t.MaintenanceId);
 
             // Properties
-            this.Property(t => t.Title)
+            Property(t => t.Title)
                 .IsRequired()
                 .HasMaxLength(255);
 
-            this.Property(t => t.Details)
+            Property(t => t.Details)
                 .IsRequired()
                 .HasMaxLength(2000);
 
-            this.Property(t => t.HyperlinkURL)
+            Property(t => t.HyperlinkURL)
                 .HasMaxLength(255);
 
-            this.Property(t => t.HyperlinkText)
+            Property(t => t.HyperlinkText)
                 .HasMaxLength(255);
 
             // Table & Column Mappings
-            this.ToTable("Maintenance");
-            this.Property(t => t.MaintenanceId).HasColumnName("MaintenanceID");
-            this.Property(t => t.Title).HasColumnName("Title");
-            this.Property(t => t.Details).HasColumnName("Details");
-            this.Property(t => t.MaintenanceCategoryId).HasColumnName("MaintenanceCategoryID");
-            this.Property(t => t.DateDisplayFrom).HasColumnName("DateDisplayFrom");
-            this.Property(t => t.DateDisplayTo).HasColumnName("DateDisplayTo");
-            this.Property(t => t.HyperlinkURL).HasColumnName("HyperlinkURL");
-            this.Property(t => t.HyperlinkText).HasColumnName("HyperlinkText");
-            this.Property(t => t.RemovedBy).HasColumnName("RemovedBy");
-            this.Property(t => t.AddedBy).HasColumnName("AddedBy");
-            this.Property(t => t.Active).HasColumnName("Active");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            ToTable("Maintenance");
+            Property(t => t.MaintenanceId).HasColumnName("MaintenanceID");
+            Property(t => t.Title).HasColumnName("Title");
+            Property(t => t.Details).HasColumnName("Details");
+            Property(t => t.MaintenanceCategoryId).HasColumnName("MaintenanceCategoryID");
+            Property(t => t.DateDisplayFrom).HasColumnName("DateDisplayFrom");
+            Property(t => t.DateDisplayTo).HasColumnName("DateDisplayTo");
+            Property(t => t.HyperlinkURL).HasColumnName("HyperlinkURL");
+            Property(t => t.HyperlinkText).HasColumnName("HyperlinkText");
+            Property(t => t.RemovedBy).HasColumnName("RemovedBy");
+            Property(t => t.AddedBy).HasColumnName("AddedBy");
+            Property(t => t.Active).HasColumnName("Active");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
 
             // Relationships
-            this.HasRequired(t => t.MaintenanceCategory)
+            HasRequired(t => t.MaintenanceCategory)
                 .WithMany(t => t.Maintenances)
                 .HasForeignKey(d => d.MaintenanceCategoryId);
 

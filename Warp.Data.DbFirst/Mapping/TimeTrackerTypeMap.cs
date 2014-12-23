@@ -9,27 +9,27 @@ namespace Warp.Data.DbFirst.Mapping
         public TimeTrackerTypeMap()
         {
             // Primary Key
-            this.HasKey(t => t.TimeTrackerTypeId);
+            HasKey(t => t.TimeTrackerTypeId);
 
             // Properties
-            this.Property(t => t.TimeTrackerTypeId)
+            Property(t => t.TimeTrackerTypeId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            this.Property(t => t.Name)
+            Property(t => t.Name)
                 .IsRequired()
                 .HasMaxLength(50);
 
-            this.Property(t => t.Description)
+            Property(t => t.Description)
                 .HasMaxLength(200);
 
             // Table & Column Mappings
-            this.ToTable("TimeTrackerType");
-            this.Property(t => t.TimeTrackerTypeId).HasColumnName("TimeTrackerTypeID");
-            this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.Description).HasColumnName("Description");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("TimeTrackerType");
+            Property(t => t.TimeTrackerTypeId).HasColumnName("TimeTrackerTypeID");
+            Property(t => t.Name).HasColumnName("Name");
+            Property(t => t.Description).HasColumnName("Description");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
         }
     }
 }

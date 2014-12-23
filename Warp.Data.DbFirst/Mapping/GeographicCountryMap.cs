@@ -8,29 +8,29 @@ namespace Warp.Data.DbFirst.Mapping
         public GeographicCountryMap()
         {
             // Primary Key
-            this.HasKey(t => t.GeographicCountryId);
+            HasKey(t => t.GeographicCountryId);
 
             // Properties
-            this.Property(t => t.Name)
+            Property(t => t.Name)
                 .IsRequired()
                 .HasMaxLength(50);
 
             // Table & Column Mappings
-            this.ToTable("GeographicCountry", "Geographic");
-            this.Property(t => t.GeographicCountryId).HasColumnName("GeographicCountryID");
-            this.Property(t => t.GeographicWorldAreaId).HasColumnName("GeographicWorldAreaID");
-            this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.CurrencyId).HasColumnName("CurrencyID");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("GeographicCountry", "Geographic");
+            Property(t => t.GeographicCountryId).HasColumnName("GeographicCountryID");
+            Property(t => t.GeographicWorldAreaId).HasColumnName("GeographicWorldAreaID");
+            Property(t => t.Name).HasColumnName("Name");
+            Property(t => t.CurrencyId).HasColumnName("CurrencyID");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
             HasRequired(t => t.Currency)
                 .WithMany(t => t.GeographicCountries)
                 .HasForeignKey(d => d.CurrencyId);
 
-            this.HasRequired(t => t.GeographicWorldArea)
+            HasRequired(t => t.GeographicWorldArea)
                 .WithMany(t => t.GeographicCountries)
                 .HasForeignKey(d => d.GeographicWorldAreaId);
 

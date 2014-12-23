@@ -9,34 +9,34 @@ namespace Warp.Data.DbFirst.Mapping
         public QuestionnaireAccountingProductMap()
         {
             // Primary Key
-            this.HasKey(t => t.QuestionnaireAccountingProductId);
+            HasKey(t => t.QuestionnaireAccountingProductId);
 
             // Properties
-            this.Property(t => t.QuestionnaireAccountingProductId)
+            Property(t => t.QuestionnaireAccountingProductId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
             // Table & Column Mappings
-            this.ToTable("QuestionnaireAccountingProduct");
-            this.Property(t => t.QuestionnaireAccountingProductId).HasColumnName("QuestionnaireAccountingProductID");
-            this.Property(t => t.QuestionnaireId).HasColumnName("QuestionnaireID");
-            this.Property(t => t.SubQuestionnaireId).HasColumnName("SubQuestionnaireID");
-            this.Property(t => t.AccountingProductId).HasColumnName("AccountingProductID");
-            this.Property(t => t.DefaultValue).HasColumnName("DefaultValue");
-            this.Property(t => t.KashFlowId).HasColumnName("KashFlowID");
-            this.Property(t => t.DateValidFrom).HasColumnName("DateValidFrom");
-            this.Property(t => t.DateValidTo).HasColumnName("DateValidTo");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("QuestionnaireAccountingProduct");
+            Property(t => t.QuestionnaireAccountingProductId).HasColumnName("QuestionnaireAccountingProductID");
+            Property(t => t.QuestionnaireId).HasColumnName("QuestionnaireID");
+            Property(t => t.SubQuestionnaireId).HasColumnName("SubQuestionnaireID");
+            Property(t => t.AccountingProductId).HasColumnName("AccountingProductID");
+            Property(t => t.DefaultValue).HasColumnName("DefaultValue");
+            Property(t => t.KashFlowId).HasColumnName("KashFlowID");
+            Property(t => t.DateValidFrom).HasColumnName("DateValidFrom");
+            Property(t => t.DateValidTo).HasColumnName("DateValidTo");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.AccountingProduct)
+            HasRequired(t => t.AccountingProduct)
                 .WithMany(t => t.QuestionnaireAccountingProducts)
                 .HasForeignKey(d => d.AccountingProductId);
-            this.HasRequired(t => t.Questionnaire)
+            HasRequired(t => t.Questionnaire)
                 .WithMany(t => t.QuestionnaireAccountingProducts)
                 .HasForeignKey(d => d.QuestionnaireId);
-            this.HasOptional(t => t.SubQuestionnaire)
+            HasOptional(t => t.SubQuestionnaire)
                 .WithMany(t => t.QuestionnaireAccountingProducts)
                 .HasForeignKey(d => d.SubQuestionnaireId);
 

@@ -8,22 +8,22 @@ namespace Warp.Data.DbFirst.Mapping
         public LoginMap()
         {
             // Primary Key
-            this.HasKey(t => t.LoginId);
+            HasKey(t => t.LoginId);
 
             // Properties
-            this.Property(t => t.IP)
+            Property(t => t.IP)
                 .IsRequired()
                 .HasMaxLength(15);
 
             // Table & Column Mappings
-            this.ToTable("Login");
-            this.Property(t => t.LoginId).HasColumnName("LoginID");
-            this.Property(t => t.UserId).HasColumnName("UserID");
-            this.Property(t => t.Success).HasColumnName("Success");
-            this.Property(t => t.IP).HasColumnName("IP");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("Login");
+            Property(t => t.LoginId).HasColumnName("LoginID");
+            Property(t => t.UserId).HasColumnName("UserID");
+            Property(t => t.Success).HasColumnName("Success");
+            Property(t => t.IP).HasColumnName("IP");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
         }
     }
 }

@@ -40,11 +40,11 @@ namespace Warp.Data.DbFirst.Commands.Clients
             ContactAddresses = new List<ContactAddressClient>();
         }
 
-        public int ClientId { get; private set; }
+        public int Id { get; private set; }
 
-        public void SetClientId(int id)
+        public void SetWithNewIdFromDatabase(int id)
         {
-            ClientId = id;
+            Id = id;
         }
     }
 
@@ -95,7 +95,7 @@ namespace Warp.Data.DbFirst.Commands.Clients
 
             _dbContext.SaveChanges();
 
-            command.SetClientId(clientEntity.ClientId);
+            command.SetWithNewIdFromDatabase(clientEntity.ClientId);
         }
     }
 }

@@ -9,30 +9,30 @@ namespace Warp.Data.DbFirst.Mapping
         public RailStationMap()
         {
             // Primary Key
-            this.HasKey(t => t.RailStationId);
+            HasKey(t => t.RailStationId);
 
             // Properties
-            this.Property(t => t.RailStationId)
+            Property(t => t.RailStationId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            this.Property(t => t.Name)
+            Property(t => t.Name)
                 .IsRequired()
                 .HasMaxLength(50);
 
             // Table & Column Mappings
-            this.ToTable("RailStation");
-            this.Property(t => t.RailStationId).HasColumnName("RailStationID");
-            this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.Underground).HasColumnName("Underground");
-            this.Property(t => t.GeographicPostCodeId).HasColumnName("GeographicPostCodeID");
-            this.Property(t => t.XCoordinate).HasColumnName("XCoordinate");
-            this.Property(t => t.YCoordinate).HasColumnName("YCoordinate");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("RailStation");
+            Property(t => t.RailStationId).HasColumnName("RailStationID");
+            Property(t => t.Name).HasColumnName("Name");
+            Property(t => t.Underground).HasColumnName("Underground");
+            Property(t => t.GeographicPostCodeId).HasColumnName("GeographicPostCodeID");
+            Property(t => t.XCoordinate).HasColumnName("XCoordinate");
+            Property(t => t.YCoordinate).HasColumnName("YCoordinate");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.GeographicPostCode)
+            HasRequired(t => t.GeographicPostCode)
                 .WithMany(t => t.RailStations)
                 .HasForeignKey(d => d.GeographicPostCodeId);
 

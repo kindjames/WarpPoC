@@ -8,30 +8,30 @@ namespace Warp.Data.DbFirst.Mapping
         public ClientMap()
         {
             // Primary Key
-            this.HasKey(t => t.ClientId);
+            HasKey(t => t.ClientId);
 
             // Properties
-            this.Property(t => t.Name)
+            Property(t => t.Name)
                 .IsRequired()
                 .HasMaxLength(100);
 
-            this.Property(t => t.Code)
+            Property(t => t.Code)
                 .HasMaxLength(10);
 
             // Table & Column Mappings
-            this.ToTable("Client", "Client");
-            this.Property(t => t.ClientId).HasColumnName("ClientID");
-            this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.ClientStatusId).HasColumnName("ClientStatusID");
-            this.Property(t => t.Code).HasColumnName("Code");
-            this.Property(t => t.Active).HasColumnName("Active");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.CustomerId).HasColumnName("CustomerID");
-            this.Property(t => t.DateValidFrom).HasColumnName("DateValidFrom");
+            ToTable("Client", "Client");
+            Property(t => t.ClientId).HasColumnName("ClientID");
+            Property(t => t.Name).HasColumnName("Name");
+            Property(t => t.ClientStatusId).HasColumnName("ClientStatusID");
+            Property(t => t.Code).HasColumnName("Code");
+            Property(t => t.Active).HasColumnName("Active");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.CustomerId).HasColumnName("CustomerID");
+            Property(t => t.DateValidFrom).HasColumnName("DateValidFrom");
 
             // Relationships
-            this.HasRequired(t => t.ClientStatus)
+            HasRequired(t => t.ClientStatus)
                 .WithMany(t => t.Clients)
                 .HasForeignKey(d => d.ClientStatusId);
         }

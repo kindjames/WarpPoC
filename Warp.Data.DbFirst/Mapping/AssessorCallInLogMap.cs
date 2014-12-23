@@ -9,26 +9,26 @@ namespace Warp.Data.DbFirst.Mapping
         public AssessorCallInLogMap()
         {
             // Primary Key
-            this.HasKey(t => t.AssessorCallInLogId);
+            HasKey(t => t.AssessorCallInLogId);
 
             // Properties
-            this.Property(t => t.AssessorCallInLogId)
+            Property(t => t.AssessorCallInLogId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
             // Table & Column Mappings
-            this.ToTable("AssessorCallInLog");
-            this.Property(t => t.AssessorCallInLogId).HasColumnName("AssessorCallInLogID");
-            this.Property(t => t.AssessorId).HasColumnName("AssessorID");
-            this.Property(t => t.CallInLogId).HasColumnName("CallInLogID");
-            this.Property(t => t.Active).HasColumnName("Active");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            ToTable("AssessorCallInLog");
+            Property(t => t.AssessorCallInLogId).HasColumnName("AssessorCallInLogID");
+            Property(t => t.AssessorId).HasColumnName("AssessorID");
+            Property(t => t.CallInLogId).HasColumnName("CallInLogID");
+            Property(t => t.Active).HasColumnName("Active");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
 
             // Relationships
-            this.HasRequired(t => t.Assessor)
+            HasRequired(t => t.Assessor)
                 .WithMany(t => t.AssessorCallInLogs)
                 .HasForeignKey(d => d.AssessorId);
-            this.HasRequired(t => t.CallInLog)
+            HasRequired(t => t.CallInLog)
                 .WithMany(t => t.AssessorCallInLogs)
                 .HasForeignKey(d => d.CallInLogId);
 

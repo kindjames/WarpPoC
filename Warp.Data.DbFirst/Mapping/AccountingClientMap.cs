@@ -8,25 +8,25 @@ namespace Warp.Data.DbFirst.Mapping
         public AccountingClientMap()
         {
             // Primary Key
-            this.HasKey(t => t.AccountingClientId);
+            HasKey(t => t.AccountingClientId);
 
             // Properties
-            this.Property(t => t.Name)
+            Property(t => t.Name)
                 .IsRequired()
                 .HasMaxLength(50);
 
             // Table & Column Mappings
-            this.ToTable("AccountingClient");
-            this.Property(t => t.AccountingClientId).HasColumnName("AccountingClientID");
-            this.Property(t => t.ClientId).HasColumnName("ClientID");
-            this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.KashFlowId).HasColumnName("KashFlowID");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("AccountingClient");
+            Property(t => t.AccountingClientId).HasColumnName("AccountingClientID");
+            Property(t => t.ClientId).HasColumnName("ClientID");
+            Property(t => t.Name).HasColumnName("Name");
+            Property(t => t.KashFlowId).HasColumnName("KashFlowID");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.Client)
+            HasRequired(t => t.Client)
                 .WithMany(t => t.AccountingClients)
                 .HasForeignKey(d => d.ClientId);
 

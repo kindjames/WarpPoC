@@ -10,11 +10,11 @@ namespace Warp.Data.Specs.Data
         {
             return new[]
             {
-                new Language {LanguageId = 1, InvariantCulture = "en", Locale = "GB", Name = "English"},
-                new Language {LanguageId = 2, InvariantCulture = "fr", Locale = "FR", Name = "French"},
-                new Language {LanguageId = 3, InvariantCulture = "nl", Locale = "NL", Name = "Dutch"},
-                new Language {LanguageId = 4, InvariantCulture = "de", Locale = "DE", Name = "German"},
-                new Language {LanguageId = 5, InvariantCulture = "oo", Locale = "AR", Name = "Pirate"}
+                new Language {Id = 1, InvariantCulture = "en", Locale = "GB", Name = "English"},
+                new Language {Id = 2, InvariantCulture = "fr", Locale = "FR", Name = "French"},
+                new Language {Id = 3, InvariantCulture = "nl", Locale = "NL", Name = "Dutch"},
+                new Language {Id = 4, InvariantCulture = "de", Locale = "DE", Name = "German"},
+                new Language {Id = 5, InvariantCulture = "oo", Locale = "AR", Name = "Pirate"}
             };
         }
     }

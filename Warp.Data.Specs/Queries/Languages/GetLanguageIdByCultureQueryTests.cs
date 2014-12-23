@@ -26,7 +26,7 @@ namespace Warp.Data.Specs.Queries.Languages
 
             Establish that = () =>
             {
-                _query = new GetLanguageIdByInvariantCultureQuery() { InvariantCulture = _testInvarCulture };
+                _query = new GetLanguageIdByInvariantCultureQuery { InvariantCulture = _testInvarCulture };
 
                 The<ITextResourceDbContext>()
                     .WhenToldTo(a => a.Languages)
@@ -47,7 +47,7 @@ namespace Warp.Data.Specs.Queries.Languages
 
             Establish that = () =>
             {
-                _query = new GetLanguageIdByInvariantCultureQuery() { InvariantCulture = _testInvarCulture };
+                _query = new GetLanguageIdByInvariantCultureQuery { InvariantCulture = _testInvarCulture };
 
                 The<ITextResourceDbContext>()
                     .WhenToldTo(a => a.Languages)
@@ -68,7 +68,7 @@ namespace Warp.Data.Specs.Queries.Languages
 
             Establish that = () =>
             {
-                _query = new GetLanguageIdByInvariantCultureQuery() { InvariantCulture = _testInvarCulture };
+                _query = new GetLanguageIdByInvariantCultureQuery { InvariantCulture = _testInvarCulture };
 
                 The<ITextResourceDbContext>()
                     .WhenToldTo(a => a.Languages)

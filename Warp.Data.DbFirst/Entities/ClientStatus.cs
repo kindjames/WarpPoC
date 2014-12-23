@@ -6,8 +6,8 @@ namespace Warp.Data.DbFirst.Entities
     {
         public ClientStatus()
         {
-            this.Clients = new List<Client>();
-            this.ClientHistories = new List<ClientHistory>();
+            Clients = new List<Client>();
+            ClientHistories = new List<ClientHistory>();
         }
 
         public short ClientStatusId { get; set; }

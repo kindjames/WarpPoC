@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
+using Warp.Core.Data;
 
 namespace Warp.Data.Entities
 {
@@ -10,8 +11,6 @@ namespace Warp.Data.Entities
         {
             Brands = new Collection<Brand>();
         }
-
-        public int IndustrySectorId { get; set; }
 
         [Required]
         public string SectorName { get; set; }

@@ -6,18 +6,18 @@ namespace Warp.Data.DbFirst.Entities
     {
         public Branch()
         {
-            this.AssessmentAreaBranches = new List<AssessmentAreaBranch>();
-            this.BanBranches = new List<BanBranch>();
-            this.BranchAccountingProducts = new List<BranchAccountingProduct>();
-            this.BranchLegacyUsers = new List<BranchLegacyUser>();
-            this.BranchNotes = new List<BranchNote>();
-            this.BranchQuestionnaires = new List<BranchQuestionnaire>();
-            this.BranchSocialNetworks = new List<BranchSocialNetwork>();
-            this.BranchHistories = new List<BranchHistory>();
-            this.BriefBranches = new List<BriefBranch>();
-            this.BriefConfigurationBranches = new List<BriefConfigurationBranch>();
-            this.ContactAddressBranches = new List<ContactAddressBranch>();
-            this.PersonBranches = new List<PersonBranch>();
+            AssessmentAreaBranches = new List<AssessmentAreaBranch>();
+            BanBranches = new List<BanBranch>();
+            BranchAccountingProducts = new List<BranchAccountingProduct>();
+            BranchLegacyUsers = new List<BranchLegacyUser>();
+            BranchNotes = new List<BranchNote>();
+            BranchQuestionnaires = new List<BranchQuestionnaire>();
+            BranchSocialNetworks = new List<BranchSocialNetwork>();
+            BranchHistories = new List<BranchHistory>();
+            BriefBranches = new List<BriefBranch>();
+            BriefConfigurationBranches = new List<BriefConfigurationBranch>();
+            ContactAddressBranches = new List<ContactAddressBranch>();
+            PersonBranches = new List<PersonBranch>();
         }
 
         public int BranchId { get; set; }

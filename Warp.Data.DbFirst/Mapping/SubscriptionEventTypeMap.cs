@@ -8,20 +8,20 @@ namespace Warp.Data.DbFirst.Mapping
         public SubscriptionEventTypeMap()
         {
             // Primary Key
-            this.HasKey(t => t.SubscriptionEventTypeId);
+            HasKey(t => t.SubscriptionEventTypeId);
 
             // Properties
-            this.Property(t => t.Name)
+            Property(t => t.Name)
                 .IsRequired()
                 .HasMaxLength(150);
 
             // Table & Column Mappings
-            this.ToTable("SubscriptionEventType", "Subscriptions");
-            this.Property(t => t.SubscriptionEventTypeId).HasColumnName("SubscriptionEventTypeId");
-            this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("SubscriptionEventType", "Subscriptions");
+            Property(t => t.SubscriptionEventTypeId).HasColumnName("SubscriptionEventTypeId");
+            Property(t => t.Name).HasColumnName("Name");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.Active).HasColumnName("Active");
         }
     }
 }

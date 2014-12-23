@@ -8,23 +8,23 @@ namespace Warp.Data.DbFirst.Mapping
         public SubscriptionDestinationMap()
         {
             // Primary Key
-            this.HasKey(t => t.SubscriptionDestinationId);
+            HasKey(t => t.SubscriptionDestinationId);
 
             // Properties
             // Table & Column Mappings
-            this.ToTable("SubscriptionDestination", "Subscriptions");
-            this.Property(t => t.SubscriptionDestinationId).HasColumnName("SubscriptionDestinationId");
-            this.Property(t => t.SubscriptionId).HasColumnName("SubscriptionId");
-            this.Property(t => t.DestinationId).HasColumnName("DestinationId");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("SubscriptionDestination", "Subscriptions");
+            Property(t => t.SubscriptionDestinationId).HasColumnName("SubscriptionDestinationId");
+            Property(t => t.SubscriptionId).HasColumnName("SubscriptionId");
+            Property(t => t.DestinationId).HasColumnName("DestinationId");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasOptional(t => t.Destination)
+            HasOptional(t => t.Destination)
                 .WithMany(t => t.SubscriptionDestinations)
                 .HasForeignKey(d => d.DestinationId);
-            this.HasOptional(t => t.Subscription)
+            HasOptional(t => t.Subscription)
                 .WithMany(t => t.SubscriptionDestinations)
                 .HasForeignKey(d => d.SubscriptionId);
 

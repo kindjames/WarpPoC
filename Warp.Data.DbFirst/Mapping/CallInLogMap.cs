@@ -9,27 +9,27 @@ namespace Warp.Data.DbFirst.Mapping
         public CallInLogMap()
         {
             // Primary Key
-            this.HasKey(t => t.CallInLogId);
+            HasKey(t => t.CallInLogId);
 
             // Properties
-            this.Property(t => t.CallInLogId)
+            Property(t => t.CallInLogId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            this.Property(t => t.Notes)
+            Property(t => t.Notes)
                 .IsRequired()
                 .HasMaxLength(500);
 
             // Table & Column Mappings
-            this.ToTable("CallInLog");
-            this.Property(t => t.CallInLogId).HasColumnName("CallInLogID");
-            this.Property(t => t.EnteredByAdminId).HasColumnName("EnteredByAdminID");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.Notes).HasColumnName("Notes");
-            this.Property(t => t.DateValidTo).HasColumnName("DateValidTo");
-            this.Property(t => t.HighPriority).HasColumnName("HighPriority");
-            this.Property(t => t.Active).HasColumnName("Active");
-            this.Property(t => t.Visible).HasColumnName("Visible");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            ToTable("CallInLog");
+            Property(t => t.CallInLogId).HasColumnName("CallInLogID");
+            Property(t => t.EnteredByAdminId).HasColumnName("EnteredByAdminID");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.Notes).HasColumnName("Notes");
+            Property(t => t.DateValidTo).HasColumnName("DateValidTo");
+            Property(t => t.HighPriority).HasColumnName("HighPriority");
+            Property(t => t.Active).HasColumnName("Active");
+            Property(t => t.Visible).HasColumnName("Visible");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
         }
     }
 }

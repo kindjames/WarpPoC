@@ -9,27 +9,27 @@ namespace Warp.Data.DbFirst.Mapping
         public ConfigurationItemMap()
         {
             // Primary Key
-            this.HasKey(t => t.ConfigurationItemId);
+            HasKey(t => t.ConfigurationItemId);
 
             // Properties
-            this.Property(t => t.ConfigurationItemId)
+            Property(t => t.ConfigurationItemId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            this.Property(t => t.Name)
+            Property(t => t.Name)
                 .IsRequired()
                 .HasMaxLength(100);
 
             // Table & Column Mappings
-            this.ToTable("ConfigurationItem");
-            this.Property(t => t.ConfigurationItemId).HasColumnName("ConfigurationItemID");
-            this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.ConfigurationTypeId).HasColumnName("ConfigurationTypeID");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("ConfigurationItem");
+            Property(t => t.ConfigurationItemId).HasColumnName("ConfigurationItemID");
+            Property(t => t.Name).HasColumnName("Name");
+            Property(t => t.ConfigurationTypeId).HasColumnName("ConfigurationTypeID");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.ConfigurationType)
+            HasRequired(t => t.ConfigurationType)
                 .WithMany(t => t.ConfigurationItems)
                 .HasForeignKey(d => d.ConfigurationTypeId);
 

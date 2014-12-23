@@ -8,19 +8,19 @@ namespace Warp.Data.DbFirst.Mapping
         public DestinationTypeMap()
         {
             // Primary Key
-            this.HasKey(t => t.DestinationTypeId);
+            HasKey(t => t.DestinationTypeId);
 
             // Properties
-            this.Property(t => t.Name)
+            Property(t => t.Name)
                 .HasMaxLength(75);
 
             // Table & Column Mappings
-            this.ToTable("DestinationType", "Subscriptions");
-            this.Property(t => t.DestinationTypeId).HasColumnName("DestinationTypeId");
-            this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("DestinationType", "Subscriptions");
+            Property(t => t.DestinationTypeId).HasColumnName("DestinationTypeId");
+            Property(t => t.Name).HasColumnName("Name");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.Active).HasColumnName("Active");
         }
     }
 }

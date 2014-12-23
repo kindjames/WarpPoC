@@ -10,8 +10,8 @@ namespace Warp.Data.Commands.Clients
     public sealed class UpdateClientCommand : ICommand
     {
         [IdRequired]
-        public int ClientId { get; set; }
-        
+        public int Id { get; set; }
+
         public string ClientName { get; set; }
         public int CustomerId { get; set; }
         public string ClientCode { get; set; }

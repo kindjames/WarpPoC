@@ -9,30 +9,30 @@ namespace Warp.Data.DbFirst.Mapping
         public PossibleAnswerMap()
         {
             // Primary Key
-            this.HasKey(t => t.PossibleAnswerId);
+            HasKey(t => t.PossibleAnswerId);
 
             // Properties
-            this.Property(t => t.PossibleAnswerId)
+            Property(t => t.PossibleAnswerId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            this.Property(t => t.Text)
+            Property(t => t.Text)
                 .IsRequired()
                 .HasMaxLength(50);
 
-            this.Property(t => t.Value)
+            Property(t => t.Value)
                 .IsRequired()
                 .HasMaxLength(50);
 
             // Table & Column Mappings
-            this.ToTable("PossibleAnswer");
-            this.Property(t => t.PossibleAnswerId).HasColumnName("PossibleAnswerID");
-            this.Property(t => t.Text).HasColumnName("Text");
-            this.Property(t => t.Value).HasColumnName("Value");
-            this.Property(t => t.Score).HasColumnName("Score");
-            this.Property(t => t.PossibleAnswerTypeId).HasColumnName("PossibleAnswerTypeID");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("PossibleAnswer");
+            Property(t => t.PossibleAnswerId).HasColumnName("PossibleAnswerID");
+            Property(t => t.Text).HasColumnName("Text");
+            Property(t => t.Value).HasColumnName("Value");
+            Property(t => t.Score).HasColumnName("Score");
+            Property(t => t.PossibleAnswerTypeId).HasColumnName("PossibleAnswerTypeID");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
         }
     }
 }

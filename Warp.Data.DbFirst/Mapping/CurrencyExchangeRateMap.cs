@@ -9,21 +9,21 @@ namespace Warp.Data.DbFirst.Mapping
         public CurrencyExchangeRateMap()
         {
             // Primary Key
-            this.HasKey(t => t.CurrencyExchageRateId);
+            HasKey(t => t.CurrencyExchageRateId);
 
             // Properties
-            this.Property(t => t.CurrencyExchageRateId)
+            Property(t => t.CurrencyExchageRateId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
             // Table & Column Mappings
-            this.ToTable("CurrencyExchangeRate");
-            this.Property(t => t.CurrencyExchageRateId).HasColumnName("CurrencyExchageRateID");
-            this.Property(t => t.CurrencyId).HasColumnName("CurrencyID");
-            this.Property(t => t.Rate).HasColumnName("Rate");
-            this.Property(t => t.DateValidTo).HasColumnName("DateValidTo");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("CurrencyExchangeRate");
+            Property(t => t.CurrencyExchageRateId).HasColumnName("CurrencyExchageRateID");
+            Property(t => t.CurrencyId).HasColumnName("CurrencyID");
+            Property(t => t.Rate).HasColumnName("Rate");
+            Property(t => t.DateValidTo).HasColumnName("DateValidTo");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
             HasRequired(t => t.Currency)

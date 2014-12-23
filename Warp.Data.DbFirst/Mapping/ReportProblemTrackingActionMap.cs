@@ -9,26 +9,26 @@ namespace Warp.Data.DbFirst.Mapping
         public ReportProblemTrackingActionMap()
         {
             // Primary Key
-            this.HasKey(t => t.ReportProblemTrackingActionId);
+            HasKey(t => t.ReportProblemTrackingActionId);
 
             // Properties
-            this.Property(t => t.ReportProblemTrackingActionId)
+            Property(t => t.ReportProblemTrackingActionId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
             // Table & Column Mappings
-            this.ToTable("ReportProblemTrackingAction");
-            this.Property(t => t.ReportProblemTrackingActionId).HasColumnName("ReportProblemTrackingActionID");
-            this.Property(t => t.ReportProblemTrackingId).HasColumnName("ReportProblemTrackingID");
-            this.Property(t => t.ReportProblemActionId).HasColumnName("ReportProblemActionID");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("ReportProblemTrackingAction");
+            Property(t => t.ReportProblemTrackingActionId).HasColumnName("ReportProblemTrackingActionID");
+            Property(t => t.ReportProblemTrackingId).HasColumnName("ReportProblemTrackingID");
+            Property(t => t.ReportProblemActionId).HasColumnName("ReportProblemActionID");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.ReportProblemAction)
+            HasRequired(t => t.ReportProblemAction)
                 .WithMany(t => t.ReportProblemTrackingActions)
                 .HasForeignKey(d => d.ReportProblemActionId);
-            this.HasRequired(t => t.ReportProblemTracking)
+            HasRequired(t => t.ReportProblemTracking)
                 .WithMany(t => t.ReportProblemTrackingActions)
                 .HasForeignKey(d => d.ReportProblemTrackingId);
 

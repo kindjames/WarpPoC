@@ -39,7 +39,7 @@ namespace Warp.Services.Specs.Mappings
                 _input = new Brand
                 {
                     Name = Guid.NewGuid().ToString(),
-                    BrandId = new Random().Next(0, 999)
+                    Id = new Random().Next(0, 999)
                 };
             };
 
@@ -48,7 +48,7 @@ namespace Warp.Services.Specs.Mappings
             It should_convert = () =>
             {
                 _result.BrandName.ShouldEqual(_input.Name);
-                _result.BrandId.ShouldEqual(_input.BrandId);
+                _result.BrandId.ShouldEqual(_input.Id);
                 _result.AssessorBanDays.ShouldEqual(69);
             };
         }

@@ -22,9 +22,9 @@ namespace Warp.Data.Specs.Queries.Clients
                     .WhenToldTo(d => d.Clients)
                     .Return(new InMemoryDbSet<Client>(true)
                     {
-                        new Client {Code = "qwe", Customer = new Customer{ CustomerId = 111 }},
-                        new Client {Code = "asd", Customer = new Customer{ CustomerId = CustomerId }},
-                        new Client {Code = "zxc", Customer = new Customer{ CustomerId = 312 }},
+                        new Client {Code = "qwe", Customer = new Customer{ Id = 111 }},
+                        new Client {Code = "asd", Customer = new Customer{ Id = CustomerId }},
+                        new Client {Code = "zxc", Customer = new Customer{ Id = 312 }}
                     });
 
             Because of = () => _result = Subject.Execute(new CheckClientExistsForCodeQuery { CustomerId = CustomerId, ClientCode = Code });
@@ -45,9 +45,9 @@ namespace Warp.Data.Specs.Queries.Clients
                     .WhenToldTo(d => d.Clients)
                     .Return(new InMemoryDbSet<Client>(true)
                     {
-                        new Client {Code = "qwe", Customer = new Customer{ CustomerId = 111 }},
-                        new Client {Code = "asd", Customer = new Customer{ CustomerId = 222 }},
-                        new Client {Code = "zxc", Customer = new Customer{ CustomerId = 312 }},
+                        new Client {Code = "qwe", Customer = new Customer{ Id = 111 }},
+                        new Client {Code = "asd", Customer = new Customer{ Id = 222 }},
+                        new Client {Code = "zxc", Customer = new Customer{ Id = 312 }}
                     });
 
             Because of = () => _result = Subject.Execute(new CheckClientExistsForCodeQuery { CustomerId = CustomerId, ClientCode = Code });

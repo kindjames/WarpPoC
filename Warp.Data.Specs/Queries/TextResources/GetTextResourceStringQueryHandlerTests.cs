@@ -23,10 +23,10 @@ namespace Warp.Data.Specs.Queries.TextResources
                     {
                         new TextResource
                         {
-                            TextResourceId = 1,
-                            TextResourceIdentifier = new TextResourceIdentifier { TextResourceIdentifierId = _textResourceId},
+                            Id = 1,
+                            TextResourceIdentifier = new TextResourceIdentifier { Id = _textResourceId},
                             ResourceString = "Text Resource Test String.",
-                            Language = new Language { LanguageId = 1 }
+                            Language = new Language { Id = 1 }
                         }
                     });
 
@@ -54,8 +54,8 @@ namespace Warp.Data.Specs.Queries.TextResources
                     {
                         new TextResource
                         {
-                            TextResourceId = 999,
-                            TextResourceIdentifier = new TextResourceIdentifier { TextResourceIdentifierId = _textResourceId},
+                            Id = 999,
+                            TextResourceIdentifier = new TextResourceIdentifier { Id = _textResourceId}
                         }
                     });
 

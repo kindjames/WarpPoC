@@ -8,26 +8,26 @@ namespace Warp.Data.DbFirst.Mapping
         public PermissionGroupPermissionMap()
         {
             // Primary Key
-            this.HasKey(t => t.PermissionGroupPermissionId);
+            HasKey(t => t.PermissionGroupPermissionId);
 
             // Properties
             // Table & Column Mappings
-            this.ToTable("PermissionGroupPermission", "Account");
-            this.Property(t => t.PermissionGroupPermissionId).HasColumnName("PermissionGroupPermissionID");
-            this.Property(t => t.PermissionGroupId).HasColumnName("PermissionGroupID");
-            this.Property(t => t.PermissionId).HasColumnName("PermissionID");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.AddedByAdminId).HasColumnName("AddedByAdminID");
-            this.Property(t => t.Active).HasColumnName("Active");
-            this.Property(t => t.DateDeactivated).HasColumnName("DateDeactivated");
-            this.Property(t => t.DeactivatedByAdminId).HasColumnName("DeactivatedByAdminID");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            ToTable("PermissionGroupPermission", "Account");
+            Property(t => t.PermissionGroupPermissionId).HasColumnName("PermissionGroupPermissionID");
+            Property(t => t.PermissionGroupId).HasColumnName("PermissionGroupID");
+            Property(t => t.PermissionId).HasColumnName("PermissionID");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.AddedByAdminId).HasColumnName("AddedByAdminID");
+            Property(t => t.Active).HasColumnName("Active");
+            Property(t => t.DateDeactivated).HasColumnName("DateDeactivated");
+            Property(t => t.DeactivatedByAdminId).HasColumnName("DeactivatedByAdminID");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
 
             // Relationships
-            this.HasRequired(t => t.Permission)
+            HasRequired(t => t.Permission)
                 .WithMany(t => t.PermissionGroupPermissions)
                 .HasForeignKey(d => d.PermissionId);
-            this.HasRequired(t => t.PermissionGroup)
+            HasRequired(t => t.PermissionGroup)
                 .WithMany(t => t.PermissionGroupPermissions)
                 .HasForeignKey(d => d.PermissionGroupId);
 

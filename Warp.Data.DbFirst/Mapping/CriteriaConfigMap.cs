@@ -9,40 +9,40 @@ namespace Warp.Data.DbFirst.Mapping
         public CriteriaConfigMap()
         {
             // Primary Key
-            this.HasKey(t => t.CriteriaConfigId);
+            HasKey(t => t.CriteriaConfigId);
 
             // Properties
-            this.Property(t => t.CriteriaConfigId)
+            Property(t => t.CriteriaConfigId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            this.Property(t => t.Value)
+            Property(t => t.Value)
                 .IsRequired()
                 .HasMaxLength(200);
 
-            this.Property(t => t.SQL)
+            Property(t => t.SQL)
                 .IsRequired()
                 .HasMaxLength(450);
 
             // Table & Column Mappings
-            this.ToTable("CriteriaConfig");
-            this.Property(t => t.CriteriaConfigId).HasColumnName("CriteriaConfigID");
-            this.Property(t => t.CriteriaSetId).HasColumnName("CriteriaSetID");
-            this.Property(t => t.CriteriaOptionId).HasColumnName("CriteriaOptionID");
-            this.Property(t => t.CriteriaOperatorId).HasColumnName("CriteriaOperatorID");
-            this.Property(t => t.Value).HasColumnName("Value");
-            this.Property(t => t.SQL).HasColumnName("SQL");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("CriteriaConfig");
+            Property(t => t.CriteriaConfigId).HasColumnName("CriteriaConfigID");
+            Property(t => t.CriteriaSetId).HasColumnName("CriteriaSetID");
+            Property(t => t.CriteriaOptionId).HasColumnName("CriteriaOptionID");
+            Property(t => t.CriteriaOperatorId).HasColumnName("CriteriaOperatorID");
+            Property(t => t.Value).HasColumnName("Value");
+            Property(t => t.SQL).HasColumnName("SQL");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.CriteriaOperator)
+            HasRequired(t => t.CriteriaOperator)
                 .WithMany(t => t.CriteriaConfigs)
                 .HasForeignKey(d => d.CriteriaOperatorId);
-            this.HasRequired(t => t.CriteriaOption)
+            HasRequired(t => t.CriteriaOption)
                 .WithMany(t => t.CriteriaConfigs)
                 .HasForeignKey(d => d.CriteriaOptionId);
-            this.HasRequired(t => t.CriteriaSet)
+            HasRequired(t => t.CriteriaSet)
                 .WithMany(t => t.CriteriaConfigs)
                 .HasForeignKey(d => d.CriteriaSetId);
 

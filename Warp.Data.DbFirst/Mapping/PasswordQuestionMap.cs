@@ -8,20 +8,20 @@ namespace Warp.Data.DbFirst.Mapping
         public PasswordQuestionMap()
         {
             // Primary Key
-            this.HasKey(t => t.PasswordQuestionId);
+            HasKey(t => t.PasswordQuestionId);
 
             // Properties
-            this.Property(t => t.Question)
+            Property(t => t.Question)
                 .IsRequired()
                 .HasMaxLength(255);
 
             // Table & Column Mappings
-            this.ToTable("PasswordQuestion", "Account");
-            this.Property(t => t.PasswordQuestionId).HasColumnName("PasswordQuestionID");
-            this.Property(t => t.Question).HasColumnName("Question");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("PasswordQuestion", "Account");
+            Property(t => t.PasswordQuestionId).HasColumnName("PasswordQuestionID");
+            Property(t => t.Question).HasColumnName("Question");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
         }
     }
 }

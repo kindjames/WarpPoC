@@ -9,28 +9,28 @@ namespace Warp.Data.DbFirst.Mapping
         public AccountingPeriodMap()
         {
             // Primary Key
-            this.HasKey(t => t.AccountingPeriodId);
+            HasKey(t => t.AccountingPeriodId);
 
             // Properties
-            this.Property(t => t.AccountingPeriodId)
+            Property(t => t.AccountingPeriodId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            this.Property(t => t.PeriodName)
+            Property(t => t.PeriodName)
                 .IsRequired()
                 .HasMaxLength(50);
 
             // Table & Column Mappings
-            this.ToTable("AccountingPeriod");
-            this.Property(t => t.AccountingPeriodId).HasColumnName("AccountingPeriodID");
-            this.Property(t => t.PeriodName).HasColumnName("PeriodName");
-            this.Property(t => t.ClientId).HasColumnName("ClientID");
-            this.Property(t => t.Active).HasColumnName("Active");
-            this.Property(t => t.CreatedByAdminId).HasColumnName("CreatedByAdminID");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            ToTable("AccountingPeriod");
+            Property(t => t.AccountingPeriodId).HasColumnName("AccountingPeriodID");
+            Property(t => t.PeriodName).HasColumnName("PeriodName");
+            Property(t => t.ClientId).HasColumnName("ClientID");
+            Property(t => t.Active).HasColumnName("Active");
+            Property(t => t.CreatedByAdminId).HasColumnName("CreatedByAdminID");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
 
             // Relationships
-            this.HasRequired(t => t.Client)
+            HasRequired(t => t.Client)
                 .WithMany(t => t.AccountingPeriods)
                 .HasForeignKey(d => d.ClientId);
 

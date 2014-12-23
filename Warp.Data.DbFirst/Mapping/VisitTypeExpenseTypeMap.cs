@@ -9,26 +9,26 @@ namespace Warp.Data.DbFirst.Mapping
         public VisitTypeExpenseTypeMap()
         {
             // Primary Key
-            this.HasKey(t => t.VisitTypeExpenseTypeId);
+            HasKey(t => t.VisitTypeExpenseTypeId);
 
             // Properties
-            this.Property(t => t.VisitTypeExpenseTypeId)
+            Property(t => t.VisitTypeExpenseTypeId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
             // Table & Column Mappings
-            this.ToTable("VisitTypeExpenseType");
-            this.Property(t => t.VisitTypeExpenseTypeId).HasColumnName("VisitTypeExpenseTypeID");
-            this.Property(t => t.VisitTypeId).HasColumnName("VisitTypeID");
-            this.Property(t => t.ExpenseTypeId).HasColumnName("ExpenseTypeID");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("VisitTypeExpenseType");
+            Property(t => t.VisitTypeExpenseTypeId).HasColumnName("VisitTypeExpenseTypeID");
+            Property(t => t.VisitTypeId).HasColumnName("VisitTypeID");
+            Property(t => t.ExpenseTypeId).HasColumnName("ExpenseTypeID");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.ExpenseType)
+            HasRequired(t => t.ExpenseType)
                 .WithMany(t => t.VisitTypeExpenseTypes)
                 .HasForeignKey(d => d.ExpenseTypeId);
-            this.HasRequired(t => t.VisitType)
+            HasRequired(t => t.VisitType)
                 .WithMany(t => t.VisitTypeExpenseTypes)
                 .HasForeignKey(d => d.VisitTypeId);
 

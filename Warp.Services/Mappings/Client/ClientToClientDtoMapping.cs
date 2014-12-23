@@ -14,12 +14,12 @@ namespace Warp.Services.Mappings.Client
 
             return new ClientDto
             {
-                ClientId = source.ClientId,
+                Id = source.Id,
                 Code = source.Code,
                 Name = source.Name,
                 DateValidFrom = source.DateValidFrom,
-                CustomerId = source.Customer.CustomerId,
-                Status = source.Status,
+                CustomerId = source.Customer.Id,
+                Status = source.Status
                 //AccountManager = source.AccountManager.UserId,
             };
         }

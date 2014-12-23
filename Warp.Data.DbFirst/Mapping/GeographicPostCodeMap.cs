@@ -8,26 +8,26 @@ namespace Warp.Data.DbFirst.Mapping
         public GeographicPostCodeMap()
         {
             // Primary Key
-            this.HasKey(t => t.GeographicPostCodeId);
+            HasKey(t => t.GeographicPostCodeId);
 
             // Properties
-            this.Property(t => t.Name)
+            Property(t => t.Name)
                 .IsRequired()
                 .HasMaxLength(50);
 
             // Table & Column Mappings
-            this.ToTable("GeographicPostCode", "Geographic");
-            this.Property(t => t.GeographicPostCodeId).HasColumnName("GeographicPostCodeID");
-            this.Property(t => t.GeographicPostalAreaId).HasColumnName("GeographicPostalAreaID");
-            this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.XCoordinate).HasColumnName("XCoordinate");
-            this.Property(t => t.YCoordinate).HasColumnName("YCoordinate");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("GeographicPostCode", "Geographic");
+            Property(t => t.GeographicPostCodeId).HasColumnName("GeographicPostCodeID");
+            Property(t => t.GeographicPostalAreaId).HasColumnName("GeographicPostalAreaID");
+            Property(t => t.Name).HasColumnName("Name");
+            Property(t => t.XCoordinate).HasColumnName("XCoordinate");
+            Property(t => t.YCoordinate).HasColumnName("YCoordinate");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.GeographicPostalArea)
+            HasRequired(t => t.GeographicPostalArea)
                 .WithMany(t => t.GeographicPostCodes)
                 .HasForeignKey(d => d.GeographicPostalAreaId);
 

@@ -1,7 +1,7 @@
 ﻿@model Warp.WebUI.Models.TextResources.TextResourceViewModel
 
 @{ ViewBag.Title = Model.TextResourceCode; }
-@using (Html.BeginForm("Create", "TextResource", FormMethod.Post, new {TextResourceId = Model.TextResourceId}))
+@using (Html.BeginForm("Create", "TextResource", FormMethod.Post, new {Model.TextResourceId}))
 {
     <div>Resource Id: @Html.DisplayFor(m => Model.TextResourceId)</div>
     <div>Resource String: @Html.EditorFor(model => model.TextResourceString)</div>

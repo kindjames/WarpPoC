@@ -8,20 +8,20 @@ namespace Warp.Data.DbFirst.Mapping
         public StaffClothingColourMap()
         {
             // Primary Key
-            this.HasKey(t => t.StaffClothingColourId);
+            HasKey(t => t.StaffClothingColourId);
 
             // Properties
-            this.Property(t => t.Name)
+            Property(t => t.Name)
                 .IsRequired()
                 .HasMaxLength(50);
 
             // Table & Column Mappings
-            this.ToTable("StaffClothingColour");
-            this.Property(t => t.StaffClothingColourId).HasColumnName("StaffClothingColourID");
-            this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.Active).HasColumnName("Active");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            ToTable("StaffClothingColour");
+            Property(t => t.StaffClothingColourId).HasColumnName("StaffClothingColourID");
+            Property(t => t.Name).HasColumnName("Name");
+            Property(t => t.Active).HasColumnName("Active");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
         }
     }
 }

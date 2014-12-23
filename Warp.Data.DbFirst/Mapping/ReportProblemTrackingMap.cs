@@ -9,41 +9,41 @@ namespace Warp.Data.DbFirst.Mapping
         public ReportProblemTrackingMap()
         {
             // Primary Key
-            this.HasKey(t => t.ReportProblemTrackingId);
+            HasKey(t => t.ReportProblemTrackingId);
 
             // Properties
-            this.Property(t => t.ReportProblemTrackingId)
+            Property(t => t.ReportProblemTrackingId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            this.Property(t => t.Notes)
+            Property(t => t.Notes)
                 .IsRequired()
                 .HasMaxLength(500);
 
             // Table & Column Mappings
-            this.ToTable("ReportProblemTracking");
-            this.Property(t => t.ReportProblemTrackingId).HasColumnName("ReportProblemTrackingID");
-            this.Property(t => t.QuestionResultId).HasColumnName("QuestionResultID");
-            this.Property(t => t.ReportProblemCauseId).HasColumnName("ReportProblemCauseID");
-            this.Property(t => t.ReportProblemTypeId).HasColumnName("ReportProblemTypeID");
-            this.Property(t => t.DetectedByAdminId).HasColumnName("DetectedByAdminID");
-            this.Property(t => t.Resolved).HasColumnName("Resolved");
-            this.Property(t => t.Notes).HasColumnName("Notes");
-            this.Property(t => t.CreatedQuestionResultId).HasColumnName("CreatedQuestionResultID");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("ReportProblemTracking");
+            Property(t => t.ReportProblemTrackingId).HasColumnName("ReportProblemTrackingID");
+            Property(t => t.QuestionResultId).HasColumnName("QuestionResultID");
+            Property(t => t.ReportProblemCauseId).HasColumnName("ReportProblemCauseID");
+            Property(t => t.ReportProblemTypeId).HasColumnName("ReportProblemTypeID");
+            Property(t => t.DetectedByAdminId).HasColumnName("DetectedByAdminID");
+            Property(t => t.Resolved).HasColumnName("Resolved");
+            Property(t => t.Notes).HasColumnName("Notes");
+            Property(t => t.CreatedQuestionResultId).HasColumnName("CreatedQuestionResultID");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.QuestionResult)
+            HasRequired(t => t.QuestionResult)
                 .WithMany(t => t.ReportProblemTrackings)
                 .HasForeignKey(d => d.QuestionResultId);
-            this.HasOptional(t => t.QuestionResult1)
+            HasOptional(t => t.QuestionResult1)
                 .WithMany(t => t.ReportProblemTrackings1)
                 .HasForeignKey(d => d.CreatedQuestionResultId);
-            this.HasRequired(t => t.ReportProblemCause)
+            HasRequired(t => t.ReportProblemCause)
                 .WithMany(t => t.ReportProblemTrackings)
                 .HasForeignKey(d => d.ReportProblemCauseId);
-            this.HasRequired(t => t.ReportProblemType)
+            HasRequired(t => t.ReportProblemType)
                 .WithMany(t => t.ReportProblemTrackings)
                 .HasForeignKey(d => d.ReportProblemTypeId);
 

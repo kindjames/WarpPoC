@@ -8,24 +8,24 @@ namespace Warp.Data.DbFirst.Mapping
         public ClientStatusMap()
         {
             // Primary Key
-            this.HasKey(t => t.ClientStatusId);
+            HasKey(t => t.ClientStatusId);
 
             // Properties
-            this.Property(t => t.Name)
+            Property(t => t.Name)
                 .IsRequired()
                 .HasMaxLength(50);
 
-            this.Property(t => t.Description)
+            Property(t => t.Description)
                 .HasMaxLength(200);
 
             // Table & Column Mappings
-            this.ToTable("ClientStatus", "Client");
-            this.Property(t => t.ClientStatusId).HasColumnName("ClientStatusID");
-            this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.Description).HasColumnName("Description");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("ClientStatus", "Client");
+            Property(t => t.ClientStatusId).HasColumnName("ClientStatusID");
+            Property(t => t.Name).HasColumnName("Name");
+            Property(t => t.Description).HasColumnName("Description");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
         }
     }
 }

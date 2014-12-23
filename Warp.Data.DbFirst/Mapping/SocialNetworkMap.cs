@@ -8,20 +8,20 @@ namespace Warp.Data.DbFirst.Mapping
         public SocialNetworkMap()
         {
             // Primary Key
-            this.HasKey(t => t.SocialNetworkId);
+            HasKey(t => t.SocialNetworkId);
 
             // Properties
-            this.Property(t => t.Name)
+            Property(t => t.Name)
                 .IsRequired()
                 .HasMaxLength(50);
 
             // Table & Column Mappings
-            this.ToTable("SocialNetwork", "Social");
-            this.Property(t => t.SocialNetworkId).HasColumnName("SocialNetworkID");
-            this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.Active).HasColumnName("Active");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            ToTable("SocialNetwork", "Social");
+            Property(t => t.SocialNetworkId).HasColumnName("SocialNetworkID");
+            Property(t => t.Name).HasColumnName("Name");
+            Property(t => t.Active).HasColumnName("Active");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
         }
     }
 }

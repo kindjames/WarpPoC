@@ -1,12 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Warp.Core.Data;
 using Warp.Core.Enum;
 
 namespace Warp.Data.Entities
 {
     public class Brand : EntityBase
     {
-        public int BrandId { get; set; }
-        
         [Required]
         public string Name { get; set; }
 

@@ -9,26 +9,26 @@ namespace Warp.Data.DbFirst.Mapping
         public MenuMap()
         {
             // Primary Key
-            this.HasKey(t => t.MenuId);
+            HasKey(t => t.MenuId);
 
             // Properties
-            this.Property(t => t.MenuId)
+            Property(t => t.MenuId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            this.Property(t => t.Name)
+            Property(t => t.Name)
                 .IsRequired()
                 .HasMaxLength(50);
 
             // Table & Column Mappings
-            this.ToTable("Menu");
-            this.Property(t => t.MenuId).HasColumnName("MenuID");
-            this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.AddedByAdminId).HasColumnName("AddedByAdminID");
-            this.Property(t => t.DateValidFrom).HasColumnName("DateValidFrom");
-            this.Property(t => t.DateValidTo).HasColumnName("DateValidTo");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("Menu");
+            Property(t => t.MenuId).HasColumnName("MenuID");
+            Property(t => t.Name).HasColumnName("Name");
+            Property(t => t.AddedByAdminId).HasColumnName("AddedByAdminID");
+            Property(t => t.DateValidFrom).HasColumnName("DateValidFrom");
+            Property(t => t.DateValidTo).HasColumnName("DateValidTo");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
         }
     }
 }

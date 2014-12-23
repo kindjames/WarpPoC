@@ -8,20 +8,20 @@ namespace Warp.Data.DbFirst.Mapping
         public CustomCalendarDateMap()
         {
             // Primary Key
-            this.HasKey(t => t.CustomCalendarDateId);
+            HasKey(t => t.CustomCalendarDateId);
 
             // Properties
             // Table & Column Mappings
-            this.ToTable("CustomCalendarDate", "Subscriptions");
-            this.Property(t => t.CustomCalendarDateId).HasColumnName("CustomCalendarDateId");
-            this.Property(t => t.CustomCalendarId).HasColumnName("CustomCalendarId");
-            this.Property(t => t.Date).HasColumnName("Date");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("CustomCalendarDate", "Subscriptions");
+            Property(t => t.CustomCalendarDateId).HasColumnName("CustomCalendarDateId");
+            Property(t => t.CustomCalendarId).HasColumnName("CustomCalendarId");
+            Property(t => t.Date).HasColumnName("Date");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.CustomCalendar)
+            HasRequired(t => t.CustomCalendar)
                 .WithMany(t => t.CustomCalendarDates)
                 .HasForeignKey(d => d.CustomCalendarId);
 

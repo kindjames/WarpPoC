@@ -9,39 +9,39 @@ namespace Warp.Data.DbFirst.Mapping
         public CustomerMap()
         {
             // Primary Key
-            this.HasKey(t => t.CustomerId);
+            HasKey(t => t.CustomerId);
 
             // Properties
-            this.Property(t => t.CustomerId)
+            Property(t => t.CustomerId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            this.Property(t => t.Name)
+            Property(t => t.Name)
                 .IsRequired()
                 .HasMaxLength(200);
 
-            this.Property(t => t.UrlName)
+            Property(t => t.UrlName)
                 .IsRequired()
                 .HasMaxLength(100);
 
-            this.Property(t => t.DisplayName)
+            Property(t => t.DisplayName)
                 .IsRequired()
                 .HasMaxLength(100);
 
-            this.Property(t => t.CustomerCode)
+            Property(t => t.CustomerCode)
                 .IsRequired()
                 .HasMaxLength(25);
 
             // Table & Column Mappings
-            this.ToTable("Customer");
-            this.Property(t => t.CustomerId).HasColumnName("CustomerID");
-            this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.UrlName).HasColumnName("UrlName");
-            this.Property(t => t.DisplayName).HasColumnName("DisplayName");
-            this.Property(t => t.CustomerCode).HasColumnName("CustomerCode");
-            this.Property(t => t.DefaultLanguageId).HasColumnName("DefaultLanguageID");
-            this.Property(t => t.Active).HasColumnName("Active");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            ToTable("Customer");
+            Property(t => t.CustomerId).HasColumnName("CustomerID");
+            Property(t => t.Name).HasColumnName("Name");
+            Property(t => t.UrlName).HasColumnName("UrlName");
+            Property(t => t.DisplayName).HasColumnName("DisplayName");
+            Property(t => t.CustomerCode).HasColumnName("CustomerCode");
+            Property(t => t.DefaultLanguageId).HasColumnName("DefaultLanguageID");
+            Property(t => t.Active).HasColumnName("Active");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
         }
     }
 }

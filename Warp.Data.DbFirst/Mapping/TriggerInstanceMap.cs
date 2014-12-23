@@ -8,25 +8,25 @@ namespace Warp.Data.DbFirst.Mapping
         public TriggerInstanceMap()
         {
             // Primary Key
-            this.HasKey(t => t.TriggerInstanceId);
+            HasKey(t => t.TriggerInstanceId);
 
             // Properties
-            this.Property(t => t.Notes)
+            Property(t => t.Notes)
                 .HasMaxLength(600);
 
             // Table & Column Mappings
-            this.ToTable("TriggerInstance", "Subscriptions");
-            this.Property(t => t.TriggerInstanceId).HasColumnName("TriggerInstanceId");
-            this.Property(t => t.TriggerId).HasColumnName("TriggerId");
-            this.Property(t => t.Notes).HasColumnName("Notes");
-            this.Property(t => t.DateProcessStarted).HasColumnName("DateProcessStarted");
-            this.Property(t => t.DateProcessEnded).HasColumnName("DateProcessEnded");
-            this.Property(t => t.DateTriggered).HasColumnName("DateTriggered");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.Manual).HasColumnName("Manual");
-            this.Property(t => t.ResendAll).HasColumnName("ResendAll");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("TriggerInstance", "Subscriptions");
+            Property(t => t.TriggerInstanceId).HasColumnName("TriggerInstanceId");
+            Property(t => t.TriggerId).HasColumnName("TriggerId");
+            Property(t => t.Notes).HasColumnName("Notes");
+            Property(t => t.DateProcessStarted).HasColumnName("DateProcessStarted");
+            Property(t => t.DateProcessEnded).HasColumnName("DateProcessEnded");
+            Property(t => t.DateTriggered).HasColumnName("DateTriggered");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.Manual).HasColumnName("Manual");
+            Property(t => t.ResendAll).HasColumnName("ResendAll");
+            Property(t => t.Active).HasColumnName("Active");
         }
     }
 }

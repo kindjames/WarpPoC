@@ -9,23 +9,23 @@ namespace Warp.Data.DbFirst.Mapping
         public StaffFeatureMap()
         {
             // Primary Key
-            this.HasKey(t => t.StaffFeatureId);
+            HasKey(t => t.StaffFeatureId);
 
             // Properties
-            this.Property(t => t.StaffFeatureId)
+            Property(t => t.StaffFeatureId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            this.Property(t => t.Name)
+            Property(t => t.Name)
                 .IsRequired()
                 .HasMaxLength(50);
 
             // Table & Column Mappings
-            this.ToTable("StaffFeature");
-            this.Property(t => t.StaffFeatureId).HasColumnName("StaffFeatureID");
-            this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.Active).HasColumnName("Active");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            ToTable("StaffFeature");
+            Property(t => t.StaffFeatureId).HasColumnName("StaffFeatureID");
+            Property(t => t.Name).HasColumnName("Name");
+            Property(t => t.Active).HasColumnName("Active");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
         }
     }
 }

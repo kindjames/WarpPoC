@@ -8,27 +8,27 @@ namespace Warp.Data.DbFirst.Mapping
         public ErrorMap()
         {
             // Primary Key
-            this.HasKey(t => t.ErrorId);
+            HasKey(t => t.ErrorId);
 
             // Properties
-            this.Property(t => t.Url)
+            Property(t => t.Url)
                 .HasMaxLength(400);
 
-            this.Property(t => t.Exception)
+            Property(t => t.Exception)
                 .HasMaxLength(2000);
 
             // Table & Column Mappings
-            this.ToTable("Error");
-            this.Property(t => t.ErrorId).HasColumnName("ErrorId");
-            this.Property(t => t.CauseBy).HasColumnName("CauseBy");
-            this.Property(t => t.Url).HasColumnName("Url");
-            this.Property(t => t.Exception).HasColumnName("Exception");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("Error");
+            Property(t => t.ErrorId).HasColumnName("ErrorId");
+            Property(t => t.CauseBy).HasColumnName("CauseBy");
+            Property(t => t.Url).HasColumnName("Url");
+            Property(t => t.Exception).HasColumnName("Exception");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasOptional(t => t.User)
+            HasOptional(t => t.User)
                 .WithMany(t => t.Errors)
                 .HasForeignKey(d => d.CauseBy);
 

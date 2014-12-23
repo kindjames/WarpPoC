@@ -8,27 +8,27 @@ namespace Warp.Data.DbFirst.Mapping
         public PersonAreaMap()
         {
             // Primary Key
-            this.HasKey(t => t.PersonAreaId);
+            HasKey(t => t.PersonAreaId);
 
             // Properties
             // Table & Column Mappings
-            this.ToTable("PersonArea", "Client");
-            this.Property(t => t.PersonAreaId).HasColumnName("PersonAreaID");
-            this.Property(t => t.PersonId).HasColumnName("PersonID");
-            this.Property(t => t.AreaId).HasColumnName("AreaID");
-            this.Property(t => t.PermissionTypeId).HasColumnName("PermissionTypeID");
-            this.Property(t => t.Active).HasColumnName("Active");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            ToTable("PersonArea", "Client");
+            Property(t => t.PersonAreaId).HasColumnName("PersonAreaID");
+            Property(t => t.PersonId).HasColumnName("PersonID");
+            Property(t => t.AreaId).HasColumnName("AreaID");
+            Property(t => t.PermissionTypeId).HasColumnName("PermissionTypeID");
+            Property(t => t.Active).HasColumnName("Active");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
 
             // Relationships
-            this.HasRequired(t => t.Area)
+            HasRequired(t => t.Area)
                 .WithMany(t => t.PersonAreas)
                 .HasForeignKey(d => d.AreaId);
-            this.HasOptional(t => t.PermissionType)
+            HasOptional(t => t.PermissionType)
                 .WithMany(t => t.PersonAreas)
                 .HasForeignKey(d => d.PermissionTypeId);
-            this.HasRequired(t => t.Person)
+            HasRequired(t => t.Person)
                 .WithMany(t => t.PersonAreas)
                 .HasForeignKey(d => d.PersonId);
 

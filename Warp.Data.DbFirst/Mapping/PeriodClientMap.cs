@@ -9,26 +9,26 @@ namespace Warp.Data.DbFirst.Mapping
         public PeriodClientMap()
         {
             // Primary Key
-            this.HasKey(t => t.PeriodClientId);
+            HasKey(t => t.PeriodClientId);
 
             // Properties
-            this.Property(t => t.PeriodClientId)
+            Property(t => t.PeriodClientId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
             // Table & Column Mappings
-            this.ToTable("PeriodClient");
-            this.Property(t => t.PeriodClientId).HasColumnName("PeriodClientID");
-            this.Property(t => t.PeriodId).HasColumnName("PeriodID");
-            this.Property(t => t.ClientId).HasColumnName("ClientID");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("PeriodClient");
+            Property(t => t.PeriodClientId).HasColumnName("PeriodClientID");
+            Property(t => t.PeriodId).HasColumnName("PeriodID");
+            Property(t => t.ClientId).HasColumnName("ClientID");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.Client)
+            HasRequired(t => t.Client)
                 .WithMany(t => t.PeriodClients)
                 .HasForeignKey(d => d.ClientId);
-            this.HasRequired(t => t.Period)
+            HasRequired(t => t.Period)
                 .WithMany(t => t.PeriodClients)
                 .HasForeignKey(d => d.PeriodId);
 

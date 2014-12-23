@@ -8,30 +8,30 @@ namespace Warp.Data.DbFirst.Mapping
         public ReportParameterValueMap()
         {
             // Primary Key
-            this.HasKey(t => t.ReportParameterValueId);
+            HasKey(t => t.ReportParameterValueId);
 
             // Properties
-            this.Property(t => t.ParameterName)
+            Property(t => t.ParameterName)
                 .IsRequired()
                 .HasMaxLength(50);
 
             // Table & Column Mappings
-            this.ToTable("ReportParameterValue", "Reporting");
-            this.Property(t => t.ReportParameterValueId).HasColumnName("ReportParameterValueId");
-            this.Property(t => t.ReportId).HasColumnName("ReportId");
-            this.Property(t => t.ParameterName).HasColumnName("ParameterName");
-            this.Property(t => t.ReportParameterTypeId).HasColumnName("ReportParameterTypeId");
-            this.Property(t => t.UseDefaultDynamicValue).HasColumnName("UseDefaultDynamicValue");
-            this.Property(t => t.Hidden).HasColumnName("Hidden");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("ReportParameterValue", "Reporting");
+            Property(t => t.ReportParameterValueId).HasColumnName("ReportParameterValueId");
+            Property(t => t.ReportId).HasColumnName("ReportId");
+            Property(t => t.ParameterName).HasColumnName("ParameterName");
+            Property(t => t.ReportParameterTypeId).HasColumnName("ReportParameterTypeId");
+            Property(t => t.UseDefaultDynamicValue).HasColumnName("UseDefaultDynamicValue");
+            Property(t => t.Hidden).HasColumnName("Hidden");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.Report)
+            HasRequired(t => t.Report)
                 .WithMany(t => t.ReportParameterValues)
                 .HasForeignKey(d => d.ReportId);
-            this.HasOptional(t => t.ReportParameterType)
+            HasOptional(t => t.ReportParameterType)
                 .WithMany(t => t.ReportParameterValues)
                 .HasForeignKey(d => d.ReportParameterTypeId);
 

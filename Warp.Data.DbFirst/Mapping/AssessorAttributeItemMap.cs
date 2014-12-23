@@ -9,26 +9,26 @@ namespace Warp.Data.DbFirst.Mapping
         public AssessorAttributeItemMap()
         {
             // Primary Key
-            this.HasKey(t => t.AssessorAttributeItemId);
+            HasKey(t => t.AssessorAttributeItemId);
 
             // Properties
-            this.Property(t => t.AssessorAttributeItemId)
+            Property(t => t.AssessorAttributeItemId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            this.Property(t => t.Name)
+            Property(t => t.Name)
                 .IsRequired()
                 .HasMaxLength(50);
 
             // Table & Column Mappings
-            this.ToTable("AssessorAttributeItem");
-            this.Property(t => t.AssessorAttributeItemId).HasColumnName("AssessorAttributeItemID");
-            this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.MultipleSelection).HasColumnName("MultipleSelection");
-            this.Property(t => t.ForecRequirement).HasColumnName("ForecRequirement");
-            this.Property(t => t.Display).HasColumnName("Display");
-            this.Property(t => t.Active).HasColumnName("Active");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            ToTable("AssessorAttributeItem");
+            Property(t => t.AssessorAttributeItemId).HasColumnName("AssessorAttributeItemID");
+            Property(t => t.Name).HasColumnName("Name");
+            Property(t => t.MultipleSelection).HasColumnName("MultipleSelection");
+            Property(t => t.ForecRequirement).HasColumnName("ForecRequirement");
+            Property(t => t.Display).HasColumnName("Display");
+            Property(t => t.Active).HasColumnName("Active");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
         }
     }
 }

@@ -15,7 +15,7 @@ namespace Warp.Services.Mappings.Brand
                 AccountManagerAdminId = 0,
                 AccountManagerAdminName = "",
                 AssessorBanDays = 69,
-                BrandId = source.BrandId,
+                BrandId = source.Id,
                 BrandName = source.Name,
                 BrandStatusName = "",
                 IndustrySectorName = "",

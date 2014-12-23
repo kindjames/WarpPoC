@@ -8,31 +8,31 @@ namespace Warp.Data.DbFirst.Mapping
         public ContactAddressClientMap()
         {
             // Primary Key
-            this.HasKey(t => t.ContactAddressClientId);
+            HasKey(t => t.ContactAddressClientId);
 
             // Properties
             // Table & Column Mappings
-            this.ToTable("ContactAddressClient", "Client");
-            this.Property(t => t.ContactAddressClientId).HasColumnName("ContactAddressClientID");
-            this.Property(t => t.ContactAddressId).HasColumnName("ContactAddressID");
-            this.Property(t => t.ClientId).HasColumnName("ClientID");
-            this.Property(t => t.ContactAddressTypeId).HasColumnName("ContactAddressTypeID");
-            this.Property(t => t.DateValidFrom).HasColumnName("DateValidFrom");
-            this.Property(t => t.DateValidTo).HasColumnName("DateValidTo");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("ContactAddressClient", "Client");
+            Property(t => t.ContactAddressClientId).HasColumnName("ContactAddressClientID");
+            Property(t => t.ContactAddressId).HasColumnName("ContactAddressID");
+            Property(t => t.ClientId).HasColumnName("ClientID");
+            Property(t => t.ContactAddressTypeId).HasColumnName("ContactAddressTypeID");
+            Property(t => t.DateValidFrom).HasColumnName("DateValidFrom");
+            Property(t => t.DateValidTo).HasColumnName("DateValidTo");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.Client)
+            HasRequired(t => t.Client)
                 .WithMany(t => t.ContactAddressClients)
                 .HasForeignKey(d => d.ClientId);
 
-            this.HasRequired(t => t.ContactAddress)
+            HasRequired(t => t.ContactAddress)
                 .WithMany(t => t.ContactAddressClients)
                 .HasForeignKey(d => d.ContactAddressId);
 
-            this.HasRequired(t => t.ContactAddressType)
+            HasRequired(t => t.ContactAddressType)
                 .WithMany(t => t.ContactAddressClients)
                 .HasForeignKey(d => d.ContactAddressTypeId);
         }

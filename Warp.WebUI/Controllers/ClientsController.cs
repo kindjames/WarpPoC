@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System.Security.Claims;
+using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using Warp.Core.Authentication;
 using Warp.Core.Infrastructure.Mapping;
 using Warp.Core.Services;
@@ -54,7 +56,8 @@ namespace Warp.WebUI.Controllers
             {
                 var dto = _objectMapper.Map<CreateClientModel, SaveClientDto>(model);
 
-                dto.CustomerId = User.Identity.GetOrThrowClaimValueFor<int>(ApplicationClaimTypes.CustomerId);
+                dto.Customer = User.Identity.GetOrThrowClaimValueFor<int>(ApplicationClaimTypes.CustomerId);
+                dto.AccountManager = User.Identity.GetOrThrowClaimValueFor<int>(ClaimTypes.NameIdentifier);
 
                 _clientService.SaveClient(dto);
 

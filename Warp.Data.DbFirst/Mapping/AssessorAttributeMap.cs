@@ -9,30 +9,30 @@ namespace Warp.Data.DbFirst.Mapping
         public AssessorAttributeMap()
         {
             // Primary Key
-            this.HasKey(t => t.AssessorAttributeId);
+            HasKey(t => t.AssessorAttributeId);
 
             // Properties
-            this.Property(t => t.AssessorAttributeId)
+            Property(t => t.AssessorAttributeId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
             // Table & Column Mappings
-            this.ToTable("AssessorAttribute");
-            this.Property(t => t.AssessorAttributeId).HasColumnName("AssessorAttributeID");
-            this.Property(t => t.AssessorId).HasColumnName("AssessorID");
-            this.Property(t => t.AssessorAttributeItemId).HasColumnName("AssessorAttributeItemID");
-            this.Property(t => t.AssessorAttributeOptionId).HasColumnName("AssessorAttributeOptionID");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("AssessorAttribute");
+            Property(t => t.AssessorAttributeId).HasColumnName("AssessorAttributeID");
+            Property(t => t.AssessorId).HasColumnName("AssessorID");
+            Property(t => t.AssessorAttributeItemId).HasColumnName("AssessorAttributeItemID");
+            Property(t => t.AssessorAttributeOptionId).HasColumnName("AssessorAttributeOptionID");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.Assessor)
+            HasRequired(t => t.Assessor)
                 .WithMany(t => t.AssessorAttributes)
                 .HasForeignKey(d => d.AssessorId);
-            this.HasRequired(t => t.AssessorAttributeItem)
+            HasRequired(t => t.AssessorAttributeItem)
                 .WithMany(t => t.AssessorAttributes)
                 .HasForeignKey(d => d.AssessorAttributeItemId);
-            this.HasRequired(t => t.AssessorAttributeOption)
+            HasRequired(t => t.AssessorAttributeOption)
                 .WithMany(t => t.AssessorAttributes)
                 .HasForeignKey(d => d.AssessorAttributeOptionId);
 

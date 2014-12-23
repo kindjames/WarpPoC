@@ -207,7 +207,6 @@
     <Compile Include="App_Start\Config.Routes.cs" />
     <Compile Include="App_Start\Config.Bundles.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
-    <Compile Include="Mappings\Clients\ClientDtoToClientViewModelMapping.cs" />
     <Compile Include="Models\Clients\ClientModel.cs" />
     <Compile Include="Models\Clients\ClientSearchModel.cs" />
     <Compile Include="Models\Clients\ClientListViewModel.cs" />
@@ -216,7 +215,6 @@
     <Compile Include="Controllers\TextResourceController.cs" />
     <Compile Include="Infrastructure\PopulateTextResourcesOnModelAttribute.cs" />
     <Compile Include="Infrastructure\RequiredRolesAttribute.cs" />
-    <Compile Include="Mappings\Brands\BrandSummaryListDtoToBrandSummaryListViewModelMapping.cs" />
     <Compile Include="Models\Account\RegisterViewModel.cs" />
     <Compile Include="Models\Authentication\LoginViewModel.cs" />
     <Compile Include="Models\Clients\SaveClientModel.cs" />
@@ -259,6 +257,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Styles\Shared\" />
+    <Folder Include="Mappings\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Warp.Core\Core.csproj">

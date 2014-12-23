@@ -23,7 +23,7 @@ namespace Warp.Data.Queries.Users
         public int Execute(GetDefaultLanguageForUserQuery query)
         {
             return _dbContext.Users
-                .Where(u => u.UserId == query.UserId)
+                .Where(u => u.Id == query.UserId)
                 .Select(u => u.DefaultLanguageId)
                 .SingleOrDefault();
         }

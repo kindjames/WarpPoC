@@ -8,20 +8,20 @@ namespace Warp.Data.DbFirst.Mapping
         public AuditActionMap()
         {
             // Primary Key
-            this.HasKey(t => t.AuditActionId);
+            HasKey(t => t.AuditActionId);
 
             // Properties
-            this.Property(t => t.ActionName)
+            Property(t => t.ActionName)
                 .IsRequired()
                 .HasMaxLength(50);
 
             // Table & Column Mappings
-            this.ToTable("AuditAction", "Auditing");
-            this.Property(t => t.AuditActionId).HasColumnName("AuditActionID");
-            this.Property(t => t.ActionName).HasColumnName("ActionName");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("AuditAction", "Auditing");
+            Property(t => t.AuditActionId).HasColumnName("AuditActionID");
+            Property(t => t.ActionName).HasColumnName("ActionName");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
         }
     }
 }

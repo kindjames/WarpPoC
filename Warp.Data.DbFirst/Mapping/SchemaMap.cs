@@ -9,15 +9,15 @@ namespace Warp.Data.DbFirst.Mapping
         public SchemaMap()
         {
             // Primary Key
-            this.HasKey(t => t.SchemaVersion);
+            HasKey(t => t.SchemaVersion);
 
             // Properties
-            this.Property(t => t.SchemaVersion)
+            Property(t => t.SchemaVersion)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
             // Table & Column Mappings
-            this.ToTable("Schema", "SignalR");
-            this.Property(t => t.SchemaVersion).HasColumnName("SchemaVersion");
+            ToTable("Schema", "SignalR");
+            Property(t => t.SchemaVersion).HasColumnName("SchemaVersion");
         }
     }
 }

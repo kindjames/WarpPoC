@@ -9,23 +9,23 @@ namespace Warp.Data.DbFirst.Mapping
         public GroupMap()
         {
             // Primary Key
-            this.HasKey(t => t.GroupId);
+            HasKey(t => t.GroupId);
 
             // Properties
-            this.Property(t => t.GroupId)
+            Property(t => t.GroupId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            this.Property(t => t.Name)
+            Property(t => t.Name)
                 .IsFixedLength()
                 .HasMaxLength(50);
 
             // Table & Column Mappings
-            this.ToTable("Group");
-            this.Property(t => t.GroupId).HasColumnName("GroupID");
-            this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("Group");
+            Property(t => t.GroupId).HasColumnName("GroupID");
+            Property(t => t.Name).HasColumnName("Name");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
         }
     }
 }

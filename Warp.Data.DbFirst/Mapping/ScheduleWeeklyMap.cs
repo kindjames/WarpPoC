@@ -8,20 +8,20 @@ namespace Warp.Data.DbFirst.Mapping
         public ScheduleWeeklyMap()
         {
             // Primary Key
-            this.HasKey(t => t.ScheduleWeeklyId);
+            HasKey(t => t.ScheduleWeeklyId);
 
             // Properties
             // Table & Column Mappings
-            this.ToTable("ScheduleWeekly", "Subscriptions");
-            this.Property(t => t.ScheduleWeeklyId).HasColumnName("ScheduleWeeklyId");
-            this.Property(t => t.ScheduleId).HasColumnName("ScheduleId");
-            this.Property(t => t.RecurEveryXWeeks).HasColumnName("RecurEveryXWeeks");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("ScheduleWeekly", "Subscriptions");
+            Property(t => t.ScheduleWeeklyId).HasColumnName("ScheduleWeeklyId");
+            Property(t => t.ScheduleId).HasColumnName("ScheduleId");
+            Property(t => t.RecurEveryXWeeks).HasColumnName("RecurEveryXWeeks");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasOptional(t => t.Schedule)
+            HasOptional(t => t.Schedule)
                 .WithMany(t => t.ScheduleWeeklies)
                 .HasForeignKey(d => d.ScheduleId);
 

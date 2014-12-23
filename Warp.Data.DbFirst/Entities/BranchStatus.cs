@@ -6,8 +6,8 @@ namespace Warp.Data.DbFirst.Entities
     {
         public BranchStatus()
         {
-            this.Branches = new List<Branch>();
-            this.BranchHistories = new List<BranchHistory>();
+            Branches = new List<Branch>();
+            BranchHistories = new List<BranchHistory>();
         }
 
         public int BranchStatusId { get; set; }

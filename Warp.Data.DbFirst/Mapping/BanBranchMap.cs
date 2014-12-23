@@ -9,28 +9,28 @@ namespace Warp.Data.DbFirst.Mapping
         public BanBranchMap()
         {
             // Primary Key
-            this.HasKey(t => t.BanBranchId);
+            HasKey(t => t.BanBranchId);
 
             // Properties
-            this.Property(t => t.BanBranchId)
+            Property(t => t.BanBranchId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
             // Table & Column Mappings
-            this.ToTable("BanBranch");
-            this.Property(t => t.BanBranchId).HasColumnName("BanBranchID");
-            this.Property(t => t.BranchId).HasColumnName("BranchID");
-            this.Property(t => t.AssessorId).HasColumnName("AssessorID");
-            this.Property(t => t.DateValidFrom).HasColumnName("DateValidFrom");
-            this.Property(t => t.DateValidTo).HasColumnName("DateValidTo");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("BanBranch");
+            Property(t => t.BanBranchId).HasColumnName("BanBranchID");
+            Property(t => t.BranchId).HasColumnName("BranchID");
+            Property(t => t.AssessorId).HasColumnName("AssessorID");
+            Property(t => t.DateValidFrom).HasColumnName("DateValidFrom");
+            Property(t => t.DateValidTo).HasColumnName("DateValidTo");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.Branch)
+            HasRequired(t => t.Branch)
                 .WithMany(t => t.BanBranches)
                 .HasForeignKey(d => d.BranchId);
-            this.HasRequired(t => t.Assessor)
+            HasRequired(t => t.Assessor)
                 .WithMany(t => t.BanBranches)
                 .HasForeignKey(d => d.AssessorId);
 

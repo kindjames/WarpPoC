@@ -9,20 +9,20 @@ namespace Warp.Data.DbFirst.Mapping
         public SimpleVisitTemplateBranchMap()
         {
             // Primary Key
-            this.HasKey(t => t.SimpleVisitTemplateBranchId);
+            HasKey(t => t.SimpleVisitTemplateBranchId);
 
             // Properties
-            this.Property(t => t.SimpleVisitTemplateBranchId)
+            Property(t => t.SimpleVisitTemplateBranchId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
             // Table & Column Mappings
-            this.ToTable("SimpleVisitTemplateBranch");
-            this.Property(t => t.SimpleVisitTemplateBranchId).HasColumnName("SimpleVisitTemplateBranchID");
-            this.Property(t => t.SimpleVisitTemplateId).HasColumnName("SimpleVisitTemplateID");
-            this.Property(t => t.BranchId).HasColumnName("BranchID");
-            this.Property(t => t.Active).HasColumnName("Active");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            ToTable("SimpleVisitTemplateBranch");
+            Property(t => t.SimpleVisitTemplateBranchId).HasColumnName("SimpleVisitTemplateBranchID");
+            Property(t => t.SimpleVisitTemplateId).HasColumnName("SimpleVisitTemplateID");
+            Property(t => t.BranchId).HasColumnName("BranchID");
+            Property(t => t.Active).HasColumnName("Active");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
         }
     }
 }

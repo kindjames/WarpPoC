@@ -9,32 +9,32 @@ namespace Warp.Data.DbFirst.Mapping
         public VisitStatusHistoryMap()
         {
             // Primary Key
-            this.HasKey(t => t.VisitStatusHistoryId);
+            HasKey(t => t.VisitStatusHistoryId);
 
             // Properties
-            this.Property(t => t.VisitStatusHistoryId)
+            Property(t => t.VisitStatusHistoryId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
             // Table & Column Mappings
-            this.ToTable("VisitStatusHistory");
-            this.Property(t => t.VisitStatusHistoryId).HasColumnName("VisitStatusHistoryID");
-            this.Property(t => t.VisitId).HasColumnName("VisitID");
-            this.Property(t => t.VisitStatusId).HasColumnName("VisitStatusID");
-            this.Property(t => t.AdminId).HasColumnName("AdminID");
-            this.Property(t => t.DateValidFrom).HasColumnName("DateValidFrom");
-            this.Property(t => t.DateValidTo).HasColumnName("DateValidTo");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("VisitStatusHistory");
+            Property(t => t.VisitStatusHistoryId).HasColumnName("VisitStatusHistoryID");
+            Property(t => t.VisitId).HasColumnName("VisitID");
+            Property(t => t.VisitStatusId).HasColumnName("VisitStatusID");
+            Property(t => t.AdminId).HasColumnName("AdminID");
+            Property(t => t.DateValidFrom).HasColumnName("DateValidFrom");
+            Property(t => t.DateValidTo).HasColumnName("DateValidTo");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.Visit)
+            HasRequired(t => t.Visit)
                 .WithMany(t => t.VisitStatusHistories)
                 .HasForeignKey(d => d.VisitId);
-            this.HasRequired(t => t.VisitStatus)
+            HasRequired(t => t.VisitStatus)
                 .WithMany(t => t.VisitStatusHistories)
                 .HasForeignKey(d => d.VisitStatusId);
-            this.HasRequired(t => t.VisitStatus1)
+            HasRequired(t => t.VisitStatus1)
                 .WithMany(t => t.VisitStatusHistories1)
                 .HasForeignKey(d => d.VisitStatusId);
 

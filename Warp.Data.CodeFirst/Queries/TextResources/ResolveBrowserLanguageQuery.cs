@@ -24,7 +24,7 @@ namespace Warp.Data.Queries.TextResources
         {
             return _dbContext.Languages
                 .Where(lang => lang.InvariantCulture == query.InvariantCulture)
-                .Select(i => i.LanguageId)
+                .Select(i => i.Id)
                 .SingleOrDefault();
         }
     }

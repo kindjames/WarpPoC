@@ -8,20 +8,20 @@ namespace Warp.Data.DbFirst.Mapping
         public StaffHairLengthMap()
         {
             // Primary Key
-            this.HasKey(t => t.StaffHairLengthId);
+            HasKey(t => t.StaffHairLengthId);
 
             // Properties
-            this.Property(t => t.Name)
+            Property(t => t.Name)
                 .IsRequired()
                 .HasMaxLength(50);
 
             // Table & Column Mappings
-            this.ToTable("StaffHairLength");
-            this.Property(t => t.StaffHairLengthId).HasColumnName("StaffHairLengthID");
-            this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.Active).HasColumnName("Active");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            ToTable("StaffHairLength");
+            Property(t => t.StaffHairLengthId).HasColumnName("StaffHairLengthID");
+            Property(t => t.Name).HasColumnName("Name");
+            Property(t => t.Active).HasColumnName("Active");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
         }
     }
 }

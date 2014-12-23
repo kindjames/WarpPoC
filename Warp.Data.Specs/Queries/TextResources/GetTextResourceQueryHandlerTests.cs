@@ -34,9 +34,9 @@ namespace Warp.Data.Specs.Queries.TextResources
                     {
                         new TextResource
                         {
-                            TextResourceId = 1,
-                            Language = new Language { LanguageId = 1 },
-                            TextResourceIdentifier = new TextResourceIdentifier { TextResourceIdentifierId = 12},
+                            Id = 1,
+                            Language = new Language { Id = 1 },
+                            TextResourceIdentifier = new TextResourceIdentifier { Id = 12},
                             ResourceString = "Welcome!"
                         }
                     });

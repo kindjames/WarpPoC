@@ -6,7 +6,7 @@ namespace Warp.Core.Services.Dtos.Client
 {
     public class ClientDto
     {
-        public int ClientId { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public ClientStatus Status { get; set; }
         public string Code { get; set; }

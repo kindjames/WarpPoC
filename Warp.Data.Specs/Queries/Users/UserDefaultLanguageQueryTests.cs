@@ -45,8 +45,8 @@ namespace Warp.Data.Specs.Queries.Users
                     .WhenToldTo(d => d.Users)
                     .Return(new InMemoryDbSet<User>(true)
                     {
-                        new User { DefaultLanguageId = 1, UserId = 5000},
-                        new User { DefaultLanguageId = 1, UserId = 25264},
+                        new User { DefaultLanguageId = 1, Id = 5000},
+                        new User { DefaultLanguageId = 1, Id = 25264}
                     });
             };
 

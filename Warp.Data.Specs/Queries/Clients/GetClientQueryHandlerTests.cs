@@ -21,9 +21,9 @@ namespace Warp.Data.Specs.Queries.Clients
                     .WhenToldTo(d => d.Clients)
                     .Return(new InMemoryDbSet<Client>(true)
                     {
-                        new Client {ClientId = ClientId},
-                        new Client {ClientId = 123},
-                        new Client {ClientId = 312},
+                        new Client {Id = ClientId},
+                        new Client {Id = 123},
+                        new Client {Id = 312}
                     });
 
             Because of = () => _result = Subject.Execute(new GetClientQuery { ClientId = ClientId });
@@ -31,7 +31,7 @@ namespace Warp.Data.Specs.Queries.Clients
             It should_return_a_valid_client = () =>
             {
                 _result.ShouldNotBeNull();
-                _result.ClientId.ShouldEqual(ClientId);
+                _result.Id.ShouldEqual(ClientId);
             };
         }
     }

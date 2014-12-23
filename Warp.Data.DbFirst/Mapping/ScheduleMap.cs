@@ -8,19 +8,19 @@ namespace Warp.Data.DbFirst.Mapping
         public ScheduleMap()
         {
             // Primary Key
-            this.HasKey(t => t.ScheduleId);
+            HasKey(t => t.ScheduleId);
 
             // Properties
             // Table & Column Mappings
-            this.ToTable("Schedule", "Subscriptions");
-            this.Property(t => t.ScheduleId).HasColumnName("ScheduleId");
-            this.Property(t => t.ScheduleTypeId).HasColumnName("ScheduleTypeId");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("Schedule", "Subscriptions");
+            Property(t => t.ScheduleId).HasColumnName("ScheduleId");
+            Property(t => t.ScheduleTypeId).HasColumnName("ScheduleTypeId");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.ScheduleType)
+            HasRequired(t => t.ScheduleType)
                 .WithMany(t => t.Schedules)
                 .HasForeignKey(d => d.ScheduleTypeId);
 

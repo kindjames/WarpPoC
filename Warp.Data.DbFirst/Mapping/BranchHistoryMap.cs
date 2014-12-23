@@ -8,42 +8,42 @@ namespace Warp.Data.DbFirst.Mapping
         public BranchHistoryMap()
         {
             // Primary Key
-            this.HasKey(t => t.BranchHistoryId);
+            HasKey(t => t.BranchHistoryId);
 
             // Properties
-            this.Property(t => t.Notes)
+            Property(t => t.Notes)
                 .IsRequired()
                 .HasMaxLength(200);
 
-            this.Property(t => t.Code)
+            Property(t => t.Code)
                 .IsRequired()
                 .HasMaxLength(50);
 
-            this.Property(t => t.Name)
+            Property(t => t.Name)
                 .IsRequired()
                 .HasMaxLength(200);
 
             // Table & Column Mappings
-            this.ToTable("BranchHistory", "Client");
-            this.Property(t => t.BranchHistoryId).HasColumnName("BranchHistoryID");
-            this.Property(t => t.BranchId).HasColumnName("BranchID");
-            this.Property(t => t.BranchStatusId).HasColumnName("BranchStatusID");
-            this.Property(t => t.DateValidFrom).HasColumnName("DateValidFrom");
-            this.Property(t => t.DateValidTo).HasColumnName("DateValidTo");
-            this.Property(t => t.AreaId).HasColumnName("AreaID");
-            this.Property(t => t.Notes).HasColumnName("Notes");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
-            this.Property(t => t.Code).HasColumnName("Code");
-            this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.EnteredByUserRoleId).HasColumnName("EnteredByUserRoleID");
+            ToTable("BranchHistory", "Client");
+            Property(t => t.BranchHistoryId).HasColumnName("BranchHistoryID");
+            Property(t => t.BranchId).HasColumnName("BranchID");
+            Property(t => t.BranchStatusId).HasColumnName("BranchStatusID");
+            Property(t => t.DateValidFrom).HasColumnName("DateValidFrom");
+            Property(t => t.DateValidTo).HasColumnName("DateValidTo");
+            Property(t => t.AreaId).HasColumnName("AreaID");
+            Property(t => t.Notes).HasColumnName("Notes");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
+            Property(t => t.Code).HasColumnName("Code");
+            Property(t => t.Name).HasColumnName("Name");
+            Property(t => t.EnteredByUserRoleId).HasColumnName("EnteredByUserRoleID");
 
             // Relationships
-            this.HasRequired(t => t.Branch)
+            HasRequired(t => t.Branch)
                 .WithMany(t => t.BranchHistories)
                 .HasForeignKey(d => d.BranchId);
-            this.HasRequired(t => t.BranchStatus)
+            HasRequired(t => t.BranchStatus)
                 .WithMany(t => t.BranchHistories)
                 .HasForeignKey(d => d.BranchStatusId);
 

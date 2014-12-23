@@ -63,7 +63,6 @@
     <Compile Include="Entities\ContactAddress.cs" />
     <Compile Include="Entities\ContactAddressType.cs" />
     <Compile Include="Entities\Customer.cs" />
-    <Compile Include="Entities\EntityBase.cs" />
     <Compile Include="Entities\IndustrySector.cs" />
     <Compile Include="Entities\RoleGroup.cs" />
     <Compile Include="Entities\Language.cs" />
@@ -73,17 +72,9 @@
     <Compile Include="Entities\User.cs" />
     <Compile Include="Exceptions\DataEntityNotFoundException.cs" />
     <Compile Include="Identity\ApplicationUserStore.cs" />
-    <Compile Include="Migrations\201412041722068_InitialCreate.cs" />
-    <Compile Include="Migrations\201412041722068_InitialCreate.Designer.cs">
-      <DependentUpon>201412041722068_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201412161058416_ClientStatusEnum.cs" />
-    <Compile Include="Migrations\201412161058416_ClientStatusEnum.Designer.cs">
-      <DependentUpon>201412161058416_ClientStatusEnum.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201412191118183_BrandStatusEnum.cs" />
-    <Compile Include="Migrations\201412191118183_BrandStatusEnum.Designer.cs">
-      <DependentUpon>201412191118183_BrandStatusEnum.cs</DependentUpon>
+    <Compile Include="Migrations\201412231427101_InitialCreate.cs" />
+    <Compile Include="Migrations\201412231427101_InitialCreate.Designer.cs">
+      <DependentUpon>201412231427101_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\DataSeed\DataFactoryResolver.cs" />
@@ -123,14 +114,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201412041722068_InitialCreate.resx">
-      <DependentUpon>201412041722068_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201412161058416_ClientStatusEnum.resx">
-      <DependentUpon>201412161058416_ClientStatusEnum.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201412191118183_BrandStatusEnum.resx">
-      <DependentUpon>201412191118183_BrandStatusEnum.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201412231427101_InitialCreate.resx">
+      <DependentUpon>201412231427101_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

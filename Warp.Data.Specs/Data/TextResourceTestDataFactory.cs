@@ -12,52 +12,52 @@ namespace Warp.Data.Specs.Data
             {
                 new TextResource
                 {
-                    TextResourceId = 1,
+                    Id = 1,
                     ResourceString = "Welcome!",
-                    TextResourceIdentifier = new TextResourceIdentifier {TextResourceIdentifierId = 1},
-                    Language = new Language {LanguageId = 1},
-                    Client = new Client {ClientId = 0},
+                    TextResourceIdentifier = new TextResourceIdentifier {Id = 1},
+                    Language = new Language {Id = 1},
+                    Client = new Client {Id = 0}
                 },
                 new TextResource
                 {
-                    TextResourceId = 1,
+                    Id = 1,
                     ResourceString = "Log In",
-                    TextResourceIdentifier = new TextResourceIdentifier {TextResourceIdentifierId = 1},
-                    Language = new Language {LanguageId = 1},
-                    Client = new Client {ClientId = 0},
+                    TextResourceIdentifier = new TextResourceIdentifier {Id = 1},
+                    Language = new Language {Id = 1},
+                    Client = new Client {Id = 0}
                 },
                 new TextResource
                 {
-                    TextResourceId = 1,
+                    Id = 1,
                     ResourceString = "Password",
-                    TextResourceIdentifier = new TextResourceIdentifier {TextResourceIdentifierId = 1},
-                    Language = new Language {LanguageId = 1},
-                    Client = new Client {ClientId = 0},
+                    TextResourceIdentifier = new TextResourceIdentifier {Id = 1},
+                    Language = new Language {Id = 1},
+                    Client = new Client {Id = 0}
                 },
                 new TextResource
                 {
-                    TextResourceId = 1,
+                    Id = 1,
                     ResourceString = "Username",
-                    TextResourceIdentifier = new TextResourceIdentifier {TextResourceIdentifierId = 1},
-                    Language = new Language {LanguageId = 1},
-                    Client = new Client {ClientId = 0},
+                    TextResourceIdentifier = new TextResourceIdentifier {Id = 1},
+                    Language = new Language {Id = 1},
+                    Client = new Client {Id = 0}
                 },
                 new TextResource
                 {
-                    TextResourceId = 1,
+                    Id = 1,
                     ResourceString = "Remember me for 2 weeks",
-                    TextResourceIdentifier = new TextResourceIdentifier {TextResourceIdentifierId = 1},
-                    Language = new Language {LanguageId = 1},
-                    Client = new Client {ClientId = 0},
+                    TextResourceIdentifier = new TextResourceIdentifier {Id = 1},
+                    Language = new Language {Id = 1},
+                    Client = new Client {Id = 0}
                 },
                 new TextResource
                 {
-                    TextResourceId = 1,
+                    Id = 1,
                     ResourceString = "E-mail or TMDC Id",
-                    TextResourceIdentifier = new TextResourceIdentifier {TextResourceIdentifierId = 1},
-                    Language = new Language {LanguageId = 1},
-                    Client = new Client {ClientId = 0},
-                },
+                    TextResourceIdentifier = new TextResourceIdentifier {Id = 1},
+                    Language = new Language {Id = 1},
+                    Client = new Client {Id = 0}
+                }
             };
         }
     }

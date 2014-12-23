@@ -9,38 +9,38 @@ namespace Warp.Data.DbFirst.Mapping
         public CriteriaOptionMap()
         {
             // Primary Key
-            this.HasKey(t => t.CriteriaOptionId);
+            HasKey(t => t.CriteriaOptionId);
 
             // Properties
-            this.Property(t => t.CriteriaOptionId)
+            Property(t => t.CriteriaOptionId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            this.Property(t => t.Name)
+            Property(t => t.Name)
                 .IsRequired()
                 .HasMaxLength(50);
 
-            this.Property(t => t.FieldAddress)
+            Property(t => t.FieldAddress)
                 .IsRequired()
                 .HasMaxLength(200);
 
-            this.Property(t => t.Id)
+            Property(t => t.Id)
                 .HasMaxLength(200);
 
-            this.Property(t => t.Description)
+            Property(t => t.Description)
                 .IsRequired()
                 .HasMaxLength(200);
 
             // Table & Column Mappings
-            this.ToTable("CriteriaOption");
-            this.Property(t => t.CriteriaOptionId).HasColumnName("CriteriaOptionID");
-            this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.FieldAddress).HasColumnName("FieldAddress");
-            this.Property(t => t.Id).HasColumnName("ID");
-            this.Property(t => t.Description).HasColumnName("Description");
-            this.Property(t => t.Search).HasColumnName("Search");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("CriteriaOption");
+            Property(t => t.CriteriaOptionId).HasColumnName("CriteriaOptionID");
+            Property(t => t.Name).HasColumnName("Name");
+            Property(t => t.FieldAddress).HasColumnName("FieldAddress");
+            Property(t => t.Id).HasColumnName("ID");
+            Property(t => t.Description).HasColumnName("Description");
+            Property(t => t.Search).HasColumnName("Search");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
         }
     }
 }

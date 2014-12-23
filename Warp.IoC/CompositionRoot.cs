@@ -35,6 +35,7 @@ namespace Warp.IoC
 
             // AutoMapper
             c.Register(typeof(IMappingEngine), () => Mapper.Engine);
+            c.Register(typeof(IConfigurationProvider), () => Mapper.Configuration);
 
             // IoC
             c.Register<IServiceLocator, ServiceLocator>();

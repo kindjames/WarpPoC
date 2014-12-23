@@ -9,40 +9,40 @@ namespace Warp.Data.DbFirst.Mapping
         public VisitDetailMap()
         {
             // Primary Key
-            this.HasKey(t => t.VisitDetailsId);
+            HasKey(t => t.VisitDetailsId);
 
             // Properties
-            this.Property(t => t.VisitDetailsId)
+            Property(t => t.VisitDetailsId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            this.Property(t => t.ReceiptNumber)
+            Property(t => t.ReceiptNumber)
                 .IsRequired()
                 .HasMaxLength(50);
 
             // Table & Column Mappings
-            this.ToTable("VisitDetails");
-            this.Property(t => t.VisitDetailsId).HasColumnName("VisitDetailsID");
-            this.Property(t => t.VisitId).HasColumnName("VisitID");
-            this.Property(t => t.DateOfActualVisit).HasColumnName("DateOfActualVisit");
-            this.Property(t => t.AdultGuests).HasColumnName("AdultGuests");
-            this.Property(t => t.ChildGuests).HasColumnName("ChildGuests");
-            this.Property(t => t.ChildGuestsNotInvolved).HasColumnName("ChildGuestsNotInvolved");
-            this.Property(t => t.ReceiptNumber).HasColumnName("ReceiptNumber");
-            this.Property(t => t.TradeLevelId).HasColumnName("TradeLevelID");
-            this.Property(t => t.SeatingLevel).HasColumnName("SeatingLevel");
-            this.Property(t => t.WeatherId).HasColumnName("WeatherID");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("VisitDetails");
+            Property(t => t.VisitDetailsId).HasColumnName("VisitDetailsID");
+            Property(t => t.VisitId).HasColumnName("VisitID");
+            Property(t => t.DateOfActualVisit).HasColumnName("DateOfActualVisit");
+            Property(t => t.AdultGuests).HasColumnName("AdultGuests");
+            Property(t => t.ChildGuests).HasColumnName("ChildGuests");
+            Property(t => t.ChildGuestsNotInvolved).HasColumnName("ChildGuestsNotInvolved");
+            Property(t => t.ReceiptNumber).HasColumnName("ReceiptNumber");
+            Property(t => t.TradeLevelId).HasColumnName("TradeLevelID");
+            Property(t => t.SeatingLevel).HasColumnName("SeatingLevel");
+            Property(t => t.WeatherId).HasColumnName("WeatherID");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.TradeLevel)
+            HasRequired(t => t.TradeLevel)
                 .WithMany(t => t.VisitDetails)
                 .HasForeignKey(d => d.TradeLevelId);
-            this.HasRequired(t => t.Visit)
+            HasRequired(t => t.Visit)
                 .WithMany(t => t.VisitDetails)
                 .HasForeignKey(d => d.VisitId);
-            this.HasRequired(t => t.Weather)
+            HasRequired(t => t.Weather)
                 .WithMany(t => t.VisitDetails)
                 .HasForeignKey(d => d.WeatherId);
 

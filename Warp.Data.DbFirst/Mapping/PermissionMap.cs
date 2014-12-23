@@ -8,24 +8,24 @@ namespace Warp.Data.DbFirst.Mapping
         public PermissionMap()
         {
             // Primary Key
-            this.HasKey(t => t.PermissionId);
+            HasKey(t => t.PermissionId);
 
             // Properties
-            this.Property(t => t.Name)
+            Property(t => t.Name)
                 .HasMaxLength(50);
 
-            this.Property(t => t.Description)
+            Property(t => t.Description)
                 .IsRequired()
                 .HasMaxLength(300);
 
             // Table & Column Mappings
-            this.ToTable("Permission", "Account");
-            this.Property(t => t.PermissionId).HasColumnName("PermissionID");
-            this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.Description).HasColumnName("Description");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("Permission", "Account");
+            Property(t => t.PermissionId).HasColumnName("PermissionID");
+            Property(t => t.Name).HasColumnName("Name");
+            Property(t => t.Description).HasColumnName("Description");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
         }
     }
 }

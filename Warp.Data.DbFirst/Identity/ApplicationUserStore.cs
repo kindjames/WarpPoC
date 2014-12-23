@@ -146,7 +146,7 @@ namespace Warp.Data.DbFirst.Identity
         public void Dispose()
         {
             Dispose(true);
-            GC.SuppressFinalize((object)this);
+            GC.SuppressFinalize(this);
         }
 
         private ApplicationUser ToApplicationUser(User user)
@@ -158,7 +158,7 @@ namespace Warp.Data.DbFirst.Identity
                 FirstName = user.Forename,
                 LastName = user.Surname,
                 UserName = user.UserName,
-                PasswordHash = user.PasswordHash,
+                PasswordHash = user.PasswordHash
             };
         }
 
@@ -171,7 +171,7 @@ namespace Warp.Data.DbFirst.Identity
                 Forename = appUser.FirstName,
                 Surname = appUser.LastName,
                 UserName = appUser.UserName,
-                PasswordHash = appUser.PasswordHash,
+                PasswordHash = appUser.PasswordHash
             };
         }
 

@@ -8,20 +8,20 @@ namespace Warp.Data.DbFirst.Mapping
         public ClientLogoMap()
         {
             // Primary Key
-            this.HasKey(t => t.ClientLogoId);
+            HasKey(t => t.ClientLogoId);
 
             // Properties
             // Table & Column Mappings
-            this.ToTable("ClientLogo", "Client");
-            this.Property(t => t.ClientLogoId).HasColumnName("ClientLogoID");
-            this.Property(t => t.ClientId).HasColumnName("ClientID");
-            this.Property(t => t.LogoId).HasColumnName("LogoID");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("ClientLogo", "Client");
+            Property(t => t.ClientLogoId).HasColumnName("ClientLogoID");
+            Property(t => t.ClientId).HasColumnName("ClientID");
+            Property(t => t.LogoId).HasColumnName("LogoID");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.Logo)
+            HasRequired(t => t.Logo)
                 .WithMany(t => t.ClientLogoes)
                 .HasForeignKey(d => d.LogoId);
 

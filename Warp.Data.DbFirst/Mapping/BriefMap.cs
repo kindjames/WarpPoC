@@ -9,23 +9,23 @@ namespace Warp.Data.DbFirst.Mapping
         public BriefMap()
         {
             // Primary Key
-            this.HasKey(t => t.BriefId);
+            HasKey(t => t.BriefId);
 
             // Properties
-            this.Property(t => t.BriefId)
+            Property(t => t.BriefId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            this.Property(t => t.Title)
+            Property(t => t.Title)
                 .IsRequired()
                 .HasMaxLength(50);
 
             // Table & Column Mappings
-            this.ToTable("Brief");
-            this.Property(t => t.BriefId).HasColumnName("BriefID");
-            this.Property(t => t.Title).HasColumnName("Title");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("Brief");
+            Property(t => t.BriefId).HasColumnName("BriefID");
+            Property(t => t.Title).HasColumnName("Title");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
         }
     }
 }

@@ -9,33 +9,33 @@ namespace Warp.Data.DbFirst.Mapping
         public ForumAssessorReplyMap()
         {
             // Primary Key
-            this.HasKey(t => t.ForumAssessorReplyId);
+            HasKey(t => t.ForumAssessorReplyId);
 
             // Properties
-            this.Property(t => t.ForumAssessorReplyId)
+            Property(t => t.ForumAssessorReplyId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            this.Property(t => t.ReplyText)
+            Property(t => t.ReplyText)
                 .IsRequired()
                 .HasMaxLength(1000);
 
             // Table & Column Mappings
-            this.ToTable("ForumAssessorReply");
-            this.Property(t => t.ForumAssessorReplyId).HasColumnName("ForumAssessorReplyID");
-            this.Property(t => t.ForumThreadId).HasColumnName("ForumThreadID");
-            this.Property(t => t.AssessorId).HasColumnName("AssessorID");
-            this.Property(t => t.ReplyText).HasColumnName("ReplyText");
-            this.Property(t => t.Display).HasColumnName("Display");
-            this.Property(t => t.Reported).HasColumnName("Reported");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("ForumAssessorReply");
+            Property(t => t.ForumAssessorReplyId).HasColumnName("ForumAssessorReplyID");
+            Property(t => t.ForumThreadId).HasColumnName("ForumThreadID");
+            Property(t => t.AssessorId).HasColumnName("AssessorID");
+            Property(t => t.ReplyText).HasColumnName("ReplyText");
+            Property(t => t.Display).HasColumnName("Display");
+            Property(t => t.Reported).HasColumnName("Reported");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.Assessor)
+            HasRequired(t => t.Assessor)
                 .WithMany(t => t.ForumAssessorReplies)
                 .HasForeignKey(d => d.AssessorId);
-            this.HasRequired(t => t.ForumThread)
+            HasRequired(t => t.ForumThread)
                 .WithMany(t => t.ForumAssessorReplies)
                 .HasForeignKey(d => d.ForumThreadId);
 

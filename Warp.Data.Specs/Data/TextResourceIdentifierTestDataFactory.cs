@@ -12,38 +12,38 @@ namespace Warp.Data.Specs.Data
             {
                 new TextResourceIdentifier
                 {
-                    TextResourceIdentifierId = 1,
+                    Id = 1,
                     TextResourceCode = "WelcomeText",
                     ClientOverridable = true
                 },
                 new TextResourceIdentifier
                 {
-                    TextResourceIdentifierId = 2,
+                    Id = 2,
                     TextResourceCode = "LoginText",
                     ClientOverridable = true
                 },
                 new TextResourceIdentifier
                 {
-                    TextResourceIdentifierId = 3,
+                    Id = 3,
                     TextResourceCode = "PasswordText",
                     ClientOverridable = true
                 },
                 new TextResourceIdentifier
                 {
-                    TextResourceIdentifierId = 4,
+                    Id = 4,
                     TextResourceCode = "UsernameText", 
                     ClientOverridable = true
                 },
 
                 new TextResourceIdentifier
                 {
-                    TextResourceIdentifierId = 5,
+                    Id = 5,
                     TextResourceCode = "RememberMeFor2WeeksText",
                     ClientOverridable = false
                 },
                 new TextResourceIdentifier
                 {
-                    TextResourceIdentifierId = 6,
+                    Id = 6,
                     TextResourceCode = "EmailOrTMDCIdText",
                     ClientOverridable = false
                 }

@@ -10,11 +10,11 @@ namespace Warp.Services.Mappings.Customer
         {
             return new CustomerDto
             {
-                CustomerId = source.CustomerId,
+                Id = source.Id,
                 CustomerCode = source.CustomerCode,
                 Name = source.Name,
                 DisplayName = source.DisplayName,
-                Uri = new Uri(source.UrlName),
+                Uri = new Uri(source.UrlName)
             };
         }
     }

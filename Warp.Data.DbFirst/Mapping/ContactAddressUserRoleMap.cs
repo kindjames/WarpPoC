@@ -8,26 +8,26 @@ namespace Warp.Data.DbFirst.Mapping
         public ContactAddressUserRoleMap()
         {
             // Primary Key
-            this.HasKey(t => t.ContactAddressUserRoleId);
+            HasKey(t => t.ContactAddressUserRoleId);
 
             // Properties
             // Table & Column Mappings
-            this.ToTable("ContactAddressUserRole", "Client");
-            this.Property(t => t.ContactAddressUserRoleId).HasColumnName("ContactAddressUserRoleID");
-            this.Property(t => t.ContactAddressId).HasColumnName("ContactAddressID");
-            this.Property(t => t.UserRoleId).HasColumnName("UserRoleID");
-            this.Property(t => t.ContactAddressTypeId).HasColumnName("ContactAddressTypeID");
-            this.Property(t => t.DateValidFrom).HasColumnName("DateValidFrom");
-            this.Property(t => t.DateValidTo).HasColumnName("DateValidTo");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("ContactAddressUserRole", "Client");
+            Property(t => t.ContactAddressUserRoleId).HasColumnName("ContactAddressUserRoleID");
+            Property(t => t.ContactAddressId).HasColumnName("ContactAddressID");
+            Property(t => t.UserRoleId).HasColumnName("UserRoleID");
+            Property(t => t.ContactAddressTypeId).HasColumnName("ContactAddressTypeID");
+            Property(t => t.DateValidFrom).HasColumnName("DateValidFrom");
+            Property(t => t.DateValidTo).HasColumnName("DateValidTo");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.ContactAddress)
+            HasRequired(t => t.ContactAddress)
                 .WithMany(t => t.ContactAddressUserRoles)
                 .HasForeignKey(d => d.ContactAddressId);
-            this.HasRequired(t => t.ContactAddressType)
+            HasRequired(t => t.ContactAddressType)
                 .WithMany(t => t.ContactAddressUserRoles)
                 .HasForeignKey(d => d.ContactAddressTypeId);
 

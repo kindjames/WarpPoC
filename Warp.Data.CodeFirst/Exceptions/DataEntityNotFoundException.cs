@@ -1,5 +1,5 @@
 ﻿using System;
-using Warp.Data.Entities;
+using Warp.Core.Data;
 
 namespace Warp.Data.Exceptions
 {

@@ -8,36 +8,36 @@ namespace Warp.Data.DbFirst.Mapping
         public SubscriptionMap()
         {
             // Primary Key
-            this.HasKey(t => t.SubscriptionId);
+            HasKey(t => t.SubscriptionId);
 
             // Properties
-            this.Property(t => t.Name)
+            Property(t => t.Name)
                 .IsRequired()
                 .HasMaxLength(75);
 
-            this.Property(t => t.Description)
+            Property(t => t.Description)
                 .HasMaxLength(300);
 
             // Table & Column Mappings
-            this.ToTable("Subscription", "Subscriptions");
-            this.Property(t => t.SubscriptionId).HasColumnName("SubscriptionId");
-            this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.Description).HasColumnName("Description");
-            this.Property(t => t.StartDate).HasColumnName("StartDate");
-            this.Property(t => t.EndDate).HasColumnName("EndDate");
-            this.Property(t => t.ClientId).HasColumnName("ClientId");
-            this.Property(t => t.Owner).HasColumnName("Owner");
-            this.Property(t => t.TriggerId).HasColumnName("TriggerId");
-            this.Property(t => t.SubscriptionStatusId).HasColumnName("SubscriptionStatusId");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("Subscription", "Subscriptions");
+            Property(t => t.SubscriptionId).HasColumnName("SubscriptionId");
+            Property(t => t.Name).HasColumnName("Name");
+            Property(t => t.Description).HasColumnName("Description");
+            Property(t => t.StartDate).HasColumnName("StartDate");
+            Property(t => t.EndDate).HasColumnName("EndDate");
+            Property(t => t.ClientId).HasColumnName("ClientId");
+            Property(t => t.Owner).HasColumnName("Owner");
+            Property(t => t.TriggerId).HasColumnName("TriggerId");
+            Property(t => t.SubscriptionStatusId).HasColumnName("SubscriptionStatusId");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasOptional(t => t.SubscriptionStatus)
+            HasOptional(t => t.SubscriptionStatus)
                 .WithMany(t => t.Subscriptions)
                 .HasForeignKey(d => d.SubscriptionStatusId);
-            this.HasOptional(t => t.Trigger)
+            HasOptional(t => t.Trigger)
                 .WithMany(t => t.Subscriptions)
                 .HasForeignKey(d => d.TriggerId);
 

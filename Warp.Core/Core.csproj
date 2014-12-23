@@ -55,6 +55,7 @@
     <Compile Include="Command\ICommand.cs" />
     <Compile Include="Command\ICommandDispatcher.cs" />
     <Compile Include="Command\ICommandHandler.cs" />
+    <Compile Include="Data\EntityBase.cs" />
     <Compile Include="Enum\BrandStatus.cs" />
     <Compile Include="Enum\ClientStatus.cs" />
     <Compile Include="Exceptions\ClientAlreadyExistsException.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Infrastructure\Models\TextResourceModelProvider.cs" />
     <Compile Include="Infrastructure\Validation\DataAnnotationsValidator.cs" />
     <Compile Include="Services\Dtos\Client\ClientDto.cs" />
+    <Compile Include="Services\Dtos\ContactAddressAssignedDto - Copy.cs" />
     <Compile Include="Services\Dtos\Users\UserDto.cs" />
     <Compile Include="Services\Dtos\Customer\CustomerDto.cs" />
     <Compile Include="Services\ICustomerService.cs" />
@@ -99,7 +101,6 @@
     <Compile Include="Services\Dtos\Brand\BrandSummaryDto.cs" />
     <Compile Include="Services\Dtos\Brand\BrandSummaryListDto.cs" />
     <Compile Include="Services\Dtos\Client\SaveClientDto.cs" />
-    <Compile Include="Services\Dtos\ContactAddressAssignedDto.cs" />
     <Compile Include="Services\IClientService.cs" />
     <Compile Include="Services\IBrandService.cs" />
     <Compile Include="Infrastructure\Mapping\IObjectMapper.cs" />
