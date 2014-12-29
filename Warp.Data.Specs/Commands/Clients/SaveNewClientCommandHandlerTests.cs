@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.Entity;
+using System.Linq;
 using AutoMapper;
 using Machine.Fakes;
 using Machine.Specifications;
@@ -7,7 +8,6 @@ using Warp.Core.Enum;
 using Warp.Core.Exceptions;
 using Warp.Core.Infrastructure.Configuration;
 using Warp.Core.Infrastructure.IoC;
-using Warp.Core.Infrastructure.Mapping;
 using Warp.Core.Infrastructure.Validation;
 using Warp.Core.Query;
 using Warp.Core.Util;
@@ -15,7 +15,6 @@ using Warp.Data.Commands.Clients;
 using Warp.Data.Context;
 using Warp.Data.Entities;
 using Warp.Data.Queries.Clients;
-using IObjectMapper = Warp.Core.Infrastructure.Mapping.IObjectMapper;
 using MoqIt = Moq.It;
 
 namespace Warp.Data.Specs.Commands.Clients
@@ -58,7 +57,7 @@ namespace Warp.Data.Specs.Commands.Clients
                     .WhenToldTo(d => d.Execute(MoqIt.IsAny<CheckClientExistsForCodeQuery>()))
                     .Return(false);
 
-                The<IObjectMapper>()
+                The<IMappingEngine>()
                     .WhenToldTo(m => m.Map<SaveNewClientCommand, Client>(MoqIt.IsAny<SaveNewClientCommand>()))
                     .Return(new Client());
 
@@ -81,8 +80,18 @@ namespace Warp.Data.Specs.Commands.Clients
         {
             Establish that = () =>
             {
+                command = new SaveNewClientCommand
+                {
+                    Code = Guid.NewGuid().ToString(),
+                    Name = Guid.NewGuid().ToString(),
+                    Status = ClientStatus.Test,
+                    AccountManagerId = 1,
+                    CustomerId = 1,
+                };
+
                 Mapper.CreateMap<SaveNewClientCommand, Client>();
-                Configure(r => r.For<IObjectMapper>().Use<ObjectMapper>());
+
+                Configure(Mapper.Engine);
                 Configure(r => r.For<IValidator>().Use<DataAnnotationsValidator>());
                 Configure(r => r.For<IQueryDispatcher>().Use<QueryDispatcher>());
                 Configure(r => r.For<IDateTimeProvider>().Use<DateTimeProvider>());
@@ -90,24 +99,19 @@ namespace Warp.Data.Specs.Commands.Clients
                 Configure(r => r.For<IApplicationConfig>().Use<ApplicationConfig>());
             
                 The<IServiceLocator>()
-                    .WhenToldTo(s => s.TryResolve<IMappingConfiguration<SaveNewClientCommand, Client>>())
-                    .Return((IMappingConfiguration<SaveNewClientCommand, Client>)null);
-
-                The<IServiceLocator>()
                     .WhenToldTo(s => s.TryResolve(Param.IsAny<Type>()))
                     .Return(new CheckClientExistsForCodeQueryHandler(The<IDomainDbContext>()));
             };
 
-            Because of = () => Subject.Execute(new SaveNewClientCommand
-            {
-                Code = Guid.NewGuid().ToString(),
-                Name = Guid.NewGuid().ToString(),
-                Status = ClientStatus.Test,
-                AccountManagerId = 1,
-                CustomerId = 1,
-            });
+            Because of = () => Subject.Execute(command);
 
-            It should_add_new_client_to_the_client_repository = () => { };
+            It should_add_new_client_to_the_client_repository = () =>
+            {
+                var dbContext = new DomainDbContext(The<IApplicationConfig>(), The<IDateTimeProvider>());
+                dbContext.Clients.FirstOrDefault(c => c.Name == command.Name).ShouldNotBeNull();
+            };
+
+            static SaveNewClientCommand command;
         }
     }
 }

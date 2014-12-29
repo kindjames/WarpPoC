@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using AutoMapper;
 using Warp.Core.Command;
 using Warp.Core.Exceptions;
-using Warp.Core.Infrastructure.Mapping;
 using Warp.Core.Infrastructure.Validation;
 using Warp.Core.Query;
 using Warp.Core.Util;
@@ -52,15 +52,15 @@ namespace Warp.Data.DbFirst.Commands.Clients
     {
         private readonly IDomainDbContext _dbContext;
         private readonly IQueryDispatcher _queryDispatcher;
-        private readonly IObjectMapper _objectMapper;
+        private readonly IMappingEngine _mappingEngine;
         private readonly IDateTimeProvider _dateTimeProvider;
 
-        public SaveNewClientCommandHandler(IDomainDbContext dbContext, IQueryDispatcher queryDispatcher, IObjectMapper objectMapper, IDateTimeProvider dateTimeProvider)
+        public SaveNewClientCommandHandler(IDomainDbContext dbContext, IQueryDispatcher queryDispatcher, IDateTimeProvider dateTimeProvider, IMappingEngine mappingEngine)
         {
             _dbContext = dbContext;
             _queryDispatcher = queryDispatcher;
-            _objectMapper = objectMapper;
             _dateTimeProvider = dateTimeProvider;
+            _mappingEngine = mappingEngine;
         }
 
         public void Execute(SaveNewClientCommand command)
@@ -83,7 +83,7 @@ namespace Warp.Data.DbFirst.Commands.Clients
                 throw new DataEntityNotFoundException<ClientAccountManager>(command.AccountManagerAdminId);
             }
 
-            var clientEntity = _objectMapper.Map<SaveNewClientCommand, Client>(command);
+            var clientEntity = _mappingEngine.Map<SaveNewClientCommand, Client>(command);
 
             // TODO: Refactor into a factory.
             clientEntity.DateCreated = _dateTimeProvider.UtcNow();

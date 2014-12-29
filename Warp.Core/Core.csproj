@@ -68,6 +68,7 @@
     <Compile Include="Exceptions\TextResources\TextResourceStringAlreadyExistsException.cs" />
     <Compile Include="Exceptions\User\ClaimNotFoundOnIdentityException.cs" />
     <Compile Include="Exceptions\User\UserNotFoundException.cs" />
+    <Compile Include="Infrastructure\AutoMapper\AutoMapperExtensions.cs" />
     <Compile Include="Infrastructure\IoC\InjectDependencyAttribute.cs" />
     <Compile Include="Infrastructure\Models\ITextResourceModelProvider.cs" />
     <Compile Include="Infrastructure\Configuration\ApplicationConfig.cs" />
@@ -93,17 +94,14 @@
     <Compile Include="Services\UserService\IUserService.cs" />
     <Compile Include="Util\DateTimeProvider.cs" />
     <Compile Include="Util\IDateTimeProvider.cs" />
-    <Compile Include="Infrastructure\Mapping\IMappingConfiguration.cs" />
     <Compile Include="Infrastructure\IoC\IServiceLocator.cs" />
     <Compile Include="Infrastructure\Validation\IValidator.cs" />
-    <Compile Include="Infrastructure\Mapping\ObjectMapper.cs" />
     <Compile Include="Query\QueryDispatcher.cs" />
     <Compile Include="Services\Dtos\Brand\BrandSummaryDto.cs" />
     <Compile Include="Services\Dtos\Brand\BrandSummaryListDto.cs" />
     <Compile Include="Services\Dtos\Client\SaveClientDto.cs" />
     <Compile Include="Services\IClientService.cs" />
     <Compile Include="Services\IBrandService.cs" />
-    <Compile Include="Infrastructure\Mapping\IObjectMapper.cs" />
     <Compile Include="Query\IQuery.cs" />
     <Compile Include="Query\IQueryDispatcher.cs" />
     <Compile Include="Query\IQueryHandler.cs" />

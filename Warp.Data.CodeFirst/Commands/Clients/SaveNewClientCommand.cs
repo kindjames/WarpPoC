@@ -9,7 +9,6 @@ using Warp.Core.Util;
 using Warp.Data.Context;
 using Warp.Data.Entities;
 using Warp.Data.Queries.Clients;
-using IObjectMapper = Warp.Core.Infrastructure.Mapping.IObjectMapper;
 
 namespace Warp.Data.Commands.Clients
 {
@@ -39,13 +38,13 @@ namespace Warp.Data.Commands.Clients
     {
         private readonly IDomainDbContext _dbContext;
         private readonly IQueryDispatcher _queryDispatcher;
-        private readonly IObjectMapper _objectMapper;
+        private readonly IMappingEngine _mappingEngine;
 
-        public SaveNewClientCommandHandler(IDomainDbContext dbContext, IQueryDispatcher queryDispatcher, IObjectMapper objectMapper)
+        public SaveNewClientCommandHandler(IDomainDbContext dbContext, IQueryDispatcher queryDispatcher, IMappingEngine mappingEngine)
         {
             _dbContext = dbContext;
             _queryDispatcher = queryDispatcher;
-            _objectMapper = objectMapper;
+            _mappingEngine = mappingEngine;
         }
 
         public void Execute(SaveNewClientCommand command)
@@ -68,7 +67,7 @@ namespace Warp.Data.Commands.Clients
             //    throw new DataEntityNotFoundException<ClientAccountManager>(command.AccountManagerAdminId);
             //}
 
-            var clientEntity = _objectMapper.Map<SaveNewClientCommand, Client>(command);
+            var clientEntity = _mappingEngine.Map<SaveNewClientCommand, Client>(command);
             
             _dbContext.Clients.Add(clientEntity);
 

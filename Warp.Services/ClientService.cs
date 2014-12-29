@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using AutoMapper;
 using Warp.Core.Command;
-using Warp.Core.Infrastructure.Mapping;
+using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Query;
 using Warp.Core.Services;
 using Warp.Core.Services.Dtos.Client;
@@ -16,13 +17,13 @@ namespace Warp.Services
     {
         private readonly ICommandDispatcher _commandDispatcher;
         private readonly IQueryDispatcher _queryDispatcher;
-        private readonly IObjectMapper _objectMapper;
+        private readonly IMappingEngine _mappingEngine;
 
-        public ClientService(ICommandDispatcher commandDispatcher, IQueryDispatcher queryDispatcher, IObjectMapper objectMapper)
+        public ClientService(ICommandDispatcher commandDispatcher, IQueryDispatcher queryDispatcher, IMappingEngine mappingEngine)
         {
             _commandDispatcher = commandDispatcher;
             _queryDispatcher = queryDispatcher;
-            _objectMapper = objectMapper;
+            _mappingEngine = mappingEngine;
         }
 
         public ClientDto GetClient(int clientId)
@@ -36,7 +37,7 @@ namespace Warp.Services
                 throw new DataEntityNotFoundException<Client>(clientId);
             }
 
-            return _objectMapper.Map<Client, ClientDto>(client);
+            return _mappingEngine.Map<Client, ClientDto>(client);
         }
 
         public void SaveClient(SaveClientDto saveClientDto)
@@ -45,7 +46,7 @@ namespace Warp.Services
             
             if (saveClientDto.Id == 0)
             {
-                var command = _objectMapper.Map<SaveClientDto, SaveNewClientCommand>(saveClientDto);
+                var command = _mappingEngine.Map<SaveClientDto, SaveNewClientCommand>(saveClientDto);
 
                 _commandDispatcher.Execute(command);
 
@@ -53,7 +54,7 @@ namespace Warp.Services
             }
             else
             {
-                var command = _objectMapper.Map<SaveClientDto, UpdateClientCommand>(saveClientDto);
+                var command = _mappingEngine.Map<SaveClientDto, UpdateClientCommand>(saveClientDto);
 
                 _commandDispatcher.Execute(command);
             }
@@ -69,7 +70,7 @@ namespace Warp.Services
                 CustomerId = customerId
             });
 
-            return _objectMapper.MapMany<Client, ClientDto>(clients);
+            return _mappingEngine.MapMany<Client, ClientDto>(clients);
         }
     }
 }

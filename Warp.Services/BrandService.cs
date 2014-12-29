@@ -1,4 +1,5 @@
-﻿using Warp.Core.Infrastructure.Mapping;
+﻿using AutoMapper;
+using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Query;
 using Warp.Core.Services;
 using Warp.Core.Services.Dtos.Brand;
@@ -13,12 +14,12 @@ namespace Warp.Services
     public class BrandService : IBrandService
     {
         private readonly IQueryDispatcher _queryDispatcher;
-        private readonly IObjectMapper _objectMapper;
+        private readonly IMappingEngine _mappingEngine;
 
-        public BrandService(IQueryDispatcher queryDispatcher, IObjectMapper objectMapper)
+        public BrandService(IQueryDispatcher queryDispatcher, IMappingEngine mappingEngine)
         {
             _queryDispatcher = queryDispatcher;
-            _objectMapper = objectMapper;
+            _mappingEngine = mappingEngine;
         }
 
         public BrandSummaryListDto GetBrandSummaryListForClient(int clientId)
@@ -36,7 +37,7 @@ namespace Warp.Services
 
             return new BrandSummaryListDto
             {
-                Brands = _objectMapper.MapMany<Brand, BrandSummaryDto>(brands),
+                Brands = _mappingEngine.MapMany<Brand, BrandSummaryDto>(brands),
                 CustomerName = customerName,
                 ClientName = client.Name
             };

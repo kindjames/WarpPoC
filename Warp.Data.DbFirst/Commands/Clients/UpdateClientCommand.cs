@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
+using AutoMapper;
 using Warp.Core.Command;
-using Warp.Core.Infrastructure.Mapping;
 using Warp.Core.Infrastructure.Validation;
 using Warp.Core.Query;
 using Warp.Core.Util;
@@ -33,21 +33,21 @@ namespace Warp.Data.DbFirst.Commands.Clients
         private readonly IDomainDbContext _dbContext;
         private readonly IQueryDispatcher _queryDispatcher;
         private readonly IDateTimeProvider _dateTimeProvider;
-        private readonly IObjectMapper _objectMapper;
+        private readonly IMappingEngine _mappingEngine;
 
-        public UpdateClientCommandHandler(IDomainDbContext dbContext, IQueryDispatcher queryDispatcher, IDateTimeProvider dateTimeProvider, IObjectMapper objectMapper)
+        public UpdateClientCommandHandler(IDomainDbContext dbContext, IQueryDispatcher queryDispatcher, IDateTimeProvider dateTimeProvider, IMappingEngine mappingEngine)
         {
             _dbContext = dbContext;
             _queryDispatcher = queryDispatcher;
             _dateTimeProvider = dateTimeProvider;
-            _objectMapper = objectMapper;
+            _mappingEngine = mappingEngine;
         }
 
         public void Execute(UpdateClientCommand command)
         {
             CheckArgument.NotNull(command, "command");
 
-            var clientEntity = _objectMapper.Map<UpdateClientCommand, Client>(command);
+            var clientEntity = _mappingEngine.Map<UpdateClientCommand, Client>(command);
 
             _dbContext.Clients.Attach(clientEntity);
 

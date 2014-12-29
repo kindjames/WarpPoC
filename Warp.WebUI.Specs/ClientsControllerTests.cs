@@ -2,11 +2,11 @@
 using System.Security.Claims;
 using System.Security.Principal;
 using System.Web.Mvc;
+using AutoMapper;
 using Machine.Fakes;
 using Machine.Specifications;
 using Machine.Specifications.Mvc;
 using Warp.Core.Authentication;
-using Warp.Core.Infrastructure.Mapping;
 using Warp.Core.Services;
 using Warp.Core.Services.Dtos.Client;
 using Warp.WebUI.Controllers;
@@ -44,9 +44,9 @@ namespace Warp.WebUI.Specs
 
             Establish that = () =>
             {
-                The<IObjectMapper>()
+                The<IMappingEngine>()
                     .WhenToldTo(m => m.Map<CreateClientModel, SaveClientDto>(Param.IsAny<CreateClientModel>()))
-                    .Return(new SaveClientDto {Id = NewClientId});
+                    .Return(new SaveClientDto { Id = NewClientId });
 
                 var user = An<IPrincipal>();
                 user.WhenToldTo(u => u.Identity)
