@@ -1,26 +1,27 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using AutoMapper;
 using Warp.Core.Command;
 using Warp.Core.Enum;
 using Warp.Core.Exceptions;
-using Warp.Core.Infrastructure.Mapping;
 using Warp.Core.Infrastructure.Validation;
 using Warp.Core.Query;
 using Warp.Core.Util;
 using Warp.Data.Context;
 using Warp.Data.Entities;
 using Warp.Data.Queries.Clients;
+using IObjectMapper = Warp.Core.Infrastructure.Mapping.IObjectMapper;
 
 namespace Warp.Data.Commands.Clients
 {
     public sealed class SaveNewClientCommand : ICommand
     {
-        public int Id { get; private set; }
+        public int Id { get; internal set; }
 
         [Required]
         public string Name { get; set; }
 
         [IdRequired]
-        public int Customer { get; set; }
+        public int CustomerId { get; set; }
 
         [Required]
         public string Code { get; set; }
@@ -29,16 +30,9 @@ namespace Warp.Data.Commands.Clients
         public ClientStatus Status { get; set; }
 
         [IdRequired]
-        public int AccountManager { get; set; }
+        public int AccountManagerId { get; set; }
 
-        public int LegacyClient { get; set; }
-
-        public int Client { get; private set; }
-
-        public void SetWithNewIdFromDatabase(int id)
-        {
-            Id = id;
-        }
+        public int LegacyClientId { get; set; }
     }
 
     public sealed class SaveNewClientCommandHandler : ICommandHandler<SaveNewClientCommand>
@@ -59,7 +53,7 @@ namespace Warp.Data.Commands.Clients
             CheckArgument.NotNull(command, "command");
 
             // CheckArgument client exists for customer id and client code.
-            var clientExistsQuery = new CheckClientExistsForCodeQuery { CustomerId = command.Customer, ClientCode = command.Code };
+            var clientExistsQuery = new CheckClientExistsForCodeQuery { CustomerId = command.CustomerId, ClientCode = command.Code };
 
             if (_queryDispatcher.Execute(clientExistsQuery))
             {
@@ -80,7 +74,7 @@ namespace Warp.Data.Commands.Clients
 
             _dbContext.SaveChanges();
 
-            command.SetWithNewIdFromDatabase(clientEntity.Id);
+            command.Id = clientEntity.Id;
         }
     }
 }

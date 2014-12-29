@@ -16,16 +16,15 @@ namespace Warp.Data.Entities
         public DateTime? DateValidFrom { get; set; }
 
         [Required]
-        public virtual ClientStatus Status { get; set; }
-
+        public ClientStatus Status { get; set; }
+        
         [Required]
-        public virtual User AccountManager { get; set; }
-
         public int AccountManagerId { get; set; }
 
         [Required]
-        public virtual Customer Customer { get; set; }
-
         public int CustomerId { get; set; }
+
+        public virtual Customer Customer { get; set; }
+        public virtual User AccountManager { get; set; }
     }
 }

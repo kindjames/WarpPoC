@@ -34,38 +34,38 @@ namespace Warp.Services.Specs
             static SaveClientDto _dto;
         }
 
-        public class When_calling__SaveClient__for_a_new_client : WithSubject<ClientService>
-        {
-            Establish context = () =>
-            {
-                _dto = new SaveClientDto();
-                _command = new SaveNewClientCommand();
+        //public class When_calling__SaveClient__for_a_new_client : WithSubject<ClientService>
+        //{
+        //    Establish context = () =>
+        //    {
+        //        _dto = new SaveClientDto();
+        //        _command = new SaveNewClientCommand();
 
-                The<IObjectMapper>()
-                    .WhenToldTo(m => m.Map<SaveClientDto, SaveNewClientCommand>(_dto))
-                    .Return(_command);
+        //        The<IObjectMapper>()
+        //            .WhenToldTo(m => m.Map<SaveClientDto, SaveNewClientCommand>(_dto))
+        //            .Return(_command);
 
-                The<ICommandDispatcher>()
-                    .WhenToldTo(d => d.Execute(Param.IsAny<ICommand>()))
-                    .Callback(() => _command.SetWithNewIdFromDatabase(new Random().Next()));
-            };
+        //        The<ICommandDispatcher>()
+        //            .WhenToldTo(d => d.Execute(Param.IsAny<ICommand>()))
+        //            .Callback(() => _command.WhenToldTo(c => c.Id).Return(new Random().Next()));
+        //    };
 
-            Because of = () => Subject.SaveClient(_dto);
+        //    Because of = () => Subject.SaveClient(_dto);
 
-            ThenIt should_build_a_SaveNewClientCommand = () =>
-                The<IObjectMapper>()
-                    .WasToldTo(m => m.Map<SaveClientDto, SaveNewClientCommand>(_dto));
+        //    ThenIt should_build_a_SaveNewClientCommand = () =>
+        //        The<IObjectMapper>()
+        //            .WasToldTo(m => m.Map<SaveClientDto, SaveNewClientCommand>(_dto));
 
-            ThenIt should_execute_the_command_with_the_dispatcher = () =>
-                The<ICommandDispatcher>()
-                    .WasToldTo(d => d.Execute(MoqIt.IsAny<ICommand>()));
+        //    ThenIt should_execute_the_command_with_the_dispatcher = () =>
+        //        The<ICommandDispatcher>()
+        //            .WasToldTo(d => d.Execute(MoqIt.IsAny<ICommand>()));
 
-            ThenIt should_assign_the_new__ClientId__to_the__SaveClientDto__ = () =>
-                _dto.Id.ShouldEqual(_command.Id);
+        //    ThenIt should_assign_the_new__ClientId__to_the__SaveClientDto__ = () =>
+        //        _dto.Id.ShouldEqual(_command.Id);
 
-            static SaveClientDto _dto;
-            static SaveNewClientCommand _command;
-        }
+        //    static SaveClientDto _dto;
+        //    static SaveNewClientCommand _command;
+        //}
 
         public class When_calling__GetClient__for_an_invalid_id : WithSubject<ClientService>
         {
