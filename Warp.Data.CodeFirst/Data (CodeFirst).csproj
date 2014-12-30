@@ -98,6 +98,7 @@
     <Compile Include="Queries\Brands\GetBrandsForClientQuery.cs" />
     <Compile Include="Context\ApplicationDbContextBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queries\General\CheckClientExistsForCodeQuery.cs" />
     <Compile Include="Queries\Languages\GetLanguageIdByCultureQuery.cs" />
     <Compile Include="Queries\TextResources\DuplicateResourceCodeExistsQuery.cs" />
     <Compile Include="Queries\TextResources\DuplicateResourceStringExistsQuery.cs" />

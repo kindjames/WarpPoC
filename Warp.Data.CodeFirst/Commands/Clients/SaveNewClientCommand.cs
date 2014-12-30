@@ -8,6 +8,7 @@ using Warp.Core.Query;
 using Warp.Core.Util;
 using Warp.Data.Context;
 using Warp.Data.Entities;
+using Warp.Data.Exceptions;
 using Warp.Data.Queries.Clients;
 
 namespace Warp.Data.Commands.Clients
@@ -51,7 +52,7 @@ namespace Warp.Data.Commands.Clients
         {
             CheckArgument.NotNull(command, "command");
 
-            // CheckArgument client exists for customer id and client code.
+            // Check client exists for customer id and client code.
             var clientExistsQuery = new CheckClientExistsForCodeQuery { CustomerId = command.CustomerId, ClientCode = command.Code };
 
             if (_queryDispatcher.Execute(clientExistsQuery))
@@ -59,7 +60,10 @@ namespace Warp.Data.Commands.Clients
                 throw new ClientAlreadyExistsException(clientExistsQuery.CustomerId, clientExistsQuery.ClientCode);
             }
 
-            // CheckArgument account manager exists.
+            //TODO: 
+            //var entityExistsQuery = new CheckEntityExistsQuery<
+
+            // Check account manager exists.
             //var accountManagerExistsQuery = new CheckClientAccountManagerExistsQuery { AccountManagerId = command.AccountManagerAdminId };
 
             //if (!_queryDispatcher.Execute(accountManagerExistsQuery))

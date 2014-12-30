@@ -13,5 +13,6 @@ namespace Warp.Data.Context
         Database Database { get; }
         DbContextConfiguration Configuration { get; }
         DbEntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;
+        DbSet<TEntity> Set<TEntity>() where TEntity : class;
     }
 }
