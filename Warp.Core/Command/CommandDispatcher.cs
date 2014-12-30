@@ -1,6 +1,7 @@
 ﻿using Warp.Core.Exceptions;
 using Warp.Core.Infrastructure.IoC;
 using Warp.Core.Infrastructure.Validation;
+using Warp.Core.Util;
 
 namespace Warp.Core.Command
 {
@@ -17,6 +18,8 @@ namespace Warp.Core.Command
 
         public void Execute(ICommand command)
         {
+            CheckArgument.NotNull(command, "command");
+
             _validator.Validate(command);
 
             var handlerType = typeof(ICommandHandler<>)

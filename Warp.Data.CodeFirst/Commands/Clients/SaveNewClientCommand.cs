@@ -5,11 +5,11 @@ using Warp.Core.Enum;
 using Warp.Core.Exceptions;
 using Warp.Core.Infrastructure.Validation;
 using Warp.Core.Query;
-using Warp.Core.Util;
 using Warp.Data.Context;
 using Warp.Data.Entities;
 using Warp.Data.Exceptions;
 using Warp.Data.Queries.Clients;
+using Warp.Data.Queries.General;
 
 namespace Warp.Data.Commands.Clients
 {
@@ -50,9 +50,7 @@ namespace Warp.Data.Commands.Clients
 
         public void Execute(SaveNewClientCommand command)
         {
-            CheckArgument.NotNull(command, "command");
-
-            // Check client exists for customer id and client code.
+            // Check whether client already exists for customer id and client code.
             var clientExistsQuery = new CheckClientExistsForCodeQuery { CustomerId = command.CustomerId, ClientCode = command.Code };
 
             if (_queryDispatcher.Execute(clientExistsQuery))
@@ -60,23 +58,26 @@ namespace Warp.Data.Commands.Clients
                 throw new ClientAlreadyExistsException(clientExistsQuery.CustomerId, clientExistsQuery.ClientCode);
             }
 
-            //TODO: 
-            //var entityExistsQuery = new CheckEntityExistsQuery<
+            // Validate Account Manager (user) exists.
+            if (!_queryDispatcher.Execute(new CheckEntityExistsQuery<User> { EntityId = command.AccountManagerId }))
+            {
+                throw new DataEntityNotFoundException<User>(command.AccountManagerId, "Looking for Account Manager.");
+            }
 
-            // Check account manager exists.
-            //var accountManagerExistsQuery = new CheckClientAccountManagerExistsQuery { AccountManagerId = command.AccountManagerAdminId };
+            // Validate customer exists.
+            if (!_queryDispatcher.Execute(new CheckEntityExistsQuery<Customer> { EntityId = command.CustomerId }))
+            {
+                throw new DataEntityNotFoundException<Customer>(command.CustomerId);
+            }
 
-            //if (!_queryDispatcher.Execute(accountManagerExistsQuery))
-            //{
-            //    throw new DataEntityNotFoundException<ClientAccountManager>(command.AccountManagerAdminId);
-            //}
-
+            // All systems go!
             var clientEntity = _mappingEngine.Map<SaveNewClientCommand, Client>(command);
             
             _dbContext.Clients.Add(clientEntity);
 
             _dbContext.SaveChanges();
 
+            // Set the newly-created id in the command.
             command.Id = clientEntity.Id;
         }
     }

@@ -15,6 +15,7 @@ using Warp.Data.Commands.Clients;
 using Warp.Data.Context;
 using Warp.Data.Entities;
 using Warp.Data.Queries.Clients;
+using Warp.Data.Queries.General;
 using MoqIt = Moq.It;
 
 namespace Warp.Testing.Unit.Data.Commands.Clients
@@ -22,23 +23,24 @@ namespace Warp.Testing.Unit.Data.Commands.Clients
     [Subject("Save New Client Command Handler")]
     public class SaveNewClientCommandHandlerTests
     {
-        public class When_saving_new_client_for_client_that_already_exists_with_same_customer_id_and_code : WithSubject<SaveNewClientCommandHandler>
+        public class When_saving_new_client_for_client_that_already_exists_with_same_customer_id_and_code :
+            WithSubject<SaveNewClientCommandHandler>
         {
-            static Exception _exception;
-            static SaveNewClientCommand _command;
+            private static Exception _exception;
+            private static SaveNewClientCommand _command;
 
-            Establish that = () =>
+            private Establish that = () =>
             {
-                _command = new SaveNewClientCommand { Code = "TESTYEAH", CustomerId = 69 };
+                _command = new SaveNewClientCommand {Code = "TESTYEAH", CustomerId = 69};
 
                 The<IQueryDispatcher>()
                     .WhenToldTo(d => d.Execute(MoqIt.IsAny<CheckClientExistsForCodeQuery>()))
                     .Return(true);
             };
 
-            Because of = () => _exception = Catch.Exception(() => Subject.Execute(_command));
+            private Because of = () => _exception = Catch.Exception(() => Subject.Execute(_command));
 
-            It should_throw_an_error = () =>
+            private It should_throw_an_error = () =>
             {
                 _exception.ShouldNotBeNull();
                 _exception.ShouldBeOfExactType<ClientAlreadyExistsException>();
@@ -47,7 +49,7 @@ namespace Warp.Testing.Unit.Data.Commands.Clients
 
         public class When_saving_new_client : WithSubject<SaveNewClientCommandHandler>
         {
-            static IDbSet<Client> _clientRepository;
+            private static IDbSet<Client> _clientRepository;
 
             private Establish that = () =>
             {
@@ -57,6 +59,14 @@ namespace Warp.Testing.Unit.Data.Commands.Clients
                     .WhenToldTo(d => d.Execute(MoqIt.IsAny<CheckClientExistsForCodeQuery>()))
                     .Return(false);
 
+                The<IQueryDispatcher>()
+                    .WhenToldTo(d => d.Execute(MoqIt.IsAny<CheckEntityExistsQuery<User>>()))
+                    .Return(true);
+
+                The<IQueryDispatcher>()
+                    .WhenToldTo(d => d.Execute(MoqIt.IsAny<CheckEntityExistsQuery<Customer>>()))
+                    .Return(true);
+
                 The<IMappingEngine>()
                     .WhenToldTo(m => m.Map<SaveNewClientCommand, Client>(MoqIt.IsAny<SaveNewClientCommand>()))
                     .Return(new Client());
@@ -65,53 +75,15 @@ namespace Warp.Testing.Unit.Data.Commands.Clients
                     .Clients = _clientRepository;
             };
 
-            Because of = () => Subject.Execute(new SaveNewClientCommand());
+            private Because of = () => Subject.Execute(new SaveNewClientCommand());
 
-            It should_add_new_client_to_the_client_repository = () =>
+            private It should_add_new_client_to_the_client_repository = () =>
                 _clientRepository.WasToldTo(r =>
                     r.Add(MoqIt.IsAny<Client>()));
 
-            It should_call_SaveChanges_on_UoW = () =>
+            private It should_call_SaveChanges_on_UoW = () =>
                 The<IDomainDbContext>()
                     .WasToldTo(c => c.SaveChanges());
-        }
-
-        public class When_saving_new_client_FOR_REAL : WithSubject<SaveNewClientCommandHandler>
-        {
-            Establish that = () =>
-            {
-                command = new SaveNewClientCommand
-                {
-                    Code = Guid.NewGuid().ToString(),
-                    Name = Guid.NewGuid().ToString(),
-                    Status = ClientStatus.Test,
-                    AccountManagerId = 1,
-                    CustomerId = 1,
-                };
-
-                Mapper.CreateMap<SaveNewClientCommand, Client>();
-
-                Configure(Mapper.Engine);
-                Configure(r => r.For<IValidator>().Use<DataAnnotationsValidator>());
-                Configure(r => r.For<IQueryDispatcher>().Use<QueryDispatcher>());
-                Configure(r => r.For<IDateTimeProvider>().Use<DateTimeProvider>());
-                Configure(r => r.For<IDomainDbContext>().Use<DomainDbContext>());
-                Configure(r => r.For<IApplicationConfig>().Use<ApplicationConfig>());
-            
-                The<IServiceLocator>()
-                    .WhenToldTo(s => s.TryResolve(Param.IsAny<Type>()))
-                    .Return(new CheckClientExistsForCodeQueryHandler(The<IDomainDbContext>()));
-            };
-
-            Because of = () => Subject.Execute(command);
-
-            It should_add_new_client_to_the_client_repository = () =>
-            {
-                var dbContext = new DomainDbContext(The<IApplicationConfig>(), The<IDateTimeProvider>());
-                dbContext.Clients.FirstOrDefault(c => c.Name == command.Name).ShouldNotBeNull();
-            };
-
-            static SaveNewClientCommand command;
         }
     }
 }

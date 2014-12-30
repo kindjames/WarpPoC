@@ -7,7 +7,12 @@ namespace Warp.Data.Exceptions
         where TEntity : EntityBase
     {
         public DataEntityNotFoundException(int entityId)
-            : base(String.Concat("Unable to find ", typeof(TEntity).Name, " for Id ", entityId, " in database."))
+            : this(entityId, String.Empty)
+        {
+        }
+
+        public DataEntityNotFoundException(int entityId, string additionalErrorMessageInformation)
+            : base(String.Concat("Unable to find ", typeof(TEntity).Name, " for Id ", entityId, " in database. ", additionalErrorMessageInformation))
         {
         }
     }
