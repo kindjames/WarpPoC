@@ -121,7 +121,7 @@
       <Name>Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Warp.Data.CodeFirst\Data %28CodeFirst%29.csproj">
-      <Project>{14F5DFD0-AED7-4E07-A7C1-B873003943B6}</Project>
+      <Project>{14f5dfd0-aed7-4e07-a7c1-b873003943b6}</Project>
       <Name>Data %28CodeFirst%29</Name>
     </ProjectReference>
     <ProjectReference Include="..\Warp.WebUI\WebUI.csproj">

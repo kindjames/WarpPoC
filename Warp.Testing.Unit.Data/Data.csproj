@@ -104,17 +104,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Queries\General\" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Warp.Core\Core.csproj">
-      <Project>{8031789B-4E8B-4418-8644-EB4ADE65B90B}</Project>
+      <Project>{8031789b-4e8b-4418-8644-eb4ade65b90b}</Project>
       <Name>Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Warp.Data.CodeFirst\Data %28CodeFirst%29.csproj">
       <Project>{14f5dfd0-aed7-4e07-a7c1-b873003943b6}</Project>
       <Name>Data %28CodeFirst%29</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Queries\General\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
