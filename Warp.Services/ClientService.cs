@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using AutoMapper;
 using Warp.Core.Command;
 using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Query;
@@ -17,13 +16,13 @@ namespace Warp.Services
     {
         private readonly ICommandDispatcher _commandDispatcher;
         private readonly IQueryDispatcher _queryDispatcher;
-        private readonly IMappingEngine _mappingEngine;
+        private readonly IObjectMapper _objectMapper;
 
-        public ClientService(ICommandDispatcher commandDispatcher, IQueryDispatcher queryDispatcher, IMappingEngine mappingEngine)
+        public ClientService(ICommandDispatcher commandDispatcher, IQueryDispatcher queryDispatcher, IObjectMapper objectMapper)
         {
             _commandDispatcher = commandDispatcher;
             _queryDispatcher = queryDispatcher;
-            _mappingEngine = mappingEngine;
+            _objectMapper = objectMapper;
         }
 
         public ClientDto GetClient(int clientId)
@@ -37,7 +36,7 @@ namespace Warp.Services
                 throw new DataEntityNotFoundException<Client>(clientId);
             }
 
-            return _mappingEngine.Map<Client, ClientDto>(client);
+            return _objectMapper.Map<Client, ClientDto>(client);
         }
 
         public void SaveClient(SaveClientDto saveClientDto)
@@ -46,7 +45,7 @@ namespace Warp.Services
             
             if (saveClientDto.Id == 0)
             {
-                var command = _mappingEngine.Map<SaveClientDto, SaveNewClientCommand>(saveClientDto);
+                var command = _objectMapper.Map<SaveClientDto, SaveNewClientCommand>(saveClientDto);
 
                 _commandDispatcher.Execute(command);
 
@@ -54,7 +53,7 @@ namespace Warp.Services
             }
             else
             {
-                var command = _mappingEngine.Map<SaveClientDto, UpdateClientCommand>(saveClientDto);
+                var command = _objectMapper.Map<SaveClientDto, UpdateClientCommand>(saveClientDto);
 
                 _commandDispatcher.Execute(command);
             }
@@ -70,7 +69,7 @@ namespace Warp.Services
                 CustomerId = customerId
             });
 
-            return _mappingEngine.MapMany<Client, ClientDto>(clients);
+            return _objectMapper.MapMany<Client, ClientDto>(clients);
         }
     }
 }

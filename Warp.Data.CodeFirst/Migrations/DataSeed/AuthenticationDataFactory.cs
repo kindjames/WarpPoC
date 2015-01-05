@@ -156,7 +156,7 @@ namespace Warp.Data.Migrations.DataSeed
 
             var customers = new[]
             {
-                new Customer {Name = "Test Customer", UrlName = "http://www.mysterydining.com", DisplayName = "Test", CustomerCode = "TEST", DefaultLanguageId = 1 },
+                new Customer {Name = "Test CustomerId", UrlName = "http://www.mysterydining.com", DisplayName = "Test", CustomerCode = "TEST", DefaultLanguageId = 1 },
                 new Customer {Name = "HospitalityGEM", UrlName = "http://www.hospitalitygem.com", DisplayName = "hGEM", CustomerCode = "hGEM", DefaultLanguageId = 1 }
             };
 

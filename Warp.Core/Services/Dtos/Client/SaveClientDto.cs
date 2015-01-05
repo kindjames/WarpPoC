@@ -7,10 +7,10 @@ namespace Warp.Core.Services.Dtos.Client
     public class SaveClientDto
     {
         public int Id { get; set; }
-        public int Customer { get; set; }
+        public int CustomerId { get; set; }
         public string Name { get; set; }
         public ClientStatus Status { get; set; }
-        public int AccountManager { get; set; }
+        public int AccountManagerId { get; set; }
         public string Code { get; set; }
 
         public string InternalUseOnly { get; set; }

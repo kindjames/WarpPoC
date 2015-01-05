@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+﻿using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Query;
 using Warp.Core.Services;
 using Warp.Core.Services.Dtos.Customer;
@@ -11,12 +11,12 @@ namespace Warp.Services
     public sealed class CustomerService : ICustomerService
     {
         private readonly IQueryDispatcher _queryDispatcher;
-        private readonly IMappingEngine _mappingEngine;
+        private readonly IObjectMapper _objectMapper;
 
-        public CustomerService(IQueryDispatcher queryDispatcher, IMappingEngine mappingEngine)
+        public CustomerService(IQueryDispatcher queryDispatcher, IObjectMapper objectMapper)
         {
             _queryDispatcher = queryDispatcher;
-            _mappingEngine = mappingEngine;
+            _objectMapper = objectMapper;
         }
 
         public CustomerDto GetCustomerForUser(int userId)
@@ -25,7 +25,7 @@ namespace Warp.Services
 
             var customer = _queryDispatcher.Execute(new GetCustomerForUserQuery {UserId = userId});
 
-            return _mappingEngine.Map<Customer, CustomerDto>(customer);
+            return _objectMapper.Map<Customer, CustomerDto>(customer);
         }
     }
 }

@@ -8,7 +8,7 @@ using Warp.Data.Queries.Customers;
 
 namespace Warp.Testing.Unit.Data.Queries.Customers
 {
-    [Subject("Get Customer Name Query Handler")]
+    [Subject("Get CustomerId Name Query Handler")]
     public class GetCustomerNameQueryHandlerTests
     {
         public class When_querying_for_customer_and_customer_does_not_exist : WithSubject<GetCustomerNameQueryHandler>

@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using AutoMapper;
 using Warp.Core.Command;
 using Warp.Core.Enum;
 using Warp.Core.Exceptions;
+using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Infrastructure.Validation;
 using Warp.Core.Query;
 using Warp.Data.Context;
@@ -39,13 +39,13 @@ namespace Warp.Data.Commands.Clients
     {
         private readonly IDomainDbContext _dbContext;
         private readonly IQueryDispatcher _queryDispatcher;
-        private readonly IMappingEngine _mappingEngine;
+        private readonly IObjectMapper _objectMapper;
 
-        public SaveNewClientCommandHandler(IDomainDbContext dbContext, IQueryDispatcher queryDispatcher, IMappingEngine mappingEngine)
+        public SaveNewClientCommandHandler(IDomainDbContext dbContext, IQueryDispatcher queryDispatcher, IObjectMapper objectMapper)
         {
             _dbContext = dbContext;
             _queryDispatcher = queryDispatcher;
-            _mappingEngine = mappingEngine;
+            _objectMapper = objectMapper;
         }
 
         public void Execute(SaveNewClientCommand command)
@@ -71,7 +71,7 @@ namespace Warp.Data.Commands.Clients
             }
 
             // All systems go!
-            var clientEntity = _mappingEngine.Map<SaveNewClientCommand, Client>(command);
+            var clientEntity = _objectMapper.Map<SaveNewClientCommand, Client>(command);
             
             _dbContext.Clients.Add(clientEntity);
 

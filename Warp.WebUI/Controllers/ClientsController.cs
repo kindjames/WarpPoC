@@ -1,6 +1,5 @@
 ﻿using System.Security.Claims;
 using System.Web.Mvc;
-using AutoMapper;
 using Warp.Core.Authentication;
 using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Services;
@@ -14,12 +13,12 @@ namespace Warp.WebUI.Controllers
     public class ClientsController : Controller
     {
         private readonly IClientService _clientService;
-        private readonly IMappingEngine _mappingEngine;
+        private readonly IObjectMapper _objectMapper;
 
-        public ClientsController(IClientService clientService, IMappingEngine mappingEngine)
+        public ClientsController(IClientService clientService, IObjectMapper objectMapper)
         {
             _clientService = clientService;
-            _mappingEngine = mappingEngine;
+            _objectMapper = objectMapper;
         }
 
         [HttpGet]
@@ -36,7 +35,7 @@ namespace Warp.WebUI.Controllers
 
             var clients = _clientService.GetClients(model.ClientSearchQuery, customerId);
 
-            var viewModel = _mappingEngine.MapMany<ClientDto, ClientModel>(clients);
+            var viewModel = _objectMapper.MapMany<ClientDto, ClientModel>(clients);
 
             return PartialView(viewModel);
         }
@@ -54,10 +53,10 @@ namespace Warp.WebUI.Controllers
         {
             if (ModelState.IsValid)
             {
-                var dto = _mappingEngine.Map<CreateClientModel, SaveClientDto>(model);
+                var dto = _objectMapper.Map<CreateClientModel, SaveClientDto>(model);
 
-                dto.Customer = User.Identity.GetOrThrowClaimValueFor<int>(ApplicationClaimTypes.CustomerId);
-                dto.AccountManager = User.Identity.GetOrThrowClaimValueFor<int>(ClaimTypes.NameIdentifier);
+                dto.CustomerId = User.Identity.GetOrThrowClaimValueFor<int>(ApplicationClaimTypes.CustomerId);
+                dto.AccountManagerId = User.Identity.GetOrThrowClaimValueFor<int>(ClaimTypes.NameIdentifier);
 
                 _clientService.SaveClient(dto);
 
@@ -73,7 +72,7 @@ namespace Warp.WebUI.Controllers
         {
             var client = _clientService.GetClient(clientId);
 
-            var model = _mappingEngine.Map<ClientDto, ClientModel>(client);
+            var model = _objectMapper.Map<ClientDto, ClientModel>(client);
 
             return View(model);
         }

@@ -11,8 +11,8 @@
     @(form.FormGroup().DropDownListFromEnumFor(m => m.Status)
           .Label().LabelText(Model.StatusLabelText))
     
-    @*@(form.FormGroup().EditorFor(m => m.AccountManager)
-          .Label().LabelText(Model.AccountManagerLabelText))*@
+    @*@(form.FormGroup().EditorFor(m => m.AccountManagerId)
+          .Label().LabelText(Model.AccountManagerIdLabelText))*@
     
     @form.FormGroup().CustomControls(Html.Bootstrap().SubmitButton().Text(Model.SaveButtonText))
 }

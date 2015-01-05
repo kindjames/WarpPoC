@@ -16,7 +16,7 @@ namespace Warp.WebUI.Models.Clients
         public ClientStatus Status { get; set; }
 
         //[Required]
-        //public UserViewModel AccountManager { get; set; }
+        //public UserViewModel AccountManagerId { get; set; }
 
         [PopulateWith(1)]
         public string NameLabelText { get; set; }

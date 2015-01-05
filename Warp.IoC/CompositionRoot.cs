@@ -1,13 +1,18 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Linq;
+using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
 using Microsoft.AspNet.Identity;
+using Microsoft.Win32;
 using SimpleInjector;
 using SimpleInjector.Advanced;
 using SimpleInjector.Extensions;
 using SimpleInjector.Integration.Web.Mvc;
 using Warp.Core.Command;
+using Warp.Core.Data;
+using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Infrastructure.Configuration;
 using Warp.Core.Infrastructure.IoC;
 using Warp.Core.Infrastructure.Models;
@@ -15,9 +20,11 @@ using Warp.Core.Infrastructure.Validation;
 using Warp.Core.Query;
 using Warp.Core.Util;
 using Warp.Data.Context;
+using Warp.Data.Queries.General;
 using Warp.IoC.Factories;
 using Warp.Services;
 using PasswordHasher = Warp.Core.Infrastructure.Authentication.PasswordHasher;
+using IObjectMapper = Warp.Core.Infrastructure.AutoMapper.IObjectMapper;
 
 namespace Warp.IoC
 {
@@ -43,6 +50,7 @@ namespace Warp.IoC
             c.Register<IDateTimeProvider, DateTimeProvider>();
             c.Register<IValidator, DataAnnotationsValidator>();
             c.Register<IApplicationConfig, ApplicationConfig>();
+            c.Register<IObjectMapper, ObjectMapper>();
 
             // Data
             var dataAssembly = typeof(IDomainDbContext).Assembly;
@@ -51,6 +59,7 @@ namespace Warp.IoC
             c.RegisterManyForOpenGeneric(typeof(ICommandHandler<>), dataAssembly);
             c.RegisterManyForOpenGeneric(typeof(IQueryHandler<,>), dataAssembly);
             c.RegisterAllImplementationsInAssemblyWithNameEnding("DbContext", dataAssembly);
+            c.RegisterOpenGenericQueryHandlerForAllEntityTypes(typeof(CheckEntityExistsQuery<>), typeof(CheckEntityExistsQueryHandler<>));
             
             // Services
             var serviceAssembly = typeof(ClientService).Assembly;

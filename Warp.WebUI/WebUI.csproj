@@ -204,6 +204,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\Config.AutoMapper.cs" />
     <Compile Include="App_Start\Config.Authentication.cs" />
     <Compile Include="App_Start\Config.Filters.cs" />
     <Compile Include="App_Start\Config.IoC.cs" />
@@ -211,6 +212,7 @@
     <Compile Include="App_Start\Config.Routes.cs" />
     <Compile Include="App_Start\Config.Bundles.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
+    <Compile Include="Infrastructure\MappingConfiguration.cs" />
     <Compile Include="Models\Clients\ClientModel.cs" />
     <Compile Include="Models\Clients\ClientSearchModel.cs" />
     <Compile Include="Models\Clients\ClientListViewModel.cs" />

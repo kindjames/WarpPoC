@@ -2,12 +2,14 @@
 using AutoMapper;
 using Machine.Fakes;
 using Machine.Specifications;
+using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Query;
 using Warp.Core.Services.Dtos.Client;
 using Warp.Data.Entities;
 using Warp.Data.Exceptions;
 using Warp.Data.Queries.Clients;
 using Warp.Services;
+using IObjectMapper = Warp.Core.Infrastructure.AutoMapper.IObjectMapper;
 using ThenIt = Machine.Specifications.It;
 
 namespace Warp.Testing.Unit.Services
@@ -107,15 +109,13 @@ namespace Warp.Testing.Unit.Services
             Establish context = () =>
             {
                 _clientId = new Random().Next();
-                _client = new Client { Id = _clientId };
+
+                Configure(r => r.For<IObjectMapper>().Use<ObjectMapper>());
+                Configure(Mapper.Engine);
 
                 The<IQueryDispatcher>()
                     .WhenToldTo(d => d.Execute(Param.IsAny<GetClientQuery>()))
-                    .Return(_client);
-
-                The<IMappingEngine>()
-                    .WhenToldTo(m => m.Map<Client, ClientDto>(_client))
-                    .Return(new ClientDto { Id = _clientId });
+                    .Return(new Client { Id = _clientId });
             };
 
             Because of = () => _result = Subject.GetClient(_clientId);
@@ -124,7 +124,6 @@ namespace Warp.Testing.Unit.Services
                 _result.Id.ShouldEqual(_clientId);
 
             static int _clientId;
-            static Client _client;
             static ClientDto _result;
         }
     }

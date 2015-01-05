@@ -66,6 +66,7 @@
     <Compile Include="Context\IDomainDbContext.cs" />
     <Compile Include="Context\ITextResourceDbContext.cs" />
     <Compile Include="Context\TextResourceDbContext.cs" />
+    <Compile Include="MappingConfiguration.cs" />
     <Compile Include="Entities\Brand.cs" />
     <Compile Include="Entities\Client.cs" />
     <Compile Include="Entities\ContactAddress.cs" />

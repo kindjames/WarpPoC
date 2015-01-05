@@ -32,7 +32,7 @@ namespace Warp.Data.DbFirst.Mapping
                 .HasMaxLength(25);
 
             // Table & Column Mappings
-            ToTable("Customer");
+            ToTable("CustomerId");
             Property(t => t.CustomerId).HasColumnName("CustomerID");
             Property(t => t.Name).HasColumnName("Name");
             Property(t => t.UrlName).HasColumnName("UrlName");

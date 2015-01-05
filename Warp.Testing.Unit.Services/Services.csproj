@@ -90,11 +90,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Warp.Core\Core.csproj">
-      <Project>{8031789B-4E8B-4418-8644-EB4ADE65B90B}</Project>
+      <Project>{8031789b-4e8b-4418-8644-eb4ade65b90b}</Project>
       <Name>Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Warp.Data.CodeFirst\Data %28CodeFirst%29.csproj">
-      <Project>{14F5DFD0-AED7-4E07-A7C1-B873003943B6}</Project>
+      <Project>{14f5dfd0-aed7-4e07-a7c1-b873003943b6}</Project>
       <Name>Data %28CodeFirst%29</Name>
     </ProjectReference>
     <ProjectReference Include="..\Warp.Services\Services.csproj">

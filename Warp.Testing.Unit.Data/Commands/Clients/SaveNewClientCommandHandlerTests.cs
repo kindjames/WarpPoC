@@ -1,21 +1,17 @@
 ﻿using System;
 using System.Data.Entity;
-using System.Linq;
 using AutoMapper;
 using Machine.Fakes;
 using Machine.Specifications;
-using Warp.Core.Enum;
 using Warp.Core.Exceptions;
-using Warp.Core.Infrastructure.Configuration;
-using Warp.Core.Infrastructure.IoC;
-using Warp.Core.Infrastructure.Validation;
+using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Query;
-using Warp.Core.Util;
 using Warp.Data.Commands.Clients;
 using Warp.Data.Context;
 using Warp.Data.Entities;
 using Warp.Data.Queries.Clients;
 using Warp.Data.Queries.General;
+using IObjectMapper = Warp.Core.Infrastructure.AutoMapper.IObjectMapper;
 using MoqIt = Moq.It;
 
 namespace Warp.Testing.Unit.Data.Commands.Clients
@@ -55,6 +51,9 @@ namespace Warp.Testing.Unit.Data.Commands.Clients
             {
                 _clientRepository = An<IDbSet<Client>>();
 
+                Configure(r => r.For<IObjectMapper>().Use<ObjectMapper>());
+                Configure(Mapper.Engine);
+
                 The<IQueryDispatcher>()
                     .WhenToldTo(d => d.Execute(MoqIt.IsAny<CheckClientExistsForCodeQuery>()))
                     .Return(false);
@@ -66,10 +65,6 @@ namespace Warp.Testing.Unit.Data.Commands.Clients
                 The<IQueryDispatcher>()
                     .WhenToldTo(d => d.Execute(MoqIt.IsAny<CheckEntityExistsQuery<Customer>>()))
                     .Return(true);
-
-                The<IMappingEngine>()
-                    .WhenToldTo(m => m.Map<SaveNewClientCommand, Client>(MoqIt.IsAny<SaveNewClientCommand>()))
-                    .Return(new Client());
 
                 The<IDomainDbContext>()
                     .Clients = _clientRepository;

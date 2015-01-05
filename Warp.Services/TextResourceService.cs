@@ -1,5 +1,5 @@
 ﻿using System;
-using AutoMapper;
+using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Query;
 using Warp.Core.Services.Dtos.TextResources;
 using Warp.Core.Services.TextResourceService;
@@ -14,14 +14,14 @@ namespace Warp.Services
         private readonly ILanguageService _languageService;
         private readonly IUserService _userService;
         private readonly IQueryDispatcher _queryDispatcher;
-        readonly IMappingEngine _mappingEngine;
+        private readonly IObjectMapper _objectMapper;
 
-        public TextResourceService(ILanguageService languageService, IUserService userService, IQueryDispatcher queryDispatcher, IMappingEngine mappingEngine)
+        public TextResourceService(ILanguageService languageService, IUserService userService, IQueryDispatcher queryDispatcher, IObjectMapper objectMapper)
         {
             _languageService = languageService;
             _userService = userService;
             _queryDispatcher = queryDispatcher;
-            _mappingEngine = mappingEngine;
+            _objectMapper = objectMapper;
         }
 
         #region In Process

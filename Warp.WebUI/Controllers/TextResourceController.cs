@@ -1,5 +1,5 @@
 ﻿using System.Web.Mvc;
-using AutoMapper;
+using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Services.TextResourceService;
 using Warp.WebUI.Models.TextResources;
 
@@ -7,12 +7,12 @@ namespace Warp.WebUI.Controllers
 {
     public class TextResourceController : Controller
     {
-        private readonly IMappingEngine _mappingEngine;
+        private readonly IObjectMapper _objectMapper;
         private readonly ITextResourceService _textResourceService;
 
-        public TextResourceController(IMappingEngine mappingEngine, ITextResourceService textResourceService)
+        public TextResourceController(IObjectMapper objectMapper, ITextResourceService textResourceService)
         {
-            _mappingEngine = mappingEngine;
+            _objectMapper = objectMapper;
             _textResourceService = textResourceService;
         }
 

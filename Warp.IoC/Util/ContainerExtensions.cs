@@ -1,6 +1,11 @@
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using SimpleInjector;
+using Warp.Core.Command;
+using Warp.Core.Data;
+using Warp.Core.Query;
 
 namespace Warp.IoC
 {
@@ -28,6 +33,46 @@ namespace Warp.IoC
                 })
                 .ToList() // Convert to a list and register each implementation with its interface.
                 .ForEach(t => container.Register(t.Service, t.Implementation));
+        }
+
+        private static readonly IEnumerable<Type> EntityTypes;
+
+        static ContainerExtensions()
+        {
+            EntityTypes = typeof(EntityBase).Assembly
+                .GetExportedTypes()
+                .Where(t => t.Namespace == "Warp.Data.Entities")
+                .Where(t => !t.IsAbstract)
+                .Where(t => t.IsClass)
+                .Where(t => typeof (EntityBase).IsAssignableFrom(t));
+        }
+
+        public static void RegisterOpenGenericQueryHandlerForAllEntityTypes(this Container container, Type openQueryType, Type openQueryHandlerType)
+        {
+            var openQueryHandlerInterfaceType = typeof(IQueryHandler<,>);
+            
+            foreach (var entityType in EntityTypes)
+            {
+                var closedDeleteCommandType = openQueryType.MakeGenericType(entityType);
+                var closedHandlerInterfaceType = openQueryHandlerInterfaceType.MakeGenericType(closedDeleteCommandType, typeof(bool));
+                var closedDeleteCommandHandlerType = openQueryHandlerType.MakeGenericType(entityType);
+
+                container.Register(closedHandlerInterfaceType, closedDeleteCommandHandlerType);
+            }
+        }
+
+        public static void RegisterOpenGenericCommandHandlerForAllEntityTypes(this Container container, Type openCommandType, Type openCommandHandlerType)
+        {
+            var openCommandHandlerInterfaceType = typeof(ICommandHandler<>);
+            
+            foreach (var entityType in EntityTypes)
+            {
+                var closedDeleteCommandType = openCommandType.MakeGenericType(entityType);
+                var closedHandlerInterfaceType = openCommandHandlerInterfaceType.MakeGenericType(closedDeleteCommandType, typeof(bool));
+                var closedDeleteCommandHandlerType = openCommandHandlerType.MakeGenericType(entityType);
+
+                container.Register(closedHandlerInterfaceType, closedDeleteCommandHandlerType);
+            }
         }
     }
 }

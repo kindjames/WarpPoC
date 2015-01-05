@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+﻿using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Command;
 using Warp.Core.Infrastructure.Validation;
 using Warp.Core.Util;
@@ -23,19 +23,19 @@ namespace Warp.Data.Commands.Clients
     public sealed class UpdateClientCommandHandler : ICommandHandler<UpdateClientCommand>
     {
         private readonly IDomainDbContext _dbContext;
-        private readonly IMappingEngine _mappingEngine;
+        private readonly IObjectMapper _objectMapper;
 
-        public UpdateClientCommandHandler(IDomainDbContext dbContext, IMappingEngine mappingEngine)
+        public UpdateClientCommandHandler(IDomainDbContext dbContext, IObjectMapper objectMapper)
         {
             _dbContext = dbContext;
-            _mappingEngine = mappingEngine;
+            _objectMapper = objectMapper;
         }
 
         public void Execute(UpdateClientCommand command)
         {
             CheckArgument.NotNull(command, "command");
 
-            var clientEntity = _mappingEngine.Map<UpdateClientCommand, Client>(command);
+            var clientEntity = _objectMapper.Map<UpdateClientCommand, Client>(command);
 
             _dbContext.Clients.Attach(clientEntity);
 

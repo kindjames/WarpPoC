@@ -13,10 +13,14 @@ namespace Warp.Testing.Unit.Data
 
         public class When_DataEntityNotFoundException_is_built : WithSubject<DataEntityNotFoundException<TestDataEntity>>
         {
-            Establish that = () => Configure(x => x.For<int>().Use(99));
+            Establish that = () =>
+            {
+                Configure(99);
+                Configure("");
+            };
 
             ThenIt should_build_the_correct_error_message = () => 
-                Subject.ShouldContainErrorMessage("Unable to find TestDataEntity for Id 99 in database.");
+                Subject.ShouldContainErrorMessage("Unable to find TestDataEntity for Id 99 in database. ");
         }
     }
 }

@@ -68,7 +68,10 @@
     <Compile Include="Exceptions\TextResources\TextResourceStringAlreadyExistsException.cs" />
     <Compile Include="Exceptions\User\ClaimNotFoundOnIdentityException.cs" />
     <Compile Include="Exceptions\User\UserNotFoundException.cs" />
+    <Compile Include="Infrastructure\AutoMapper\IMappingConfiguration.cs" />
     <Compile Include="Infrastructure\AutoMapper\AutoMapperExtensions.cs" />
+    <Compile Include="Infrastructure\AutoMapper\IObjectMapper.cs" />
+    <Compile Include="Infrastructure\AutoMapper\ObjectMapper.cs" />
     <Compile Include="Infrastructure\IoC\InjectDependencyAttribute.cs" />
     <Compile Include="Infrastructure\Models\ITextResourceModelProvider.cs" />
     <Compile Include="Infrastructure\Configuration\ApplicationConfig.cs" />
