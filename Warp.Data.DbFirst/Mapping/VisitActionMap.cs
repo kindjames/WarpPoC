@@ -9,26 +9,26 @@ namespace Warp.Data.DbFirst.Mapping
         public VisitActionMap()
         {
             // Primary Key
-            this.HasKey(t => t.VisitActionId);
+            HasKey(t => t.VisitActionId);
 
             // Properties
-            this.Property(t => t.VisitActionId)
+            Property(t => t.VisitActionId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
             // Table & Column Mappings
-            this.ToTable("VisitAction");
-            this.Property(t => t.VisitActionId).HasColumnName("VisitActionID");
-            this.Property(t => t.VisitId).HasColumnName("VisitId");
-            this.Property(t => t.ActionId).HasColumnName("ActionID");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("VisitAction");
+            Property(t => t.VisitActionId).HasColumnName("VisitActionID");
+            Property(t => t.VisitId).HasColumnName("VisitId");
+            Property(t => t.ActionId).HasColumnName("ActionID");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.Action)
+            HasRequired(t => t.Action)
                 .WithMany(t => t.VisitActions)
                 .HasForeignKey(d => d.ActionId);
-            this.HasRequired(t => t.Visit)
+            HasRequired(t => t.Visit)
                 .WithMany(t => t.VisitActions)
                 .HasForeignKey(d => d.VisitId);
 

@@ -156,7 +156,7 @@ namespace Warp.Data.Migrations.DataSeed
 
             var customers = new[]
             {
-                new Customer {Name = "Test Customer", UrlName = "http://www.mysterydining.com", DisplayName = "Test", CustomerCode = "TEST", DefaultLanguageId = 1 },
+                new Customer {Name = "Test CustomerId", UrlName = "http://www.mysterydining.com", DisplayName = "Test", CustomerCode = "TEST", DefaultLanguageId = 1 },
                 new Customer {Name = "HospitalityGEM", UrlName = "http://www.hospitalitygem.com", DisplayName = "hGEM", CustomerCode = "hGEM", DefaultLanguageId = 1 }
             };
 
@@ -166,7 +166,7 @@ namespace Warp.Data.Migrations.DataSeed
             {
                 new User
                 {
-                    UserId = 1,
+                    Id = 1,
                     Forename = "Test",
                     Surname = "User",
                     PasswordHash = x.HashPassword("test1"),
@@ -184,12 +184,12 @@ namespace Warp.Data.Migrations.DataSeed
                     RoleGroups = new Collection<RoleGroup>
                     {
                         roleGroups[0],
-                        roleGroups[19],
+                        roleGroups[19]
                     }
                 },
                 new User
                 {
-                    UserId = 2,
+                    Id = 2,
                     Forename = "Test",
                     Surname = "User 2",
                     PasswordHash = x.HashPassword("test2"),
@@ -207,12 +207,12 @@ namespace Warp.Data.Migrations.DataSeed
                     RoleGroups = new Collection<RoleGroup>
                     {
                         roleGroups[0],
-                        roleGroups[19],
+                        roleGroups[19]
                     }
                 },
                 new User
                 {
-                    UserId = 3,
+                    Id = 3,
                     Forename = "Test",
                     Surname = "User 3",
                     PasswordHash = x.HashPassword("test3"),
@@ -230,9 +230,9 @@ namespace Warp.Data.Migrations.DataSeed
                     RoleGroups = new Collection<RoleGroup>
                     {
                         roleGroups[0],
-                        roleGroups[19],
+                        roleGroups[19]
                     }
-                },
+                }
             };
 
             context.Users.AddOrUpdate(users);
@@ -245,7 +245,7 @@ namespace Warp.Data.Migrations.DataSeed
                     Status = ClientStatus.Active,
                     Name = "Test active client",
                     Code = "AC10",
-                    Customer = customers[0],
+                    Customer = customers[0]
                 },
                 new Client
                 {
@@ -253,7 +253,7 @@ namespace Warp.Data.Migrations.DataSeed
                     Status = ClientStatus.Inactive,
                     Name = "Test inactive client",
                     Code = "IC10",
-                    Customer = customers[0],
+                    Customer = customers[0]
                 },
                 new Client
                 {
@@ -261,19 +261,19 @@ namespace Warp.Data.Migrations.DataSeed
                     Status = ClientStatus.Test,
                     Name = "Test, test client",
                     Code = "TC10",
-                    Customer = customers[1],
-                },
+                    Customer = customers[1]
+                }
             };
 
             context.Clients.AddOrUpdate(clients);
 
             var languages = new[]
             {
-                new Language {LanguageId = 1, InvariantCulture = "en", Locale = "GB", Name = "English"},
-                new Language {LanguageId = 2, InvariantCulture = "fr", Locale = "FR", Name = "French"},
-                new Language {LanguageId = 3, InvariantCulture = "nl", Locale = "NL", Name = "Dutch"},
-                new Language {LanguageId = 4, InvariantCulture = "de", Locale = "DE", Name = "German"},
-                new Language {LanguageId = 5, InvariantCulture = "oo", Locale = "AR", Name = "Pirate"}
+                new Language {Id = 1, InvariantCulture = "en", Locale = "GB", Name = "English"},
+                new Language {Id = 2, InvariantCulture = "fr", Locale = "FR", Name = "French"},
+                new Language {Id = 3, InvariantCulture = "nl", Locale = "NL", Name = "Dutch"},
+                new Language {Id = 4, InvariantCulture = "de", Locale = "DE", Name = "German"},
+                new Language {Id = 5, InvariantCulture = "oo", Locale = "AR", Name = "Pirate"}
             };
 
             context.Languages.AddOrUpdate(languages);
@@ -323,42 +323,42 @@ namespace Warp.Data.Migrations.DataSeed
                     ResourceString = "Username",
                     TextResourceIdentifier = textResourceIdentifiers.Single(i => i.TextResourceCode == "UsernameLabel"),
                     Language = languages[0],
-                    Client = clients[0],
+                    Client = clients[0]
                 },
                 new TextResource
                 {
                     ResourceString = "E-mail or TMDC Id",
                     TextResourceIdentifier = textResourceIdentifiers.Single(i => i.TextResourceCode == "UsernameTextPlaceholder"),
                     Language = languages[0],
-                    Client = clients[0],
+                    Client = clients[0]
                 },
                 new TextResource
                 {
                     ResourceString = "Password",
                     TextResourceIdentifier = textResourceIdentifiers.Single(i => i.TextResourceCode == "PasswordLabel"),
                     Language = languages[0],
-                    Client = clients[0],
+                    Client = clients[0]
                 },
                 new TextResource
                 {
                     ResourceString = "Password",
                     TextResourceIdentifier = textResourceIdentifiers.Single(i => i.TextResourceCode == "PasswordTextPlaceholder"),
                     Language = languages[0],
-                    Client = clients[0],
+                    Client = clients[0]
                 },
                 new TextResource
                 {
                     ResourceString = "Remember me for 2 weeks",
                     TextResourceIdentifier = textResourceIdentifiers.Single(i => i.TextResourceCode == "RememberMeCheckbox"),
                     Language = languages[0],
-                    Client = clients[0],
+                    Client = clients[0]
                 },
                 new TextResource
                 {
                     ResourceString = "Log in",
                     TextResourceIdentifier = textResourceIdentifiers.Single(i => i.TextResourceCode == "LoginButton"),
                     Language = languages[0],
-                    Client = clients[0],
+                    Client = clients[0]
                 }
             };
 

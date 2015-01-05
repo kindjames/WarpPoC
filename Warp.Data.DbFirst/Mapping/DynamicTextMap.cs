@@ -8,25 +8,25 @@ namespace Warp.Data.DbFirst.Mapping
         public DynamicTextMap()
         {
             // Primary Key
-            this.HasKey(t => t.DynamicTextId);
+            HasKey(t => t.DynamicTextId);
 
             // Properties
-            this.Property(t => t.Name)
+            Property(t => t.Name)
                 .IsRequired()
                 .HasMaxLength(150);
 
-            this.Property(t => t.Tag)
+            Property(t => t.Tag)
                 .IsRequired()
                 .HasMaxLength(50);
 
             // Table & Column Mappings
-            this.ToTable("DynamicText", "Subscriptions");
-            this.Property(t => t.DynamicTextId).HasColumnName("DynamicTextId");
-            this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.Tag).HasColumnName("Tag");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("DynamicText", "Subscriptions");
+            Property(t => t.DynamicTextId).HasColumnName("DynamicTextId");
+            Property(t => t.Name).HasColumnName("Name");
+            Property(t => t.Tag).HasColumnName("Tag");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.Active).HasColumnName("Active");
         }
     }
 }

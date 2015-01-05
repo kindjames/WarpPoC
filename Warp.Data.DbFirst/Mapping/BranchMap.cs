@@ -8,61 +8,61 @@ namespace Warp.Data.DbFirst.Mapping
         public BranchMap()
         {
             // Primary Key
-            this.HasKey(t => t.BranchId);
+            HasKey(t => t.BranchId);
 
             // Properties
-            this.Property(t => t.Name)
+            Property(t => t.Name)
                 .IsRequired()
                 .HasMaxLength(100);
 
-            this.Property(t => t.Code)
+            Property(t => t.Code)
                 .HasMaxLength(10);
 
-            this.Property(t => t.Website)
+            Property(t => t.Website)
                 .HasMaxLength(100);
 
-            this.Property(t => t.Telephone)
+            Property(t => t.Telephone)
                 .HasMaxLength(100);
 
-            this.Property(t => t.Fax)
+            Property(t => t.Fax)
                 .HasMaxLength(100);
 
             // Table & Column Mappings
-            this.ToTable("Branch", "Client");
-            this.Property(t => t.BranchId).HasColumnName("BranchID");
-            this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.BrandId).HasColumnName("BrandID");
-            this.Property(t => t.AreaId).HasColumnName("AreaID");
-            this.Property(t => t.BranchStatusId).HasColumnName("BranchStatusID");
-            this.Property(t => t.CurrencyId).HasColumnName("CurrencyID");
-            this.Property(t => t.IndustrySectorId).HasColumnName("IndustrySectorID");
-            this.Property(t => t.PersonId).HasColumnName("PersonID");
-            this.Property(t => t.Active).HasColumnName("Active");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Code).HasColumnName("Code");
-            this.Property(t => t.Website).HasColumnName("Website");
-            this.Property(t => t.Telephone).HasColumnName("Telephone");
-            this.Property(t => t.Fax).HasColumnName("Fax");
+            ToTable("Branch", "Client");
+            Property(t => t.BranchId).HasColumnName("BranchID");
+            Property(t => t.Name).HasColumnName("Name");
+            Property(t => t.BrandId).HasColumnName("BrandID");
+            Property(t => t.AreaId).HasColumnName("AreaID");
+            Property(t => t.BranchStatusId).HasColumnName("BranchStatusID");
+            Property(t => t.CurrencyId).HasColumnName("CurrencyID");
+            Property(t => t.IndustrySectorId).HasColumnName("IndustrySectorID");
+            Property(t => t.PersonId).HasColumnName("PersonID");
+            Property(t => t.Active).HasColumnName("Active");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Code).HasColumnName("Code");
+            Property(t => t.Website).HasColumnName("Website");
+            Property(t => t.Telephone).HasColumnName("Telephone");
+            Property(t => t.Fax).HasColumnName("Fax");
 
             // Relationships
-            this.HasRequired(t => t.Area)
+            HasRequired(t => t.Area)
                 .WithMany(t => t.Branches)
                 .HasForeignKey(d => d.AreaId);
 
-            this.HasRequired(t => t.BranchStatus)
+            HasRequired(t => t.BranchStatus)
                 .WithMany(t => t.Branches)
                 .HasForeignKey(d => d.BranchStatusId);
 
-            this.HasRequired(t => t.Brand)
+            HasRequired(t => t.Brand)
                 .WithMany(t => t.Branches)
                 .HasForeignKey(d => d.BrandId);
 
-            this.HasRequired(t => t.Currency)
+            HasRequired(t => t.Currency)
                 .WithMany(t => t.Branches)
                 .HasForeignKey(d => d.CurrencyId);
 
-            this.HasOptional(t => t.Person)
+            HasOptional(t => t.Person)
                 .WithMany(t => t.Branches)
                 .HasForeignKey(d => d.PersonId);
         }

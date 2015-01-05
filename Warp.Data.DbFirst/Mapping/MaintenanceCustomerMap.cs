@@ -8,23 +8,23 @@ namespace Warp.Data.DbFirst.Mapping
         public MaintenanceCustomerMap()
         {
             // Primary Key
-            this.HasKey(t => t.MaintenanceCustomerId);
+            HasKey(t => t.MaintenanceCustomerId);
 
             // Properties
             // Table & Column Mappings
-            this.ToTable("MaintenanceCustomer");
-            this.Property(t => t.MaintenanceCustomerId).HasColumnName("MaintenanceCustomerID");
-            this.Property(t => t.CustomerId).HasColumnName("CustomerID");
-            this.Property(t => t.MaintenanceId).HasColumnName("MaintenanceID");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("MaintenanceCustomer");
+            Property(t => t.MaintenanceCustomerId).HasColumnName("MaintenanceCustomerID");
+            Property(t => t.CustomerId).HasColumnName("CustomerID");
+            Property(t => t.MaintenanceId).HasColumnName("MaintenanceID");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.Customer)
+            HasRequired(t => t.Customer)
                 .WithMany(t => t.MaintenanceCustomers)
                 .HasForeignKey(d => d.CustomerId);
-            this.HasRequired(t => t.Maintenance)
+            HasRequired(t => t.Maintenance)
                 .WithMany(t => t.MaintenanceCustomers)
                 .HasForeignKey(d => d.MaintenanceId);
 

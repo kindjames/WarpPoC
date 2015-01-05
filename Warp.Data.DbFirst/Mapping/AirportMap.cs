@@ -9,34 +9,34 @@ namespace Warp.Data.DbFirst.Mapping
         public AirportMap()
         {
             // Primary Key
-            this.HasKey(t => t.AirportId);
+            HasKey(t => t.AirportId);
 
             // Properties
-            this.Property(t => t.AirportId)
+            Property(t => t.AirportId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            this.Property(t => t.Name)
+            Property(t => t.Name)
                 .IsRequired()
                 .HasMaxLength(50);
 
-            this.Property(t => t.AirportCode)
+            Property(t => t.AirportCode)
                 .IsRequired()
                 .HasMaxLength(10);
 
             // Table & Column Mappings
-            this.ToTable("Airport");
-            this.Property(t => t.AirportId).HasColumnName("AirportID");
-            this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.AirportCode).HasColumnName("AirportCode");
-            this.Property(t => t.GeographicPostCodeId).HasColumnName("GeographicPostCodeID");
-            this.Property(t => t.Active).HasColumnName("Active");
-            this.Property(t => t.XCoordinate).HasColumnName("XCoordinate");
-            this.Property(t => t.YCoordinate).HasColumnName("YCoordinate");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            ToTable("Airport");
+            Property(t => t.AirportId).HasColumnName("AirportID");
+            Property(t => t.Name).HasColumnName("Name");
+            Property(t => t.AirportCode).HasColumnName("AirportCode");
+            Property(t => t.GeographicPostCodeId).HasColumnName("GeographicPostCodeID");
+            Property(t => t.Active).HasColumnName("Active");
+            Property(t => t.XCoordinate).HasColumnName("XCoordinate");
+            Property(t => t.YCoordinate).HasColumnName("YCoordinate");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
 
             // Relationships
-            this.HasRequired(t => t.GeographicPostCode)
+            HasRequired(t => t.GeographicPostCode)
                 .WithMany(t => t.Airports)
                 .HasForeignKey(d => d.GeographicPostCodeId);
 

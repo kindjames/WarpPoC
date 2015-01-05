@@ -9,28 +9,28 @@ namespace Warp.Data.DbFirst.Mapping
         public AreaQuestionnaireMap()
         {
             // Primary Key
-            this.HasKey(t => t.AreaQuestionnaireId);
+            HasKey(t => t.AreaQuestionnaireId);
 
             // Properties
-            this.Property(t => t.AreaQuestionnaireId)
+            Property(t => t.AreaQuestionnaireId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
             // Table & Column Mappings
-            this.ToTable("AreaQuestionnaire");
-            this.Property(t => t.AreaQuestionnaireId).HasColumnName("AreaQuestionnaireID");
-            this.Property(t => t.AreaId).HasColumnName("AreaID");
-            this.Property(t => t.QuestionnaireId).HasColumnName("QuestionnaireID");
-            this.Property(t => t.Permission).HasColumnName("Permission");
-            this.Property(t => t.SubQuestionnaireId).HasColumnName("SubQuestionnaireID");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("AreaQuestionnaire");
+            Property(t => t.AreaQuestionnaireId).HasColumnName("AreaQuestionnaireID");
+            Property(t => t.AreaId).HasColumnName("AreaID");
+            Property(t => t.QuestionnaireId).HasColumnName("QuestionnaireID");
+            Property(t => t.Permission).HasColumnName("Permission");
+            Property(t => t.SubQuestionnaireId).HasColumnName("SubQuestionnaireID");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.Questionnaire)
+            HasRequired(t => t.Questionnaire)
                 .WithMany(t => t.AreaQuestionnaires)
                 .HasForeignKey(d => d.QuestionnaireId);
-            this.HasRequired(t => t.SubQuestionnaire)
+            HasRequired(t => t.SubQuestionnaire)
                 .WithMany(t => t.AreaQuestionnaires)
                 .HasForeignKey(d => d.SubQuestionnaireId);
 

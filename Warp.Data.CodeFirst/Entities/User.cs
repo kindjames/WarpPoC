@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Warp.Core.Data;
 
 namespace Warp.Data.Entities
 {
@@ -14,8 +15,6 @@ namespace Warp.Data.Entities
         {
             RoleGroups = new Collection<RoleGroup>();
         }
-
-        public int UserId { get; set; }
 
         [StringLength(100), Required]
         public string Forename { get; set; }

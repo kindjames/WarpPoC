@@ -28,7 +28,7 @@ namespace Warp.IoC.Factories
             {
                 DefaultAccountLockoutTimeSpan = _applicationConfig.DefaultAccountLockoutTimeSpan,
                 MaxFailedAccessAttemptsBeforeLockout = _applicationConfig.MaxFailedAccessAttemptsBeforeLockout,
-                PasswordHasher = _passwordHasher,
+                PasswordHasher = _passwordHasher
             };
         }
     }

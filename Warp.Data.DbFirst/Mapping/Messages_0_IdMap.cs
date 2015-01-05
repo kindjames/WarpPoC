@@ -9,15 +9,15 @@ namespace Warp.Data.DbFirst.Mapping
         public Messages_0_IdMap()
         {
             // Primary Key
-            this.HasKey(t => t.PayloadId);
+            HasKey(t => t.PayloadId);
 
             // Properties
-            this.Property(t => t.PayloadId)
+            Property(t => t.PayloadId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
             // Table & Column Mappings
-            this.ToTable("Messages_0_Id", "SignalR");
-            this.Property(t => t.PayloadId).HasColumnName("PayloadId");
+            ToTable("Messages_0_Id", "SignalR");
+            Property(t => t.PayloadId).HasColumnName("PayloadId");
         }
     }
 }

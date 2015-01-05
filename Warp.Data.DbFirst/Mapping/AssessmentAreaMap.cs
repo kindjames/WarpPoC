@@ -9,27 +9,27 @@ namespace Warp.Data.DbFirst.Mapping
         public AssessmentAreaMap()
         {
             // Primary Key
-            this.HasKey(t => t.AssessmentAreaId);
+            HasKey(t => t.AssessmentAreaId);
 
             // Properties
-            this.Property(t => t.AssessmentAreaId)
+            Property(t => t.AssessmentAreaId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            this.Property(t => t.Name)
+            Property(t => t.Name)
                 .IsRequired()
                 .HasMaxLength(50);
 
             // Table & Column Mappings
-            this.ToTable("AssessmentArea");
-            this.Property(t => t.AssessmentAreaId).HasColumnName("AssessmentAreaID");
-            this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.AssessmentTypeId).HasColumnName("AssessmentTypeID");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("AssessmentArea");
+            Property(t => t.AssessmentAreaId).HasColumnName("AssessmentAreaID");
+            Property(t => t.Name).HasColumnName("Name");
+            Property(t => t.AssessmentTypeId).HasColumnName("AssessmentTypeID");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.AssessmentType)
+            HasRequired(t => t.AssessmentType)
                 .WithMany(t => t.AssessmentAreas)
                 .HasForeignKey(d => d.AssessmentTypeId);
 

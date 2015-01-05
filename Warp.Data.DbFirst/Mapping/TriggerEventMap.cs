@@ -8,28 +8,28 @@ namespace Warp.Data.DbFirst.Mapping
         public TriggerEventMap()
         {
             // Primary Key
-            this.HasKey(t => t.TriggerEventId);
+            HasKey(t => t.TriggerEventId);
 
             // Properties
             // Table & Column Mappings
-            this.ToTable("TriggerEvent", "Subscriptions");
-            this.Property(t => t.TriggerEventId).HasColumnName("TriggerEventId");
-            this.Property(t => t.TriggerId).HasColumnName("TriggerId");
-            this.Property(t => t.EventId).HasColumnName("EventId");
-            this.Property(t => t.DelayTypeId).HasColumnName("DelayTypeId");
-            this.Property(t => t.DelayValue).HasColumnName("DelayValue");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("TriggerEvent", "Subscriptions");
+            Property(t => t.TriggerEventId).HasColumnName("TriggerEventId");
+            Property(t => t.TriggerId).HasColumnName("TriggerId");
+            Property(t => t.EventId).HasColumnName("EventId");
+            Property(t => t.DelayTypeId).HasColumnName("DelayTypeId");
+            Property(t => t.DelayValue).HasColumnName("DelayValue");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasOptional(t => t.DelayType)
+            HasOptional(t => t.DelayType)
                 .WithMany(t => t.TriggerEvents)
                 .HasForeignKey(d => d.DelayTypeId);
-            this.HasOptional(t => t.SubscriptionEvent)
+            HasOptional(t => t.SubscriptionEvent)
                 .WithMany(t => t.TriggerEvents)
                 .HasForeignKey(d => d.EventId);
-            this.HasOptional(t => t.Trigger)
+            HasOptional(t => t.Trigger)
                 .WithMany(t => t.TriggerEvents)
                 .HasForeignKey(d => d.TriggerId);
 

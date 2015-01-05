@@ -1,6 +1,7 @@
-﻿using System.Web.Mvc;
+﻿using System.Security.Claims;
+using System.Web.Mvc;
 using Warp.Core.Authentication;
-using Warp.Core.Infrastructure.Mapping;
+using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Services;
 using Warp.Core.Services.Dtos.Client;
 using Warp.WebUI.Models.Clients;
@@ -30,7 +31,7 @@ namespace Warp.WebUI.Controllers
         [Route("list")]
         public ActionResult List(ClientListInputModel model)
         {
-            var customerId = User.Identity.GetClaimValueFor<int>(ApplicationClaimTypes.CustomerId);
+            var customerId = User.Identity.GetOrThrowClaimValueFor<int>(ApplicationClaimTypes.CustomerId);
 
             var clients = _clientService.GetClients(model.ClientSearchQuery, customerId);
 
@@ -54,9 +55,12 @@ namespace Warp.WebUI.Controllers
             {
                 var dto = _objectMapper.Map<CreateClientModel, SaveClientDto>(model);
 
+                dto.CustomerId = User.Identity.GetOrThrowClaimValueFor<int>(ApplicationClaimTypes.CustomerId);
+                dto.AccountManagerId = User.Identity.GetOrThrowClaimValueFor<int>(ClaimTypes.NameIdentifier);
+
                 _clientService.SaveClient(dto);
 
-                return RedirectToAction("View", new {clientId = dto.Id});
+                return RedirectToAction("Index");
             }
 
             return View(model);

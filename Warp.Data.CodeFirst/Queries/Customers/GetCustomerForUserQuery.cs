@@ -24,7 +24,7 @@ namespace Warp.Data.Queries.Customers
         public Customer Execute(GetCustomerForUserQuery query)
         {
             var user = _context.Users
-                .SingleOrDefault(u => u.UserId == query.UserId);
+                .SingleOrDefault(u => u.Id == query.UserId);
 
             return (user == null) ? null : user.Customer;
         }

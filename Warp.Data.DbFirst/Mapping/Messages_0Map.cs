@@ -9,20 +9,20 @@ namespace Warp.Data.DbFirst.Mapping
         public Messages_0Map()
         {
             // Primary Key
-            this.HasKey(t => t.PayloadId);
+            HasKey(t => t.PayloadId);
 
             // Properties
-            this.Property(t => t.PayloadId)
+            Property(t => t.PayloadId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            this.Property(t => t.Payload)
+            Property(t => t.Payload)
                 .IsRequired();
 
             // Table & Column Mappings
-            this.ToTable("Messages_0", "SignalR");
-            this.Property(t => t.PayloadId).HasColumnName("PayloadId");
-            this.Property(t => t.Payload).HasColumnName("Payload");
-            this.Property(t => t.InsertedOn).HasColumnName("InsertedOn");
+            ToTable("Messages_0", "SignalR");
+            Property(t => t.PayloadId).HasColumnName("PayloadId");
+            Property(t => t.Payload).HasColumnName("Payload");
+            Property(t => t.InsertedOn).HasColumnName("InsertedOn");
         }
     }
 }

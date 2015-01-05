@@ -8,24 +8,24 @@ namespace Warp.Data.DbFirst.Mapping
         public GeographicWorldAreaMap()
         {
             // Primary Key
-            this.HasKey(t => t.GeographicWorldAreaId);
+            HasKey(t => t.GeographicWorldAreaId);
 
             // Properties
-            this.Property(t => t.Name)
+            Property(t => t.Name)
                 .IsRequired()
                 .HasMaxLength(50);
 
-            this.Property(t => t.DefaultLocalisation)
+            Property(t => t.DefaultLocalisation)
                 .HasMaxLength(10);
 
             // Table & Column Mappings
-            this.ToTable("GeographicWorldArea", "Geographic");
-            this.Property(t => t.GeographicWorldAreaId).HasColumnName("GeographicWorldAreaID");
-            this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.DefaultLocalisation).HasColumnName("DefaultLocalisation");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("GeographicWorldArea", "Geographic");
+            Property(t => t.GeographicWorldAreaId).HasColumnName("GeographicWorldAreaID");
+            Property(t => t.Name).HasColumnName("Name");
+            Property(t => t.DefaultLocalisation).HasColumnName("DefaultLocalisation");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
         }
     }
 }

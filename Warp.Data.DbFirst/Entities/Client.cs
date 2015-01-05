@@ -3,36 +3,36 @@ using System.Collections.Generic;
 
 namespace Warp.Data.DbFirst.Entities
 {
-    public partial class Client : EntityBase
+    public class Client : EntityBase
     {
         public Client()
         {
-            this.Brands = new List<Brand>();
-            this.AccountingClients = new List<AccountingClient>();
-            this.AccountingPeriods = new List<AccountingPeriod>();
-            this.BriefClients = new List<BriefClient>();
-            this.ClientAccountingProducts = new List<ClientAccountingProduct>();
-            this.ClientAccountManagers = new List<ClientAccountManager>();
-            this.BanClients = new List<BanClient>();
-            this.ClientCallBackRequests = new List<ClientCallBackRequest>();
-            this.ClientCallInLogs = new List<ClientCallInLog>();
-            this.ClientContactTrackings = new List<ClientContactTracking>();
-            this.ClientLegacyUsers = new List<ClientLegacyUser>();
-            this.ClientNotes = new List<ClientNote>();
-            this.ClientOrganisations = new List<ClientOrganisation>();
-            this.ClientQuestionnaires = new List<ClientQuestionnaire>();
-            this.ClientSocialNetworks = new List<ClientSocialNetwork>();
-            this.ClientHistories = new List<ClientHistory>();
-            this.ContactAddressClients = new List<ContactAddressClient>();
-            this.CustomerClients = new List<CustomerClient>();
-            this.MenuConfigClients = new List<MenuConfigClient>();
-            this.PeriodClients = new List<PeriodClient>();
-            this.People = new List<Person>();
-            this.PersonClients = new List<PersonClient>();
-            this.Questions = new List<Question>();
-            this.QuestionTrackers = new List<QuestionTracker>();
-            this.ReportRestrictionClients = new List<ReportRestrictionClient>();
-            this.TerminologyClients = new List<TerminologyClient>();
+            Brands = new List<Brand>();
+            AccountingClients = new List<AccountingClient>();
+            AccountingPeriods = new List<AccountingPeriod>();
+            BriefClients = new List<BriefClient>();
+            ClientAccountingProducts = new List<ClientAccountingProduct>();
+            ClientAccountManagers = new List<ClientAccountManager>();
+            BanClients = new List<BanClient>();
+            ClientCallBackRequests = new List<ClientCallBackRequest>();
+            ClientCallInLogs = new List<ClientCallInLog>();
+            ClientContactTrackings = new List<ClientContactTracking>();
+            ClientLegacyUsers = new List<ClientLegacyUser>();
+            ClientNotes = new List<ClientNote>();
+            ClientOrganisations = new List<ClientOrganisation>();
+            ClientQuestionnaires = new List<ClientQuestionnaire>();
+            ClientSocialNetworks = new List<ClientSocialNetwork>();
+            ClientHistories = new List<ClientHistory>();
+            ContactAddressClients = new List<ContactAddressClient>();
+            CustomerClients = new List<CustomerClient>();
+            MenuConfigClients = new List<MenuConfigClient>();
+            PeriodClients = new List<PeriodClient>();
+            People = new List<Person>();
+            PersonClients = new List<PersonClient>();
+            Questions = new List<Question>();
+            QuestionTrackers = new List<QuestionTracker>();
+            ReportRestrictionClients = new List<ReportRestrictionClient>();
+            TerminologyClients = new List<TerminologyClient>();
         }
 
         public int ClientId { get; set; }

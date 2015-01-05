@@ -1,4 +1,4 @@
-﻿using Warp.Core.Infrastructure.Mapping;
+﻿using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Query;
 using Warp.Core.Services;
 using Warp.Core.Services.Dtos.Customer;

@@ -9,25 +9,25 @@ namespace Warp.Data.DbFirst.Mapping
         public TimeTrackerMap()
         {
             // Primary Key
-            this.HasKey(t => t.TimeTrackerId);
+            HasKey(t => t.TimeTrackerId);
 
             // Properties
-            this.Property(t => t.TimeTrackerId)
+            Property(t => t.TimeTrackerId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
             // Table & Column Mappings
-            this.ToTable("TimeTracker");
-            this.Property(t => t.TimeTrackerId).HasColumnName("TimeTrackerID");
-            this.Property(t => t.AdminId).HasColumnName("AdminID");
-            this.Property(t => t.TimeTrackerTypeId).HasColumnName("TimeTrackerTypeID");
-            this.Property(t => t.StartTime).HasColumnName("StartTime");
-            this.Property(t => t.EndTime).HasColumnName("EndTime");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("TimeTracker");
+            Property(t => t.TimeTrackerId).HasColumnName("TimeTrackerID");
+            Property(t => t.AdminId).HasColumnName("AdminID");
+            Property(t => t.TimeTrackerTypeId).HasColumnName("TimeTrackerTypeID");
+            Property(t => t.StartTime).HasColumnName("StartTime");
+            Property(t => t.EndTime).HasColumnName("EndTime");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.TimeTrackerType)
+            HasRequired(t => t.TimeTrackerType)
                 .WithMany(t => t.TimeTrackers)
                 .HasForeignKey(d => d.TimeTrackerTypeId);
 

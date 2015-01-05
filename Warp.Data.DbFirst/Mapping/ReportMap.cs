@@ -8,66 +8,66 @@ namespace Warp.Data.DbFirst.Mapping
         public ReportMap()
         {
             // Primary Key
-            this.HasKey(t => t.ReportId);
+            HasKey(t => t.ReportId);
 
             // Properties
-            this.Property(t => t.Name)
+            Property(t => t.Name)
                 .IsRequired()
                 .HasMaxLength(200);
 
-            this.Property(t => t.SSRSName)
+            Property(t => t.SSRSName)
                 .IsRequired()
                 .HasMaxLength(100);
 
-            this.Property(t => t.Description)
+            Property(t => t.Description)
                 .IsRequired()
                 .HasMaxLength(500);
 
-            this.Property(t => t.Purpose)
+            Property(t => t.Purpose)
                 .IsRequired()
                 .HasMaxLength(500);
 
-            this.Property(t => t.Notes)
+            Property(t => t.Notes)
                 .IsRequired()
                 .HasMaxLength(500);
 
-            this.Property(t => t.PreviewImagePath)
+            Property(t => t.PreviewImagePath)
                 .IsRequired()
                 .HasMaxLength(500);
 
             // Table & Column Mappings
-            this.ToTable("Report", "Reporting");
-            this.Property(t => t.ReportId).HasColumnName("ReportId");
-            this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.ReportCategoryId).HasColumnName("ReportCategoryId");
-            this.Property(t => t.SSRSName).HasColumnName("SSRSName");
-            this.Property(t => t.ReportSourceId).HasColumnName("ReportSourceId");
-            this.Property(t => t.DateLastChecked).HasColumnName("DateLastChecked");
-            this.Property(t => t.DefaultReportSectionId).HasColumnName("DefaultReportSectionId");
-            this.Property(t => t.Description).HasColumnName("Description");
-            this.Property(t => t.HideDescription).HasColumnName("HideDescription");
-            this.Property(t => t.Purpose).HasColumnName("Purpose");
-            this.Property(t => t.HidePurpose).HasColumnName("HidePurpose");
-            this.Property(t => t.Notes).HasColumnName("Notes");
-            this.Property(t => t.PreviewImagePath).HasColumnName("PreviewImagePath");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.CreatedByUserRoleId).HasColumnName("CreatedByUserRoleId");
-            this.Property(t => t.DateRemoved).HasColumnName("DateRemoved");
-            this.Property(t => t.RemovedbyUserRoleId).HasColumnName("RemovedbyUserRoleId");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("Report", "Reporting");
+            Property(t => t.ReportId).HasColumnName("ReportId");
+            Property(t => t.Name).HasColumnName("Name");
+            Property(t => t.ReportCategoryId).HasColumnName("ReportCategoryId");
+            Property(t => t.SSRSName).HasColumnName("SSRSName");
+            Property(t => t.ReportSourceId).HasColumnName("ReportSourceId");
+            Property(t => t.DateLastChecked).HasColumnName("DateLastChecked");
+            Property(t => t.DefaultReportSectionId).HasColumnName("DefaultReportSectionId");
+            Property(t => t.Description).HasColumnName("Description");
+            Property(t => t.HideDescription).HasColumnName("HideDescription");
+            Property(t => t.Purpose).HasColumnName("Purpose");
+            Property(t => t.HidePurpose).HasColumnName("HidePurpose");
+            Property(t => t.Notes).HasColumnName("Notes");
+            Property(t => t.PreviewImagePath).HasColumnName("PreviewImagePath");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.CreatedByUserRoleId).HasColumnName("CreatedByUserRoleId");
+            Property(t => t.DateRemoved).HasColumnName("DateRemoved");
+            Property(t => t.RemovedbyUserRoleId).HasColumnName("RemovedbyUserRoleId");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.UserRole)
+            HasRequired(t => t.UserRole)
                 .WithMany(t => t.Reports)
                 .HasForeignKey(d => d.CreatedByUserRoleId);
-            this.HasRequired(t => t.ReportCategory)
+            HasRequired(t => t.ReportCategory)
                 .WithMany(t => t.Reports)
                 .HasForeignKey(d => d.ReportCategoryId);
-            this.HasRequired(t => t.ReportSection)
+            HasRequired(t => t.ReportSection)
                 .WithMany(t => t.Reports)
                 .HasForeignKey(d => d.DefaultReportSectionId);
-            this.HasRequired(t => t.ReportSource)
+            HasRequired(t => t.ReportSource)
                 .WithMany(t => t.Reports)
                 .HasForeignKey(d => d.ReportSourceId);
 

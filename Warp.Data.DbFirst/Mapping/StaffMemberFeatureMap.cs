@@ -9,26 +9,26 @@ namespace Warp.Data.DbFirst.Mapping
         public StaffMemberFeatureMap()
         {
             // Primary Key
-            this.HasKey(t => t.StaffMemberFeatureId);
+            HasKey(t => t.StaffMemberFeatureId);
 
             // Properties
-            this.Property(t => t.StaffMemberFeatureId)
+            Property(t => t.StaffMemberFeatureId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
             // Table & Column Mappings
-            this.ToTable("StaffMemberFeature");
-            this.Property(t => t.StaffMemberFeatureId).HasColumnName("StaffMemberFeatureID");
-            this.Property(t => t.StaffMemberId).HasColumnName("StaffMemberID");
-            this.Property(t => t.StaffFeatureId).HasColumnName("StaffFeatureID");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("StaffMemberFeature");
+            Property(t => t.StaffMemberFeatureId).HasColumnName("StaffMemberFeatureID");
+            Property(t => t.StaffMemberId).HasColumnName("StaffMemberID");
+            Property(t => t.StaffFeatureId).HasColumnName("StaffFeatureID");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.StaffFeature)
+            HasRequired(t => t.StaffFeature)
                 .WithMany(t => t.StaffMemberFeatures)
                 .HasForeignKey(d => d.StaffFeatureId);
-            this.HasRequired(t => t.StaffMember)
+            HasRequired(t => t.StaffMember)
                 .WithMany(t => t.StaffMemberFeatures)
                 .HasForeignKey(d => d.StaffMemberId);
 

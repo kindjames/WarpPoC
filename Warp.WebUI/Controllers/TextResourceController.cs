@@ -1,5 +1,5 @@
 ﻿using System.Web.Mvc;
-using Warp.Core.Infrastructure.Mapping;
+using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Services.TextResourceService;
 using Warp.WebUI.Models.TextResources;
 
@@ -26,7 +26,7 @@ namespace Warp.WebUI.Controllers
         //{
         //    if (ModelState.IsValid)
         //    {
-        //        var dto = _objectMapper.Map<TextResourceViewModel, SaveTextResourceDto>(model);
+        //        var dto = _mappingEngine.Map<TextResourceViewModel, SaveTextResourceDto>(model);
 
         //        _textResourceService.SaveResource(dto);
 
@@ -40,7 +40,7 @@ namespace Warp.WebUI.Controllers
         //{
         //    var textResource = _textResourceService.GetTextResource(textResourceId);
 
-        //    var viewModel = _objectMapper.Map<TextResourceDto, TextResourceViewModel>(textResource);
+        //    var viewModel = _mappingEngine.Map<TextResourceDto, TextResourceViewModel>(textResource);
 
         //    return View(viewModel);
         //}

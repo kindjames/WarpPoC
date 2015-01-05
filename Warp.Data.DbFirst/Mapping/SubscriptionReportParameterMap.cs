@@ -8,32 +8,32 @@ namespace Warp.Data.DbFirst.Mapping
         public SubscriptionReportParameterMap()
         {
             // Primary Key
-            this.HasKey(t => t.SubscriptionReportParameterId);
+            HasKey(t => t.SubscriptionReportParameterId);
 
             // Properties
-            this.Property(t => t.ParameterName)
+            Property(t => t.ParameterName)
                 .IsRequired()
                 .HasMaxLength(150);
 
             // Table & Column Mappings
-            this.ToTable("SubscriptionReportParameter", "Subscriptions");
-            this.Property(t => t.SubscriptionReportParameterId).HasColumnName("SubscriptionReportParameterId");
-            this.Property(t => t.SubscriptionReportId).HasColumnName("SubscriptionReportId");
-            this.Property(t => t.ParameterName).HasColumnName("ParameterName");
-            this.Property(t => t.Value).HasColumnName("Value");
-            this.Property(t => t.Loop).HasColumnName("Loop");
-            this.Property(t => t.UseAll).HasColumnName("UseAll");
-            this.Property(t => t.UseDynamicValue).HasColumnName("UseDynamicValue");
-            this.Property(t => t.ReportParameterTypeId).HasColumnName("ReportParameterTypeId");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("SubscriptionReportParameter", "Subscriptions");
+            Property(t => t.SubscriptionReportParameterId).HasColumnName("SubscriptionReportParameterId");
+            Property(t => t.SubscriptionReportId).HasColumnName("SubscriptionReportId");
+            Property(t => t.ParameterName).HasColumnName("ParameterName");
+            Property(t => t.Value).HasColumnName("Value");
+            Property(t => t.Loop).HasColumnName("Loop");
+            Property(t => t.UseAll).HasColumnName("UseAll");
+            Property(t => t.UseDynamicValue).HasColumnName("UseDynamicValue");
+            Property(t => t.ReportParameterTypeId).HasColumnName("ReportParameterTypeId");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasOptional(t => t.ReportParameterType)
+            HasOptional(t => t.ReportParameterType)
                 .WithMany(t => t.SubscriptionReportParameters)
                 .HasForeignKey(d => d.ReportParameterTypeId);
-            this.HasRequired(t => t.SubscriptionReport)
+            HasRequired(t => t.SubscriptionReport)
                 .WithMany(t => t.SubscriptionReportParameters)
                 .HasForeignKey(d => d.SubscriptionReportId);
 

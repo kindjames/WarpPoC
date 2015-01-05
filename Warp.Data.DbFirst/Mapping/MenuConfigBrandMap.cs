@@ -9,30 +9,30 @@ namespace Warp.Data.DbFirst.Mapping
         public MenuConfigBrandMap()
         {
             // Primary Key
-            this.HasKey(t => t.MenuConfigBrandId);
+            HasKey(t => t.MenuConfigBrandId);
 
             // Properties
-            this.Property(t => t.MenuConfigBrandId)
+            Property(t => t.MenuConfigBrandId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
             // Table & Column Mappings
-            this.ToTable("MenuConfigBrand");
-            this.Property(t => t.MenuConfigBrandId).HasColumnName("MenuConfigBrandID");
-            this.Property(t => t.MenuConfigId).HasColumnName("MenuConfigID");
-            this.Property(t => t.BrandId).HasColumnName("BrandID");
-            this.Property(t => t.AddedByAdminId).HasColumnName("AddedByAdminID");
-            this.Property(t => t.DateValidFrom).HasColumnName("DateValidFrom");
-            this.Property(t => t.DateValidTo).HasColumnName("DateValidTo");
-            this.Property(t => t.Permission).HasColumnName("Permission");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("MenuConfigBrand");
+            Property(t => t.MenuConfigBrandId).HasColumnName("MenuConfigBrandID");
+            Property(t => t.MenuConfigId).HasColumnName("MenuConfigID");
+            Property(t => t.BrandId).HasColumnName("BrandID");
+            Property(t => t.AddedByAdminId).HasColumnName("AddedByAdminID");
+            Property(t => t.DateValidFrom).HasColumnName("DateValidFrom");
+            Property(t => t.DateValidTo).HasColumnName("DateValidTo");
+            Property(t => t.Permission).HasColumnName("Permission");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.Brand)
+            HasRequired(t => t.Brand)
                 .WithMany(t => t.MenuConfigBrands)
                 .HasForeignKey(d => d.BrandId);
-            this.HasRequired(t => t.MenuConfig)
+            HasRequired(t => t.MenuConfig)
                 .WithMany(t => t.MenuConfigBrands)
                 .HasForeignKey(d => d.MenuConfigId);
 

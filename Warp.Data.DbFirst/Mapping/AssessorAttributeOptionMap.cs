@@ -9,27 +9,27 @@ namespace Warp.Data.DbFirst.Mapping
         public AssessorAttributeOptionMap()
         {
             // Primary Key
-            this.HasKey(t => t.AssessorAttributeOptionId);
+            HasKey(t => t.AssessorAttributeOptionId);
 
             // Properties
-            this.Property(t => t.AssessorAttributeOptionId)
+            Property(t => t.AssessorAttributeOptionId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            this.Property(t => t.Name)
+            Property(t => t.Name)
                 .IsRequired()
                 .HasMaxLength(50);
 
             // Table & Column Mappings
-            this.ToTable("AssessorAttributeOption");
-            this.Property(t => t.AssessorAttributeOptionId).HasColumnName("AssessorAttributeOptionID");
-            this.Property(t => t.AssessorAttributeItemId).HasColumnName("AssessorAttributeItemID");
-            this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.Active).HasColumnName("Active");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            ToTable("AssessorAttributeOption");
+            Property(t => t.AssessorAttributeOptionId).HasColumnName("AssessorAttributeOptionID");
+            Property(t => t.AssessorAttributeItemId).HasColumnName("AssessorAttributeItemID");
+            Property(t => t.Name).HasColumnName("Name");
+            Property(t => t.Active).HasColumnName("Active");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
 
             // Relationships
-            this.HasRequired(t => t.AssessorAttributeItem)
+            HasRequired(t => t.AssessorAttributeItem)
                 .WithMany(t => t.AssessorAttributeOptions)
                 .HasForeignKey(d => d.AssessorAttributeItemId);
 

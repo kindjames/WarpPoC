@@ -8,38 +8,38 @@ namespace Warp.Data.DbFirst.Mapping
         public TourStepMap()
         {
             // Primary Key
-            this.HasKey(t => t.TourStepId);
+            HasKey(t => t.TourStepId);
 
             // Properties
-            this.Property(t => t.ElementId)
+            Property(t => t.ElementId)
                 .IsRequired()
                 .HasMaxLength(50);
 
-            this.Property(t => t.StepTitle)
+            Property(t => t.StepTitle)
                 .IsRequired()
                 .HasMaxLength(255);
 
-            this.Property(t => t.StepText)
+            Property(t => t.StepText)
                 .IsRequired();
 
             // Table & Column Mappings
-            this.ToTable("TourStep", "Help");
-            this.Property(t => t.TourStepId).HasColumnName("TourStepID");
-            this.Property(t => t.TourId).HasColumnName("TourID");
-            this.Property(t => t.ElementId).HasColumnName("ElementID");
-            this.Property(t => t.StepNumber).HasColumnName("StepNumber");
-            this.Property(t => t.StepTitle).HasColumnName("StepTitle");
-            this.Property(t => t.StepText).HasColumnName("StepText");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.Active).HasColumnName("Active");
-            this.Property(t => t.TourStepPlacementId).HasColumnName("TourStepPlacementId");
+            ToTable("TourStep", "Help");
+            Property(t => t.TourStepId).HasColumnName("TourStepID");
+            Property(t => t.TourId).HasColumnName("TourID");
+            Property(t => t.ElementId).HasColumnName("ElementID");
+            Property(t => t.StepNumber).HasColumnName("StepNumber");
+            Property(t => t.StepTitle).HasColumnName("StepTitle");
+            Property(t => t.StepText).HasColumnName("StepText");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.Active).HasColumnName("Active");
+            Property(t => t.TourStepPlacementId).HasColumnName("TourStepPlacementId");
 
             // Relationships
-            this.HasRequired(t => t.Tour)
+            HasRequired(t => t.Tour)
                 .WithMany(t => t.TourSteps)
                 .HasForeignKey(d => d.TourId);
-            this.HasOptional(t => t.TourStepPlacement)
+            HasOptional(t => t.TourStepPlacement)
                 .WithMany(t => t.TourSteps)
                 .HasForeignKey(d => d.TourStepPlacementId);
 

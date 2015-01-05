@@ -4,6 +4,7 @@ using System.Web.Routing;
 using Microsoft.Owin;
 using Owin;
 using Warp.WebUI;
+using Mapper = AutoMapper.Mapper;
 
 [assembly: OwinStartup(typeof(Startup))]
 namespace Warp.WebUI
@@ -17,6 +18,8 @@ namespace Warp.WebUI
             ConfigureRouting(RouteTable.Routes);
             ConfigureBundles(BundleTable.Bundles);
             ConfigureAuthentication(app);
+            ConfigureBootstrap();
+            ConfigureAutoMapper(Mapper.Configuration);
         }
     }
 }

@@ -8,26 +8,26 @@ namespace Warp.Data.DbFirst.Mapping
         public LogMap()
         {
             // Primary Key
-            this.HasKey(t => t.LogId);
+            HasKey(t => t.LogId);
 
             // Properties
-            this.Property(t => t.context)
+            Property(t => t.context)
                 .IsRequired()
                 .HasMaxLength(50);
 
-            this.Property(t => t.behaviour)
+            Property(t => t.behaviour)
                 .HasMaxLength(50);
 
             // Table & Column Mappings
-            this.ToTable("Log");
-            this.Property(t => t.LogId).HasColumnName("LogID");
-            this.Property(t => t.context).HasColumnName("context");
-            this.Property(t => t.context_Id).HasColumnName("context_id");
-            this.Property(t => t.behaviour).HasColumnName("behaviour");
-            this.Property(t => t.user_Id).HasColumnName("user_id");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("Log");
+            Property(t => t.LogId).HasColumnName("LogID");
+            Property(t => t.context).HasColumnName("context");
+            Property(t => t.context_Id).HasColumnName("context_id");
+            Property(t => t.behaviour).HasColumnName("behaviour");
+            Property(t => t.user_Id).HasColumnName("user_id");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
         }
     }
 }

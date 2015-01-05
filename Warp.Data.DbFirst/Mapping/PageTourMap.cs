@@ -8,23 +8,23 @@ namespace Warp.Data.DbFirst.Mapping
         public PageTourMap()
         {
             // Primary Key
-            this.HasKey(t => t.PageTourId);
+            HasKey(t => t.PageTourId);
 
             // Properties
             // Table & Column Mappings
-            this.ToTable("PageTour", "Help");
-            this.Property(t => t.PageTourId).HasColumnName("PageTourID");
-            this.Property(t => t.PageId).HasColumnName("PageID");
-            this.Property(t => t.TourId).HasColumnName("TourID");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("PageTour", "Help");
+            Property(t => t.PageTourId).HasColumnName("PageTourID");
+            Property(t => t.PageId).HasColumnName("PageID");
+            Property(t => t.TourId).HasColumnName("TourID");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.Page)
+            HasRequired(t => t.Page)
                 .WithMany(t => t.PageTours)
                 .HasForeignKey(d => d.PageId);
-            this.HasRequired(t => t.Tour)
+            HasRequired(t => t.Tour)
                 .WithMany(t => t.PageTours)
                 .HasForeignKey(d => d.TourId);
 

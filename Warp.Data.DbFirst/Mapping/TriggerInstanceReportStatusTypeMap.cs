@@ -8,20 +8,20 @@ namespace Warp.Data.DbFirst.Mapping
         public TriggerInstanceReportStatusTypeMap()
         {
             // Primary Key
-            this.HasKey(t => t.TriggerInstanceReportStatusTypeId);
+            HasKey(t => t.TriggerInstanceReportStatusTypeId);
 
             // Properties
-            this.Property(t => t.Name)
+            Property(t => t.Name)
                 .HasMaxLength(250);
 
-            this.Property(t => t.Description)
+            Property(t => t.Description)
                 .HasMaxLength(250);
 
             // Table & Column Mappings
-            this.ToTable("TriggerInstanceReportStatusType", "Subscriptions");
-            this.Property(t => t.TriggerInstanceReportStatusTypeId).HasColumnName("TriggerInstanceReportStatusTypeId");
-            this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.Description).HasColumnName("Description");
+            ToTable("TriggerInstanceReportStatusType", "Subscriptions");
+            Property(t => t.TriggerInstanceReportStatusTypeId).HasColumnName("TriggerInstanceReportStatusTypeId");
+            Property(t => t.Name).HasColumnName("Name");
+            Property(t => t.Description).HasColumnName("Description");
         }
     }
 }

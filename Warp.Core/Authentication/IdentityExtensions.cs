@@ -3,6 +3,7 @@ using System.Globalization;
 using System.Security.Claims;
 using System.Security.Principal;
 using Microsoft.AspNet.Identity;
+using Warp.Core.Exceptions.User;
 
 namespace Warp.Core.Authentication
 {
@@ -28,6 +29,18 @@ namespace Warp.Core.Authentication
             }
 
             return default(T);
+        }
+
+        public static T GetOrThrowClaimValueFor<T>(this IIdentity identity, string claimType) where T : IConvertible
+        {
+            var value = identity.GetClaimValueFor<T>(claimType);
+
+            if (value == null)
+            {
+                throw new ClaimNotFoundOnIdentityException(claimType);
+            }
+
+            return value;
         }
     }
 }

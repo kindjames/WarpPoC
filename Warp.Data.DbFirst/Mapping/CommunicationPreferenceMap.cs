@@ -9,33 +9,33 @@ namespace Warp.Data.DbFirst.Mapping
         public CommunicationPreferenceMap()
         {
             // Primary Key
-            this.HasKey(t => t.CommunicationPreferencesId);
+            HasKey(t => t.CommunicationPreferencesId);
 
             // Properties
-            this.Property(t => t.CommunicationPreferencesId)
+            Property(t => t.CommunicationPreferencesId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            this.Property(t => t.Notes)
+            Property(t => t.Notes)
                 .HasMaxLength(300);
 
             // Table & Column Mappings
-            this.ToTable("CommunicationPreference");
-            this.Property(t => t.CommunicationPreferencesId).HasColumnName("CommunicationPreferencesID");
-            this.Property(t => t.PersonId).HasColumnName("PersonID");
-            this.Property(t => t.AssessorId).HasColumnName("AssessorID");
-            this.Property(t => t.CommunicationTypeId).HasColumnName("CommunicationTypeID");
-            this.Property(t => t.ScoreGreaterThanCondition).HasColumnName("ScoreGreaterThanCondition");
-            this.Property(t => t.ScoreLessThanCondition).HasColumnName("ScoreLessThanCondition");
-            this.Property(t => t.Notes).HasColumnName("Notes");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("CommunicationPreference");
+            Property(t => t.CommunicationPreferencesId).HasColumnName("CommunicationPreferencesID");
+            Property(t => t.PersonId).HasColumnName("PersonID");
+            Property(t => t.AssessorId).HasColumnName("AssessorID");
+            Property(t => t.CommunicationTypeId).HasColumnName("CommunicationTypeID");
+            Property(t => t.ScoreGreaterThanCondition).HasColumnName("ScoreGreaterThanCondition");
+            Property(t => t.ScoreLessThanCondition).HasColumnName("ScoreLessThanCondition");
+            Property(t => t.Notes).HasColumnName("Notes");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.Assessor)
+            HasRequired(t => t.Assessor)
                 .WithMany(t => t.CommunicationPreferences)
                 .HasForeignKey(d => d.AssessorId);
-            this.HasRequired(t => t.CommunicationType)
+            HasRequired(t => t.CommunicationType)
                 .WithMany(t => t.CommunicationPreferences)
                 .HasForeignKey(d => d.CommunicationTypeId);
 

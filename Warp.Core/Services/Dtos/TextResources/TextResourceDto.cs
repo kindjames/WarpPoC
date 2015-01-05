@@ -2,7 +2,7 @@
 {
     public class TextResourceDto
     {
-        public int TextResourceId { get; set; }
+        public int Id { get; set; }
 
         public int TextResourceCodeId { get; set; }
 

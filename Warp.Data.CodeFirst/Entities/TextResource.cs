@@ -1,12 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Warp.Core.Data;
 
 namespace Warp.Data.Entities
 {
     public class TextResource : EntityBase
     {
         [Key, Column(Order = 0)]
-        public int TextResourceId { get; set; }
+        public new int Id { get; set; } // 'new' for defining composite-primary-key.
 
         [Key, Column(Order = 1)]
         public int ClientId { get; set; }

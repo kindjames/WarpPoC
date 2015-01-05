@@ -9,27 +9,27 @@ namespace Warp.Data.DbFirst.Mapping
         public MenuConfigBranchMap()
         {
             // Primary Key
-            this.HasKey(t => t.MenuConfigBranchId);
+            HasKey(t => t.MenuConfigBranchId);
 
             // Properties
-            this.Property(t => t.MenuConfigBranchId)
+            Property(t => t.MenuConfigBranchId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
             // Table & Column Mappings
-            this.ToTable("MenuConfigBranch");
-            this.Property(t => t.MenuConfigBranchId).HasColumnName("MenuConfigBranchID");
-            this.Property(t => t.MenuConfigId).HasColumnName("MenuConfigID");
-            this.Property(t => t.BranchId).HasColumnName("BranchID");
-            this.Property(t => t.AddedByAdminId).HasColumnName("AddedByAdminID");
-            this.Property(t => t.DateValidFrom).HasColumnName("DateValidFrom");
-            this.Property(t => t.DateValidTo).HasColumnName("DateValidTo");
-            this.Property(t => t.Permission).HasColumnName("Permission");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("MenuConfigBranch");
+            Property(t => t.MenuConfigBranchId).HasColumnName("MenuConfigBranchID");
+            Property(t => t.MenuConfigId).HasColumnName("MenuConfigID");
+            Property(t => t.BranchId).HasColumnName("BranchID");
+            Property(t => t.AddedByAdminId).HasColumnName("AddedByAdminID");
+            Property(t => t.DateValidFrom).HasColumnName("DateValidFrom");
+            Property(t => t.DateValidTo).HasColumnName("DateValidTo");
+            Property(t => t.Permission).HasColumnName("Permission");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.MenuConfig)
+            HasRequired(t => t.MenuConfig)
                 .WithMany(t => t.MenuConfigBranches)
                 .HasForeignKey(d => d.MenuConfigId);
 

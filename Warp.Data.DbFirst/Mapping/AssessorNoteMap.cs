@@ -9,26 +9,26 @@ namespace Warp.Data.DbFirst.Mapping
         public AssessorNoteMap()
         {
             // Primary Key
-            this.HasKey(t => t.AssessorNoteId);
+            HasKey(t => t.AssessorNoteId);
 
             // Properties
-            this.Property(t => t.AssessorNoteId)
+            Property(t => t.AssessorNoteId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
             // Table & Column Mappings
-            this.ToTable("AssessorNote");
-            this.Property(t => t.AssessorNoteId).HasColumnName("AssessorNoteID");
-            this.Property(t => t.AssessorId).HasColumnName("AssessorID");
-            this.Property(t => t.NoteId).HasColumnName("NoteID");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("AssessorNote");
+            Property(t => t.AssessorNoteId).HasColumnName("AssessorNoteID");
+            Property(t => t.AssessorId).HasColumnName("AssessorID");
+            Property(t => t.NoteId).HasColumnName("NoteID");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.Assessor)
+            HasRequired(t => t.Assessor)
                 .WithMany(t => t.AssessorNotes)
                 .HasForeignKey(d => d.AssessorId);
-            this.HasRequired(t => t.Note)
+            HasRequired(t => t.Note)
                 .WithMany(t => t.AssessorNotes)
                 .HasForeignKey(d => d.NoteId);
 

@@ -9,31 +9,31 @@ namespace Warp.Data.DbFirst.Mapping
         public QuestionnaireQuestionPossibleAnswerMap()
         {
             // Primary Key
-            this.HasKey(t => t.QuestionnaireQuestionPossibleAnswerId);
+            HasKey(t => t.QuestionnaireQuestionPossibleAnswerId);
 
             // Properties
-            this.Property(t => t.QuestionnaireQuestionPossibleAnswerId)
+            Property(t => t.QuestionnaireQuestionPossibleAnswerId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            this.Property(t => t.Guidance)
+            Property(t => t.Guidance)
                 .HasMaxLength(100);
 
             // Table & Column Mappings
-            this.ToTable("QuestionnaireQuestionPossibleAnswer");
-            this.Property(t => t.QuestionnaireQuestionPossibleAnswerId).HasColumnName("QuestionnaireQuestionPossibleAnswerID");
-            this.Property(t => t.QuestionnaireQuestionId).HasColumnName("QuestionnaireQuestionID");
-            this.Property(t => t.PossibleAnswerId).HasColumnName("PossibleAnswerID");
-            this.Property(t => t.Score).HasColumnName("Score");
-            this.Property(t => t.Guidance).HasColumnName("Guidance");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("QuestionnaireQuestionPossibleAnswer");
+            Property(t => t.QuestionnaireQuestionPossibleAnswerId).HasColumnName("QuestionnaireQuestionPossibleAnswerID");
+            Property(t => t.QuestionnaireQuestionId).HasColumnName("QuestionnaireQuestionID");
+            Property(t => t.PossibleAnswerId).HasColumnName("PossibleAnswerID");
+            Property(t => t.Score).HasColumnName("Score");
+            Property(t => t.Guidance).HasColumnName("Guidance");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.PossibleAnswer)
+            HasRequired(t => t.PossibleAnswer)
                 .WithMany(t => t.QuestionnaireQuestionPossibleAnswers)
                 .HasForeignKey(d => d.PossibleAnswerId);
-            this.HasRequired(t => t.QuestionnaireQuestion)
+            HasRequired(t => t.QuestionnaireQuestion)
                 .WithMany(t => t.QuestionnaireQuestionPossibleAnswers)
                 .HasForeignKey(d => d.QuestionnaireQuestionId);
 

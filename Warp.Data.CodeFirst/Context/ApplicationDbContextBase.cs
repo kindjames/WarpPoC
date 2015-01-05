@@ -3,9 +3,9 @@ using System.Data.Entity.SqlServer;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Warp.Core.Data;
 using Warp.Core.Infrastructure.Configuration;
 using Warp.Core.Util;
-using Warp.Data.Entities;
 
 namespace Warp.Data.Context
 {

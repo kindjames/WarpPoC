@@ -28,7 +28,7 @@ namespace Warp.Data.Queries.Clients
         public IEnumerable<Client> Execute(GetClientsQuery query)
         {
             var result = _context.Clients
-                .Where(c => c.Customer.CustomerId == query.CustomerId);
+                .Where(c => c.Customer.Id == query.CustomerId);
 
             if (!String.IsNullOrWhiteSpace(query.Query))
             {

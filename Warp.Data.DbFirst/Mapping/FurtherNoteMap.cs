@@ -9,42 +9,42 @@ namespace Warp.Data.DbFirst.Mapping
         public FurtherNoteMap()
         {
             // Primary Key
-            this.HasKey(t => t.FurthernoteId);
+            HasKey(t => t.FurthernoteId);
 
             // Properties
-            this.Property(t => t.FurthernoteId)
+            Property(t => t.FurthernoteId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            this.Property(t => t.Note1)
+            Property(t => t.Note1)
                 .IsRequired()
                 .HasMaxLength(300);
 
-            this.Property(t => t.Note2)
+            Property(t => t.Note2)
                 .IsRequired()
                 .HasMaxLength(500);
 
-            this.Property(t => t.Note3)
+            Property(t => t.Note3)
                 .IsRequired()
                 .HasMaxLength(500);
 
-            this.Property(t => t.Note4)
+            Property(t => t.Note4)
                 .IsRequired()
                 .HasMaxLength(500);
 
             // Table & Column Mappings
-            this.ToTable("FurtherNote");
-            this.Property(t => t.FurthernoteId).HasColumnName("FurthernoteID");
-            this.Property(t => t.NoteId).HasColumnName("NoteID");
-            this.Property(t => t.Note1).HasColumnName("Note1");
-            this.Property(t => t.Note2).HasColumnName("Note2");
-            this.Property(t => t.Note3).HasColumnName("Note3");
-            this.Property(t => t.Note4).HasColumnName("Note4");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("FurtherNote");
+            Property(t => t.FurthernoteId).HasColumnName("FurthernoteID");
+            Property(t => t.NoteId).HasColumnName("NoteID");
+            Property(t => t.Note1).HasColumnName("Note1");
+            Property(t => t.Note2).HasColumnName("Note2");
+            Property(t => t.Note3).HasColumnName("Note3");
+            Property(t => t.Note4).HasColumnName("Note4");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.Note)
+            HasRequired(t => t.Note)
                 .WithMany(t => t.FurtherNotes)
                 .HasForeignKey(d => d.NoteId);
 

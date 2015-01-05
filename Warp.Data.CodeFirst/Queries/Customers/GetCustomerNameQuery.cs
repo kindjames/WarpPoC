@@ -23,7 +23,7 @@ namespace Warp.Data.Queries.Customers
         public string Execute(GetCustomerNameQuery query)
         {
             return _dbContext.Customers
-                .Where(b => b.CustomerId == query.CustomerId)
+                .Where(b => b.Id == query.CustomerId)
                 .Select(c => c.Name)
                 .SingleOrDefault();
         }

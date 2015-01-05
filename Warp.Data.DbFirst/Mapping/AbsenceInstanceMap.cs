@@ -9,26 +9,26 @@ namespace Warp.Data.DbFirst.Mapping
         public AbsenceInstanceMap()
         {
             // Primary Key
-            this.HasKey(t => t.AbsenceInstanceId);
+            HasKey(t => t.AbsenceInstanceId);
 
             // Properties
-            this.Property(t => t.AbsenceInstanceId)
+            Property(t => t.AbsenceInstanceId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
             // Table & Column Mappings
-            this.ToTable("AbsenceInstance");
-            this.Property(t => t.AbsenceInstanceId).HasColumnName("AbsenceInstanceID");
-            this.Property(t => t.AbsenceTypeId).HasColumnName("AbsenceTypeID");
-            this.Property(t => t.AdminId).HasColumnName("AdminID");
-            this.Property(t => t.DateValidFrom).HasColumnName("DateValidFrom");
-            this.Property(t => t.DateValidTo).HasColumnName("DateValidTo");
-            this.Property(t => t.ApprovedByAdminId).HasColumnName("ApprovedByAdminID");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("AbsenceInstance");
+            Property(t => t.AbsenceInstanceId).HasColumnName("AbsenceInstanceID");
+            Property(t => t.AbsenceTypeId).HasColumnName("AbsenceTypeID");
+            Property(t => t.AdminId).HasColumnName("AdminID");
+            Property(t => t.DateValidFrom).HasColumnName("DateValidFrom");
+            Property(t => t.DateValidTo).HasColumnName("DateValidTo");
+            Property(t => t.ApprovedByAdminId).HasColumnName("ApprovedByAdminID");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.AbsenceType)
+            HasRequired(t => t.AbsenceType)
                 .WithMany(t => t.AbsenceInstances)
                 .HasForeignKey(d => d.AbsenceTypeId);
 

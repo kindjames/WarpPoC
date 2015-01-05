@@ -9,31 +9,31 @@ namespace Warp.Data.DbFirst.Mapping
         public SQQOPossibleAnswerMap()
         {
             // Primary Key
-            this.HasKey(t => t.SQQOPossibleAnswerId);
+            HasKey(t => t.SQQOPossibleAnswerId);
 
             // Properties
-            this.Property(t => t.SQQOPossibleAnswerId)
+            Property(t => t.SQQOPossibleAnswerId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            this.Property(t => t.Guidance)
+            Property(t => t.Guidance)
                 .HasMaxLength(100);
 
             // Table & Column Mappings
-            this.ToTable("SQQOPossibleAnswer");
-            this.Property(t => t.SQQOPossibleAnswerId).HasColumnName("SQQOPossibleAnswerID");
-            this.Property(t => t.SubQuestionnaireQuestionOverwriteId).HasColumnName("SubQuestionnaireQuestionOverwriteID");
-            this.Property(t => t.PossibleAnswerId).HasColumnName("PossibleAnswerID");
-            this.Property(t => t.Score).HasColumnName("Score");
-            this.Property(t => t.Guidance).HasColumnName("Guidance");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("SQQOPossibleAnswer");
+            Property(t => t.SQQOPossibleAnswerId).HasColumnName("SQQOPossibleAnswerID");
+            Property(t => t.SubQuestionnaireQuestionOverwriteId).HasColumnName("SubQuestionnaireQuestionOverwriteID");
+            Property(t => t.PossibleAnswerId).HasColumnName("PossibleAnswerID");
+            Property(t => t.Score).HasColumnName("Score");
+            Property(t => t.Guidance).HasColumnName("Guidance");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.PossibleAnswer)
+            HasRequired(t => t.PossibleAnswer)
                 .WithMany(t => t.SQQOPossibleAnswers)
                 .HasForeignKey(d => d.PossibleAnswerId);
-            this.HasRequired(t => t.SubQuestionnaireQuestionOverwrite)
+            HasRequired(t => t.SubQuestionnaireQuestionOverwrite)
                 .WithMany(t => t.SQQOPossibleAnswers)
                 .HasForeignKey(d => d.SubQuestionnaireQuestionOverwriteId);
 

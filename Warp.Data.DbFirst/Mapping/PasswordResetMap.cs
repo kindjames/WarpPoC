@@ -8,27 +8,27 @@ namespace Warp.Data.DbFirst.Mapping
         public PasswordResetMap()
         {
             // Primary Key
-            this.HasKey(t => t.PasswordResetId);
+            HasKey(t => t.PasswordResetId);
 
             // Properties
-            this.Property(t => t.Email)
+            Property(t => t.Email)
                 .IsRequired()
                 .HasMaxLength(255);
 
-            this.Property(t => t.Token)
+            Property(t => t.Token)
                 .IsRequired()
                 .HasMaxLength(255);
 
             // Table & Column Mappings
-            this.ToTable("PasswordReset", "Account");
-            this.Property(t => t.PasswordResetId).HasColumnName("PasswordResetID");
-            this.Property(t => t.Email).HasColumnName("Email");
-            this.Property(t => t.Successful).HasColumnName("Successful");
-            this.Property(t => t.Token).HasColumnName("Token");
-            this.Property(t => t.UserId).HasColumnName("UserID");
-            this.Property(t => t.Active).HasColumnName("Active");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
+            ToTable("PasswordReset", "Account");
+            Property(t => t.PasswordResetId).HasColumnName("PasswordResetID");
+            Property(t => t.Email).HasColumnName("Email");
+            Property(t => t.Successful).HasColumnName("Successful");
+            Property(t => t.Token).HasColumnName("Token");
+            Property(t => t.UserId).HasColumnName("UserID");
+            Property(t => t.Active).HasColumnName("Active");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
         }
     }
 }

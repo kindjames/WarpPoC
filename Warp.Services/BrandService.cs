@@ -1,4 +1,4 @@
-﻿using Warp.Core.Infrastructure.Mapping;
+﻿using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Query;
 using Warp.Core.Services;
 using Warp.Core.Services.Dtos.Brand;
@@ -32,13 +32,13 @@ namespace Warp.Services
 
             var brands = _queryDispatcher.Execute(new GetBrandsForClientQuery {ClientId = clientId});
 
-            var customerName = _queryDispatcher.Execute(new GetCustomerNameQuery {CustomerId = client.Customer.CustomerId});
+            var customerName = _queryDispatcher.Execute(new GetCustomerNameQuery {CustomerId = client.Customer.Id});
 
             return new BrandSummaryListDto
             {
                 Brands = _objectMapper.MapMany<Brand, BrandSummaryDto>(brands),
                 CustomerName = customerName,
-                ClientName = client.Name,
+                ClientName = client.Name
             };
         }
     }

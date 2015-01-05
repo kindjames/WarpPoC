@@ -9,26 +9,26 @@ namespace Warp.Data.DbFirst.Mapping
         public TerminologyMap()
         {
             // Primary Key
-            this.HasKey(t => t.TerminologyId);
+            HasKey(t => t.TerminologyId);
 
             // Properties
-            this.Property(t => t.TerminologyId)
+            Property(t => t.TerminologyId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            this.Property(t => t.Term)
+            Property(t => t.Term)
                 .IsRequired()
                 .HasMaxLength(50);
 
             // Table & Column Mappings
-            this.ToTable("Terminology");
-            this.Property(t => t.TerminologyId).HasColumnName("TerminologyID");
-            this.Property(t => t.Term).HasColumnName("Term");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.AddedByAdminId).HasColumnName("AddedByAdminID");
-            this.Property(t => t.DateDeactivated).HasColumnName("DateDeactivated");
-            this.Property(t => t.DeactivatedByAdminId).HasColumnName("DeactivatedByAdminID");
-            this.Property(t => t.Active).HasColumnName("Active");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            ToTable("Terminology");
+            Property(t => t.TerminologyId).HasColumnName("TerminologyID");
+            Property(t => t.Term).HasColumnName("Term");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.AddedByAdminId).HasColumnName("AddedByAdminID");
+            Property(t => t.DateDeactivated).HasColumnName("DateDeactivated");
+            Property(t => t.DeactivatedByAdminId).HasColumnName("DeactivatedByAdminID");
+            Property(t => t.Active).HasColumnName("Active");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
         }
     }
 }

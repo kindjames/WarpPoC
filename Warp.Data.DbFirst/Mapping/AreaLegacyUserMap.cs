@@ -8,20 +8,20 @@ namespace Warp.Data.DbFirst.Mapping
         public AreaLegacyUserMap()
         {
             // Primary Key
-            this.HasKey(t => t.AreaLegacyId);
+            HasKey(t => t.AreaLegacyId);
 
             // Properties
             // Table & Column Mappings
-            this.ToTable("AreaLegacyUser", "Migration");
-            this.Property(t => t.AreaLegacyId).HasColumnName("AreaLegacyID");
-            this.Property(t => t.AreaId).HasColumnName("AreaID");
-            this.Property(t => t.LegacyId).HasColumnName("LegacyID");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("AreaLegacyUser", "Migration");
+            Property(t => t.AreaLegacyId).HasColumnName("AreaLegacyID");
+            Property(t => t.AreaId).HasColumnName("AreaID");
+            Property(t => t.LegacyId).HasColumnName("LegacyID");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.Area)
+            HasRequired(t => t.Area)
                 .WithMany(t => t.AreaLegacyUsers)
                 .HasForeignKey(d => d.AreaId);
 

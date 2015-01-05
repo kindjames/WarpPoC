@@ -1,34 +1,24 @@
 ﻿@model LoginViewModel
 @{
     ViewBag.Title = "Log in";
+    Html.Bootstrap().Globals().ShowRequiredStar(false);
 }
 <div class="row">
     <div class="col-md-6 col-md-offset-3 form-signin">
         <section>
-            @using (Html.BeginForm("Login", "Authentication", new { ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+            @using (var form = Html.Bootstrap().Begin(new Form("Login", "Authentication").RouteValues(new { ViewBag.ReturnUrl })))
             {
                 @Html.AntiForgeryToken()
                 <img src=@Url.Content("~/Content/Images/HospitalityGemLogo300dpi.png") alt="" />
                 <hr />
-                @Html.ValidationSummary(true)
-                <div class="form-group">
-                    @Html.LabelFor(m => m.UserName, Model.UsernameLabelText)
-                    @Html.TextBoxFor(m => m.UserName, new { placeholder = Model.UsernamePlaceholderText, @class = "form-control" })
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Password, Model.PasswordLabelText)
-                    @Html.PasswordFor(m => m.Password, new { placeholder = Model.PasswordPlaceholderText, @class = "form-control" })
-                </div>
-                <div class="form-group">
-                    <div class="checkbox">
-                        @Html.CheckBoxFor(m => m.RememberMe)
-                        @Html.LabelFor(m => m.RememberMe, Model.RememberMeLabelText)
-                    </div>
-                </div>
-                <hr />
-                <div class="navbar-form">
-                    <input type="submit" value="@Model.LoginButtonText" class="btn btn-default pull-right" />
-                </div>
+
+                @Html.Bootstrap().ValidationSummary()
+                @(form.FormGroup().TextBoxFor(m => m.UserName).Placeholder(Model.UsernamePlaceholderText).Label().LabelText(Model.UsernameLabelText))
+                @(form.FormGroup().PasswordFor(m => m.Password).Placeholder(Model.PasswordPlaceholderText).Label().LabelText(Model.PasswordLabelText))
+                @(form.FormGroup().CheckBoxFor(m => m.RememberMe).Label().LabelText(Model.RememberMeLabelText))
+
+                <hr/>
+                @Html.Bootstrap().SubmitButton().Text(Model.LoginButtonText).Class("pull-right")
             }
         </section>
     </div>

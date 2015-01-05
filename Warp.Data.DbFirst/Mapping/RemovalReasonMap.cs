@@ -9,27 +9,27 @@ namespace Warp.Data.DbFirst.Mapping
         public RemovalReasonMap()
         {
             // Primary Key
-            this.HasKey(t => t.RemovalReasonId);
+            HasKey(t => t.RemovalReasonId);
 
             // Properties
-            this.Property(t => t.RemovalReasonId)
+            Property(t => t.RemovalReasonId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            this.Property(t => t.Name)
+            Property(t => t.Name)
                 .IsRequired()
                 .HasMaxLength(50);
 
-            this.Property(t => t.Description)
+            Property(t => t.Description)
                 .HasMaxLength(200);
 
             // Table & Column Mappings
-            this.ToTable("RemovalReason");
-            this.Property(t => t.RemovalReasonId).HasColumnName("RemovalReasonID");
-            this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.Description).HasColumnName("Description");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("RemovalReason");
+            Property(t => t.RemovalReasonId).HasColumnName("RemovalReasonID");
+            Property(t => t.Name).HasColumnName("Name");
+            Property(t => t.Description).HasColumnName("Description");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
         }
     }
 }

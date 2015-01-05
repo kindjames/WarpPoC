@@ -9,26 +9,26 @@ namespace Warp.Data.DbFirst.Mapping
         public VisitPointMap()
         {
             // Primary Key
-            this.HasKey(t => t.VisitPointId);
+            HasKey(t => t.VisitPointId);
 
             // Properties
-            this.Property(t => t.VisitPointId)
+            Property(t => t.VisitPointId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
             // Table & Column Mappings
-            this.ToTable("VisitPoint");
-            this.Property(t => t.VisitPointId).HasColumnName("VisitPointID");
-            this.Property(t => t.VisitId).HasColumnName("VisitID");
-            this.Property(t => t.PointId).HasColumnName("PointID");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("VisitPoint");
+            Property(t => t.VisitPointId).HasColumnName("VisitPointID");
+            Property(t => t.VisitId).HasColumnName("VisitID");
+            Property(t => t.PointId).HasColumnName("PointID");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.Point)
+            HasRequired(t => t.Point)
                 .WithMany(t => t.VisitPoints)
                 .HasForeignKey(d => d.PointId);
-            this.HasRequired(t => t.Visit)
+            HasRequired(t => t.Visit)
                 .WithMany(t => t.VisitPoints)
                 .HasForeignKey(d => d.VisitId);
 

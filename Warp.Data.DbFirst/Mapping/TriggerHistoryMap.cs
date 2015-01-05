@@ -8,26 +8,26 @@ namespace Warp.Data.DbFirst.Mapping
         public TriggerHistoryMap()
         {
             // Primary Key
-            this.HasKey(t => t.TriggerHistoryId);
+            HasKey(t => t.TriggerHistoryId);
 
             // Properties
-            this.Property(t => t.Notes)
+            Property(t => t.Notes)
                 .HasMaxLength(300);
 
             // Table & Column Mappings
-            this.ToTable("TriggerHistory", "Subscriptions");
-            this.Property(t => t.TriggerHistoryId).HasColumnName("TriggerHistoryId");
-            this.Property(t => t.TriggerId).HasColumnName("TriggerId");
-            this.Property(t => t.InstanceId).HasColumnName("InstanceId");
-            this.Property(t => t.Triggered).HasColumnName("Triggered");
-            this.Property(t => t.DateTriggered).HasColumnName("DateTriggered");
-            this.Property(t => t.Notes).HasColumnName("Notes");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("TriggerHistory", "Subscriptions");
+            Property(t => t.TriggerHistoryId).HasColumnName("TriggerHistoryId");
+            Property(t => t.TriggerId).HasColumnName("TriggerId");
+            Property(t => t.InstanceId).HasColumnName("InstanceId");
+            Property(t => t.Triggered).HasColumnName("Triggered");
+            Property(t => t.DateTriggered).HasColumnName("DateTriggered");
+            Property(t => t.Notes).HasColumnName("Notes");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.Trigger)
+            HasRequired(t => t.Trigger)
                 .WithMany(t => t.TriggerHistories)
                 .HasForeignKey(d => d.TriggerId);
 

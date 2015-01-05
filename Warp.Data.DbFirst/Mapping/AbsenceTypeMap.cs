@@ -8,20 +8,20 @@ namespace Warp.Data.DbFirst.Mapping
         public AbsenceTypeMap()
         {
             // Primary Key
-            this.HasKey(t => t.AbsenceTypeId);
+            HasKey(t => t.AbsenceTypeId);
 
             // Properties
-            this.Property(t => t.Type)
+            Property(t => t.Type)
                 .IsRequired()
                 .HasMaxLength(50);
 
             // Table & Column Mappings
-            this.ToTable("AbsenceType");
-            this.Property(t => t.AbsenceTypeId).HasColumnName("AbsenceTypeID");
-            this.Property(t => t.Type).HasColumnName("Type");
-            this.Property(t => t.Active).HasColumnName("Active");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            ToTable("AbsenceType");
+            Property(t => t.AbsenceTypeId).HasColumnName("AbsenceTypeID");
+            Property(t => t.Type).HasColumnName("Type");
+            Property(t => t.Active).HasColumnName("Active");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
         }
     }
 }

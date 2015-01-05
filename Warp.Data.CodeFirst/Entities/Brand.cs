@@ -1,19 +1,18 @@
-﻿
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using Warp.Core.Data;
+using Warp.Core.Enum;
 
 namespace Warp.Data.Entities
 {
     public class Brand : EntityBase
     {
-        public int BrandId { get; set; }
-        
         [Required]
         public string Name { get; set; }
 
         public bool Visible { get; set; }
 
         [Required]
-        public virtual BrandStatus BrandStatus { get; set; }
+        public virtual BrandStatus Status { get; set; }
 
         [Required]
         public virtual Client Client { get; set; }

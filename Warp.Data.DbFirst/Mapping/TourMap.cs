@@ -8,21 +8,21 @@ namespace Warp.Data.DbFirst.Mapping
         public TourMap()
         {
             // Primary Key
-            this.HasKey(t => t.TourId);
+            HasKey(t => t.TourId);
 
             // Properties
-            this.Property(t => t.TourName)
+            Property(t => t.TourName)
                 .IsRequired()
                 .HasMaxLength(50);
 
             // Table & Column Mappings
-            this.ToTable("Tour", "Help");
-            this.Property(t => t.TourId).HasColumnName("TourID");
-            this.Property(t => t.TourName).HasColumnName("TourName");
-            this.Property(t => t.AlwaysShow).HasColumnName("AlwaysShow");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("Tour", "Help");
+            Property(t => t.TourId).HasColumnName("TourID");
+            Property(t => t.TourName).HasColumnName("TourName");
+            Property(t => t.AlwaysShow).HasColumnName("AlwaysShow");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.Active).HasColumnName("Active");
         }
     }
 }

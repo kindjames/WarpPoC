@@ -8,20 +8,20 @@ namespace Warp.Data.DbFirst.Mapping
         public RegionGroupMap()
         {
             // Primary Key
-            this.HasKey(t => t.RegionGroupId);
+            HasKey(t => t.RegionGroupId);
 
             // Properties
-            this.Property(t => t.Name)
+            Property(t => t.Name)
                 .IsRequired()
                 .HasMaxLength(50);
 
             // Table & Column Mappings
-            this.ToTable("RegionGroup", "Client");
-            this.Property(t => t.RegionGroupId).HasColumnName("RegionGroupID");
-            this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("RegionGroup", "Client");
+            Property(t => t.RegionGroupId).HasColumnName("RegionGroupID");
+            Property(t => t.Name).HasColumnName("Name");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
         }
     }
 }

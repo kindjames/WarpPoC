@@ -8,19 +8,19 @@ namespace Warp.Data.DbFirst.Mapping
         public DayOfWeekMap()
         {
             // Primary Key
-            this.HasKey(t => t.DayOfWeekId);
+            HasKey(t => t.DayOfWeekId);
 
             // Properties
-            this.Property(t => t.Name)
+            Property(t => t.Name)
                 .HasMaxLength(10);
 
             // Table & Column Mappings
-            this.ToTable("DayOfWeek", "Subscriptions");
-            this.Property(t => t.DayOfWeekId).HasColumnName("DayOfWeekId");
-            this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("DayOfWeek", "Subscriptions");
+            Property(t => t.DayOfWeekId).HasColumnName("DayOfWeekId");
+            Property(t => t.Name).HasColumnName("Name");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.Active).HasColumnName("Active");
         }
     }
 }

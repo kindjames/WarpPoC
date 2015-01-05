@@ -9,23 +9,23 @@ namespace Warp.Data.DbFirst.Mapping
         public AdminClientContactTrackingMap()
         {
             // Primary Key
-            this.HasKey(t => t.AdminClientContactTrackingId);
+            HasKey(t => t.AdminClientContactTrackingId);
 
             // Properties
-            this.Property(t => t.AdminClientContactTrackingId)
+            Property(t => t.AdminClientContactTrackingId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
             // Table & Column Mappings
-            this.ToTable("AdminClientContactTracking");
-            this.Property(t => t.AdminClientContactTrackingId).HasColumnName("AdminClientContactTrackingID");
-            this.Property(t => t.AdminId).HasColumnName("AdminID");
-            this.Property(t => t.ClientContactTrackingId).HasColumnName("ClientContactTrackingID");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("AdminClientContactTracking");
+            Property(t => t.AdminClientContactTrackingId).HasColumnName("AdminClientContactTrackingID");
+            Property(t => t.AdminId).HasColumnName("AdminID");
+            Property(t => t.ClientContactTrackingId).HasColumnName("ClientContactTrackingID");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.ClientContactTracking)
+            HasRequired(t => t.ClientContactTracking)
                 .WithMany(t => t.AdminClientContactTrackings)
                 .HasForeignKey(d => d.ClientContactTrackingId);
 

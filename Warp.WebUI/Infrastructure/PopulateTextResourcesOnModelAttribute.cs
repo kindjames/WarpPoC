@@ -5,7 +5,7 @@ using Warp.Core.Infrastructure.Models;
 
 namespace Warp.WebUI.Infrastructure
 {
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, Inherited = true, AllowMultiple = false)]
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class PopulateTextResourcesOnModelAttribute : ActionFilterAttribute
     {
         [InjectDependency]

@@ -9,37 +9,37 @@ namespace Warp.Data.DbFirst.Mapping
         public ResultCommentMap()
         {
             // Primary Key
-            this.HasKey(t => t.ResultCommentId);
+            HasKey(t => t.ResultCommentId);
 
             // Properties
-            this.Property(t => t.ResultCommentId)
+            Property(t => t.ResultCommentId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            this.Property(t => t.AssessorComments)
+            Property(t => t.AssessorComments)
                 .IsRequired()
                 .HasMaxLength(1000);
 
-            this.Property(t => t.AdminComments)
+            Property(t => t.AdminComments)
                 .HasMaxLength(1000);
 
             // Table & Column Mappings
-            this.ToTable("ResultComment");
-            this.Property(t => t.ResultCommentId).HasColumnName("ResultCommentID");
-            this.Property(t => t.AssessmentId).HasColumnName("AssessmentID");
-            this.Property(t => t.AssessorId).HasColumnName("AssessorID");
-            this.Property(t => t.AssessorComments).HasColumnName("AssessorComments");
-            this.Property(t => t.AdminId).HasColumnName("AdminID");
-            this.Property(t => t.AdminComments).HasColumnName("AdminComments");
-            this.Property(t => t.DateCompleted).HasColumnName("DateCompleted");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("ResultComment");
+            Property(t => t.ResultCommentId).HasColumnName("ResultCommentID");
+            Property(t => t.AssessmentId).HasColumnName("AssessmentID");
+            Property(t => t.AssessorId).HasColumnName("AssessorID");
+            Property(t => t.AssessorComments).HasColumnName("AssessorComments");
+            Property(t => t.AdminId).HasColumnName("AdminID");
+            Property(t => t.AdminComments).HasColumnName("AdminComments");
+            Property(t => t.DateCompleted).HasColumnName("DateCompleted");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.Assessment)
+            HasRequired(t => t.Assessment)
                 .WithMany(t => t.ResultComments)
                 .HasForeignKey(d => d.AssessmentId);
-            this.HasRequired(t => t.Assessor)
+            HasRequired(t => t.Assessor)
                 .WithMany(t => t.ResultComments)
                 .HasForeignKey(d => d.AssessorId);
 

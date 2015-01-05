@@ -8,24 +8,24 @@ namespace Warp.Data.DbFirst.Mapping
         public LocationMap()
         {
             // Primary Key
-            this.HasKey(t => t.LocationId);
+            HasKey(t => t.LocationId);
 
             // Properties
-            this.Property(t => t.Name)
+            Property(t => t.Name)
                 .IsRequired()
                 .HasMaxLength(50);
 
             // Table & Column Mappings
-            this.ToTable("Location", "Client");
-            this.Property(t => t.LocationId).HasColumnName("LocationID");
-            this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.LocationStatusId).HasColumnName("LocationStatusID");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("Location", "Client");
+            Property(t => t.LocationId).HasColumnName("LocationID");
+            Property(t => t.Name).HasColumnName("Name");
+            Property(t => t.LocationStatusId).HasColumnName("LocationStatusID");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.LocationStatus)
+            HasRequired(t => t.LocationStatus)
                 .WithMany(t => t.Locations)
                 .HasForeignKey(d => d.LocationStatusId);
 

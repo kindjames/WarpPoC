@@ -8,24 +8,24 @@ namespace Warp.Data.DbFirst.Mapping
         public GeographicRegionMap()
         {
             // Primary Key
-            this.HasKey(t => t.GeographicRegionId);
+            HasKey(t => t.GeographicRegionId);
 
             // Properties
-            this.Property(t => t.Name)
+            Property(t => t.Name)
                 .IsRequired()
                 .HasMaxLength(50);
 
             // Table & Column Mappings
-            this.ToTable("GeographicRegion", "Geographic");
-            this.Property(t => t.GeographicRegionId).HasColumnName("GeographicRegionID");
-            this.Property(t => t.GeographicCountryId).HasColumnName("GeographicCountryID");
-            this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("GeographicRegion", "Geographic");
+            Property(t => t.GeographicRegionId).HasColumnName("GeographicRegionID");
+            Property(t => t.GeographicCountryId).HasColumnName("GeographicCountryID");
+            Property(t => t.Name).HasColumnName("Name");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.GeographicCountry)
+            HasRequired(t => t.GeographicCountry)
                 .WithMany(t => t.GeographicRegions)
                 .HasForeignKey(d => d.GeographicCountryId);
 

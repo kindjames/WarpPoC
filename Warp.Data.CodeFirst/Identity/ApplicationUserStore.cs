@@ -50,7 +50,7 @@ namespace Warp.Data.Identity
 
                     _dbContext.SaveChanges();
 
-                    appUser.Id = user.UserId;
+                    appUser.Id = user.Id;
                 }
                 catch (DbEntityValidationException e)
                 {
@@ -93,7 +93,7 @@ namespace Warp.Data.Identity
             ThrowIfDisposed();
 
             return await Task.Run(() => _dbContext.Users
-                .Where(u => u.UserId == userId)
+                .Where(u => u.Id == userId)
                 .Select(ToApplicationUser)
                 .SingleOrDefault());
         }
@@ -144,19 +144,19 @@ namespace Warp.Data.Identity
         public void Dispose()
         {
             Dispose(true);
-            GC.SuppressFinalize((object)this);
+            GC.SuppressFinalize(this);
         }
 
         private ApplicationUser ToApplicationUser(User user)
         {
             return new ApplicationUser
             {
-                Id = user.UserId,
+                Id = user.Id,
                 Email = user.Email,
                 FirstName = user.Forename,
                 LastName = user.Surname,
                 PasswordHash = user.PasswordHash,
-                CustomerId = user.Customer.CustomerId,
+                CustomerId = user.Customer.Id
             };
         }
 
@@ -164,12 +164,12 @@ namespace Warp.Data.Identity
         {
             return new User
             {
-                UserId = appUser.Id,
+                Id = appUser.Id,
                 Email = appUser.Email,
                 Forename = appUser.FirstName,
                 Surname = appUser.LastName,
                 PasswordHash = appUser.PasswordHash,
-                Customer = new Customer { CustomerId = appUser.CustomerId }
+                Customer = new Customer { Id = appUser.CustomerId }
             };
         }
 
@@ -228,7 +228,7 @@ namespace Warp.Data.Identity
         public async Task<IList<string>> GetRolesAsync(ApplicationUser appUser)
         {
             var user = await _dbContext.Users
-                .SingleAsync(u => u.UserId == appUser.Id);
+                .SingleAsync(u => u.Id == appUser.Id);
 
             var roleNames = user.RoleGroups
                 .SelectMany(g => g.Roles)
@@ -241,7 +241,7 @@ namespace Warp.Data.Identity
         public async Task<bool> IsInRoleAsync(ApplicationUser appUser, string roleName)
         {
             var user = await _dbContext.Users
-                .SingleAsync(u => u.UserId == appUser.Id);
+                .SingleAsync(u => u.Id == appUser.Id);
 
             var isInRole = user.RoleGroups
                 .SelectMany(g => g.Roles)

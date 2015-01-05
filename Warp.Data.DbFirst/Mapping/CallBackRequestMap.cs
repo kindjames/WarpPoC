@@ -9,30 +9,30 @@ namespace Warp.Data.DbFirst.Mapping
         public CallBackRequestMap()
         {
             // Primary Key
-            this.HasKey(t => t.CallBackRequestId);
+            HasKey(t => t.CallBackRequestId);
 
             // Properties
-            this.Property(t => t.CallBackRequestId)
+            Property(t => t.CallBackRequestId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            this.Property(t => t.Notes)
+            Property(t => t.Notes)
                 .IsRequired()
                 .HasMaxLength(500);
 
             // Table & Column Mappings
-            this.ToTable("CallBackRequest");
-            this.Property(t => t.CallBackRequestId).HasColumnName("CallBackRequestID");
-            this.Property(t => t.StartTime).HasColumnName("StartTime");
-            this.Property(t => t.EndTime).HasColumnName("EndTime");
-            this.Property(t => t.Notes).HasColumnName("Notes");
-            this.Property(t => t.EnteredByAdminId).HasColumnName("EnteredByAdminID");
-            this.Property(t => t.CallBackByAdminId).HasColumnName("CallBackByAdminID");
-            this.Property(t => t.Shared).HasColumnName("Shared");
-            this.Property(t => t.OwnedByAdminId).HasColumnName("OwnedByAdminID");
-            this.Property(t => t.Visible).HasColumnName("Visible");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("CallBackRequest");
+            Property(t => t.CallBackRequestId).HasColumnName("CallBackRequestID");
+            Property(t => t.StartTime).HasColumnName("StartTime");
+            Property(t => t.EndTime).HasColumnName("EndTime");
+            Property(t => t.Notes).HasColumnName("Notes");
+            Property(t => t.EnteredByAdminId).HasColumnName("EnteredByAdminID");
+            Property(t => t.CallBackByAdminId).HasColumnName("CallBackByAdminID");
+            Property(t => t.Shared).HasColumnName("Shared");
+            Property(t => t.OwnedByAdminId).HasColumnName("OwnedByAdminID");
+            Property(t => t.Visible).HasColumnName("Visible");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
         }
     }
 }

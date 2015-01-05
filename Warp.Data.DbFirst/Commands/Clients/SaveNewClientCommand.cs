@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Command;
 using Warp.Core.Exceptions;
-using Warp.Core.Infrastructure.Mapping;
 using Warp.Core.Infrastructure.Validation;
 using Warp.Core.Query;
 using Warp.Core.Util;
@@ -40,11 +40,11 @@ namespace Warp.Data.DbFirst.Commands.Clients
             ContactAddresses = new List<ContactAddressClient>();
         }
 
-        public int ClientId { get; private set; }
+        public int Id { get; private set; }
 
-        public void SetClientId(int id)
+        public void SetWithNewIdFromDatabase(int id)
         {
-            ClientId = id;
+            Id = id;
         }
     }
 
@@ -55,12 +55,12 @@ namespace Warp.Data.DbFirst.Commands.Clients
         private readonly IObjectMapper _objectMapper;
         private readonly IDateTimeProvider _dateTimeProvider;
 
-        public SaveNewClientCommandHandler(IDomainDbContext dbContext, IQueryDispatcher queryDispatcher, IObjectMapper objectMapper, IDateTimeProvider dateTimeProvider)
+        public SaveNewClientCommandHandler(IDomainDbContext dbContext, IQueryDispatcher queryDispatcher, IDateTimeProvider dateTimeProvider, IObjectMapper objectMapper)
         {
             _dbContext = dbContext;
             _queryDispatcher = queryDispatcher;
-            _objectMapper = objectMapper;
             _dateTimeProvider = dateTimeProvider;
+            _objectMapper = objectMapper;
         }
 
         public void Execute(SaveNewClientCommand command)
@@ -95,7 +95,7 @@ namespace Warp.Data.DbFirst.Commands.Clients
 
             _dbContext.SaveChanges();
 
-            command.SetClientId(clientEntity.ClientId);
+            command.SetWithNewIdFromDatabase(clientEntity.ClientId);
         }
     }
 }

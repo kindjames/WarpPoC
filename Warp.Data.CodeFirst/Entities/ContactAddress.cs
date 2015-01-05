@@ -1,11 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Warp.Core.Data;
 
 namespace Warp.Data.Entities
 {
     public class ContactAddress : EntityBase
     {
-        public int ContactAddressId { get; set; }
-
         [Required]
         public string Address1 { get; set; }
 

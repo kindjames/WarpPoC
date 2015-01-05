@@ -6,9 +6,9 @@ namespace Warp.Data.DbFirst.Entities
     {
         public AssessmentArea()
         {
-            this.AccountingTransactions = new List<AccountingTransaction>();
-            this.Assessments = new List<Assessment>();
-            this.AssessmentAreaBranches = new List<AssessmentAreaBranch>();
+            AccountingTransactions = new List<AccountingTransaction>();
+            Assessments = new List<Assessment>();
+            AssessmentAreaBranches = new List<AssessmentAreaBranch>();
         }
 
         public short AssessmentAreaId { get; set; }

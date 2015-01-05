@@ -8,30 +8,30 @@ namespace Warp.Data.DbFirst.Mapping
         public TourUserRoleMap()
         {
             // Primary Key
-            this.HasKey(t => t.TourUserRoleId);
+            HasKey(t => t.TourUserRoleId);
 
             // Properties
-            this.Property(t => t.SessionId)
+            Property(t => t.SessionId)
                 .IsRequired();
 
             // Table & Column Mappings
-            this.ToTable("TourUserRole", "Help");
-            this.Property(t => t.TourUserRoleId).HasColumnName("TourUserRoleID");
-            this.Property(t => t.TourId).HasColumnName("TourID");
-            this.Property(t => t.UserRoleId).HasColumnName("UserRoleID");
-            this.Property(t => t.HasViewedTour).HasColumnName("HasViewedTour");
-            this.Property(t => t.PermanentlySkipTour).HasColumnName("PermanentlySkipTour");
-            this.Property(t => t.DelayTourTillNextLogin).HasColumnName("DelayTourTillNextLogin");
-            this.Property(t => t.SessionId).HasColumnName("SessionId");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("TourUserRole", "Help");
+            Property(t => t.TourUserRoleId).HasColumnName("TourUserRoleID");
+            Property(t => t.TourId).HasColumnName("TourID");
+            Property(t => t.UserRoleId).HasColumnName("UserRoleID");
+            Property(t => t.HasViewedTour).HasColumnName("HasViewedTour");
+            Property(t => t.PermanentlySkipTour).HasColumnName("PermanentlySkipTour");
+            Property(t => t.DelayTourTillNextLogin).HasColumnName("DelayTourTillNextLogin");
+            Property(t => t.SessionId).HasColumnName("SessionId");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.UserRole)
+            HasRequired(t => t.UserRole)
                 .WithMany(t => t.TourUserRoles)
                 .HasForeignKey(d => d.UserRoleId);
-            this.HasRequired(t => t.Tour)
+            HasRequired(t => t.Tour)
                 .WithMany(t => t.TourUserRoles)
                 .HasForeignKey(d => d.TourId);
 

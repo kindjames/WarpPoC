@@ -8,20 +8,20 @@ namespace Warp.Data.DbFirst.Mapping
         public NotificationCategoryMap()
         {
             // Primary Key
-            this.HasKey(t => t.NotificationCategoryId);
+            HasKey(t => t.NotificationCategoryId);
 
             // Properties
-            this.Property(t => t.Name)
+            Property(t => t.Name)
                 .IsRequired()
                 .HasMaxLength(25);
 
             // Table & Column Mappings
-            this.ToTable("NotificationCategory");
-            this.Property(t => t.NotificationCategoryId).HasColumnName("NotificationCategoryID");
-            this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("NotificationCategory");
+            Property(t => t.NotificationCategoryId).HasColumnName("NotificationCategoryID");
+            Property(t => t.Name).HasColumnName("Name");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.Active).HasColumnName("Active");
         }
     }
 }

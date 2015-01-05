@@ -9,23 +9,23 @@ namespace Warp.Data.DbFirst.Mapping
         public QuestionSectionMap()
         {
             // Primary Key
-            this.HasKey(t => t.QuestionSectionId);
+            HasKey(t => t.QuestionSectionId);
 
             // Properties
-            this.Property(t => t.QuestionSectionId)
+            Property(t => t.QuestionSectionId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            this.Property(t => t.Title)
+            Property(t => t.Title)
                 .IsRequired()
                 .HasMaxLength(200);
 
             // Table & Column Mappings
-            this.ToTable("QuestionSection");
-            this.Property(t => t.QuestionSectionId).HasColumnName("QuestionSectionID");
-            this.Property(t => t.Title).HasColumnName("Title");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("QuestionSection");
+            Property(t => t.QuestionSectionId).HasColumnName("QuestionSectionID");
+            Property(t => t.Title).HasColumnName("Title");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
         }
     }
 }

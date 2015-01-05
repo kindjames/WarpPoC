@@ -9,24 +9,24 @@ namespace Warp.Data.DbFirst.Mapping
         public BenchmarkMap()
         {
             // Primary Key
-            this.HasKey(t => t.BenchmarkId);
+            HasKey(t => t.BenchmarkId);
 
             // Properties
-            this.Property(t => t.BenchmarkId)
+            Property(t => t.BenchmarkId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            this.Property(t => t.Name)
+            Property(t => t.Name)
                 .IsRequired()
                 .IsFixedLength()
                 .HasMaxLength(100);
 
             // Table & Column Mappings
-            this.ToTable("Benchmark");
-            this.Property(t => t.BenchmarkId).HasColumnName("BenchmarkID");
-            this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("Benchmark");
+            Property(t => t.BenchmarkId).HasColumnName("BenchmarkID");
+            Property(t => t.Name).HasColumnName("Name");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
         }
     }
 }

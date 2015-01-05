@@ -6,12 +6,12 @@ namespace Warp.Data.DbFirst.Entities
     {
         public ContactAddress()
         {
-            this.ContactAddressBranches = new List<ContactAddressBranch>();
-            this.ContactAddressBrands = new List<ContactAddressBrand>();
-            this.ContactAddressClients = new List<ContactAddressClient>();
-            this.ContactAddressUserRoles = new List<ContactAddressUserRole>();
-            this.ContactAddressCustomers = new List<ContactAddressCustomer>();
-            this.ContactAddressGeoLocations = new List<ContactAddressGeoLocation>();
+            ContactAddressBranches = new List<ContactAddressBranch>();
+            ContactAddressBrands = new List<ContactAddressBrand>();
+            ContactAddressClients = new List<ContactAddressClient>();
+            ContactAddressUserRoles = new List<ContactAddressUserRole>();
+            ContactAddressCustomers = new List<ContactAddressCustomer>();
+            ContactAddressGeoLocations = new List<ContactAddressGeoLocation>();
         }
 
         public int ContactAddressId { get; set; }

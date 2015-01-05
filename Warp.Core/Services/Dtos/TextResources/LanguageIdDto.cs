@@ -2,6 +2,6 @@
 {
     public class LanguageIdDto
     {
-        public int LanguageId { get; set; }
+        public int Id { get; set; }
     }
 }

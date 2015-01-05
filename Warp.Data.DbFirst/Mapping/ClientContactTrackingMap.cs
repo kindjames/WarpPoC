@@ -9,38 +9,38 @@ namespace Warp.Data.DbFirst.Mapping
         public ClientContactTrackingMap()
         {
             // Primary Key
-            this.HasKey(t => t.ClientContactTrackingId);
+            HasKey(t => t.ClientContactTrackingId);
 
             // Properties
-            this.Property(t => t.ClientContactTrackingId)
+            Property(t => t.ClientContactTrackingId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            this.Property(t => t.Notes)
+            Property(t => t.Notes)
                 .IsRequired()
                 .HasMaxLength(200);
 
-            this.Property(t => t.AddedByAdminId)
+            Property(t => t.AddedByAdminId)
                 .IsFixedLength()
                 .HasMaxLength(10);
 
             // Table & Column Mappings
-            this.ToTable("ClientContactTracking");
-            this.Property(t => t.ClientContactTrackingId).HasColumnName("ClientContactTrackingID");
-            this.Property(t => t.ClientId).HasColumnName("ClientID");
-            this.Property(t => t.ContactTypeId).HasColumnName("ContactTypeID");
-            this.Property(t => t.ClientContactStatusId).HasColumnName("ClientContactStatusID");
-            this.Property(t => t.DateOfContact).HasColumnName("DateOfContact");
-            this.Property(t => t.Notes).HasColumnName("Notes");
-            this.Property(t => t.AddedByAdminId).HasColumnName("AddedByAdminID");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("ClientContactTracking");
+            Property(t => t.ClientContactTrackingId).HasColumnName("ClientContactTrackingID");
+            Property(t => t.ClientId).HasColumnName("ClientID");
+            Property(t => t.ContactTypeId).HasColumnName("ContactTypeID");
+            Property(t => t.ClientContactStatusId).HasColumnName("ClientContactStatusID");
+            Property(t => t.DateOfContact).HasColumnName("DateOfContact");
+            Property(t => t.Notes).HasColumnName("Notes");
+            Property(t => t.AddedByAdminId).HasColumnName("AddedByAdminID");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.Client)
+            HasRequired(t => t.Client)
                 .WithMany(t => t.ClientContactTrackings)
                 .HasForeignKey(d => d.ClientId);
-            this.HasRequired(t => t.ClientContactStatus)
+            HasRequired(t => t.ClientContactStatus)
                 .WithMany(t => t.ClientContactTrackings)
                 .HasForeignKey(d => d.ClientContactStatusId);
 

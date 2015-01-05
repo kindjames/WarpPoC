@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Warp.Core.Command;
-using Warp.Core.Infrastructure.Mapping;
+using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Infrastructure.Validation;
 using Warp.Core.Query;
 using Warp.Core.Util;
@@ -17,7 +17,7 @@ namespace Warp.Data.DbFirst.Commands.Clients
         }
 
         [IdRequired]
-        public int ClientId { get; set; }
+        public int Id { get; set; }
         
         public string ClientName { get; set; }
         public int CustomerId { get; set; }

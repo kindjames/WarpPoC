@@ -1,18 +1,22 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Warp.Core.Command;
+using Warp.Core.Enum;
 using Warp.Core.Exceptions;
-using Warp.Core.Infrastructure.Mapping;
+using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Infrastructure.Validation;
 using Warp.Core.Query;
-using Warp.Core.Util;
 using Warp.Data.Context;
 using Warp.Data.Entities;
+using Warp.Data.Exceptions;
 using Warp.Data.Queries.Clients;
+using Warp.Data.Queries.General;
 
 namespace Warp.Data.Commands.Clients
 {
     public sealed class SaveNewClientCommand : ICommand
     {
+        public int Id { get; internal set; }
+
         [Required]
         public string Name { get; set; }
 
@@ -23,19 +27,12 @@ namespace Warp.Data.Commands.Clients
         public string Code { get; set; }
 
         [IdRequired]
-        public short ClientStatusId { get; set; }
+        public ClientStatus Status { get; set; }
 
         [IdRequired]
-        public int AccountManagerAdminId { get; set; }
+        public int AccountManagerId { get; set; }
 
         public int LegacyClientId { get; set; }
-
-        public int ClientId { get; private set; }
-
-        public void SetClientId(int id)
-        {
-            ClientId = id;
-        }
     }
 
     public sealed class SaveNewClientCommandHandler : ICommandHandler<SaveNewClientCommand>
@@ -53,9 +50,7 @@ namespace Warp.Data.Commands.Clients
 
         public void Execute(SaveNewClientCommand command)
         {
-            CheckArgument.NotNull(command, "command");
-
-            // CheckArgument client exists for customer id and client code.
+            // Check whether client already exists for customer id and client code.
             var clientExistsQuery = new CheckClientExistsForCodeQuery { CustomerId = command.CustomerId, ClientCode = command.Code };
 
             if (_queryDispatcher.Execute(clientExistsQuery))
@@ -63,21 +58,27 @@ namespace Warp.Data.Commands.Clients
                 throw new ClientAlreadyExistsException(clientExistsQuery.CustomerId, clientExistsQuery.ClientCode);
             }
 
-            // CheckArgument account manager exists.
-            //var accountManagerExistsQuery = new CheckClientAccountManagerExistsQuery { AccountManagerId = command.AccountManagerAdminId };
+            // Validate Account Manager (user) exists.
+            if (!_queryDispatcher.Execute(new CheckEntityExistsQuery<User> { EntityId = command.AccountManagerId }))
+            {
+                throw new DataEntityNotFoundException<User>(command.AccountManagerId, "Looking for Account Manager.");
+            }
 
-            //if (!_queryDispatcher.Execute(accountManagerExistsQuery))
-            //{
-            //    throw new DataEntityNotFoundException<ClientAccountManager>(command.AccountManagerAdminId);
-            //}
+            // Validate customer exists.
+            if (!_queryDispatcher.Execute(new CheckEntityExistsQuery<Customer> { EntityId = command.CustomerId }))
+            {
+                throw new DataEntityNotFoundException<Customer>(command.CustomerId);
+            }
 
+            // All systems go!
             var clientEntity = _objectMapper.Map<SaveNewClientCommand, Client>(command);
             
             _dbContext.Clients.Add(clientEntity);
 
             _dbContext.SaveChanges();
 
-            command.SetClientId(clientEntity.ClientId);
+            // Set the newly-created id in the command.
+            command.Id = clientEntity.Id;
         }
     }
 }

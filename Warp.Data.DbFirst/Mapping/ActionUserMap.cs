@@ -9,31 +9,31 @@ namespace Warp.Data.DbFirst.Mapping
         public ActionUserMap()
         {
             // Primary Key
-            this.HasKey(t => t.ActionUserId);
+            HasKey(t => t.ActionUserId);
 
             // Properties
-            this.Property(t => t.ActionUserId)
+            Property(t => t.ActionUserId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
             // Table & Column Mappings
-            this.ToTable("ActionUser");
-            this.Property(t => t.ActionUserId).HasColumnName("ActionUserID");
-            this.Property(t => t.ActionId).HasColumnName("ActionID");
-            this.Property(t => t.UserId).HasColumnName("UserID");
-            this.Property(t => t.Timestamp).HasColumnName("Timestamp");
-            this.Property(t => t.ReadPermission).HasColumnName("ReadPermission");
-            this.Property(t => t.WritePermission).HasColumnName("WritePermission");
-            this.Property(t => t.CommentPermission).HasColumnName("CommentPermission");
-            this.Property(t => t.Active).HasColumnName("Active");
-            this.Property(t => t.AddedByUserId).HasColumnName("AddedByUserID");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            ToTable("ActionUser");
+            Property(t => t.ActionUserId).HasColumnName("ActionUserID");
+            Property(t => t.ActionId).HasColumnName("ActionID");
+            Property(t => t.UserId).HasColumnName("UserID");
+            Property(t => t.Timestamp).HasColumnName("Timestamp");
+            Property(t => t.ReadPermission).HasColumnName("ReadPermission");
+            Property(t => t.WritePermission).HasColumnName("WritePermission");
+            Property(t => t.CommentPermission).HasColumnName("CommentPermission");
+            Property(t => t.Active).HasColumnName("Active");
+            Property(t => t.AddedByUserId).HasColumnName("AddedByUserID");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
 
             // Relationships
-            this.HasRequired(t => t.User)
+            HasRequired(t => t.User)
                 .WithMany(t => t.ActionUsers)
                 .HasForeignKey(d => d.UserId);
-            this.HasRequired(t => t.Action)
+            HasRequired(t => t.Action)
                 .WithMany(t => t.ActionUsers)
                 .HasForeignKey(d => d.ActionId);
 

@@ -8,27 +8,27 @@ namespace Warp.Data.DbFirst.Mapping
         public PersonBranchMap()
         {
             // Primary Key
-            this.HasKey(t => t.PersonBranchId);
+            HasKey(t => t.PersonBranchId);
 
             // Properties
             // Table & Column Mappings
-            this.ToTable("PersonBranch", "Client");
-            this.Property(t => t.PersonBranchId).HasColumnName("PersonBranchID");
-            this.Property(t => t.PersonId).HasColumnName("PersonID");
-            this.Property(t => t.BranchId).HasColumnName("BranchID");
-            this.Property(t => t.PermissionTypeId).HasColumnName("PermissionTypeID");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("PersonBranch", "Client");
+            Property(t => t.PersonBranchId).HasColumnName("PersonBranchID");
+            Property(t => t.PersonId).HasColumnName("PersonID");
+            Property(t => t.BranchId).HasColumnName("BranchID");
+            Property(t => t.PermissionTypeId).HasColumnName("PermissionTypeID");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.Branch)
+            HasRequired(t => t.Branch)
                 .WithMany(t => t.PersonBranches)
                 .HasForeignKey(d => d.BranchId);
-            this.HasOptional(t => t.PermissionType)
+            HasOptional(t => t.PermissionType)
                 .WithMany(t => t.PersonBranches)
                 .HasForeignKey(d => d.PermissionTypeId);
-            this.HasRequired(t => t.Person)
+            HasRequired(t => t.Person)
                 .WithMany(t => t.PersonBranches)
                 .HasForeignKey(d => d.PersonId);
 

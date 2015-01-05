@@ -9,37 +9,37 @@ namespace Warp.Data.DbFirst.Mapping
         public AuditPersonEventMap()
         {
             // Primary Key
-            this.HasKey(t => t.AuditPersonEventId);
+            HasKey(t => t.AuditPersonEventId);
 
             // Properties
-            this.Property(t => t.AuditPersonEventId)
+            Property(t => t.AuditPersonEventId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            this.Property(t => t.Id)
+            Property(t => t.Id)
                 .IsRequired()
                 .HasMaxLength(10);
 
-            this.Property(t => t.Note)
+            Property(t => t.Note)
                 .HasMaxLength(200);
 
             // Table & Column Mappings
-            this.ToTable("AuditPersonEvent");
-            this.Property(t => t.AuditPersonEventId).HasColumnName("AuditPersonEventID");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.PersonId).HasColumnName("PersonID");
-            this.Property(t => t.AuditTableId).HasColumnName("AuditTableID");
-            this.Property(t => t.AuditActionId).HasColumnName("AuditActionID");
-            this.Property(t => t.Id).HasColumnName("ID");
-            this.Property(t => t.Hidden).HasColumnName("Hidden");
-            this.Property(t => t.Note).HasColumnName("Note");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("AuditPersonEvent");
+            Property(t => t.AuditPersonEventId).HasColumnName("AuditPersonEventID");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.PersonId).HasColumnName("PersonID");
+            Property(t => t.AuditTableId).HasColumnName("AuditTableID");
+            Property(t => t.AuditActionId).HasColumnName("AuditActionID");
+            Property(t => t.Id).HasColumnName("ID");
+            Property(t => t.Hidden).HasColumnName("Hidden");
+            Property(t => t.Note).HasColumnName("Note");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.AuditAction)
+            HasRequired(t => t.AuditAction)
                 .WithMany(t => t.AuditPersonEvents)
                 .HasForeignKey(d => d.AuditActionId);
-            this.HasRequired(t => t.AuditTable)
+            HasRequired(t => t.AuditTable)
                 .WithMany(t => t.AuditPersonEvents)
                 .HasForeignKey(d => d.AuditTableId);
 

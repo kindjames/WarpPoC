@@ -24,7 +24,7 @@ namespace Warp.Data.Queries.Customers
         public Customer Execute(GetCustomerQuery query)
         {
             return _dbContext.Customers
-                .SingleOrDefault(b => b.CustomerId == query.CustomerId);
+                .SingleOrDefault(b => b.Id == query.CustomerId);
         }
     }
 }

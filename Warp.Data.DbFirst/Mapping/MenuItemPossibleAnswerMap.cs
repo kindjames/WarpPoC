@@ -9,26 +9,26 @@ namespace Warp.Data.DbFirst.Mapping
         public MenuItemPossibleAnswerMap()
         {
             // Primary Key
-            this.HasKey(t => t.MenuItemPossibleAnswerId);
+            HasKey(t => t.MenuItemPossibleAnswerId);
 
             // Properties
-            this.Property(t => t.MenuItemPossibleAnswerId)
+            Property(t => t.MenuItemPossibleAnswerId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
             // Table & Column Mappings
-            this.ToTable("MenuItemPossibleAnswer");
-            this.Property(t => t.MenuItemPossibleAnswerId).HasColumnName("MenuItemPossibleAnswerID");
-            this.Property(t => t.MenuItemId).HasColumnName("MenuItemID");
-            this.Property(t => t.PossibleAnswerId).HasColumnName("PossibleAnswerID");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("MenuItemPossibleAnswer");
+            Property(t => t.MenuItemPossibleAnswerId).HasColumnName("MenuItemPossibleAnswerID");
+            Property(t => t.MenuItemId).HasColumnName("MenuItemID");
+            Property(t => t.PossibleAnswerId).HasColumnName("PossibleAnswerID");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.MenuItem)
+            HasRequired(t => t.MenuItem)
                 .WithMany(t => t.MenuItemPossibleAnswers)
                 .HasForeignKey(d => d.MenuItemId);
-            this.HasRequired(t => t.PossibleAnswer)
+            HasRequired(t => t.PossibleAnswer)
                 .WithMany(t => t.MenuItemPossibleAnswers)
                 .HasForeignKey(d => d.PossibleAnswerId);
 

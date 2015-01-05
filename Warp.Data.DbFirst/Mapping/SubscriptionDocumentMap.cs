@@ -8,17 +8,17 @@ namespace Warp.Data.DbFirst.Mapping
         public SubscriptionDocumentMap()
         {
             // Primary Key
-            this.HasKey(t => t.SubscriptionDocumentId);
+            HasKey(t => t.SubscriptionDocumentId);
 
             // Properties
             // Table & Column Mappings
-            this.ToTable("SubscriptionDocument", "Subscriptions");
-            this.Property(t => t.SubscriptionDocumentId).HasColumnName("SubscriptionDocumentId");
-            this.Property(t => t.SubscriptionId).HasColumnName("SubscriptionId");
-            this.Property(t => t.ReportId).HasColumnName("ReportId");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.Active).HasColumnName("Active");
+            ToTable("SubscriptionDocument", "Subscriptions");
+            Property(t => t.SubscriptionDocumentId).HasColumnName("SubscriptionDocumentId");
+            Property(t => t.SubscriptionId).HasColumnName("SubscriptionId");
+            Property(t => t.ReportId).HasColumnName("ReportId");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.Active).HasColumnName("Active");
         }
     }
 }

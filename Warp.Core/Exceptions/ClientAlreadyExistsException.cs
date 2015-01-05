@@ -11,7 +11,7 @@ namespace Warp.Core.Exceptions
 
         private static string BuildMessage(int customerId, string code)
         {
-            return String.Concat("Client already exists for Customer Id: ", customerId, ", Code: ", code, ".");
+            return String.Concat("Client already exists for CustomerId Id: ", customerId, ", Code: ", code, ".");
         }
     }
 }

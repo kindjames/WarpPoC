@@ -9,26 +9,26 @@ namespace Warp.Data.DbFirst.Mapping
         public QuestionPossibleAnswerMap()
         {
             // Primary Key
-            this.HasKey(t => t.QuestionPossibleAnswerId);
+            HasKey(t => t.QuestionPossibleAnswerId);
 
             // Properties
-            this.Property(t => t.QuestionPossibleAnswerId)
+            Property(t => t.QuestionPossibleAnswerId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
             // Table & Column Mappings
-            this.ToTable("QuestionPossibleAnswer");
-            this.Property(t => t.QuestionPossibleAnswerId).HasColumnName("QuestionPossibleAnswerID");
-            this.Property(t => t.QuestionId).HasColumnName("QuestionID");
-            this.Property(t => t.PossibleAnswerId).HasColumnName("PossibleAnswerID");
-            this.Property(t => t.Active).HasColumnName("Active");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            ToTable("QuestionPossibleAnswer");
+            Property(t => t.QuestionPossibleAnswerId).HasColumnName("QuestionPossibleAnswerID");
+            Property(t => t.QuestionId).HasColumnName("QuestionID");
+            Property(t => t.PossibleAnswerId).HasColumnName("PossibleAnswerID");
+            Property(t => t.Active).HasColumnName("Active");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
 
             // Relationships
-            this.HasRequired(t => t.PossibleAnswer)
+            HasRequired(t => t.PossibleAnswer)
                 .WithMany(t => t.QuestionPossibleAnswers)
                 .HasForeignKey(d => d.PossibleAnswerId);
-            this.HasRequired(t => t.Question)
+            HasRequired(t => t.Question)
                 .WithMany(t => t.QuestionPossibleAnswers)
                 .HasForeignKey(d => d.QuestionId);
 

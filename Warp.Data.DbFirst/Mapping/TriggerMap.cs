@@ -8,24 +8,24 @@ namespace Warp.Data.DbFirst.Mapping
         public TriggerMap()
         {
             // Primary Key
-            this.HasKey(t => t.TriggerId);
+            HasKey(t => t.TriggerId);
 
             // Properties
-            this.Property(t => t.TriggerName)
+            Property(t => t.TriggerName)
                 .HasMaxLength(75);
 
             // Table & Column Mappings
-            this.ToTable("Trigger", "Subscriptions");
-            this.Property(t => t.TriggerId).HasColumnName("TriggerId");
-            this.Property(t => t.ScheduleId).HasColumnName("ScheduleId");
-            this.Property(t => t.TriggerName).HasColumnName("TriggerName");
-            this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
-            this.Property(t => t.DateCreated).HasColumnName("DateCreated");
-            this.Property(t => t.Active).HasColumnName("Active");
-            this.Property(t => t.TriggerTime).HasColumnName("TriggerTime");
+            ToTable("Trigger", "Subscriptions");
+            Property(t => t.TriggerId).HasColumnName("TriggerId");
+            Property(t => t.ScheduleId).HasColumnName("ScheduleId");
+            Property(t => t.TriggerName).HasColumnName("TriggerName");
+            Property(t => t.DateUpdated).HasColumnName("DateUpdated");
+            Property(t => t.DateCreated).HasColumnName("DateCreated");
+            Property(t => t.Active).HasColumnName("Active");
+            Property(t => t.TriggerTime).HasColumnName("TriggerTime");
 
             // Relationships
-            this.HasOptional(t => t.Schedule)
+            HasOptional(t => t.Schedule)
                 .WithMany(t => t.Triggers)
                 .HasForeignKey(d => d.ScheduleId);
 
