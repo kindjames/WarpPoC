@@ -154,6 +154,12 @@
     <Reference Include="T4MVCExtensions">
       <HintPath>..\packages\T4MVCExtensions.3.6.5\lib\net40\T4MVCExtensions.dll</HintPath>
     </Reference>
+    <Reference Include="TwitterBootstrapMVC.Eyecon.Datepicker.MVC5">
+      <HintPath>..\packages\TwitterBootstrapMVC.Eyecon.Datepicker.MVC5.1.0.0\lib\net40\TwitterBootstrapMVC.Eyecon.Datepicker.MVC5.dll</HintPath>
+    </Reference>
+    <Reference Include="TwitterBootstrapMVC.Flaty.MVC5">
+      <HintPath>..\packages\TwitterBootstrapMVC.Flaty.MVC5.1.0.16\lib\net40\TwitterBootstrapMVC.Flaty.MVC5.dll</HintPath>
+    </Reference>
     <Reference Include="TwitterBootstrapMVC5">
       <HintPath>..\packages\TwitterBootstrapMVC5.3.14.0\lib\net40\TwitterBootstrapMVC5.dll</HintPath>
       <Private>True</Private>
@@ -171,9 +177,14 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\flaty-responsive.css" />
+    <Content Include="Content\flaty.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\Styles\Authentication\Login.css" />
     <Content Include="Content\Images\HospitalityGemLogo300dpi.png" />
     <Content Include="Content\SVG\Loaders\tail-spin.svg" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -185,6 +196,10 @@
     </None>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\FontAwesome.otf" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.1.js" />
     <Content Include="Scripts\jquery-2.1.1.min.js" />
@@ -212,6 +227,7 @@
     <Compile Include="App_Start\Config.Routes.cs" />
     <Compile Include="App_Start\Config.Bundles.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
+    <Compile Include="Controllers\DashboardControlsController.cs" />
     <Compile Include="Infrastructure\MappingConfiguration.cs" />
     <Compile Include="Models\Clients\ClientModel.cs" />
     <Compile Include="Models\Clients\ClientSearchModel.cs" />
@@ -253,6 +269,8 @@
     <Content Include="Views\TextResource\View.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\UserViewModel.cshtml" />
     <Content Include="TwitterBootstrapMvcLicense.lic" />
+    <Content Include="Views\DashboardControls\SideNavigationBar.cshtml" />
+    <Content Include="Views\DashboardControls\TopNavigationBar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
