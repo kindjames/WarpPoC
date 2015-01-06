@@ -42,6 +42,7 @@ namespace Warp.Core.Infrastructure.Models
 
                     // Get textResource id from attribute.
                     var textResourceIdentifierCode = textResourceAttribute.TextResourceIdentifierCode;
+                //var userLanguageId = new GetDefaultLanguageForUserQueryHandler { };
 
                     // Get textResource from service.
                     var textResource = _textResourceService.GetTextResourceFromCode(textResourceIdentifierCode);
