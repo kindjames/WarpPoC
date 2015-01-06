@@ -25,7 +25,7 @@ namespace Warp.Data.Commands.Clients
         [Required]
         public string Code { get; set; }
 
-        [IdRequired]
+        [Required]
         public ClientStatus Status { get; set; }
 
         [IdRequired]
