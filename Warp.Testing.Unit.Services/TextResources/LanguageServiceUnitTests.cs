@@ -6,7 +6,7 @@ using Warp.Services;
 namespace Warp.Testing.Unit.Services.TextResources
 {
     [Subject("Language Service -  Logon")]
-    public static class LanguageServiceTests
+    public static class LanguageServiceUnitTests
     {
         public class When_No_User_Is_Logged_On_Return_LanguageId_For_Invariant_Culture : WithSubject<LanguageService>
         {
