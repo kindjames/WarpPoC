@@ -131,6 +131,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Queries\General\" />
+    <Folder Include="Commands\Clients\" />
+    <Folder Include="Data\" />
+    <Folder Include="Util\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Warp.Core\Core.csproj">
