@@ -11,12 +11,12 @@ using Warp.Testing.Unit.Data.Util;
 namespace Warp.Testing.Unit.Data.Queries.TextResources
 {
     [Subject("TextResource => Service => Query Tests")]
-    public class GetTextResourceQueryHandlerTests
+    public class GetTextResourceQueryHandlerUnitTests
     {
         public static TextResourceTestDataFactory _textResourceTestData;
         public static TextResourceIdentifierTestDataFactory _textResourceCodeTestData;
 
-        public GetTextResourceQueryHandlerTests()
+        public GetTextResourceQueryHandlerUnitTests()
         {
             _textResourceTestData = new TextResourceTestDataFactory();
             _textResourceCodeTestData = new TextResourceIdentifierTestDataFactory();

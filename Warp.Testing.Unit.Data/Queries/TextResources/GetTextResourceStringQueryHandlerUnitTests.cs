@@ -10,7 +10,7 @@ using Warp.Testing.Unit.Data.Util;
 namespace Warp.Testing.Unit.Data.Queries.TextResources
 {
     [Subject("GetTextResourceString Query Handler")]
-    public class GetTextResourceStringQueryHandlerTests
+    public class GetTextResourceStringQueryHandlerUnitTests
     {
         public class GetTextResourceString_That_Exists : WithSubject<GetTextResourceStringQueryHandler>
         {
