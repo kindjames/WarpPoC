@@ -1,12 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.Entity;
+using AutoMapper;
+using Machine.Fakes;
+using Machine.Specifications;
+using Warp.Core.Exceptions;
+using Warp.Core.Infrastructure.AutoMapper;
+using Warp.Core.Query;
+using Warp.Data.Commands.Clients;
+using Warp.Data.Context;
+using Warp.Data.Entities;
+using Warp.Data.Queries.Clients;
+using Warp.Data.Queries.General;
+using IObjectMapper = Warp.Core.Infrastructure.AutoMapper.IObjectMapper;
+using MoqIt = Moq.It;
 
 namespace Warp.Testing.Unit.Data.Commands.TextResources
 {
-    class SaveNewTextResourceCodeCommandHandlerUnitTests
+    public static class SaveNewTextResourceCodeCommandHandlerUnitTests
     {
+        public class When_saving_an_existing_TextResourceCode :
+                    WithSubject<SaveNewTextResourceCodeCommandHandler>
+        {
+            private static IDbSet<TextResourceIdentifier> _textResourceIdentifierRepository;
+        }
     }
 }
