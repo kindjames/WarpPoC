@@ -95,12 +95,21 @@ namespace Warp.Services
             // Verify that the TextResourceCode has not already been assigned to another TextResourceString
         }
 
-
+        /// <summary>
+        ///  TODO -> Validate unique ResourceString
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
         public bool ValidateResourceString(ResourceStringDto dto)
         {
             return true; //_dispatcher.Execute(DuplicateResourceStringExistsQuery(dto));
         }
 
+        /// <summary>
+        ///  TODO -> Validate unique ResourceCode
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
         public bool ValidateResourceCode(ResourceCodeDto dto)
         {
             throw new NotImplementedException();
