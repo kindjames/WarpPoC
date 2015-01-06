@@ -16,10 +16,10 @@ using MoqIt = Moq.It;
 
 namespace Warp.Testing.Unit.Data.Commands.TextResources
 {
-    public static class SaveNewTextResourceCodeCommandHandlerUnitTests
+    public static class SaveNewResourceIdentifierCommandHandlerUnitTests
     {
         public class When_saving_an_existing_TextResourceCode :
-                    WithSubject<SaveNewTextResourceCodeCommandHandler>
+                    WithSubject<SaveNewResourceIdentifierCommandHandler>
         {
             private static IDbSet<TextResourceIdentifier> _textResourceIdentifierRepository;
         }
