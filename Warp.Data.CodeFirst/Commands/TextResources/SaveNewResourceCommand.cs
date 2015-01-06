@@ -15,23 +15,6 @@ namespace Warp.Data.Commands.TextResources
     public sealed class SaveNewResourceCommand : ICommand
     {
         public int Id { get; internal set; }
-
-        // Required TextResourceIdentifier data
-        [Required]
-        public string ResourceIdentifierCode { get; set; }
-
-        [Required]
-        public bool ClientOverridable { get; set; }
-
-        // Required TextResource data
-        [IdRequired]
-        public int LanguageId { get; set; }
-
-        // Populated after successful TextResourceIdentifier validation(Here or in Dispatcher?)
-        public int ResourceIdentifierId { get; set; }
-
-        [Required]
-        public string ResourceString { get; set; }
     }
 
     public sealed class SaveNewResourceCommandHandler : ICommandHandler<SaveNewResourceCommand>
@@ -49,9 +32,6 @@ namespace Warp.Data.Commands.TextResources
 
         public void Execute(SaveNewResourceCommand command)
         {
-            // Is language supported?
-                // Yes
-                    // 
             throw new NotImplementedException();
         }
     }
