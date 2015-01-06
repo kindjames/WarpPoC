@@ -1,28 +1,29 @@
 ﻿@model LoginViewModel
 @{
+    Layout = "../Shared/_Layout.cshtml";
     ViewBag.Title = "Log in";
     Html.Bootstrap().Globals().ShowRequiredStar(false);
 }
-<div class="row">
-    <div class="col-md-6 col-md-offset-3 form-signin">
-        <section>
-            @using (var form = Html.Bootstrap().Begin(new Form("Login", "Authentication").RouteValues(new { ViewBag.ReturnUrl })))
-            {
-                @Html.AntiForgeryToken()
-                <img src=@Url.Content("~/Content/Images/HospitalityGemLogo300dpi.png") alt="" />
-                <hr />
+<body class="login-page">
+    <div class="login-wrapper">
+        @using (var form = Html.Bootstrap().Begin(new Form("Login", "Authentication").Class("form-login").RouteValues(new { ViewBag.ReturnUrl })))
+        {
+            @Html.AntiForgeryToken()
+            <img src=@Url.Content("~/Content/Images/HospitalityGemLogo300dpi.png") alt="" />
+            <hr />
 
-                @Html.Bootstrap().ValidationSummary()
-                @(form.FormGroup().TextBoxFor(m => m.UserName).Placeholder(Model.UsernamePlaceholderText).Label().LabelText(Model.UsernameLabelText))
-                @(form.FormGroup().PasswordFor(m => m.Password).Placeholder(Model.PasswordPlaceholderText).Label().LabelText(Model.PasswordLabelText))
-                @(form.FormGroup().CheckBoxFor(m => m.RememberMe).Label().LabelText(Model.RememberMeLabelText))
-
-                <hr/>
-                @Html.Bootstrap().SubmitButton().Text(Model.LoginButtonText).Class("pull-right")
-            }
-        </section>
+            @Html.Bootstrap().ValidationSummary()
+            @(form.FormGroup().TextBoxFor(m => m.UserName).Placeholder(Model.UsernamePlaceholderText).Label().LabelText(Model.UsernameLabelText))
+            @(form.FormGroup().PasswordFor(m => m.Password).Placeholder(Model.PasswordPlaceholderText).Label().LabelText(Model.PasswordLabelText))
+            @(form.FormGroup().CheckBoxFor(m => m.RememberMe).Label().LabelText(Model.RememberMeLabelText))
+            @(form.FormGroup().CustomControls(Html.Bootstrap().SubmitButton().Class("btn btn-primary form-control").Text(Model.LoginButtonText)))
+            <hr />
+            <p class="clearfix">
+                <a href="#" class="pull-left">Forgot Password?</a>
+            </p>
+        }
     </div>
-</div>
-@section Scripts {
-    @Styles.Render("~/bundles/authentication")
-}
+    @section Scripts {
+        @Styles.Render("~/bundles/authentication")
+    }
+</body>

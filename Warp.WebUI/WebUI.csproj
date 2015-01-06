@@ -277,6 +277,7 @@
     <Content Include="Views\DashboardControls\MessagesDropdown.cshtml" />
     <Content Include="Views\DashboardControls\UserDropdown.cshtml" />
     <Content Include="Views\Account\UserProfile.cshtml" />
+    <Content Include="Views\Shared\_DashboardLayout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
