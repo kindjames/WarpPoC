@@ -89,6 +89,7 @@
     <Compile Include="TextResources\TextResourceServiceTests.cs" />
     <Compile Include="Users\UserServiceTests.cs" />
     <Compile Include="TextResourceServiceTests.cs" />
+    <Compile Include="TextResourceServiceIntegrationTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

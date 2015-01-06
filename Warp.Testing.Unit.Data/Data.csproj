@@ -125,6 +125,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\EnumerableExtensions.cs" />
     <Compile Include="Util\ITestDataFactory.cs" />
+    <Compile Include="Commands\TextResources\LanguageCommandsIntegrationTesting.cs" />
+    <Compile Include="Commands\TextResources\TextResourceCommandsIntegrationTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queries\General\CheckEntityExistsQueryHandlerTests.cs" />
+    <Compile Include="Queries\TextResources\TextResourceQueryIntegrationTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -134,7 +139,6 @@
     <Folder Include="Queries\General\" />
     <Folder Include="Commands\Clients\" />
     <Folder Include="Data\" />
-    <Folder Include="Queries\TextResources\" />
     <Folder Include="Util\" />
   </ItemGroup>
   <ItemGroup>
