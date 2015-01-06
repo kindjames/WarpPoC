@@ -10,6 +10,9 @@ namespace Warp.Data.Queries.TextResources
     public sealed class GetTextResourceStringQuery : IQuery<string>
     {
         public Guid TextResourceIdentifierId { get; set; }
+
+        [IdRequired]
+        public int LanguageId { get; set; }
     }
 
     public class GetTextResourceStringQueryValidator : AbstractValidator<GetTextResourceStringQuery>
@@ -32,7 +35,7 @@ namespace Warp.Data.Queries.TextResources
         public string Handle(GetTextResourceStringQuery query)
         {
             return _context.TextResources
-                .Where(trs => trs.TextResourceIdentifier.Id == query.TextResourceIdentifierId)
+                .Where(trs => trs.TextResourceIdentifier.Id == query.TextResourceIdentifierId && trs.LanguageId == query.LanguageId)
                 .Select(trs => trs.ResourceString)
                 .SingleOrDefault();
         }
