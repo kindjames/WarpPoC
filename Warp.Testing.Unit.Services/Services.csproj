@@ -90,6 +90,10 @@
     <Compile Include="Users\UserServiceTests.cs" />
     <Compile Include="TextResourceServiceTests.cs" />
     <Compile Include="TextResourceServiceIntegrationTests.cs" />
+    <Compile Include="TextResources\LanguageServiceUnitTests.cs" />
+    <Compile Include="TextResources\TextResourceModelProviderUnitTests.cs" />
+    <Compile Include="TextResources\TextResourceServiceUnitTests.cs" />
+    <Compile Include="Users\UserServiceUnitTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
