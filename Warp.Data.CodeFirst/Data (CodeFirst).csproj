@@ -70,6 +70,12 @@
     <Compile Include="Commands\Clients\UpdateClientCommand.cs" />
     <Compile Include="Commands\Clients\CreateClientCommand.cs" />
     <Compile Include="Commands\UpdateCommandBase.cs" />
+    <Compile Include="Commands\Clients\SaveNewClientCommand.cs" />
+    <Compile Include="Commands\TextResources\SaveNewResourceCommand.cs" />
+    <Compile Include="Commands\TextResources\SaveNewTextResourceCommand.cs" />
+    <Compile Include="Commands\TextResources\SaveResourceIdentifierCommand.cs" />
+    <Compile Include="Commands\TextResources\UpdateTextResourceCommand.cs" />
+    <Compile Include="Commands\TextResources\UpdateTextResourceIdentifierCommand.cs" />
     <Compile Include="Context\AuthenticationDbContext.cs" />
     <Compile Include="Context\DomainDbContext.cs" />
     <Compile Include="Context\IApplicationDbContext.cs" />
