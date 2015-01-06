@@ -9,7 +9,7 @@ using ThenIt = Machine.Specifications.It;
 
 namespace Warp.Testing.Unit.Services.TextResources
 {
-    [Subject("TextResourceService =>")]
+    [Subject("TextResourceService => Unit Tests")]
     public class TextResourceServiceTests
     {
         #region GetTextResource Tests
