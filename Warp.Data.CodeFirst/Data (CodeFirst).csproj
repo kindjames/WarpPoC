@@ -83,7 +83,7 @@
     <Compile Include="Commands\Clients\SaveNewClientCommand.cs" />
     <Compile Include="Commands\TextResources\SaveNewResourceCommand.cs" />
     <Compile Include="Commands\TextResources\SaveNewTextResourceCommand.cs" />
-    <Compile Include="Commands\TextResources\SaveResourceIdentifierCommand.cs" />
+    <Compile Include="Commands\TextResources\SaveNewResourceIdentifierCommand.cs" />
     <Compile Include="Commands\TextResources\UpdateTextResourceCommand.cs" />
     <Compile Include="Commands\TextResources\UpdateTextResourceIdentifierCommand.cs" />
     <Compile Include="Context\AuthenticationDbContext.cs" />
