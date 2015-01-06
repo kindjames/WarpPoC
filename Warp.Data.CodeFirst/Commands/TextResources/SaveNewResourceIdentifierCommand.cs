@@ -7,7 +7,7 @@ using Warp.Core.Command;
 
 namespace Warp.Data.Commands.TextResources
 {
-    public sealed class SaveResourceIdentifierCommand : ICommand
+    public sealed class SaveNewResourceIdentifierCommand : ICommand
     {
         public int Id { get; internal set; }
 
