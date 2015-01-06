@@ -34,7 +34,7 @@ namespace Warp.Testing.Unit.Data.Queries.TextResources
 
             Because _of = () => _result = Subject.Execute(new GetTextResourceStringQuery { TextResourceIdentifierId = 10 });
 
-            It _should = () =>
+            It _should_not_be_null = () =>
             {
                 _result.ShouldNotBeNull();
                 _result.ShouldEqual("Text Resource Test String.");
@@ -63,7 +63,7 @@ namespace Warp.Testing.Unit.Data.Queries.TextResources
 
             Because _of = () => _result = Subject.Execute(new GetTextResourceStringQuery { TextResourceIdentifierId = _textResourceId });
 
-            It _should = () => _result.ShouldBeNull();
+            It _should_be_null = () => _result.ShouldBeNull();
         }
 
     }
