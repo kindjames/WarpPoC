@@ -19,5 +19,12 @@ namespace Warp.Testing.Unit.Data.Commands.TextResources
     [Subject("SaveNewTextResourceCommandHandler Unit Tests")]
     public static class SaveNewTextResourceCommandHandlerUnitTests
     {
+        public class When_saving_a_new_TextResource_with_an_existing_ResourceString :
+            WithSubject<SaveNewTextResourceCommandHandler>
+        {
+            private static IDbSet<TextResource> _textResourceRepository;
+        }
+
+
     }
 }
