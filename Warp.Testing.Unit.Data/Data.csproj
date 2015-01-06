@@ -126,6 +126,7 @@
     <Compile Include="Util\EnumerableExtensions.cs" />
     <Compile Include="Util\ITestDataFactory.cs" />
     <Compile Include="Commands\TextResources\LanguageCommandsIntegrationTesting.cs" />
+    <Compile Include="Commands\TextResources\LanguageCommandsIntegrationTests.cs" />
     <Compile Include="Commands\TextResources\TextResourceCommandsIntegrationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queries\General\CheckEntityExistsQueryHandlerTests.cs" />
