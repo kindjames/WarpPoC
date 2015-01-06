@@ -1,6 +1,6 @@
 ﻿namespace Warp.Testing.Unit.Services.TextResources
 {
-    public static class TextResourceModelProviderTests
+    public static class TextResourceModelProviderUnitTests
     {
         //public class When_calling__Build__on_a_model : WithSubject<TextResourceModelProvider>
         //{
