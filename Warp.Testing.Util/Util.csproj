@@ -7,8 +7,8 @@
     <ProjectGuid>{AC5D498D-977F-4331-8C38-10526124DC35}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WarpPoC.Testing.Util</RootNamespace>
-    <AssemblyName>WarpPoC.Testing.Util</AssemblyName>
+    <RootNamespace>WarpTesting.Util</RootNamespace>
+    <AssemblyName>Warp.Testing.Util</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

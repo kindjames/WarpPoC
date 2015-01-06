@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 using System.Web.Mvc;
 using Machine.Specifications;
 
-namespace WarpPoC.Testing.Util
+namespace WarpTesting.Util
 {
     public static class ShouldExtensionMethods
     {
