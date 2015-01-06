@@ -229,6 +229,7 @@
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\DashboardControlsController.cs" />
     <Compile Include="Infrastructure\MappingConfiguration.cs" />
+    <Compile Include="Models\Account\UserProfileModel.cs" />
     <Compile Include="Models\Clients\ClientModel.cs" />
     <Compile Include="Models\Clients\ClientSearchModel.cs" />
     <Compile Include="Models\Clients\ClientListViewModel.cs" />
@@ -271,6 +272,11 @@
     <Content Include="TwitterBootstrapMvcLicense.lic" />
     <Content Include="Views\DashboardControls\SideNavigationBar.cshtml" />
     <Content Include="Views\DashboardControls\TopNavigationBar.cshtml" />
+    <Content Include="Views\DashboardControls\TasksDropdown.cshtml" />
+    <Content Include="Views\DashboardControls\NotificationsDropdown.cshtml" />
+    <Content Include="Views\DashboardControls\MessagesDropdown.cshtml" />
+    <Content Include="Views\DashboardControls\UserDropdown.cshtml" />
+    <Content Include="Views\Account\UserProfile.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

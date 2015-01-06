@@ -3,6 +3,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using Warp.Core.Authentication;
+using Warp.Core.Infrastructure.AutoMapper;
 using Warp.WebUI.Models.Account;
 
 namespace Warp.WebUI.Controllers
@@ -12,12 +13,14 @@ namespace Warp.WebUI.Controllers
     public class AccountController : Controller
     {
         private readonly IAuthenticationManager _authenticationManager;
+        private readonly IObjectMapper _objectMapper;
         private readonly UserManager<ApplicationUser, int> _userManager;
 
-        public AccountController(UserManager<ApplicationUser, int> userManager, IAuthenticationManager authenticationManager)
+        public AccountController(UserManager<ApplicationUser, int> userManager, IAuthenticationManager authenticationManager, IObjectMapper objectMapper)
         {
             _userManager = userManager;
             _authenticationManager = authenticationManager;
+            _objectMapper = objectMapper;
         }
 
         [AllowAnonymous]
@@ -55,6 +58,34 @@ namespace Warp.WebUI.Controllers
                     ModelState.AddModelError("", error);
                 }
             }
+
+            return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult UserProfile()
+        {
+            var id = User.Identity.GetUserId<int>();
+
+            var user = _userManager.FindById(id);
+
+            var model = _objectMapper.Map<ApplicationUser, UserProfileModel>(user);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> UserProfile(UserProfileModel model)
+        {
+            var id = User.Identity.GetUserId<int>();
+
+            var user = _userManager.FindById(id);
+
+            user.Email = model.Email;
+            user.FirstName = model.FirstName;
+            user.LastName = model.LastName;
+
+            await _userManager.UpdateAsync(user);
 
             return View(model);
         }

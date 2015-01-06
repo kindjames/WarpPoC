@@ -1,0 +1,34 @@
+﻿@model Warp.WebUI.Controllers.UserDropdownModel
+
+<li class="user-profile">
+    <a data-toggle="dropdown" href="#" class="user-menu dropdown-toggle">
+        <img class="nav-user-photo" src="img/demo/avatar/avatar1.jpg" alt="Penny's Photo">
+        <span class="hhh" id="user_info">
+            @Model.ShortName
+        </span>
+        <i class="fa fa-caret-down"></i>
+    </a>
+
+    <ul class="dropdown-menu dropdown-navbar" id="user_menu">
+        <li class="nav-header">
+            <i class="fa fa-clock-o"></i>
+            Logged in at @Model.LastLoggedIn.ToShortTimeString()
+        </li>
+
+        <li>
+            <a href="@Url.Action("UserProfile", "Account")">
+                <i class="fa fa-user"></i>
+                Edit profile
+            </a>
+        </li>
+
+        <li class="divider"></li>
+
+        <li>
+            <a data-ajax="true" data-ajax-method="POST" href="@Url.Action("LogOff", "Authentication")">
+                <i class="fa fa-off"></i>
+                Logout
+            </a>
+        </li>
+    </ul>
+</li>

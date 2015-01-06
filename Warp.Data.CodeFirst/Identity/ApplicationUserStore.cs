@@ -64,13 +64,11 @@ namespace Warp.Data.Identity
         {
             ThrowIfDisposed();
 
-            var user = ToUser(appUser);
+            var user = await GetUserInternal(appUser.Id);
 
-            _dbContext.Users.Attach(user);
-
-            _dbContext.Entry(user).State = EntityState.Modified;
-
-            _dbContext.Configuration.ValidateOnSaveEnabled = false;
+            user.Email = appUser.Email;
+            user.Forename = appUser.FirstName;
+            user.Surname = appUser.LastName;
 
             await _dbContext.SaveChangesAsync();
         }
@@ -78,10 +76,8 @@ namespace Warp.Data.Identity
         public async Task DeleteAsync(ApplicationUser appUser)
         {
             ThrowIfDisposed();
-
-            var user = ToUser(appUser);
-
-            _dbContext.Users.Attach(user);
+            
+            var user = await GetUserInternal(appUser.Id);
 
             _dbContext.Users.Remove(user);
 
@@ -92,10 +88,9 @@ namespace Warp.Data.Identity
         {
             ThrowIfDisposed();
 
-            return await Task.Run(() => _dbContext.Users
-                .Where(u => u.Id == userId)
-                .Select(ToApplicationUser)
-                .SingleOrDefault());
+            var user = await GetUserInternal(userId);
+
+            return ToApplicationUser(user);
         }
 
         public async Task<ApplicationUser> FindByNameAsync(string userName)
@@ -106,10 +101,9 @@ namespace Warp.Data.Identity
 
             if (Int32.TryParse(userName, out userId))
             {
-                return await Task.Run(() => _dbContext.Users
-                    .Where(u => u.LegacyUserId == userId)
-                    .Select(ToApplicationUser)
-                    .SingleOrDefault());
+                var user = await GetUserInternal(userId);
+
+                return ToApplicationUser(user);
             }
 
             return await Task.Run(() => _dbContext.Users
@@ -171,6 +165,20 @@ namespace Warp.Data.Identity
                 PasswordHash = appUser.PasswordHash,
                 Customer = new Customer { Id = appUser.CustomerId }
             };
+        }
+
+        protected async Task<User> GetUserInternal(int userId)
+        {
+            var user = await _dbContext.Users
+                .SingleOrDefaultAsync(u => u.Id == userId);
+
+            if (user == null)
+            {
+                throw new InvalidOperationException(
+                    "User not found for Id " + userId + ".");
+            }
+
+            return user;
         }
 
         private void Dispose(bool disposing)

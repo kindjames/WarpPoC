@@ -4,7 +4,6 @@
     <!-- BEGIN Navlist -->
     <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 929px;">
         <ul class="nav nav-list" style="overflow: hidden; width: auto; height: 929px;">
-            <!-- BEGIN Search Form -->
             <li>
                 <form target="#" method="GET" class="search-form">
                     <span class="search-pan">
@@ -15,18 +14,17 @@
                     </span>
                 </form>
             </li>
-            <!-- END Search Form -->
             <li class="active">
-                <a href="index.html">
+                <a href="@Url.Action("Index", "Home")">
                     <i class="fa fa-dashboard"></i>
                     <span>Dashboard</span>
                 </a>
             </li>
 
             <li>
-                <a href="typography.html">
+                <a href="@Url.Action("Index", "Clients")">
                     <i class="fa fa-text-width"></i>
-                    <span>Typography</span>
+                    <span>Clients</span>
                 </a>
             </li>
 
