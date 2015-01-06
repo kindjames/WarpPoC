@@ -121,6 +121,7 @@
     <Compile Include="Queries\TextResources\GetTextResourceStringQueryHandlerTests.cs" />
     <Compile Include="Queries\Users\UserDefaultLanguageQueryTests.cs" />
     <Compile Include="Queries\Brands\GetBrandsForClientQueryHandlerTests.cs" />
+    <Compile Include="Commands\TextResources\TextResourceCommandsIntegrationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\EnumerableExtensions.cs" />
     <Compile Include="Util\ITestDataFactory.cs" />
@@ -133,6 +134,7 @@
     <Folder Include="Queries\General\" />
     <Folder Include="Commands\Clients\" />
     <Folder Include="Data\" />
+    <Folder Include="Queries\TextResources\" />
     <Folder Include="Util\" />
   </ItemGroup>
   <ItemGroup>
