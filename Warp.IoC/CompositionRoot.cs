@@ -1,17 +1,13 @@
-﻿using System;
-using System.Linq;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
 using Microsoft.AspNet.Identity;
-using Microsoft.Win32;
 using SimpleInjector;
 using SimpleInjector.Advanced;
 using SimpleInjector.Extensions;
 using SimpleInjector.Integration.Web.Mvc;
 using Warp.Core.Command;
-using Warp.Core.Data;
 using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Infrastructure.Configuration;
 using Warp.Core.Infrastructure.IoC;
@@ -23,8 +19,8 @@ using Warp.Data.Context;
 using Warp.Data.Queries.General;
 using Warp.IoC.Factories;
 using Warp.Services;
-using PasswordHasher = Warp.Core.Infrastructure.Authentication.PasswordHasher;
 using IObjectMapper = Warp.Core.Infrastructure.AutoMapper.IObjectMapper;
+using PasswordHasher = Warp.Core.Infrastructure.Authentication.PasswordHasher;
 
 namespace Warp.IoC
 {

@@ -1,5 +1,19 @@
 ﻿@model ClientModel
-<div>Name: @Html.DisplayFor(m => Model.Name)</div>
-<div>Code: @Html.DisplayFor(m => Model.Code)</div>
-<div>Status: @Html.DisplayFor(m => m.Status)</div>
-<div>Account Manager: @Html.DisplayFor(m => Model.AccountManager)</div>
+@{
+    ViewBag.PageTitle = "Edit client";
+    ViewBag.PageDescription = "Edit client information...";
+}
+<div class="row">
+    <div class="col-md-9">
+        @using (var form = Html.Bootstrap().Begin(new Form()))
+        {
+            @(form.FormGroup().TextBoxFor(m => m.Name))
+            @(form.FormGroup().TextBoxFor(m => m.Code))
+            @(form.FormGroup().DropDownListFromEnumFor(m => m.Status))
+            @(form.FormGroup().EditorFor(m => m.AccountManager))
+
+            <hr />
+            @Html.Bootstrap().SubmitButton().Text("Save").Class("pull-right")
+        }
+    </div>
+</div>

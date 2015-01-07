@@ -36,5 +36,11 @@ namespace Warp.IoC
 
             return null;
         }
+
+        public TService Create<TService>()
+            where TService : class
+        {
+            return _container.GetInstance<TService>();
+        }
     }
 }

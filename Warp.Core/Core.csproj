@@ -92,6 +92,7 @@
     <Compile Include="Services\Dtos\TextResources\ResourceCodeDto.cs" />
     <Compile Include="Services\Dtos\TextResources\TextResourceDto.cs" />
     <Compile Include="Services\Dtos\TextResources\ResourceStringDto.cs" />
+    <Compile Include="Services\IResponse.cs" />
     <Compile Include="Services\TextResourceService\ILanguageService.cs" />
     <Compile Include="Services\TextResourceService\ITextResourceService.cs" />
     <Compile Include="Services\UserService\IUserService.cs" />

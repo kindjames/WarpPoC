@@ -1,10 +1,14 @@
-﻿using System.Security.Claims;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Security.Claims;
 using System.Web.Mvc;
 using Warp.Core.Authentication;
+using Warp.Core.Enum;
 using Warp.Core.Infrastructure.AutoMapper;
+using Warp.Core.Infrastructure.Validation;
 using Warp.Core.Services;
 using Warp.Core.Services.Dtos.Client;
 using Warp.WebUI.Models.Clients;
+using Warp.WebUI.Models.Users;
 
 namespace Warp.WebUI.Controllers
 {
@@ -28,14 +32,15 @@ namespace Warp.WebUI.Controllers
         }
 
         [HttpGet]
+        [ChildActionOnly]
         [Route("list")]
         public ActionResult List(ClientListInputModel model)
         {
             var customerId = User.Identity.GetOrThrowClaimValueFor<int>(ApplicationClaimTypes.CustomerId);
 
-            var clients = _clientService.GetClients(model.ClientSearchQuery, customerId);
+            var response = _clientService.GetClients(model.ClientSearchQuery, customerId);
 
-            var viewModel = _objectMapper.MapMany<ClientDto, ClientModel>(clients);
+            var viewModel = _objectMapper.MapMany<ClientDto, ClientModel>(response.Result);
 
             return PartialView(viewModel);
         }
@@ -58,7 +63,7 @@ namespace Warp.WebUI.Controllers
                 dto.CustomerId = User.Identity.GetOrThrowClaimValueFor<int>(ApplicationClaimTypes.CustomerId);
                 dto.AccountManagerId = User.Identity.GetOrThrowClaimValueFor<int>(ClaimTypes.NameIdentifier);
 
-                _clientService.SaveClient(dto);
+                var response = _clientService.SaveClient(dto);
 
                 return RedirectToAction("Index");
             }
@@ -70,9 +75,20 @@ namespace Warp.WebUI.Controllers
         [Route("{clientId:int}")]
         public ActionResult View(int clientId)
         {
-            var client = _clientService.GetClient(clientId);
+            var response = _clientService.GetClient(clientId);
 
-            var model = _objectMapper.Map<ClientDto, ClientModel>(client);
+            var model = _objectMapper.Map<ClientDto, ClientModel>(response.Result);
+
+            return View(model);
+        }
+
+        [HttpGet]
+        [Route("{clientId:int}")]
+        public ActionResult Update(ClientModel model)
+        {
+            var client = _objectMapper.Map<ClientModel, SaveClientDto>(model);
+
+            _clientService.SaveClient(client);
 
             return View(model);
         }

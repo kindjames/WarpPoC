@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
+using Warp.Core.Infrastructure.IoC;
 
 namespace Warp.Core.Infrastructure.AutoMapper
 {
@@ -10,10 +11,12 @@ namespace Warp.Core.Infrastructure.AutoMapper
     public sealed class ObjectMapper : IObjectMapper
     {
         private readonly IMappingEngine _mappingEngine;
+        private readonly IServiceLocator _serviceLocator;
 
-        public ObjectMapper(IMappingEngine mappingEngine)
+        public ObjectMapper(IMappingEngine mappingEngine, IServiceLocator serviceLocator)
         {
             _mappingEngine = mappingEngine;
+            _serviceLocator = serviceLocator;
         }
 
         public TTo Map<TFrom, TTo>(TFrom from, bool createAnyMissingTypeMaps = true)

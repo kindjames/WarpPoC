@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using Warp.Core.Command;
 using Warp.Core.Enum;
 using Warp.Core.Exceptions;
@@ -7,9 +8,8 @@ using Warp.Core.Infrastructure.Validation;
 using Warp.Core.Query;
 using Warp.Data.Context;
 using Warp.Data.Entities;
-using Warp.Data.Exceptions;
 using Warp.Data.Queries.Clients;
-using Warp.Data.Queries.General;
+using Warp.Data.Validation;
 
 namespace Warp.Data.Commands.Clients
 {
@@ -21,6 +21,7 @@ namespace Warp.Data.Commands.Clients
         public string Name { get; set; }
 
         [IdRequired]
+        [CheckEntityExists(typeof(Customer))]
         public int CustomerId { get; set; }
 
         [Required]
@@ -30,6 +31,7 @@ namespace Warp.Data.Commands.Clients
         public ClientStatus Status { get; set; }
 
         [IdRequired]
+        [CheckEntityExists(typeof(User))]
         public int AccountManagerId { get; set; }
 
         public int LegacyClientId { get; set; }
@@ -56,18 +58,6 @@ namespace Warp.Data.Commands.Clients
             if (_queryDispatcher.Execute(clientExistsQuery))
             {
                 throw new ClientAlreadyExistsException(clientExistsQuery.CustomerId, clientExistsQuery.ClientCode);
-            }
-
-            // Validate Account Manager (user) exists.
-            if (!_queryDispatcher.Execute(new CheckEntityExistsQuery<User> { EntityId = command.AccountManagerId }))
-            {
-                throw new DataEntityNotFoundException<User>(command.AccountManagerId, "Looking for Account Manager.");
-            }
-
-            // Validate customer exists.
-            if (!_queryDispatcher.Execute(new CheckEntityExistsQuery<Customer> { EntityId = command.CustomerId }))
-            {
-                throw new DataEntityNotFoundException<Customer>(command.CustomerId);
             }
 
             // All systems go!

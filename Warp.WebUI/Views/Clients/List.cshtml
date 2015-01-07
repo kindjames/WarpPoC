@@ -13,7 +13,7 @@
         <tr>
             <td>@client.Code</td>
             <td>@Html.ActionLink(client.Name, "View", new { clientId = client.Id })</td>
-            <td>@client.AccountManager</td>
+            <td>@client.AccountManager.Forename @client.AccountManager.Surname</td>
         </tr>
     }
     </tbody>

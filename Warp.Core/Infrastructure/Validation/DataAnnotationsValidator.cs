@@ -6,7 +6,7 @@ namespace Warp.Core.Infrastructure.Validation
     {
         public void Validate(object obj)
         {
-            Validator.ValidateObject(obj, new ValidationContext(obj), true);
+            Validator.TryValidateObject(obj, new ValidationContext(obj), null, true);
         }
     }
 }

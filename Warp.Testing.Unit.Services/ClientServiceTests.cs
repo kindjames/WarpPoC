@@ -4,6 +4,7 @@ using Machine.Fakes;
 using Machine.Specifications;
 using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Query;
+using Warp.Core.Services;
 using Warp.Core.Services.Dtos.Client;
 using Warp.Data.Entities;
 using Warp.Data.Exceptions;
@@ -118,13 +119,13 @@ namespace Warp.Testing.Unit.Services
                     .Return(new Client { Id = _clientId });
             };
 
-            Because of = () => _result = Subject.GetClient(_clientId);
+            Because of = () => _response = Subject.GetClient(_clientId);
 
             ThenIt should_return_the_dto = () =>
-                _result.Id.ShouldEqual(_clientId);
+                _response.Result.Id.ShouldEqual(_clientId);
 
             static int _clientId;
-            static ClientDto _result;
+            static IResponse<ClientDto> _response;
         }
     }
 }

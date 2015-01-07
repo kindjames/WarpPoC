@@ -68,10 +68,6 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Warp.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Warp.WebUI\Bin\Warp.Core.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BrandServiceTests.cs" />
@@ -98,7 +94,7 @@
       <Name>Data %28CodeFirst%29</Name>
     </ProjectReference>
     <ProjectReference Include="..\Warp.Services\Services.csproj">
-      <Project>{5760EB35-8DD5-4C9F-8BF4-097CF0CFA530}</Project>
+      <Project>{5760eb35-8dd5-4c9f-8bf4-097cf0cfa530}</Project>
       <Name>Services</Name>
     </ProjectReference>
   </ItemGroup>
