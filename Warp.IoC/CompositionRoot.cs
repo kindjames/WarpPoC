@@ -17,6 +17,7 @@ using Warp.Core.Query;
 using Warp.Core.Util;
 using Warp.Data.Context;
 using Warp.Data.Queries.General;
+using Warp.Data.Validation;
 using Warp.IoC.Factories;
 using Warp.Services;
 using IObjectMapper = Warp.Core.Infrastructure.AutoMapper.IObjectMapper;

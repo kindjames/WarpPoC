@@ -110,6 +110,7 @@
     <Compile Include="Queries\TextResources\ResolveBrowserLanguageQuery.cs" />
     <Compile Include="Queries\TextResources\ResolveUserLanguageQuery.cs" />
     <Compile Include="Queries\Users\GetDefaultLanguageForUserQuery.cs" />
+    <Compile Include="Validation\DataAnnotationsValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
