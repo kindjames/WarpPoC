@@ -18,8 +18,7 @@ namespace Warp.Testing.Unit.Data.Commands.TextResources
 {
     public static class SaveNewResourceIdentifierCommandHandlerUnitTests
     {
-        public class When_saving_an_existing_TextResourceCode :
-                    WithSubject<SaveNewResourceIdentifierCommandHandler>
+        public class When_saving_an_existing_TextResourceCode : WithSubject<SaveNewResourceIdentifierCommandHandler>
         {
             private static IDbSet<TextResourceIdentifier> _textResourceIdentifierRepository;
         }

@@ -142,9 +142,17 @@ namespace Warp.Testing.Unit.Services.TextResources
 
         #region GetTextResourceCode Tests
 
-        public class GetTextResourceCode_With_Invalid_Id : WithSubject<TextResourceService>
+        public class GetTextResourceCode_That_Exists : WithSubject<TextResourceService>
         {
+            Establish _that = () =>
+            {
+            };
 
+            Because _of = () => { };
+
+            ThenIt _should = () =>
+            {
+            };
         }
 
         public class GetTextResourceCode_That_Does_Not_Exist : WithSubject<TextResourceService>
@@ -152,7 +160,7 @@ namespace Warp.Testing.Unit.Services.TextResources
 
         }
 
-        public class GetTextResourceCode_That_Exists : WithSubject<TextResourceService>
+        public class GetTextResourceCode_With_Invalid_Id : WithSubject<TextResourceService>
         {
 
         }
