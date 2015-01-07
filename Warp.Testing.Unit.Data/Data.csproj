@@ -112,6 +112,7 @@
     <Compile Include="Commands\Clients\SaveNewClientCommandHandlerTests.cs" />
     <Compile Include="Commands\TextResources\SaveNewTextResourceCodeCommandHandlerUnitTests.cs" />
     <Compile Include="Commands\TextResources\SaveNewTextResourceCommandHandlerUnitTests.cs" />
+    <Compile Include="Commands\TextResources\SaveNewTextResourceUnitTests.cs" />
     <Compile Include="DataExceptionTests.cs" />
     <Compile Include="Data\BrandsTestDataFactory.cs" />
     <Compile Include="Data\LanguageTestDataFactory.cs" />
