@@ -12,12 +12,12 @@ using Warp.Data.Context;
 
 namespace Warp.Data.Commands.TextResources
 {
-    public sealed class SaveNewResourceStringCommand : ICommand
+    public sealed class SaveResourceStringCommand : ICommand
     {
         public int Id { get; internal set; }
     }
 
-    public sealed class SaveNewResourceCommandHandler : ICommandHandler<SaveNewResourceStringCommand>
+    public sealed class SaveNewResourceCommandHandler : ICommandHandler<SaveResourceStringCommand>
     {
         private readonly IDomainDbContext _dbContext;
         private readonly IQueryDispatcher _queryDispatcher;
@@ -30,7 +30,7 @@ namespace Warp.Data.Commands.TextResources
             _objectMapper = objectMapper;
         }
 
-        public void Execute(SaveNewResourceStringCommand command)
+        public void Execute(SaveResourceStringCommand command)
         {
             throw new NotImplementedException();
         }

@@ -15,7 +15,7 @@ namespace Warp.Data.Commands.TextResources
     /// <summary>
     /// Wrapper for SaveTextResourceCommand aggregate
     /// </summary>
-    public sealed class SaveNewTextResourceCommand : ICommand
+    public sealed class SaveTextResourceCommand : ICommand
     {
         public new int Id { get; internal set; }
 
@@ -38,7 +38,7 @@ namespace Warp.Data.Commands.TextResources
 
     }
 
-    public sealed class SaveNewTextResourceCommandHandler : ICommandHandler<SaveNewTextResourceCommand>
+    public sealed class SaveNewTextResourceCommandHandler : ICommandHandler<SaveTextResourceCommand>
     {
         private readonly IDomainDbContext _dbContext;
         private readonly IQueryDispatcher _queryDispatcher;
@@ -51,7 +51,7 @@ namespace Warp.Data.Commands.TextResources
             _objectMapper = objectMapper;
         }
 
-        public void Execute(SaveNewTextResourceCommand command)
+        public void Execute(SaveTextResourceCommand command)
         {
             // Validate ResourceIdentifierCode
                 // No. Get Associated TextResource data(Query on , populate and return DuplicateTextResourceDto to User(ResourceIdentifier and associated TextResource dto)

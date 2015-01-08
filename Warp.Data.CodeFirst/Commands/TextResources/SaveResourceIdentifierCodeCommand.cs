@@ -11,28 +11,29 @@ using Warp.Data.Context;
 
 namespace Warp.Data.Commands.TextResources
 {
-    public sealed class SaveNewResourceIdentifierCodeCommand : ICommand
+    public sealed class SaveResourceIdentifierCodeCommand : ICommand
     {
-        public int Id { get; internal set; }
-
         [Required]
         public string ResourceIdentifierCode { get; set; }
+
+        [Required]
+        public bool ClientOverridable { get; set; }
     }
 
-    public sealed class SaveNewResourceIdentifierCommandHandler : ICommandHandler<SaveNewResourceIdentifierCodeCommand>
+    public sealed class SaveResourceIdentifierCommandHandler : ICommandHandler<SaveResourceIdentifierCodeCommand>
     {
         private readonly IDomainDbContext _dbContext;
         private readonly IQueryDispatcher _queryDispatcher;
         private readonly IObjectMapper _objectMapper;
-
-        public SaveNewResourceIdentifierCodeCommandHandler(IDomainDbContext dbContext, IQueryDispatcher queryDispatcher, IObjectMapper objectMapper)
+        
+        public SaveResourceIdentifierCommandHandler(IDomainDbContext dbContext, IQueryDispatcher queryDispatcher, IObjectMapper objectMapper)
         {
             _dbContext = dbContext;
             _queryDispatcher = queryDispatcher;
             _objectMapper = objectMapper;
         }
 
-        public void Execute(SaveNewResourceIdentifierCodeCommand command)
+        public void Execute(SaveResourceIdentifierCodeCommand command)
         {
             throw new NotImplementedException();
         }
