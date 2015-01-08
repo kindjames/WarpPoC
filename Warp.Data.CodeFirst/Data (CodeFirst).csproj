@@ -75,8 +75,8 @@
     <Compile Include="Commands\TextResources\SaveTextResourceCommand.cs" />
     <Compile Include="Commands\TextResources\SaveResourceIdentifierCodeCommand.cs" />
     <Compile Include="Commands\TextResources\UpdateTextResourceCommand.cs" />
-    <Compile Include="Commands\TextResources\UpdateTextResourceIdentifierCommand.cs" />
-    <Compile Include="Commands\TextResources\UpdateTextResourceStringCommand.cs" />
+    <Compile Include="Commands\TextResources\UpdateResourceIdentifierCommand.cs" />
+    <Compile Include="Commands\TextResources\UpdateResourceStringCommand.cs" />
     <Compile Include="Context\AuthenticationDbContext.cs" />
     <Compile Include="Context\DomainDbContext.cs" />
     <Compile Include="Context\IApplicationDbContext.cs" />
