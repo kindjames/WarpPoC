@@ -4,7 +4,7 @@ using System.Linq;
 using Warp.Core.Cqrs;
 using Warp.Data.Context;
 
-namespace Warp.Data.Queries.TextResources
+namespace Warp.Data.Queries.Languages
 {
     public sealed class ResolveBrowserLanguageQuery : IQuery<Guid>
     {

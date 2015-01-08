@@ -5,7 +5,7 @@ using Warp.Core.Cqrs;
 using Warp.Core.Infrastructure.Validation;
 using Warp.Data.Context;
 
-namespace Warp.Data.Queries.TextResources
+namespace Warp.Data.Queries.Languages
 {
     public sealed class ResolveUserLanguageQuery : IQuery<Guid>
     {
