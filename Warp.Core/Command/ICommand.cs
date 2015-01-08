@@ -1,4 +1,5 @@
-﻿namespace Warp.Core.Command
+﻿
+namespace Warp.Core.Command
 {
     public interface ICommand
     {

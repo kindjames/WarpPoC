@@ -1,4 +1,5 @@
-﻿using Warp.Core.Exceptions;
+﻿using System;
+using Warp.Core.Exceptions;
 using Warp.Core.Infrastructure.IoC;
 using Warp.Core.Infrastructure.Validation;
 using Warp.Core.Util;
@@ -33,6 +34,25 @@ namespace Warp.Core.Command
             }
 
             ((dynamic)handler).Execute((dynamic)command);
+        }
+
+        public void Execute<TCommand>(Func<TCommand, TCommand> command)
+            where TCommand : class, ICommand, new()
+        {
+            CheckArgument.NotNull(command, "command");
+
+            var c = command(new TCommand());
+
+            _validator.Validate(command);
+
+            var handler = _serviceLocator.TryResolve<ICommandHandler<TCommand>>();
+
+            if (handler == null)
+            {
+                throw new CommandHandlerNotFoundException(c);
+            }
+
+            handler.Execute(c);
         }
     }
 }

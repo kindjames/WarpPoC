@@ -1,17 +1,13 @@
 ﻿using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Command;
-using Warp.Core.Infrastructure.Validation;
 using Warp.Core.Util;
 using Warp.Data.Context;
 using Warp.Data.Entities;
 
 namespace Warp.Data.Commands.Clients
 {
-    public sealed class UpdateClientCommand : ICommand
+    public class UpdateClientCommand : UpdateCommand
     {
-        [IdRequired]
-        public int Id { get; set; }
-
         public string ClientName { get; set; }
         public int CustomerId { get; set; }
         public string ClientCode { get; set; }
@@ -20,7 +16,7 @@ namespace Warp.Data.Commands.Clients
         public int AccountMangerAdminId { get; set; }
     }
 
-    public sealed class UpdateClientCommandHandler : ICommandHandler<UpdateClientCommand>
+    public class UpdateClientCommandHandler : ICommandHandler<UpdateClientCommand>
     {
         private readonly IDomainDbContext _dbContext;
         private readonly IObjectMapper _objectMapper;

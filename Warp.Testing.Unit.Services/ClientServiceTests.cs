@@ -40,10 +40,10 @@ namespace Warp.Testing.Unit.Services
         //    Establish context = () =>
         //    {
         //        _dto = new SaveClientDto();
-        //        _command = new SaveNewClientCommand();
+        //        _command = new CreateClientCommand();
 
         //        The<IObjectMapper>()
-        //            .WhenToldTo(m => m.Map<SaveClientDto, SaveNewClientCommand>(_dto))
+        //            .WhenToldTo(m => m.Map<SaveClientDto, CreateClientCommand>(_dto))
         //            .Return(_command);
 
         //        The<ICommandDispatcher>()
@@ -55,7 +55,7 @@ namespace Warp.Testing.Unit.Services
 
         //    ThenIt should_build_a_SaveNewClientCommand = () =>
         //        The<IObjectMapper>()
-        //            .WasToldTo(m => m.Map<SaveClientDto, SaveNewClientCommand>(_dto));
+        //            .WasToldTo(m => m.Map<SaveClientDto, CreateClientCommand>(_dto));
 
         //    ThenIt should_execute_the_command_with_the_dispatcher = () =>
         //        The<ICommandDispatcher>()
@@ -65,7 +65,7 @@ namespace Warp.Testing.Unit.Services
         //        _dto.Id.ShouldEqual(_command.Id);
 
         //    static SaveClientDto _dto;
-        //    static SaveNewClientCommand _command;
+        //    static CreateClientCommand _command;
         //}
 
         public class When_calling__GetClient__for_an_invalid_id : WithSubject<ClientService>

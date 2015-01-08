@@ -7,11 +7,11 @@ namespace Warp.IoC
     /// <summary>
     /// A service locator that interfaces with SimpleInjector.
     /// </summary>
-    public class ServiceLocator : IServiceLocator
+    public class SimpleInjectorServiceLocator : IServiceLocator
     {
         private readonly Container _container;
 
-        public ServiceLocator(Container container)
+        public SimpleInjectorServiceLocator(Container container)
         {
             _container = container;
         }
@@ -35,12 +35,6 @@ namespace Warp.IoC
             }
 
             return null;
-        }
-
-        public TService Create<TService>()
-            where TService : class
-        {
-            return _container.GetInstance<TService>();
         }
     }
 }

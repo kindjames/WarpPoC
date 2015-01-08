@@ -12,7 +12,7 @@ namespace Warp.Services
 
         public ServiceResponse(bool successful = true)
         {
-            Successful = true;
+            Successful = successful;
         }
 
         public ServiceResponse(IEnumerable<string> errorMessages)

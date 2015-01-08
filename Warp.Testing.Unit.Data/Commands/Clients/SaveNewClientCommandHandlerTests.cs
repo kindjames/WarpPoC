@@ -20,14 +20,14 @@
 //    public class SaveNewClientCommandHandlerTests
 //    {
 //        public class When_saving_new_client_for_client_that_already_exists_with_same_customer_id_and_code :
-//            WithSubject<SaveNewClientCommandHandler>
+//            WithSubject<CreateClientCommandHandler>
 //        {
 //            private static Exception _exception;
-//            private static SaveNewClientCommand _command;
+//            private static CreateClientCommand _command;
 
 //            private Establish that = () =>
 //            {
-//                _command = new SaveNewClientCommand {Code = "TESTYEAH", CustomerId = 69};
+//                _command = new CreateClientCommand {Code = "TESTYEAH", CustomerId = 69};
 
 //                The<IQueryDispatcher>()
 //                    .WhenToldTo(d => d.Execute(MoqIt.IsAny<CheckClientExistsForCodeQuery>()))
@@ -43,7 +43,7 @@
 //            };
 //        }
 
-//        public class When_saving_new_client : WithSubject<SaveNewClientCommandHandler>
+//        public class When_saving_new_client : WithSubject<CreateClientCommandHandler>
 //        {
 //            private static IDbSet<Client> _clientRepository;
 
@@ -70,7 +70,7 @@
 //                    .Clients = _clientRepository;
 //            };
 
-//            private Because of = () => Subject.Execute(new SaveNewClientCommand());
+//            private Because of = () => Subject.Execute(new CreateClientCommand());
 
 //            private It should_add_new_client_to_the_client_repository = () =>
 //                _clientRepository.WasToldTo(r =>

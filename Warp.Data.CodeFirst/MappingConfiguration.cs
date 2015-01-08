@@ -7,7 +7,7 @@ namespace Warp.Data
     {
         public void Configure(IConfiguration configuration)
         {
-            //configuration.CreateMap<SaveNewClientCommand, Client>();
+            //configuration.CreateMap<CreateClientCommand, Client>();
         }
     }
 }

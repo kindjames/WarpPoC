@@ -1,4 +1,5 @@
-﻿using Warp.Core.Exceptions;
+﻿using System;
+using Warp.Core.Exceptions;
 using Warp.Core.Infrastructure.IoC;
 using Warp.Core.Infrastructure.Validation;
 
@@ -18,6 +19,23 @@ namespace Warp.Core.Query
             _validator = validator;
         }
 
+        public TResult Execute<TResult, TQuery>(Func<TQuery, TQuery> query)
+            where TQuery : class, IQuery<TResult>, new()
+        {
+            var q = query(new TQuery());
+
+            _validator.Validate(query);
+
+            var handler = _serviceLocator.TryResolve<IQueryHandler<TQuery, TResult>>();
+
+            if (handler == null)
+            {
+                throw new QueryHandlerNotFoundException<TResult>(q);
+            }
+
+            return handler.Execute(q);
+        }
+
         public TResult Execute<TResult>(IQuery<TResult> query)
         {
             _validator.Validate(query);
@@ -27,13 +45,13 @@ namespace Warp.Core.Query
                 .MakeGenericType(query.GetType(), typeof(TResult));
 
             var handler = _serviceLocator.TryResolve(handlerType);
-            
+
             if (handler == null)
             {
                 throw new QueryHandlerNotFoundException<TResult>(query);
             }
 
-            return ((dynamic)handler).Execute((dynamic) query);
+            return ((dynamic)handler).Execute((dynamic)query);
         }
     }
 }

@@ -50,7 +50,7 @@ namespace Warp.Services
             
             if (saveClientDto.Id == 0)
             {
-                var command = _objectMapper.Map<SaveClientDto, SaveNewClientCommand>(saveClientDto);
+                var command = _objectMapper.Map<SaveClientDto, CreateClientCommand>(saveClientDto);
 
                 _commandDispatcher.Execute(command);
 

@@ -8,8 +8,5 @@ namespace Warp.Core.Infrastructure.IoC
 
         TService TryResolve<TService>()
             where TService : class;
-
-        TService Create<TService>()
-            where TService : class;
     }
 }

@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace Warp.Core.Command
 {
     /// <summary>
@@ -7,5 +9,7 @@ namespace Warp.Core.Command
     public interface ICommandDispatcher
     {
         void Execute(ICommand command);
+        void Execute<TCommand>(Func<TCommand, TCommand> command)
+            where TCommand : class, ICommand, new();
     }
 }
