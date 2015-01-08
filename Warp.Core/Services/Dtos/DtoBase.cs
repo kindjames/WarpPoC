@@ -8,6 +8,6 @@ namespace Warp.Core.Services.Dtos
 {
     public class DtoBase
     {
-        public Int32 Id { get; set; }
+        public int Id { get; set; }
     }
 }
