@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Warp.Core.Services.Dtos.TextResources
 {
-    public class TextResourceValidationDto
+    public class ValidateTextResourceDto
     {
         public bool IsResourceCodeValidated { get; set; }
         public bool IsResourceStringValidated { get; set; }
