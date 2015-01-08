@@ -5,6 +5,7 @@ using Warp.Core.Infrastructure.Util;
 using Warp.Core.Services.Dtos.TextResources;
 using Warp.Core.Services.TextResourceService;
 using Warp.Core.Services.UserService;
+using Warp.Data.Commands.TextResources;
 using Warp.Data.Queries.TextResources;
 
 namespace Warp.Services
@@ -59,7 +60,7 @@ namespace Warp.Services
             };
         }
 
-        public ResourceCodeDto GetTextResourceCode(Guid textResourceCodeId)
+        public ResourceCodeDto GetResourceIdentifierCode(int textResourceCodeId)
         {
             CheckArgument.NotEmptyGuid(textResourceCodeId, "textResourceCodeId");
 
@@ -73,8 +74,23 @@ namespace Warp.Services
             };
         }
 
-        public void SaveResource(SaveTextResourceDto saveTextResourceDto)
+        public void SaveResource(SaveTextResourceDto dto)
         {
+            CheckArgument.NotNull(dto, "SaveTextResourceDto");
+
+            // New TextResource
+            if(dto.Id == 0)
+            {
+                var command = _objectMapper.Map<SaveTextResourceDto, SaveNewTextResourceCommand>(dto);
+                //_commandDispatcher.Execute(command);
+                dto.Id = command.Id;
+            }
+            // Update existing
+
+
+            //var validateNewTextResourceQuery = new 
+            // Create and populate NewTextResourceDto object
+
             //    CheckArgument.NotNull(saveTextResourceDto, "saveTextResourceDto");
 
 
