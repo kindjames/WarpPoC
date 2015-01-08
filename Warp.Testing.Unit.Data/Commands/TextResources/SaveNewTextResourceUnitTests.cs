@@ -22,8 +22,6 @@ namespace Warp.Testing.Unit.Data.Commands.TextResources
         {
             Establish _that = () => _dto = new SaveTextResourceDto();
 
-
-
             private static IDbSet<TextResourceIdentifier> _tRIRepository;
             private string _resourceCode = "Welcome";
             private bool _clientOverridable = false;
