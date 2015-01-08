@@ -71,9 +71,9 @@
     <Compile Include="Commands\Clients\CreateClientCommand.cs" />
     <Compile Include="Commands\UpdateCommandBase.cs" />
     <Compile Include="Commands\Clients\SaveNewClientCommand.cs" />
-    <Compile Include="Commands\TextResources\SaveNewResourceStringCommand.cs" />
-    <Compile Include="Commands\TextResources\SaveNewTextResourceCommand.cs" />
-    <Compile Include="Commands\TextResources\SaveNewResourceIdentifierCodeCommand.cs" />
+    <Compile Include="Commands\TextResources\SaveResourceStringCommand.cs" />
+    <Compile Include="Commands\TextResources\SaveTextResourceCommand.cs" />
+    <Compile Include="Commands\TextResources\SaveResourceIdentifierCodeCommand.cs" />
     <Compile Include="Commands\TextResources\UpdateTextResourceCommand.cs" />
     <Compile Include="Commands\TextResources\UpdateTextResourceIdentifierCommand.cs" />
     <Compile Include="Context\AuthenticationDbContext.cs" />
@@ -125,7 +125,7 @@
     <Compile Include="Queries\TextResources\GetTextResourceStringQuery.cs" />
     <Compile Include="Queries\Languages\ResolveBrowserLanguageQuery.cs" />
     <Compile Include="Queries\Languages\ResolveUserLanguageQuery.cs" />
-    <Compile Include="Queries\TextResources\ValidateNewTextResourceDataQuery.cs" />
+    <Compile Include="Queries\TextResources\ValidateTextResourceDataQuery.cs" />
     <Compile Include="Queries\Users\GetDefaultLanguageForUserQuery.cs" />
     <Compile Include="Validation\DataAnnotationsValidator.cs" />
   </ItemGroup>
