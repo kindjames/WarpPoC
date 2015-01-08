@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Warp.Data.Queries.TextResources
 {
-    public sealed class ValidateNewTextResourceDataQuery
+    public sealed class ValidateTextResourceDataQuery
     {
     }
 }
