@@ -1,4 +1,4 @@
-﻿namespace Warp.Core.Services.Dtos.TextResources
+﻿namespace Warp.Core.Services.Dtos.Languages
 {
     public class LanguageDto
     {
