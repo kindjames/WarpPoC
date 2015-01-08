@@ -16,6 +16,8 @@ namespace Warp.Data.Commands.Clients
 {
     public class CreateClientCommand : CreateCommandBase
     {
+        public int Id { get; internal set; }
+
         [Required]
         public string Name { get; set; }
 
