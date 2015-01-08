@@ -17,7 +17,7 @@ namespace Warp.Data.Commands.TextResources
     /// </summary>
     public sealed class SaveNewTextResourceCommand : ICommand
     {
-        public int Id { get; internal set; }
+        public new int Id { get; internal set; }
 
         // Required TextResourceIdentifier data
         [Required]
@@ -44,10 +44,17 @@ namespace Warp.Data.Commands.TextResources
         private readonly IQueryDispatcher _queryDispatcher;
         private readonly IObjectMapper _objectMapper;
 
+        public SaveNewTextResourceCommandHandler(IDomainDbContext dbContext, IQueryDispatcher queryDispatcher, IObjectMapper objectMapper)
+        {
+            _dbContext = dbContext;
+            _queryDispatcher = queryDispatcher;
+            _objectMapper = objectMapper;
+        }
+
         public void Execute(SaveNewTextResourceCommand command)
         {
             // Validate ResourceIdentifierCode
-                // No. Get Associated TextResource data, populate and return DuplicateTextResourceDto to User(ResourceIdentifier and associated TextResource dto)
+                // No. Get Associated TextResource data(Query on , populate and return DuplicateTextResourceDto to User(ResourceIdentifier and associated TextResource dto)
                 // Yes(No duplicate).
                     // Validate ResourceString
                         // No.(Duplicate). Return duplicate data to User(Aggregized ResourceIdentifierDto and associated TextResourceDto)
@@ -55,6 +62,9 @@ namespace Warp.Data.Commands.TextResources
                             // Invoke SaveNewResourceIdentifierCommand and return ResourceIdentifierId
                             // Invoke SaveNewResourceCommand and return TextResourceDetailsDto to User
 
+
+            // ValidateResourceDataQuery
+                // Validate ResourceIdentifier
             throw new NotImplementedException();
         }
     }
