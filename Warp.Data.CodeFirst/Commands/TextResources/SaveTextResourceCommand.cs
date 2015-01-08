@@ -8,6 +8,7 @@ using Warp.Core.Command;
 using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Infrastructure.Validation;
 using Warp.Core.Query;
+using Warp.Core.Util;
 using Warp.Data.Context;
 
 namespace Warp.Data.Commands.TextResources
@@ -53,6 +54,8 @@ namespace Warp.Data.Commands.TextResources
 
         public void Execute(SaveTextResourceCommand command)
         {
+            CheckArgument.NotNull(command, "command");
+
             // Validate ResourceIdentifierCode
                 // No. Get Associated TextResource data(Query on , populate and return DuplicateTextResourceDto to User(ResourceIdentifier and associated TextResource dto)
                 // Yes(No duplicate).

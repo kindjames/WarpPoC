@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Warp.Core.Command;
 using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Query;
+using Warp.Core.Util;
 using Warp.Data.Context;
 
 namespace Warp.Data.Commands.TextResources
@@ -35,7 +36,7 @@ namespace Warp.Data.Commands.TextResources
 
         public void Execute(SaveResourceIdentifierCodeCommand command)
         {
-            throw new NotImplementedException();
+            CheckArgument.NotNull(command, "command");
         }
     }
 }
