@@ -68,18 +68,22 @@ namespace Warp.Services
             };
         }
 
-        public void SaveResource(SaveTextResourceDto dto)
+        public void SaveResource(SaveTextResourceDto saveTextResourceDto)
         {
-            CheckArgument.NotNull(dto, "SaveTextResourceDto");
+            CheckArgument.NotNull(saveTextResourceDto, "SaveTextResourceDto");
 
-            // New TextResource
-            if(dto.Id == 0)
+            // New Resource
+            if (saveTextResourceDto.Id == 0)
             {
-                var command = _objectMapper.Map<SaveTextResourceDto, SaveNewTextResourceCommand>(dto);
+                var command = _objectMapper.Map<SaveTextResourceDto, SaveTextResourceCommand>(saveTextResourceDto);
                 //_commandDispatcher.Execute(command);
-                dto.Id = command.Id;
+                saveTextResourceDto.Id = command.Id;
             }
-            // Update existing
+            // Update existing Resource
+            else
+            {
+                var command = _objectMapper.Map<SaveTextResourceDto, UpdateTextResourceCommand>(saveTextResourceDto);
+            }
 
 
             //var validateNewTextResourceQuery = new 
