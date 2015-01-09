@@ -7,11 +7,20 @@ using Warp.Core.Command;
 
 namespace Warp.Data.Commands.TextResources
 {
-    //public sealed class UpdateTextResourceIdentifierCommand : ICommand
-    //{
-    //}
+    public sealed class UpdateTextResourceIdentifierCommand : ICommand
+    {
+        public int Id { get; set; }
 
-    //public sealed class UpdateTextResourceIdentifierCommandHandler : ICommandHandler<UpdateTextResourceIdentifierCommand>
-    //{
-    //}
+        
+    }
+
+    public sealed class UpdateTextResourceIdentifierCommandHandler : ICommandHandler<UpdateTextResourceIdentifierCommand>
+    {
+
+        
+        public void Execute(UpdateTextResourceIdentifierCommand command)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }
