@@ -1,4 +1,5 @@
 ﻿using System;
+using Warp.Core.Command;
 using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Query;
 using Warp.Core.Services.Dtos.TextResources;
@@ -14,13 +15,15 @@ namespace Warp.Services
     {
         private readonly ILanguageService _languageService;
         private readonly IUserService _userService;
+        readonly ICommandDispatcher _commandDispatcher;
         private readonly IQueryDispatcher _queryDispatcher;
         private readonly IObjectMapper _objectMapper;
 
-        public TextResourceService(ILanguageService languageService, IUserService userService, IQueryDispatcher queryDispatcher, IObjectMapper objectMapper)
+        public TextResourceService(ILanguageService languageService, IUserService userService, ICommandDispatcher commandDispatcher, IQueryDispatcher queryDispatcher, IObjectMapper objectMapper)
         {
             _languageService = languageService;
             _userService = userService;
+            _commandDispatcher = commandDispatcher;
             _queryDispatcher = queryDispatcher;
             _objectMapper = objectMapper;
         }
@@ -33,6 +36,7 @@ namespace Warp.Services
 
             return _queryDispatcher.Execute(new GetTextResourceQuery { TextResourceIdentifierId = textResourceCodeId });
         }
+
         #endregion In Process
 
         #region Next
@@ -76,13 +80,16 @@ namespace Warp.Services
             if (saveTextResourceDto.Id == 0)
             {
                 var command = _objectMapper.Map<SaveTextResourceDto, SaveTextResourceCommand>(saveTextResourceDto);
-                //_commandDispatcher.Execute(command);
+                
+                _commandDispatcher.Execute(command);
+
                 saveTextResourceDto.Id = command.Id;
             }
             // Update existing Resource
             else
             {
                 var command = _objectMapper.Map<SaveTextResourceDto, UpdateTextResourceCommand>(saveTextResourceDto);
+                _commandDispatcher.Execute(command);
             }
 
 
@@ -131,5 +138,11 @@ namespace Warp.Services
 
 
         #endregion Next
+
+
+        public ResourceCodeDto GetTextResourceCode(int textResourceCodeId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
