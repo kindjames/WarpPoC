@@ -1,4 +1,5 @@
 ﻿using System;
+using Warp.Core.Command;
 using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Cqrs;
 using Warp.Core.Infrastructure.Util;
@@ -82,13 +83,16 @@ namespace Warp.Services
             if (saveTextResourceDto.Id == 0)
             {
                 var command = _objectMapper.Map<SaveTextResourceDto, SaveTextResourceCommand>(saveTextResourceDto);
-                //_commandDispatcher.Execute(command);
+                
+                _commandDispatcher.Execute(command);
+
                 saveTextResourceDto.Id = command.Id;
             }
             // Update existing Resource
             else
             {
                 var command = _objectMapper.Map<SaveTextResourceDto, UpdateTextResourceCommand>(saveTextResourceDto);
+                _commandDispatcher.Execute(command);
             }
 
 
@@ -137,5 +141,11 @@ namespace Warp.Services
 
 
         #endregion Next
+
+
+        public ResourceCodeDto GetTextResourceCode(int textResourceCodeId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
