@@ -13,7 +13,7 @@ using Warp.Data.Context;
 namespace Warp.Data.Commands.TextResources
 {
     /// <summary>
-    /// Update command aggregate wrapper
+    /// Wrapper for UpdateTextResourceCommand aggregate
     /// </summary>
     public class UpdateTextResourceCommand : ICommand
     {
@@ -41,9 +41,7 @@ namespace Warp.Data.Commands.TextResources
         public void Execute(UpdateTextResourceCommand command)
         {
             CheckArgument.NotNull(command, "UpdateTextResourceCommand");
-
-            var resource
-
+            
         }
     }
 }
