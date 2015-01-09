@@ -72,7 +72,7 @@ namespace Warp.Services
             };
         }
 
-        public void SaveResource(SaveTextResourceDto saveTextResourceDto)
+        public void SaveTextResource(SaveTextResourceDto saveTextResourceDto)
         {
             CheckArgument.NotNull(saveTextResourceDto, "SaveTextResourceDto");
 
