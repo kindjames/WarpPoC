@@ -110,7 +110,8 @@
     <Compile Include="Util\TestDbAsyncQueryProvider.cs" />
     <Compile Include="Commands\Clients\TestDbAsyncQueryProvider.cs" />
     <Compile Include="Commands\Clients\SaveNewClientCommandHandlerTests.cs" />
-    <Compile Include="Commands\TextResources\SaveNewTextResourceUnitTests.cs" />
+    <Compile Include="Commands\TextResources\SaveTextResourceCommandHandlersUnitTests.cs" />
+    <Compile Include="Commands\TextResources\SaveTextResourceIdentifierCommandHandlerUnitTests.cs" />
     <Compile Include="DataExceptionTests.cs" />
     <Compile Include="Data\BrandsTestDataFactory.cs" />
     <Compile Include="Data\LanguageTestDataFactory.cs" />
@@ -119,7 +120,7 @@
     <Compile Include="Queries\Clients\CheckClientExistsForCodeQueryHandlerTests.cs" />
     <Compile Include="Queries\Customers\GetCustomerNameQueryHandlerTests.cs" />
     <Compile Include="Queries\Languages\GetLanguageIdByCultureQueryTests.cs" />
-    <Compile Include="Queries\TextResources\DuplicateResourceStringsQueryHandlerUnitTests.cs" />
+    <Compile Include="Queries\TextResources\SaveTextResourceQueryHandlerUnitTests.cs" />
     <Compile Include="Queries\TextResources\GetTextResourceQueryHandlerUnitTests.cs" />
     <Compile Include="Queries\TextResources\GetTextResourceStringQueryHandlerUnitTests.cs" />
     <Compile Include="Queries\Users\UserDefaultLanguageQueryTests.cs" />
