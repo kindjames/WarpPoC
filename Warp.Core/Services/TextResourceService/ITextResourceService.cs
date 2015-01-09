@@ -7,7 +7,7 @@ namespace Warp.Core.Services.TextResourceService
     {
         string GetTextResource(int textResourceCodeId);
         ResourceStringDto GetTextResourceString(int textResourceCodeId);
-        ResourceCodeDto GetTextResourceCode(int textResourceCodeId);
+        ResourceCodeDto GetResourceIdentifierCode(int textResourceCodeId);
 
         bool ValidateResourceString(ResourceStringDto dto);
         bool ValidateResourceCode(ResourceCodeDto dto);
