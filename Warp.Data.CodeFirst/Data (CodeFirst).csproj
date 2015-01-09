@@ -119,14 +119,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queries\General\CheckClientExistsForCodeQuery.cs" />
     <Compile Include="Queries\Languages\GetLanguageIdByCultureQuery.cs" />
-    <Compile Include="Queries\TextResources\DuplicateResourceCodeExistsQuery.cs" />
-    <Compile Include="Queries\TextResources\DuplicateResourceStringExistsQuery.cs" />
+    <Compile Include="Queries\TextResources\ValidateUniqueResourceCodeQuery.cs" />
+    <Compile Include="Queries\TextResources\ValidateUniqueResourceStringQuery.cs" />
     <Compile Include="Queries\TextResources\GetTextResourceCodeQuery.cs" />
     <Compile Include="Queries\TextResources\GetTextResourceQuery.cs" />
     <Compile Include="Queries\TextResources\GetTextResourceStringQuery.cs" />
     <Compile Include="Queries\Languages\ResolveBrowserLanguageQuery.cs" />
     <Compile Include="Queries\Languages\ResolveUserLanguageQuery.cs" />
-    <Compile Include="Queries\TextResources\ValidateTextResourceDataQuery.cs" />
     <Compile Include="Queries\Users\GetDefaultLanguageForUserQuery.cs" />
     <Compile Include="Validation\DataAnnotationsValidator.cs" />
   </ItemGroup>
