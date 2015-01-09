@@ -19,15 +19,17 @@ namespace Warp.Data.Commands.TextResources
 
         [Required]
         public bool ClientOverridable { get; set; }
+
+        public int Id { get; set; }
     }
 
-    public sealed class SaveResourceIdentifierCommandHandler : ICommandHandler<SaveResourceIdentifierCodeCommand>
+    public sealed class SaveResourceIdentifierCodeCommandHandler : ICommandHandler<SaveResourceIdentifierCodeCommand>
     {
-        private readonly IDomainDbContext _dbContext;
+        private readonly ITextResourceDbContext _dbContext;
         private readonly IQueryDispatcher _queryDispatcher;
         private readonly IObjectMapper _objectMapper;
-        
-        public SaveResourceIdentifierCommandHandler(IDomainDbContext dbContext, IQueryDispatcher queryDispatcher, IObjectMapper objectMapper)
+
+        public SaveResourceIdentifierCodeCommandHandler(ITextResourceDbContext dbContext, IQueryDispatcher queryDispatcher, IObjectMapper objectMapper)
         {
             _dbContext = dbContext;
             _queryDispatcher = queryDispatcher;

@@ -18,7 +18,7 @@ namespace Warp.Data.Commands.TextResources
     /// </summary>
     public sealed class SaveTextResourceCommand : ICommand
     {
-        public new int Id { get; internal set; }
+        public int Id { get; set; }
 
         // Required TextResourceIdentifier data
         [Required]
@@ -39,23 +39,48 @@ namespace Warp.Data.Commands.TextResources
 
     }
 
-    public sealed class SaveNewTextResourceCommandHandler : ICommandHandler<SaveTextResourceCommand>
+    public sealed class SaveTextResourceCommandHandler : ICommandHandler<SaveTextResourceCommand>
     {
-        private readonly IDomainDbContext _dbContext;
+        private readonly ITextResourceDbContext _dbContext;
         private readonly IQueryDispatcher _queryDispatcher;
         private readonly IObjectMapper _objectMapper;
+        private readonly ICommandDispatcher _commandDispatcher;
 
-        public SaveNewTextResourceCommandHandler(IDomainDbContext dbContext, IQueryDispatcher queryDispatcher, IObjectMapper objectMapper)
+        private SaveResourceIdentifierCodeCommand _resourceIdCodeCommand;
+        private SaveResourceStringCommand _resourceStringCommand;
+
+
+        public SaveTextResourceCommandHandler(ITextResourceDbContext dbContext, IQueryDispatcher queryDispatcher, IObjectMapper objectMapper, ICommandDispatcher commandDispatcher)
         {
             _dbContext = dbContext;
             _queryDispatcher = queryDispatcher;
             _objectMapper = objectMapper;
+            _commandDispatcher = commandDispatcher;
         }
 
         public void Execute(SaveTextResourceCommand command)
         {
+            // Test command correctness
             CheckArgument.NotNull(command, "command");
 
+            // Initialise aggregate Commands
+            _resourceIdCodeCommand = new SaveResourceIdentifierCodeCommand(){ ResourceIdentifierCode = command.ResourceIdentifierCode, ClientOverridable = command.ClientOverridable};
+            _resourceStringCommand = new SaveResourceStringCommand(){ Id = command.Id, ResourceIdentifierCode = command.ResourceIdentifierCode, ClientOverridable = command.ClientOverridable};
+
+            // Validation
+            if (command.Id == 0)
+            {
+
+            }
+            else
+            {
+                
+            }
+
+            _commandDispatcher.Execute(_resourceIdCodeCommand);
+            _commandDispatcher.Execute(_resourceStringCommand);
+
+            // Check command for correctness
             // Validate ResourceIdentifierCode
                 // No. Get Associated TextResource data(Query on , populate and return DuplicateTextResourceDto to User(ResourceIdentifier and associated TextResource dto)
                 // Yes(No duplicate).
@@ -68,7 +93,7 @@ namespace Warp.Data.Commands.TextResources
 
             // ValidateResourceDataQuery
                 // Validate ResourceIdentifier
-            throw new NotImplementedException();
+            
         }
     }
 }
