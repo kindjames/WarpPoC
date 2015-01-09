@@ -124,14 +124,13 @@
     <Compile Include="Queries\General\GetEntityQuery.cs" />
     <Compile Include="Queries\General\CheckEntityExistsQuery.cs" />
     <Compile Include="Queries\Languages\GetLanguageIdByCultureQuery.cs" />
-    <Compile Include="Queries\TextResources\DuplicateResourceCodeExistsQuery.cs" />
-    <Compile Include="Queries\TextResources\DuplicateResourceStringExistsQuery.cs" />
+    <Compile Include="Queries\TextResources\ValidateUniqueResourceCodeQuery.cs" />
+    <Compile Include="Queries\TextResources\ValidateUniqueResourceStringQuery.cs" />
     <Compile Include="Queries\TextResources\GetTextResourceCodeQuery.cs" />
     <Compile Include="Queries\TextResources\GetTextResourceQuery.cs" />
     <Compile Include="Queries\TextResources\GetTextResourceStringQuery.cs" />
     <Compile Include="Queries\Languages\ResolveBrowserLanguageQuery.cs" />
     <Compile Include="Queries\Languages\ResolveUserLanguageQuery.cs" />
-    <Compile Include="Queries\TextResources\ValidateTextResourceDataQuery.cs" />
     <Compile Include="Queries\Users\GetDefaultLanguageForUserQuery.cs" />
   </ItemGroup>
   <ItemGroup>
