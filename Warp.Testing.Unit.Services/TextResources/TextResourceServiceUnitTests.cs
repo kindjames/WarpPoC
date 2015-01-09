@@ -130,14 +130,7 @@ namespace Warp.Testing.Unit.Services.TextResources
                 _result.ShouldBeNull();
             };
         }
-
-
-        //public class : WithSubject<TextResourceService>
-        //{
-        //    Establish _context = () => { };
-        //    Because _of = () =>{};
-        //    It _should = () => { };
-        //}
+       
         #endregion GetTextResourceString Tests
 
         #region GetTextResourceCode Tests
@@ -167,6 +160,7 @@ namespace Warp.Testing.Unit.Services.TextResources
 
         #endregion GetTextResourceCode Tests
 
+        #region GetTextResource Scratch
         //public class When_calling_GetTextResource_with_textResourceCodeId_of_zero : WithSubject<TextResourceService>
         //{
         //    static Exception _exception;
@@ -275,7 +269,7 @@ namespace Warp.Testing.Unit.Services.TextResources
         //        _exception.ShouldContainErrorMessage("clientId");
         //    };
         //}
-
+#endregion GetTextResource Scratch
         #region Templates
 
         //public class When_getting_calling_GetTextResource : WithSubject<TextResourceService>
@@ -297,7 +291,13 @@ namespace Warp.Testing.Unit.Services.TextResources
         // Establish _context = () => { };
         // Because _of = () => { };
         // It _of = () => { };
-
+        
+        //public class : WithSubject<TextResourceService>
+        //{
+        //    Establish _context = () => { };
+        //    Because _of = () =>{};
+        //    It _should = () => { };
+        //}
         #endregion Templates
     }
 }
