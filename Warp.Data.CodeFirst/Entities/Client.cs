@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Warp.Core.Data;
 using Warp.Core.Enum;
+using Warp.Core.Infrastructure.Validation;
 
 namespace Warp.Data.Entities
 {
