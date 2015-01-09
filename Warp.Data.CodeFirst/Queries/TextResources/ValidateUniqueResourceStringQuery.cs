@@ -5,22 +5,22 @@ using Warp.Data.Context;
 
 namespace Warp.Data.Queries.TextResources
 {
-    public class DuplicateResourceStringExistsQuery : IQuery<bool>
+    public class ValidateUniqueResourceStringQuery : IQuery<bool>
     {
         [Required]
         public string ResourceString { get; set; }
     }
 
-    public class DuplicateResourceStringExistsQueryHandler : IQueryHandler<DuplicateResourceStringExistsQuery, bool>
+    public class ValidateUniqueResourceStringQueryHandler : IQueryHandler<ValidateUniqueResourceStringQuery, bool>
     {
         private readonly ITextResourceDbContext _dbContext;
 
-        public DuplicateResourceStringExistsQueryHandler(ITextResourceDbContext dbContext)
+        public ValidateUniqueResourceStringQueryHandler(ITextResourceDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        public bool Execute(DuplicateResourceStringExistsQuery query)
+        public bool Execute(ValidateUniqueResourceStringQuery query)
         {
             return _dbContext.TextResources
                 .Any(tr => tr.ResourceString == query.ResourceString);
