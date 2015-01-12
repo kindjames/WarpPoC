@@ -6,7 +6,7 @@ using Warp.Data.Entities;
 
 namespace Warp.Data.Commands.Clients
 {
-    public class UpdateClientCommand : UpdateCommand
+    public class UpdateClientCommand : UpdateCommandBase
     {
         public string ClientName { get; set; }
         public int CustomerId { get; set; }

@@ -14,7 +14,7 @@ using Warp.Data.Queries.General;
 
 namespace Warp.Data.Commands.Clients
 {
-    public class CreateClientCommand : CreateCommand
+    public class CreateClientCommand : CreateCommandBase
     {
         [Required]
         public string Name { get; set; }
