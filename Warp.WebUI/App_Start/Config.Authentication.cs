@@ -9,7 +9,7 @@ namespace Warp.WebUI
 {
     public partial class Startup
     {
-        public void ConfigureAuthentication(IAppBuilder app)
+        public static void ConfigureAuthentication(IAppBuilder app)
         {
             var url = new UrlHelper(HttpContext.Current.Request.RequestContext);
 

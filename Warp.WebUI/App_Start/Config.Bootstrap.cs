@@ -4,7 +4,7 @@ namespace Warp.WebUI
 {
     public partial class Startup
     {
-        public void ConfigureBootstrap()
+        public static void ConfigureBootstrap()
         {
             Bootstrap.Configure();
         }

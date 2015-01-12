@@ -7,7 +7,7 @@ namespace Warp.WebUI
 {
     public partial class Startup
     {
-        public void ConfigureAutoMapper(IConfiguration configuration)
+        public static void ConfigureAutoMapper(IConfiguration configuration)
         {
             var mappingConfigurations = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(a => a.GetTypes()

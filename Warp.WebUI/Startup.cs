@@ -15,7 +15,8 @@ namespace Warp.WebUI
         {
             ConfigureIocBindings();
             ConfigureGlobalFilters(GlobalFilters.Filters);
-            ConfigureRouting(RouteTable.Routes);
+            ConfigureAttributeRouting(RouteTable.Routes);
+            ConfigureRoutes(RouteTable.Routes);
             ConfigureBundles(BundleTable.Bundles);
             ConfigureAuthentication(app);
             ConfigureBootstrap();

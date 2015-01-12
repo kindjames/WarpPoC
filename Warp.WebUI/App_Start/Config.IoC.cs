@@ -5,7 +5,7 @@ namespace Warp.WebUI
 {
     public partial class Startup
     {
-        public void ConfigureIocBindings()
+        public static void ConfigureIocBindings()
         {
             DependencyResolver.SetResolver(CompositionRoot.GetFullyRegisteredContainer());
         }

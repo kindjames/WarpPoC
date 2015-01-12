@@ -4,7 +4,7 @@ namespace Warp.WebUI
 {
     public partial class Startup
     {
-        public void ConfigureBundles(BundleCollection bundles)
+        public static void ConfigureBundles(BundleCollection bundles)
         {
             // TODO: Add conditional .min versions for prod version.
 
