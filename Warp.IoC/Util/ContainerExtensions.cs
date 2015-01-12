@@ -14,10 +14,10 @@ namespace Warp.IoC
         /// <summary>
         /// Registers all implementations with the IoC Container. Uses a name-ending to search on.
         /// </summary>
-        /// <param name="dependencyContainer"></param>
+        /// <param name="container"></param>
         /// <param name="serviceNameEnding">Name ending of the services to register, e.g. "Service" would register "UserService".</param>
         /// <param name="assembly">Assembly to search.</param>
-        public static void RegisterAllImplementationsInAssemblyWithNameEnding(this IDependencyContainer dependencyContainer, string serviceNameEnding, Assembly assembly)
+        public static void RegisterAllImplementationsInAssemblyWithNameEnding(this Container container, string serviceNameEnding, Assembly assembly)
         {
             // Get all types.
             assembly.ExportedTypes
@@ -32,7 +32,7 @@ namespace Warp.IoC
                         : t.GetInterfaces().Except(t.BaseType.GetInterfaces()).First()
                 })
                 .ToList() // Convert to a list and register each implementation with its interface.
-                .ForEach(t => dependencyContainer.Register(t.Service, t.Implementation));
+                .ForEach(t => container.Register(t.Service, t.Implementation));
         }
 
         private static readonly IEnumerable<Type> EntityTypes;
@@ -47,7 +47,7 @@ namespace Warp.IoC
                 .Where(t => typeof (EntityBase).IsAssignableFrom(t));
         }
 
-        public static void RegisterOpenGenericQueryHandlerForAllEntityTypes(this IDependencyContainer dependencyContainer, Type openQueryType, Type openQueryHandlerType)
+        public static void RegisterOpenGenericQueryHandlerForAllEntityTypes(this Container container, Type openQueryType, Type openQueryHandlerType)
         {
             var openQueryHandlerInterfaceType = typeof(IQueryHandler<,>);
             
@@ -57,11 +57,11 @@ namespace Warp.IoC
                 var closedHandlerInterfaceType = openQueryHandlerInterfaceType.MakeGenericType(closedDeleteCommandType, typeof(bool));
                 var closedDeleteCommandHandlerType = openQueryHandlerType.MakeGenericType(entityType);
 
-                dependencyContainer.Register(closedHandlerInterfaceType, closedDeleteCommandHandlerType);
+                container.Register(closedHandlerInterfaceType, closedDeleteCommandHandlerType);
             }
         }
 
-        public static void RegisterOpenGenericCommandHandlerForAllEntityTypes(this IDependencyContainer dependencyContainer, Type openCommandType, Type openCommandHandlerType)
+        public static void RegisterOpenGenericCommandHandlerForAllEntityTypes(this Container container, Type openCommandType, Type openCommandHandlerType)
         {
             var openCommandHandlerInterfaceType = typeof(ICommandHandler<>);
             
@@ -71,7 +71,7 @@ namespace Warp.IoC
                 var closedHandlerInterfaceType = openCommandHandlerInterfaceType.MakeGenericType(closedDeleteCommandType, typeof(bool));
                 var closedDeleteCommandHandlerType = openCommandHandlerType.MakeGenericType(entityType);
 
-                dependencyContainer.Register(closedHandlerInterfaceType, closedDeleteCommandHandlerType);
+                container.Register(closedHandlerInterfaceType, closedDeleteCommandHandlerType);
             }
         }
     }
