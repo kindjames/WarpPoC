@@ -1,15 +1,16 @@
 ﻿using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Warp.Data.Specs")]
+[assembly: AssemblyTitle("Warp.Testing.Acceptance")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Warp.Data.Specs")]
-[assembly: AssemblyCopyright("Copyright ©  2014")]
+[assembly: AssemblyProduct("Warp.Testing.Acceptance")]
+[assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -18,8 +19,8 @@ using System.Runtime.InteropServices;
 // COM, set the ComVisible attribute to true on that type.
 [assembly: ComVisible(false)]
 
-// The following GUId is for the Id of the typelib if this project is exposed to COM
-[assembly: Guid("8f95804b-eeaa-4813-bf14-47804c55274d")]
+// The following GUID is for the ID of the typelib if this project is exposed to COM
+[assembly: Guid("e6a54bac-4282-4821-beab-30c9d6506267")]
 
 // Version information for an assembly consists of the following four values:
 //
