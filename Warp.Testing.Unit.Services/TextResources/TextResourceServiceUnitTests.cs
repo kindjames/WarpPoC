@@ -69,7 +69,8 @@ namespace Warp.Testing.Unit.Services.TextResources
 
             private Because of = () => _exception = Catch.Exception(() => Subject.GetTextResourceString(_textResourceIdentifierId));
 
-            private It should_throw_an_exception = () => {
+            private It should_throw_an_exception = () =>
+            {
                 _exception.ShouldNotBeNull();
                 _exception.ShouldBeOfExactType<ArgumentException>();
             };
@@ -79,7 +80,7 @@ namespace Warp.Testing.Unit.Services.TextResources
         {
             static int _textResourceIdentifierId = 0;
 
-                        private Because _of = () => _exception = Catch.Exception(() => Subject.GetTextResourceString(_textResourceIdentifierId));
+            private Because _of = () => _exception = Catch.Exception(() => Subject.GetTextResourceString(_textResourceIdentifierId));
 
             private It should_throw_an_exception = () =>
             {
@@ -132,7 +133,7 @@ namespace Warp.Testing.Unit.Services.TextResources
                 _result.ShouldBeNull();
             };
         }
-       
+
         #endregion GetTextResourceString Tests
 
         #region GetTextResourceCode Tests
@@ -271,7 +272,101 @@ namespace Warp.Testing.Unit.Services.TextResources
         //        _exception.ShouldContainErrorMessage("clientId");
         //    };
         //}
-#endregion GetTextResource Scratch
+        #endregion GetTextResource Scratch
+
+        #region SaveTextResource Tests
+
+        public class SaveTextResourceBase<TSubject> : WithSubject<TSubject> where TSubject : class
+        {
+            Establish EstablishContext { get; set; }
+
+            private string _resourceString { get; set; }
+            private string _resourceIdentifierCode { get; set; }
+            private int _resourceIdentifierCodeId { get; set; }
+            private bool _clientOverridable { get; set; }
+            private int _languageId { get; set; }
+
+            public SaveTextResourceBase(string resourceString = "", string resourceIdentifierCode = "", int resourceIdentifierCodeId = 0, bool clientOverridable = false, int languageId = 0)
+            {
+                EstablishContext = () =>
+                {
+                    _resourceString = resourceString;
+                    _resourceIdentifierCode = resourceIdentifierCode;
+                    _resourceIdentifierCodeId = resourceIdentifierCodeId;
+                    _clientOverridable = clientOverridable;
+                    _languageId = languageId;
+                };
+            }
+        }
+
+        public class When_calling__SaveTextResource__for_new_with_correct_SaveTextResourceDto : SaveTextResourceBase<TextResourceService>
+               {
+            
+            // SUT
+            static SaveTextResourceDto _dto;
+           
+
+            Because _of = () => { };
+
+            It _should = () => { };
+        }
+
+        //public class When_calling__SaveTextResource__with_null_SaveTextResourceDto : WithSubject<TextResourceService>
+        //{
+        //    Establish _context = () => { };
+        //    Because _of = () => { };
+        //    It _should = () => { };
+        //}
+
+        //public class When_calling__SaveTextResource__sweet_path : WithSubject<TextResourceService> // Sweet path => no duplicates, nothing null or invalid, not ClientOverridable
+        //{
+        //    // SUT
+        //    static SaveTextResourceDto _dto;
+
+        //    // Test values
+        //    static string _resourceString;
+        //    static string _resourceIdentifierCode;
+        //    static int _resourceIdentifierCodeId;
+        //    static bool _clientOverridable;
+        //    static int _languageId;
+
+        //    Establish _context = () =>
+        //    {
+        //        _dto = new SaveTextResourceDto()
+        //        {
+        //            ResourceString = _resourceString,
+        //            ResourceIdentifierCode = _resourceIdentifierCode,
+        //            ClientOverridable = _clientOverridable,
+        //            LanguageId = _languageId
+        //        };
+
+        //        _resourceString = "Welcome!";
+        //        _resourceIdentifierCode = "Welcome!Text";
+        //        _resourceIdentifierCodeId = 1;
+        //        _clientOverridable = false;
+        //        _languageId = 1;
+
+        //    };
+        //    Because _of = () => { };
+        //    It _should = () => { };
+        //}
+
+        //public class When_calling__SaveTextResource__duplicate_ResourceIdentifier : WithSubject<TextResourceService>
+        //{
+        //    Establish _context = () => { };
+        //    Because _of = () => { };
+        //    It _should = () => { };
+        //}
+
+        //public class When_calling__SaveTextResource__duplicate_TextResourceIdentifier : WithSubject<TextResourceService>
+        //{
+        //    Establish _context = () => { };
+        //    Because _of = () => { };
+        //    It _should = () => { };
+        //}
+
+        #endregion SaveTextResource Tests
+
         #region Templates
 
         //public class When_getting_calling_GetTextResource : WithSubject<TextResourceService>
@@ -293,7 +388,7 @@ namespace Warp.Testing.Unit.Services.TextResources
         // Establish _context = () => { };
         // Because _of = () => { };
         // It _of = () => { };
-        
+
         //public class : WithSubject<TextResourceService>
         //{
         //    Establish _context = () => { };
