@@ -1,23 +1,46 @@
 ﻿using System;
 using System.IO;
 using NUnit.Framework;
-using SpecsFor;
 using SpecsFor.Configuration;
 using SpecsFor.Mvc;
-using Warp.Testing.Acceptance.Behaviors;
 using Warp.WebUI;
 using Warp.WebUI.Controllers;
 
 namespace Warp.Testing.Acceptance
 {
+
+    //public class TestDbInitializer : DropCreateDatabaseAlways<ApplicationDbContext>
+    //{
+    //    protected override void Seed(ApplicationDbContext context)
+    //    {
+    //        var user = new ApplicationUser
+    //        {
+    //            UserName = "real@user.com",
+    //            Email = "real@user.com",
+    //            LockoutEnabled = true,
+    //            SecurityStamp = Guid.NewGuid().ToString(),
+    //            PasswordHash = new PasswordHasher().HashPassword("P@ssw0rd1")
+    //        };
+
+    //        context.Users.Add(user);
+    //        context.SaveChanges();
+    //    }
+    //}
+
     /// <summary>
     /// Creates the ASP.NET MVC Web Application for use with all tests.
     /// </summary>
     [SetUpFixture]
-    internal class WebApplicationTestingContext : SpecsForConfiguration
+    internal class WebApplicationTestingContext : SpecsForConfiguration//SpecsForMvcConfig
     {
         public WebApplicationTestingContext()
         {
+            //BeforeEachTest(() =>
+            //{
+            //    Database.SetInitializer(new TestDbInitializer());
+            //    ApplicationDbContext context = ApplicationDbContext.Create();
+            //    context.Database.Initialize(true);
+            //});
             //WhenTesting<SpecsFor<MvcWebApp>>().EnrichWith<TestDatabaseInitializer>();
         }
 

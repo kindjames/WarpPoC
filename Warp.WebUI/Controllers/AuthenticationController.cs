@@ -62,6 +62,7 @@ namespace Warp.WebUI.Controllers
                     identity.AddClaim(new Claim(ClaimTypes.Email, user.Email));
                     identity.AddClaim(new Claim(ClaimTypes.GivenName, user.FirstName + " " + user.LastName));
                     identity.AddClaim(new Claim(ApplicationClaimTypes.CustomerId, user.CustomerId.ToString(CultureInfo.InvariantCulture)));
+                    identity.AddClaim(new Claim(ApplicationClaimTypes.RememberMe, model.RememberMe.ToString()));
 
                     _authenticationManager.SignIn(new AuthenticationProperties { IsPersistent = model.RememberMe }, identity);
                     

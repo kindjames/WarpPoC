@@ -2,6 +2,7 @@
 using System.Security.Claims;
 using System.Web.Mvc;
 using Warp.Core.Authentication;
+using Warp.WebUI.Models.DashboardControls;
 
 namespace Warp.WebUI.Controllers
 {
@@ -49,20 +50,5 @@ namespace Warp.WebUI.Controllers
                 LastLoggedIn = DateTime.Now,
             });
         }
-    }
-
-    public class UserDropdownModel
-    {
-        public string ShortName { get; set; }
-        public DateTime LastLoggedIn { get; set; }
-    }
-
-    public class SideNavigationBarViewModel
-    {
-    }
-
-    public class TopNavigationBarViewModel
-    {
-        public string ApplicationTitle { get; set; }
     }
 }

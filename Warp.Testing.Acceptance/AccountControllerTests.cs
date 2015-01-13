@@ -1,32 +1,62 @@
-﻿using NUnit.Framework;
+﻿using System;
+using System.Linq;
+using NUnit.Framework;
+using Should;
 using SpecsFor;
 using SpecsFor.Mvc;
 using SpecsFor.Mvc.Helpers;
+using Warp.Data.Migrations;
 using Warp.WebUI.Controllers;
-using Warp.WebUI.Models.Authentication;
+using Warp.WebUI.Models.Account;
+using Warp.WebUI.Models.DashboardControls;
 
 namespace Warp.Testing.Acceptance
 {
-    public class when_logging_in_with_valid_credentials : SpecsFor<MvcWebApp>
+    public class AccountControllerTests
     {
-        protected override void Given()
+        public class when_logging_in_with_valid_credentials : SpecsFor<MvcWebApp>
         {
-            SUT.NavigateTo<AuthenticationController>(c => c.LogOff());
-            SUT.NavigateTo<AuthenticationController>(c => c.Login(null));
-        }
+            private string FirstName = Guid.NewGuid().ToString();
+            private string LastName = Guid.NewGuid().ToString();
 
-        protected override void When()
-        {
-            SUT.FindFormFor<LoginViewModel>()
-                .Field(m => m.UserName).SetValueTo("test3@test.com")
-                .Field(m => m.Password).SetValueTo("test3")
-                .Submit();
-        }
+            protected override void Given()
+            {
+                SUT.NavigateTo<AccountController>(c => c.UserProfile());
+            }
 
-        [Test]
-        public void it_should_login_to_home_page()
-        {
-            SUT.Route.ShouldMapTo<HomeController>(c => c.Index());
+            protected override void When()
+            {
+                SUT.FindFormFor<UserProfileModel>()
+                    .Field(m => m.FirstName).SetValueTo(FirstName)
+                    .Field(m => m.LastName).SetValueTo(LastName)
+                    .Submit();
+            }
+
+            //[Test]
+            //public void then_it_save_to_the_database()
+            //{
+            //    using (var context = new InternalMigrationsInitializationContext())
+            //    {
+            //        var user = context.Users
+            //            .SingleOrDefault(u => u.Forename == FirstName && u.Surname == LastName);
+
+            //        user.ShouldNotBeNull();
+            //    }
+            //}
+
+            [Test]
+            public void then_it_should_redirect_to_home()
+            {
+                SUT.Route.ShouldMapTo<HomeController>(c => c.Index());
+            }
+
+            [Test]
+            public void then_it_should_have_updated_the_name_in_user_menu()
+            {
+                SUT.FindDisplayFor<UserDropdownModel>()
+                    .DisplayFor(m => m.ShortName)
+                    .Text.ShouldEqual(String.Concat(FirstName, " ", LastName));
+            }
         }
     }
 }

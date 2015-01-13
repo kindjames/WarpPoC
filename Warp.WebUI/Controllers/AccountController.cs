@@ -1,4 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Globalization;
+using System.Security.Claims;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
@@ -77,15 +80,39 @@ namespace Warp.WebUI.Controllers
         [HttpPost]
         public async Task<ActionResult> UserProfile(UserProfileModel model)
         {
-            var id = User.Identity.GetUserId<int>();
+            if (ModelState.IsValid)
+            {
+                var id = User.Identity.GetUserId<int>();
 
-            var user = _userManager.FindById(id);
+                var user = _userManager.FindById(id);
 
-            user.Email = model.Email;
-            user.FirstName = model.FirstName;
-            user.LastName = model.LastName;
+                user.Email = model.Email;
+                user.FirstName = model.FirstName;
+                user.LastName = model.LastName;
 
-            await _userManager.UpdateAsync(user);
+                var result = await _userManager.UpdateAsync(user);
+
+                if (result.Succeeded)
+                {
+                    var rememberMe = User.Identity.GetClaimValueFor<bool>(ApplicationClaimTypes.RememberMe);
+
+                    var identity = await _userManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
+                    
+                    identity.AddClaim(new Claim(ClaimTypes.Email, user.Email));
+                    identity.AddClaim(new Claim(ClaimTypes.GivenName, user.FirstName + " " + user.LastName));
+                    identity.AddClaim(new Claim(ApplicationClaimTypes.CustomerId, user.CustomerId.ToString(CultureInfo.InvariantCulture)));
+                    identity.AddClaim(new Claim(ApplicationClaimTypes.RememberMe, rememberMe.ToString()));
+
+                    _authenticationManager.SignIn(new AuthenticationProperties { IsPersistent = rememberMe }, identity);
+
+                    return RedirectToAction("Index", "Home");
+                }
+
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(String.Empty, error);
+                }
+            }
 
             return View(model);
         }

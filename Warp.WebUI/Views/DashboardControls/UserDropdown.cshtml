@@ -1,11 +1,9 @@
-﻿@model Warp.WebUI.Controllers.UserDropdownModel
+﻿@model UserDropdownModel
 
 <li class="user-profile">
     <a data-toggle="dropdown" href="#" class="user-menu dropdown-toggle">
         <img class="nav-user-photo" src="img/demo/avatar/avatar1.jpg" alt="Penny's Photo">
-        <span class="hhh" id="user_info">
-            @Model.ShortName
-        </span>
+        @Html.DisplayFor(m => m.ShortName)
         <i class="fa fa-caret-down"></i>
     </a>
 

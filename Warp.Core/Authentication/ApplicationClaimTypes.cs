@@ -6,5 +6,6 @@
     public static class ApplicationClaimTypes
     {
         public const string CustomerId = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/customerid";
+        public const string RememberMe = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/rememberme";
     }
 }

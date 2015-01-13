@@ -228,6 +228,9 @@
     <Compile Include="App_Start\Config.Bundles.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\DashboardControlsController.cs" />
+    <Compile Include="Models\DashboardControls\SideNavigationBarViewModel.cs" />
+    <Compile Include="Models\DashboardControls\TopNavigationBarViewModel.cs" />
+    <Compile Include="Models\DashboardControls\UserDropdownModel.cs" />
     <Compile Include="Infrastructure\MappingConfiguration.cs" />
     <Compile Include="Models\Account\UserProfileModel.cs" />
     <Compile Include="Models\Clients\ClientModel.cs" />
