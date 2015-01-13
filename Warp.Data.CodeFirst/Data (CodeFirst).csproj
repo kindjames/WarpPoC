@@ -80,7 +80,6 @@
     <Compile Include="Commands\Clients\UpdateClientCommand.cs" />
     <Compile Include="Commands\Clients\CreateClientCommand.cs" />
     <Compile Include="Commands\UpdateCommandBase.cs" />
-    <Compile Include="Commands\Clients\SaveNewClientCommand.cs" />
     <Compile Include="Commands\TextResources\SaveResourceStringCommand.cs" />
     <Compile Include="Commands\TextResources\SaveTextResourceCommand.cs" />
     <Compile Include="Commands\TextResources\SaveResourceIdentifierCodeCommand.cs" />
