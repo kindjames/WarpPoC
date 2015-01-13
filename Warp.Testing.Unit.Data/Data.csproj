@@ -109,12 +109,13 @@
     <Compile Include="Commands\Clients\SaveClientCommandHandlerTests.cs" />
     <Compile Include="Util\TestDbAsyncQueryProvider.cs" />
     <Compile Include="Commands\Clients\TestDbAsyncQueryProvider.cs" />
+    <Compile Include="Data\BrandsTestDataFactory.cs" />
+    <Compile Include="Data\MSpecBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Commands\Clients\SaveNewClientCommandHandlerTests.cs" />
     <Compile Include="Commands\TextResources\SaveTextResourceCommandHandlersUnitTests.cs" />
     <Compile Include="Commands\TextResources\SaveTextResourceIdentifierCommandHandlerUnitTests.cs" />
     <Compile Include="DataExceptionTests.cs" />
-    <Compile Include="Data\BrandsTestDataFactory.cs" />
     <Compile Include="Data\LanguageTestDataFactory.cs" />
     <Compile Include="Data\TextResourceIdentifierTestDataFactory.cs" />
     <Compile Include="Data\TextResourceTestDataFactory.cs" />
