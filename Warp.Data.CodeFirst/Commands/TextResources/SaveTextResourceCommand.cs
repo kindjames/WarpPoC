@@ -93,6 +93,8 @@ namespace Warp.Data.Commands.TextResources
 
             // ValidateResourceDataQuery
                 // Validate ResourceIdentifier
+
+
             
         }
     }
