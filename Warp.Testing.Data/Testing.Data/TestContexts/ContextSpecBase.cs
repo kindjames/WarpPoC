@@ -10,21 +10,21 @@ namespace Testing.Data.TestContexts
 {
     public abstract class ContextSpecBase
     {
-        [SetUp]
-        public void MainSetup()
-        {
-            SetContext();
-            Because();
-        }
+        //[SetUp]
+        //public void MainSetup()
+        //{
+        //    SetContext();
+        //    Because();
+        //}
 
-        [TearDown]
-        protected void MainTearDown()
-        {
-            CleanUp();
-        }
+        //[TearDown]
+        //protected void MainTearDown()
+        //{
+        //    CleanUp();
+        //}
 
-        protected virtual void CleanUp();
-        protected virtual void Because();
-        protected virtual void SetContext();
+        //protected virtual void CleanUp();
+        //protected virtual void Because();
+        //protected virtual void SetContext();
     }
 }

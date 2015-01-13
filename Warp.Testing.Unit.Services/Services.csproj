@@ -84,12 +84,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TextResources\Fakes\TestModelFake.cs" />
     <Compile Include="TextResources\Fakes\TestModelWithoutSetterFake.cs" />
-    <Compile Include="TextResources\LanguageServiceTests.cs" />
-    <Compile Include="TextResources\TextResourceModelProviderTests.cs" />
-    <Compile Include="TextResources\TextResourceServiceTests.cs" />
-    <Compile Include="Users\UserServiceTests.cs" />
-    <Compile Include="TextResourceServiceTests.cs" />
-    <Compile Include="TextResourceServiceIntegrationTests.cs" />
     <Compile Include="TextResources\LanguageServiceUnitTests.cs" />
     <Compile Include="TextResources\TextResourceModelProviderUnitTests.cs" />
     <Compile Include="TextResources\TextResourceServiceUnitTests.cs" />
