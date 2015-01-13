@@ -80,7 +80,7 @@ namespace Warp.Services
             if (saveTextResourceDto.Id == 0)
             {
                 var command = _objectMapper.Map<SaveTextResourceDto, SaveTextResourceCommand>(saveTextResourceDto);
-                
+
                 _commandDispatcher.Execute(command);
 
                 saveTextResourceDto.Id = command.Id;
@@ -92,29 +92,8 @@ namespace Warp.Services
                 _commandDispatcher.Execute(command);
             }
 
-
-            //var validateNewTextResourceQuery = new 
-            // Create and populate NewTextResourceDto object
-
-            //    CheckArgument.NotNull(saveTextResourceDto, "saveTextResourceDto");
-
-
-            //var stringExists = _queryDispatcher.Execute(DuplicateResourceStringExistsQuery);
-
-
-            //var codeExists = ValidateResourceCode(new TextResourceCodeDto { TextResourceCode = model.TextResourceCode });
-
-            // Inverted check. If both true then neither phrases exist in the database so safe to save and commit new TextResource
-            //if (!(_queryDispatcher.Execute(textResourceStringQuery)) && !(_queryDispatcher.Execute(textResourceCodeQuery)))
-            //{
-
-            //}
-
-
-            // Verify that the TextResourceString to Save does not already exist.
-            //  If it exists, Query both tables for associated data and return DTO to User
-            // Verify that the TextResourceCode has not already been assigned to another TextResourceString
         }
+
 
         /// <summary>
         ///  TODO -> Validate unique ResourceString

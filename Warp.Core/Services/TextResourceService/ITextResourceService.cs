@@ -12,6 +12,6 @@ namespace Warp.Core.Services.TextResourceService
         bool ValidateResourceString(ResourceStringDto dto);
         bool ValidateResourceCode(ResourceCodeDto dto);
 
-        void SaveResource(SaveTextResourceDto saveTextResourceDto);
+        void SaveTextResource(SaveTextResourceDto saveTextResourceDto);
     }
 }
