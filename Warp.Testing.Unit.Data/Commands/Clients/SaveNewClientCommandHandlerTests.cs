@@ -16,7 +16,7 @@
 
 //namespace Warp.Testing.Unit.Data.Commands.Clients
 //{
-    [Subject("SaveNewClientCommandHandler Unit Tests")]
+//    [Subject("SaveNewClientCommandHandler Unit Tests")]
 //    public class SaveNewClientCommandHandlerTests
 //    {
 //        public class When_saving_new_client_for_client_that_already_exists_with_same_customer_id_and_code :

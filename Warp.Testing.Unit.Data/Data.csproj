@@ -105,14 +105,14 @@
     <Compile Include="Queries\Brands\GetBrandsForClientQueryHandlerTests.cs" />
     <Compile Include="Util\EnumerableExtensions.cs" />
     <Compile Include="Util\ITestDataFactory.cs" />
-    <Compile Include="Queries\General\CheckEntityExistsQueryHandlerTests.cs" />
-    <Compile Include="Queries\TextResources\TextResourceQueryIntegrationTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Queries\General\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Warp.Core\Core.csproj">
       <Project>{8031789b-4e8b-4418-8644-eb4ade65b90b}</Project>
