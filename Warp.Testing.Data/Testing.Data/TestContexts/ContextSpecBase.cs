@@ -8,7 +8,7 @@ using NUnit.Framework;
 
 namespace Testing.Data.TestContexts
 {
-    public class ContextSpecBase
+    public abstract class ContextSpecBase
     {
         [SetUp]
         public void MainSetup()
@@ -23,10 +23,8 @@ namespace Testing.Data.TestContexts
             CleanUp();
         }
 
-        protected abstract void CleanUp();
-
-
-        protected abstract void Because();
-        protected abstract void SetContext();
+        protected virtual void CleanUp();
+        protected virtual void Because();
+        protected virtual void SetContext();
     }
 }

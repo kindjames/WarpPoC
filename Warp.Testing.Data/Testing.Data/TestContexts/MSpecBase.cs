@@ -9,9 +9,7 @@ using ThenIt = Machine.Specifications.It;
 
 namespace Testing.Data.TestContexts
 {
-    public class MSpecBase<TSubject, TFakeEngine> : WithSubject<TSubject, TFakeEngine>
-        where TSubject : class
-        where TFakeEngine : class
+    public class MSpecBase<TSubject> : WithSubject<TSubject> where TSubject : class
     {
         Establish _context { get; set; }
         Because _of { get; set; }
