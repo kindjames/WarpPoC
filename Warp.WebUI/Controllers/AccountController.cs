@@ -7,13 +7,13 @@ using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using Warp.Core.Authentication;
 using Warp.Core.Infrastructure.AutoMapper;
-using Warp.WebUI.Models.Account;
+using Warp.WebUI.ViewModels.Account;
 
 namespace Warp.WebUI.Controllers
 {
     [Authorize]
     [RoutePrefix("account")]
-    public class AccountController : Controller
+    public partial class AccountController : Controller
     {
         private readonly IAuthenticationManager _authenticationManager;
         private readonly IObjectMapper _objectMapper;
@@ -28,7 +28,7 @@ namespace Warp.WebUI.Controllers
 
         [AllowAnonymous]
         [Route("register")]
-        public ActionResult Register()
+        public virtual ActionResult Register()
         {
             return View();
         }
@@ -37,7 +37,7 @@ namespace Warp.WebUI.Controllers
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         [Route("register")]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public virtual async Task<ActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -66,7 +66,7 @@ namespace Warp.WebUI.Controllers
         }
 
         [HttpGet]
-        public ActionResult UserProfile()
+        public virtual ActionResult UserProfile()
         {
             var id = User.Identity.GetUserId<int>();
 
@@ -78,7 +78,7 @@ namespace Warp.WebUI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> UserProfile(UserProfileModel model)
+        public virtual async Task<ActionResult> UserProfile(UserProfileModel model)
         {
             if (ModelState.IsValid)
             {
@@ -97,7 +97,7 @@ namespace Warp.WebUI.Controllers
                     var rememberMe = User.Identity.GetClaimValueFor<bool>(ApplicationClaimTypes.RememberMe);
 
                     var identity = await _userManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
-                    
+
                     identity.AddClaim(new Claim(ClaimTypes.Email, user.Email));
                     identity.AddClaim(new Claim(ClaimTypes.GivenName, user.FirstName + " " + user.LastName));
                     identity.AddClaim(new Claim(ApplicationClaimTypes.CustomerId, user.CustomerId.ToString(CultureInfo.InvariantCulture)));

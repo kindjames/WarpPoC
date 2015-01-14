@@ -28,36 +28,39 @@ namespace Warp.Core.Infrastructure.Models
         {
             var modelType = model.GetType();
 
-            // Get properties from either cache or invoking reflection.
-            var propertyTypes = CachedModelProperties.GetOrAdd(modelType,
-                t => t.GetProperties().Where(p => p.IsDefined(typeof(PopulateWithAttribute), true)));
-
-            foreach (var propertyType in propertyTypes)
+            if (modelType.IsClass)
             {
-                // Get attribute on property
-                var textResourceAttribute = (PopulateWithAttribute)
-                    Attribute.GetCustomAttribute(propertyType, typeof(PopulateWithAttribute));
+                // Get properties from either cache or invoking reflection.
+                var propertyTypes = CachedModelProperties.GetOrAdd(modelType,
+                    t => t.GetProperties().Where(p => p.IsDefined(typeof (PopulateWithAttribute), true)));
 
-                // Get textResource id from attribute.
-                var textResourceId = textResourceAttribute.TextResourceId;
-
-                // Get textResource from service.
-                var textResource = _textResourceService.GetTextResource(textResourceId);
-
-                if (String.IsNullOrEmpty(textResource))
+                foreach (var propertyType in propertyTypes)
                 {
-                    throw new TextResourceNotFoundException(textResourceId);
+                    // Get attribute on property
+                    var textResourceAttribute = (PopulateWithAttribute)
+                        Attribute.GetCustomAttribute(propertyType, typeof (PopulateWithAttribute));
+
+                    // Get textResource id from attribute.
+                    var textResourceId = textResourceAttribute.TextResourceId;
+
+                    // Get textResource from service.
+                    var textResource = _textResourceService.GetTextResource(textResourceId);
+
+                    if (String.IsNullOrEmpty(textResource))
+                    {
+                        throw new TextResourceNotFoundException(textResourceId);
+                    }
+
+                    // Set property with translated text.
+                    var setterMethodType = propertyType.GetSetMethod();
+
+                    if (setterMethodType == null)
+                    {
+                        throw new SetterNotFoundOnModelException(propertyType);
+                    }
+
+                    setterMethodType.Invoke(model, new object[] {textResource});
                 }
-
-                // Set property with translated text.
-                var setterMethodType = propertyType.GetSetMethod();
-
-                if (setterMethodType == null)
-                {
-                    throw new SetterNotFoundOnModelException(propertyType);
-                }
-
-                setterMethodType.Invoke(model, new object[] { textResource });
             }
 
             return model;

@@ -8,7 +8,6 @@ using Warp.WebUI.Controllers;
 
 namespace Warp.Testing.Acceptance
 {
-
     //public class TestDbInitializer : DropCreateDatabaseAlways<ApplicationDbContext>
     //{
     //    protected override void Seed(ApplicationDbContext context)
@@ -58,7 +57,7 @@ namespace Warp.Testing.Acceptance
             config.BuildRoutesUsingAttributeRoutingFromAssemblyContaining<HomeController>();
             config.BuildRoutesUsing(Startup.ConfigureRoutes);
             
-            config.UseBrowser(BrowserDriver.Chrome);
+            config.UseBrowser(BrowserDriver.InternetExplorer);
             //config.UseBrowser(BrowserDriver.Firefox);
 
             //config.RegisterArea<TasksAreaRegistration>();

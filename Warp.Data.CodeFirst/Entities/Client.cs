@@ -19,10 +19,10 @@ namespace Warp.Data.Entities
         public ClientStatus Status { get; set; }
         
         [Required]
-        public int AccountManagerId { get; set; }
+        public Guid AccountManagerId { get; set; }
 
         [Required]
-        public int CustomerId { get; set; }
+        public Guid CustomerId { get; set; }
 
         public virtual Customer Customer { get; set; }
         public virtual User AccountManager { get; set; }

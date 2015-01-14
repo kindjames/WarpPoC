@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Warp.Core.Infrastructure.Validation;
 using Warp.Core.Query;
@@ -9,7 +10,7 @@ namespace Warp.Data.Queries.Customers
     public sealed class GetCustomerForUserQuery : IQuery<Customer>
     {
         [IdRequired]
-        public int UserId { get; set; }
+        public Guid UserId { get; set; }
     }
 
     public sealed class GetCustomerForUserQueryHandler : IQueryHandler<GetCustomerForUserQuery, Customer>

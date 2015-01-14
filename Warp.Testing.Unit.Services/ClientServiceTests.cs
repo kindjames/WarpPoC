@@ -2,12 +2,12 @@
 using AutoMapper;
 using Machine.Fakes;
 using Machine.Specifications;
+using Warp.Core.Exceptions.Data;
 using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Query;
 using Warp.Core.Services;
 using Warp.Core.Services.Dtos.Client;
 using Warp.Data.Entities;
-using Warp.Data.Exceptions;
 using Warp.Data.Queries.Clients;
 using Warp.Services;
 using IObjectMapper = Warp.Core.Infrastructure.AutoMapper.IObjectMapper;

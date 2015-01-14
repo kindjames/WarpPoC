@@ -151,8 +151,9 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="T4MVCExtensions">
-      <HintPath>..\packages\T4MVCExtensions.3.6.5\lib\net40\T4MVCExtensions.dll</HintPath>
+    <Reference Include="T4MVCExtensions, Version=3.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\T4MVCExtensions.3.11.0\lib\net40\T4MVCExtensions.dll</HintPath>
     </Reference>
     <Reference Include="TwitterBootstrapMVC.Eyecon.Datepicker.MVC5">
       <HintPath>..\packages\TwitterBootstrapMVC.Eyecon.Datepicker.MVC5.1.0.0\lib\net40\TwitterBootstrapMVC.Eyecon.Datepicker.MVC5.dll</HintPath>
@@ -216,9 +217,13 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\npm.js" />
     <Content Include="Scripts\TwitterBootstrapMvcJs.js" />
+    <None Include="T4MVC.tt.settings.xml" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\Config.AutoMapper.cs" />
     <Compile Include="App_Start\Config.Authentication.cs" />
     <Compile Include="App_Start\Config.Filters.cs" />
@@ -226,30 +231,54 @@
     <Compile Include="App_Start\Config.Bootstrap.cs" />
     <Compile Include="App_Start\Config.Routes.cs" />
     <Compile Include="App_Start\Config.Bundles.cs" />
+    <Compile Include="AuthenticationController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\DashboardControlsController.cs" />
-    <Compile Include="Models\DashboardControls\SideNavigationBarViewModel.cs" />
-    <Compile Include="Models\DashboardControls\TopNavigationBarViewModel.cs" />
-    <Compile Include="Models\DashboardControls\UserDropdownModel.cs" />
+    <Compile Include="DashboardControlsController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HomeController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Extenions.cs" />
+    <Compile Include="SharedController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T4MVC.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TextResourceController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\DashboardControls\SideNavigationBarViewModel.cs" />
+    <Compile Include="ViewModels\DashboardControls\TopNavigationBarViewModel.cs" />
+    <Compile Include="ViewModels\DashboardControls\UserDropdownModel.cs" />
     <Compile Include="Infrastructure\MappingConfiguration.cs" />
-    <Compile Include="Models\Account\UserProfileModel.cs" />
-    <Compile Include="Models\Clients\ClientModel.cs" />
-    <Compile Include="Models\Clients\ClientSearchModel.cs" />
-    <Compile Include="Models\Clients\ClientListViewModel.cs" />
-    <Compile Include="Controllers\ClientsController.cs" />
+    <Compile Include="ViewModels\Account\UserProfileModel.cs" />
+    <Compile Include="ViewModels\Client\ViewClientViewModel.cs" />
+    <Compile Include="ViewModels\Client\ClientSearchModel.cs" />
+    <Compile Include="ViewModels\Client\ClientListViewModel.cs" />
+    <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\TextResourceController.cs" />
     <Compile Include="Infrastructure\PopulateTextResourcesOnModelAttribute.cs" />
     <Compile Include="Infrastructure\RequiredRolesAttribute.cs" />
-    <Compile Include="Models\Account\RegisterViewModel.cs" />
-    <Compile Include="Models\Authentication\LoginViewModel.cs" />
-    <Compile Include="Models\Clients\SaveClientModel.cs" />
-    <Compile Include="Models\Brands\BrandSummaryListViewModel.cs" />
+    <Compile Include="ViewModels\Account\RegisterViewModel.cs" />
+    <Compile Include="ViewModels\Authentication\LoginViewModel.cs" />
+    <Compile Include="ViewModels\Client\UpdateClientViewModel.cs" />
+    <Compile Include="ViewModels\Brands\BrandSummaryListViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Models\Clients\CreateClientModel.cs" />
-    <Compile Include="Models\TextResources\TextResourcePageViewModel.cs" />
-    <Compile Include="Models\TextResources\TextResourceViewModel.cs" />
-    <Compile Include="Models\Users\UserViewModel.cs" />
+    <Compile Include="ViewModels\Client\CreateClientViewModel.cs" />
+    <Compile Include="ViewModels\TextResources\TextResourcePageViewModel.cs" />
+    <Compile Include="ViewModels\TextResources\TextResourceViewModel.cs" />
+    <Compile Include="ViewModels\User\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -257,8 +286,8 @@
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Clients\Create.cshtml" />
-    <Content Include="Views\Clients\View.cshtml" />
+    <Content Include="Views\Client\Create.cshtml" />
+    <Content Include="Views\Client\View.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -266,8 +295,8 @@
     <Content Include="Views\Authentication\Login.cshtml" />
     <Content Include="Views\Home\AdminTest.cshtml" />
     <Content Include="Scripts\jquery.validate.unobtrusive.bootstrap.min.js.map" />
-    <Content Include="Views\Clients\Index.cshtml" />
-    <Content Include="Views\Clients\List.cshtml" />
+    <Content Include="Views\Client\Index.cshtml" />
+    <Content Include="Views\Client\List.cshtml" />
     <Content Include="Views\TextResource\Create.cshtml" />
     <Content Include="Views\TextResource\Index.cshtml" />
     <Content Include="Views\TextResource\View.cshtml" />
@@ -294,6 +323,12 @@
     <Content Include="Views\Shared\DisplayTemplates\Collection.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Boolean.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\_Layout.cshtml" />
+    <Content Include="Views\Client\Update.cshtml" />
+    <None Include="T4MVC.tt.hooks.t4" />
+    <None Include="T4MVC.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>T4MVC.cs</LastGenOutput>
+    </None>
     <None Include="Web.Acceptance.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

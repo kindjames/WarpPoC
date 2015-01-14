@@ -1,11 +1,11 @@
 ﻿using System.Web.Mvc;
 using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Services.TextResourceService;
-using Warp.WebUI.Models.TextResources;
+using Warp.WebUI.ViewModels.TextResources;
 
 namespace Warp.WebUI.Controllers
 {
-    public class TextResourceController : Controller
+    public partial class TextResourceController : Controller
     {
         private readonly IObjectMapper _objectMapper;
         private readonly ITextResourceService _textResourceService;
@@ -16,7 +16,7 @@ namespace Warp.WebUI.Controllers
             _textResourceService = textResourceService;
         }
 
-        public ActionResult Index(TextResourcePageViewModel model)
+        public virtual ActionResult Index(TextResourcePageViewModel model)
         {
             return View(model);
         }

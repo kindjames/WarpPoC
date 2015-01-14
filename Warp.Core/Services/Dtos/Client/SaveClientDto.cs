@@ -4,9 +4,8 @@ using Warp.Core.Enum;
 
 namespace Warp.Core.Services.Dtos.Client
 {
-    public class SaveClientDto
+    public class SaveClientDto : DtoBase
     {
-        public int Id { get; set; }
         public int CustomerId { get; set; }
         public string Name { get; set; }
         public ClientStatus Status { get; set; }

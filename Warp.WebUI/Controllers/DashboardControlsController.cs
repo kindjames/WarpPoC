@@ -2,15 +2,15 @@
 using System.Security.Claims;
 using System.Web.Mvc;
 using Warp.Core.Authentication;
-using Warp.WebUI.Models.DashboardControls;
+using Warp.WebUI.ViewModels.DashboardControls;
 
 namespace Warp.WebUI.Controllers
 {
     [Authorize]
     [ChildActionOnly]
-    public class DashboardControlsController : Controller
+    public partial class DashboardControlsController : Controller
     {
-        public ActionResult TopNavigationBar()
+        public virtual ActionResult TopNavigationBar()
         {
             var model = new TopNavigationBarViewModel
             {
@@ -20,29 +20,29 @@ namespace Warp.WebUI.Controllers
             return PartialView(model);
         }
 
-        public ActionResult SideNavigationBar()
+        public virtual ActionResult SideNavigationBar()
         {
             var model = new SideNavigationBarViewModel();
 
             return PartialView(model);
         }
 
-        public ActionResult TasksDropdown()
+        public virtual ActionResult TasksDropdown()
         {
             return PartialView();
         }
 
-        public ActionResult NotificationsDropdown()
+        public virtual ActionResult NotificationsDropdown()
         {
             return PartialView();
         }
 
-        public ActionResult MessagesDropdown()
+        public virtual ActionResult MessagesDropdown()
         {
             return PartialView();
         }
 
-        public ActionResult UserDropdown()
+        public virtual ActionResult UserDropdown()
         {
             return PartialView(new UserDropdownModel
             {

@@ -36,8 +36,8 @@ namespace Warp.Data.Entities
 
         public DateTime DateLastPasswordChange { get; set; }
         public bool ForcePasswordChange { get; set; }
-        public int DefaultUserRoleId { get; set; }
-        public int DefaultLanguageId { get; set; }
+        public Guid DefaultUserRoleId { get; set; }
+        public Guid DefaultLanguageId { get; set; }
         public int? LegacyUserId { get; set; }
         public DateTime DateValidFrom { get; set; }
         public DateTime? DateValidTo { get; set; }

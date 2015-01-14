@@ -6,14 +6,14 @@ using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using Warp.Core.Authentication;
 using Warp.WebUI.Infrastructure;
-using Warp.WebUI.Models.Authentication;
+using Warp.WebUI.ViewModels.Authentication;
 
 namespace Warp.WebUI.Controllers
 {
     [Authorize]
     [PopulateTextResourcesOnModel]
     [RoutePrefix("authentication")]
-    public class AuthenticationController : Controller
+    public partial class AuthenticationController : Controller
     {
         private readonly IAuthenticationManager _authenticationManager;
         private readonly UserManager<ApplicationUser, int> _userManager;
@@ -27,7 +27,7 @@ namespace Warp.WebUI.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("log-off")]
-        public ActionResult LogOff()
+        public virtual ActionResult LogOff()
         {
             _authenticationManager.SignOut();
 
@@ -36,7 +36,7 @@ namespace Warp.WebUI.Controllers
 
         [AllowAnonymous]
         [Route("login")]
-        public ActionResult Login(string returnUrl)
+        public virtual ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
 
@@ -47,7 +47,7 @@ namespace Warp.WebUI.Controllers
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         [Route("login")]
-        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+        public virtual async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
             if (ModelState.IsValid)
             {

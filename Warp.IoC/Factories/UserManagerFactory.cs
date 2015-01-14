@@ -1,4 +1,5 @@
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Warp.Core.Authentication;
 using Warp.Core.Infrastructure.Configuration;
 using Warp.Core.Util;
@@ -24,6 +25,7 @@ namespace Warp.IoC.Factories
 
         public UserManager<ApplicationUser, int> Build()
         {
+            new UserManager<ApplicationUser>(new UserStore<ApplicationUser>())
             return new UserManager<ApplicationUser, int>(new ApplicationUserStore(_context, _dateTimeProvider, _applicationConfig))
             {
                 DefaultAccountLockoutTimeSpan = _applicationConfig.DefaultAccountLockoutTimeSpan,

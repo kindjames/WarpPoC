@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Warp.Core.Data;
 
@@ -7,16 +8,16 @@ namespace Warp.Data.Entities
     public class TextResource : EntityBase
     {
         [Key, Column(Order = 0)]
-        public new int Id { get; set; } // 'new' for defining composite-primary-key.
+        public new Guid Id { get; set; } // 'new' for defining composite-primary-key.
 
         [Key, Column(Order = 1)]
-        public int ClientId { get; set; }
+        public Guid ClientId { get; set; }
 
         [Key, Column(Order = 2)]
-        public int LanguageId { get; set; }
+        public Guid LanguageId { get; set; }
 
         [Key, Column(Order = 3)]
-        public int TextResourceIdentifierId { get; set; }
+        public Guid TextResourceIdentifierId { get; set; }
 
         [Required]
         public string ResourceString { get; set; }

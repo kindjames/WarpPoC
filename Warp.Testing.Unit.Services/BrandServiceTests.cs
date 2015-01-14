@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using Machine.Fakes;
 using Machine.Specifications;
+using Warp.Core.Exceptions.Data;
 using Warp.Core.Query;
 using Warp.Core.Services.Dtos.Brand;
 using Warp.Data.Entities;
-using Warp.Data.Exceptions;
 using Warp.Data.Queries.Brands;
 using Warp.Services;
 using MoqIt = Moq.It;

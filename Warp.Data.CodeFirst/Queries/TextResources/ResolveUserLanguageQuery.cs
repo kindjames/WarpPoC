@@ -1,17 +1,18 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Warp.Core.Infrastructure.Validation;
 using Warp.Core.Query;
 using Warp.Data.Context;
 
 namespace Warp.Data.Queries.TextResources
 {
-    public sealed class ResolveUserLanguageQuery : IQuery<int>
+    public sealed class ResolveUserLanguageQuery : IQuery<Guid>
     {
         [IdRequired]
-        public int UserId { get; set; }
+        public Guid UserId { get; set; }
     }
 
-    public sealed class ResolveUserLanguageQueryHandler : IQueryHandler<ResolveUserLanguageQuery, int>
+    public sealed class ResolveUserLanguageQueryHandler : IQueryHandler<ResolveUserLanguageQuery, Guid>
     {
         private readonly ITextResourceDbContext _context;
 
@@ -20,7 +21,7 @@ namespace Warp.Data.Queries.TextResources
             _context = context;
         }
 
-        public int Execute(ResolveUserLanguageQuery query)
+        public Guid Execute(ResolveUserLanguageQuery query)
         {
             return _context.Users
                 .Where(u => u.Id == query.UserId)

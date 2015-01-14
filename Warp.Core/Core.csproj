@@ -65,10 +65,13 @@
     <Compile Include="Command\ICommandDispatcher.cs" />
     <Compile Include="Command\ICommandHandler.cs" />
     <Compile Include="Data\EntityBase.cs" />
-    <Compile Include="Enum\BrandStatus.cs" />
-    <Compile Include="Enum\ClientStatus.cs" />
+    <Compile Include="Domain\Enum\BrandStatus.cs" />
+    <Compile Include="Domain\Enum\ClientStatus.cs" />
+    <Compile Include="Domain\ErrorCodes.cs" />
+    <Compile Include="Domain\IOperationResult.cs" />
     <Compile Include="Exceptions\ClientAlreadyExistsException.cs" />
     <Compile Include="Exceptions\CommandHandlerNotFoundException.cs" />
+    <Compile Include="Exceptions\Data\DataEntityNotFoundException.cs" />
     <Compile Include="Exceptions\QueryHandlerNotFoundException.cs" />
     <Compile Include="Exceptions\TextResources\NullViewModelResourceException.cs" />
     <Compile Include="Exceptions\TextResources\SetterNotFoundOnModelException.cs" />
@@ -81,13 +84,17 @@
     <Compile Include="Infrastructure\AutoMapper\AutoMapperExtensions.cs" />
     <Compile Include="Infrastructure\AutoMapper\IObjectMapper.cs" />
     <Compile Include="Infrastructure\AutoMapper\ObjectMapper.cs" />
+    <Compile Include="Infrastructure\Logging\ConsoleLoggingService.cs" />
+    <Compile Include="Infrastructure\Logging\ILoggingService.cs" />
     <Compile Include="Infrastructure\IoC\InjectDependencyAttribute.cs" />
     <Compile Include="Infrastructure\Models\ITextResourceModelProvider.cs" />
     <Compile Include="Infrastructure\Configuration\ApplicationConfig.cs" />
     <Compile Include="Infrastructure\Authentication\PasswordHasher.cs" />
     <Compile Include="Infrastructure\Configuration\IApplicationConfig.cs" />
     <Compile Include="Infrastructure\Models\TextResourceModelProvider.cs" />
+    <Compile Include="Operations\Core\OperationDispatcher.cs" />
     <Compile Include="Services\Dtos\Client\ClientDto.cs" />
+    <Compile Include="Services\Dtos\Client\DtoBase.cs" />
     <Compile Include="Services\Dtos\ContactAddressAssignedDto - Copy.cs" />
     <Compile Include="Services\Dtos\Users\UserDto.cs" />
     <Compile Include="Services\Dtos\Customer\CustomerDto.cs" />
@@ -124,7 +131,10 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Operations\Command\Clients\" />
+    <Folder Include="Operations\Query\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\AutoMapper.3.3.0\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.0\tools\AutoMapper.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

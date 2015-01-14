@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Warp.Core.Infrastructure.Validation;
 using Warp.Core.Query;
 using Warp.Data.Context;
@@ -8,7 +9,7 @@ namespace Warp.Data.Queries.TextResources
     public sealed class GetTextResourceCodeQuery : IQuery<string>
     {
         [IdRequired]
-        public int TextResourceCodeId { get; set; }
+        public Guid TextResourceCodeId { get; set; }
     }
 
     public sealed class GetTextResourceCodeQueryHandler : IQueryHandler<GetTextResourceCodeQuery, string>

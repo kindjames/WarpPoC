@@ -8,9 +8,11 @@ using SimpleInjector.Advanced;
 using SimpleInjector.Extensions;
 using SimpleInjector.Integration.Web.Mvc;
 using Warp.Core.Command;
+using Warp.Core.Infrastructure;
 using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Infrastructure.Configuration;
 using Warp.Core.Infrastructure.IoC;
+using Warp.Core.Infrastructure.Logging;
 using Warp.Core.Infrastructure.Models;
 using Warp.Core.Infrastructure.Validation;
 using Warp.Core.Query;
@@ -48,6 +50,7 @@ namespace Warp.IoC
             c.Register<IValidator, DataAnnotationsValidator>();
             c.Register<IApplicationConfig, ApplicationConfig>();
             c.Register<IObjectMapper, ObjectMapper>();
+            c.Register<ILoggingService, ConsoleLoggingService>();
 
             // Data
             var dataAssembly = typeof(IDomainDbContext).Assembly;

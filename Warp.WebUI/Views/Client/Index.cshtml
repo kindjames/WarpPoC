@@ -1,0 +1,27 @@
+﻿@model ClientSearchModel
+
+@using (Ajax.BeginForm("List", "Client", new AjaxOptions { HttpMethod="GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = "clientList", LoadingElementId = "clientListLoader" }))
+{
+    @Html.Html5TextBoxFor(m => m.ClientSearchQuery, InputTypes.InputType.Search)
+}
+
+<div id="clientList">
+    <img id="clientListLoader" src="@Url.Content("~/Content/SVG/Loaders/tail-spin.svg")" width="30" alt="" style="display: none"/>
+    @Html.Action("List", "Client")
+</div>
+<div>
+    @Html.ActionLink("Create", "Create")
+</div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/jquery-val")
+    @Scripts.Render("~/bundles/jquery-typewatch")
+    <script>
+        $('#@Html.IdFor(m => m.ClientSearchQuery)').typeWatch({
+            callback: function () { $(this).parent().submit() },
+            wait: 250,
+            highlight: true,
+            captureLength: 2
+        });
+    </script>
+}

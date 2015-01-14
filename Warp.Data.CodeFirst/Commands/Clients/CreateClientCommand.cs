@@ -3,12 +3,12 @@ using System.ComponentModel.DataAnnotations;
 using Warp.Core.Command;
 using Warp.Core.Enum;
 using Warp.Core.Exceptions;
+using Warp.Core.Exceptions.Data;
 using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Infrastructure.Validation;
 using Warp.Core.Query;
 using Warp.Data.Context;
 using Warp.Data.Entities;
-using Warp.Data.Exceptions;
 using Warp.Data.Queries.Clients;
 using Warp.Data.Queries.General;
 

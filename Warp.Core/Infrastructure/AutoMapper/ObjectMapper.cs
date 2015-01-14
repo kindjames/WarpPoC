@@ -21,9 +21,24 @@ namespace Warp.Core.Infrastructure.AutoMapper
             return _mappingEngine.Map<TFrom, TTo>(from, o => o.CreateMissingTypeMaps = createAnyMissingTypeMaps);
         }
 
+        public TTo Map<TFrom, TTo>(TFrom from, TTo to, bool createAnyMissingTypeMaps = true)
+        {
+            return _mappingEngine.Map(from, to, o => o.CreateMissingTypeMaps = createAnyMissingTypeMaps);
+        }
+
         public IEnumerable<TTo> MapMany<TFrom, TTo>(IEnumerable<TFrom> from, bool createAnyMissingTypeMaps = true)
         {
             return from.Select(f => Map<TFrom, TTo>(f, createAnyMissingTypeMaps));
+        }
+
+        public TTo MapTo<TTo>(object from, bool createAnyMissingTypeMaps = true)
+        {
+            return _mappingEngine.Map<TTo>(from, o => o.CreateMissingTypeMaps = createAnyMissingTypeMaps);
+        }
+
+        public IEnumerable<TTo> MapToMany<TTo>(IEnumerable<object> from, bool createAnyMissingTypeMaps = true)
+        {
+            return from.Select(f => MapTo<TTo>(f, createAnyMissingTypeMaps));
         }
     }
 }

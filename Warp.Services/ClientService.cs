@@ -1,15 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Warp.Core.Command;
+using Warp.Core.Exceptions.Data;
 using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Infrastructure.IoC;
+using Warp.Core.Operations;
 using Warp.Core.Query;
 using Warp.Core.Services;
 using Warp.Core.Services.Dtos.Client;
 using Warp.Core.Util;
 using Warp.Data.Commands.Clients;
 using Warp.Data.Entities;
-using Warp.Data.Exceptions;
+using Warp.Data.Operations.Command.Clients;
+using Warp.Data.Operations.Query;
 using Warp.Data.Queries.Clients;
 
 namespace Warp.Services
@@ -20,49 +24,43 @@ namespace Warp.Services
         private readonly IQueryDispatcher _queryDispatcher;
         private readonly IObjectMapper _objectMapper;
         private readonly IServiceLocator _serviceLocator;
+        private readonly IOperationFactory _operationFactory;
 
-        public ClientService(ICommandDispatcher commandDispatcher, IQueryDispatcher queryDispatcher, IObjectMapper objectMapper, IServiceLocator serviceLocator)
+        public ClientService(ICommandDispatcher commandDispatcher, IQueryDispatcher queryDispatcher, IObjectMapper objectMapper, IServiceLocator serviceLocator, IOperationFactory operationFactory)
         {
             _commandDispatcher = commandDispatcher;
             _queryDispatcher = queryDispatcher;
             _objectMapper = objectMapper;
             _serviceLocator = serviceLocator;
+            _operationFactory = operationFactory;
         }
 
-        public IResponse<ClientDto> GetClient(int clientId)
+        public IResponse<ClientDto> GetClient(Guid clientId)
         {
-            CheckArgument.NotZero(clientId, "clientId");
+            CheckArgument.NotEmptyGuid(clientId, "clientId");
 
-            var client = _queryDispatcher.Execute(new GetClientQuery {ClientId = clientId});
-
-            if (client == null)
+            var getClientResponse = _operationFactory
+                .Build<IGetEntityQuery<Client>, Client>()
+                .WithParameters(q => q.EntityId = Guid.NewGuid())
+                .ValidateAndExecute();
+            
+            if (getClientResponse.Result == null)
             {
                 throw new DataEntityNotFoundException<Client>(clientId);
             }
 
-            return _objectMapper.Map<Client, ClientDto>(client)
-                .ToSuccessfulResponse();
+            return getClientResponse.ToDtoResponse();
         }
 
         public IResponse SaveClient(SaveClientDto saveClientDto)
         {
             CheckArgument.NotNull(saveClientDto, "saveClientDto");
+
+            var result = _operationFactory
+                .Build<ISaveClientCommand>()
+                .FromValidDto(saveClientDto)
+                .ValidateAndExecute();
             
-            if (saveClientDto.Id == 0)
-            {
-                var command = _objectMapper.Map<SaveClientDto, CreateClientCommand>(saveClientDto);
-
-                _commandDispatcher.Execute(command);
-
-                saveClientDto.Id = command.Id;
-            }
-            else
-            {
-                var command = _objectMapper.Map<SaveClientDto, UpdateClientCommand>(saveClientDto);
-
-                _commandDispatcher.Execute(command);
-            }
-
             return new ServiceResponse();
         }
 
