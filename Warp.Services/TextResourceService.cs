@@ -26,19 +26,25 @@ namespace Warp.Services
 
         #region In Process
 
-        public string GetTextResource(int textResourceCodeId)
+        public string GetTextResource(Guid textResourceCodeId)
         {
-            CheckArgument.NotZero(textResourceCodeId, "textResourceCodeId");
+            CheckArgument.NotEmptyGuid(textResourceCodeId, "textResourceCodeId");
 
             return _queryDispatcher.Execute(new GetTextResourceQuery { TextResourceIdentifierId = textResourceCodeId });
         }
+
+        public string GetTextResourceFromCode(string textResourceCode)
+        {
+            return textResourceCode;
+        }
+
         #endregion In Process
 
         #region Next
 
-        public ResourceStringDto GetTextResourceString(int textResourceIdentifierId)
+        public ResourceStringDto GetTextResourceString(Guid textResourceIdentifierId)
         {
-            CheckArgument.NotZero(textResourceIdentifierId, "textResourceIdentifierId");
+            CheckArgument.NotEmptyGuid(textResourceIdentifierId, "textResourceIdentifierId");
 
             var textResourceString = _queryDispatcher.Execute(new GetTextResourceStringQuery { TextResourceIdentifierId = textResourceIdentifierId });
 
@@ -53,9 +59,9 @@ namespace Warp.Services
             };
         }
 
-        public ResourceCodeDto GetTextResourceCode(int textResourceCodeId)
+        public ResourceCodeDto GetTextResourceCode(Guid textResourceCodeId)
         {
-            CheckArgument.NotZero(textResourceCodeId, "textResourceCodeId");
+            CheckArgument.NotEmptyGuid(textResourceCodeId, "textResourceCodeId");
 
             string textResourceCode = _queryDispatcher.Execute(new GetTextResourceCodeQuery { TextResourceCodeId = textResourceCodeId });
 

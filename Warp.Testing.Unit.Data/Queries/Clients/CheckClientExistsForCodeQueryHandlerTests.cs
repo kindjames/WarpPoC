@@ -1,4 +1,5 @@
-﻿using FakeDbSet;
+﻿using System;
+using FakeDbSet;
 using Machine.Fakes;
 using Machine.Specifications;
 using Warp.Data.Context;
@@ -12,7 +13,7 @@ namespace Warp.Testing.Unit.Data.Queries.Clients
     {
         public class When_querying_for_a_client_that_exists : WithSubject<CheckClientExistsForCodeQueryHandler>
         {
-            const int CustomerId = 123;
+            static readonly Guid CustomerId = Guid.NewGuid();
             const string Code = "asd";
             static bool _result;
 
@@ -22,9 +23,9 @@ namespace Warp.Testing.Unit.Data.Queries.Clients
                     .WhenToldTo(d => d.Clients)
                     .Return(new InMemoryDbSet<Client>(true)
                     {
-                        new Client {Code = "qwe", Customer = new Customer{ Id = 111 }},
+                        new Client {Code = "qwe", Customer = new Customer{ Id = Guid.NewGuid() }},
                         new Client {Code = "asd", Customer = new Customer{ Id = CustomerId }},
-                        new Client {Code = "zxc", Customer = new Customer{ Id = 312 }}
+                        new Client {Code = "zxc", Customer = new Customer{ Id = Guid.NewGuid() }}
                     });
 
             Because of = () => _result = Subject.Execute(new CheckClientExistsForCodeQuery { CustomerId = CustomerId, ClientCode = Code });
@@ -35,7 +36,7 @@ namespace Warp.Testing.Unit.Data.Queries.Clients
 
         public class When_querying_for_a_client_that_does_not_exist : WithSubject<CheckClientExistsForCodeQueryHandler>
         {
-            const int CustomerId = 123;
+            static readonly Guid CustomerId = Guid.NewGuid();
             const string Code = "asd";
             static bool _result;
 
@@ -45,9 +46,9 @@ namespace Warp.Testing.Unit.Data.Queries.Clients
                     .WhenToldTo(d => d.Clients)
                     .Return(new InMemoryDbSet<Client>(true)
                     {
-                        new Client {Code = "qwe", Customer = new Customer{ Id = 111 }},
-                        new Client {Code = "asd", Customer = new Customer{ Id = 222 }},
-                        new Client {Code = "zxc", Customer = new Customer{ Id = 312 }}
+                        new Client {Code = "qwe", Customer = new Customer{ Id = Guid.NewGuid() }},
+                        new Client {Code = "asd", Customer = new Customer{ Id = Guid.NewGuid() }},
+                        new Client {Code = "zxc", Customer = new Customer{ Id = Guid.NewGuid() }}
                     });
 
             Because of = () => _result = Subject.Execute(new CheckClientExistsForCodeQuery { CustomerId = CustomerId, ClientCode = Code });

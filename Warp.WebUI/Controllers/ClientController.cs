@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using Warp.Core.Exceptions.Data;
 using Warp.Core.Infrastructure;
 using Warp.Core.Infrastructure.AutoMapper;
@@ -45,8 +46,8 @@ namespace Warp.WebUI.Controllers
         }
 
         [HttpGet]
-        [Route("{clientId:int}")]
-        public virtual ActionResult View(int clientId)
+        [Route("{clientId:guid}")]
+        public virtual ActionResult View(Guid clientId)
         {
             try
             {
@@ -100,8 +101,8 @@ namespace Warp.WebUI.Controllers
         }
 
         [HttpGet]
-        [Route("{clientId:int}/update")]
-        public virtual ActionResult Update(int clientId)
+        [Route("{clientId:guid}/update")]
+        public virtual ActionResult Update(Guid clientId)
         {
             try
             {
@@ -124,7 +125,7 @@ namespace Warp.WebUI.Controllers
         }
 
         [HttpPost]
-        [Route("{clientId:int}/update")]
+        [Route("{clientId:guid}/update")]
         public virtual ActionResult Update(UpdateClientViewModel model)
         {
             if (ModelState.IsValid)

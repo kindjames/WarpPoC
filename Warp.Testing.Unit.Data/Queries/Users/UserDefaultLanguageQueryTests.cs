@@ -1,4 +1,5 @@
-﻿using FakeDbSet;
+﻿using System;
+using FakeDbSet;
 using Machine.Fakes;
 using Machine.Specifications;
 using Warp.Data.Context;
@@ -39,24 +40,26 @@ namespace Warp.Testing.Unit.Data.Queries.Users
         {
             Establish that = () =>
             {
-                _query = new GetDefaultLanguageForUserQuery { UserId = 25264 };
+                _query = new GetDefaultLanguageForUserQuery { UserId = UserId };
 
                 The<ITextResourceDbContext>()
                     .WhenToldTo(d => d.Users)
                     .Return(new InMemoryDbSet<User>(true)
                     {
-                        new User { DefaultLanguageId = 1, Id = 5000},
-                        new User { DefaultLanguageId = 1, Id = 25264}
+                        new User { DefaultLanguageId = DefaultLanguageId, Id = UserId},
+                        new User { DefaultLanguageId = DefaultLanguageId, Id = Guid.NewGuid()}
                     });
             };
 
             Because of = () => _result = Subject.Execute(_query);
 
             It should_return_the_correct_language_id = () =>
-                _result.ShouldEqual(1);
+                _result.ShouldEqual(DefaultLanguageId);
 
-            static int _result;
+            static Guid _result;
             static GetDefaultLanguageForUserQuery _query;
+            static readonly Guid DefaultLanguageId = Guid.NewGuid();
+            static readonly Guid UserId = Guid.NewGuid();
         }
 
     //}

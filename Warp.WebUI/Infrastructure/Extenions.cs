@@ -10,20 +10,24 @@ namespace Warp.WebUI.Infrastructure
 {
     public static class WebExtensions
     {
-        public static int GetCustomerId(this IPrincipal principal)
+        public static Guid GetCustomerId(this IPrincipal principal)
         {
             CheckArgument.NotNull(principal, "principal");
             CheckArgument.NotNull(principal.Identity, "principal.Identity");
 
-            return principal.Identity.GetOrThrowClaimValueFor<int>(ApplicationClaimTypes.CustomerId);
+            var id = principal.Identity.GetOrThrowClaimValueFor<string>(ApplicationClaimTypes.CustomerId);
+
+            return Guid.Parse(id);
         }
 
-        public static int GetUserId(this IPrincipal principal)
+        public static Guid GetUserId(this IPrincipal principal)
         {
             CheckArgument.NotNull(principal, "principal");
             CheckArgument.NotNull(principal.Identity, "principal.Identity");
 
-            return principal.Identity.GetOrThrowClaimValueFor<int>(ClaimTypes.NameIdentifier);
+            var id = principal.Identity.GetOrThrowClaimValueFor<string>(ClaimTypes.NameIdentifier);
+
+            return Guid.Parse(id);
         }
 
         public static void AddErrorsFromResponse(this ModelStateDictionary modelState, IResponse response)

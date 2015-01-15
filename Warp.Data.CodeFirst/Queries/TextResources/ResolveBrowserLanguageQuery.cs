@@ -1,17 +1,18 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using Warp.Core.Query;
 using Warp.Data.Context;
 
 namespace Warp.Data.Queries.TextResources
 {
-    public sealed class ResolveBrowserLanguageQuery : IQuery<int>
+    public sealed class ResolveBrowserLanguageQuery : IQuery<Guid>
     {
         [Required]
         public string InvariantCulture { get; set; }
     }
 
-    public sealed class ResolveBrowserLanguageQueryHandler : IQueryHandler<ResolveBrowserLanguageQuery, int>
+    public sealed class ResolveBrowserLanguageQueryHandler : IQueryHandler<ResolveBrowserLanguageQuery, Guid>
     {
         private readonly ITextResourceDbContext _dbContext;
 
@@ -20,7 +21,7 @@ namespace Warp.Data.Queries.TextResources
             _dbContext = context;
         }
 
-        public int Execute(ResolveBrowserLanguageQuery query)
+        public Guid Execute(ResolveBrowserLanguageQuery query)
         {
             return _dbContext.Languages
                 .Where(lang => lang.InvariantCulture == query.InvariantCulture)

@@ -14,22 +14,22 @@ namespace Warp.WebUI.ViewModels.Authentication
 
         public bool RememberMe { get; set; }
 
-        [PopulateWith(1)]
+        [PopulateWith("UsernameLabelText")]
         public string UsernameLabelText { get; set; }
 
-        [PopulateWith(2)]
+        [PopulateWith("UsernamePlaceholderText")]
         public string UsernamePlaceholderText { get; set; }
 
-        [PopulateWith(3)]
+        [PopulateWith("PasswordLabelText")]
         public string PasswordLabelText { get; set; }
 
-        [PopulateWith(4)]
+        [PopulateWith("PasswordPlaceholderText")]
         public string PasswordPlaceholderText { get; set; }
 
-        [PopulateWith(5)]
+        [PopulateWith("RememberMeLabelText")]
         public string RememberMeLabelText { get; set; }
 
-        [PopulateWith(6)]
+        [PopulateWith("LoginButtonText")]
         public string LoginButtonText { get; set; }
     }
 }

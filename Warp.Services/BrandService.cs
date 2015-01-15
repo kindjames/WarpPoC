@@ -1,4 +1,5 @@
-﻿using Warp.Core.Exceptions.Data;
+﻿using System;
+using Warp.Core.Exceptions.Data;
 using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Query;
 using Warp.Core.Services;
@@ -21,7 +22,7 @@ namespace Warp.Services
             _objectMapper = objectMapper;
         }
 
-        public BrandSummaryListDto GetBrandSummaryListForClient(int clientId)
+        public BrandSummaryListDto GetBrandSummaryListForClient(Guid clientId)
         {
             var client = _queryDispatcher.Execute(new GetClientQuery {ClientId = clientId});
 

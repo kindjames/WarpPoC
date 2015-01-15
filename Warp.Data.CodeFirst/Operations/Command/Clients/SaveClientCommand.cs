@@ -1,16 +1,14 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using Warp.Core.Enum;
-using Warp.Core.Exceptions;
-using Warp.Core.Exceptions.Data;
 using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Infrastructure.Validation;
 using Warp.Core.Operations;
 using Warp.Core.Query;
 using Warp.Data.Context;
 using Warp.Data.Entities;
-using Warp.Data.Queries.Clients;
-using Warp.Data.Queries.General;
+using Warp.Data.Infrastructure;
+using Warp.Data.Operations.Query;
 
 namespace Warp.Data.Operations.Command.Clients
 {
@@ -60,6 +58,7 @@ namespace Warp.Data.Operations.Command.Clients
 
         public IOperationResult Execute()
         {
+
             // Check whether client already exists for customer id and client code.
             //var clientExistsQuery = new CheckClientExistsForCodeQuery { CustomerId = CustomerId, ClientCode = Code };
 
@@ -81,11 +80,13 @@ namespace Warp.Data.Operations.Command.Clients
             //}
 
             // All systems go!
-            var clientEntity = _objectMapper.MapTo<Client>(this);
+            var client = _objectMapper.MapTo<Client>(this);
 
-            _dbContext.Clients.Add(clientEntity);
+            _dbContext.Save(client);
 
             _dbContext.SaveChanges();
+
+            return new OperationResult();
         }
     }
 }

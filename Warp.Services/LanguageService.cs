@@ -1,4 +1,5 @@
-﻿using Warp.Core.Query;
+﻿using System;
+using Warp.Core.Query;
 using Warp.Core.Services.TextResourceService;
 using Warp.Core.Util;
 using Warp.Data.Queries.Languages;
@@ -14,19 +15,19 @@ namespace Warp.Services
             _queryDispatcher = queryDispatcher;
         }
 
-        public int GetBrowserLanguageIdForInvariantCulture(string invariantCulture)
+        public Guid GetBrowserLanguageIdForInvariantCulture(string invariantCulture)
         {
             CheckArgument.NotEmpty(invariantCulture, "invariantCulture");
 
             var languageId = _queryDispatcher.Execute(new GetLanguageIdByInvariantCultureQuery { InvariantCulture = invariantCulture });
             
-            if (languageId > 0)
+            if (languageId != Guid.Empty)
             {
                 return languageId;
             }
 
             // If the Browser language is not supported, degrade gracefully to English.
-            return 1;
+            return _queryDispatcher.Execute(new GetLanguageIdByInvariantCultureQuery { InvariantCulture = "en" });
         }
     }
 }

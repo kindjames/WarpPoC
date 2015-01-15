@@ -207,10 +207,10 @@ namespace Warp.WebUI.Controllers
         }
 
         [NonAction]
-        partial void ViewOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int clientId);
+        partial void ViewOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, System.Guid clientId);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult View(int clientId)
+        public override System.Web.Mvc.ActionResult View(System.Guid clientId)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.View);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "clientId", clientId);
@@ -242,10 +242,10 @@ namespace Warp.WebUI.Controllers
         }
 
         [NonAction]
-        partial void UpdateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int clientId);
+        partial void UpdateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, System.Guid clientId);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Update(int clientId)
+        public override System.Web.Mvc.ActionResult Update(System.Guid clientId)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Update);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "clientId", clientId);

@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Warp.Core.Infrastructure.Validation;
 using Warp.Core.Query;
@@ -8,7 +9,7 @@ namespace Warp.Data.Queries.Customers
     public class GetCustomerNameQuery : IQuery<string>
     {
         [IdRequired]
-        public int CustomerId { get; set; }
+        public Guid CustomerId { get; set; }
     }
 
     public class GetCustomerNameQueryHandler : IQueryHandler<GetCustomerNameQuery, string>

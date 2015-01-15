@@ -1,10 +1,11 @@
-﻿using Warp.Core.Infrastructure.Validation;
+﻿using System;
+using Warp.Core.Infrastructure.Validation;
 
 namespace Warp.WebUI.ViewModels.Client
 {
     public class UpdateClientViewModel : CreateClientViewModel
     {
         [IdRequired]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
     }
 }

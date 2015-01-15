@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using FakeDbSet;
 using Machine.Fakes;
@@ -14,7 +15,7 @@ namespace Warp.Testing.Unit.Data.Queries.Brands
     {
         public class When_querying_for_brands_by_client_id_and_one_exists_in_the_datastore : WithSubject<GetBrandsForClientQueryHandler>
         {
-            const int ClientId = 100;
+            static readonly Guid ClientId = Guid.NewGuid();
             static IEnumerable<Brand> _result;
 
             Establish that = () =>
@@ -24,8 +25,8 @@ namespace Warp.Testing.Unit.Data.Queries.Brands
                     .Return(new InMemoryDbSet<Brand>(true)
                     {
                         new Brand {Client = new Client {Id = ClientId}},
-                        new Brand {Client = new Client {Id = 123}},
-                        new Brand {Client = new Client {Id = 312}}
+                        new Brand {Client = new Client {Id = Guid.NewGuid()}},
+                        new Brand {Client = new Client {Id = Guid.NewGuid()}}
                     });
 
             Because of = () => _result = Subject.Execute(new GetBrandsForClientQuery { ClientId = ClientId });
@@ -39,7 +40,7 @@ namespace Warp.Testing.Unit.Data.Queries.Brands
 
         public class When_querying_for_brands_by_client_id_and_multiple_exist_in_the_datastore : WithSubject<GetBrandsForClientQueryHandler>
         {
-            const int ClientId = 100;
+            static readonly Guid ClientId = Guid.NewGuid();
             static IEnumerable<Brand> _result;
 
             Establish that = () =>
@@ -48,12 +49,12 @@ namespace Warp.Testing.Unit.Data.Queries.Brands
                     .WhenToldTo(d => d.Brands)
                     .Return(new InMemoryDbSet<Brand>(true)
                     {
-                        new Brand {Client = new Client {Id = 65}},
-                        new Brand {Client = new Client {Id = 34}},
+                        new Brand {Client = new Client {Id = Guid.NewGuid()}},
+                        new Brand {Client = new Client {Id = Guid.NewGuid()}},
                         new Brand {Client = new Client {Id = ClientId}},
                         new Brand {Client = new Client {Id = ClientId}},
-                        new Brand {Client = new Client {Id = 123}},
-                        new Brand {Client = new Client {Id = 312}},
+                        new Brand {Client = new Client {Id = Guid.NewGuid()}},
+                        new Brand {Client = new Client {Id = Guid.NewGuid()}},
                         new Brand {Client = new Client {Id = ClientId}},
                         new Brand {Client = new Client {Id = ClientId}}
                     });

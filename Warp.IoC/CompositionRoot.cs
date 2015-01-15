@@ -15,6 +15,7 @@ using Warp.Core.Infrastructure.IoC;
 using Warp.Core.Infrastructure.Logging;
 using Warp.Core.Infrastructure.Models;
 using Warp.Core.Infrastructure.Validation;
+using Warp.Core.Operations;
 using Warp.Core.Query;
 using Warp.Core.Util;
 using Warp.Data.Context;
@@ -56,6 +57,7 @@ namespace Warp.IoC
             var dataAssembly = typeof(IDomainDbContext).Assembly;
             c.Register<ICommandDispatcher, CommandDispatcher>();
             c.Register<IQueryDispatcher, QueryDispatcher>();
+            c.Register<IOperationFactory, OperationFactory>();
             c.RegisterManyForOpenGeneric(typeof(ICommandHandler<>), dataAssembly);
             c.RegisterManyForOpenGeneric(typeof(IQueryHandler<,>), dataAssembly);
             c.RegisterAllImplementationsInAssemblyWithNameEnding("DbContext", dataAssembly);

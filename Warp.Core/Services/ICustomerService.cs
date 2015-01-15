@@ -1,9 +1,10 @@
-﻿using Warp.Core.Services.Dtos.Customer;
+﻿using System;
+using Warp.Core.Services.Dtos.Customer;
 
 namespace Warp.Core.Services
 {
     public interface ICustomerService
     {
-        CustomerDto GetCustomerForUser(int userId);
+        CustomerDto GetCustomerForUser(Guid userId);
     }
 }

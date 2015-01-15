@@ -18,19 +18,19 @@ namespace Warp.WebUI.ViewModels.Client
         //[Required]
         //public UserViewModel AccountManagerId { get; set; }
 
-        [PopulateWith(1)]
+        [PopulateWith("NameLabelText")]
         public string NameLabelText { get; set; }
 
-        [PopulateWith(1)]
+        [PopulateWith("CodeLabelText")]
         public string CodeLabelText { get; set; }
 
-        [PopulateWith(1)]
+        [PopulateWith("StatusLabelText")]
         public string StatusLabelText { get; set; }
 
-        [PopulateWith(1)]
+        [PopulateWith("AccountManagerLabelText")]
         public string AccountManagerLabelText { get; set; }
 
-        [PopulateWith(1)]
+        [PopulateWith("SaveButtonText")]
         public string SaveButtonText { get; set; }
     }
 }

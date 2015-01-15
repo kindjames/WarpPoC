@@ -41,14 +41,14 @@ namespace Warp.Core.Infrastructure.Models
                         Attribute.GetCustomAttribute(propertyType, typeof (PopulateWithAttribute));
 
                     // Get textResource id from attribute.
-                    var textResourceId = textResourceAttribute.TextResourceId;
+                    var textResourceIdentifierCode = textResourceAttribute.TextResourceIdentifierCode;
 
                     // Get textResource from service.
-                    var textResource = _textResourceService.GetTextResource(textResourceId);
+                    var textResource = _textResourceService.GetTextResourceFromCode(textResourceIdentifierCode);
 
                     if (String.IsNullOrEmpty(textResource))
                     {
-                        throw new TextResourceNotFoundException(textResourceId);
+                        throw new TextResourceNotFoundException(textResourceIdentifierCode);
                     }
 
                     // Set property with translated text.

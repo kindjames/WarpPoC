@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Warp.Core.Infrastructure.Validation;
@@ -10,7 +11,7 @@ namespace Warp.Data.Queries.Brands
     public class GetBrandsForClientQuery : IQuery<IEnumerable<Brand>>
     {
         [IdRequired]
-        public int ClientId { get; set; }
+        public Guid ClientId { get; set; }
     }
 
     public class GetBrandsForClientQueryHandler : IQueryHandler<GetBrandsForClientQuery, IEnumerable<Brand>>

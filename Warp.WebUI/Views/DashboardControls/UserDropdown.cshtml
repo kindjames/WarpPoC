@@ -23,10 +23,12 @@
         <li class="divider"></li>
 
         <li>
-            <a data-ajax="true" data-ajax-method="POST" href="@Url.Action("LogOff", "Authentication")">
+            @using (Html.Bootstrap().Begin(new Form("LogOff", "Authentication")))
+            {
+                @Html.AntiForgeryToken()
                 <i class="fa fa-off"></i>
-                Logout
-            </a>
+                @Html.Bootstrap().SubmitButton().Text("Log out").Class("btn btn-link")
+            }
         </li>
     </ul>
 </li>

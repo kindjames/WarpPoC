@@ -1,8 +1,9 @@
-﻿
+﻿using System;
+
 namespace Warp.Core.Command
 {
     public interface ICommand
     {
-        int Id { get; }
+        Guid Id { get; }
     }
 }

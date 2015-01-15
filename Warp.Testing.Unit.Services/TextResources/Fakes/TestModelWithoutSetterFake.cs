@@ -6,7 +6,7 @@ namespace Warp.Testing.Unit.Services.TextResources.Fakes
     {
         private const string _resourceToBeTranslated = "";
 
-        [PopulateWith(182)]
+        [PopulateWith("Error.Message")]
         public string ResourceToBeTranslated
         {
             get { return _resourceToBeTranslated; }

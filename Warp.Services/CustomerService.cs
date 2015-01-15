@@ -1,4 +1,5 @@
-﻿using Warp.Core.Infrastructure.AutoMapper;
+﻿using System;
+using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Query;
 using Warp.Core.Services;
 using Warp.Core.Services.Dtos.Customer;
@@ -19,9 +20,9 @@ namespace Warp.Services
             _objectMapper = objectMapper;
         }
 
-        public CustomerDto GetCustomerForUser(int userId)
+        public CustomerDto GetCustomerForUser(Guid userId)
         {
-            CheckArgument.NotZero(userId, "userId");
+            CheckArgument.NotEmptyGuid(userId, "userId");
 
             var customer = _queryDispatcher.Execute(new GetCustomerForUserQuery {UserId = userId});
 

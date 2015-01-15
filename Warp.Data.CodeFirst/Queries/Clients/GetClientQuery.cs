@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Warp.Core.Infrastructure.Validation;
 using Warp.Core.Query;
@@ -9,7 +10,7 @@ namespace Warp.Data.Queries.Clients
     public class GetClientQuery : IQuery<Client>
     {
         [IdRequired]
-        public int ClientId { get; set; }
+        public Guid ClientId { get; set; }
     }
 
     public class GetClientQueryHandler : IQueryHandler<GetClientQuery, Client>

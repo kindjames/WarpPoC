@@ -13,7 +13,7 @@ namespace Warp.Data.Queries.Clients
         public string Query { get; set; }
         
         [IdRequired]
-        public int CustomerId { get; set; }
+        public Guid CustomerId { get; set; }
     }
 
     public sealed class GetClientsQueryHandler : IQueryHandler<GetClientsQuery, IEnumerable<Client>>

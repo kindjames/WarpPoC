@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Warp.Core.Data;
 using Warp.Core.Infrastructure.Validation;
@@ -10,7 +11,7 @@ namespace Warp.Data.Queries.General
         where TEntity : EntityBase
     {
         [IdRequired]
-        public int EntityId { get; set; }
+        public Guid EntityId { get; set; }
     }
 
     public class CheckEntityExistsQueryHandler<TEntity> : IQueryHandler<CheckEntityExistsQuery<TEntity>, bool>

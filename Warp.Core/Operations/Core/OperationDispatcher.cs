@@ -7,6 +7,11 @@ using Warp.Core.Services.Dtos.Client;
 
 namespace Warp.Core.Operations
 {
+    public interface IOperationDispatcher
+    {
+        //IOperationResult From
+    }
+
     public interface ICommand
     {
         IOperationResult Execute();

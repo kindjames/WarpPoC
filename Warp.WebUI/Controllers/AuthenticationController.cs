@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -16,9 +17,9 @@ namespace Warp.WebUI.Controllers
     public partial class AuthenticationController : Controller
     {
         private readonly IAuthenticationManager _authenticationManager;
-        private readonly UserManager<ApplicationUser, int> _userManager;
+        private readonly UserManager<ApplicationUser, Guid> _userManager;
 
-        public AuthenticationController(UserManager<ApplicationUser, int> userManager, IAuthenticationManager authenticationManager)
+        public AuthenticationController(UserManager<ApplicationUser, Guid> userManager, IAuthenticationManager authenticationManager)
         {
             _userManager = userManager;
             _authenticationManager = authenticationManager;
@@ -61,7 +62,7 @@ namespace Warp.WebUI.Controllers
                     
                     identity.AddClaim(new Claim(ClaimTypes.Email, user.Email));
                     identity.AddClaim(new Claim(ClaimTypes.GivenName, user.FirstName + " " + user.LastName));
-                    identity.AddClaim(new Claim(ApplicationClaimTypes.CustomerId, user.CustomerId.ToString(CultureInfo.InvariantCulture)));
+                    identity.AddClaim(new Claim(ApplicationClaimTypes.CustomerId, user.CustomerId.ToString()));
                     identity.AddClaim(new Claim(ApplicationClaimTypes.RememberMe, model.RememberMe.ToString()));
 
                     _authenticationManager.SignIn(new AuthenticationProperties { IsPersistent = model.RememberMe }, identity);

@@ -20,7 +20,7 @@ namespace Warp.Data.Commands.Clients
         public string Name { get; set; }
 
         [IdRequired]
-        public int CustomerId { get; set; }
+        public Guid CustomerId { get; set; }
 
         [Required]
         public string Code { get; set; }
@@ -29,9 +29,9 @@ namespace Warp.Data.Commands.Clients
         public ClientStatus Status { get; set; }
 
         [IdRequired]
-        public int AccountManagerId { get; set; }
+        public Guid AccountManagerId { get; set; }
 
-        public int LegacyClientId { get; set; }
+        public Guid LegacyClientId { get; set; }
     }
 
     public class CreateClientCommandHandler : ICommandHandler<CreateClientCommand>

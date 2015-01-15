@@ -11,15 +11,15 @@ namespace Warp.Data.Migrations
                 "dbo.Brands",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
+                        Id = c.Guid(nullable: false),
                         Name = c.String(nullable: false),
                         Visible = c.Boolean(nullable: false),
                         Status = c.Int(nullable: false),
                         DateUpdated = c.DateTime(nullable: false),
                         DateCreated = c.DateTime(nullable: false),
                         Active = c.Boolean(nullable: false),
-                        Client_Id = c.Int(nullable: false),
-                        IndustrySector_Id = c.Int(nullable: false),
+                        Client_Id = c.Guid(nullable: false),
+                        IndustrySector_Id = c.Guid(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Clients", t => t.Client_Id, cascadeDelete: true)
@@ -31,13 +31,13 @@ namespace Warp.Data.Migrations
                 "dbo.Clients",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
+                        Id = c.Guid(nullable: false),
                         Name = c.String(nullable: false),
                         Code = c.String(nullable: false),
                         DateValidFrom = c.DateTime(),
                         Status = c.Int(nullable: false),
-                        AccountManagerId = c.Int(nullable: false),
-                        CustomerId = c.Int(nullable: false),
+                        AccountManagerId = c.Guid(nullable: false),
+                        CustomerId = c.Guid(nullable: false),
                         DateUpdated = c.DateTime(nullable: false),
                         DateCreated = c.DateTime(nullable: false),
                         Active = c.Boolean(nullable: false),
@@ -52,7 +52,7 @@ namespace Warp.Data.Migrations
                 "Client.Users",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
+                        Id = c.Guid(nullable: false),
                         Forename = c.String(nullable: false, maxLength: 100),
                         Surname = c.String(nullable: false, maxLength: 100),
                         PasswordHash = c.String(nullable: false),
@@ -61,8 +61,8 @@ namespace Warp.Data.Migrations
                         PasswordAnswer = c.String(nullable: false, maxLength: 255),
                         DateLastPasswordChange = c.DateTime(nullable: false),
                         ForcePasswordChange = c.Boolean(nullable: false),
-                        DefaultUserRoleId = c.Int(nullable: false),
-                        DefaultLanguageId = c.Int(nullable: false),
+                        DefaultUserRoleId = c.Guid(nullable: false),
+                        DefaultLanguageId = c.Guid(nullable: false),
                         LegacyUserId = c.Int(),
                         DateValidFrom = c.DateTime(nullable: false),
                         DateValidTo = c.DateTime(),
@@ -76,7 +76,7 @@ namespace Warp.Data.Migrations
                         DateUpdated = c.DateTime(nullable: false),
                         DateCreated = c.DateTime(nullable: false),
                         Active = c.Boolean(nullable: false),
-                        Customer_Id = c.Int(),
+                        Customer_Id = c.Guid(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Customers", t => t.Customer_Id)
@@ -87,12 +87,12 @@ namespace Warp.Data.Migrations
                 "dbo.Customers",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
+                        Id = c.Guid(nullable: false),
                         Name = c.String(nullable: false),
                         UrlName = c.String(nullable: false),
                         DisplayName = c.String(nullable: false),
                         CustomerCode = c.String(nullable: false),
-                        DefaultLanguageId = c.Int(nullable: false),
+                        DefaultLanguageId = c.Guid(nullable: false),
                         DateUpdated = c.DateTime(nullable: false),
                         DateCreated = c.DateTime(nullable: false),
                         Active = c.Boolean(nullable: false),
@@ -103,7 +103,7 @@ namespace Warp.Data.Migrations
                 "Client.RoleGroups",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
+                        Id = c.Guid(nullable: false),
                         Name = c.String(nullable: false),
                         Description = c.String(nullable: false),
                         DateUpdated = c.DateTime(nullable: false),
@@ -116,13 +116,13 @@ namespace Warp.Data.Migrations
                 "Client.Roles",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
+                        Id = c.Guid(nullable: false),
                         Name = c.String(nullable: false),
                         Description = c.String(nullable: false),
                         DateUpdated = c.DateTime(nullable: false),
                         DateCreated = c.DateTime(nullable: false),
                         Active = c.Boolean(nullable: false),
-                        RoleGroup_Id = c.Int(nullable: false),
+                        RoleGroup_Id = c.Guid(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("Client.RoleGroups", t => t.RoleGroup_Id, cascadeDelete: true)
@@ -132,7 +132,7 @@ namespace Warp.Data.Migrations
                 "dbo.IndustrySectors",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
+                        Id = c.Guid(nullable: false),
                         SectorName = c.String(nullable: false),
                         SectorNameForAssessor = c.String(nullable: false),
                         DateUpdated = c.DateTime(nullable: false),
@@ -145,7 +145,7 @@ namespace Warp.Data.Migrations
                 "dbo.Languages",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
+                        Id = c.Guid(nullable: false),
                         InvariantCulture = c.String(nullable: false),
                         Locale = c.String(nullable: false),
                         Name = c.String(nullable: false),
@@ -159,7 +159,7 @@ namespace Warp.Data.Migrations
                 "dbo.TextResourceIdentifiers",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
+                        Id = c.Guid(nullable: false),
                         TextResourceCode = c.String(nullable: false),
                         ClientOverridable = c.Boolean(nullable: false),
                         DateUpdated = c.DateTime(nullable: false),
@@ -172,10 +172,10 @@ namespace Warp.Data.Migrations
                 "dbo.TextResources",
                 c => new
                     {
-                        Id = c.Int(nullable: false),
-                        ClientId = c.Int(nullable: false),
-                        LanguageId = c.Int(nullable: false),
-                        TextResourceIdentifierId = c.Int(nullable: false),
+                        Id = c.Guid(nullable: false),
+                        ClientId = c.Guid(nullable: false),
+                        LanguageId = c.Guid(nullable: false),
+                        TextResourceIdentifierId = c.Guid(nullable: false),
                         ResourceString = c.String(nullable: false),
                         DateUpdated = c.DateTime(nullable: false),
                         DateCreated = c.DateTime(nullable: false),
@@ -193,8 +193,8 @@ namespace Warp.Data.Migrations
                 "dbo.RoleGroupUsers",
                 c => new
                     {
-                        RoleGroup_Id = c.Int(nullable: false),
-                        User_Id = c.Int(nullable: false),
+                        RoleGroup_Id = c.Guid(nullable: false),
+                        User_Id = c.Guid(nullable: false),
                     })
                 .PrimaryKey(t => new { t.RoleGroup_Id, t.User_Id })
                 .ForeignKey("Client.RoleGroups", t => t.RoleGroup_Id, cascadeDelete: true)

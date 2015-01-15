@@ -1,4 +1,5 @@
-﻿using FakeDbSet;
+﻿using System;
+using FakeDbSet;
 using Machine.Fakes;
 using Machine.Specifications;
 using Warp.Data.Context;
@@ -23,7 +24,7 @@ namespace Warp.Testing.Unit.Data.Queries.TextResources
         public class GetTextResource_That_Exists: WithSubject<GetTextResourceQueryHandler>
         {
             static string _result;
-            const int _textResourceCodeId = 12;
+            static readonly Guid _textResourceCodeId = Guid.NewGuid();
  
             Establish _that = () =>
             {
@@ -34,9 +35,9 @@ namespace Warp.Testing.Unit.Data.Queries.TextResources
                     {
                         new TextResource
                         {
-                            Id = 1,
-                            Language = new Language { Id = 1 },
-                            TextResourceIdentifier = new TextResourceIdentifier { Id = 12},
+                            Id = Guid.NewGuid(),
+                            Language = new Language { Id = Guid.NewGuid() },
+                            TextResourceIdentifier = new TextResourceIdentifier { Id = _textResourceCodeId},
                             ResourceString = "Welcome!"
                         }
                     });

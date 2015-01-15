@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using Warp.Core.Infrastructure.Validation;
@@ -12,7 +13,7 @@ namespace Warp.Data.Queries.Clients
         public string ClientCode { get; set; }
 
         [IdRequired]
-        public int CustomerId { get; set; }
+        public Guid CustomerId { get; set; }
     }
 
     public class CheckClientExistsForCodeQueryHandler : IQueryHandler<CheckClientExistsForCodeQuery, bool>

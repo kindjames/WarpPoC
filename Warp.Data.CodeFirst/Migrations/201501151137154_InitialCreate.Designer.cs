@@ -13,7 +13,7 @@ namespace Warp.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201412291427079_InitialCreate"; }
+            get { return "201501151137154_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

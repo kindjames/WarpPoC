@@ -1,4 +1,5 @@
-﻿using FakeDbSet;
+﻿using System;
+using FakeDbSet;
 using Machine.Fakes;
 using Machine.Specifications;
 using Warp.Data.Context;
@@ -12,19 +13,21 @@ namespace Warp.Testing.Unit.Data.Queries.Clients
     {
         public class When_querying_for_client : WithSubject<GetClientQueryHandler>
         {
-            const int ClientId = 100;
+            static Guid ClientId = Guid.NewGuid();
             static Client _result;
 
-            Establish that = () =>
+            private Establish that = () =>
+            {
                 // Mock the Clients DbSet.
                 The<IDomainDbContext>()
                     .WhenToldTo(d => d.Clients)
                     .Return(new InMemoryDbSet<Client>(true)
                     {
                         new Client {Id = ClientId},
-                        new Client {Id = 123},
-                        new Client {Id = 312}
+                        new Client {Id = Guid.NewGuid()},
+                        new Client {Id = Guid.NewGuid()}
                     });
+            };
 
             Because of = () => _result = Subject.Execute(new GetClientQuery { ClientId = ClientId });
 
