@@ -15,7 +15,7 @@ namespace Warp.Testing.Unit.Services.TextResources.Fakes
         //public int PasswordResourceToBeTranslated { get; set; }
 
 
-        [PopulateWith(182)]
+        [PopulateWith("")]
         public string RememberMeResourceToBeTranslated { get; set; }
 
         //[PopulateWith(179)]

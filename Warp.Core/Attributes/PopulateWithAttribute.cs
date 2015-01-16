@@ -1,4 +1,5 @@
 ﻿using System;
+using Warp.Core.Util;
 
 namespace Warp.Core.Attributes
 {
@@ -7,11 +8,12 @@ namespace Warp.Core.Attributes
     /// </summary>
     public class PopulateWithAttribute : Attribute
     {
-        public PopulateWithAttribute(int textResourceId)
+        public PopulateWithAttribute(string textResourceIdentifierCode)
         {
-            TextResourceId = textResourceId;
+            CheckArgument.NotEmpty(textResourceIdentifierCode, "textResourceIdentifierCode");
+            TextResourceIdentifierCode = textResourceIdentifierCode;
         }
 
-        public int TextResourceId { get; private set; }
+        public string TextResourceIdentifierCode { get; private set; }
     }
 }

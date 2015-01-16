@@ -1,7 +1,7 @@
 ﻿using SpecsFor.Mvc;
 using SpecsFor.Mvc.Authentication;
 using Warp.WebUI.Controllers;
-using Warp.WebUI.Models.Authentication;
+using Warp.WebUI.ViewModels.Authentication;
 
 namespace Warp.Testing.Acceptance
 {

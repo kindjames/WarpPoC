@@ -1,7 +1,7 @@
 ﻿using System;
 using Machine.Fakes;
 using Machine.Specifications;
-using Warp.Core.Query;
+using Warp.Core.Cqrs;
 using Warp.Core.Services.Dtos.TextResources;
 using Warp.Data.Queries.TextResources;
 using Warp.Services;
@@ -18,7 +18,7 @@ namespace Warp.Testing.Unit.Services.TextResources
         {
             static Exception _exception;
 
-            Because of = () => _exception = Catch.Exception(() => Subject.GetTextResource(0));
+            Because of = () => _exception = Catch.Exception(() => Subject.GetTextResource(Guid.Empty));
 
             ThenIt should_throw_an_exception = () =>
             {
@@ -31,7 +31,7 @@ namespace Warp.Testing.Unit.Services.TextResources
         {
             static Exception _exception;
 
-            Because of = () => _exception = Catch.Exception(() => Subject.GetTextResource(0));
+            Because of = () => _exception = Catch.Exception(() => Subject.GetTextResource(Guid.Empty));
 
             It should_throw_an_exception = () =>
             {
@@ -42,7 +42,7 @@ namespace Warp.Testing.Unit.Services.TextResources
 
         public class When_Calling_GetTextResource_For_An_Existing_TextResource : WithSubject<TextResourceService>
         {
-            private const int _textResourceIdentifierId = 1;
+            static readonly Guid _textResourceIdentifierId = Guid.NewGuid();
             static string _result;
 
             Establish _context = () =>
@@ -53,7 +53,7 @@ namespace Warp.Testing.Unit.Services.TextResources
 
             It should_return_a_string = () =>
             {
-                The<IQueryDispatcher>()
+                The<IDispatcher>()
                     .WasToldTo(d => d.Execute(Param.IsAny<GetTextResourceQuery>()));
             };
         }
@@ -65,9 +65,9 @@ namespace Warp.Testing.Unit.Services.TextResources
         public class When_Calling_GetTextResourceString_With_Invalid_Id : WithSubject<TextResourceService>
         {
             static Exception _exception;
-            static int _textResourceIdentifierId = 0;
+            static readonly Guid TextResourceIdentifierId = Guid.Empty;
 
-            private Because of = () => _exception = Catch.Exception(() => Subject.GetTextResourceString(_textResourceIdentifierId));
+            private Because of = () => _exception = Catch.Exception(() => Subject.GetTextResourceString(TextResourceIdentifierId));
 
             private It should_throw_an_exception = () => {
                 _exception.ShouldNotBeNull();
@@ -77,9 +77,9 @@ namespace Warp.Testing.Unit.Services.TextResources
 
         public class When_calling_GetTextResourceString_For_A_Nonexistent_TextResource : WithSubject<TextResourceService>
         {
-            static int _textResourceIdentifierId = 0;
+            static readonly Guid TextResourceIdentifierId = Guid.Empty;
 
-                        private Because _of = () => _exception = Catch.Exception(() => Subject.GetTextResourceString(_textResourceIdentifierId));
+                        private Because _of = () => _exception = Catch.Exception(() => Subject.GetTextResourceString(TextResourceIdentifierId));
 
             private It should_throw_an_exception = () =>
             {
@@ -92,21 +92,20 @@ namespace Warp.Testing.Unit.Services.TextResources
 
         public class When_Calling_GetTextResourceString_Return_A_ResourceStringDto : WithSubject<TextResourceService>
         {
-            private const int _textResourceIdentifierId = 1;
             static ResourceStringDto _result;
 
             Establish _context = () =>
             {
-                The<IQueryDispatcher>()
+                The<IDispatcher>()
                     .WhenToldTo(d => d.Execute(Param.IsAny<GetTextResourceStringQuery>()))
                     .Return("BEEP");
             };
 
-            Because of = () => _result = Subject.GetTextResourceString(_textResourceIdentifierId);
+            Because of = () => _result = Subject.GetTextResourceString(Guid.NewGuid());
 
             It should_return_a_dto = () =>
             {
-                The<IQueryDispatcher>()
+                The<IDispatcher>()
                     .WasToldTo(d => d.Execute(Param.IsAny<GetTextResourceStringQuery>()));
 
                 _result.TextResourceString.ShouldEqual("BEEP");
@@ -115,18 +114,17 @@ namespace Warp.Testing.Unit.Services.TextResources
 
         public class When_Calling_GetTextResourceString_Return_Null : WithSubject<TextResourceService>
         {
-            private const int _textResourceIdentifierId = 1;
             static ResourceStringDto _result;
 
             Establish _context = () =>
             {
             };
 
-            Because of = () => _result = Subject.GetTextResourceString(_textResourceIdentifierId);
+            Because of = () => _result = Subject.GetTextResourceString(Guid.NewGuid());
 
             It should_return_null = () =>
             {
-                The<IQueryDispatcher>()
+                The<IDispatcher>()
                     .WasToldTo(d => d.Execute(Param.IsAny<GetTextResourceStringQuery>()));
 
                 _result.ShouldBeNull();

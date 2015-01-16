@@ -1,15 +1,16 @@
-﻿using System.Linq;
-using Warp.Core.Query;
+﻿using System;
+using System.Linq;
+using Warp.Core.Cqrs;
 using Warp.Data.Context;
 
 namespace Warp.Data.Queries.Languages
 {
-    public sealed class GetLanguageIdByInvariantCultureQuery : IQuery<int>
+    public sealed class GetLanguageIdByInvariantCultureQuery : IQuery<Guid>
     {
         public string InvariantCulture { get; set; }
     }
 
-    public sealed class GetLanguageIdByInvariantCultureQueryHandler : IQueryHandler<GetLanguageIdByInvariantCultureQuery, int>
+    public sealed class GetLanguageIdByInvariantCultureQueryHandler : IQueryHandler<GetLanguageIdByInvariantCultureQuery, Guid>
     {
         private readonly ITextResourceDbContext _dbContext;
 
@@ -18,7 +19,7 @@ namespace Warp.Data.Queries.Languages
             _dbContext = dbContext;
         }
 
-        public int Execute(GetLanguageIdByInvariantCultureQuery query)
+        public Guid Handle(GetLanguageIdByInvariantCultureQuery query)
         {
             return _dbContext.Languages
                 .Where(l => l.InvariantCulture == query.InvariantCulture)

@@ -9,9 +9,11 @@ namespace Warp.Core.Infrastructure.Validation
 
         public override bool IsValid(object value)
         {
-            var id = Convert.ToInt32(value);
+            Guid id;
 
-            if (id < 1)
+            var isGuid = Guid.TryParse(value.ToString(), out id);
+
+            if (!isGuid || id == Guid.Empty)
             {
                 _message = "{0} must be set.";
                 return false;

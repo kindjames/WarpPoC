@@ -154,10 +154,21 @@ namespace Warp.Data.Migrations.DataSeed
             //};
 
 
+            var languages = new[]
+            {
+                new Language {Id = Guid.NewGuid(), InvariantCulture = "en", Locale = "GB", Name = "English"},
+                new Language {InvariantCulture = "fr", Locale = "FR", Name = "French"},
+                new Language {InvariantCulture = "nl", Locale = "NL", Name = "Dutch"},
+                new Language {InvariantCulture = "de", Locale = "DE", Name = "German"},
+                new Language {InvariantCulture = "oo", Locale = "AR", Name = "Pirate"}
+            };
+
+            context.Languages.AddOrUpdate(languages);
+
             var customers = new[]
             {
-                new Customer {Name = "Test CustomerId", UrlName = "http://www.mysterydining.com", DisplayName = "Test", CustomerCode = "TEST", DefaultLanguageId = 1 },
-                new Customer {Name = "HospitalityGEM", UrlName = "http://www.hospitalitygem.com", DisplayName = "hGEM", CustomerCode = "hGEM", DefaultLanguageId = 1 }
+                new Customer {Name = "Test CustomerId", UrlName = "http://www.mysterydining.com", DisplayName = "Test", CustomerCode = "TEST", DefaultLanguageId = languages[0].Id },
+                new Customer {Name = "HospitalityGEM", UrlName = "http://www.hospitalitygem.com", DisplayName = "hGEM", CustomerCode = "hGEM", DefaultLanguageId = languages[0].Id }
             };
 
             context.Customers.AddOrUpdate(customers);
@@ -166,7 +177,6 @@ namespace Warp.Data.Migrations.DataSeed
             {
                 new User
                 {
-                    Id = 1,
                     Forename = "Test",
                     Surname = "User",
                     PasswordHash = x.HashPassword("test1"),
@@ -189,7 +199,6 @@ namespace Warp.Data.Migrations.DataSeed
                 },
                 new User
                 {
-                    Id = 2,
                     Forename = "Test",
                     Surname = "User 2",
                     PasswordHash = x.HashPassword("test2"),
@@ -212,7 +221,6 @@ namespace Warp.Data.Migrations.DataSeed
                 },
                 new User
                 {
-                    Id = 3,
                     Forename = "Test",
                     Surname = "User 3",
                     PasswordHash = x.HashPassword("test3"),
@@ -266,17 +274,6 @@ namespace Warp.Data.Migrations.DataSeed
             };
 
             context.Clients.AddOrUpdate(clients);
-
-            var languages = new[]
-            {
-                new Language {Id = 1, InvariantCulture = "en", Locale = "GB", Name = "English"},
-                new Language {Id = 2, InvariantCulture = "fr", Locale = "FR", Name = "French"},
-                new Language {Id = 3, InvariantCulture = "nl", Locale = "NL", Name = "Dutch"},
-                new Language {Id = 4, InvariantCulture = "de", Locale = "DE", Name = "German"},
-                new Language {Id = 5, InvariantCulture = "oo", Locale = "AR", Name = "Pirate"}
-            };
-
-            context.Languages.AddOrUpdate(languages);
 
             var textResourceIdentifiers = new[]
             {

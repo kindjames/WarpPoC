@@ -1,6 +1,6 @@
 ﻿using System;
 using Warp.Core.Infrastructure.AutoMapper;
-using Warp.Core.Query;
+using Warp.Core.Cqrs;
 using Warp.Core.Services.Dtos.TextResources;
 using Warp.Core.Services.TextResourceService;
 using Warp.Core.Services.UserService;
@@ -13,34 +13,40 @@ namespace Warp.Services
     {
         private readonly ILanguageService _languageService;
         private readonly IUserService _userService;
-        private readonly IQueryDispatcher _queryDispatcher;
+        private readonly IDispatcher _dispatcher;
         private readonly IObjectMapper _objectMapper;
 
-        public TextResourceService(ILanguageService languageService, IUserService userService, IQueryDispatcher queryDispatcher, IObjectMapper objectMapper)
+        public TextResourceService(ILanguageService languageService, IUserService userService, IDispatcher dispatcher, IObjectMapper objectMapper)
         {
             _languageService = languageService;
             _userService = userService;
-            _queryDispatcher = queryDispatcher;
+            _dispatcher = dispatcher;
             _objectMapper = objectMapper;
         }
 
         #region In Process
 
-        public string GetTextResource(int textResourceCodeId)
+        public string GetTextResource(Guid textResourceCodeId)
         {
-            CheckArgument.NotZero(textResourceCodeId, "textResourceCodeId");
+            CheckArgument.NotEmptyGuid(textResourceCodeId, "textResourceCodeId");
 
-            return _queryDispatcher.Execute(new GetTextResourceQuery { TextResourceIdentifierId = textResourceCodeId });
+            return _dispatcher.Execute(new GetTextResourceQuery { TextResourceIdentifierId = textResourceCodeId });
         }
+
+        public string GetTextResourceFromCode(string textResourceCode)
+        {
+            return textResourceCode;
+        }
+
         #endregion In Process
 
         #region Next
 
-        public ResourceStringDto GetTextResourceString(int textResourceIdentifierId)
+        public ResourceStringDto GetTextResourceString(Guid textResourceIdentifierId)
         {
-            CheckArgument.NotZero(textResourceIdentifierId, "textResourceIdentifierId");
+            CheckArgument.NotEmptyGuid(textResourceIdentifierId, "textResourceIdentifierId");
 
-            var textResourceString = _queryDispatcher.Execute(new GetTextResourceStringQuery { TextResourceIdentifierId = textResourceIdentifierId });
+            var textResourceString = _dispatcher.Execute(new GetTextResourceStringQuery { TextResourceIdentifierId = textResourceIdentifierId });
 
             if (String.IsNullOrWhiteSpace(textResourceString))
             {
@@ -53,11 +59,11 @@ namespace Warp.Services
             };
         }
 
-        public ResourceCodeDto GetTextResourceCode(int textResourceCodeId)
+        public ResourceCodeDto GetTextResourceCode(Guid textResourceCodeId)
         {
-            CheckArgument.NotZero(textResourceCodeId, "textResourceCodeId");
+            CheckArgument.NotEmptyGuid(textResourceCodeId, "textResourceCodeId");
 
-            string textResourceCode = _queryDispatcher.Execute(new GetTextResourceCodeQuery { TextResourceCodeId = textResourceCodeId });
+            string textResourceCode = _dispatcher.Execute(new GetTextResourceCodeQuery { TextResourceCodeId = textResourceCodeId });
 
             CheckArgument.NotEmpty(textResourceCode, "textResourceCode");
 
@@ -72,13 +78,13 @@ namespace Warp.Services
             //    CheckArgument.NotNull(saveTextResourceDto, "saveTextResourceDto");
 
 
-            //var stringExists = _queryDispatcher.Execute(DuplicateResourceStringExistsQuery);
+            //var stringExists = _dispatcher.Execute(DuplicateResourceStringExistsQuery);
 
 
             //var codeExists = ValidateResourceCode(new TextResourceCodeDto { TextResourceCode = model.TextResourceCode });
 
             // Inverted check. If both true then neither phrases exist in the database so safe to save and commit new TextResource
-            //if (!(_queryDispatcher.Execute(textResourceStringQuery)) && !(_queryDispatcher.Execute(textResourceCodeQuery)))
+            //if (!(_dispatcher.Execute(textResourceStringQuery)) && !(_dispatcher.Execute(textResourceCodeQuery)))
             //{
 
             //}
@@ -92,7 +98,7 @@ namespace Warp.Services
 
         public bool ValidateResourceString(ResourceStringDto dto)
         {
-            return true; //_queryDispatcher.Execute(DuplicateResourceStringExistsQuery(dto));
+            return true; //_dispatcher.Execute(DuplicateResourceStringExistsQuery(dto));
         }
 
         public bool ValidateResourceCode(ResourceCodeDto dto)

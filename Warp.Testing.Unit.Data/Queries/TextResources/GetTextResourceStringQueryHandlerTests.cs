@@ -1,4 +1,5 @@
-﻿using FakeDbSet;
+﻿using System;
+using FakeDbSet;
 using Machine.Fakes;
 using Machine.Specifications;
 using Warp.Data.Context;
@@ -13,7 +14,7 @@ namespace Warp.Testing.Unit.Data.Queries.TextResources
         public class GetTextResourceString_That_Exists : WithSubject<GetTextResourceStringQueryHandler>
         {
             static string _result = "Text Resource Test String!";
-            const int _textResourceId = 10;
+            static readonly Guid _textResourceId = Guid.NewGuid();
 
             Establish _that = () =>
             {
@@ -23,16 +24,16 @@ namespace Warp.Testing.Unit.Data.Queries.TextResources
                     {
                         new TextResource
                         {
-                            Id = 1,
+                            Id = Guid.NewGuid(),
                             TextResourceIdentifier = new TextResourceIdentifier { Id = _textResourceId},
                             ResourceString = "Text Resource Test String.",
-                            Language = new Language { Id = 1 }
+                            Language = new Language { Id = Guid.NewGuid() }
                         }
                     });
 
             };
 
-            Because _of = () => _result = Subject.Execute(new GetTextResourceStringQuery { TextResourceIdentifierId = 10 });
+            Because _of = () => _result = Subject.Handle(new GetTextResourceStringQuery { TextResourceIdentifierId = _textResourceId });
 
             It _should = () =>
             {
@@ -44,7 +45,7 @@ namespace Warp.Testing.Unit.Data.Queries.TextResources
         public class GetTextResourceString_That_Does_Not_Exists : WithSubject<GetTextResourceStringQueryHandler>
         {
             static string _result = "Text Resource Test String!";
-            static int _textResourceId = 0;
+            static readonly Guid _textResourceId = Guid.NewGuid();
 
             Establish _that = () =>
             {
@@ -54,14 +55,14 @@ namespace Warp.Testing.Unit.Data.Queries.TextResources
                     {
                         new TextResource
                         {
-                            Id = 999,
+                            Id = Guid.NewGuid(),
                             TextResourceIdentifier = new TextResourceIdentifier { Id = _textResourceId}
                         }
                     });
 
             };
 
-            Because _of = () => _result = Subject.Execute(new GetTextResourceStringQuery { TextResourceIdentifierId = _textResourceId });
+            Because _of = () => _result = Subject.Handle(new GetTextResourceStringQuery { TextResourceIdentifierId = _textResourceId });
 
             It _should = () => _result.ShouldBeNull();
         }

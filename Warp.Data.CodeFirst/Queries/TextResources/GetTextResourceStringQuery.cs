@@ -1,6 +1,7 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using Warp.Core.Cqrs;
 using Warp.Core.Infrastructure.Validation;
-using Warp.Core.Query;
 using Warp.Data.Context;
 
 namespace Warp.Data.Queries.TextResources
@@ -8,7 +9,7 @@ namespace Warp.Data.Queries.TextResources
     public sealed class GetTextResourceStringQuery : IQuery<string>
     {
         [IdRequired]
-        public int TextResourceIdentifierId { get; set; }
+        public Guid TextResourceIdentifierId { get; set; }
     }
 
     public sealed class GetTextResourceStringQueryHandler : IQueryHandler<GetTextResourceStringQuery, string>
@@ -20,7 +21,7 @@ namespace Warp.Data.Queries.TextResources
             _context = context;
         }
 
-        public string Execute(GetTextResourceStringQuery query)
+        public string Handle(GetTextResourceStringQuery query)
         {
             return _context.TextResources
                 .Where(trs => trs.TextResourceIdentifier.Id == query.TextResourceIdentifierId)

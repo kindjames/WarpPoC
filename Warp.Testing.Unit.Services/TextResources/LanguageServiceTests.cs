@@ -1,4 +1,5 @@
-﻿using Machine.Fakes;
+﻿using System;
+using Machine.Fakes;
 using Machine.Specifications;
 using Warp.Core.Services.TextResourceService;
 using Warp.Services;
@@ -8,6 +9,7 @@ namespace Warp.Testing.Unit.Services.TextResources
     [Subject("Language Service -  Logon")]
     public static class LanguageServiceTests
     {
+        [Ignore("JK -> PG - this doesn't test the LanguageService (the subject), as it's mocking an interface of the LanguageService, and isn't mocking the queries it uses under the covers.")]
         public class When_No_User_Is_Logged_On_Return_LanguageId_For_Invariant_Culture : WithSubject<LanguageService>
         {
             Establish context = () =>
@@ -20,10 +22,9 @@ namespace Warp.Testing.Unit.Services.TextResources
 
             It should = () => _result.ShouldEqual(BrowserLanguageId);
 
-            static int _result;
+            static Guid _result;
             private const string InvariantCulture = "en";
-            private const int BrowserLanguageId = 1;
-            // GetBrowserLanguageIdForInvariantCulture(string invariantCulture)
+            readonly static Guid BrowserLanguageId = Guid.NewGuid();
         }
     }
 }

@@ -13,7 +13,7 @@ using Warp.Data.Entities;
 
 namespace Warp.Data.Identity
 {
-    public class ApplicationUserStore : IUserStore<ApplicationUser, int>, IUserPasswordStore<ApplicationUser, int>, IUserRoleStore<ApplicationUser, int>, IUserSecurityStampStore<ApplicationUser, int>, IUserEmailStore<ApplicationUser, int>
+    public class ApplicationUserStore : IUserStore<ApplicationUser, Guid>, IUserPasswordStore<ApplicationUser, Guid>, IUserRoleStore<ApplicationUser, Guid>, IUserSecurityStampStore<ApplicationUser, Guid>, IUserEmailStore<ApplicationUser, Guid>
     //, IUserLockoutStore<ApplicationUser, int>
     {
         private IAuthenticationDbContext _dbContext;
@@ -84,7 +84,7 @@ namespace Warp.Data.Identity
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task<ApplicationUser> FindByIdAsync(int userId)
+        public async Task<ApplicationUser> FindByIdAsync(Guid userId)
         {
             ThrowIfDisposed();
 
@@ -97,9 +97,9 @@ namespace Warp.Data.Identity
         {
             ThrowIfDisposed();
 
-            var userId = 0;
+            Guid userId;
 
-            if (Int32.TryParse(userName, out userId))
+            if (Guid.TryParse(userName, out userId))
             {
                 var user = await GetUserInternal(userId);
 
@@ -167,7 +167,7 @@ namespace Warp.Data.Identity
             };
         }
 
-        protected async Task<User> GetUserInternal(int userId)
+        protected async Task<User> GetUserInternal(Guid userId)
         {
             var user = await _dbContext.Users
                 .SingleOrDefaultAsync(u => u.Id == userId);

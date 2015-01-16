@@ -13,7 +13,7 @@ namespace Warp.Testing.Unit.Data.Queries.Customers
     {
         public class When_querying_for_customer_and_customer_does_not_exist : WithSubject<GetCustomerQueryHandler>
         {
-            const int CustomerId = 100;
+            static readonly Guid CustomerId = Guid.NewGuid();
             static Customer _result;
 
             Establish that = () =>
@@ -21,10 +21,10 @@ namespace Warp.Testing.Unit.Data.Queries.Customers
                     .WhenToldTo(d => d.Customers)
                     .Return(new InMemoryDbSet<Customer>(true)
                     {
-                        new Customer {Id = 123}
+                        new Customer {Id = Guid.NewGuid()}
                     });
 
-            Because of = () => _result = Subject.Execute(new GetCustomerQuery { CustomerId = CustomerId });
+            Because of = () => _result = Subject.Handle(new GetCustomerQuery { CustomerId = CustomerId });
 
             It should_return_a_null_Customer = () =>
                 _result.ShouldBeNull();
@@ -32,7 +32,7 @@ namespace Warp.Testing.Unit.Data.Queries.Customers
 
         public class When_querying_for_customer_that_exists : WithSubject<GetCustomerQueryHandler>
         {
-            const int CustomerId = 100;
+            static readonly Guid CustomerId = Guid.NewGuid();
             static Customer _result;
             static string _customerName;
 
@@ -48,7 +48,7 @@ namespace Warp.Testing.Unit.Data.Queries.Customers
                     });
             };
 
-            Because of = () => _result = Subject.Execute(new GetCustomerQuery { CustomerId = CustomerId });
+            Because of = () => _result = Subject.Handle(new GetCustomerQuery { CustomerId = CustomerId });
 
             It should_return_the_customer = () =>
             {

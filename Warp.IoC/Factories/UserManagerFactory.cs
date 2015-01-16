@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNet.Identity;
 using Warp.Core.Authentication;
 using Warp.Core.Infrastructure.Configuration;
@@ -22,9 +23,9 @@ namespace Warp.IoC.Factories
             _applicationConfig = applicationConfig;
         }
 
-        public UserManager<ApplicationUser, int> Build()
+        public UserManager<ApplicationUser, Guid> Build()
         {
-            return new UserManager<ApplicationUser, int>(new ApplicationUserStore(_context, _dateTimeProvider, _applicationConfig))
+            return new UserManager<ApplicationUser, Guid>(new ApplicationUserStore(_context, _dateTimeProvider, _applicationConfig))
             {
                 DefaultAccountLockoutTimeSpan = _applicationConfig.DefaultAccountLockoutTimeSpan,
                 MaxFailedAccessAttemptsBeforeLockout = _applicationConfig.MaxFailedAccessAttemptsBeforeLockout,

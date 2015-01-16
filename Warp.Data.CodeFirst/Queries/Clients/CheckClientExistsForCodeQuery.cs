@@ -1,7 +1,8 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using Warp.Core.Cqrs;
 using Warp.Core.Infrastructure.Validation;
-using Warp.Core.Query;
 using Warp.Data.Context;
 
 namespace Warp.Data.Queries.Clients
@@ -12,7 +13,7 @@ namespace Warp.Data.Queries.Clients
         public string ClientCode { get; set; }
 
         [IdRequired]
-        public int CustomerId { get; set; }
+        public Guid CustomerId { get; set; }
     }
 
     public class CheckClientExistsForCodeQueryHandler : IQueryHandler<CheckClientExistsForCodeQuery, bool>
@@ -23,8 +24,8 @@ namespace Warp.Data.Queries.Clients
         {
             _dbContext = dbContext;
         }
-
-        public bool Execute(CheckClientExistsForCodeQuery query)
+        
+        public bool Handle(CheckClientExistsForCodeQuery query)
         {
             return _dbContext.Clients
                 .Any(c => c.Customer.Id == query.CustomerId && c.Code == query.ClientCode);

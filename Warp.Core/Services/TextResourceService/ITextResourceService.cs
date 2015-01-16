@@ -1,13 +1,14 @@
-﻿
+﻿using System;
 using Warp.Core.Services.Dtos.TextResources;
 
 namespace Warp.Core.Services.TextResourceService
 {
     public interface ITextResourceService
     {
-        string GetTextResource(int textResourceCodeId);
-        ResourceStringDto GetTextResourceString(int textResourceCodeId);
-        ResourceCodeDto GetTextResourceCode(int textResourceCodeId);
+        string GetTextResource(Guid textResourceCodeId);
+        string GetTextResourceFromCode(string textResourceCode);
+        ResourceStringDto GetTextResourceString(Guid textResourceCodeId);
+        ResourceCodeDto GetTextResourceCode(Guid textResourceCodeId);
 
         bool ValidateResourceString(ResourceStringDto dto);
         bool ValidateResourceCode(ResourceCodeDto dto);

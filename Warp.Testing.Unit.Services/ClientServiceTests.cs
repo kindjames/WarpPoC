@@ -2,12 +2,12 @@
 using AutoMapper;
 using Machine.Fakes;
 using Machine.Specifications;
+using Warp.Core.Exceptions.Data;
 using Warp.Core.Infrastructure.AutoMapper;
-using Warp.Core.Query;
+using Warp.Core.Cqrs;
 using Warp.Core.Services;
 using Warp.Core.Services.Dtos.Client;
 using Warp.Data.Entities;
-using Warp.Data.Exceptions;
 using Warp.Data.Queries.Clients;
 using Warp.Services;
 using IObjectMapper = Warp.Core.Infrastructure.AutoMapper.IObjectMapper;
@@ -70,7 +70,7 @@ namespace Warp.Testing.Unit.Services
 
         public class When_calling__GetClient__for_an_invalid_id : WithSubject<ClientService>
         {
-            Because of = () => _exception = Catch.Exception(() => Subject.GetClient(0));
+            Because of = () => _exception = Catch.Exception(() => Subject.GetClient(Guid.Empty));
 
             ThenIt should_throw_an_exception = () =>
             {
@@ -85,9 +85,9 @@ namespace Warp.Testing.Unit.Services
         {
             Establish context = () =>
             {
-                _clientId = new Random().Next();
+                _clientId = Guid.NewGuid();
 
-                The<IQueryDispatcher>()
+                The<IDispatcher>()
                     .WhenToldTo(d => d.Execute(Param.IsAny<GetClientQuery>()))
                     .Return((Client)null);
             };
@@ -101,7 +101,7 @@ namespace Warp.Testing.Unit.Services
                 _exception.ShouldContainErrorMessage(_clientId.ToString());
             };
 
-            static int _clientId;
+            static Guid _clientId;
             static Exception _exception;
         }
 
@@ -109,12 +109,12 @@ namespace Warp.Testing.Unit.Services
         {
             Establish context = () =>
             {
-                _clientId = new Random().Next();
+                _clientId = Guid.NewGuid();
 
                 Configure(r => r.For<IObjectMapper>().Use<ObjectMapper>());
                 Configure(Mapper.Engine);
 
-                The<IQueryDispatcher>()
+                The<IDispatcher>()
                     .WhenToldTo(d => d.Execute(Param.IsAny<GetClientQuery>()))
                     .Return(new Client { Id = _clientId });
             };
@@ -124,7 +124,7 @@ namespace Warp.Testing.Unit.Services
             ThenIt should_return_the_dto = () =>
                 _response.Result.Id.ShouldEqual(_clientId);
 
-            static int _clientId;
+            static Guid _clientId;
             static IResponse<ClientDto> _response;
         }
     }

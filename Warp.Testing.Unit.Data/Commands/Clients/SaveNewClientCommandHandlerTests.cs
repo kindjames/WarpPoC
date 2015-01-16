@@ -5,7 +5,7 @@
 //using Machine.Specifications;
 //using Warp.Core.Exceptions;
 //using Warp.Core.Infrastructure.AutoMapper;
-//using Warp.Core.Query;
+//using Warp.Core.Cqrs;
 //using Warp.Data.Commands.Clients;
 //using Warp.Data.Context;
 //using Warp.Data.Entities;

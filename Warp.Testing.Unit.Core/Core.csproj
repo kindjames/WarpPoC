@@ -68,9 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CheckArgumentTests.cs" />
-    <Compile Include="CommandDispatcherTests.cs" />
     <Compile Include="DataAnnotationsValidatorTests.cs" />
-    <Compile Include="QueryDispatcherTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

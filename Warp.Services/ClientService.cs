@@ -1,83 +1,70 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using Warp.Core.Command;
+﻿using System;
+using System.Collections.Generic;
+using Warp.Core.Exceptions.Data;
 using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Infrastructure.IoC;
-using Warp.Core.Query;
+using Warp.Core.Cqrs;
+using Warp.Core.Infrastructure.Validation;
 using Warp.Core.Services;
 using Warp.Core.Services.Dtos.Client;
 using Warp.Core.Util;
 using Warp.Data.Commands.Clients;
 using Warp.Data.Entities;
-using Warp.Data.Exceptions;
 using Warp.Data.Queries.Clients;
+using Warp.Data.Queries.General;
 
 namespace Warp.Services
 {
     public sealed class ClientService : IClientService
     {
-        private readonly ICommandDispatcher _commandDispatcher;
-        private readonly IQueryDispatcher _queryDispatcher;
+        private readonly IDispatcher _dispatcher;
         private readonly IObjectMapper _objectMapper;
-        private readonly IServiceLocator _serviceLocator;
+        private readonly IValidator _validator;
 
-        public ClientService(ICommandDispatcher commandDispatcher, IQueryDispatcher queryDispatcher, IObjectMapper objectMapper, IServiceLocator serviceLocator)
+        public ClientService(IDispatcher dispatcher, IObjectMapper objectMapper, IValidator validator)
         {
-            _commandDispatcher = commandDispatcher;
-            _queryDispatcher = queryDispatcher;
+            _dispatcher = dispatcher;
             _objectMapper = objectMapper;
-            _serviceLocator = serviceLocator;
+            _validator = validator;
         }
 
-        public IResponse<ClientDto> GetClient(int clientId)
+        public IResponse<ClientDto> GetClient(Guid clientId)
         {
-            CheckArgument.NotZero(clientId, "clientId");
+            CheckArgument.NotEmptyGuid(clientId, "clientId");
 
-            var client = _queryDispatcher.Execute(new GetClientQuery {ClientId = clientId});
+            var client = _dispatcher.Execute(new GetEntityQuery<Client> {EntityId = clientId});
 
-            if (client == null)
-            {
-                throw new DataEntityNotFoundException<Client>(clientId);
-            }
+            var clientDto = _objectMapper.MapTo<ClientDto>(client);
 
-            return _objectMapper.Map<Client, ClientDto>(client)
-                .ToSuccessfulResponse();
+            return new ServiceResponse<ClientDto>(clientDto);
         }
 
         public IResponse SaveClient(SaveClientDto saveClientDto)
         {
             CheckArgument.NotNull(saveClientDto, "saveClientDto");
             
-            if (saveClientDto.Id == 0)
-            {
-                var command = _objectMapper.Map<SaveClientDto, CreateClientCommand>(saveClientDto);
+            _validator.Validate(saveClientDto);
 
-                _commandDispatcher.Execute(command);
+            var command = _objectMapper.MapTo<SaveClientCommand>(saveClientDto);
 
-                saveClientDto.Id = command.Id;
-            }
-            else
-            {
-                var command = _objectMapper.Map<SaveClientDto, UpdateClientCommand>(saveClientDto);
-
-                _commandDispatcher.Execute(command);
-            }
-
+            _dispatcher.Execute(command);
+            
             return new ServiceResponse();
         }
 
-        public IResponse<IEnumerable<ClientDto>> GetClients(string clientNameQuery, int customerId)
+        public IResponse<IEnumerable<ClientDto>> GetClients(string clientNameQuery, Guid customerId)
         {
-            CheckArgument.NotZero(customerId, "customerId");
+            CheckArgument.NotEmptyGuid(customerId, "customerId");
             
-            var clients = _queryDispatcher.Execute(new GetClientsQuery
+            var clients = _dispatcher.Execute(new GetClientsQuery
             {
                 Query = clientNameQuery,
                 CustomerId = customerId
             });
 
-            return _objectMapper.MapMany<Client, ClientDto>(clients)
-                .ToSuccessfulResponse();
+            var clientsDto = _objectMapper.MapMany<Client, ClientDto>(clients);
+
+            return new ServiceResponse<IEnumerable<ClientDto>>(clientsDto);
         }
     }
 }

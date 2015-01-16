@@ -1,5 +1,6 @@
-﻿using Warp.Core.Infrastructure.AutoMapper;
-using Warp.Core.Query;
+﻿using System;
+using Warp.Core.Infrastructure.AutoMapper;
+using Warp.Core.Cqrs;
 using Warp.Core.Services;
 using Warp.Core.Services.Dtos.Customer;
 using Warp.Core.Util;
@@ -10,20 +11,20 @@ namespace Warp.Services
 {
     public sealed class CustomerService : ICustomerService
     {
-        private readonly IQueryDispatcher _queryDispatcher;
+        private readonly IDispatcher _dispatcher;
         private readonly IObjectMapper _objectMapper;
 
-        public CustomerService(IQueryDispatcher queryDispatcher, IObjectMapper objectMapper)
+        public CustomerService(IDispatcher dispatcher, IObjectMapper objectMapper)
         {
-            _queryDispatcher = queryDispatcher;
+            _dispatcher = dispatcher;
             _objectMapper = objectMapper;
         }
 
-        public CustomerDto GetCustomerForUser(int userId)
+        public CustomerDto GetCustomerForUser(Guid userId)
         {
-            CheckArgument.NotZero(userId, "userId");
+            CheckArgument.NotEmptyGuid(userId, "userId");
 
-            var customer = _queryDispatcher.Execute(new GetCustomerForUserQuery {UserId = userId});
+            var customer = _dispatcher.Execute(new GetCustomerForUserQuery {UserId = userId});
 
             return _objectMapper.Map<Customer, CustomerDto>(customer);
         }

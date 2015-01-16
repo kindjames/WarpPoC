@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using Warp.Core.Query;
+using Warp.Core.Cqrs;
 using Warp.Data.Context;
 
 namespace Warp.Data.Queries.TextResources
@@ -20,7 +20,7 @@ namespace Warp.Data.Queries.TextResources
             _dbContext = dbContext;
         }
 
-        public bool Execute(DuplicateResourceCodeExistsQuery query)
+        public bool Handle(DuplicateResourceCodeExistsQuery query)
         {
             return _dbContext.TextResourceCodes
                 .Any(trc => trc.TextResourceCode == query.ResourceCode);

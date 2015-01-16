@@ -71,6 +71,20 @@ namespace Warp.Core.Util
         }
 
         /// <summary>
+        /// Checks that the parameter has some text.
+        /// </summary>
+        [DebuggerHidden]
+        public static Guid NotEmptyGuid(Guid value, string parameterName)
+        {
+            if (value == Guid.Empty)
+            {
+                throw new ArgumentException("Parameter '" + parameterName + "' - Guid is not set.");
+            }
+
+            return value;
+        }
+
+        /// <summary>
         /// Checks that the parameter is not zero - useful for checking an Id has been specified.
         /// </summary>
         [DebuggerHidden]

@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using SimpleInjector;
-using Warp.Core.Command;
 using Warp.Core.Data;
-using Warp.Core.Query;
+using Warp.Core.Cqrs;
 
 namespace Warp.IoC
 {
