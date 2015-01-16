@@ -85,7 +85,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\BrandsTestDataFactory.cs" />
-    <Compile Include="Data\MSpecBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Commands\Clients\SaveNewClientCommandHandlerTests.cs" />
     <Compile Include="Commands\TextResources\SaveTextResourceCommandHandlersUnitTests.cs" />
@@ -102,6 +101,7 @@
     <Compile Include="Queries\TextResources\SaveTextResourceQueryHandlerUnitTests.cs" />
     <Compile Include="Queries\TextResources\GetTextResourceQueryHandlerUnitTests.cs" />
     <Compile Include="Queries\TextResources\GetTextResourceStringQueryHandlerUnitTests.cs" />
+    <Compile Include="Queries\TextResources\ValidateResourceQueryHandlerTests.cs" />
     <Compile Include="Queries\Users\UserDefaultLanguageQueryTests.cs" />
     <Compile Include="Queries\Brands\GetBrandsForClientQueryHandlerTests.cs" />
     <Compile Include="Util\EnumerableExtensions.cs" />
