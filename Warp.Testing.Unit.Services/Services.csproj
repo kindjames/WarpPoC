@@ -85,6 +85,7 @@
     <Compile Include="TextResources\Fakes\TestModelFake.cs" />
     <Compile Include="TextResources\Fakes\TestModelWithoutSetterFake.cs" />
     <Compile Include="TextResources\LanguageServiceUnitTests.cs" />
+    <Compile Include="TextResources\TextResourceServiceTestBase.cs" />
     <Compile Include="TextResources\TextResourceModelProviderUnitTests.cs" />
     <Compile Include="TextResources\TextResourceServiceUnitTests.cs" />
     <Compile Include="Users\UserServiceUnitTests.cs" />
