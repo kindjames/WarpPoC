@@ -21,19 +21,37 @@ namespace Warp.WebUI.Controllers
             return View(model);
         }
 
-        //[HttpPost, Route("create")]
-        //public ActionResult Create(TextResourceViewModel model)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var dto = _mappingEngine.Map<TextResourceViewModel, SaveTextResourceDto>(model);
+        [HttpPost, Route("create")]
+        public ActionResult Create(TextResourceViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                if (!model.ForceAdd)
+                {
+                    if (_textResourceService.CheckResourceCodeExists(model.TextResourceCode))
+                    {
+                        ModelState.AddModelError("", "Text resource code already exists - please tick Force Add.");
+                        // return associated TextResource data model
+                    }
+                    else if (_textResourceService.CheckResourceStringExists(model.TextResourceString))
+                    {
+                        ModelState.AddModelError("", "Text resource string already exists - please tick Force Add.");
+                        // return  associated TextResourceIdentifier data model
+                    }
+                    else
+                    {
+                        // Sweet path
+                    }
+                }
 
-        //        _textResourceService.SaveResource(dto);
+                var dto = _mappingEngine.Map<TextResourceViewModel, SaveTextResourceDto>(model);
 
-        //        return RedirectToAction("View", new { textResourceId = dto.LanguageId });
-        //    }
-        //    return View(model);
-        //}
+                _textResourceService.SaveResource(dto);
+
+                return RedirectToAction("View", new { textResourceId = dto.LanguageId });
+            }
+            return View(model);
+        }
 
         //[HttpGet, Route("{TextResourceId:int}")]
         //public ActionResult View(int textResourceId)

@@ -18,6 +18,6 @@ namespace Warp.WebUI.Models.TextResources
         [Required]
         public bool ClientOverride { get; set; }
 
-        //public bool ForceAdd { get; set; }
+        public bool ForceAdd { get; set; }
     }
 }
