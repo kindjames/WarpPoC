@@ -57,7 +57,7 @@ namespace Warp.Services
 
             return new ResourceStringDto
             {
-                TextResourceString = textResourceString
+                ResourceString = textResourceString
             };
         }
 
@@ -71,14 +71,34 @@ namespace Warp.Services
 
             return new ResourceCodeDto
             {
-                TextResourceCode = textResourceCode
+                ResourceIdentifierCode = textResourceCode
             };
         }
 
         public void SaveTextResource(SaveTextResourceDto saveTextResourceDto)
         {
+            // Validation cycle
             CheckArgument.NotNull(saveTextResourceDto, "SaveTextResourceDto");
+
+            bool stringIsValidated = _queryDispatcher.Execute( new ValidateResourceStringQuery());
             
+            if (stringIsValidated)
+            {
+                bool codeIsValidated = _queryDispatcher.Execute(new ValidateUniqueResourceCodeQuery());
+
+                if (codeIsValidated)
+                {
+                    
+                }
+
+            }
+            else
+            {
+                var stringQuery = _queryDispatcher.Execute(new GetTextResourceCodeQuery {});
+                // map result to Dto
+            }
+
+
             // Validate SaveTextResourceDto data
             // Validate ResourceString
             // if(ValidateResourceStringQuery)
@@ -141,13 +161,6 @@ namespace Warp.Services
 
 
         #endregion Next
-
-
-        public ResourceCodeDto GetTextResourceCode(int textResourceCodeId)
-        {
-
-            throw new NotImplementedException();
-        }
 
         public bool InitializeTextResourceCache(int languageId, int clientId = 0)
         {
