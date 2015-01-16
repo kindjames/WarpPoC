@@ -113,6 +113,7 @@
     <Compile Include="Migrations\DataSeed\IDataFactory.cs" />
     <Compile Include="Migrations\MigrationsAndTestingContext.cs" />
     <Compile Include="Queries\Clients\CheckClientExistsForCodeQuery.cs" />
+    <Compile Include="Queries\Clients\GetClientNameQuery.cs" />
     <Compile Include="Queries\Clients\GetClientsQuery.cs" />
     <Compile Include="Queries\Customers\GetCustomerNameQuery.cs" />
     <Compile Include="Queries\Customers\GetCustomerForUserQuery.cs" />
@@ -123,6 +124,8 @@
     <Compile Include="Queries\General\GetEntityQuery.cs" />
     <Compile Include="Queries\General\CheckEntityExistsQuery.cs" />
     <Compile Include="Queries\Languages\GetLanguageIdByCultureQuery.cs" />
+    <Compile Include="Queries\TextResources\GetAssociatedResourceIdentifierDataQuery.cs" />
+    <Compile Include="Queries\TextResources\GetAssociatedResourceStringDataQuery.cs" />
     <Compile Include="Queries\TextResources\ValidateUniqueResourceCodeQuery.cs" />
     <Compile Include="Queries\TextResources\ValidateResourceStringQuery.cs" />
     <Compile Include="Queries\TextResources\GetTextResourceCodeQuery.cs" />
