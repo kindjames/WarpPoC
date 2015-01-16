@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Warp.Core.Exceptions
+namespace Warp.Core.Exceptions.Data
 {
-    public class QueryHandlerNotFoundException : Exception
+    public class QueryHandlerNotFoundException : DataLayerException
     {
         public QueryHandlerNotFoundException(Type queryType)
             : base(BuildMessage(queryType))

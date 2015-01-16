@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Warp.Core.Exceptions
+namespace Warp.Core.Exceptions.Data
 {
-    public class CommandHandlerNotFoundException : Exception
+    public class CommandHandlerNotFoundException : DataLayerException
     {
         public CommandHandlerNotFoundException(Type commandType)
             : base(BuildMessage(commandType))

@@ -1,20 +1,19 @@
 ﻿using System;
-using Warp.Core.Exceptions;
-using Warp.Core.Infrastructure.AutoMapper;
+using Warp.Core.Exceptions.Data;
 using Warp.Core.Infrastructure.IoC;
-using Warp.Core.Services.Dtos.Client;
+using Warp.Core.Infrastructure.Validation;
 
 namespace Warp.Core.Cqrs
 {
     public class Dispatcher : IDispatcher
     {
-        private readonly IObjectMapper _objectMapper;
         private readonly IServiceLocator _serviceLocator;
+        private readonly IValidator _validator;
 
-        public Dispatcher(IObjectMapper objectMapper, IServiceLocator serviceLocator)
+        public Dispatcher(IServiceLocator serviceLocator, IValidator validator)
         {
-            _objectMapper = objectMapper;
             _serviceLocator = serviceLocator;
+            _validator = validator;
         }
 
         protected object GetCommandHandler(Type commandType)
@@ -65,6 +64,8 @@ namespace Warp.Core.Cqrs
 
         public void Execute(ICommand command)
         {
+            _validator.Validate(command);
+
             var handler = GetCommandHandler(command.GetType());
 
             ((dynamic)handler).Handle(command);
@@ -72,6 +73,8 @@ namespace Warp.Core.Cqrs
 
         public TResult Execute<TResult>(IQuery<TResult> query)
         {
+            _validator.Validate(query);
+
             var handler = GetQueryHandler<TResult>(query.GetType());
 
             return ((dynamic)handler).Handle(query);
@@ -82,24 +85,6 @@ namespace Warp.Core.Cqrs
         {
             return GetQueryHandler<TQuery, TResult>()
                 .Handle(new TQuery());
-        }
-
-        public void ExecuteUsingDto<TCommand>(DtoBase dto)
-            where TCommand : ICommand, new()
-        {
-            var command = _objectMapper.MapTo<TCommand>(dto);
-
-            GetCommandHandler<TCommand>()
-                .Handle(command);
-        }
-
-        public TResult ExecuteUsingDto<TQuery, TResult>(DtoBase dto)
-            where TQuery : IQuery<TResult>, new()
-        {
-            var query = _objectMapper.MapTo<TQuery>(dto);
-
-            return GetQueryHandler<TQuery, TResult>()
-                .Handle(query);
         }
     }
 }

@@ -66,9 +66,10 @@
     <Compile Include="Domain\ErrorCodes.cs" />
     <Compile Include="Domain\IOperationResult.cs" />
     <Compile Include="Exceptions\ClientAlreadyExistsException.cs" />
-    <Compile Include="Exceptions\CommandHandlerNotFoundException.cs" />
+    <Compile Include="Exceptions\Data\CommandHandlerNotFoundException.cs" />
     <Compile Include="Exceptions\Data\DataEntityNotFoundException.cs" />
-    <Compile Include="Exceptions\QueryHandlerNotFoundException.cs" />
+    <Compile Include="Exceptions\Data\DataLayerException.cs" />
+    <Compile Include="Exceptions\Data\QueryHandlerNotFoundException.cs" />
     <Compile Include="Exceptions\TextResources\NullViewModelResourceException.cs" />
     <Compile Include="Exceptions\TextResources\SetterNotFoundOnModelException.cs" />
     <Compile Include="Exceptions\TextResources\TextResourceCodeAlreadyExistsException.cs" />

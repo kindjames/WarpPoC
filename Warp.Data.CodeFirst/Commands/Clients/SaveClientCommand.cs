@@ -42,20 +42,16 @@ namespace Warp.Data.Commands.Clients
         private readonly IDomainDbContext _dbContext;
         private readonly IObjectMapper _objectMapper;
         private readonly IDispatcher _dispatcher;
-        private readonly IValidator _validator;
 
-        public SaveClientCommandHandler(IDomainDbContext dbContext, IObjectMapper objectMapper, IDispatcher dispatcher, IValidator validator)
+        public SaveClientCommandHandler(IDomainDbContext dbContext, IObjectMapper objectMapper, IDispatcher dispatcher)
         {
             _dbContext = dbContext;
             _objectMapper = objectMapper;
             _dispatcher = dispatcher;
-            _validator = validator;
         }
 
         public void Handle(SaveClientCommand command)
         {
-            _validator.Validate(command);
-
             // Check whether client already exists for customer id and client code.
             if (!_dispatcher.Execute(new CheckClientExistsForCodeQuery { CustomerId = command.CustomerId, ClientCode = command.Code }))
             {
@@ -74,7 +70,7 @@ namespace Warp.Data.Commands.Clients
                 throw new DataEntityNotFoundException<Customer>(command.CustomerId);
             }
 
-            var client = _objectMapper.MapTo<Client>(this);
+            var client = _objectMapper.MapTo<Client>(command);
 
             _dbContext.Save(client);
 

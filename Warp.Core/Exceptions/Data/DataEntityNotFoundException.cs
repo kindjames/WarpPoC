@@ -3,7 +3,7 @@ using Warp.Core.Data;
 
 namespace Warp.Core.Exceptions.Data
 {
-    public abstract class DataEntityNotFoundException : Exception
+    public abstract class DataEntityNotFoundException : DataLayerException
     {
         protected DataEntityNotFoundException(string message)
             : base(message)
