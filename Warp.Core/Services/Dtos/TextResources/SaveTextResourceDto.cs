@@ -7,5 +7,6 @@ namespace Warp.Core.Services.Dtos.TextResources
         public string ResourceIdentifierCode { get; set; }
         public int LanguageId { get; set; }
         public bool ClientOverridable { get; set; }
+        public int ClientId { get; set; }
     }
 }

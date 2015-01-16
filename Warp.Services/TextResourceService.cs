@@ -75,6 +75,25 @@ namespace Warp.Services
         public void SaveTextResource(SaveTextResourceDto saveTextResourceDto)
         {
             CheckArgument.NotNull(saveTextResourceDto, "SaveTextResourceDto");
+            
+            // Validate SaveTextResourceDto data
+            // Validate ResourceString
+            // if(ValidateResourceStringQuery)
+            // {
+
+            // }
+
+
+            // ValidateResourceDataQuery
+                // Validate ResourceIdentifier
+            
+            // Validate ResourceIdentifierCode
+                // Throw exception()
+
+            // Validate ResourceString
+                // Throw exception()
+            
+            // Yes. Continue with Save.  
 
             // New Resource
             if (saveTextResourceDto.Id == 0)
@@ -91,7 +110,6 @@ namespace Warp.Services
                 var command = _objectMapper.Map<SaveTextResourceDto, UpdateTextResourceCommand>(saveTextResourceDto);
                 _commandDispatcher.Execute(command);
             }
-
         }
 
 
@@ -100,8 +118,9 @@ namespace Warp.Services
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
-        public bool ValidateResourceString(ResourceStringDto dto)
+        public bool GetResourceString(string textResourceString)
         {
+            //Return duplicate data to User(Aggregized ResourceIdentifierDto and associated TextResourceDto)
             return true; //_queryDispatcher.Execute(DuplicateResourceStringExistsQuery(dto));
         }
 
@@ -110,9 +129,10 @@ namespace Warp.Services
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
-        public bool ValidateResourceCode(ResourceCodeDto dto)
+        public bool CheckResourceCodeExists(string textResourceCode)
         {
-            throw new NotImplementedException();
+            // Get Associated TextResource data(Query on , populate and return DuplicateTextResourceDto to User(ResourceIdentifier and associated TextResource dto)
+            return true;
         }
 
 
@@ -121,6 +141,14 @@ namespace Warp.Services
 
         public ResourceCodeDto GetTextResourceCode(int textResourceCodeId)
         {
+
+            throw new NotImplementedException();
+        }
+
+        public bool InitializeTextResourceCache(int languageId, int clientId = 0)
+        {
+            // InitResourceCacheQuery
+
             throw new NotImplementedException();
         }
     }
