@@ -107,8 +107,9 @@
     <Compile Include="Services\Dtos\Client\DtoBase.cs" />
     <Compile Include="Services\Dtos\ContactAddressAssignedDto - Copy.cs" />
     <Compile Include="Services\Dtos\DtoBase.cs" />
-    <Compile Include="Services\Dtos\TextResources\ValidateTextResourceDto.cs" />
-    <Compile Include="Services\Dtos\TextResources\UpdateTextResourceDto.cs" />
+    <Compile Include="Services\Dtos\TextResources\ResourceIdentifierDetailDto.cs" />
+    <Compile Include="Services\Dtos\TextResources\ResourceStringDetailDto.cs" />
+    <Compile Include="Services\Dtos\TextResources\ValidationResponseDto.cs" />
     <Compile Include="Services\Dtos\Users\UserDto.cs" />
     <Compile Include="Services\Dtos\Customer\CustomerDto.cs" />
     <Compile Include="Services\ICustomerService.cs" />
@@ -133,6 +134,9 @@
     <Compile Include="Services\IBrandService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Infrastructure\Util\CheckArgument.cs" />
+    <Compile Include="Util\CheckArgument.cs" />
+    <Compile Include="Infrastructure\Validation\IdRequiredAttribute.cs" />
+    <Compile Include="Validation\IValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -1,7 +1,7 @@
 ﻿namespace Warp.Core.Services.Dtos.TextResources
 {
     public class ResourceStringDto
-    {
-        public string TextResourceString { get; set; }
+    {   
+        public string ResourceString { get; set; }
     }
 }
