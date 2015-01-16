@@ -6,7 +6,9 @@ namespace Warp.Core.Services.TextResourceService
     public interface ITextResourceService
     {
         string GetTextResource(int textResourceCodeId);
+
         ResourceStringDto GetTextResourceString(int textResourceCodeId);
+
         ResourceCodeDto GetResourceIdentifierCode(int textResourceCodeId);
 
         /// <summary>

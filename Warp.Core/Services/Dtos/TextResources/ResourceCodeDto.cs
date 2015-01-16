@@ -2,6 +2,6 @@
 {
     public class ResourceCodeDto
     {
-        public string TextResourceCode { get; set; }
+        public string ResourceIdentifierCode { get; set; }
     }
 }
