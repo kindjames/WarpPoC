@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
+using Warp.Core.Cqrs;
 using Warp.Core.Infrastructure.Validation;
-using Warp.Core.Query;
 using Warp.Data.Context;
 
 namespace Warp.Data.Queries.TextResources
@@ -21,7 +21,7 @@ namespace Warp.Data.Queries.TextResources
             _context = context;
         }
 
-        public Guid Execute(ResolveUserLanguageQuery query)
+        public Guid Handle(ResolveUserLanguageQuery query)
         {
             return _context.Users
                 .Where(u => u.Id == query.UserId)

@@ -7,16 +7,13 @@ using SimpleInjector;
 using SimpleInjector.Advanced;
 using SimpleInjector.Extensions;
 using SimpleInjector.Integration.Web.Mvc;
-using Warp.Core.Command;
-using Warp.Core.Infrastructure;
+using Warp.Core.Cqrs;
 using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Infrastructure.Configuration;
 using Warp.Core.Infrastructure.IoC;
 using Warp.Core.Infrastructure.Logging;
 using Warp.Core.Infrastructure.Models;
 using Warp.Core.Infrastructure.Validation;
-using Warp.Core.Operations;
-using Warp.Core.Query;
 using Warp.Core.Util;
 using Warp.Data.Context;
 using Warp.Data.Queries.General;
@@ -55,9 +52,7 @@ namespace Warp.IoC
 
             // Data
             var dataAssembly = typeof(IDomainDbContext).Assembly;
-            c.Register<ICommandDispatcher, CommandDispatcher>();
-            c.Register<IQueryDispatcher, QueryDispatcher>();
-            c.Register<IOperationFactory, OperationFactory>();
+            c.Register<IDispatcher, Dispatcher>();
             c.RegisterManyForOpenGeneric(typeof(ICommandHandler<>), dataAssembly);
             c.RegisterManyForOpenGeneric(typeof(IQueryHandler<,>), dataAssembly);
             c.RegisterAllImplementationsInAssemblyWithNameEnding("DbContext", dataAssembly);

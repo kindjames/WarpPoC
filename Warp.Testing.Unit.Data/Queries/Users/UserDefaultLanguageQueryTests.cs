@@ -51,7 +51,7 @@ namespace Warp.Testing.Unit.Data.Queries.Users
                     });
             };
 
-            Because of = () => _result = Subject.Execute(_query);
+            Because of = () => _result = Subject.Handle(_query);
 
             It should_return_the_correct_language_id = () =>
                 _result.ShouldEqual(DefaultLanguageId);

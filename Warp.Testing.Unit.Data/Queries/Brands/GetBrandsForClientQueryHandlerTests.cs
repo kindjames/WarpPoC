@@ -29,7 +29,7 @@ namespace Warp.Testing.Unit.Data.Queries.Brands
                         new Brand {Client = new Client {Id = Guid.NewGuid()}}
                     });
 
-            Because of = () => _result = Subject.Execute(new GetBrandsForClientQuery { ClientId = ClientId });
+            Because of = () => _result = Subject.Handle(new GetBrandsForClientQuery { ClientId = ClientId });
 
             It should = () =>
             {
@@ -59,7 +59,7 @@ namespace Warp.Testing.Unit.Data.Queries.Brands
                         new Brand {Client = new Client {Id = ClientId}}
                     });
 
-            Because of = () => _result = Subject.Execute(new GetBrandsForClientQuery { ClientId = ClientId });
+            Because of = () => _result = Subject.Handle(new GetBrandsForClientQuery { ClientId = ClientId });
 
             It should_filter_brands = () =>
             {

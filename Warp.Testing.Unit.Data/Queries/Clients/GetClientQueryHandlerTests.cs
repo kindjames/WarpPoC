@@ -29,7 +29,7 @@ namespace Warp.Testing.Unit.Data.Queries.Clients
                     });
             };
 
-            Because of = () => _result = Subject.Execute(new GetClientQuery { ClientId = ClientId });
+            Because of = () => _result = Subject.Handle(new GetClientQuery { ClientId = ClientId });
 
             It should_return_a_valid_client = () =>
             {

@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using Warp.Core.Operations;
 using Warp.Core.Services;
 
 namespace Warp.Services

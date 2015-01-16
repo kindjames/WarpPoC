@@ -28,7 +28,7 @@ namespace Warp.Testing.Unit.Data.Queries.Clients
                         new Client {Code = "zxc", Customer = new Customer{ Id = Guid.NewGuid() }}
                     });
 
-            Because of = () => _result = Subject.Execute(new CheckClientExistsForCodeQuery { CustomerId = CustomerId, ClientCode = Code });
+            Because of = () => _result = Subject.Handle(new CheckClientExistsForCodeQuery { CustomerId = CustomerId, ClientCode = Code });
 
             It should_return_true = () =>
                 _result.ShouldBeTrue();
@@ -51,7 +51,7 @@ namespace Warp.Testing.Unit.Data.Queries.Clients
                         new Client {Code = "zxc", Customer = new Customer{ Id = Guid.NewGuid() }}
                     });
 
-            Because of = () => _result = Subject.Execute(new CheckClientExistsForCodeQuery { CustomerId = CustomerId, ClientCode = Code });
+            Because of = () => _result = Subject.Handle(new CheckClientExistsForCodeQuery { CustomerId = CustomerId, ClientCode = Code });
 
             It should_return_true = () =>
                 _result.ShouldBeFalse();

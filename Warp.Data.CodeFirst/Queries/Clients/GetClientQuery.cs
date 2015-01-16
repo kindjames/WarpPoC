@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
+using Warp.Core.Cqrs;
 using Warp.Core.Infrastructure.Validation;
-using Warp.Core.Query;
 using Warp.Data.Context;
 using Warp.Data.Entities;
 
@@ -22,7 +22,7 @@ namespace Warp.Data.Queries.Clients
             _dbContext = dbContext;
         }
 
-        public Client Execute(GetClientQuery query)
+        public Client Handle(GetClientQuery query)
         {
             return _dbContext.Clients
                 .SingleOrDefault(b => b.Id == query.ClientId);

@@ -1,7 +1,7 @@
 ﻿using System;
 using Machine.Fakes;
 using Machine.Specifications;
-using Warp.Core.Query;
+using Warp.Core.Cqrs;
 using Warp.Core.Services.Dtos.TextResources;
 using Warp.Data.Queries.TextResources;
 using Warp.Services;
@@ -53,7 +53,7 @@ namespace Warp.Testing.Unit.Services.TextResources
 
             It should_return_a_string = () =>
             {
-                The<IQueryDispatcher>()
+                The<IDispatcher>()
                     .WasToldTo(d => d.Execute(Param.IsAny<GetTextResourceQuery>()));
             };
         }
@@ -96,7 +96,7 @@ namespace Warp.Testing.Unit.Services.TextResources
 
             Establish _context = () =>
             {
-                The<IQueryDispatcher>()
+                The<IDispatcher>()
                     .WhenToldTo(d => d.Execute(Param.IsAny<GetTextResourceStringQuery>()))
                     .Return("BEEP");
             };
@@ -105,7 +105,7 @@ namespace Warp.Testing.Unit.Services.TextResources
 
             It should_return_a_dto = () =>
             {
-                The<IQueryDispatcher>()
+                The<IDispatcher>()
                     .WasToldTo(d => d.Execute(Param.IsAny<GetTextResourceStringQuery>()));
 
                 _result.TextResourceString.ShouldEqual("BEEP");
@@ -124,7 +124,7 @@ namespace Warp.Testing.Unit.Services.TextResources
 
             It should_return_null = () =>
             {
-                The<IQueryDispatcher>()
+                The<IDispatcher>()
                     .WasToldTo(d => d.Execute(Param.IsAny<GetTextResourceStringQuery>()));
 
                 _result.ShouldBeNull();

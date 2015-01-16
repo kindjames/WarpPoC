@@ -1,7 +1,7 @@
 ﻿using System;
 using Warp.Core.Exceptions.Data;
 using Warp.Core.Infrastructure.AutoMapper;
-using Warp.Core.Query;
+using Warp.Core.Cqrs;
 using Warp.Core.Services;
 using Warp.Core.Services.Dtos.Brand;
 using Warp.Data.Entities;
@@ -13,27 +13,27 @@ namespace Warp.Services
 {
     public class BrandService : IBrandService
     {
-        private readonly IQueryDispatcher _queryDispatcher;
+        private readonly IDispatcher _dispatcher;
         private readonly IObjectMapper _objectMapper;
 
-        public BrandService(IQueryDispatcher queryDispatcher, IObjectMapper objectMapper)
+        public BrandService(IDispatcher dispatcher, IObjectMapper objectMapper)
         {
-            _queryDispatcher = queryDispatcher;
+            _dispatcher = dispatcher;
             _objectMapper = objectMapper;
         }
 
         public BrandSummaryListDto GetBrandSummaryListForClient(Guid clientId)
         {
-            var client = _queryDispatcher.Execute(new GetClientQuery {ClientId = clientId});
+            var client = _dispatcher.Execute(new GetClientQuery {ClientId = clientId});
 
             if (client == null)
             {
                 throw new DataEntityNotFoundException<Client>(clientId);
             }
 
-            var brands = _queryDispatcher.Execute(new GetBrandsForClientQuery {ClientId = clientId});
+            var brands = _dispatcher.Execute(new GetBrandsForClientQuery {ClientId = clientId});
 
-            var customerName = _queryDispatcher.Execute(new GetCustomerNameQuery {CustomerId = client.Customer.Id});
+            var customerName = _dispatcher.Execute(new GetCustomerNameQuery {CustomerId = client.Customer.Id});
 
             return new BrandSummaryListDto
             {

@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
+using Warp.Core.Cqrs;
 using Warp.Core.Infrastructure.Validation;
-using Warp.Core.Query;
 using Warp.Data.Context;
 using Warp.Data.Entities;
 
@@ -22,7 +22,7 @@ namespace Warp.Data.Queries.Customers
             _context = context;
         }
 
-        public Customer Execute(GetCustomerForUserQuery query)
+        public Customer Handle(GetCustomerForUserQuery query)
         {
             var user = _context.Users
                 .SingleOrDefault(u => u.Id == query.UserId);

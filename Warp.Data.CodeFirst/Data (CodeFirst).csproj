@@ -71,13 +71,7 @@
     <Compile Include="Migrations\201501151137154_InitialCreate.Designer.cs">
       <DependentUpon>201501151137154_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Operations\Query\ICheckEntityExistsQuery.cs" />
-    <Compile Include="Operations\Query\IGetClientQuery.cs" />
-    <Compile Include="Operations\Command\Clients\SaveClientCommand.cs" />
-    <Compile Include="Commands\CreateCommandBase.cs" />
-    <Compile Include="Commands\Clients\UpdateClientCommand.cs" />
-    <Compile Include="Commands\Clients\CreateClientCommand.cs" />
-    <Compile Include="Commands\UpdateCommandBase.cs" />
+    <Compile Include="Commands\Clients\SaveClientCommand.cs" />
     <Compile Include="Context\AuthenticationDbContext.cs" />
     <Compile Include="Context\DomainDbContext.cs" />
     <Compile Include="Context\IApplicationDbContext.cs" />
@@ -113,7 +107,8 @@
     <Compile Include="Queries\Brands\GetBrandsForClientQuery.cs" />
     <Compile Include="Context\ApplicationDbContextBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Queries\General\CheckClientExistsForCodeQuery.cs" />
+    <Compile Include="Queries\General\GetEntityQuery.cs" />
+    <Compile Include="Queries\General\CheckEntityExistsQuery.cs" />
     <Compile Include="Queries\Languages\GetLanguageIdByCultureQuery.cs" />
     <Compile Include="Queries\TextResources\DuplicateResourceCodeExistsQuery.cs" />
     <Compile Include="Queries\TextResources\DuplicateResourceStringExistsQuery.cs" />

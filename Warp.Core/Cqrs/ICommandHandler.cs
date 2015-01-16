@@ -1,8 +1,8 @@
-﻿namespace Warp.Core.Command
+﻿namespace Warp.Core.Cqrs
 {
     public interface ICommandHandler<in TCommand>
         where TCommand : ICommand
     {
-        void Execute(TCommand command);
+        void Handle(TCommand command);
     }
 }

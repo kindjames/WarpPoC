@@ -24,7 +24,7 @@ namespace Warp.Testing.Unit.Data.Queries.Customers
                         new Customer {Id = Guid.NewGuid()}
                     });
 
-            Because of = () => _result = Subject.Execute(new GetCustomerQuery { CustomerId = CustomerId });
+            Because of = () => _result = Subject.Handle(new GetCustomerQuery { CustomerId = CustomerId });
 
             It should_return_a_null_Customer = () =>
                 _result.ShouldBeNull();
@@ -48,7 +48,7 @@ namespace Warp.Testing.Unit.Data.Queries.Customers
                     });
             };
 
-            Because of = () => _result = Subject.Execute(new GetCustomerQuery { CustomerId = CustomerId });
+            Because of = () => _result = Subject.Handle(new GetCustomerQuery { CustomerId = CustomerId });
 
             It should_return_the_customer = () =>
             {

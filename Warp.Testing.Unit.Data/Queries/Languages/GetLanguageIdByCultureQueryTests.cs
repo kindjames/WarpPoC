@@ -32,7 +32,7 @@ namespace Warp.Testing.Unit.Data.Queries.Languages
                     .Return(_testData.ToInMemoryDbSet());
             };
 
-            Because of = () => _result = Subject.Execute(new GetLanguageIdByInvariantCultureQuery { InvariantCulture = TestInvarCulture });
+            Because of = () => _result = Subject.Handle(new GetLanguageIdByInvariantCultureQuery { InvariantCulture = TestInvarCulture });
 
             It should_return_the_english_language_id = () => _result.ShouldEqual(_englishLanguageId);
         }
@@ -54,7 +54,7 @@ namespace Warp.Testing.Unit.Data.Queries.Languages
                     .Return(_testData.ToInMemoryDbSet());
             };
 
-            Because of = () => _result = Subject.Execute(new GetLanguageIdByInvariantCultureQuery { InvariantCulture = TestInvarCulture });
+            Because of = () => _result = Subject.Handle(new GetLanguageIdByInvariantCultureQuery { InvariantCulture = TestInvarCulture });
 
             It should_return_the_french_language_id = () => _result.ShouldEqual(_frenchLanguageId);
         }
@@ -71,7 +71,7 @@ namespace Warp.Testing.Unit.Data.Queries.Languages
                     .Return(new LanguageTestDataFactory().Build().ToInMemoryDbSet());
             };
 
-            Because of = () => _result = Subject.Execute(new GetLanguageIdByInvariantCultureQuery { InvariantCulture = TestInvarCulture });
+            Because of = () => _result = Subject.Handle(new GetLanguageIdByInvariantCultureQuery { InvariantCulture = TestInvarCulture });
 
             It should_return_empty_id = () => _result.ShouldEqual(Guid.Empty);
         }

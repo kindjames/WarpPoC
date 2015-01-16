@@ -1,19 +1,17 @@
 ﻿using System;
-using Warp.Core.Query;
 
 namespace Warp.Core.Exceptions
 {
-    public class QueryHandlerNotFoundException<TResult> : Exception
+    public class QueryHandlerNotFoundException : Exception
     {
-        public QueryHandlerNotFoundException(IQuery<TResult> query)
-            : base(BuildMessage(query))
+        public QueryHandlerNotFoundException(Type queryType)
+            : base(BuildMessage(queryType))
         {
         }
 
-        private static string BuildMessage(IQuery<TResult> query)
+        private static string BuildMessage(Type queryType)
         {
-            return String.Concat("Unable to locate QueryHandler for ", query.GetType().Name, " with result of ",
-                typeof (TResult), ". Query detail -> ", query);
+            return String.Concat("Unable to locate QueryHandler for ", queryType.Name, ".");
         }
     }
 }

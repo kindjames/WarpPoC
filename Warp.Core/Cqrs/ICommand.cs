@@ -1,9 +1,9 @@
 ﻿using System;
 
-namespace Warp.Core.Command
+namespace Warp.Core.Cqrs
 {
     public interface ICommand
     {
-        Guid Id { get; }
+        Guid Id { get; set; }
     }
 }

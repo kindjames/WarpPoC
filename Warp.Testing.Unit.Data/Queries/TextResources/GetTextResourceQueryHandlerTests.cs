@@ -43,7 +43,7 @@ namespace Warp.Testing.Unit.Data.Queries.TextResources
                     });
             };
 
-            Because _of = () => _result = Subject.Execute(new GetTextResourceQuery{ TextResourceIdentifierId = _textResourceCodeId});
+            Because _of = () => _result = Subject.Handle(new GetTextResourceQuery { TextResourceIdentifierId = _textResourceCodeId });
 
             It should_return_the_TextResource = () =>
             {

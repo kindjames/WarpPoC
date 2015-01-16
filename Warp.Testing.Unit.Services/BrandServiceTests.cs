@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using Machine.Fakes;
 using Machine.Specifications;
 using Warp.Core.Exceptions.Data;
-using Warp.Core.Query;
-using Warp.Core.Services.Dtos.Brand;
+using Warp.Core.Cqrs;
 using Warp.Data.Entities;
 using Warp.Data.Queries.Brands;
 using Warp.Services;
@@ -22,7 +21,7 @@ namespace Warp.Testing.Unit.Services
             private static Exception _exception;
 
             Establish that = () =>
-                The<IQueryDispatcher>()
+                The<IDispatcher>()
                     .WhenToldTo(d => d.Execute(MoqIt.IsAny<GetBrandsForClientQuery>()))
                     .Return((IEnumerable<Brand>)null);
 

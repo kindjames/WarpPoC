@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using Warp.Core.Query;
+using Warp.Core.Cqrs;
 using Warp.Data.Context;
 
 namespace Warp.Data.Queries.Languages
@@ -19,7 +19,7 @@ namespace Warp.Data.Queries.Languages
             _dbContext = dbContext;
         }
 
-        public Guid Execute(GetLanguageIdByInvariantCultureQuery query)
+        public Guid Handle(GetLanguageIdByInvariantCultureQuery query)
         {
             return _dbContext.Languages
                 .Where(l => l.InvariantCulture == query.InvariantCulture)

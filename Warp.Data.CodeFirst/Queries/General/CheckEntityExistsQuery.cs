@@ -1,8 +1,8 @@
 using System;
 using System.Linq;
+using Warp.Core.Cqrs;
 using Warp.Core.Data;
 using Warp.Core.Infrastructure.Validation;
-using Warp.Core.Query;
 using Warp.Data.Context;
 
 namespace Warp.Data.Queries.General
@@ -24,7 +24,7 @@ namespace Warp.Data.Queries.General
             _dbContext = dbContext;
         }
 
-        public bool Execute(CheckEntityExistsQuery<TEntity> query)
+        public bool Handle(CheckEntityExistsQuery<TEntity> query)
         {
             return _dbContext.Set<TEntity>()
                 .Any(e => e.Id == query.EntityId);

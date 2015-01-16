@@ -4,12 +4,10 @@ using Machine.Fakes;
 using Machine.Specifications;
 using Warp.Core.Exceptions.Data;
 using Warp.Core.Infrastructure.AutoMapper;
-using Warp.Core.Operations;
-using Warp.Core.Query;
+using Warp.Core.Cqrs;
 using Warp.Core.Services;
 using Warp.Core.Services.Dtos.Client;
 using Warp.Data.Entities;
-using Warp.Data.Operations.Query;
 using Warp.Data.Queries.Clients;
 using Warp.Services;
 using IObjectMapper = Warp.Core.Infrastructure.AutoMapper.IObjectMapper;
@@ -89,11 +87,9 @@ namespace Warp.Testing.Unit.Services
             {
                 _clientId = Guid.NewGuid();
 
-                var queryContext = An<IQueryExecutionContext<IGetEntityQuery<Client>, Client>>();
-
-                The<IOperationFactory>()
-                    .WhenToldTo(f => f.Build<IGetEntityQuery<Client>, Client>())
-                    .Return(queryContext);
+                The<IDispatcher>()
+                    .WhenToldTo(d => d.Execute(Param.IsAny<GetClientQuery>()))
+                    .Return((Client)null);
             };
 
             Because of = () => _exception = Catch.Exception(() => Subject.GetClient(_clientId));
@@ -118,7 +114,7 @@ namespace Warp.Testing.Unit.Services
                 Configure(r => r.For<IObjectMapper>().Use<ObjectMapper>());
                 Configure(Mapper.Engine);
 
-                The<IQueryDispatcher>()
+                The<IDispatcher>()
                     .WhenToldTo(d => d.Execute(Param.IsAny<GetClientQuery>()))
                     .Return(new Client { Id = _clientId });
             };
