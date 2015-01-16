@@ -276,7 +276,7 @@ namespace Warp.Testing.Unit.Services.TextResources
 
         #region SaveTextResource Tests
 
-        public class SaveTextResourceBase<TSubject> : WithSubject<TSubject> where TSubject : class
+        public class SaveTextResourceBaseContext<TSubject> : WithSubject<TSubject> where TSubject : class
         {
             Establish EstablishContext { get; set; }
 
@@ -286,7 +286,7 @@ namespace Warp.Testing.Unit.Services.TextResources
             private bool _clientOverridable { get; set; }
             private int _languageId { get; set; }
 
-            public SaveTextResourceBase(string resourceString = "", string resourceIdentifierCode = "", int resourceIdentifierCodeId = 0, bool clientOverridable = false, int languageId = 0)
+            public SaveTextResourceBaseContext(string resourceString = "", string resourceIdentifierCode = "", int resourceIdentifierCodeId = 0, bool clientOverridable = false, int languageId = 0)
             {
                 EstablishContext = () =>
                 {
@@ -299,12 +299,11 @@ namespace Warp.Testing.Unit.Services.TextResources
             }
         }
 
-        public class When_calling__SaveTextResource__for_new_with_correct_SaveTextResourceDto : SaveTextResourceBase<TextResourceService>
-               {
-            
+        public class When_calling__SaveTextResource__for_new_with_correct_SaveTextResourceDto : SaveTextResourceBaseContext<TextResourceService>
+        {
             // SUT
             static SaveTextResourceDto _dto;
-           
+
 
             Because _of = () => { };
 
