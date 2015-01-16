@@ -81,21 +81,10 @@ namespace Warp.Data.Commands.TextResources
             _commandDispatcher.Execute(_resourceStringCommand);
 
             // Check command for correctness
-            // Validate ResourceIdentifierCode
-                // No. Get Associated TextResource data(Query on , populate and return DuplicateTextResourceDto to User(ResourceIdentifier and associated TextResource dto)
-                // Yes(No duplicate).
-                    // Validate ResourceString
-                        // No.(Duplicate). Return duplicate data to User(Aggregized ResourceIdentifierDto and associated TextResourceDto)
-                        // Yes.
-                            // Invoke SaveNewResourceIdentifierCommand and return ResourceIdentifierId
-                            // Invoke SaveNewResourceCommand and return TextResourceDetailsDto to User
+          
+            // Invoke SaveNewResourceIdentifierCommand and return ResourceIdentifierId
+            // Invoke SaveNewResourceCommand and return TextResourceDetailsDto to User
 
-
-            // ValidateResourceDataQuery
-                // Validate ResourceIdentifier
-
-
-            
         }
     }
 }

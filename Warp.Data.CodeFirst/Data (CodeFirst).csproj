@@ -119,7 +119,7 @@
     <Compile Include="Queries\General\CheckClientExistsForCodeQuery.cs" />
     <Compile Include="Queries\Languages\GetLanguageIdByCultureQuery.cs" />
     <Compile Include="Queries\TextResources\ValidateUniqueResourceCodeQuery.cs" />
-    <Compile Include="Queries\TextResources\ValidateUniqueResourceStringQuery.cs" />
+    <Compile Include="Queries\TextResources\ValidateResourceStringQuery.cs" />
     <Compile Include="Queries\TextResources\GetTextResourceCodeQuery.cs" />
     <Compile Include="Queries\TextResources\GetTextResourceQuery.cs" />
     <Compile Include="Queries\TextResources\GetTextResourceStringQuery.cs" />

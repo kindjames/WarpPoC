@@ -19,6 +19,32 @@ using MoqIt = Moq.It;
 
 namespace Warp.Testing.Unit.Data.Commands.TextResources
 {
+    protected class SaveTextResourceBase : WithSubject<SaveTextResourceCommandHandler>
+    {
+        private Establish _that = () =>
+        {
+            Configure(om => om.For<IObjectMapper>().Use<ObjectMapper>());
+            Configure(Mapper.Engine);
+
+            _rootCommand = new SaveTextResourceCommand() { ClientOverridable = _clientOverridable, ResourceIdentifierCode = _resourceIdentifierCode, ResourceString = _resourceString, LanguageId = _languageId };
+
+            The<IQueryDispatcher>()
+                .WhenToldTo(c => c.Execute(MoqIt.IsAny<ValidateUniqueResourceCodeQuery>()))
+                .Return(true);
+
+            The<IQueryDispatcher>()
+                .WhenToldTo(c => c.Execute(MoqIt.IsAny<ValidateResourceStringQuery>()))
+                .Return(true);
+        };
+
+
+        private static SaveTextResourceCommand _rootCommand;
+        protected static bool _clientOverridable = false;
+        protected const string _resourceIdentifierCode = "WelcomeText";
+        protected const string _resourceString = "Welcome!";
+        protected const int _languageId = 1;
+    }
+
     [Subject("TextResource Service Unit Tests")]
     public static class SaveNewTextResourceCommandHandlerUnitTests
     {
@@ -26,36 +52,15 @@ namespace Warp.Testing.Unit.Data.Commands.TextResources
 
         // Sweet Path. No duplicates, !ClientOverridable.
         public class When_calling__SaveNewTextResource__Unique_ResourceCode_Unique_ResourceString_Not_Client_overridable
-            : WithSubject<SaveTextResourceCommandHandler>
+            : 
         {
             private static IDbSet<TextResourceIdentifier> _textResourceIdentifiers;
             private static IDbSet<TextResource> _textResources;
- 
-            private static SaveTextResourceCommand _rootCommand;
 
-            private static bool _clientOverridable = false;
-            private const string _resourceIdentifierCode = "WelcomeText";
-            private const string _resourceString = "Welcome!";
-            private const int _languageId = 1;
-
-            private Establish _that = () =>
-            {
-                Configure(om => om.For<IObjectMapper>().Use<ObjectMapper>());
-                Configure(Mapper.Engine);
-
-                _rootCommand = new SaveTextResourceCommand(){ ClientOverridable = _clientOverridable, ResourceIdentifierCode = _resourceIdentifierCode, ResourceString = _resourceString, LanguageId = _languageId };
-
-                The<IQueryDispatcher>()
-                    .WhenToldTo(c => c.Execute(MoqIt.IsAny<ValidateUniqueResourceCodeQuery>()))
-                    .Return(true);
-
-                The<IQueryDispatcher>()
-                    .WhenToldTo(c => c.Execute(MoqIt.IsAny<ValidateUniqueResourceStringQuery>()))
-                    .Return(true);
-            };
+            
 
             private Because _of = () => Subject.Execute(new SaveTextResourceCommand());
-            
+
             It _should_add_new_TextResource_to_the_TextResource_repository =
                 () => _textResources.WasToldTo(t => t.Add(MoqIt.IsAny<TextResource>()));
 
