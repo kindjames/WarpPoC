@@ -1,5 +1,5 @@
 ﻿using System;
-using Warp.Core.Command;
+using Warp.Core.Cqrs;
 using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Cqrs;
 using Warp.Core.Infrastructure.Util;
@@ -61,9 +61,9 @@ namespace Warp.Services
             };
         }
 
-        public ResourceCodeDto GetResourceIdentifierCode(int textResourceCodeId)
+        public ResourceCodeDto GetResourceIdentifierCode(Guid textResourceCodeId)
         {
-            CheckArgument.NotEmptyGuid(textResourceCodeId, "textResourceCodeId");
+            CheckArgument.NotEmptyGuid(textResourceCodeId, textResourceCodeId.ToString());
 
             string textResourceCode = _dispatcher.Execute(new GetTextResourceCodeQuery { TextResourceCodeId = textResourceCodeId });
 
@@ -80,11 +80,11 @@ namespace Warp.Services
             // Validation cycle
             CheckArgument.NotNull(saveTextResourceDto, "SaveTextResourceDto");
 
-            bool stringIsValidated = _queryDispatcher.Execute( new ValidateResourceStringQuery());
+            bool stringIsValidated = _dispatcher.Execute( new ValidateResourceStringQuery());
             
             if (stringIsValidated)
             {
-                bool codeIsValidated = _queryDispatcher.Execute(new ValidateUniqueResourceCodeQuery());
+                bool codeIsValidated = _dispatcher.Execute(new ValidateUniqueResourceCodeQuery());
 
                 if (codeIsValidated)
                 {
@@ -94,7 +94,7 @@ namespace Warp.Services
             }
             else
             {
-                var stringQuery = _queryDispatcher.Execute(new GetTextResourceCodeQuery {});
+                var stringQuery = _dispatcher.Execute(new GetTextResourceCodeQuery {});
                 // map result to Dto
             }
 
@@ -119,20 +119,20 @@ namespace Warp.Services
             // Yes. Continue with Save.  
 
             // New Resource
-            if (saveTextResourceDto.Id == 0)
-            {
-                var command = _objectMapper.Map<SaveTextResourceDto, SaveTextResourceCommand>(saveTextResourceDto);
+            //if (saveTextResourceDto.Id == 0)
+            //{
+            //    var command = _objectMapper.Map<SaveTextResourceDto, SaveTextResourceCommand>(saveTextResourceDto);
 
-                _commandDispatcher.Execute(command);
+            //    _dispatcher.Execute(command);
 
-                saveTextResourceDto.Id = command.Id;
-            }
-            // Update existing Resource
-            else
-            {
-                var command = _objectMapper.Map<SaveTextResourceDto, UpdateTextResourceCommand>(saveTextResourceDto);
-                _commandDispatcher.Execute(command);
-            }
+            //    saveTextResourceDto.Id = command.Id;
+            //}
+            //// Update existing Resource
+            //else
+            //{
+            //    var command = _objectMapper.Map<SaveTextResourceDto, UpdateTextResourceCommand>(saveTextResourceDto);
+            //    _dispatcher.Execute(command);
+            //}
             //var stringExists = _dispatcher.Execute(DuplicateResourceStringExistsQuery);
             //if (!(_dispatcher.Execute(textResourceStringQuery)) && !(_dispatcher.Execute(textResourceCodeQuery)))
         }
@@ -162,10 +162,21 @@ namespace Warp.Services
 
         #endregion Next
 
-        public bool InitializeTextResourceCache(int languageId, int clientId = 0)
+        public bool InitializeTextResourceCache(Guid languageId, Guid clientId)
         {
             // InitResourceCacheQuery
 
+            throw new NotImplementedException();
+        }
+
+
+        public ResourceCodeDto GetTextResourceCode(Guid textResourceCodeId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool CheckResourceStringExists(string textResourceString)
+        {
             throw new NotImplementedException();
         }
     }

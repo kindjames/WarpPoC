@@ -76,10 +76,6 @@
       <DependentUpon>201501151137154_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Commands\Clients\SaveClientCommand.cs" />
-    <Compile Include="Commands\CreateCommandBase.cs" />
-    <Compile Include="Commands\Clients\UpdateClientCommand.cs" />
-    <Compile Include="Commands\Clients\CreateClientCommand.cs" />
-    <Compile Include="Commands\UpdateCommandBase.cs" />
     <Compile Include="Commands\TextResources\SaveResourceStringCommand.cs" />
     <Compile Include="Commands\TextResources\SaveTextResourceCommand.cs" />
     <Compile Include="Commands\TextResources\SaveResourceIdentifierCodeCommand.cs" />
