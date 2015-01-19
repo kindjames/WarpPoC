@@ -8,7 +8,7 @@ using AutoMapper;
 using Machine.Fakes;
 using Machine.Specifications;
 using Warp.Core.Infrastructure.AutoMapper;
-using Warp.Core.Query;
+using Warp.Core.Cqrs;
 using Warp.Data.Commands.TextResources;
 using Warp.Data.Context;
 using Warp.Data.Entities;
@@ -39,7 +39,7 @@ namespace Warp.Testing.Unit.Data.Commands.TextResources
                 Configure(om => om.For<IObjectMapper>().Use<ObjectMapper>());
                 Configure(Mapper.Engine);
 
-                The<IQueryDispatcher>()
+                The<IDispatcher>()
                     .WhenToldTo(c => c.Execute(MoqIt.IsAny<ValidateUniqueResourceCodeQuery>()))
                     .Return(true);
 
@@ -47,7 +47,7 @@ namespace Warp.Testing.Unit.Data.Commands.TextResources
 
             };
 
-            private Because _of = () => Subject.Execute(new SaveResourceIdentifierCodeCommand());
+            private Because _of = () => Subject.Handle(new SaveResourceIdentifierCodeCommand());
 
             private It _should_add_new_TextResourceIdentifier_to_the_TextResourceIdentifier_repository =
                 () => _textResourceIdentifiers.WasToldTo(t => t.Add(MoqIt.IsAny<TextResourceIdentifier>()));
