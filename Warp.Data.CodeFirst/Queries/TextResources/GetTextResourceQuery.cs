@@ -12,7 +12,7 @@ namespace Warp.Data.Queries.TextResources
         public Guid TextResourceIdentifierId { get; set; }
 
         [IdRequired]
-        public int LanguageId { get; set; }
+        public Guid LanguageId { get; set; }
     }
 
     public class GetTextResourceQueryValidator : AbstractValidator<GetTextResourceQuery>
