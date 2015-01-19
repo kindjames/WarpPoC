@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using Warp.Core.Cqrs;
 using Warp.Data.Context;
@@ -11,7 +12,7 @@ namespace Warp.Data.Queries.TextResources
         public string ResourceString { get; set; }
 
         [Required]
-        public int UserLanguageId { get; set; }
+        public Guid UserLanguageId { get; set; }
     }
 
     public class ValidateResourceStringQueryHandler : IQueryHandler<ValidateResourceStringQuery, bool>
@@ -23,7 +24,12 @@ namespace Warp.Data.Queries.TextResources
             _dbContext = dbContext;
         }
 
-        public bool Handle(DuplicateResourceStringExistsQuery query)
+        //public bool Handle(DuplicateResourceStringExistsQuery query)
+        //{
+        //    
+        //}
+
+        public bool Handle(ValidateResourceStringQuery query)
         {
             return _dbContext.TextResources
                 .Any(tr => tr.ResourceString == query.ResourceString && tr.LanguageId == query.UserLanguageId);
