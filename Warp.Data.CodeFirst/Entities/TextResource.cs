@@ -7,17 +7,13 @@ namespace Warp.Data.Entities
 {
     public class TextResource : EntityBase
     {
-        [Key, Column(Order = 0)]
         public new Guid Id { get; set; } // 'new' for defining composite-primary-key.
 
-        [Key, Column(Order = 1)]
         public Guid ClientId { get; set; }
 
-        [Key, Column(Order = 2)]
         public Guid LanguageId { get; set; }
 
-        [Key, Column(Order = 3)]
-        public Guid TextResourceIdentifierId { get; set; }
+        public Guid ResourceIdentifierId { get; set; }
 
         [Required]
         public string ResourceString { get; set; }
