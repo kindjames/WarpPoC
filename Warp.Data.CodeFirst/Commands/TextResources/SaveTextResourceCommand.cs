@@ -4,10 +4,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Warp.Core.Command;
+using Warp.Core.Cqrs;
 using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Infrastructure.Validation;
-using Warp.Core.Query;
 using Warp.Core.Util;
 using Warp.Data.Context;
 
@@ -18,7 +17,7 @@ namespace Warp.Data.Commands.TextResources
     /// </summary>
     public sealed class SaveTextResourceCommand : ICommand
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         // Required TextResourceIdentifier data
         [Required]
@@ -36,29 +35,27 @@ namespace Warp.Data.Commands.TextResources
 
         [Required]
         public string ResourceString { get; set; }
-
     }
 
     public sealed class SaveTextResourceCommandHandler : ICommandHandler<SaveTextResourceCommand>
     {
         private readonly ITextResourceDbContext _dbContext;
-        private readonly IQueryDispatcher _queryDispatcher;
+        private readonly IDispatcher _dispatcher;
         private readonly IObjectMapper _objectMapper;
-        private readonly ICommandDispatcher _commandDispatcher;
 
         private SaveResourceIdentifierCodeCommand _resourceIdCodeCommand;
         private SaveResourceStringCommand _resourceStringCommand;
 
 
-        public SaveTextResourceCommandHandler(ITextResourceDbContext dbContext, IQueryDispatcher queryDispatcher, IObjectMapper objectMapper, ICommandDispatcher commandDispatcher)
+        public SaveTextResourceCommandHandler(ITextResourceDbContext dbContext, IDispatcher queryDispatcher, IObjectMapper objectMapper, IDispatcher dispatcher)
         {
             _dbContext = dbContext;
-            _queryDispatcher = queryDispatcher;
+            _dispatcher = queryDispatcher;
             _objectMapper = objectMapper;
-            _commandDispatcher = commandDispatcher;
+            _dispatcher = dispatcher;
         }
 
-        public void Execute(SaveTextResourceCommand command)
+        public void Handle(SaveTextResourceCommand command)
         {
             // Test command correctness
             CheckArgument.NotNull(command, "command");
@@ -68,23 +65,23 @@ namespace Warp.Data.Commands.TextResources
             _resourceStringCommand = new SaveResourceStringCommand(){ Id = command.Id, ResourceIdentifierCode = command.ResourceIdentifierCode, ClientOverridable = command.ClientOverridable};
 
             // Validation
-            if (command.Id == 0)
-            {
+            //if (command.Id = 0)
+            //{
 
-            }
-            else
-            {
+            //}
+            //else
+            //{
                 
-            }
+            //}
 
-            _commandDispatcher.Execute(_resourceIdCodeCommand);
-            _commandDispatcher.Execute(_resourceStringCommand);
+            _dispatcher.Execute(_resourceIdCodeCommand);
+            _dispatcher.Execute(_resourceStringCommand);
 
             // Check command for correctness
           
             // Invoke SaveNewResourceIdentifierCommand and return ResourceIdentifierId
             // Invoke SaveNewResourceCommand and return TextResourceDetailsDto to User
 
-        }
+        }       
     }
 }

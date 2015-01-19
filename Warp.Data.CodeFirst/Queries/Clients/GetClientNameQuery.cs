@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Warp.Core.Query;
+using Warp.Core.Cqrs;
 using Warp.Data.Context;
 
 namespace Warp.Data.Queries.Clients
@@ -12,7 +12,7 @@ namespace Warp.Data.Queries.Clients
     public class GetClientNameQuery : IQuery<string>
     {
         [Required]
-        public int ClientId { get; set; }
+        public Guid ClientId { get; set; }
     }
 
     public class GetClientNameQueryHandler : IQueryHandler<GetClientNameQuery, string>
@@ -29,7 +29,7 @@ namespace Warp.Data.Queries.Clients
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
-        public string Execute(GetClientNameQuery query)
+        public string Handle(GetClientNameQuery query)
         {
             return _dbContext.Clients
                 .SingleOrDefault(c => c.Id == query.ClientId).Name;

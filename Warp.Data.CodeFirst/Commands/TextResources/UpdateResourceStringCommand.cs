@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Warp.Core.Command;
+using Warp.Core.Cqrs;
 using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Infrastructure.Validation;
 using Warp.Core.Util;
@@ -15,7 +15,7 @@ namespace Warp.Data.Commands.TextResources
 {
     public sealed class UpdateResourceStringCommand : ICommand
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [IdRequired]
         public int ResourceIdentifierId { get; set; }
@@ -41,7 +41,7 @@ namespace Warp.Data.Commands.TextResources
             _objectMapper = objectMapper;
         }
 
-        public void Execute(UpdateResourceStringCommand command)
+        public void Handle(UpdateResourceStringCommand command)
         {
             CheckArgument.NotNull(command, "UpdateResourceStringCommand");
             var resourceStringEntity = _objectMapper.Map<UpdateResourceStringCommand, TextResource>(command);

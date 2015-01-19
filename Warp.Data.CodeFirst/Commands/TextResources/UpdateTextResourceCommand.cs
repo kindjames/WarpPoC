@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Warp.Core.Command;
+using Warp.Core.Cqrs;
 using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Infrastructure.Validation;
 using Warp.Core.Util;
@@ -18,13 +18,25 @@ namespace Warp.Data.Commands.TextResources
     public class UpdateTextResourceCommand : ICommand
     {
         [IdRequired]
-        public int Id { get; internal set; }
+        public Guid Id { get; set; }
 
         [Required]
         public string ResourceIdentifierCode { get; set; }
         
         [Required]
         public bool ClientOverridable { get; set; }
+
+        Guid ICommand.Id
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
     }
 
     public sealed class UpdateTextResourceCommandHandler : ICommandHandler<UpdateTextResourceCommand>
@@ -38,10 +50,9 @@ namespace Warp.Data.Commands.TextResources
             _objectmapper = objectMapper;
         }
 
-        public void Execute(UpdateTextResourceCommand command)
+        public void Handle(UpdateTextResourceCommand command)
         {
             CheckArgument.NotNull(command, "UpdateTextResourceCommand");
-            
         }
     }
 }
