@@ -277,7 +277,7 @@ namespace Warp.Testing.Unit.Services.TextResources
 
         public class SaveTextResourceBaseContext<TSubject> : WithSubject<TSubject> where TSubject : class
         {
-            Establish EstablishContext { get; set; }
+            Establish _context { get; set; }
 
             private string _resourceString { get; set; }
             private string _resourceIdentifierCode { get; set; }
@@ -287,7 +287,7 @@ namespace Warp.Testing.Unit.Services.TextResources
 
             public SaveTextResourceBaseContext(string resourceString = "", string resourceIdentifierCode = "", int resourceIdentifierCodeId = 0, bool clientOverridable = false, int languageId = 0)
             {
-                EstablishContext = () =>
+                _context = () =>
                 {
                     _resourceString = resourceString;
                     _resourceIdentifierCode = resourceIdentifierCode;
@@ -298,16 +298,16 @@ namespace Warp.Testing.Unit.Services.TextResources
             }
         }
 
-        public class When_calling__SaveTextResource__for_new_with_correct_SaveTextResourceDto : SaveTextResourceBaseContext<TextResourceService>
-        {
-            // SUT
-            static SaveTextResourceDto _dto;
+        //public class When_calling__SaveTextResource__for_new_with_correct_SaveTextResourceDto : SaveTextResourceBaseContext<TextResourceService>
+        //{
+        //    // SUT
+        //    static SaveTextResourceDto _dto;
 
 
-            Because _of = () => { };
+        //    Because _of = () => { };
 
-            It _should = () => { };
-        }
+        //    It _should = () => { };
+        //}
 
         //public class When_calling__SaveTextResource__with_null_SaveTextResourceDto : WithSubject<TextResourceService>
         //{
