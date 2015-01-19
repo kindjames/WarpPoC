@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Warp.Core.Query;
+using Warp.Core.Cqrs;
 using Warp.Core.Services.Dtos.TextResources;
 using Warp.Data.Context;
 
@@ -14,21 +14,21 @@ namespace Warp.Data.Queries.TextResources
         public string ResourceString { get; set; }
     }
 
-    public class GetAssociatedResourceIdentifierDataQueryHandler :
-        IQueryHandler<GetAssociatedResourceIdentifierDataQuery, ResourceCodeDto>
-    {
-        private readonly ITextResourceDbContext _context;
+    //public class GetAssociatedResourceIdentifierDataQueryHandler :
+    //    IQueryHandler<GetAssociatedResourceIdentifierDataQuery, ResourceCodeDto>
+    //{
+    //    private readonly ITextResourceDbContext _context;
 
-        public GetAssociatedResourceIdentifierDataQueryHandler(ITextResourceDbContext context)
-        {
-            _context = context;
-        }
+    //    public GetAssociatedResourceIdentifierDataQueryHandler(ITextResourceDbContext context)
+    //    {
+    //        _context = context;
+    //    }
 
 
 
-        public ResourceCodeDto Execute(GetAssociatedResourceIdentifierDataQuery query)
-        {
-            throw new NotImplementedException();
-        }
-    }
+    //    public ResourceCodeDto Execute(GetAssociatedResourceIdentifierDataQuery query)
+    //    {
+    //        throw new NotImplementedException();
+    //    }
+    //}
 }
