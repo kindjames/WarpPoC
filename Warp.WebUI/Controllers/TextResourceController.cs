@@ -7,8 +7,8 @@ namespace Warp.WebUI.Controllers
 {
     public partial class TextResourceController : Controller
     {
-        private readonly IObjectMapper _objectMapper;
-        private readonly ITextResourceService _textResourceService;
+        readonly IObjectMapper _objectMapper;
+        readonly ITextResourceService _textResourceService;
 
         public TextResourceController(IObjectMapper objectMapper, ITextResourceService textResourceService)
         {
@@ -21,37 +21,37 @@ namespace Warp.WebUI.Controllers
             return View(model);
         }
 
-        [HttpPost, Route("create")]
-        public ActionResult Create(TextResourceViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                if (!model.ForceAdd)
-                {
-                    if (_textResourceService.CheckResourceCodeExists(model.TextResourceCode))
-                    {
-                        ModelState.AddModelError("", "Text resource code already exists - please tick Force Add.");
-                        // return associated TextResource data model
-                    }
-                    else if (_textResourceService.CheckResourceStringExists(model.TextResourceString))
-                    {
-                        ModelState.AddModelError("", "Text resource string already exists - please tick Force Add.");
-                        // return  associated TextResourceIdentifier data model
-                    }
-                    else
-                    {
-                        // Sweet path
-                    }
-                }
+        //[HttpPost, Route("create")]
+        //public ActionResult Create(TextResourceViewModel model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        if (!model.ForceAdd)
+        //        {
+        //            if (_textResourceService.CheckResourceCodeExists(model.TextResourceCode))
+        //            {
+        //                ModelState.AddModelError("", "Text resource code already exists - please tick Force Add.");
+        //                // return associated TextResource data model
+        //            }
+        //            else if (_textResourceService.CheckResourceStringExists(model.TextResourceString))
+        //            {
+        //                ModelState.AddModelError("", "Text resource string already exists - please tick Force Add.");
+        //                // return  associated TextResourceIdentifier data model
+        //            }
+        //            else
+        //            {
+        //                // Sweet path
+        //            }
+        //        }
 
-                var dto = _mappingEngine.Map<TextResourceViewModel, SaveTextResourceDto>(model);
+        //        var dto = _mappingEngine.Map<TextResourceViewModel, SaveTextResourceDto>(model);
 
-                _textResourceService.SaveResource(dto);
+        //        _textResourceService.SaveResource(dto);
 
-                return RedirectToAction("View", new { textResourceId = dto.LanguageId });
-            }
-            return View(model);
-        }
+        //        return RedirectToAction("View", new { textResourceId = dto.LanguageId });
+        //    }
+        //    return View(model);
+        //}
 
         //[HttpGet, Route("{TextResourceId:int}")]
         //public ActionResult View(int textResourceId)

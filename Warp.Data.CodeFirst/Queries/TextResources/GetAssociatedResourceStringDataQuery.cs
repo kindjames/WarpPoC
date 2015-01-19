@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Warp.Core.Query;
+using Warp.Core.Cqrs;
 using Warp.Core.Services.Dtos.TextResources;
 
 namespace Warp.Data.Queries.TextResources
