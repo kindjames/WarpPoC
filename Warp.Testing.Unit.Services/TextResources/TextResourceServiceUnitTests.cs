@@ -109,7 +109,7 @@ namespace Warp.Testing.Unit.Services.TextResources
                 The<IDispatcher>()
                     .WasToldTo(d => d.Execute(Param.IsAny<GetTextResourceStringQuery>()));
 
-                _result.TextResourceString.ShouldEqual("BEEP");
+                //_result.TextResourceString.ShouldEqual("BEEP");
             };
         }
 
