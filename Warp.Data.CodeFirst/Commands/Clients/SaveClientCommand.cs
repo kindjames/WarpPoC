@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using FluentValidation;
 using Warp.Core.Cqrs;
 using Warp.Core.Enum;
 using Warp.Core.Exceptions;
@@ -11,47 +12,32 @@ using Warp.Data.Entities;
 using Warp.Data.Infrastructure;
 using Warp.Data.Queries.Clients;
 using Warp.Data.Queries.General;
+using ValidationResult = FluentValidation.Results.ValidationResult;
 
 namespace Warp.Data.Commands.Clients
 {
     public class SaveClientCommand : ICommand
     {
-        [IdRequired]
         public Guid Id { get; set; }
-
-        [Required]
         public string Name { get; set; }
-
-        [IdRequired]
         public Guid CustomerId { get; set; }
-
-        [Required]
         public string Code { get; set; }
-
-        [IdRequired]
         public ClientStatus Status { get; set; }
-
-        [IdRequired]
         public Guid AccountManagerId { get; set; }
-
         public Guid LegacyClientId { get; set; }
     }
-    
-    public class SaveClientCommandHandler : ICommandHandler<SaveClientCommand>
-    {
-        private readonly IDomainDbContext _dbContext;
-        private readonly IObjectMapper _objectMapper;
-        private readonly IDispatcher _dispatcher;
 
-        public SaveClientCommandHandler(IDomainDbContext dbContext, IObjectMapper objectMapper, IDispatcher dispatcher)
+    public class SaveClientValidator : AbstractValidator<SaveClientCommand>
+    {
+        public SaveClientValidator()
         {
-            _dbContext = dbContext;
-            _objectMapper = objectMapper;
-            _dispatcher = dispatcher;
+            RuleFor(c => c.Id).
         }
 
-        public void Handle(SaveClientCommand command)
+        public override ValidationResult Validate(SaveClientCommand command)
         {
+            var result = new ValidationResult();
+            result.Errors.Add();
             // Check whether client already exists for customer id and client code.
             if (!_dispatcher.Execute(new CheckClientExistsForCodeQuery { CustomerId = command.CustomerId, ClientCode = command.Code }))
             {
@@ -70,6 +56,23 @@ namespace Warp.Data.Commands.Clients
                 throw new DataEntityNotFoundException<Customer>(command.CustomerId);
             }
 
+            return base.Validate(command);
+        }
+    }
+    
+    public class SaveClientCommandHandler : ICommandHandler<SaveClientCommand>
+    {
+        private readonly IDomainDbContext _dbContext;
+        private readonly IObjectMapper _objectMapper;
+
+        public SaveClientCommandHandler(IDomainDbContext dbContext, IObjectMapper objectMapper)
+        {
+            _dbContext = dbContext;
+            _objectMapper = objectMapper;
+        }
+
+        public void Handle(SaveClientCommand command)
+        {
             var client = _objectMapper.MapTo<Client>(command);
 
             _dbContext.Save(client);

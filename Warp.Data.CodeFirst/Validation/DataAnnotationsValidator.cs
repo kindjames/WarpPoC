@@ -5,9 +5,20 @@ namespace Warp.Data.Validation
 {
     public class DataAnnotationsValidator : IValidator
     {
-        public void Validate(object obj)
+        public ValidationResponse Validate(object obj)
         {
-            Validator.TryValidateObject(obj, new ValidationContext(obj), null, true);
+            var validationContext = new ValidationContext(obj);
+
+            if (!Validator.TryValidateObject(obj, validationContext, null, true))
+            {
+                foreach (var c in validationContext.Items)
+                {
+                    c.
+                }
+                return new ValidationResponse();
+            }
+
+            return new ValidationResponse();
         }
     }
 }

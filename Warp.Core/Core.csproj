@@ -64,7 +64,6 @@
     <Compile Include="Domain\Enum\BrandStatus.cs" />
     <Compile Include="Domain\Enum\ClientStatus.cs" />
     <Compile Include="Domain\ErrorCodes.cs" />
-    <Compile Include="Domain\IOperationResult.cs" />
     <Compile Include="Exceptions\ClientAlreadyExistsException.cs" />
     <Compile Include="Exceptions\Data\CommandHandlerNotFoundException.cs" />
     <Compile Include="Exceptions\Data\DataEntityNotFoundException.cs" />
@@ -81,7 +80,9 @@
     <Compile Include="Infrastructure\AutoMapper\AutoMapperExtensions.cs" />
     <Compile Include="Infrastructure\AutoMapper\IObjectMapper.cs" />
     <Compile Include="Infrastructure\AutoMapper\ObjectMapper.cs" />
+    <Compile Include="Infrastructure\General\GuidCombGenerator.cs" />
     <Compile Include="Infrastructure\General\Extensions.cs" />
+    <Compile Include="Infrastructure\General\IUniqueIdentifierGenerator.cs" />
     <Compile Include="Infrastructure\Logging\ConsoleLoggingService.cs" />
     <Compile Include="Infrastructure\Logging\ILoggingService.cs" />
     <Compile Include="Infrastructure\IoC\InjectDependencyAttribute.cs" />
@@ -95,7 +96,6 @@
     <Compile Include="Cqrs\IDispatcher.cs" />
     <Compile Include="Cqrs\IQueryHandler.cs" />
     <Compile Include="Cqrs\ICommand.cs" />
-    <Compile Include="Cqrs\IOperation.cs" />
     <Compile Include="Cqrs\IQuery.cs" />
     <Compile Include="Services\Dtos\Client\ClientDto.cs" />
     <Compile Include="Services\Dtos\Client\DtoBase.cs" />

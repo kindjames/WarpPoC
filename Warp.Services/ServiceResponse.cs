@@ -5,14 +5,6 @@ using Warp.Core.Services;
 
 namespace Warp.Services
 {
-    //public static class ServiceExtensions
-    //{
-    //    public static IResponse<TDto> ToDtoResponse<TDto, TResult>(this IOperationResult<TResult> result)
-    //    {
-            
-    //    }
-    //}
-
     public class ServiceResponse : IResponse
     {
         public bool Successful { private set; get; }
