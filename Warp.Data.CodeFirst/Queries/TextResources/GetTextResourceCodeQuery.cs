@@ -33,7 +33,7 @@ namespace Warp.Data.Queries.TextResources
         {
             return _context.TextResourceIdentifiers
                 .Where(trc => trc.Id == query.TextResourceCodeId)
-                .Select(trc => trc.TextResourceCode)
+                .Select(trc => trc.ResourceIdentifierCode)
                 .SingleOrDefault();
         }
     }

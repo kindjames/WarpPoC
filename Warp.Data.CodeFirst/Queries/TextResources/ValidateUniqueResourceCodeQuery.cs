@@ -23,7 +23,7 @@ namespace Warp.Data.Queries.TextResources
         public bool Handle(ValidateUniqueResourceCodeQuery query)
         {
             return _dbContext.TextResourceIdentifiers
-                .Any(tri => tri.TextResourceCode == query.ResourceIdentifierCode);
+                .Any(tri => tri.ResourceIdentifierCode == query.ResourceIdentifierCode);
         }
     }
 }
