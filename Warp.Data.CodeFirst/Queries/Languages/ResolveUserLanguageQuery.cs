@@ -9,7 +9,7 @@ namespace Warp.Data.Queries.Languages
 {
     public sealed class ResolveUserLanguageQuery : IQuery<Guid>
     {
-        public Guid UserId { get; set; }
+        public Guid Id { get; set; }
     }
 
     public class ResolveUserLanguageQueryValidator : AbstractValidator<ResolveUserLanguageQuery>
@@ -32,7 +32,7 @@ namespace Warp.Data.Queries.Languages
         public Guid Handle(ResolveUserLanguageQuery query)
         {
             return _context.Users
-                .Where(u => u.Id == query.UserId)
+                .Where(u => u.Id == query.Id)
                 .Select(u => u.DefaultLanguageId)
                 .SingleOrDefault();
         }

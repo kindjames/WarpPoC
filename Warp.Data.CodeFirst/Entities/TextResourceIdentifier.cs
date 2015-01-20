@@ -8,7 +8,7 @@ namespace Warp.Data.Entities
     public class TextResourceIdentifier : EntityBase
     {
         [Required]
-        public string TextResourceCode { get; set; }
+        public string ResourceIdentifierCode { get; set; }
 
         [DefaultValue(false)]
         public bool ClientOverridable { get; set; }
