@@ -7,6 +7,7 @@ using Warp.Data.Queries.TextResources;
 using Warp.Services;
 using ThenIt = Machine.Specifications.It;
 using FakeDbSet;
+using Warp.Data.Commands.TextResources;
 using Warp.Data.Context;
 using Warp.Data.Entities;
 
@@ -21,6 +22,7 @@ namespace Warp.Testing.Unit.Services.TextResources
             public static Language lang { get; set; }
             public static TextResource tr { get; set; }
             public static TextResourceIdentifier tri { get; set; }
+            public SaveTextResourceCommand command { get; set; }
 
             public SaveTextResourceTextBase()
             {
@@ -56,6 +58,13 @@ namespace Warp.Testing.Unit.Services.TextResources
 
                     };
 
+                    command = new SaveTextResourceCommand
+                    {
+                        Id = Guid.NewGuid(),
+                        LanguageId = lang.Id,
+                        ClientOverridable = false,
+                    };
+
                 };
             }
         };
@@ -63,6 +72,8 @@ namespace Warp.Testing.Unit.Services.TextResources
         public class When_saving_a_unique_TextResource : SaveTextResourceTextBase
         {
             Because of = () => Subject.SaveTextResource(dto);
+
+            ThenIt should
         }
 
     }
