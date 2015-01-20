@@ -28,10 +28,10 @@ namespace Warp.Data.Commands.TextResources
 
         // Required TextResource data
         [IdRequired]
-        public int LanguageId { get; set; }
+        public Guid LanguageId { get; set; }
 
         // Populated after successful TextResourceIdentifier validation(Here or in Dispatcher?)
-        public int ResourceIdentifierId { get; set; }
+        public Guid ResourceIdentifierId { get; set; }
 
         [Required]
         public string ResourceString { get; set; }
