@@ -279,34 +279,34 @@ namespace Warp.Data.Migrations.DataSeed
             {
                 new TextResourceIdentifier
                 {
-                    TextResourceCode = "UsernameLabel",
+                    ResourceIdentifierCode = "UsernameLabel",
                     ClientOverridable = true
                 },
 
                 new TextResourceIdentifier
                 {
-                    TextResourceCode = "UsernameTextPlaceholder",
+                    ResourceIdentifierCode = "UsernameTextPlaceholder",
                     ClientOverridable = true
                 },
                 new TextResourceIdentifier
                 {
-                    TextResourceCode = "PasswordLabel",
+                    ResourceIdentifierCode = "PasswordLabel",
                     ClientOverridable = true
                 },
                 new TextResourceIdentifier
                 {
-                    TextResourceCode = "PasswordTextPlaceholder",
+                    ResourceIdentifierCode = "PasswordTextPlaceholder",
                     ClientOverridable = true
                 },
 
                 new TextResourceIdentifier
                 {
-                    TextResourceCode = "RememberMeCheckbox",
+                    ResourceIdentifierCode = "RememberMeCheckbox",
                     ClientOverridable = false
                 },
                 new TextResourceIdentifier
                 {
-                    TextResourceCode = "LoginButton",
+                    ResourceIdentifierCode = "LoginButton",
                     ClientOverridable = false
                 }
             };
@@ -318,42 +318,42 @@ namespace Warp.Data.Migrations.DataSeed
                 new TextResource
                 {
                     ResourceString = "Username",
-                    TextResourceIdentifier = textResourceIdentifiers.Single(i => i.TextResourceCode == "UsernameLabel"),
+                    TextResourceIdentifier = textResourceIdentifiers.Single(i => i.ResourceIdentifierCode == "UsernameLabel"),
                     Language = languages[0],
                     Client = clients[0]
                 },
                 new TextResource
                 {
                     ResourceString = "E-mail or TMDC Id",
-                    TextResourceIdentifier = textResourceIdentifiers.Single(i => i.TextResourceCode == "UsernameTextPlaceholder"),
+                    TextResourceIdentifier = textResourceIdentifiers.Single(i => i.ResourceIdentifierCode == "UsernameTextPlaceholder"),
                     Language = languages[0],
                     Client = clients[0]
                 },
                 new TextResource
                 {
                     ResourceString = "Password",
-                    TextResourceIdentifier = textResourceIdentifiers.Single(i => i.TextResourceCode == "PasswordLabel"),
+                    TextResourceIdentifier = textResourceIdentifiers.Single(i => i.ResourceIdentifierCode == "PasswordLabel"),
                     Language = languages[0],
                     Client = clients[0]
                 },
                 new TextResource
                 {
                     ResourceString = "Password",
-                    TextResourceIdentifier = textResourceIdentifiers.Single(i => i.TextResourceCode == "PasswordTextPlaceholder"),
+                    TextResourceIdentifier = textResourceIdentifiers.Single(i => i.ResourceIdentifierCode == "PasswordTextPlaceholder"),
                     Language = languages[0],
                     Client = clients[0]
                 },
                 new TextResource
                 {
                     ResourceString = "Remember me for 2 weeks",
-                    TextResourceIdentifier = textResourceIdentifiers.Single(i => i.TextResourceCode == "RememberMeCheckbox"),
+                    TextResourceIdentifier = textResourceIdentifiers.Single(i => i.ResourceIdentifierCode == "RememberMeCheckbox"),
                     Language = languages[0],
                     Client = clients[0]
                 },
                 new TextResource
                 {
                     ResourceString = "Log in",
-                    TextResourceIdentifier = textResourceIdentifiers.Single(i => i.TextResourceCode == "LoginButton"),
+                    TextResourceIdentifier = textResourceIdentifiers.Single(i => i.ResourceIdentifierCode == "LoginButton"),
                     Language = languages[0],
                     Client = clients[0]
                 }
