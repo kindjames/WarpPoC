@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.ComponentModel.DataAnnotations;
 namespace Warp.Core.Services.Dtos.TextResources
 {
@@ -9,10 +10,10 @@ namespace Warp.Core.Services.Dtos.TextResources
         [Required]
         public string ResourceIdentifierCode { get; set; }
         [Required]
-        public int LanguageId { get; set; }
+        public Guid LanguageId { get; set; }
         [Required]
         public bool ClientOverridable { get; set; }
         [Required]
-        public int ClientId { get; set; }
+        public Guid ClientId { get; set; }
     }
 }
