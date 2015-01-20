@@ -96,6 +96,7 @@
     <Compile Include="TextResources\TextResourceServiceTestBase.cs" />
     <Compile Include="TextResources\TextResourceModelProviderUnitTests.cs" />
     <Compile Include="TextResources\TextResourceServiceUnitTests.cs" />
+    <Compile Include="TextResources\SaveTextResourceUnitTests.cs" />
     <Compile Include="Users\UserServiceUnitTests.cs" />
   </ItemGroup>
   <ItemGroup>
