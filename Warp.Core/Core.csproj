@@ -109,8 +109,7 @@
     <Compile Include="Services\Dtos\ContactAddressAssignedDto - Copy.cs" />
     <Compile Include="Services\Dtos\DtoBase.cs" />
     <Compile Include="Services\Dtos\TextResources\ResourceIdentifierDetailDto.cs" />
-    <Compile Include="Services\Dtos\TextResources\ResourceStringDetailDto.cs" />
-    <Compile Include="Services\Dtos\TextResources\ValidationResponseDto.cs" />
+    <Compile Include="Services\Dtos\TextResources\TextResourceDetailDto.cs" />
     <Compile Include="Services\Dtos\Users\UserDto.cs" />
     <Compile Include="Services\Dtos\Customer\CustomerDto.cs" />
     <Compile Include="Services\ICustomerService.cs" />
