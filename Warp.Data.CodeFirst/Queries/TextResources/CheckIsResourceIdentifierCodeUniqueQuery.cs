@@ -5,22 +5,22 @@ using Warp.Data.Context;
 
 namespace Warp.Data.Queries.TextResources
 {
-    public class ValidateUniqueResourceCodeQuery : IQuery<bool>
+    public class CheckIsResourceIdentifierCodeUniqueQuery : IQuery<bool>
     {
         [Required]
         public string ResourceIdentifierCode { get; set; }
     }
 
-    public class ValidateUniqueResourceCodeQueryHandler : IQueryHandler<ValidateUniqueResourceCodeQuery, bool>
+    public class CheckIsResourceIdentifierCodeUniqueQueryHandler : IQueryHandler<CheckIsResourceIdentifierCodeUniqueQuery, bool>
     {
-        readonly ITextResourceDbContext _dbContext;
+        private readonly ITextResourceDbContext _dbContext;
 
-        public ValidateUniqueResourceCodeQueryHandler(ITextResourceDbContext dbContext)
+        public CheckIsResourceIdentifierCodeUniqueQueryHandler(ITextResourceDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        public bool Handle(ValidateUniqueResourceCodeQuery query)
+        public bool Handle(CheckIsResourceIdentifierCodeUniqueQuery query)
         {
             return _dbContext.TextResourceIdentifiers
                 .Any(tri => tri.ResourceIdentifierCode == query.ResourceIdentifierCode);
