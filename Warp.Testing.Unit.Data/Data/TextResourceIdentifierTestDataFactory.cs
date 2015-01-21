@@ -14,38 +14,38 @@ namespace Warp.Testing.Unit.Data.Data
                 new TextResourceIdentifier
                 {
                     Id = Guid.NewGuid(),
-                    TextResourceCode = "WelcomeText",
+                    ResourceIdentifierCode = "WelcomeText",
                     ClientOverridable = true
                 },
                 new TextResourceIdentifier
                 {
                     Id = Guid.NewGuid(),
-                    TextResourceCode = "LoginText",
+                    ResourceIdentifierCode = "LoginText",
                     ClientOverridable = true
                 },
                 new TextResourceIdentifier
                 {
                     Id = Guid.NewGuid(),
-                    TextResourceCode = "PasswordText",
+                    ResourceIdentifierCode = "PasswordText",
                     ClientOverridable = true
                 },
                 new TextResourceIdentifier
                 {
                     Id = Guid.NewGuid(),
-                    TextResourceCode = "UsernameText", 
+                    ResourceIdentifierCode = "UsernameText", 
                     ClientOverridable = true
                 },
 
                 new TextResourceIdentifier
                 {
                     Id = Guid.NewGuid(),
-                    TextResourceCode = "RememberMeFor2WeeksText",
+                    ResourceIdentifierCode = "RememberMeFor2WeeksText",
                     ClientOverridable = false
                 },
                 new TextResourceIdentifier
                 {
                     Id = Guid.NewGuid(),
-                    TextResourceCode = "EmailOrTMDCIdText",
+                    ResourceIdentifierCode = "EmailOrTMDCIdText",
                     ClientOverridable = false
                 }
             };

@@ -20,31 +20,31 @@ using Machine.Specifications.Model;
 
 namespace Warp.Testing.Unit.Data.Commands.TextResources
 {
-    public class SaveTextResourceBase : WithSubject<SaveTextResourceCommandHandler>
-    {
-        private Establish _that = () =>
-        {
-            Configure(om => om.For<IObjectMapper>().Use<ObjectMapper>());
-            Configure(Mapper.Engine);
+    //public class SaveTextResourceBase : WithSubject<SaveTextResourceCommandHandler>
+    //{
+    //    private Establish _that = () =>
+    //    {
+    //        Configure(om => om.For<IObjectMapper>().Use<ObjectMapper>());
+    //        Configure(Mapper.Engine);
 
-            _rootCommand = new SaveTextResourceCommand() { ClientOverridable = _clientOverridable, ResourceIdentifierCode = _resourceIdentifierCode, ResourceString = _resourceString, LanguageId = _languageId };
+    //        _rootCommand = new SaveTextResourceCommand() { ClientOverridable = _clientOverridable, ResourceIdentifierCode = _resourceIdentifierCode, ResourceString = _resourceString, LanguageId = _languageId };
 
-            The<IDispatcher>()
-                .WhenToldTo(c => c.Execute(MoqIt.IsAny<ValidateUniqueResourceCodeQuery>()))
-                .Return(true);
+    //        The<IDispatcher>()
+    //            .WhenToldTo(c => c.Execute(MoqIt.IsAny<ValidateResourceCodeQuery>()))
+    //            .Return(true);
 
-            The<IDispatcher>()
-                .WhenToldTo(c => c.Execute(MoqIt.IsAny<ValidateResourceStringQuery>()))
-                .Return(true);
-        };
+    //        The<IDispatcher>()
+    //            .WhenToldTo(c => c.Execute(MoqIt.IsAny<ValidateResourceStringQuery>()))
+    //            .Return(true);
+    //    };
 
 
-        private static SaveTextResourceCommand _rootCommand;
-        protected static bool _clientOverridable = false;
-        protected const string _resourceIdentifierCode = "WelcomeText";
-        protected const string _resourceString = "Welcome!";
-        protected const int _languageId = 1;
-    }
+    //    private static SaveTextResourceCommand _rootCommand;
+    //    protected static bool _clientOverridable = false;
+    //    protected const string _resourceIdentifierCode = "WelcomeText";
+    //    protected const string _resourceString = "Welcome!";
+    //    protected const int _languageId = 1;
+    //}
 
     //[Subject("TextResource Service Unit Tests")]
     //public class SaveNewTextResourceCommandHandlerUnitTests

@@ -16,15 +16,32 @@ namespace Warp.Testing.Unit.Services.TextResources
     [Subject("TextResourceService => Unit Tests")]
     public class SaveTextResourceUnitTests
     {
-        public class SaveTextResourceTextBase : WithSubject<TextResourceService>
+        /// <summary>
+        /// SaveTextResource Base Test Moq
+        /// </summary>
+        public class SaveTextResourceBaseContext : WithSubject<TextResourceService>
         {
-            public static SaveTextResourceDto dto { get; set; }
+            #region Test Dummies
+            
             public static Language lang { get; set; }
             public static TextResource tr { get; set; }
             public static TextResourceIdentifier tri { get; set; }
-            public SaveTextResourceCommand command { get; set; }
+            public static Client client { get; set; }
 
-            public SaveTextResourceTextBase()
+            public SaveTextResourceDto saveDtoNoClient { get; set; }
+            public SaveTextResourceDto saveDtoWithClient { get; set; }
+
+            public static ResourceIdentifierDetailDto resourceIdentifierDetailDto { get; set; }
+            public static TextResourceDetailDto resourceStringDetailDto { get; set; }
+
+            public static SaveResourceIdentifierCommand saveRICommand { get; set; }
+            public static SaveResourceStringCommand saveRSCommand { get; set; }
+            
+            #endregion Test Dummies
+
+            #region CTOR
+
+            public SaveTextResourceBaseContext()
             {
                 Establish _context = () =>
                 {
@@ -49,32 +66,63 @@ namespace Warp.Testing.Unit.Services.TextResources
                         ResourceIdentifierId = tri.Id,
                         LanguageId = lang.Id,
                         ResourceString = "Welcome!",
-                        ClientId = Guid.Empty
-                    };
-
-                    dto = new SaveTextResourceDto
-                    {
                         ClientId = Guid.Empty,
-
                     };
 
-                    command = new SaveTextResourceCommand
+                    client = new Client
                     {
                         Id = Guid.NewGuid(),
-                        LanguageId = lang.Id,
+                    };
+
+                    saveDtoNoClient = new SaveTextResourceDto
+                    {
                         ClientOverridable = false,
+                        ClientId = Guid.Empty,
+                        LanguageId = lang.Id,
+                        ResourceIdentifierCode = tri.ResourceIdentifierCode,
+                        ResourceString = tr.ResourceString
+                    };
+
+                    saveDtoWithClient = new SaveTextResourceDto
+                    {
+                        ClientOverridable = true,
+                        ClientId = Guid.NewGuid(),
+                        LanguageId = lang.Id,
+                        ResourceIdentifierCode = tri.ResourceIdentifierCode,
+                        ResourceString = tr.ResourceString
+                    };
+
+                    saveRICommand = new SaveResourceIdentifierCommand
+                    {
+                        Id = Guid.NewGuid(),
+                        ResourceIdentifierCode = tri.ResourceIdentifierCode,
+                        ClientOverridable = tri.ClientOverridable,
+
+                    };
+
+                    saveRSCommand = new SaveResourceStringCommand
+                    {
+                        
                     };
 
                 };
             }
+
+            #endregion CTOR
         };
 
-        public class When_saving_a_unique_TextResource : SaveTextResourceTextBase
+        public class When_saving_a_unique_TextResource : SaveTextResourceBaseContext
         {
-            Because of = () => Subject.SaveTextResource(dto);
+            //Because of = () => Subject.SaveTextResource(dto);
 
-            ThenIt should
+            //ThenIt should
         }
+
+        // Test Schedule
+        // -------------
+        // When calling SaveResourceCode for a unique ResourceIdentifier
+        // When validating a unique RI
+        // When calling SaveResourceString for a unique ResouurceString
 
     }
 }

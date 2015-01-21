@@ -26,7 +26,7 @@ namespace Warp.Testing.Unit.Services.TextResources
         {
             var tri1 = new TextResourceIdentifier
             {
-                Id = new Guid(), TextResourceCode = "WelcomeText", ClientOverridable = false
+                Id = new Guid(), ResourceIdentifierCode = "WelcomeText", ClientOverridable = false
             };
 
             var tri2 = new TextResourceIdentifier { Id = new Guid()  };
