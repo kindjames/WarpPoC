@@ -1,11 +1,15 @@
 ﻿using System;
+using System.Collections;
+using System.Runtime.InteropServices.WindowsRuntime;
 using Warp.Core.Cqrs;
 using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Cqrs;
 using Warp.Core.Infrastructure.Util;
+using Warp.Core.Services.Dtos;
 using Warp.Core.Services.Dtos.TextResources;
 using Warp.Core.Services.TextResourceService;
 using Warp.Core.Services.UserService;
+using Warp.Data.Commands.Clients;
 using Warp.Data.Commands.TextResources;
 using Warp.Data.Queries.TextResources;
 
@@ -75,47 +79,56 @@ namespace Warp.Services
             };
         }
 
-        public void SaveTextResource(SaveTextResourceDto saveTextResourceDto)
+        public IResponse<TextResourceDetailDto> SaveTextResource(SaveTextResourceDto dto)
         {
-            // Validation cycle
-            CheckArgument.NotNull(saveTextResourceDto, "SaveTextResourceDto");
+            #region Validation  Cycle
 
-            bool stringIsValidated = _dispatcher.Execute( new ValidateResourceStringQuery());
-            
-            if (stringIsValidated)
+            CheckArgument.NotNull(dto, "SaveTextResourceDto");
+
+            /// Validation cycle
+
+            /// Validate ResourceString
+            bool IsResourceStringUnique = _dispatcher.Execute(new CheckIsResourceStringUniqueQuery
             {
-                bool codeIsValidated = _dispatcher.Execute(new ValidateUniqueResourceCodeQuery());
+                ResourceString = dto.ResourceString,
+                UserLanguageId = dto.LanguageId,
+                ClientId = dto.ClientId,
+                ClientOverridable = dto.ClientOverridable
+            });
 
-                if (codeIsValidated)
-                {
-                    
-                }
+            if (IsResourceStringUnique)
+            {
+                // 
+            }
+
+
+            /// Validate ResourceIdentifierCode
+            bool IsResourceIdentifierCodeUnique = _dispatcher.Execute(new CheckIsResourceIdentifierCodeUniqueQuery
+            {
+                ResourceIdentifierCode = dto.ResourceIdentifierCode
+            });
+
+            if (!IsResourceIdentifierCodeUnique)
+            {
 
             }
             else
             {
-                var stringQuery = _dispatcher.Execute(new GetTextResourceCodeQuery {});
-                // map result to Dto
+                
+            }
+            // Sweet path. ResourceIdentifierCode and ResourceString are unassigned and unique
+            if (!IsResourceStringAssigned && !IsResourceIdentifierCodeAssigned)
+            {
+                var associatedData =
+                    _dispatcher.Execute<GetAssociatedTextResourceDataQuery, TextResourceDetailDto>();
             }
 
 
-            // Validate SaveTextResourceDto data
-            // Validate ResourceString
-            // if(ValidateResourceStringQuery)
-            // {
 
-            // }
-
-
-            // ValidateResourceDataQuery
-                // Validate ResourceIdentifier
             
-            // Validate ResourceIdentifierCode
-                // Throw exception()
+            #endregion Validation  Cycle
 
-            // Validate ResourceString
-                // Throw exception()
-            
+            #region Save Cycle
             // Yes. Continue with Save.  
 
             // New Resource
@@ -135,30 +148,26 @@ namespace Warp.Services
             //}
             //var stringExists = _dispatcher.Execute(DuplicateResourceStringExistsQuery);
             //if (!(_dispatcher.Execute(textResourceStringQuery)) && !(_dispatcher.Execute(textResourceCodeQuery)))
+
+
+            #endregion Save Cycle
+
+            return new ServiceResponse<TextResourceDetailDto>(associatedData, false);
         }
 
-
-        /// <summary>
-        ///  TODO -> Validate unique ResourceString
-        /// </summary>
-        /// <param name="dto"></param>
-        /// <returns></returns>
-        public bool GetResourceString(string textResourceString)
+        protected bool ValidateResourceString(SaveTextResourceDto dto)
         {
-            return true; //_dispatcher.Execute(DuplicateResourceStringExistsQuery(dto));
+            bool result = false;
+
+            return result;
         }
 
-        /// <summary>
-        ///  TODO -> Validate unique ResourceCode
-        /// </summary>
-        /// <param name="dto"></param>
-        /// <returns></returns>
-        public bool CheckResourceCodeExists(string textResourceCode)
+        protected bool ValidateResourceCode(SaveTextResourceDto dto)
         {
-            // Get Associated TextResource data(Query on , populate and return DuplicateTextResourceDto to User(ResourceIdentifier and associated TextResource dto)
-            return true;
-        }
+            bool result = false;
 
+            return result;
+        }
 
         #endregion Next
 
@@ -166,17 +175,6 @@ namespace Warp.Services
         {
             // InitResourceCacheQuery
 
-            throw new NotImplementedException();
-        }
-
-
-        public ResourceCodeDto GetTextResourceCode(Guid textResourceCodeId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool CheckResourceStringExists(string textResourceString)
-        {
             throw new NotImplementedException();
         }
     }
