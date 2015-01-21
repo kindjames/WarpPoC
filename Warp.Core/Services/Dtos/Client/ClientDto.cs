@@ -4,9 +4,8 @@ using Warp.Core.Services.Dtos.Users;
 
 namespace Warp.Core.Services.Dtos.Client
 {
-    public class ClientDto
+    public class ClientDto : DtoBase
     {
-        public Guid Id { get; set; }
         public string Name { get; set; }
         public ClientStatus Status { get; set; }
         public string Code { get; set; }

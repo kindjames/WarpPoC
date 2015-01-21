@@ -5,6 +5,7 @@ using Machine.Specifications;
 using Warp.Core.Exceptions.Data;
 using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Cqrs;
+using Warp.Core.Infrastructure.General;
 using Warp.Core.Services;
 using Warp.Core.Services.Dtos.Client;
 using Warp.Data.Entities;

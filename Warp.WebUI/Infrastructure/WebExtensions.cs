@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Security.Principal;
 using System.Web.Mvc;
 using Warp.Core.Authentication;
+using Warp.Core.Infrastructure.General;
 using Warp.Core.Infrastructure.Util;
 using Warp.Core.Services;
 

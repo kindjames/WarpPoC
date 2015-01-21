@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Warp.Core.Services
+namespace Warp.Core.Infrastructure.General
 {
     public interface IResponse
     {
