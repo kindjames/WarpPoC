@@ -1,5 +1,5 @@
 ﻿using System;
-using Warp.Core.Util;
+using Warp.Core.Infrastructure.Util;
 
 namespace Warp.Core.Attributes
 {

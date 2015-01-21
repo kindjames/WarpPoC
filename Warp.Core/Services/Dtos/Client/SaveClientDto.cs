@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Warp.Core.Enum;
+using Warp.Core.Domain.Enum;
 
 namespace Warp.Core.Services.Dtos.Client
 {

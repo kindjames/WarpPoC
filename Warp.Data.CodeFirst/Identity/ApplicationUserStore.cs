@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Warp.Core.Authentication;
 using Warp.Core.Infrastructure.Configuration;
-using Warp.Core.Util;
+using Warp.Core.Infrastructure.General;
+using Warp.Core.Infrastructure.Util;
 using Warp.Data.Context;
 using Warp.Data.Entities;
 

@@ -1,9 +1,9 @@
 ﻿using System;
 using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Cqrs;
+using Warp.Core.Infrastructure.Util;
 using Warp.Core.Services;
 using Warp.Core.Services.Dtos.Customer;
-using Warp.Core.Util;
 using Warp.Data.Entities;
 using Warp.Data.Queries.Customers;
 

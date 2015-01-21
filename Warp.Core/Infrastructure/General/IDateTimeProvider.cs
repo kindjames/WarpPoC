@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Warp.Core.Util
+namespace Warp.Core.Infrastructure.General
 {
     /// <summary>
     /// Allows mocking or faking different dates / times when unit testing.

@@ -1,4 +1,4 @@
-﻿namespace Warp.Core.Enum
+﻿namespace Warp.Core.Domain.Enum
 {
     public enum BrandStatus
     {

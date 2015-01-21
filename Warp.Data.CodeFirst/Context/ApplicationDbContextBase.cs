@@ -5,7 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Warp.Core.Data;
 using Warp.Core.Infrastructure.Configuration;
-using Warp.Core.Util;
+using Warp.Core.Infrastructure.General;
+using Warp.Core.Infrastructure.Util;
 
 namespace Warp.Data.Context
 {

@@ -1,7 +1,7 @@
 ﻿using System;
 using Warp.Core.Cqrs;
+using Warp.Core.Infrastructure.Util;
 using Warp.Core.Services.TextResourceService;
-using Warp.Core.Util;
 using Warp.Data.Queries.Languages;
 
 namespace Warp.Services

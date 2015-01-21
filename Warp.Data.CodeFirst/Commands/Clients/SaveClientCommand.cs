@@ -2,7 +2,7 @@
 using FluentValidation;
 using FluentValidation.Results;
 using Warp.Core.Cqrs;
-using Warp.Core.Enum;
+using Warp.Core.Domain.Enum;
 using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Infrastructure.Validation;
 using Warp.Data.Context;

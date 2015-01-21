@@ -1,6 +1,6 @@
 using System.Data.Entity;
 using Warp.Core.Infrastructure.Configuration;
-using Warp.Core.Util;
+using Warp.Core.Infrastructure.General;
 using Warp.Data.Entities;
 
 namespace Warp.Data.Context

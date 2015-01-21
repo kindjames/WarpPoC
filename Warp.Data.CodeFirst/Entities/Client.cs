@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using Warp.Core.Data;
-using Warp.Core.Enum;
+using Warp.Core.Domain.Enum;
 
 namespace Warp.Data.Entities
 {

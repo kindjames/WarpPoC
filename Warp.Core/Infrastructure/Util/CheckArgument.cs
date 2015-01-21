@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
-namespace Warp.Core.Util
+namespace Warp.Core.Infrastructure.Util
 {
     /// <summary>
     /// Utility class for checking parameters passed into a method.

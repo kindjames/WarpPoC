@@ -1,10 +1,10 @@
 ﻿using System;
 using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Cqrs;
+using Warp.Core.Infrastructure.Util;
 using Warp.Core.Services.Dtos.TextResources;
 using Warp.Core.Services.TextResourceService;
 using Warp.Core.Services.UserService;
-using Warp.Core.Util;
 using Warp.Data.Queries.TextResources;
 
 namespace Warp.Services

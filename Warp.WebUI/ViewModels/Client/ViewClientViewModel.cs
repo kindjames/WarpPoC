@@ -1,6 +1,6 @@
 ﻿using System;
 using FluentValidation;
-using Warp.Core.Enum;
+using Warp.Core.Domain.Enum;
 using Warp.Core.Infrastructure.Validation;
 using Warp.WebUI.ViewModels.User;
 

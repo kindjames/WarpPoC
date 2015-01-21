@@ -13,6 +13,13 @@ namespace Warp.Core.Infrastructure.General
     /// </remarks>
     public class GuidCombGenerator : IUniqueIdentifierGenerator
     {
+        private readonly IDateTimeProvider _dateTimeProvider;
+
+        public GuidCombGenerator(IDateTimeProvider dateTimeProvider)
+        {
+            _dateTimeProvider = dateTimeProvider;
+        }
+
         /// <summary>
         /// Generate a new <see cref="Guid"/> using the comb algorithm.
         /// </summary>
@@ -21,7 +28,7 @@ namespace Warp.Core.Infrastructure.General
             var guidArray = Guid.NewGuid().ToByteArray();
 
             var baseDate = new DateTime(1900, 1, 1);
-            var now = DateTime.Now;
+            var now = _dateTimeProvider.UtcNow();
 
             // Get the days and milliseconds which will be used to build the byte string 
             var days = new TimeSpan(now.Ticks - baseDate.Ticks);

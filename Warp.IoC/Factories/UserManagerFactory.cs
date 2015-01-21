@@ -2,7 +2,7 @@ using System;
 using Microsoft.AspNet.Identity;
 using Warp.Core.Authentication;
 using Warp.Core.Infrastructure.Configuration;
-using Warp.Core.Util;
+using Warp.Core.Infrastructure.General;
 using Warp.Data.Context;
 using Warp.Data.Identity;
 

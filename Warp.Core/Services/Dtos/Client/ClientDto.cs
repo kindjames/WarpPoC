@@ -1,5 +1,5 @@
 ﻿using System;
-using Warp.Core.Enum;
+using Warp.Core.Domain.Enum;
 using Warp.Core.Services.Dtos.Users;
 
 namespace Warp.Core.Services.Dtos.Client

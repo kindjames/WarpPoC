@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Data.Entity.Migrations;
 using System.Linq;
-using Warp.Core.Enum;
+using Warp.Core.Domain.Enum;
 using Warp.Core.Infrastructure.Authentication;
 using Warp.Data.Entities;
 

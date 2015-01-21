@@ -4,7 +4,7 @@ using System.Data.Entity.Validation;
 using System.Text;
 using Warp.Core.Data;
 using Warp.Core.Infrastructure.Configuration;
-using Warp.Core.Util;
+using Warp.Core.Infrastructure.General;
 using Warp.Data.Context;
 using Warp.Data.Entities;
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Machine.Fakes;
 using Machine.Specifications;
-using Warp.Core.Util;
+using Warp.Core.Infrastructure.Util;
 
 namespace Warp.Testing.Unit.Core
 {

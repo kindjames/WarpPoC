@@ -84,7 +84,6 @@
     <Compile Include="Infrastructure\AutoMapper\IObjectMapper.cs" />
     <Compile Include="Infrastructure\AutoMapper\ObjectMapper.cs" />
     <Compile Include="Infrastructure\General\GuidCombGenerator.cs" />
-    <Compile Include="Infrastructure\General\Extensions.cs" />
     <Compile Include="Infrastructure\General\IUniqueIdentifierGenerator.cs" />
     <Compile Include="Infrastructure\Logging\ConsoleLoggingService.cs" />
     <Compile Include="Infrastructure\Logging\ILoggingService.cs" />
@@ -123,8 +122,8 @@
     <Compile Include="Services\TextResourceService\ILanguageService.cs" />
     <Compile Include="Services\TextResourceService\ITextResourceService.cs" />
     <Compile Include="Services\UserService\IUserService.cs" />
-    <Compile Include="Util\DateTimeProvider.cs" />
-    <Compile Include="Util\IDateTimeProvider.cs" />
+    <Compile Include="Infrastructure\General\DateTimeProvider.cs" />
+    <Compile Include="Infrastructure\General\IDateTimeProvider.cs" />
     <Compile Include="Infrastructure\IoC\IServiceLocator.cs" />
     <Compile Include="Services\Dtos\Brand\BrandSummaryDto.cs" />
     <Compile Include="Services\Dtos\Brand\BrandSummaryListDto.cs" />
@@ -132,7 +131,7 @@
     <Compile Include="Services\IClientService.cs" />
     <Compile Include="Services\IBrandService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Util\CheckArgument.cs" />
+    <Compile Include="Infrastructure\Util\CheckArgument.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using Warp.Core.Cqrs;
 using Warp.Core.Infrastructure.AutoMapper;
+using Warp.Core.Infrastructure.Util;
 using Warp.Core.Infrastructure.Validation;
 using Warp.Core.Services;
 using Warp.Core.Services.Dtos.Client;
-using Warp.Core.Util;
 using Warp.Data.Commands.Clients;
 using Warp.Data.Entities;
 using Warp.Data.Queries.Clients;
