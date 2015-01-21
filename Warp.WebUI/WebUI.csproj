@@ -231,6 +231,7 @@
     <Compile Include="AccountController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
+    <Compile Include="Bundles.cs" />
     <Compile Include="App_Start\Config.FluentValidation.cs" />
     <Compile Include="App_Start\Config.AutoMapper.cs" />
     <Compile Include="App_Start\Config.Authentication.cs" />

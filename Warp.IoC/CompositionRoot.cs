@@ -10,6 +10,7 @@ using SimpleInjector.Integration.Web.Mvc;
 using Warp.Core.Cqrs;
 using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Infrastructure.Configuration;
+using Warp.Core.Infrastructure.General;
 using Warp.Core.Infrastructure.IoC;
 using Warp.Core.Infrastructure.Logging;
 using Warp.Core.Infrastructure.Models;
@@ -49,6 +50,7 @@ namespace Warp.IoC
             c.Register<IObjectMapper, ObjectMapper>();
             c.Register<ILoggingService, ConsoleLoggingService>();
             c.Register<IValidator, FluentValidator>();
+            c.Register<IUniqueIdentifierGenerator, GuidCombGenerator>();
 
             // Data
             var dataAssembly = typeof(IDomainDbContext).Assembly;
