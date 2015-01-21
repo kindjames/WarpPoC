@@ -1,20 +1,14 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.Runtime.InteropServices;
 using FluentValidation;
 using FluentValidation.Results;
 using Warp.Core.Cqrs;
 using Warp.Core.Enum;
-using Warp.Core.Exceptions;
-using Warp.Core.Exceptions.Data;
 using Warp.Core.Infrastructure.AutoMapper;
-using Warp.Core.Infrastructure.Validation;
 using Warp.Data.Context;
 using Warp.Data.Entities;
 using Warp.Data.Infrastructure;
 using Warp.Data.Infrastructure.Validation;
 using Warp.Data.Queries.Clients;
-using ValidationResult = FluentValidation.Results.ValidationResult;
 
 namespace Warp.Data.Commands.Clients
 {

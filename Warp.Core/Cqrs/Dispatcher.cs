@@ -86,16 +86,18 @@ namespace Warp.Core.Cqrs
         {
             var validator = GetValidator(command.GetType());
 
-            validator.
+            ((dynamic) validator).Validate(command);
 
             var handler = GetCommandHandler(command.GetType());
 
-            ((dynamic)handler).Handle(command);
+            ((dynamic) handler).Handle(command);
         }
 
         public TResult Execute<TResult>(IQuery<TResult> query)
         {
-            _validator.Validate(query);
+            var validator = GetValidator(query.GetType());
+
+            ((dynamic)validator).Validate(query);
 
             var handler = GetQueryHandler<TResult>(query.GetType());
 
@@ -105,10 +107,6 @@ namespace Warp.Core.Cqrs
         public TResult Execute<TQuery, TResult>()
             where TQuery : IQuery<TResult>, new()
         {
-            var validator = GetValidator<TQuery>();
-
-            validator.
-
             return GetQueryHandler<TQuery, TResult>()
                 .Handle(new TQuery());
         }

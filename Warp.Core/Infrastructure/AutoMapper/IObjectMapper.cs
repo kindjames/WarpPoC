@@ -2,6 +2,9 @@
 
 namespace Warp.Core.Infrastructure.AutoMapper
 {
+    /// <summary>
+    /// Responsible for Mapping objects from one type to another.
+    /// </summary>
     public interface IObjectMapper
     {
         TTo Map<TFrom, TTo>(TFrom from, bool createAnyMissingTypeMaps = true);
