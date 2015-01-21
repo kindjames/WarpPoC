@@ -26,7 +26,7 @@ namespace Warp.Testing.Unit.Data.Commands.TextResources
         {
             // Test bjects
             private static IDbSet<TextResourceIdentifier> _textResourceIdentifiers;
-            private static SaveResourceIdentifierCodeCommand _command;
+            private static SaveResourceIdentifierCommand _command;
 
             // Test Values
             private static bool _clientOverridable = false;
@@ -40,14 +40,14 @@ namespace Warp.Testing.Unit.Data.Commands.TextResources
                 Configure(Mapper.Engine);
 
                 The<IDispatcher>()
-                    .WhenToldTo(c => c.Execute(MoqIt.IsAny<ValidateUniqueResourceCodeQuery>()))
+                    .WhenToldTo(c => c.Execute(MoqIt.IsAny<CheckIsResourceIdentifierCodeUniqueQuery>()))
                     .Return(true);
 
 
 
             };
 
-            private Because _of = () => Subject.Handle(new SaveResourceIdentifierCodeCommand());
+            private Because _of = () => Subject.Handle(new SaveResourceIdentifierCommand());
 
             private It _should_add_new_TextResourceIdentifier_to_the_TextResourceIdentifier_repository =
                 () => _textResourceIdentifiers.WasToldTo(t => t.Add(MoqIt.IsAny<TextResourceIdentifier>()));
