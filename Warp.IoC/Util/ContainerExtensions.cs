@@ -60,6 +60,15 @@ namespace Warp.IoC
             }
         }
 
+        public static void RegisterOpenGenericValidatorForAllEntityTypes(this Container container, Type openValidatorType)
+        {
+            foreach (var closedDeleteCommandType in EntityTypes.Select(e => openValidatorType.MakeGenericType(e)))
+            {
+                container.Register(closedDeleteCommandType);
+            }
+        }
+
+
         public static void RegisterOpenGenericCommandHandlerForAllEntityTypes(this Container container, Type openCommandType, Type openCommandHandlerType)
         {
             var openCommandHandlerInterfaceType = typeof(ICommandHandler<>);

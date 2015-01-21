@@ -1,19 +1,39 @@
 ﻿using System;
+using System.Diagnostics;
+using FluentValidation;
 using Warp.Core.Exceptions.Data;
 using Warp.Core.Infrastructure.IoC;
-using Warp.Core.Infrastructure.Validation;
 
 namespace Warp.Core.Cqrs
 {
     public class Dispatcher : IDispatcher
     {
         private readonly IServiceLocator _serviceLocator;
-        private readonly IValidator _validator;
 
-        public Dispatcher(IServiceLocator serviceLocator, IValidator validator)
+        public Dispatcher(IServiceLocator serviceLocator)
         {
             _serviceLocator = serviceLocator;
-            _validator = validator;
+        }
+
+        protected AbstractValidator<T> GetValidator<T>()
+        {
+            return (AbstractValidator<T>) GetValidator(typeof(T));
+        }
+
+        protected object GetValidator(Type objType)
+        {
+            var validatorType = typeof(AbstractValidator<>)
+                .MakeGenericType(objType);
+
+            var validator = _serviceLocator.TryResolve(validatorType);
+
+            if (Debugger.IsAttached && validator == null)
+            {
+                throw new Exception(String.Format(
+                    "Validator for {0} not found, i.e. AbstractValidator<{0}>.", objType.Name));
+            }
+
+            return validator;
         }
 
         protected object GetCommandHandler(Type commandType)
@@ -64,7 +84,9 @@ namespace Warp.Core.Cqrs
 
         public void Execute(ICommand command)
         {
-            _validator.Validate(command);
+            var validator = GetValidator(command.GetType());
+
+            validator.
 
             var handler = GetCommandHandler(command.GetType());
 
@@ -83,6 +105,10 @@ namespace Warp.Core.Cqrs
         public TResult Execute<TQuery, TResult>()
             where TQuery : IQuery<TResult>, new()
         {
+            var validator = GetValidator<TQuery>();
+
+            validator.
+
             return GetQueryHandler<TQuery, TResult>()
                 .Handle(new TQuery());
         }

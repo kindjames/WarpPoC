@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Warp.Core.Cqrs;
 using Warp.Core.Infrastructure.AutoMapper;
-using Warp.Core.Infrastructure.Validation;
 using Warp.Core.Services;
 using Warp.Core.Services.Dtos.Client;
 using Warp.Core.Util;
@@ -17,13 +16,11 @@ namespace Warp.Services
     {
         private readonly IDispatcher _dispatcher;
         private readonly IObjectMapper _objectMapper;
-        private readonly IValidator _validator;
 
-        public ClientService(IDispatcher dispatcher, IObjectMapper objectMapper, IValidator validator)
+        public ClientService(IDispatcher dispatcher, IObjectMapper objectMapper)
         {
             _dispatcher = dispatcher;
             _objectMapper = objectMapper;
-            _validator = validator;
         }
 
         public IResponse<ClientDto> GetClient(Guid clientId)

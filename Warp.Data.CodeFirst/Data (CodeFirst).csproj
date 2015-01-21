@@ -70,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Infrastructure\DbSetExtensions.cs" />
+    <Compile Include="Infrastructure\Validation\EntityExistsValidator.cs" />
     <Compile Include="Migrations\201501151137154_InitialCreate.cs" />
     <Compile Include="Migrations\201501151137154_InitialCreate.Designer.cs">
       <DependentUpon>201501151137154_InitialCreate.cs</DependentUpon>
@@ -121,7 +122,6 @@
     <Compile Include="Queries\TextResources\ResolveBrowserLanguageQuery.cs" />
     <Compile Include="Queries\TextResources\ResolveUserLanguageQuery.cs" />
     <Compile Include="Queries\Users\GetDefaultLanguageForUserQuery.cs" />
-    <Compile Include="Validation\DataAnnotationsValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
