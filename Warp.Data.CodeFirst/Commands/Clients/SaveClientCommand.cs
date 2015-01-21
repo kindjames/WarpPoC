@@ -1,6 +1,8 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.InteropServices;
 using FluentValidation;
+using FluentValidation.Results;
 using Warp.Core.Cqrs;
 using Warp.Core.Enum;
 using Warp.Core.Exceptions;
@@ -10,8 +12,8 @@ using Warp.Core.Infrastructure.Validation;
 using Warp.Data.Context;
 using Warp.Data.Entities;
 using Warp.Data.Infrastructure;
+using Warp.Data.Infrastructure.Validation;
 using Warp.Data.Queries.Clients;
-using Warp.Data.Queries.General;
 using ValidationResult = FluentValidation.Results.ValidationResult;
 
 namespace Warp.Data.Commands.Clients
@@ -29,34 +31,34 @@ namespace Warp.Data.Commands.Clients
 
     public class SaveClientValidator : AbstractValidator<SaveClientCommand>
     {
-        public SaveClientValidator()
+        readonly IDispatcher _dispatcher;
+
+        public SaveClientValidator(IDispatcher dispatcher, EntityExistsValidator<User> userExistsValidator)
         {
-            RuleFor(c => c.Id).
+            _dispatcher = dispatcher;
+
+            RuleFor(c => c.Id).NotEmpty();
+            RuleFor(c => c.Name).NotEmpty();
+            RuleFor(c => c.Code).NotEmpty();
+
+            RuleFor(c => c.AccountManagerId).NotEmpty()
+                .SetValidator(userExistsValidator).WithMessage("Looking for account manager");
+
+            RuleFor(c => c.CustomerId).NotEmpty()
+                .SetValidator(userExistsValidator);
         }
 
         public override ValidationResult Validate(SaveClientCommand command)
         {
-            var result = new ValidationResult();
-            result.Errors.Add();
+            var result = base.Validate(command);
+
             // Check whether client already exists for customer id and client code.
             if (!_dispatcher.Execute(new CheckClientExistsForCodeQuery { CustomerId = command.CustomerId, ClientCode = command.Code }))
             {
-                throw new ClientAlreadyExistsException(command.CustomerId, command.Code);
+                result.Errors.Add(new ValidationFailure("", ""));
             }
 
-            // Validate Account Manager (user) exists.
-            if (!_dispatcher.Execute(new CheckEntityExistsQuery<Customer> { EntityId = command.AccountManagerId }))
-            {
-                throw new DataEntityNotFoundException<User>(command.AccountManagerId, "Looking for Account Manager.");
-            }
-
-            // Validate customer exists.
-            if (!_dispatcher.Execute(new CheckEntityExistsQuery<Customer> { EntityId = command.CustomerId }))
-            {
-                throw new DataEntityNotFoundException<Customer>(command.CustomerId);
-            }
-
-            return base.Validate(command);
+            return result;
         }
     }
     
