@@ -9,5 +9,6 @@ namespace Warp.Data.Context
         IDbSet<TextResourceIdentifier> TextResourceIdentifiers { get; set; }
         IDbSet<Language> Languages { get; set; }
         IDbSet<User> Users { get; set; }
+        IDbSet<Client> Clients { get; set; }
     }
 }

@@ -79,7 +79,7 @@
     <Compile Include="Commands\Clients\SaveClientCommand.cs" />
     <Compile Include="Commands\TextResources\SaveResourceStringCommand.cs" />
     <Compile Include="Commands\TextResources\SaveTextResourceCommand.cs" />
-    <Compile Include="Commands\TextResources\SaveResourceIdentifierCodeCommand.cs" />
+    <Compile Include="Commands\TextResources\SaveResourceIdentifierCommand.cs" />
     <Compile Include="Commands\TextResources\UpdateTextResourceCommand.cs" />
     <Compile Include="Commands\TextResources\UpdateResourceIdentifierCommand.cs" />
     <Compile Include="Commands\TextResources\UpdateResourceStringCommand.cs" />
@@ -120,10 +120,9 @@
     <Compile Include="Queries\General\GetEntityQuery.cs" />
     <Compile Include="Queries\General\CheckEntityExistsQuery.cs" />
     <Compile Include="Queries\Languages\GetLanguageIdByCultureQuery.cs" />
-    <Compile Include="Queries\TextResources\GetAssociatedResourceIdentifierDataQuery.cs" />
-    <Compile Include="Queries\TextResources\GetAssociatedResourceStringDataQuery.cs" />
-    <Compile Include="Queries\TextResources\ValidateUniqueResourceCodeQuery.cs" />
-    <Compile Include="Queries\TextResources\ValidateResourceStringQuery.cs" />
+    <Compile Include="Queries\TextResources\GetAssociatedTextResourceDataQuery.cs" />
+    <Compile Include="Queries\TextResources\CheckIsResourceIdentifierCodeUniqueQuery.cs" />
+    <Compile Include="Queries\TextResources\CheckIsResourceStringUniqueQuery.cs" />
     <Compile Include="Queries\TextResources\GetTextResourceCodeQuery.cs" />
     <Compile Include="Queries\TextResources\GetTextResourceQuery.cs" />
     <Compile Include="Queries\TextResources\GetTextResourceStringQuery.cs" />
