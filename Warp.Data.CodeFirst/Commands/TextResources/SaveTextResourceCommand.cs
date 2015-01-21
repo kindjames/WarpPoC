@@ -18,23 +18,15 @@ namespace Warp.Data.Commands.TextResources
     public sealed class SaveTextResourceCommand : ICommand
     {
         public Guid Id { get; set; }
-
-        // Required TextResourceIdentifier data
-        [Required]
-        public string ResourceIdentifierCode { get; set; }
-
-        [Required]
-        public bool ClientOverridable { get; set; }
-
+         
         // Required TextResource data
         [IdRequired]
         public Guid LanguageId { get; set; }
 
-        // Populated after successful TextResourceIdentifier validation(Here or in Dispatcher?)
-        public Guid ResourceIdentifierId { get; set; }
-
         [Required]
         public string ResourceString { get; set; }
+
+        public Guid ClientId { get; set; }
     }
 
     public sealed class SaveTextResourceCommandHandler : ICommandHandler<SaveTextResourceCommand>
@@ -43,7 +35,7 @@ namespace Warp.Data.Commands.TextResources
         private readonly IDispatcher _dispatcher;
         private readonly IObjectMapper _objectMapper;
 
-        private SaveResourceIdentifierCodeCommand _resourceIdCodeCommand;
+        private SaveResourceIdentifierCommand _resourceIdCodeCommand;
         private SaveResourceStringCommand _resourceStringCommand;
 
 
@@ -61,8 +53,8 @@ namespace Warp.Data.Commands.TextResources
             CheckArgument.NotNull(command, "command");
 
             // Initialise aggregate Commands
-            _resourceIdCodeCommand = new SaveResourceIdentifierCodeCommand(){ ResourceIdentifierCode = command.ResourceIdentifierCode, ClientOverridable = command.ClientOverridable};
-            _resourceStringCommand = new SaveResourceStringCommand(){ Id = command.Id, ResourceIdentifierCode = command.ResourceIdentifierCode, ClientOverridable = command.ClientOverridable};
+            //_resourceIdCodeCommand = new SaveResourceIdentifierCommand(){ ResourceIdentifierCode = command.ResourceIdentifierCode, ClientOverridable = command.ClientOverridable};
+            //_resourceStringCommand = new SaveResourceStringCommand(){ Id = command.Id, ResourceIdentifierCode = command.ResourceIdentifierCode, ClientOverridable = command.ClientOverridable};
 
             // Validation
             //if (command.Id = 0)

@@ -11,7 +11,7 @@ using Warp.Data.Context;
 
 namespace Warp.Data.Commands.TextResources
 {
-    public sealed class SaveResourceIdentifierCodeCommand : ICommand
+    public sealed class SaveResourceIdentifierCommand : ICommand
     {
         [Required]
         public string ResourceIdentifierCode { get; set; }
@@ -22,7 +22,7 @@ namespace Warp.Data.Commands.TextResources
         public Guid Id { get; set; }
     }
 
-    public sealed class SaveResourceIdentifierCodeCommandHandler : ICommandHandler<SaveResourceIdentifierCodeCommand>
+    public sealed class SaveResourceIdentifierCodeCommandHandler : ICommandHandler<SaveResourceIdentifierCommand>
     {
         private readonly ITextResourceDbContext _dbContext;
         private readonly IDispatcher _dispatcher;
@@ -35,7 +35,7 @@ namespace Warp.Data.Commands.TextResources
             _objectMapper = objectMapper;
         }
 
-        public void Handle(SaveResourceIdentifierCodeCommand command)
+        public void Handle(SaveResourceIdentifierCommand command)
         {
             CheckArgument.NotNull(command, "command");
         }
