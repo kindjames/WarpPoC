@@ -9,6 +9,7 @@ using Warp.Core.Services;
 using Warp.Core.Services.Dtos.Client;
 using Warp.Data.Entities;
 using Warp.Data.Queries.Clients;
+using Warp.Data.Queries.General;
 using Warp.Services;
 using IObjectMapper = Warp.Core.Infrastructure.AutoMapper.IObjectMapper;
 using ThenIt = Machine.Specifications.It;
@@ -88,7 +89,7 @@ namespace Warp.Testing.Unit.Services
                 _clientId = Guid.NewGuid();
 
                 The<IDispatcher>()
-                    .WhenToldTo(d => d.Execute(Param.IsAny<GetClientQuery>()))
+                    .WhenToldTo(d => d.Execute(Param.IsAny<GetEntityQuery<Client>>()))
                     .Return((Client)null);
             };
 
@@ -115,7 +116,7 @@ namespace Warp.Testing.Unit.Services
                 Configure(Mapper.Engine);
 
                 The<IDispatcher>()
-                    .WhenToldTo(d => d.Execute(Param.IsAny<GetClientQuery>()))
+                    .WhenToldTo(d => d.Execute(Param.IsAny<GetEntityQuery<Client>>()))
                     .Return(new Client { Id = _clientId });
             };
 

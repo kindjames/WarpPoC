@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using Warp.Core.Data;
-using Warp.Core.Infrastructure.Validation;
+using Warp.Data.Infrastructure.Validation;
 
 namespace Warp.Data.Entities
 {
@@ -19,7 +19,7 @@ namespace Warp.Data.Entities
         [Required]
         public string CustomerCode { get; set; }
 
-        [IdRequired]
+        [NotEmptyGuid]
         public Guid DefaultLanguageId { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using FluentValidation;
 using Warp.Core.Cqrs;
 using Warp.Core.Data;
 using Warp.Core.Infrastructure.Validation;
@@ -10,8 +11,16 @@ namespace Warp.Data.Queries.General
     public class GetEntityQuery<TEntity> : IQuery<TEntity>
         where TEntity : EntityBase
     {
-        [IdRequired]
         public Guid EntityId { get; set; }
+    }
+
+    public class GetEntityQueryValidator<TEntity> : AbstractValidator<GetEntityQuery<TEntity>>
+        where TEntity : EntityBase
+    {
+        public GetEntityQueryValidator()
+        {
+            RuleFor(q => q.EntityId).NotEmptyGuid();
+        }
     }
 
     public class GetEntityQueryHandler<TEntity> : IQueryHandler<GetEntityQuery<TEntity>, TEntity>
@@ -27,7 +36,7 @@ namespace Warp.Data.Queries.General
         public TEntity Handle(GetEntityQuery<TEntity> query)
         {
             return _dbContext.Set<TEntity>()
-                .Single(e => e.Id == query.EntityId);
+                .SingleOrDefault(e => e.Id == query.EntityId);
         }
     }
 }

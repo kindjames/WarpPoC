@@ -91,8 +91,6 @@
     <Compile Include="Data\TextResourceIdentifierTestDataFactory.cs" />
     <Compile Include="Data\TextResourceTestDataFactory.cs" />
     <Compile Include="Queries\Clients\CheckClientExistsForCodeQueryHandlerTests.cs" />
-    <Compile Include="Queries\Clients\GetClientQueryHandlerTests.cs" />
-    <Compile Include="Queries\Customers\GetCustomerQueryHandlerTests.cs" />
     <Compile Include="Queries\Customers\GetCustomerNameQueryHandlerTests.cs" />
     <Compile Include="Queries\Languages\GetLanguageIdByCultureQueryTests.cs" />
     <Compile Include="Queries\TextResources\DuplicateResourceStringsQueryHandlerTests.cs" />

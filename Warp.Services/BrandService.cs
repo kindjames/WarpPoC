@@ -6,8 +6,8 @@ using Warp.Core.Services;
 using Warp.Core.Services.Dtos.Brand;
 using Warp.Data.Entities;
 using Warp.Data.Queries.Brands;
-using Warp.Data.Queries.Clients;
 using Warp.Data.Queries.Customers;
+using Warp.Data.Queries.General;
 
 namespace Warp.Services
 {
@@ -24,7 +24,7 @@ namespace Warp.Services
 
         public BrandSummaryListDto GetBrandSummaryListForClient(Guid clientId)
         {
-            var client = _dispatcher.Execute(new GetClientQuery {ClientId = clientId});
+            var client = _dispatcher.Execute(new GetEntityQuery<Client> {EntityId = clientId});
 
             if (client == null)
             {

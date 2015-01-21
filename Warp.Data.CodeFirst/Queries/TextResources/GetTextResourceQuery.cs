@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using FluentValidation;
 using Warp.Core.Cqrs;
 using Warp.Core.Infrastructure.Validation;
 using Warp.Data.Context;
@@ -8,8 +9,15 @@ namespace Warp.Data.Queries.TextResources
 {
     public sealed class GetTextResourceQuery : IQuery<string>
     {
-        [IdRequired]
         public Guid TextResourceIdentifierId { get; set; }
+    }
+
+    public class GetTextResourceQueryValidator : AbstractValidator<GetTextResourceQuery>
+    {
+        public GetTextResourceQueryValidator()
+        {
+            RuleFor(q => q.TextResourceIdentifierId).NotEmptyGuid();
+        }
     }
 
     public sealed class GetTextResourceQueryHandler : IQueryHandler<GetTextResourceQuery, string>

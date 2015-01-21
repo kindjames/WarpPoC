@@ -21,7 +21,7 @@ namespace Warp.Core.Exceptions.Data
 
         private static string BuildErrorMessage(Guid entityId, string additionalErrorMessageInformation)
         {
-            return String.Concat("Unable to find ", typeof (TEntity).Name, " for Id ", entityId, " in database. ",
+            return String.Concat("Unable to find ", typeof(TEntity).Name, " for Id ", entityId, " in database. ",
                 additionalErrorMessageInformation);
         }
     }

@@ -1,9 +1,9 @@
-﻿@{ Layout = "_Layout.cshtml"; }
+﻿@{ Layout = MVC.Shared.Views._Layout; }
 <body>
-    @Html.Action("TopNavigationBar", "DashboardControls")
+    @Html.Action(MVC.DashboardControls.TopNavigationBar())
 
     <div class="container" id="main-container">
-        @Html.Action("SideNavigationBar", "DashboardControls")
+        @Html.Action(MVC.DashboardControls.SideNavigationBar())
         <div id="main-content">
             <div class="page-title">
                 <div>

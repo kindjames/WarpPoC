@@ -239,6 +239,7 @@
     <Compile Include="App_Start\Config.Bootstrap.cs" />
     <Compile Include="App_Start\Config.Routes.cs" />
     <Compile Include="App_Start\Config.Bundles.cs" />
+    <Compile Include="Infrastructure\FluentValidatorFactory.cs" />
     <Compile Include="AuthenticationController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -253,7 +254,7 @@
     <Compile Include="HomeController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
-    <Compile Include="Infrastructure\Extenions.cs" />
+    <Compile Include="Infrastructure\WebExtensions.cs" />
     <Compile Include="SharedController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>

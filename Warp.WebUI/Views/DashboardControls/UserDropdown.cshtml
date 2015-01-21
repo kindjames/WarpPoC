@@ -14,7 +14,7 @@
         </li>
 
         <li>
-            <a href="@Url.Action("UserProfile", "Account")">
+            <a href="@Url.Action(MVC.Account.UserProfile())">
                 <i class="fa fa-user"></i>
                 Edit profile
             </a>
@@ -23,7 +23,7 @@
         <li class="divider"></li>
 
         <li>
-            @using (Html.Bootstrap().Begin(new Form("LogOff", "Authentication")))
+            @using (Html.Bootstrap().Begin(new Form(MVC.Authentication.LogOff())))
             {
                 @Html.AntiForgeryToken()
                 <i class="fa fa-off"></i>

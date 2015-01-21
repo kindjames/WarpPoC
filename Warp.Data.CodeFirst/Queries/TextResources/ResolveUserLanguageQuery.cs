@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using FluentValidation;
 using Warp.Core.Cqrs;
 using Warp.Core.Infrastructure.Validation;
 using Warp.Data.Context;
@@ -8,8 +9,15 @@ namespace Warp.Data.Queries.TextResources
 {
     public sealed class ResolveUserLanguageQuery : IQuery<Guid>
     {
-        [IdRequired]
         public Guid UserId { get; set; }
+    }
+
+    public class ResolveUserLanguageQueryValidator : AbstractValidator<ResolveUserLanguageQuery>
+    {
+        public ResolveUserLanguageQueryValidator()
+        {
+            RuleFor(q => q.UserId).NotEmptyGuid();
+        }
     }
 
     public sealed class ResolveUserLanguageQueryHandler : IQueryHandler<ResolveUserLanguageQuery, Guid>

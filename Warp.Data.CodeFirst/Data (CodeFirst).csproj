@@ -71,6 +71,7 @@
   <ItemGroup>
     <Compile Include="Infrastructure\DbSetExtensions.cs" />
     <Compile Include="Infrastructure\Validation\EntityExistsValidator.cs" />
+    <Compile Include="Infrastructure\Validation\NotEmptyGuid.cs" />
     <Compile Include="Migrations\201501151137154_InitialCreate.cs" />
     <Compile Include="Migrations\201501151137154_InitialCreate.Designer.cs">
       <DependentUpon>201501151137154_InitialCreate.cs</DependentUpon>
@@ -106,8 +107,6 @@
     <Compile Include="Queries\Clients\GetClientsQuery.cs" />
     <Compile Include="Queries\Customers\GetCustomerNameQuery.cs" />
     <Compile Include="Queries\Customers\GetCustomerForUserQuery.cs" />
-    <Compile Include="Queries\Customers\GetCustomerQuery.cs" />
-    <Compile Include="Queries\Clients\GetClientQuery.cs" />
     <Compile Include="Queries\Brands\GetBrandsForClientQuery.cs" />
     <Compile Include="Context\ApplicationDbContextBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

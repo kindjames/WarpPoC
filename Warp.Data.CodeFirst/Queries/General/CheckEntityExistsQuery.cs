@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using FluentValidation;
 using Warp.Core.Cqrs;
 using Warp.Core.Data;
 using Warp.Core.Infrastructure.Validation;
@@ -10,8 +11,15 @@ namespace Warp.Data.Queries.General
     public class CheckEntityExistsQuery<TEntity> : IQuery<bool>
         where TEntity : EntityBase
     {
-        [IdRequired]
         public Guid EntityId { get; set; }
+    }
+
+    public class CheckEntityExistsQueryValidator<TEntity> : AbstractValidator<CheckEntityExistsQuery<TEntity>> where TEntity : EntityBase
+    {
+        public CheckEntityExistsQueryValidator()
+        {
+            RuleFor(q => q.EntityId).NotEmptyGuid();
+        }
     }
 
     public class CheckEntityExistsQueryHandler<TEntity> : IQueryHandler<CheckEntityExistsQuery<TEntity>, bool>

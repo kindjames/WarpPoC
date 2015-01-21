@@ -1,21 +1,21 @@
 ﻿@model ClientSearchModel
 
-@using (Ajax.BeginForm("List", "Client", new AjaxOptions { HttpMethod="GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = "clientList", LoadingElementId = "clientListLoader" }))
+@using (Ajax.BeginForm(MVC.Client.List(), new AjaxOptions { HttpMethod="GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = "clientList", LoadingElementId = "clientListLoader" }))
 {
     @Html.Html5TextBoxFor(m => m.ClientSearchQuery, InputTypes.InputType.Search)
 }
 
 <div id="clientList">
-    <img id="clientListLoader" src="@Url.Content("~/Content/SVG/Loaders/tail-spin.svg")" width="30" alt="" style="display: none"/>
-    @Html.Action("List", "Client")
+    <img id="clientListLoader" src="@Url.Content(Links.Content.SVG.Loaders.tail_spin_svg)" width="30" alt="" style="display: none"/>
+    @Html.Action(MVC.Client.List())
 </div>
 <div>
-    @Html.ActionLink("Create", "Create")
+    @Html.ActionLink("Create", MVC.Client.Create())
 </div>
 
 @section scripts {
-    @Scripts.Render("~/bundles/jquery-val")
-    @Scripts.Render("~/bundles/jquery-typewatch")
+    @Scripts.Render(Links.Bundles.Scripts.jquery_validate)
+    @Scripts.Render(Links.Bundles.Scripts.jquery_typewatch)
     <script>
         $('#@Html.IdFor(m => m.ClientSearchQuery)').typeWatch({
             callback: function () { $(this).parent().submit() },

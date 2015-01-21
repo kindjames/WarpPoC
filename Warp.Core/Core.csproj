@@ -100,6 +100,11 @@
     <Compile Include="Cqrs\IQueryHandler.cs" />
     <Compile Include="Cqrs\ICommand.cs" />
     <Compile Include="Cqrs\IQuery.cs" />
+    <Compile Include="Infrastructure\Validation\IValidator.cs" />
+    <Compile Include="Infrastructure\Validation\FluentValidator.cs" />
+    <Compile Include="Infrastructure\Validation\NotEmptyGuidValidator.cs" />
+    <Compile Include="Infrastructure\Validation\ValidationExtensions.cs" />
+    <Compile Include="Infrastructure\Validation\ValidationResponse.cs" />
     <Compile Include="Services\Dtos\Client\ClientDto.cs" />
     <Compile Include="Services\Dtos\Client\DtoBase.cs" />
     <Compile Include="Services\Dtos\ContactAddressAssignedDto - Copy.cs" />

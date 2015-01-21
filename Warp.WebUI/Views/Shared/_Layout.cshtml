@@ -4,14 +4,14 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@ViewBag.PageTitle - HospitalityGEM</title>
-    @Styles.Render("~/css/bootstrap")
-    @*@Styles.Render("~/css/bootstrap-theme")*@
-    @Styles.Render("~/css/flaty")
-    @Styles.Render("~/css/font-awesome")
+    @Styles.Render(Links.Bundles.Styles.bootstrap)
+    @*@Styles.Render(Links.Bundles.Styles.bootstrap_theme)*@
+    @Styles.Render(Links.Bundles.Styles.flaty)
+    @Styles.Render(Links.Bundles.Styles.font_awesome)
 </head>
 @RenderBody()
-@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/jquery-val")
-@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render(Links.Bundles.Scripts.jquery)
+@Scripts.Render(Links.Bundles.Scripts.jquery_validate)
+@Scripts.Render(Links.Bundles.Scripts.bootstrap)
 @RenderSection("scripts", false)
 </html>

@@ -1,4 +1,6 @@
-﻿using Warp.Core.Services;
+﻿using System;
+using System.Collections.Generic;
+using Warp.Core.Services;
 
 namespace Warp.Services
 {
@@ -7,6 +9,10 @@ namespace Warp.Services
         protected IResponse Success()
         {
             return new ServiceResponse();
+        }
+        protected IResponse Failed(IEnumerable<String> errorMessages)
+        {
+            return new ServiceResponse(errorMessages);
         }
 
         protected IResponse<TResult> Success<TResult>(TResult result)

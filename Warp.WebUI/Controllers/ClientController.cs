@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Web.Mvc;
-using Warp.Core.Exceptions.Data;
-using Warp.Core.Infrastructure;
 using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Infrastructure.Logging;
 using Warp.Core.Services;
@@ -49,21 +47,13 @@ namespace Warp.WebUI.Controllers
         [Route("{clientId:guid}")]
         public virtual ActionResult View(Guid clientId)
         {
-            try
-            {
-                var response = _clientService.GetClient(clientId);
+            var response = _clientService.GetClient(clientId);
 
-                if (response.Successful)
-                {
-                    var model = _objectMapper.MapTo<ViewClientViewModel>(response.Result);
-
-                    return View(model);
-                }
-            }
-            catch (DataEntityNotFoundException ex)
+            if (response.Successful && response.Result != null)
             {
-                _loggingService.Warn(ex);
-                return HttpNotFound();
+                var model = _objectMapper.MapTo<ViewClientViewModel>(response.Result);
+                
+                return View(model);
             }
 
             return View();
@@ -91,7 +81,7 @@ namespace Warp.WebUI.Controllers
 
                 if (response.Successful)
                 {
-                    return RedirectToAction("Index");
+                    return RedirectToAction(MVC.Client.Index());
                 }
 
                 ModelState.AddErrorsFromResponse(response);
@@ -104,21 +94,13 @@ namespace Warp.WebUI.Controllers
         [Route("{clientId:guid}/update")]
         public virtual ActionResult Update(Guid clientId)
         {
-            try
-            {
-                var response = _clientService.GetClient(clientId);
+            var response = _clientService.GetClient(clientId);
 
-                if (response.Successful)
-                {
-                    var model = _objectMapper.MapTo<UpdateClientViewModel>(response.Result);
-
-                    return View(model);
-                }
-            }
-            catch (DataEntityNotFoundException ex)
+            if (response.Successful && response.Result != null)
             {
-                _loggingService.Warn(ex);
-                return HttpNotFound();
+                var model = _objectMapper.MapTo<UpdateClientViewModel>(response.Result);
+
+                return View(model);
             }
 
             return View();
@@ -136,7 +118,7 @@ namespace Warp.WebUI.Controllers
 
                 if (response.Successful)
                 {
-                    return RedirectToAction("View", new {clientId = client.Id});
+                    return RedirectToAction(View(client.Id));
                 }
 
                 ModelState.AddErrorsFromResponse(response);

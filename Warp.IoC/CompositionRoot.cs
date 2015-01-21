@@ -2,7 +2,6 @@
 using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
-using FluentValidation;
 using Microsoft.AspNet.Identity;
 using SimpleInjector;
 using SimpleInjector.Advanced;
@@ -14,6 +13,7 @@ using Warp.Core.Infrastructure.Configuration;
 using Warp.Core.Infrastructure.IoC;
 using Warp.Core.Infrastructure.Logging;
 using Warp.Core.Infrastructure.Models;
+using Warp.Core.Infrastructure.Validation;
 using Warp.Core.Util;
 using Warp.Data.Context;
 using Warp.Data.Infrastructure.Validation;
@@ -48,13 +48,14 @@ namespace Warp.IoC
             c.Register<IApplicationConfig, ApplicationConfig>();
             c.Register<IObjectMapper, ObjectMapper>();
             c.Register<ILoggingService, ConsoleLoggingService>();
+            c.Register<IValidator, FluentValidator>();
 
             // Data
             var dataAssembly = typeof(IDomainDbContext).Assembly;
             c.Register<IDispatcher, Dispatcher>();
             c.RegisterManyForOpenGeneric(typeof(ICommandHandler<>), dataAssembly);
             c.RegisterManyForOpenGeneric(typeof(IQueryHandler<,>), dataAssembly);
-            c.RegisterManyForOpenGeneric(typeof(AbstractValidator<>), dataAssembly);
+            c.RegisterAllFluentValidatorsInAssembly(dataAssembly);
             c.RegisterAllImplementationsInAssemblyWithNameEnding("DbContext", dataAssembly);
             c.RegisterOpenGenericQueryHandlerForAllEntityTypes(typeof(CheckEntityExistsQuery<>), typeof(CheckEntityExistsQueryHandler<>));
             c.RegisterOpenGenericValidatorForAllEntityTypes(typeof(EntityExistsValidator<>));
@@ -62,18 +63,20 @@ namespace Warp.IoC
             // Services
             var serviceAssembly = typeof(ClientService).Assembly;
             c.RegisterAllImplementationsInAssemblyWithNameEnding("Service", serviceAssembly);
+            c.RegisterAllFluentValidatorsInAssembly(serviceAssembly);
 
             // MVC
             var mvcAssembly = Assembly.GetCallingAssembly();
             c.RegisterMvcControllers(mvcAssembly);
             c.RegisterMvcIntegratedFilterProvider();
+            c.RegisterAllFluentValidatorsInAssembly(mvcAssembly);
 
             // Web
             c.RegisterPerWebRequest<HttpContextBase>(() => new HttpContextWrapper(HttpContext.Current));
             c.RegisterPerWebRequest<HttpRequestBase>(() => new HttpRequestWrapper(HttpContext.Current.Request));
             c.RegisterPerWebRequest<HttpResponseBase>(() => new HttpResponseWrapper(HttpContext.Current.Response));
 
-            // Identity
+            // ASP.NET Identity
             c.Register<IPasswordHasher, PasswordHasher>();
             c.Register(() => c.GetInstance<UserManagerFactory>().Build());
             c.RegisterPerWebRequest(() => c.GetInstance<AuthenticationManagerFactory>().Build(c.IsVerifying()));

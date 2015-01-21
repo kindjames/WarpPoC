@@ -1,4 +1,5 @@
 ﻿using FluentValidation.Mvc;
+using Warp.WebUI.Infrastructure;
 
 namespace Warp.WebUI
 {
@@ -6,7 +7,10 @@ namespace Warp.WebUI
     {
         public static void ConfigureFluentValidation()
         {
-            FluentValidationModelValidatorProvider.Configure();
+            FluentValidationModelValidatorProvider.Configure(provider =>
+            {
+                provider.ValidatorFactory = new FluentValidatorFactory();
+            });
         }
     }
 }

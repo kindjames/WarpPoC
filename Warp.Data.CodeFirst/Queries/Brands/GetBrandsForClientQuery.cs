@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using FluentValidation;
 using Warp.Core.Cqrs;
 using Warp.Core.Infrastructure.Validation;
 using Warp.Data.Context;
@@ -10,8 +11,15 @@ namespace Warp.Data.Queries.Brands
 {
     public class GetBrandsForClientQuery : IQuery<IEnumerable<Brand>>
     {
-        [IdRequired]
         public Guid ClientId { get; set; }
+    }
+
+    public class GetBrandsForClientQueryValidator : AbstractValidator<GetBrandsForClientQuery>
+    {
+        public GetBrandsForClientQueryValidator()
+        {
+            RuleFor(q => q.ClientId).NotEmptyGuid();
+        }
     }
 
     public class GetBrandsForClientQueryHandler : IQueryHandler<GetBrandsForClientQuery, IEnumerable<Brand>>

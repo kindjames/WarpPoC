@@ -4,6 +4,7 @@ using FluentValidation.Results;
 using Warp.Core.Cqrs;
 using Warp.Core.Enum;
 using Warp.Core.Infrastructure.AutoMapper;
+using Warp.Core.Infrastructure.Validation;
 using Warp.Data.Context;
 using Warp.Data.Entities;
 using Warp.Data.Infrastructure;
@@ -29,17 +30,17 @@ namespace Warp.Data.Commands.Clients
 
         public SaveClientValidator(IDispatcher dispatcher, EntityExistsValidator<User> userExistsValidator)
         {
-            _dispatcher = dispatcher;
-
-            RuleFor(c => c.Id).NotEmpty();
+            RuleFor(c => c.Id).NotEmptyGuid();
             RuleFor(c => c.Name).NotEmpty();
             RuleFor(c => c.Code).NotEmpty();
 
-            RuleFor(c => c.AccountManagerId).NotEmpty()
+            RuleFor(c => c.AccountManagerId).NotEmptyGuid()
                 .SetValidator(userExistsValidator).WithMessage("Looking for account manager");
 
-            RuleFor(c => c.CustomerId).NotEmpty()
+            RuleFor(c => c.CustomerId).NotEmptyGuid()
                 .SetValidator(userExistsValidator);
+
+            _dispatcher = dispatcher;
         }
 
         public override ValidationResult Validate(SaveClientCommand command)

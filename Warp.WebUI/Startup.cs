@@ -21,6 +21,7 @@ namespace Warp.WebUI
             ConfigureAuthentication(app);
             ConfigureBootstrap();
             ConfigureAutoMapper(Mapper.Configuration);
+            ConfigureFluentValidation();
         }
     }
 }

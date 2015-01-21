@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using FluentValidation;
 using Warp.Core.Cqrs;
 using Warp.Core.Infrastructure.Validation;
 using Warp.Data.Context;
@@ -8,8 +9,15 @@ namespace Warp.Data.Queries.Customers
 {
     public class GetCustomerNameQuery : IQuery<string>
     {
-        [IdRequired]
         public Guid CustomerId { get; set; }
+    }
+
+    public class GetCustomerNameQueryValidator : AbstractValidator<GetCustomerNameQuery>
+    {
+        public GetCustomerNameQueryValidator()
+        {
+            RuleFor(q => q.CustomerId).NotEmptyGuid();
+        }
     }
 
     public class GetCustomerNameQueryHandler : IQueryHandler<GetCustomerNameQuery, string>

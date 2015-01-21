@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using FluentValidation;
 using SimpleInjector;
+using SimpleInjector.Extensions;
 using Warp.Core.Data;
 using Warp.Core.Cqrs;
 
@@ -68,6 +70,15 @@ namespace Warp.IoC
             }
         }
 
+        /// <summary>
+        /// Registers all implementations of FluentValidation's AbstractValidator in Assembly.
+        /// </summary>
+        /// <param name="container"></param>
+        /// <param name="assembly"></param>
+        public static void RegisterAllFluentValidatorsInAssembly(this Container container, Assembly assembly)
+        {
+            container.RegisterManyForOpenGeneric(typeof(AbstractValidator<>), assembly);
+        }
 
         public static void RegisterOpenGenericCommandHandlerForAllEntityTypes(this Container container, Type openCommandType, Type openCommandHandlerType)
         {
