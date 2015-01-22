@@ -7,7 +7,7 @@ namespace Warp.Core.Services.TextResourceService
     {
         string GetTextResource(Guid textResourceCodeId);
         string GetTextResourceFromCode(string textResourceCode);
-        
-        IResponse<TextResourceDetailDto> SaveTextResource(SaveTextResourceDto saveTextResourceDto);
+
+        void SaveTextResource(SaveTextResourceDto saveTextResourceDto); // retuns IResponse<TextResourceDetailDto>
     }
 }
