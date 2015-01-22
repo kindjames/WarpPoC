@@ -80,9 +80,6 @@
     <Compile Include="Commands\TextResources\SaveResourceStringCommand.cs" />
     <Compile Include="Commands\TextResources\SaveTextResourceCommand.cs" />
     <Compile Include="Commands\TextResources\SaveResourceIdentifierCommand.cs" />
-    <Compile Include="Commands\TextResources\UpdateTextResourceCommand.cs" />
-    <Compile Include="Commands\TextResources\UpdateResourceIdentifierCommand.cs" />
-    <Compile Include="Commands\TextResources\UpdateResourceStringCommand.cs" />
     <Compile Include="Context\AuthenticationDbContext.cs" />
     <Compile Include="Context\DomainDbContext.cs" />
     <Compile Include="Context\IApplicationDbContext.cs" />
@@ -120,6 +117,7 @@
     <Compile Include="Queries\General\GetEntityQuery.cs" />
     <Compile Include="Queries\General\CheckEntityExistsQuery.cs" />
     <Compile Include="Queries\Languages\GetLanguageIdByCultureQuery.cs" />
+    <Compile Include="Queries\TextResources\CheckIsIdentifierCodeAssignedToResourceStringQuery.cs" />
     <Compile Include="Queries\TextResources\GetAssociatedTextResourceDataQuery.cs" />
     <Compile Include="Queries\TextResources\CheckIsResourceIdentifierCodeUniqueQuery.cs" />
     <Compile Include="Queries\TextResources\CheckIsResourceStringUniqueQuery.cs" />
