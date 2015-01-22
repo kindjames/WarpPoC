@@ -4,10 +4,11 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FluentValidation;
 using Warp.Core.Cqrs;
 using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Infrastructure.Validation;
-using Warp.Core.Util;
+using Warp.Core.Infrastructure.Util;
 using Warp.Data.Context;
 
 namespace Warp.Data.Commands.TextResources
@@ -18,15 +19,20 @@ namespace Warp.Data.Commands.TextResources
     public sealed class SaveTextResourceCommand : ICommand
     {
         public Guid Id { get; set; }
-         
-        // Required TextResource data
-        [IdRequired]
         public Guid LanguageId { get; set; }
-
-        [Required]
         public string ResourceString { get; set; }
-
+        public bool ClientOverridable { get; set; }
         public Guid ClientId { get; set; }
+    }
+
+    public class SaveTextResourceCommandValidator : AbstractValidator<SaveTextResourceCommand>
+    {
+        public SaveTextResourceCommandValidator()
+        {
+            RuleFor(c => c.Id).NotEmptyGuid();
+            RuleFor(c => c.LanguageId).NotEmptyGuid();
+            RuleFor(c => c.ResourceString).NotEmpty();
+        }
     }
 
     public sealed class SaveTextResourceCommandHandler : ICommandHandler<SaveTextResourceCommand>

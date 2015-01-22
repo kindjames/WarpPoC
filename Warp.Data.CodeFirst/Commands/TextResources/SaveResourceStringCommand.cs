@@ -13,13 +13,8 @@ namespace Warp.Data.Commands.TextResources
 {
     public sealed class SaveResourceStringCommand : ICommand
     {
-        [Required]
         public string ResourceIdentifierCode { get; set; }
-
-        [Required]
         public bool ClientOverridable { get; set; }
-
-        [IdRequired]
         public Guid Id  { get; set; }
     }
 
