@@ -29,16 +29,9 @@ namespace Warp.Services
         public ClientDto GetClient(Guid clientId)
         {
             CheckArgument.NotEmptyGuid(clientId, "clientId");
+            
+            var result = _dispatcher.Execute(new GetEntityQuery<Client> { EntityId = clientId });
 
-            var query = new GetEntityQuery<Client> {EntityId = clientId};
-
-            // Validate POCO.
-            _validationProvider.ValidateAndThrow(query);
-
-            // Dispatch Query to QueryHandler.
-            var result = _dispatcher.Execute(query);
-
-            // Map response to Dto.
             return _objectMapper.MapTo<ClientDto>(result);
         }
 
@@ -46,15 +39,10 @@ namespace Warp.Services
         {
             CheckArgument.NotNull(saveClientDto, "saveClientDto");
 
-            // Validate Dto.
             _validationProvider.ValidateAndThrow(saveClientDto);
 
             var command = _objectMapper.MapTo<SaveClientCommand>(saveClientDto);
 
-            // Validate Command POCO.
-            _validationProvider.ValidateAndThrow(command);
-
-            // Dispatch Command POCO to CommandHandler.
             _dispatcher.Execute(command);
         }
 
@@ -62,19 +50,12 @@ namespace Warp.Services
         {
             CheckArgument.NotEmptyGuid(customerId, "customerId");
 
-            var query = new GetClientsQuery
+            var result = _dispatcher.Execute(new GetClientsQuery
             {
                 Query = clientNameQuery,
                 CustomerId = customerId
-            };
+            });
 
-            // Validate POCO.
-            _validationProvider.ValidateAndThrow(query);
-
-            // Dispatch Query to QueryHandler.
-            var result = _dispatcher.Execute(query);
-
-            // Map response to Dto.
             return _objectMapper.MapToMany<ClientDto>(result);
         }
     }

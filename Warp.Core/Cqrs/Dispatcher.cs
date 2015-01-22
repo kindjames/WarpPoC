@@ -1,16 +1,19 @@
 ﻿using System;
 using Warp.Core.Exceptions.Data;
 using Warp.Core.Infrastructure.IoC;
+using Warp.Core.Infrastructure.Validation;
 
 namespace Warp.Core.Cqrs
 {
     public class Dispatcher : IDispatcher
     {
         private readonly IServiceLocator _serviceLocator;
+        private readonly IValidationProvider _validationProvider;
 
-        public Dispatcher(IServiceLocator serviceLocator)
+        public Dispatcher(IServiceLocator serviceLocator, IValidationProvider validationProvider)
         {
             _serviceLocator = serviceLocator;
+            _validationProvider = validationProvider;
         }
 
         protected object GetCommandHandler(Type commandType)
@@ -61,6 +64,8 @@ namespace Warp.Core.Cqrs
 
         public void Execute(ICommand command)
         {
+            _validationProvider.ValidateAndThrow(command);
+
             var handler = GetCommandHandler(command.GetType());
 
             ((dynamic) handler).Handle(command);
@@ -68,6 +73,8 @@ namespace Warp.Core.Cqrs
 
         public TResult Execute<TResult>(IQuery<TResult> query)
         {
+            _validationProvider.ValidateAndThrow(query);
+
             var handler = GetQueryHandler<TResult>(query.GetType());
 
             return ((dynamic)handler).Handle(query);
