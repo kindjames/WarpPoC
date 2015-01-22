@@ -124,10 +124,10 @@ namespace Warp.Testing.Unit.Services
             Because of = () => _response = Subject.GetClient(_clientId);
 
             ThenIt should_return_the_dto = () =>
-                _response.Result.Id.ShouldEqual(_clientId);
+                _response.Id.ShouldEqual(_clientId);
 
             static Guid _clientId;
-            static IResponse<ClientDto> _response;
+            static ClientDto _response;
         }
     }
 }

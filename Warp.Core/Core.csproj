@@ -83,7 +83,6 @@
     <Compile Include="Infrastructure\AutoMapper\AutoMapperExtensions.cs" />
     <Compile Include="Infrastructure\AutoMapper\IObjectMapper.cs" />
     <Compile Include="Infrastructure\AutoMapper\ObjectMapper.cs" />
-    <Compile Include="Infrastructure\General\GeneralResponse.cs" />
     <Compile Include="Infrastructure\General\GuidCombGenerator.cs" />
     <Compile Include="Infrastructure\General\IUniqueIdentifierGenerator.cs" />
     <Compile Include="Infrastructure\Logging\ConsoleLoggingService.cs" />
@@ -118,7 +117,6 @@
     <Compile Include="Services\Dtos\TextResources\ResourceCodeDto.cs" />
     <Compile Include="Services\Dtos\TextResources\TextResourceDto.cs" />
     <Compile Include="Services\Dtos\TextResources\ResourceStringDto.cs" />
-    <Compile Include="Infrastructure\General\IResponse.cs" />
     <Compile Include="Services\TextResourceService\ILanguageService.cs" />
     <Compile Include="Services\TextResourceService\ITextResourceService.cs" />
     <Compile Include="Services\UserService\IUserService.cs" />

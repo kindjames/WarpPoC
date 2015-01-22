@@ -2,6 +2,7 @@
 using System.Security.Claims;
 using System.Security.Principal;
 using System.Web.Mvc;
+using FluentValidation;
 using Warp.Core.Authentication;
 using Warp.Core.Infrastructure.General;
 using Warp.Core.Infrastructure.Util;
@@ -31,11 +32,11 @@ namespace Warp.WebUI.Infrastructure
             return Guid.Parse(id);
         }
 
-        public static void AddErrorsFromResponse(this ModelStateDictionary modelState, IResponse response)
+        public static void AddValidationException(this ModelStateDictionary modelState, ValidationException exception)
         {
-            foreach (var error in response.Errors)
+            foreach (var error in exception.Errors)
             {
-                modelState.AddModelError(String.Empty, error);
+                modelState.AddModelError(String.Empty, error.ErrorMessage);
             }
         }
     }
