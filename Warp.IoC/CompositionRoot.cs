@@ -48,7 +48,7 @@ namespace Warp.IoC
             c.Register<IApplicationConfig, ApplicationConfig>();
             c.Register<IObjectMapper, ObjectMapper>();
             c.Register<ILoggingService, ConsoleLoggingService>();
-            c.Register<IValidator, FluentValidator>();
+            c.Register<IValidationProvider, FluentValidationProvider>();
             c.Register<IUniqueIdentifierGenerator, GuidCombGenerator>();
 
             // Data

@@ -58,16 +58,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BrandService.cs" />
-    <Compile Include="CommandContext.cs" />
     <Compile Include="CustomerService.cs" />
     <Compile Include="ClientService.cs" />
-    <Compile Include="ICommandContext.cs" />
-    <Compile Include="IQueryContext.cs" />
     <Compile Include="MappingConfiguration.cs" />
     <Compile Include="LanguageService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QueryContext.cs" />
-    <Compile Include="ServiceBase.cs" />
     <Compile Include="TextResourceService.cs" />
     <Compile Include="UserService.cs" />
   </ItemGroup>

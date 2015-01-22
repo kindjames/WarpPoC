@@ -83,7 +83,6 @@
     <Compile Include="Infrastructure\AutoMapper\AutoMapperExtensions.cs" />
     <Compile Include="Infrastructure\AutoMapper\IObjectMapper.cs" />
     <Compile Include="Infrastructure\AutoMapper\ObjectMapper.cs" />
-    <Compile Include="Infrastructure\General\GeneralResponse.cs" />
     <Compile Include="Infrastructure\General\GuidCombGenerator.cs" />
     <Compile Include="Infrastructure\General\IUniqueIdentifierGenerator.cs" />
     <Compile Include="Infrastructure\Logging\ConsoleLoggingService.cs" />
@@ -100,8 +99,8 @@
     <Compile Include="Cqrs\IQueryHandler.cs" />
     <Compile Include="Cqrs\ICommand.cs" />
     <Compile Include="Cqrs\IQuery.cs" />
-    <Compile Include="Infrastructure\Validation\IValidator.cs" />
-    <Compile Include="Infrastructure\Validation\FluentValidator.cs" />
+    <Compile Include="Infrastructure\Validation\IValidationProvider.cs" />
+    <Compile Include="Infrastructure\Validation\FluentValidationProvider.cs" />
     <Compile Include="Infrastructure\Validation\NotEmptyGuidValidator.cs" />
     <Compile Include="Infrastructure\Validation\ValidationExtensions.cs" />
     <Compile Include="Services\Dtos\Client\ClientDto.cs" />
@@ -118,7 +117,6 @@
     <Compile Include="Services\Dtos\TextResources\ResourceCodeDto.cs" />
     <Compile Include="Services\Dtos\TextResources\TextResourceDto.cs" />
     <Compile Include="Services\Dtos\TextResources\ResourceStringDto.cs" />
-    <Compile Include="Infrastructure\General\IResponse.cs" />
     <Compile Include="Services\TextResourceService\ILanguageService.cs" />
     <Compile Include="Services\TextResourceService\ITextResourceService.cs" />
     <Compile Include="Services\UserService\IUserService.cs" />

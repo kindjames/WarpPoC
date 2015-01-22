@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Warp.Core.Cqrs;
 using Warp.Core.Infrastructure.AutoMapper;
-using Warp.Core.Infrastructure.General;
 using Warp.Core.Infrastructure.Util;
 using Warp.Core.Infrastructure.Validation;
 using Warp.Core.Services;
@@ -14,39 +13,69 @@ using Warp.Data.Queries.General;
 
 namespace Warp.Services
 {
-    public sealed class ClientService : ServiceBase, IClientService
+    public sealed class ClientService : IClientService
     {
-        public ClientService(IDispatcher dispatcher, IObjectMapper objectMapper, IValidator validator)
-            : base(dispatcher, objectMapper, validator)
+        private readonly IDispatcher _dispatcher;
+        private readonly IObjectMapper _objectMapper;
+        private readonly IValidationProvider _validationProvider;
+
+        public ClientService(IDispatcher dispatcher, IObjectMapper objectMapper, IValidationProvider validationProvider)
         {
+            _dispatcher = dispatcher;
+            _objectMapper = objectMapper;
+            _validationProvider = validationProvider;
         }
 
-        public IResponse<ClientDto> GetClient(Guid clientId)
+        public ClientDto GetClient(Guid clientId)
         {
             CheckArgument.NotEmptyGuid(clientId, "clientId");
 
-            return ResponseOf<ClientDto>()
-                .From(new GetEntityQuery<Client> {EntityId = clientId});
+            var query = new GetEntityQuery<Client> {EntityId = clientId};
+
+            // Validate POCO.
+            _validationProvider.ValidateAndThrow(query);
+
+            // Dispatch Query to QueryHandler.
+            var result = _dispatcher.Execute(query);
+
+            // Map response to Dto.
+            return _objectMapper.MapTo<ClientDto>(result);
         }
 
-        public IResponse SaveClient(SaveClientDto saveClientDto)
+        public void SaveClient(SaveClientDto saveClientDto)
         {
             CheckArgument.NotNull(saveClientDto, "saveClientDto");
 
-            return ResponseFrom<SaveClientCommand>()
-                .UsingDto(saveClientDto);
+            // Validate Dto.
+            _validationProvider.ValidateAndThrow(saveClientDto);
+
+            var command = _objectMapper.MapTo<SaveClientCommand>(saveClientDto);
+
+            // Validate Command POCO.
+            _validationProvider.ValidateAndThrow(command);
+
+            // Dispatch Command POCO to CommandHandler.
+            _dispatcher.Execute(command);
         }
 
-        public IResponse<IEnumerable<ClientDto>> GetClients(string clientNameQuery, Guid customerId)
+        public IEnumerable<ClientDto> GetClients(string clientNameQuery, Guid customerId)
         {
             CheckArgument.NotEmptyGuid(customerId, "customerId");
 
-            return ResponseOfMany<ClientDto>()
-                .From(new GetClientsQuery
-                {
-                    Query = clientNameQuery,
-                    CustomerId = customerId
-                });
+            var query = new GetClientsQuery
+            {
+                Query = clientNameQuery,
+                CustomerId = customerId
+            };
+
+            // Validate POCO.
+            _validationProvider.ValidateAndThrow(query);
+
+            // Dispatch Query to QueryHandler.
+            var result = _dispatcher.Execute(query);
+
+            // Map response to Dto.
+            return _objectMapper.MapToMany<ClientDto>(result);
         }
     }
 }

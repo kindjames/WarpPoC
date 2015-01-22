@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
+using FluentValidation;
 using Warp.Core.Infrastructure.AutoMapper;
-using Warp.Core.Infrastructure.Logging;
 using Warp.Core.Services;
 using Warp.Core.Services.Dtos.Client;
 using Warp.WebUI.Infrastructure;
@@ -16,13 +16,11 @@ namespace Warp.WebUI.Controllers
     {
         private readonly IClientService _clientService;
         private readonly IObjectMapper _objectMapper;
-        private readonly ILoggingService _loggingService;
 
-        public ClientController(IClientService clientService, IObjectMapper objectMapper, ILoggingService loggingService)
+        public ClientController(IClientService clientService, IObjectMapper objectMapper)
         {
             _clientService = clientService;
             _objectMapper = objectMapper;
-            _loggingService = loggingService;
         }
 
         [HttpGet]
@@ -36,9 +34,9 @@ namespace Warp.WebUI.Controllers
         [ChildActionOnly]
         public virtual ActionResult List(ClientListInputModel model)
         {
-            var response = _clientService.GetClients(model.ClientSearchQuery, User.GetCustomerId());
+            var clients = _clientService.GetClients(model.ClientSearchQuery, User.GetCustomerId());
 
-            var viewModel = _objectMapper.MapToMany<ViewClientViewModel>(response.Result);
+            var viewModel = _objectMapper.MapToMany<ViewClientViewModel>(clients);
 
             return PartialView(viewModel);
         }
@@ -47,16 +45,11 @@ namespace Warp.WebUI.Controllers
         [Route("{clientId:guid}")]
         public virtual ActionResult View(Guid clientId)
         {
-            var response = _clientService.GetClient(clientId);
+            var client = _clientService.GetClient(clientId);
 
-            if (response.Successful && response.Result != null)
-            {
-                var model = _objectMapper.MapTo<ViewClientViewModel>(response.Result);
+            var model = _objectMapper.MapTo<ViewClientViewModel>(client);
                 
-                return View(model);
-            }
-
-            return View();
+            return View(model);
         }
 
         [HttpGet]
@@ -77,14 +70,15 @@ namespace Warp.WebUI.Controllers
                 dto.CustomerId = User.GetCustomerId();
                 dto.AccountManagerId = User.GetUserId();
 
-                var response = _clientService.SaveClient(dto);
-
-                if (response.Successful)
+                try
                 {
+                    _clientService.SaveClient(dto);
                     return RedirectToAction(MVC.Client.Index());
                 }
-
-                ModelState.AddErrorsFromResponse(response);
+                catch (ValidationException ex)
+                {
+                    ModelState.AddValidationException(ex);
+                }
             }
 
             return View(model);
@@ -94,16 +88,11 @@ namespace Warp.WebUI.Controllers
         [Route("{clientId:guid}/update")]
         public virtual ActionResult Update(Guid clientId)
         {
-            var response = _clientService.GetClient(clientId);
+            var client = _clientService.GetClient(clientId);
 
-            if (response.Successful && response.Result != null)
-            {
-                var model = _objectMapper.MapTo<UpdateClientViewModel>(response.Result);
+            var model = _objectMapper.MapTo<UpdateClientViewModel>(client);
 
-                return View(model);
-            }
-
-            return View();
+            return View(model);
         }
 
         [HttpPost]
@@ -114,14 +103,15 @@ namespace Warp.WebUI.Controllers
             {
                 var client = _objectMapper.MapTo<SaveClientDto>(model);
 
-                var response = _clientService.SaveClient(client);
-
-                if (response.Successful)
+                try
                 {
+                    _clientService.SaveClient(client);
                     return RedirectToAction(View(client.Id));
                 }
-
-                ModelState.AddErrorsFromResponse(response);
+                catch (ValidationException ex)
+                {
+                    ModelState.AddValidationException(ex);
+                }
             }
 
             return View(model);
