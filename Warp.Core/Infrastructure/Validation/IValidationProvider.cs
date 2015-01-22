@@ -2,7 +2,7 @@
 
 namespace Warp.Core.Infrastructure.Validation
 {
-    public interface IValidator
+    public interface IValidationProvider
     {
         IResponse Validate<T>(T obj) where T : class;
     }

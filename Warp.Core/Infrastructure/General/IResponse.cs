@@ -5,7 +5,7 @@ namespace Warp.Core.Infrastructure.General
     public interface IResponse
     {
         bool Successful { get; }
-        IReadOnlyList<string> Messages { get; }
+        IReadOnlyList<string> Errors { get; }
     }
 
     public interface IResponse<out T> : IResponse

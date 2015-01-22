@@ -5,6 +5,6 @@ namespace Warp.Services
 {
     public interface IQueryContext<out TResult>
     {
-        IResponse<TResult> From<TEntity>(IQuery<TEntity> query);
+        IResponse<TResult> FromQuery<TEntity>(IQuery<TEntity> query);
     }
 }

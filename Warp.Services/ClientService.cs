@@ -16,8 +16,8 @@ namespace Warp.Services
 {
     public sealed class ClientService : ServiceBase, IClientService
     {
-        public ClientService(IDispatcher dispatcher, IObjectMapper objectMapper, IValidator validator)
-            : base(dispatcher, objectMapper, validator)
+        public ClientService(IDispatcher dispatcher, IObjectMapper objectMapper, IValidationProvider validationProvider)
+            : base(dispatcher, objectMapper, validationProvider)
         {
         }
 
@@ -26,14 +26,14 @@ namespace Warp.Services
             CheckArgument.NotEmptyGuid(clientId, "clientId");
 
             return ResponseOf<ClientDto>()
-                .From(new GetEntityQuery<Client> {EntityId = clientId});
+                .FromQuery(new GetEntityQuery<Client> {EntityId = clientId});
         }
 
         public IResponse SaveClient(SaveClientDto saveClientDto)
         {
             CheckArgument.NotNull(saveClientDto, "saveClientDto");
 
-            return ResponseFrom<SaveClientCommand>()
+            return ResponseFromCommand<SaveClientCommand>()
                 .UsingDto(saveClientDto);
         }
 
@@ -42,7 +42,7 @@ namespace Warp.Services
             CheckArgument.NotEmptyGuid(customerId, "customerId");
 
             return ResponseOfMany<ClientDto>()
-                .From(new GetClientsQuery
+                .FromQuery(new GetClientsQuery
                 {
                     Query = clientNameQuery,
                     CustomerId = customerId

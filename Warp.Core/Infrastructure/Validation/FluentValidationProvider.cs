@@ -5,11 +5,11 @@ using Warp.Core.Infrastructure.IoC;
 
 namespace Warp.Core.Infrastructure.Validation
 {
-    public class FluentValidator : IValidator
+    public class FluentValidationProvider : IValidationProvider
     {
         private readonly IServiceLocator _serviceLocator;
 
-        public FluentValidator(IServiceLocator serviceLocator)
+        public FluentValidationProvider(IServiceLocator serviceLocator)
         {
             _serviceLocator = serviceLocator;
         }

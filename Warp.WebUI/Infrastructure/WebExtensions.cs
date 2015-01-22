@@ -33,7 +33,7 @@ namespace Warp.WebUI.Infrastructure
 
         public static void AddErrorsFromResponse(this ModelStateDictionary modelState, IResponse response)
         {
-            foreach (var error in response.Messages)
+            foreach (var error in response.Errors)
             {
                 modelState.AddModelError(String.Empty, error);
             }

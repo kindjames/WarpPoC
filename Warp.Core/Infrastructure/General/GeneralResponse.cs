@@ -7,7 +7,7 @@ namespace Warp.Core.Infrastructure.General
     public class GeneralResponse : IResponse
     {
         public bool Successful { private set; get; }
-        public IReadOnlyList<string> Messages { private set; get; }
+        public IReadOnlyList<string> Errors { private set; get; }
 
         public GeneralResponse(bool successful = true)
         {
@@ -17,7 +17,7 @@ namespace Warp.Core.Infrastructure.General
         public GeneralResponse(IEnumerable<string> errorMessages, bool successful = true)
             : this (successful)
         {
-            Messages = new ReadOnlyCollection<string>(errorMessages.ToList());
+            Errors = new ReadOnlyCollection<string>(errorMessages.ToList());
         }
     }
 
@@ -26,7 +26,7 @@ namespace Warp.Core.Infrastructure.General
         public T Result { private set; get; }
 
         public GeneralResponse(IResponse response)
-            : base(response.Messages, response.Successful)
+            : base(response.Errors, response.Successful)
         {
         }
 

@@ -10,20 +10,20 @@ namespace Warp.Services
         where TCommand : class, ICommand
     {
         private readonly IDispatcher _dispatcher;
-        private readonly IValidator _validator;
+        private readonly IValidationProvider _validationProvider;
         private readonly IObjectMapper _objectMapper;
 
-        public CommandContext(IDispatcher dispatcher, IValidator validator, IObjectMapper objectMapper)
+        public CommandContext(IDispatcher dispatcher, IValidationProvider validationProvider, IObjectMapper objectMapper)
         {
             _dispatcher = dispatcher;
-            _validator = validator;
+            _validationProvider = validationProvider;
             _objectMapper = objectMapper;
         }
 
         public IResponse UsingDto<TDto>(TDto dto) where TDto : DtoBase
         {
             // Validate Dto.
-            var dtoValidation = _validator.Validate(dto);
+            var dtoValidation = _validationProvider.Validate(dto);
 
             if (!dtoValidation.Successful)
             {
@@ -35,11 +35,11 @@ namespace Warp.Services
             var command = _objectMapper.MapTo<TCommand>(dto);
 
             // Validate Command POCO.
-            var commandValidation = _validator.Validate(command);
+            var commandValidation = _validationProvider.Validate(command);
 
+            // If validation failed, return validation response.
             if (!commandValidation.Successful)
             {
-                // Return failed Command POCO validation response.
                 return commandValidation;
             }
 

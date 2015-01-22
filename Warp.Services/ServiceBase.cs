@@ -11,13 +11,13 @@ namespace Warp.Services
     {
         private readonly IDispatcher _dispatcher;
         private readonly IObjectMapper _objectMapper;
-        private readonly IValidator _validator;
+        private readonly IValidationProvider _validationProvider;
 
-        protected ServiceBase(IDispatcher dispatcher, IObjectMapper objectMapper, IValidator validator)
+        protected ServiceBase(IDispatcher dispatcher, IObjectMapper objectMapper, IValidationProvider validationProvider)
         {
             _dispatcher = dispatcher;
             _objectMapper = objectMapper;
-            _validator = validator;
+            _validationProvider = validationProvider;
         }
 
         protected IResponse Success()
@@ -38,20 +38,20 @@ namespace Warp.Services
         protected IQueryContext<TResult> ResponseOf<TResult>()
         {
             return new QueryContext<TResult>(
-                _dispatcher, _validator, _objectMapper);
+                _dispatcher, _validationProvider, _objectMapper);
         }
 
         protected IQueryContext<IEnumerable<TResult>> ResponseOfMany<TResult>()
         {
             return new QueryContext<IEnumerable<TResult>>(
-                _dispatcher, _validator, _objectMapper);
+                _dispatcher, _validationProvider, _objectMapper);
         }
 
-        protected ICommandContext<TCommand> ResponseFrom<TCommand>()
+        protected ICommandContext<TCommand> ResponseFromCommand<TCommand>()
             where TCommand : class, ICommand
         {
             return new CommandContext<TCommand>(
-                _dispatcher, _validator, _objectMapper);
+                _dispatcher, _validationProvider, _objectMapper);
         }
     }
 }
