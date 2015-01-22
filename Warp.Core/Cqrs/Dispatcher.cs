@@ -31,14 +31,6 @@ namespace Warp.Core.Cqrs
             return handler;
         }
 
-        protected ICommandHandler<TCommand> GetCommandHandler<TCommand>()
-            where TCommand : ICommand
-        {
-            var handler = GetCommandHandler(typeof(TCommand));
-
-            return (ICommandHandler<TCommand>) handler;
-        }
-
         protected object GetQueryHandler<TResult>(Type queryType)
         {
             var handlerType = typeof(IQueryHandler<,>)

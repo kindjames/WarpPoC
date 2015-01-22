@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using System;
+using FluentValidation;
 using Warp.Core.Infrastructure.IoC;
 
 namespace Warp.Core.Infrastructure.Validation
@@ -14,8 +15,16 @@ namespace Warp.Core.Infrastructure.Validation
 
         public void ValidateAndThrow<T>(T obj) where T : class
         {
-            _serviceLocator.TryResolve<AbstractValidator<T>>()
-                .ValidateAndThrow(obj);
+            var validator = _serviceLocator.TryResolve<AbstractValidator<T>>();
+
+            if (validator == null)
+            {
+                Console.WriteLine("Warning: Validator not found for {0}.", typeof(T).Name);
+            }
+            else
+            {
+                validator.ValidateAndThrow(obj);
+            }
         }
     }
 }
