@@ -5,7 +5,7 @@ using Warp.Data.Entities;
 
 namespace Warp.Data.Context
 {
-    public sealed class DomainDbContext : ApplicationDbContextBase, IDomainDbContext
+    public class DomainDbContext : ApplicationDbContextBase, IDomainDbContext
     {
         public DomainDbContext(IApplicationConfig applicationConfig, IDateTimeProvider dateTimeProvider)
             : base(applicationConfig, dateTimeProvider)

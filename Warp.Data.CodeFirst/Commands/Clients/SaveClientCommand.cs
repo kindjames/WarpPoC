@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Data.Entity;
+using System.Linq;
 using FluentValidation;
 using FluentValidation.Results;
 using Warp.Core.Cqrs;
@@ -24,11 +26,11 @@ namespace Warp.Data.Commands.Clients
         public Guid LegacyClientId { get; set; }
     }
 
-    public class SaveClientValidator : AbstractValidator<SaveClientCommand>
+    public class SaveClientCommandValidator : AbstractValidator<SaveClientCommand>
     {
         readonly IDispatcher _dispatcher;
 
-        public SaveClientValidator(IDispatcher dispatcher, EntityExistsValidator<User> userExistsValidator)
+        public SaveClientCommandValidator(IDispatcher dispatcher, EntityExistsValidator<User> userExistsValidator)
         {
             RuleFor(c => c.Id).NotEmptyGuid();
             RuleFor(c => c.Name).NotEmpty();
@@ -72,7 +74,7 @@ namespace Warp.Data.Commands.Clients
         {
             var client = _objectMapper.MapTo<Client>(command);
 
-            _dbContext.Save(client);
+            _dbContext.CreateOrUpdateEntity(client);
 
             _dbContext.SaveChanges();
         }

@@ -1,6 +1,6 @@
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Threading.Tasks;
+using Warp.Core.Data;
 
 namespace Warp.Data.Context
 {
@@ -9,10 +9,9 @@ namespace Warp.Data.Context
         int SaveChanges();
         Task<int> SaveChangesAsync();
 
-        // Hooks into the DbContext.
-        Database Database { get; }
-        DbContextConfiguration Configuration { get; }
-        DbEntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;
+        void CreateOrUpdateEntity<TEntity>(TEntity entity)
+            where TEntity : EntityBase;
+
         DbSet<TEntity> Set<TEntity>() where TEntity : class;
     }
 }

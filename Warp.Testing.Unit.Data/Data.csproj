@@ -56,6 +56,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\FakeDbSet.1.4.0.0\lib\net40\FakeDbSet.dll</HintPath>
     </Reference>
+    <Reference Include="FluentValidation, Version=5.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\FluentValidation.5.5.0.0\lib\Net40\FluentValidation.dll</HintPath>
+    </Reference>
     <Reference Include="Machine.Fakes">
       <HintPath>..\packages\Machine.Fakes.2.4.0\lib\net40\Machine.Fakes.dll</HintPath>
     </Reference>
@@ -84,7 +88,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\Clients\SaveNewClientCommandHandlerTests.cs" />
+    <Compile Include="Commands\Clients\TestDbAsyncEnumerable.cs" />
+    <Compile Include="Commands\Clients\TestDbAsyncEnumerator.cs" />
+    <Compile Include="Commands\Clients\TestDbSet.cs" />
+    <Compile Include="Commands\Clients\SaveClientCommandHandlerTests - Copy.cs" />
+    <Compile Include="Commands\Clients\SaveClientCommandHandlerTests.cs" />
+    <Compile Include="Commands\Clients\TestDbAsyncQueryProvider.cs" />
     <Compile Include="DataExceptionTests.cs" />
     <Compile Include="Data\BrandsTestDataFactory.cs" />
     <Compile Include="Data\LanguageTestDataFactory.cs" />

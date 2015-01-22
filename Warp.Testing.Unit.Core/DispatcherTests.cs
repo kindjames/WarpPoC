@@ -4,7 +4,6 @@ using Machine.Specifications;
 using Warp.Core.Cqrs;
 using Warp.Core.Exceptions.Data;
 using Warp.Core.Infrastructure.IoC;
-using Warp.Core.Infrastructure.Util;
 using Warp.Core.Infrastructure.Validation;
 
 namespace Warp.Testing.Unit.Core
