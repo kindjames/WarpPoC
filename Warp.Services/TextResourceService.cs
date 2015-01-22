@@ -3,7 +3,6 @@ using System.Collections;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Warp.Core.Cqrs;
 using Warp.Core.Infrastructure.AutoMapper;
-using Warp.Core.Cqrs;
 using Warp.Core.Infrastructure.Util;
 using Warp.Core.Services.Dtos;
 using Warp.Core.Services.Dtos.TextResources;
@@ -12,6 +11,7 @@ using Warp.Core.Services.UserService;
 using Warp.Data.Commands.Clients;
 using Warp.Data.Commands.TextResources;
 using Warp.Data.Queries.TextResources;
+using Warp.Core.Services;
 
 namespace Warp.Services
 {
@@ -54,6 +54,7 @@ namespace Warp.Services
 
             var textResourceString = _dispatcher.Execute(new GetTextResourceStringQuery { TextResourceIdentifierId = textResourceIdentifierId });
 
+            //CheckArgument.NotEmpty(textResourceString, "textResourceString");
             if (String.IsNullOrWhiteSpace(textResourceString))
             {
                 return null;
@@ -79,7 +80,7 @@ namespace Warp.Services
             };
         }
 
-        public IResponse<TextResourceDetailDto> SaveTextResource(SaveTextResourceDto dto)
+        public void SaveTextResource(SaveTextResourceDto dto)  //return IResponse<TextResourceDetailDto>
         {
             #region Validation  Cycle
 
@@ -96,9 +97,12 @@ namespace Warp.Services
                 ClientOverridable = dto.ClientOverridable
             });
 
-            if (IsResourceStringUnique)
+            if (!IsResourceStringUnique)
             {
-                // 
+                bool IsCodeAssigned = _dispatcher.Execute(new CheckIsIdentifierCodeAssignedToResourceStringQuery
+                {
+                    
+                });
             }
 
 
@@ -117,11 +121,11 @@ namespace Warp.Services
                 
             }
             // Sweet path. ResourceIdentifierCode and ResourceString are unassigned and unique
-            if (!IsResourceStringAssigned && !IsResourceIdentifierCodeAssigned)
-            {
-                var associatedData =
-                    _dispatcher.Execute<GetAssociatedTextResourceDataQuery, TextResourceDetailDto>();
-            }
+            //if (!IsResourceStringAssigned && !IsResourceIdentifierCodeAssigned)
+            //{
+            //    var associatedData =
+            //        _dispatcher.Execute<GetAssociatedTextResourceDataQuery, TextResourceDetailDto>();
+            //}
 
 
 
@@ -152,7 +156,7 @@ namespace Warp.Services
 
             #endregion Save Cycle
 
-            return new ServiceResponse<TextResourceDetailDto>(associatedData, false);
+            //return new ServiceResponse<TextResourceDetailDto>(associatedData, false);
         }
 
         protected bool ValidateResourceString(SaveTextResourceDto dto)

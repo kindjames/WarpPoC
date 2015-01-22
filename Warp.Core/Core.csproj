@@ -133,8 +133,6 @@
     <Compile Include="Services\IBrandService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Infrastructure\Util\CheckArgument.cs" />
-    <Compile Include="Util\CheckArgument.cs" />
-    <Compile Include="Infrastructure\Validation\IdRequiredAttribute.cs" />
     <Compile Include="Validation\IValidator.cs" />
   </ItemGroup>
   <ItemGroup>
