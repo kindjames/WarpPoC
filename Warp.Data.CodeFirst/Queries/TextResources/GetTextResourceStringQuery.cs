@@ -11,15 +11,15 @@ namespace Warp.Data.Queries.TextResources
     {
         public Guid TextResourceIdentifierId { get; set; }
 
-        [IdRequired]
         public Guid LanguageId { get; set; }
     }
 
-    public class GetTextResourceStringQueryValidator : AbstractValidator<GetTextResourceStringQuery>
+    public sealed class GetTextResourceStringQueryValidator : AbstractValidator<GetTextResourceStringQuery>
     {
         public GetTextResourceStringQueryValidator()
         {
             RuleFor(q => q.TextResourceIdentifierId).NotEmptyGuid();
+            RuleFor(q => q.LanguageId).NotEmptyGuid();
         }
     }
 
