@@ -10,8 +10,6 @@ namespace Warp.Data.Queries.TextResources
     public sealed class GetTextResourceQuery : IQuery<string>
     {
         public Guid TextResourceIdentifierId { get; set; }
-
-        [IdRequired]
         public Guid LanguageId { get; set; }
     }
 
@@ -20,6 +18,7 @@ namespace Warp.Data.Queries.TextResources
         public GetTextResourceQueryValidator()
         {
             RuleFor(q => q.TextResourceIdentifierId).NotEmptyGuid();
+            RuleFor(q => q.LanguageId).NotEmptyGuid();
         }
     }
 

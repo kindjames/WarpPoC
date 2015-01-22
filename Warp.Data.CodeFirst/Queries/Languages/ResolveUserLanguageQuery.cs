@@ -16,7 +16,7 @@ namespace Warp.Data.Queries.Languages
     {
         public ResolveUserLanguageQueryValidator()
         {
-            RuleFor(q => q.UserId).NotEmptyGuid();
+            RuleFor(q => q.Id).NotEmptyGuid();
         }
     }
 
