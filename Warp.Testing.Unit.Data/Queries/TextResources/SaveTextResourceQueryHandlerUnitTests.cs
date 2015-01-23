@@ -4,20 +4,19 @@ using Warp.Data.Queries.TextResources;
 
 namespace Warp.Testing.Unit.Data.Queries.TextResources
 {
-    [Subject("SaveTextResource Query Handler Unit Tests")]
+    [Subject("SaveTextResource QueryHandler Unit Tests")]
     public class SaveTextResourceQueryHandlerTests
     {
-        #region Test Base Class
-        public class ValidateClientResourceQueryHandlerBaseContext : WithSubject<CheckIsResourceStringAssignedQueryHandler>
+        #region Test Base Class for CheckIsResourceStringUniqueQueryHandler
+        public class ValidateClientResourceQueryHandlerBaseContext : WithSubject<CheckIsResourceStringUniqueQueryHandler>
         {
             Establish context = () =>
             {
                 
             };
-
         }
 
-        #endregion Test Base Class
+        #endregion Test Base Class for CheckIsResourceStringUniqueQueryHandler
 
         #region Client Validation Resource Tests
 
@@ -28,5 +27,15 @@ namespace Warp.Testing.Unit.Data.Queries.TextResources
         }
         
         #endregion Client Validation Resource Tests
+    }
+
+
+    [Subject("SaveTextResource CommandHandler Unit Tests ")]
+    public class SaveTextResourceCommandHandlerUnitTestsBaseContext
+    {
+        Establish context = () =>
+        {
+            
+        };
     }
 }
