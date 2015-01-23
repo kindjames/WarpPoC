@@ -19,11 +19,11 @@ namespace Warp.Data.Queries.TextResources
         public string ResourceIdentifierCode { get; set; }
     }
 
-    public class GetAssociatedResourceIdentifierDataQueryHandler : IQueryHandler<GetAssociatedTextResourceDataQuery, TextResourceDetailDto>
+    public class GetAssociatedTextResourceDataQueryHandler : IQueryHandler<GetAssociatedTextResourceDataQuery, TextResourceDetailDto>
     {
         private readonly ITextResourceDbContext _dbContext;
 
-        public GetAssociatedResourceIdentifierDataQueryHandler(ITextResourceDbContext dbContext)
+        public GetAssociatedTextResourceDataQueryHandler(ITextResourceDbContext dbContext)
         {
             _dbContext = dbContext;
         }
@@ -59,6 +59,7 @@ namespace Warp.Data.Queries.TextResources
                 ResourceIdentifierCode = textResourceIdentifier.ResourceIdentifierCode,
 
                 LanguageName = textResource.Language.Name,
+
                 LanguageCulture = String.Concat("{0}" + " - " +"{1}", textResource.Language.InvariantCulture, textResource.Language.Locale),
 
                 ClientName = clientName,

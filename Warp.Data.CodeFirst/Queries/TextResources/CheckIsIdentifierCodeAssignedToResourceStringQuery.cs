@@ -26,7 +26,8 @@ namespace Warp.Data.Queries.TextResources
         }
     }
 
-    public sealed class CheckIsIdentifierCodeAssignedToResourceStringQueryHandler : IQueryHandler<CheckIsIdentifierCodeAssignedToResourceStringQuery, TextResourceDetailDto>
+    public sealed class CheckIsIdentifierCodeAssignedToResourceStringQueryHandler : 
+        IQueryHandler<CheckIsIdentifierCodeAssignedToResourceStringQuery, TextResourceDetailDto>
     {
         private readonly ITextResourceDbContext _dbContext;
 
