@@ -89,7 +89,7 @@ namespace Warp.Services
             /// Validation cycle
 
             /// Validate ResourceString
-            bool IsResourceStringUnique = _dispatcher.Execute(new CheckIsResourceStringUniqueQuery
+            var IsResourceStringUnique = _dispatcher.Execute(new CheckIsResourceStringUniqueQuery
             {
                 ResourceString = dto.ResourceString,
                 UserLanguageId = dto.LanguageId,
@@ -99,7 +99,7 @@ namespace Warp.Services
 
             if (!IsResourceStringUnique)
             {
-                bool IsCodeAssigned = _dispatcher.Execute(new CheckIsIdentifierCodeAssignedToResourceStringQuery
+                var IsCodeAssigned = _dispatcher.Execute(new CheckIsIdentifierCodeAssignedToResourceStringQuery
                 {
                     
                 });
