@@ -12,7 +12,7 @@ namespace Warp.Data.Migrations.DataSeed
     {
         public int Order { get { return 2; } }
 
-        public void AddDataToContext(InternalMigrationsInitializationContext context)
+        public void AddDataToContext(MigrationsAndTestingContext context)
         {
             var x = new PasswordHasher();
 

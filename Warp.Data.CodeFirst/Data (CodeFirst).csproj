@@ -101,7 +101,7 @@
     <Compile Include="Migrations\DataSeed\DataFactoryResolver.cs" />
     <Compile Include="Migrations\DataSeed\AuthenticationDataFactory.cs" />
     <Compile Include="Migrations\DataSeed\IDataFactory.cs" />
-    <Compile Include="Migrations\InternalMigrationsInitializationContext.cs" />
+    <Compile Include="Migrations\MigrationsAndTestingContext.cs" />
     <Compile Include="Queries\Clients\CheckClientExistsForCodeQuery.cs" />
     <Compile Include="Queries\Clients\GetClientsQuery.cs" />
     <Compile Include="Queries\Customers\GetCustomerNameQuery.cs" />

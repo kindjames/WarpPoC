@@ -22,7 +22,7 @@ namespace Warp.Data.Queries.TextResources
 
         public bool Handle(DuplicateResourceCodeExistsQuery query)
         {
-            return _dbContext.TextResourceCodes
+            return _dbContext.TextResourceIdentifiers
                 .Any(trc => trc.TextResourceCode == query.ResourceCode);
         }
     }

@@ -1,10 +1,12 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics;
 using Warp.Core.Data;
 using Warp.Core.Domain.Enum;
 
 namespace Warp.Data.Entities
 {
+    [DebuggerDisplay("Name = {Name}")]
     public class Client : EntityBase
     {
         [Required]
@@ -26,5 +28,10 @@ namespace Warp.Data.Entities
 
         public virtual Customer Customer { get; set; }
         public virtual User AccountManager { get; set; }
+
+        public override string ToString()
+        {
+            return "Name = " + Name;
+        }
     }
 }

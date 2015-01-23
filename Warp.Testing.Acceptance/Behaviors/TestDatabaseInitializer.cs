@@ -18,10 +18,10 @@ namespace Warp.Testing.Acceptance.Behaviors
             {
                 AppDomain.CurrentDomain.SetData("DataDirectory", Directory.GetCurrentDirectory());
 
-                var strategy = new DropCreateDatabaseAlways<InternalMigrationsInitializationContext>();
+                var strategy = new DropCreateDatabaseAlways<MigrationsAndTestingContext>();
                 Database.SetInitializer(strategy);
 
-                using (var context = new InternalMigrationsInitializationContext())
+                using (var context = new MigrationsAndTestingContext())
                 {
                     context.Database.Initialize(true);
                 }

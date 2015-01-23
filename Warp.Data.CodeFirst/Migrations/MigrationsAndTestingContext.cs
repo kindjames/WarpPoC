@@ -1,7 +1,6 @@
 ﻿using System;
+using System.Data.Common;
 using System.Data.Entity;
-using System.Data.Entity.Validation;
-using System.Text;
 using Warp.Core.Data;
 using Warp.Core.Infrastructure.Configuration;
 using Warp.Core.Infrastructure.General;
@@ -10,14 +9,23 @@ using Warp.Data.Entities;
 
 namespace Warp.Data.Migrations
 {
-    public class InternalMigrationsInitializationContext : ApplicationDbContextBase
+    /// <summary>
+    /// Contains DbSet's for ALL the entities, i.e. all the tables in the database, in one context -- one context to rule them all...
+    /// </summary>
+    public class MigrationsAndTestingContext : ApplicationDbContextBase, IDomainDbContext, IAuthenticationDbContext, ITextResourceDbContext
     {
-        public InternalMigrationsInitializationContext()
+        public MigrationsAndTestingContext()
             : base(new ApplicationConfig(), new DateTimeProvider())
         {
         }
 
+        public MigrationsAndTestingContext(IDateTimeProvider dateTimeProvider, DbConnection existingConnection, bool contextOwnsConnection)
+            : base(dateTimeProvider, existingConnection, contextOwnsConnection)
+        {
+        }
+
         public IDbSet<User> Users { get; set; }
+        public IDbSet<Role> Roles { get; set; }
         public IDbSet<Client> Clients { get; set; }
         public IDbSet<Customer> Customers { get; set; }
         public IDbSet<Brand> Brands { get; set; }
@@ -33,34 +41,14 @@ namespace Warp.Data.Migrations
             {
                 var entityBase = (EntityBase) entity.Entity;
 
+                // JK: Set Id if not set... undecided if this is a good idea.
                 if (entityBase.Id == Guid.Empty)
                 {
                     entityBase.Id = Guid.NewGuid();
                 }
             }
 
-            try
-            {
-                return base.SaveChanges();
-            }
-            catch (DbEntityValidationException ex)
-            {
-                var sb = new StringBuilder();
-
-                foreach (var failure in ex.EntityValidationErrors)
-                {
-                    sb.AppendFormat("{0} failed validation\n", failure.Entry.Entity.GetType());
-
-                    foreach (var error in failure.ValidationErrors)
-                    {
-                        sb.AppendFormat("- {0} : {1}", error.PropertyName, error.ErrorMessage);
-                        sb.AppendLine();
-                    }
-                }
-
-                throw new DbEntityValidationException(
-                    "Entity Validation Failed - errors follow:\n" + sb, ex); // Add the original exception as the innerException
-            }
+            return base.SaveChanges();
         }
     }
 }

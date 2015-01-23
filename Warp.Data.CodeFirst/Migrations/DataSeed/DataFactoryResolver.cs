@@ -3,9 +3,9 @@ using System.Linq;
 
 namespace Warp.Data.Migrations.DataSeed
 {
-    internal static class DataFactoryResolver
+    public static class DataFactoryResolver
     {
-        public static void Seed(InternalMigrationsInitializationContext context)
+        public static void Seed(MigrationsAndTestingContext context)
         {
             var dataFactoryType = typeof (IDataFactory);
 

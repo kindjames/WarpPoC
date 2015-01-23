@@ -11,6 +11,7 @@ namespace Warp.Testing.Unit.Core
 {
     public class PasswordHasherTests
     {
+        [Ignore("TBD")]
         public class When_calling_Execute_for_Command_where_CommandHandler_does_not_exist : WithSubject<PasswordHasher>
         {
             Establish context = () =>

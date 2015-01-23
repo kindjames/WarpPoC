@@ -1,3 +1,4 @@
+using System.Data.Common;
 using System.Data.Entity;
 using Warp.Core.Infrastructure.Configuration;
 using Warp.Core.Infrastructure.General;
@@ -9,6 +10,11 @@ namespace Warp.Data.Context
     {
         public DomainDbContext(IApplicationConfig applicationConfig, IDateTimeProvider dateTimeProvider)
             : base(applicationConfig, dateTimeProvider)
+        {
+        }
+
+        public DomainDbContext(IDateTimeProvider dateTimeProvider, DbConnection existingConnection, bool contextOwnsConnection)
+            : base(dateTimeProvider, existingConnection, contextOwnsConnection)
         {
         }
 

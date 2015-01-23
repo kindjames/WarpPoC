@@ -83,6 +83,7 @@ namespace Warp.Testing.Unit.Services
             static Exception _exception;
         }
 
+        [Ignore("TBD")]
         public class When_calling__GetClient__for_a_client_that_does_not_exist : WithSubject<ClientService>
         {
             Establish context = () =>

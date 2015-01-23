@@ -13,6 +13,7 @@ namespace Warp.Testing.Unit.Data.Commands.Clients
     [Subject("Save Client Command Validator")]
     public class SaveClientCommandValidatorTests
     {
+        [Ignore("TBD")]
         public class When_saving_client : WithSubject<SaveClientCommandValidator>
         {
             static readonly Guid AccountManagerId = Guid.NewGuid();

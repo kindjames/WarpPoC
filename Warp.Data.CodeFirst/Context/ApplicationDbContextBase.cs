@@ -1,7 +1,10 @@
+using System.Data.Common;
 using System.Data.Entity;
 using System.Data.Entity.SqlServer;
+using System.Data.Entity.Validation;
 using System.Diagnostics;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Warp.Core.Data;
 using Warp.Core.Infrastructure.Configuration;
@@ -13,6 +16,12 @@ namespace Warp.Data.Context
     public abstract class ApplicationDbContextBase : DbContext, IApplicationDbContext
     {
         private readonly IDateTimeProvider _dateTimeProvider;
+
+        protected ApplicationDbContextBase(IDateTimeProvider dateTimeProvider, DbConnection existingConnection, bool contextOwnsConnection)
+            : base(existingConnection, contextOwnsConnection)
+        {
+            _dateTimeProvider = dateTimeProvider;
+        }
 
         protected ApplicationDbContextBase(IApplicationConfig applicationConfig, IDateTimeProvider dateTimeProvider)
             : base(NameOrConnectionString(applicationConfig))
@@ -45,7 +54,8 @@ namespace Warp.Data.Context
 
             if (set.Any(e => e.Id == entity.Id))
             {
-                Entry(entity).State = EntityState.Modified;
+                set.Attach(entity);
+                //Entry(entity).State = EntityState.Modified;
             }
             else
             {
@@ -79,7 +89,28 @@ namespace Warp.Data.Context
                 entityBase.DateUpdated = _dateTimeProvider.UtcNow();
             }
 
-            return base.SaveChanges();
+            try
+            {
+                return base.SaveChanges();
+            }
+            catch (DbEntityValidationException ex)
+            {
+                var sb = new StringBuilder();
+
+                foreach (var failure in ex.EntityValidationErrors)
+                {
+                    sb.AppendFormat("{0} failed validation\n", failure.Entry.Entity.GetType());
+
+                    foreach (var error in failure.ValidationErrors)
+                    {
+                        sb.AppendFormat("- {0} : {1}", error.PropertyName, error.ErrorMessage);
+                        sb.AppendLine();
+                    }
+                }
+
+                throw new DbEntityValidationException(
+                    "Entity Validation Failed - errors follow:\n" + sb, ex); // Add the original exception as the innerException
+            }
         }
     }
 }

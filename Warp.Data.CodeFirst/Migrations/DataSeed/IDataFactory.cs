@@ -3,6 +3,6 @@
     internal interface IDataFactory
     {
         int Order { get; }
-        void AddDataToContext(InternalMigrationsInitializationContext context);
+        void AddDataToContext(MigrationsAndTestingContext context);
     }
 }
