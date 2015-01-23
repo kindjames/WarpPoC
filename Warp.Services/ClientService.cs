@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Warp.Core.Cqrs;
+using Warp.Core.Exceptions;
 using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Infrastructure.Util;
 using Warp.Core.Infrastructure.Validation;
@@ -40,6 +41,11 @@ namespace Warp.Services
             CheckArgument.NotNull(saveClientDto, "saveClientDto");
 
             _validationProvider.ValidateAndThrow(saveClientDto);
+
+            if (!_dispatcher.Execute(new CheckClientExistsForCodeQuery { CustomerId = saveClientDto.CustomerId, ClientCode = saveClientDto.Code }))
+            {
+                throw new ClientAlreadyExistsException(saveClientDto.CustomerId, saveClientDto.Code);
+            }
 
             var command = _objectMapper.MapTo<SaveClientCommand>(saveClientDto);
 
