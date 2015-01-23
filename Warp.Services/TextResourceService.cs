@@ -87,7 +87,6 @@ namespace Warp.Services
             CheckArgument.NotNull(dto, "SaveTextResourceDto");
 
             /// Validation cycle
-
             /// Validate ResourceString
             var IsResourceStringUnique = _dispatcher.Execute(new CheckIsResourceStringUniqueQuery
             {
@@ -97,11 +96,13 @@ namespace Warp.Services
                 ClientOverridable = dto.ClientOverridable
             });
 
+            /// If not unique, then return associated data
             if (!IsResourceStringUnique)
             {
-                var IsCodeAssigned = _dispatcher.Execute(new CheckIsIdentifierCodeAssignedToResourceStringQuery
+                /// Return associated TextResource data
+                var resourceStringAssigned = _dispatcher.Execute(new GetAssociatedTextResourceDataQuery
                 {
-                    
+                    ResourceString = dto.ResourceString
                 });
             }
 
@@ -121,10 +122,10 @@ namespace Warp.Services
                 
             }
             // Sweet path. ResourceIdentifierCode and ResourceString are unassigned and unique
-            //if (!IsResourceStringAssigned && !IsResourceIdentifierCodeAssigned)
+            //if (!IsResourceStringUnique && !IsResourceIdentifierCodeUnique)
             //{
             //    var associatedData =
-            //        _dispatcher.Execute<GetAssociatedTextResourceDataQuery, TextResourceDetailDto>();
+            //        _dispatcher.Execute<SaveTextResourceCommand>();
             //}
 
 
