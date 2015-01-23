@@ -10,6 +10,8 @@ using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Infrastructure.Validation;
 using Warp.Core.Infrastructure.Util;
 using Warp.Data.Context;
+using Warp.Data.Entities;
+using ValidationResult = FluentValidation.Results.ValidationResult;
 
 namespace Warp.Data.Commands.TextResources
 {
@@ -25,7 +27,7 @@ namespace Warp.Data.Commands.TextResources
         public Guid ClientId { get; set; }
     }
 
-    public class SaveTextResourceCommandValidator : AbstractValidator<SaveTextResourceCommand>
+    public sealed class SaveTextResourceCommandValidator : AbstractValidator<SaveTextResourceCommand>
     {
         public SaveTextResourceCommandValidator()
         {
@@ -38,48 +40,23 @@ namespace Warp.Data.Commands.TextResources
     public sealed class SaveTextResourceCommandHandler : ICommandHandler<SaveTextResourceCommand>
     {
         private readonly ITextResourceDbContext _dbContext;
-        private readonly IDispatcher _dispatcher;
         private readonly IObjectMapper _objectMapper;
 
-        private SaveResourceIdentifierCommand _resourceIdCodeCommand;
-        private SaveResourceStringCommand _resourceStringCommand;
-
-
-        public SaveTextResourceCommandHandler(ITextResourceDbContext dbContext, IDispatcher queryDispatcher, IObjectMapper objectMapper, IDispatcher dispatcher)
+        public SaveTextResourceCommandHandler(ITextResourceDbContext dbContext, IObjectMapper objectMapper)
         {
             _dbContext = dbContext;
-            _dispatcher = queryDispatcher;
             _objectMapper = objectMapper;
-            _dispatcher = dispatcher;
         }
 
         public void Handle(SaveTextResourceCommand command)
-        {
-            // Test command correctness
+        {   
             CheckArgument.NotNull(command, "command");
 
-            // Initialise aggregate Commands
-            //_resourceIdCodeCommand = new SaveResourceIdentifierCommand(){ ResourceIdentifierCode = command.ResourceIdentifierCode, ClientOverridable = command.ClientOverridable};
-            //_resourceStringCommand = new SaveResourceStringCommand(){ Id = command.Id, ResourceIdentifierCode = command.ResourceIdentifierCode, ClientOverridable = command.ClientOverridable};
+            var textResource = _objectMapper.MapTo<TextResource>(command);
 
-            // Validation
-            //if (command.Id = 0)
-            //{
+            _dbContext.CreateOrUpdateEntity(textResource);
 
-            //}
-            //else
-            //{
-                
-            //}
-
-            _dispatcher.Execute(_resourceIdCodeCommand);
-            _dispatcher.Execute(_resourceStringCommand);
-
-            // Check command for correctness
-          
-            // Invoke SaveNewResourceIdentifierCommand and return ResourceIdentifierId
-            // Invoke SaveNewResourceCommand and return TextResourceDetailsDto to User
-
+            _dbContext.SaveChanges();
         }       
     }
 }
