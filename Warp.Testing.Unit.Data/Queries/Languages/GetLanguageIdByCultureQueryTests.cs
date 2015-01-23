@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Machine.Fakes;
 using Machine.Specifications;
-using Machine.Specifications.Model;
 using Warp.Data.Context;
 using Warp.Data.Entities;
 using Warp.Data.Queries.Languages;
@@ -29,7 +28,7 @@ namespace Warp.Testing.Unit.Data.Queries.Languages
 
                 The<ITextResourceDbContext>()
                     .WhenToldTo(a => a.Languages)
-                    .Return(_testData.ToInMemoryDbSet());
+                    .Return(_testData.ToTestDbSet());
             };
 
             Because of = () => _result = Subject.Handle(new GetLanguageIdByInvariantCultureQuery { InvariantCulture = TestInvarCulture });
@@ -51,7 +50,7 @@ namespace Warp.Testing.Unit.Data.Queries.Languages
 
                 The<ITextResourceDbContext>()
                     .WhenToldTo(a => a.Languages)
-                    .Return(_testData.ToInMemoryDbSet());
+                    .Return(_testData.ToTestDbSet());
             };
 
             Because of = () => _result = Subject.Handle(new GetLanguageIdByInvariantCultureQuery { InvariantCulture = TestInvarCulture });
@@ -68,7 +67,7 @@ namespace Warp.Testing.Unit.Data.Queries.Languages
             {
                 The<ITextResourceDbContext>()
                     .WhenToldTo(a => a.Languages)
-                    .Return(new LanguageTestDataFactory().Build().ToInMemoryDbSet());
+                    .Return(new LanguageTestDataFactory().Build().ToTestDbSet());
             };
 
             Because of = () => _result = Subject.Handle(new GetLanguageIdByInvariantCultureQuery { InvariantCulture = TestInvarCulture });

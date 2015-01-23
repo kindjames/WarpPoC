@@ -1,10 +1,10 @@
 ﻿using System;
-using FakeDbSet;
 using Machine.Fakes;
 using Machine.Specifications;
 using Warp.Data.Context;
 using Warp.Data.Entities;
 using Warp.Data.Queries.Users;
+using Warp.Testing.Unit.Data.Commands.Clients;
 
 namespace Warp.Testing.Unit.Data.Queries.Users
 {
@@ -44,7 +44,7 @@ namespace Warp.Testing.Unit.Data.Queries.Users
 
                 The<ITextResourceDbContext>()
                     .WhenToldTo(d => d.Users)
-                    .Return(new InMemoryDbSet<User>(true)
+                    .Return(new TestDbSet<User>
                     {
                         new User { DefaultLanguageId = DefaultLanguageId, Id = UserId},
                         new User { DefaultLanguageId = DefaultLanguageId, Id = Guid.NewGuid()}

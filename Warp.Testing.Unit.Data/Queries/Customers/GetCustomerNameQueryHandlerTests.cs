@@ -1,10 +1,10 @@
 ﻿using System;
-using FakeDbSet;
 using Machine.Fakes;
 using Machine.Specifications;
 using Warp.Data.Context;
 using Warp.Data.Entities;
 using Warp.Data.Queries.Customers;
+using Warp.Testing.Unit.Data.Commands.Clients;
 
 namespace Warp.Testing.Unit.Data.Queries.Customers
 {
@@ -19,7 +19,7 @@ namespace Warp.Testing.Unit.Data.Queries.Customers
             Establish that = () =>
                 The<IDomainDbContext>()
                     .WhenToldTo(d => d.Customers)
-                    .Return(new InMemoryDbSet<Customer>(true)
+                    .Return(new TestDbSet<Customer>
                     {
                         new Customer {Id = Guid.NewGuid()}
                     });
@@ -42,7 +42,7 @@ namespace Warp.Testing.Unit.Data.Queries.Customers
 
                 The<IDomainDbContext>()
                     .WhenToldTo(d => d.Customers)
-                    .Return(new InMemoryDbSet<Customer>(true)
+                    .Return(new TestDbSet<Customer>
                     {
                         new Customer {Id = CustomerId, Name = _customerName}
                     });

@@ -167,7 +167,7 @@ namespace Warp.Testing.Unit.Services.TextResources
         //    //{
         //    //    The<ITextResourceDbContext>()
         //    //        .WhenToldTo(tr => tr.TextResources)
-        //    //        .Return(new InMemoryDbSet<TextResource>(true)
+        //    //        .Return(new TestDbSet<TextResource>
         //    //        {
         //    //            new TextResource { TextResourceId = 2, ResourceCodeId = 0 }
         //    //        });
@@ -194,7 +194,7 @@ namespace Warp.Testing.Unit.Services.TextResources
         //    private Establish that = () => 
         //        The<ITextResourceDbContext>()
         //            .WhenToldTo(tr => tr.TextResources)
-        //            .Return(new InMemoryDbSet<Warp.Data.Entities.TextResource>(true)
+        //            .Return(new TestDbSet<Warp.Data.Entities.TextResource>
         //        {
         //            new TextResource { TextResourceId =  1, ResourceCodeId = 1, ApplicationLanguageId = 1, ResourceString = "Welcome!", Active = true, DateCreated = DateTime.Now, DateUpdated = DateTime.Now },
         //        new TextResource() { TextResourceId =  2, ResourceCodeId = 2, ApplicationLanguageId = 1, ResourceString = "Username", Active = true, DateCreated = DateTime.Now, DateUpdated = DateTime.Now },

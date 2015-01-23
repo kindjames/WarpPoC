@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using FakeDbSet;
 using Machine.Fakes;
 using Machine.Specifications;
 using Warp.Data.Context;
 using Warp.Data.Entities;
 using Warp.Data.Queries.Brands;
+using Warp.Testing.Unit.Data.Commands.Clients;
 
 namespace Warp.Testing.Unit.Data.Queries.Brands
 {
@@ -22,7 +22,7 @@ namespace Warp.Testing.Unit.Data.Queries.Brands
                 // Add some dummy Brands to the in-memory DbContext.
                 The<IDomainDbContext>()
                     .WhenToldTo(d => d.Brands)
-                    .Return(new InMemoryDbSet<Brand>(true)
+                    .Return(new TestDbSet<Brand>
                     {
                         new Brand {Client = new Client {Id = ClientId}},
                         new Brand {Client = new Client {Id = Guid.NewGuid()}},
@@ -47,7 +47,7 @@ namespace Warp.Testing.Unit.Data.Queries.Brands
                 // Add some dummy Brands to the in-memory DbContext.
                 The<IDomainDbContext>()
                     .WhenToldTo(d => d.Brands)
-                    .Return(new InMemoryDbSet<Brand>(true)
+                    .Return(new TestDbSet<Brand>
                     {
                         new Brand {Client = new Client {Id = Guid.NewGuid()}},
                         new Brand {Client = new Client {Id = Guid.NewGuid()}},

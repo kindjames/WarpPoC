@@ -1,10 +1,10 @@
 ﻿using System;
-using FakeDbSet;
 using Machine.Fakes;
 using Machine.Specifications;
 using Warp.Data.Context;
 using Warp.Data.Entities;
 using Warp.Data.Queries.TextResources;
+using Warp.Testing.Unit.Data.Commands.Clients;
 using Warp.Testing.Unit.Data.Data;
 
 namespace Warp.Testing.Unit.Data.Queries.TextResources
@@ -31,7 +31,7 @@ namespace Warp.Testing.Unit.Data.Queries.TextResources
                // Add some dummy TextResources to the in-memory DbContext.
                 The<ITextResourceDbContext>()
                     .WhenToldTo(d => d.TextResources)
-                    .Return(new InMemoryDbSet<TextResource>(true)
+                    .Return(new TestDbSet<TextResource>
                     {
                         new TextResource
                         {

@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
-using FakeDbSet;
+using Warp.Testing.Unit.Data.Commands.Clients;
 
 namespace Warp.Testing.Unit.Data.Util
 {
     public static class EnumerableExtensions
     {
-        public static InMemoryDbSet<TEntity> ToInMemoryDbSet<TEntity>(this IEnumerable<TEntity> entities)
+        internal static TestDbSet<TEntity> ToTestDbSet<TEntity>(this IEnumerable<TEntity> entities)
             where TEntity : class
         {
-            var memoryDbSet = new InMemoryDbSet<TEntity>(true);
+            var memoryDbSet = new TestDbSet<TEntity>();
 
             foreach (var entity in entities)
             {
