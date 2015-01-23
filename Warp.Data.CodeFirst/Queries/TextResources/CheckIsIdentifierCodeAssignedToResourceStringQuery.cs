@@ -12,7 +12,7 @@ using Warp.Data.Context;
 
 namespace Warp.Data.Queries.TextResources
 {
-    public sealed class CheckIsIdentifierCodeAssignedToResourceStringQuery : IQuery<IResponse<TextResourceDetailDto>>
+    public sealed class CheckIsIdentifierCodeAssignedToResourceStringQuery : IQuery<TextResourceDetailDto>
     {
         public Guid ResourceIdentifierId { get; set; }
     }
