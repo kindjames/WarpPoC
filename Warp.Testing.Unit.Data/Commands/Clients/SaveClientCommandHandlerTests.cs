@@ -5,6 +5,7 @@ using Machine.Specifications;
 using Warp.Data.Commands.Clients;
 using Warp.Data.Context;
 using Warp.Data.Entities;
+using Warp.Testing.Unit.Data.Util;
 using MoqIt = Moq.It;
 
 namespace Warp.Testing.Unit.Data.Commands.Clients

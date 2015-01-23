@@ -3,7 +3,7 @@ using System.Data.Entity.Infrastructure;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Warp.Testing.Unit.Data.Commands.Clients
+namespace Warp.Testing.Unit.Data.Util
 {
     internal class TestDbAsyncEnumerator<T> : IDbAsyncEnumerator<T>
     {

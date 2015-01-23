@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Warp.Testing.Unit.Data.Commands.Clients
+namespace Warp.Testing.Unit.Data.Util
 {
     internal class TestDbAsyncQueryProvider<TEntity> : IDbAsyncQueryProvider
     {

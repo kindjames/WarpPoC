@@ -7,7 +7,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace Warp.Testing.Unit.Data.Commands.Clients
+namespace Warp.Testing.Unit.Data.Util
 {
     internal class TestDbSet<TEntity> : DbSet<TEntity>, IQueryable, IEnumerable<TEntity>, IDbAsyncEnumerable<TEntity>
         where TEntity : class

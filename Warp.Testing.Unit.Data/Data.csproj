@@ -98,12 +98,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\Clients\TestDbAsyncEnumerable.cs" />
-    <Compile Include="Commands\Clients\TestDbAsyncEnumerator.cs" />
-    <Compile Include="Commands\Clients\TestDbSet.cs" />
+    <Compile Include="Util\TestDbAsyncEnumerable.cs" />
+    <Compile Include="Util\TestDbAsyncEnumerator.cs" />
+    <Compile Include="Util\TestDbSet.cs" />
     <Compile Include="Commands\Clients\SaveClientCommandHandlerTests - Copy.cs" />
     <Compile Include="Commands\Clients\SaveClientCommandHandlerTests.cs" />
-    <Compile Include="Commands\Clients\TestDbAsyncQueryProvider.cs" />
+    <Compile Include="Util\TestDbAsyncQueryProvider.cs" />
     <Compile Include="DataExceptionTests.cs" />
     <Compile Include="Data\BrandsTestDataFactory.cs" />
     <Compile Include="Data\LanguageTestDataFactory.cs" />

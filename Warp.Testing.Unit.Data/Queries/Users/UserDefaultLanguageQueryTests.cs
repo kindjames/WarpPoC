@@ -5,6 +5,7 @@ using Warp.Data.Context;
 using Warp.Data.Entities;
 using Warp.Data.Queries.Users;
 using Warp.Testing.Unit.Data.Commands.Clients;
+using Warp.Testing.Unit.Data.Util;
 
 namespace Warp.Testing.Unit.Data.Queries.Users
 {
