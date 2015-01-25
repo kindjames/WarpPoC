@@ -1,16 +1,20 @@
+using System;
 using System.Linq;
+using Warp.Core.Cqrs;
 using Warp.Core.Infrastructure.Validation;
-using Warp.Core.Query;
 using Warp.Data.DbFirst.Context;
 
 namespace Warp.Data.DbFirst.Queries.ClientAccountManagers
 {
     public class CheckClientAccountManagerExistsQuery : IQuery<bool>
     {
-        [IdRequired]
-        public int AccountManagerId { get; set; }
+        public Guid AccountManagerId { get; set; }
     }
 
+    /// <summary>
+    /// TODO => Validator
+    /// </summary>
+    
     public class CheckClientAccountManagerExistsQueryHandler : IQueryHandler<CheckClientAccountManagerExistsQuery, bool>
     {
         private readonly IDomainDbContext _dbContext;
