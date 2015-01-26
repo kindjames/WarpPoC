@@ -17,6 +17,5 @@ namespace Warp.Data.Context
             : base(applicationConfig, dateTimeProvider)
         {
         }
-        public IDbSet<TextResourceIdentifier> TextResourceIdentifiers { get; set; }
     }
 }
