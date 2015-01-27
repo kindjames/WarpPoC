@@ -1,3 +1,4 @@
+using System;
 using System.Data.Common;
 using System.Data.Entity;
 using System.Data.Entity.SqlServer;
@@ -10,6 +11,7 @@ using Warp.Core.Data;
 using Warp.Core.Infrastructure.Configuration;
 using Warp.Core.Infrastructure.General;
 using Warp.Core.Infrastructure.Util;
+using Warp.Data.Entities;
 
 namespace Warp.Data.Context
 {
@@ -48,20 +50,23 @@ namespace Warp.Data.Context
             return Task.FromResult(SaveChanges());
         }
 
-        public void CreateOrUpdateEntity<TEntity>(TEntity entity) where TEntity : EntityBase
-        {
-            var set = Set<TEntity>();
+        //public void CreateOrUpdateEntity<TEntity>(Func<TEntity> entity) where TEntity : EntityBase
+        //{
+        //    var a = entity();
 
-            if (set.Any(e => e.Id == entity.Id))
-            {
-                set.Attach(entity);
-                //Entry(entity).State = EntityState.Modified;
-            }
-            else
-            {
-                set.Add(entity);
-            }
-        }
+        //    var dbEntity = Set<TEntity>()
+        //        .FirstOrDefault(e => e.Id == entity.Id);
+
+        //    if (dbEntity == null)
+        //    {
+        //        Set<TEntity>().Add(entity);
+        //    }
+        //    else
+        //    {
+        //        Set<TEntity>().Attach(entity);
+        //        //Entry(entity).State = EntityState.Modified;
+        //    }
+        //}
 
         public override int SaveChanges()
         {

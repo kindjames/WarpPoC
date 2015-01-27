@@ -1,6 +1,8 @@
+using System;
 using System.Data.Entity;
 using System.Threading.Tasks;
 using Warp.Core.Data;
+using Warp.Data.Entities;
 
 namespace Warp.Data.Context
 {
@@ -9,8 +11,8 @@ namespace Warp.Data.Context
         int SaveChanges();
         Task<int> SaveChangesAsync();
 
-        void CreateOrUpdateEntity<TEntity>(TEntity entity)
-            where TEntity : EntityBase;
+        //void CreateOrUpdateEntity<TEntity>(Func<Client> entity)
+        //    where TEntity : EntityBase;
 
         DbSet<TEntity> Set<TEntity>() where TEntity : class;
     }

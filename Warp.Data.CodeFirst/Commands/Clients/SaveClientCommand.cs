@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Linq;
 using FluentValidation;
 using Warp.Core.Cqrs;
+using Warp.Core.Data;
 using Warp.Core.Domain.Enum;
 using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Infrastructure.Validation;
@@ -54,9 +56,18 @@ namespace Warp.Data.Commands.Clients
 
         public void Handle(SaveClientCommand command)
         {
-            var client = _objectMapper.MapTo<Client>(command);
+            var set = _dbContext.Set<Client>();
 
-            _dbContext.CreateOrUpdateEntity(client);
+            var dbEntity = set.FirstOrDefault(e => e.Id == command.Id);
+
+            if (dbEntity == null)
+            {
+                set.Add(_objectMapper.MapTo<Client>(command));
+            }
+            else
+            {
+                _objectMapper.Map(command, dbEntity);
+            }
 
             _dbContext.SaveChanges();
         }

@@ -102,10 +102,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Util\InMemoryDatabaseFactory.cs" />
     <Compile Include="Util\TestDbAsyncEnumerable.cs" />
     <Compile Include="Util\TestDbAsyncEnumerator.cs" />
     <Compile Include="Util\TestDbSet.cs" />
-    <Compile Include="Commands\Clients\SaveClientCommandHandlerTests - Copy.cs" />
     <Compile Include="Commands\Clients\SaveClientCommandHandlerTests.cs" />
     <Compile Include="Util\TestDbAsyncQueryProvider.cs" />
     <Compile Include="DataExceptionTests.cs" />
