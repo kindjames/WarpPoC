@@ -3,7 +3,7 @@ using SpecsFor.Mvc.Authentication;
 using Warp.WebUI.Controllers;
 using Warp.WebUI.ViewModels.Authentication;
 
-namespace Warp.Testing.Integration
+namespace Warp.Testing.Acceptance
 {
     public class StandardAuthenticator : IHandleAuthentication
     {

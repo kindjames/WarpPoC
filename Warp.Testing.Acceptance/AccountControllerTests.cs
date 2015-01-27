@@ -1,14 +1,16 @@
 ﻿using System;
+using System.Linq;
 using NUnit.Framework;
 using Should;
 using SpecsFor;
 using SpecsFor.Mvc;
 using SpecsFor.Mvc.Helpers;
+using Warp.Data.Migrations;
 using Warp.WebUI.Controllers;
 using Warp.WebUI.ViewModels.Account;
 using Warp.WebUI.ViewModels.DashboardControls;
 
-namespace Warp.Testing.Integration
+namespace Warp.Testing.Acceptance
 {
     public class AccountControllerTests
     {
