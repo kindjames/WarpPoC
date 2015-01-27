@@ -6,7 +6,7 @@ using SpecsFor.Mvc;
 using Warp.WebUI;
 using Warp.WebUI.Controllers;
 
-namespace Warp.Testing.Acceptance
+namespace Warp.Testing.Integration
 {
     //public class TestDbInitializer : DropCreateDatabaseAlways<ApplicationDbContext>
     //{

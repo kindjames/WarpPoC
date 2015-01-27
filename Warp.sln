@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data (DbFirst)", "Warp.Data
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit", "Unit", "{C603962C-47D0-4077-8D2F-5BE24FE24014}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Acceptance", "Acceptance", "{DCA7A5E2-632A-4743-8684-6931FB6B5E68}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration", "Integration", "{DCA7A5E2-632A-4743-8684-6931FB6B5E68}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Util", "Warp.Testing.Util\Util.csproj", "{AC5D498D-977F-4331-8C38-10526124DC35}"
 EndProject
@@ -29,7 +29,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Warp.Testing.Unit.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Warp.Testing.Unit.Services\Services.csproj", "{9DA62365-D86F-4F97-B1B3-0712BB38495F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acceptance", "Warp.Testing.Acceptance\Acceptance.csproj", "{5D87686A-D4DA-4B61-A4E4-22CFC2AD24FB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Integration", "Warp.Testing.Acceptance\Integration.csproj", "{5D87686A-D4DA-4B61-A4E4-22CFC2AD24FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

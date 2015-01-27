@@ -7,7 +7,7 @@ using SpecsFor.Mvc.Helpers;
 using Warp.WebUI.Controllers;
 using Warp.WebUI.ViewModels.Authentication;
 
-namespace Warp.Testing.Acceptance
+namespace Warp.Testing.Integration
 {
     public class AuthenticationControllerTests
     {

@@ -7,8 +7,8 @@
     <ProjectGuid>{5D87686A-D4DA-4B61-A4E4-22CFC2AD24FB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Warp.Testing.Acceptance</RootNamespace>
-    <AssemblyName>Warp.Testing.Acceptance</AssemblyName>
+    <RootNamespace>Warp.Testing.Integration</RootNamespace>
+    <AssemblyName>Warp.Testing.Integration</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
