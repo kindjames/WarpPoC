@@ -6,7 +6,7 @@ using SpecsFor.Configuration;
 using SpecsFor.Mvc;
 using Warp.Data.Migrations;
 
-namespace Warp.Testing.Acceptance.Behaviors
+namespace Warp.Testing.Integration.Behaviors
 {
     public class TestDatabaseInitializer : Behavior<SpecsFor<MvcWebApp>>
     {
