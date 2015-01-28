@@ -46,7 +46,7 @@ namespace Warp.Services
 
         #endregion In Process
 
-        #region Next
+        #region Get...things!!
 
         public ResourceStringDto GetTextResourceString(Guid textResourceIdentifierId)
         {
@@ -79,7 +79,10 @@ namespace Warp.Services
                 ResourceIdentifierCode = textResourceCode
             };
         }
+        
+        #endregion Get...things!!
 
+        #region SaveTextResource
         public void SaveTextResource(SaveTextResourceDto dto)  //return IResponse<TextResourceDetailDto>
         {
             #region Validation  Cycle
@@ -159,7 +162,9 @@ namespace Warp.Services
 
             //return new ServiceResponse<TextResourceDetailDto>(associatedData, false);
         }
-
+        #endregion SaveTextResource
+        
+        
         protected bool ValidateResourceString(SaveTextResourceDto dto)
         {
             bool result = false;
@@ -174,7 +179,7 @@ namespace Warp.Services
             return result;
         }
 
-        #endregion Next
+
 
         public bool InitializeTextResourceCache(Guid languageId, Guid clientId)
         {
