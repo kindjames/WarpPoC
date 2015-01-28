@@ -172,6 +172,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\T4MVCExtensions.3.11.0\lib\net40\T4MVCExtensions.dll</HintPath>
     </Reference>
+    <Reference Include="TechTalk.SpecFlow">
+      <HintPath>..\packages\SpecFlow.1.9.0\lib\net35\TechTalk.SpecFlow.dll</HintPath>
+    </Reference>
     <Reference Include="TwitterBootstrapMVC.Eyecon.Datepicker.MVC5">
       <HintPath>..\packages\TwitterBootstrapMVC.Eyecon.Datepicker.MVC5.1.0.0\lib\net40\TwitterBootstrapMVC.Eyecon.Datepicker.MVC5.dll</HintPath>
     </Reference>
