@@ -127,26 +127,26 @@ this.ScenarioSetup(scenarioInfo);
 #line 31
  testRunner.Then("the ResourceIdentifier data is checked for uniqueness", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 32
-  testRunner.And("the CheckIsResourceIdentifierCodeUniqueQuery returns false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.When("the CheckIsResourceIdentifierCodeUniqueQuery returns false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 34
- testRunner.Then("the TextResourceService creates a SaveResourceResponseDto", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("run a GetResourceIdentifierCodeDataQuery against the duplicated ResourceIdentifie" +
+                    "rCode string", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 35
-  testRunner.And("runs a GetResourceIdentifierCodedataQuery against the duplicated ResourceIdentifi" +
-                    "erCode string", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 36
   testRunner.And("returns the duplicate ResourceIdentifierCode data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 37
+#line 36
  testRunner.Then("runs the GetAssociatedTextResourceDataQuery using the duplicate ResourceIdentifie" +
                     "rCodeId", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 38
+#line 37
   testRunner.And("returns associated TextResource data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 41
- testRunner.Then("populates the SaveResourceResponseDto with the result of the associated data dto", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 42
+#line 38
+ testRunner.Then("the TextResourceService initialises a SaveTextResourceResponseDto with both assoc" +
+                    "iated data query results", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 39
   testRunner.And("maps the SaveResourceResponseDto to a SaveResourceResponseViewModel", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 43
- testRunner.Then("returns the mapped Viewmodel", @"
+#line 40
+  testRunner.And("returns the mapped Viewmodel to the TextResourceController SaveTextResource metho" +
+                    "d", @"
 #@3_UniqueResourceString_DifferentResourceIdentifierCode
 #Scenario: Failed Save
 
@@ -169,7 +169,7 @@ Scenario: Unsuccessful Save with duplicate ResourceString and a unique ResourceI
 #@WorstCaseScenario
 #Scenario: Unsuccessful Save with a duplicate TextResource string and a duplicate ResourceIdentifierCode
 
-#@ignore", ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#@ignore", ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
