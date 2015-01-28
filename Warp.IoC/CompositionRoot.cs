@@ -19,6 +19,7 @@ using Warp.Data.Context;
 using Warp.Data.Infrastructure.Validation;
 using Warp.Data.Queries.General;
 using Warp.IoC.Factories;
+using Warp.IoC.Util;
 using Warp.Services;
 using IObjectMapper = Warp.Core.Infrastructure.AutoMapper.IObjectMapper;
 using PasswordHasher = Warp.Core.Infrastructure.Authentication.PasswordHasher;
@@ -60,7 +61,8 @@ namespace Warp.IoC
             c.RegisterManyForOpenGeneric(typeof(IQueryHandler<,>), dataAssembly);
             c.RegisterAllFluentValidatorsInAssembly(dataAssembly);
             c.RegisterAllImplementationsInAssemblyWithNameEnding("DbContext", dataAssembly);
-            c.RegisterOpenGenericQueryHandlerForAllEntityTypes(typeof(CheckEntityExistsQuery<>), typeof(CheckEntityExistsQueryHandler<>));
+            c.RegisterOpenGenericQueryHandlerForAllEntityTypes(typeof(GetEntityQuery<>), typeof(GetEntityQueryHandler<>));
+            c.RegisterOpenGenericQueryHandlerForAllEntityTypes(typeof(CheckEntityExistsQuery<>), typeof(CheckEntityExistsQueryHandler<>), typeof(bool));
             c.RegisterOpenGenericValidatorForAllEntityTypes(typeof(EntityExistsValidator<>));
 
             // Services
@@ -70,7 +72,7 @@ namespace Warp.IoC
 
             // MVC
             var mvcAssembly = Assembly.GetCallingAssembly();
-            c.RegisterMvcControllers(mvcAssembly);
+            c.RegisterControllers(mvcAssembly);
             c.RegisterMvcIntegratedFilterProvider();
             c.RegisterAllFluentValidatorsInAssembly(mvcAssembly);
 

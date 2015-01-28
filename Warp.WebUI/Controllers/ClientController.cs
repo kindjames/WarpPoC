@@ -66,14 +66,15 @@ namespace Warp.WebUI.Controllers
             if (ModelState.IsValid)
             {
                 var dto = _objectMapper.MapTo<SaveClientDto>(model);
-
+                dto.Id = Guid.NewGuid();
                 dto.CustomerId = User.GetCustomerId();
                 dto.AccountManagerId = User.GetUserId();
 
                 try
                 {
                     _clientService.SaveClient(dto);
-                    return RedirectToAction(MVC.Client.Index());
+
+                    return RedirectToAction(MVC.Client.View(dto.Id));
                 }
                 catch (ValidationException ex)
                 {

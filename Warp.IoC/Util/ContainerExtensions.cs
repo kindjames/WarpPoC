@@ -5,10 +5,10 @@ using System.Reflection;
 using FluentValidation;
 using SimpleInjector;
 using SimpleInjector.Extensions;
-using Warp.Core.Data;
 using Warp.Core.Cqrs;
+using Warp.Core.Data;
 
-namespace Warp.IoC
+namespace Warp.IoC.Util
 {
     public static class ContainerExtensions
     {
@@ -36,38 +36,60 @@ namespace Warp.IoC
                 .ForEach(t => container.Register(t.Service, t.Implementation));
         }
 
-        private static readonly IEnumerable<Type> EntityTypes;
-
-        static ContainerExtensions()
+        private static readonly Lazy<IEnumerable<Type>> EntityTypes = new Lazy<IEnumerable<Type>>(() =>
         {
-            EntityTypes = typeof(EntityBase).Assembly
+            return AppDomain.CurrentDomain
+                .GetAssemblies()
+                .Single(a => a.FullName.Contains("Warp.Data"))
                 .GetExportedTypes()
                 .Where(t => t.Namespace == "Warp.Data.Entities")
                 .Where(t => !t.IsAbstract)
                 .Where(t => t.IsClass)
-                .Where(t => typeof (EntityBase).IsAssignableFrom(t));
-        }
+                .Where(t => typeof(EntityBase).IsAssignableFrom(t));
+        });
 
         public static void RegisterOpenGenericQueryHandlerForAllEntityTypes(this Container container, Type openQueryType, Type openQueryHandlerType)
         {
             var openQueryHandlerInterfaceType = typeof(IQueryHandler<,>);
-            
-            foreach (var entityType in EntityTypes)
-            {
-                var closedDeleteCommandType = openQueryType.MakeGenericType(entityType);
-                var closedHandlerInterfaceType = openQueryHandlerInterfaceType.MakeGenericType(closedDeleteCommandType, typeof(bool));
-                var closedDeleteCommandHandlerType = openQueryHandlerType.MakeGenericType(entityType);
 
-                container.Register(closedHandlerInterfaceType, closedDeleteCommandHandlerType);
+            foreach (var entityType in EntityTypes.Value)
+            {
+                var closedQueryType = openQueryType.MakeGenericType(entityType);
+                var closedHandlerInterfaceType = openQueryHandlerInterfaceType.MakeGenericType(closedQueryType, entityType);
+                var closedQueryHandlerType = openQueryHandlerType.MakeGenericType(entityType);
+
+                container.Register(closedHandlerInterfaceType, closedQueryHandlerType);
+            }
+        }
+
+        public static void RegisterOpenGenericQueryHandlerForAllEntityTypes(this Container container, Type openQueryType, Type openQueryHandlerType, Type resultType)
+        {
+            var openQueryHandlerInterfaceType = typeof(IQueryHandler<,>);
+
+            foreach (var entityType in EntityTypes.Value)
+            {
+                var closedQueryType = openQueryType.MakeGenericType(entityType);
+                var closedHandlerInterfaceType = openQueryHandlerInterfaceType.MakeGenericType(closedQueryType, resultType);
+                var closedQueryHandlerType = openQueryHandlerType.MakeGenericType(entityType);
+
+                container.Register(closedHandlerInterfaceType, closedQueryHandlerType);
             }
         }
 
         public static void RegisterOpenGenericValidatorForAllEntityTypes(this Container container, Type openValidatorType)
         {
-            foreach (var closedDeleteCommandType in EntityTypes.Select(e => openValidatorType.MakeGenericType(e)))
+            foreach (var closedCommandType in EntityTypes.Value.Select(e => openValidatorType.MakeGenericType(e)))
             {
-                container.Register(closedDeleteCommandType);
+                container.Register(closedCommandType);
             }
+        }
+
+        public static void RegisterControllers(this Container container, params Assembly[] assemblies)
+        {
+            SimpleInjectorMvcExtensions.GetControllerTypesToRegister(container, assemblies)
+                .Where(t => !t.Name.Contains("T4MVC"))
+                .ToList()
+                .ForEach(container.Register);
         }
 
         /// <summary>
@@ -83,14 +105,14 @@ namespace Warp.IoC
         public static void RegisterOpenGenericCommandHandlerForAllEntityTypes(this Container container, Type openCommandType, Type openCommandHandlerType)
         {
             var openCommandHandlerInterfaceType = typeof(ICommandHandler<>);
-            
-            foreach (var entityType in EntityTypes)
-            {
-                var closedDeleteCommandType = openCommandType.MakeGenericType(entityType);
-                var closedHandlerInterfaceType = openCommandHandlerInterfaceType.MakeGenericType(closedDeleteCommandType, typeof(bool));
-                var closedDeleteCommandHandlerType = openCommandHandlerType.MakeGenericType(entityType);
 
-                container.Register(closedHandlerInterfaceType, closedDeleteCommandHandlerType);
+            foreach (var entityType in EntityTypes.Value)
+            {
+                var closedCommandType = openCommandType.MakeGenericType(entityType);
+                var closedHandlerInterfaceType = openCommandHandlerInterfaceType.MakeGenericType(closedCommandType);
+                var closedCommandHandlerType = openCommandHandlerType.MakeGenericType(entityType);
+
+                container.Register(closedHandlerInterfaceType, closedCommandHandlerType);
             }
         }
     }
