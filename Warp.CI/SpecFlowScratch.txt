@@ -1,0 +1,41 @@
+﻿
+Feature:SpecFlow Template
+
+@important
+Scenario: Write blog
+    Given I am on the blog homepage
+		When I click "New Post" link
+		Then I fill "My first blog" as Title    
+		And I fill "Test content" as content    
+		And I click "Post" button    
+		Then I should see the blog I just posted
+
+@important
+Scenario: BDD Test Cycle
+	Given Test Development Process 
+		When I add a feature
+		Then I add a feature test
+		Then I run all tests 
+		When the new tests fail
+		Then I write some code
+		And Run the automated tests
+		When the tests pass
+		Then I refactor the code
+		Then I repeat steps 1 to 5
+
+@Syntax
+#In order to, As a, I want, So that
+#Feature: Write blog As a blog owner I can write new blog post
+
+@important
+Scenario: BDD Test Cycle
+	Given Test Development Process 
+		When I add a feature
+		Then I add a feature test
+		Then I run all tests 
+		When the new tests fail
+		Then I write some code
+		And Run the automated tests
+		When the tests pass
+		Then I refactor the code
+		Then I repeat steps 1 to 5
