@@ -8,6 +8,7 @@ namespace Warp.Testing.Unit.Data.Data
 {
     public class TextResourceTestDataFactory : ITestDataFactory<TextResource>
     {
+        #region TextResourceIds
         protected Guid tr1Id { get; set; }
         protected Guid tr2Id { get; set; }
         protected Guid tr3Id { get; set; }
@@ -20,7 +21,22 @@ namespace Warp.Testing.Unit.Data.Data
         protected Guid tr10Id { get; set; }
         protected Guid tr11Id { get; set; }
         protected Guid tr12Id { get; set; }
+        protected Guid tr13Id { get; set; }
+        protected Guid tr14Id { get; set; }
+        protected Guid tr15Id { get; set; }
+        protected Guid tr16Id { get; set; }
+        protected Guid tr17Id { get; set; }
+        protected Guid tr18Id { get; set; }
+        #endregion TextResourceIds
 
+        #region TextResourceIdentifierIds
+        public Guid tri1Id { get; set; }
+        public Guid tri2Id { get; set; }
+        public Guid tri3Id { get; set; }
+        public Guid tri4Id { get; set; }
+        public Guid tri5Id { get; set; }
+        public Guid tri6Id { get; set; }
+        #endregion TextResourceIdentifierIds
         public TextResourceTestDataFactory()
         {
             tr1Id = Guid.NewGuid();
@@ -35,11 +51,14 @@ namespace Warp.Testing.Unit.Data.Data
             tr10Id = Guid.NewGuid();
             tr11Id = Guid.NewGuid();
             tr12Id = Guid.NewGuid();
+
+            tri1Id = TextResourceIdentifiers
         }
 
         public IEnumerable<TextResource> Build()
         {
             var languages = new LanguageTestDataFactory().Build();
+            var textResourceIdentifiers = new TextResourceIdentifierTestDataFactory().Build();
 
             return new[]
             {
