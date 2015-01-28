@@ -35,7 +35,6 @@ namespace Warp.Testing.Unit.Data.Data
                     ResourceIdentifierCode = "UsernameText", 
                     ClientOverridable = true
                 },
-
                 new TextResourceIdentifier
                 {
                     Id = Guid.NewGuid(),

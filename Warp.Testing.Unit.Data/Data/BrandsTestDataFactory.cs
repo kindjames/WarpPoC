@@ -17,7 +17,7 @@ namespace Warp.Testing.Unit.Data.Data
                 new Brand {Client = new Client { Id = Guid.NewGuid()}},
                 new Brand {Client = new Client { Id = Guid.NewGuid()}},
                 new Brand {Client = new Client { Id = Guid.NewGuid()}},
-                new Brand {Client = new Client { Id = Guid.NewGuid()}},
+                new Brand {Client = new Client { Id = Guid.NewGuid()}}
             };
         }
     }

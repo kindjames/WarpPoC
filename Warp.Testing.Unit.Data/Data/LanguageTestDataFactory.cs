@@ -7,15 +7,24 @@ namespace Warp.Testing.Unit.Data.Data
 {
     public class LanguageTestDataFactory : ITestDataFactory<Language>
     {
+        public Guid enLanguageId { get; set; }
+        public Guid frLanguageId { get; set; }
+        public Guid nlLanguageId { get; set; }
+
+        public LanguageTestDataFactory()
+        {
+            enLanguageId = Guid.NewGuid();
+            frLanguageId = Guid.NewGuid();
+            nlLanguageId = Guid.NewGuid();
+        }
+
         public IEnumerable<Language> Build()
         {
             return new[]
             {
-                new Language {Id = Guid.NewGuid(), InvariantCulture = "en", Locale = "GB", Name = "English"},
-                new Language {Id = Guid.NewGuid(), InvariantCulture = "fr", Locale = "FR", Name = "French"},
-                new Language {Id = Guid.NewGuid(), InvariantCulture = "nl", Locale = "NL", Name = "Dutch"},
-                new Language {Id = Guid.NewGuid(), InvariantCulture = "de", Locale = "DE", Name = "German"},
-                new Language {Id = Guid.NewGuid(), InvariantCulture = "oo", Locale = "AR", Name = "Pirate"}
+                new Language {Id = enLanguageId, InvariantCulture = "en", Locale = "GB", Name = "English"},
+                new Language {Id = frLanguageId, InvariantCulture = "fr", Locale = "FR", Name = "French"},
+                new Language {Id = nlLanguageId, InvariantCulture = "nl", Locale = "NL", Name = "Dutch"}
             };
         }
     }

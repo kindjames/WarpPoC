@@ -316,38 +316,38 @@ namespace Warp.Testing.Unit.Services.TextResources
         //    It _should = () => { };
         //}
 
-        //public class When_calling__SaveTextResource__sweet_path : WithSubject<TextResourceService> // Sweet path => no duplicates, nothing null or invalid, not ClientOverridable
-        //{
-        //    // SUT
-        //    static SaveTextResourceDto _dto;
+        ////public class When_calling__SaveTextResource__sweet_path : WithSubject<TextResourceService> // Sweet path => no duplicates, nothing null or invalid, not ClientOverridable
+        ////{
+        ////    // SUT
+        ////    static SaveTextResourceDto _dto;
 
-        //    // Test values
-        //    static string _resourceString;
-        //    static string _resourceIdentifierCode;
-        //    static int _resourceIdentifierCodeId;
-        //    static bool _clientOverridable;
-        //    static int _languageId;
+        ////    // Test values
+        ////    static string _resourceString;
+        ////    static string _resourceIdentifierCode;
+        ////    static int _resourceIdentifierCodeId;
+        ////    static bool _clientOverridable;
+        ////    static int _languageId;
 
-        //    Establish _context = () =>
-        //    {
-        //        _dto = new SaveTextResourceDto()
-        //        {
-        //            ResourceString = _resourceString,
-        //            ResourceIdentifierCode = _resourceIdentifierCode,
-        //            ClientOverridable = _clientOverridable,
-        //            LanguageId = _languageId
-        //        };
+        ////    Establish _context = () =>
+        ////    {
+        ////        _dto = new SaveTextResourceDto()
+        ////        {
+        ////            ResourceString = _resourceString,
+        ////            ResourceIdentifierCode = _resourceIdentifierCode,
+        ////            ClientOverridable = _clientOverridable,
+        ////            LanguageId = _languageId
+        ////        };
 
-        //        _resourceString = "Welcome!";
-        //        _resourceIdentifierCode = "Welcome!Text";
-        //        _resourceIdentifierCodeId = 1;
-        //        _clientOverridable = false;
-        //        _languageId = 1;
+        ////        _resourceString = "Welcome!";
+        ////        _resourceIdentifierCode = "Welcome!Text";
+        ////        _resourceIdentifierCodeId = 1;
+        ////        _clientOverridable = false;
+        ////        _languageId = 1;
 
-        //    };
-        //    Because _of = () => { };
-        //    It _should = () => { };
-        //}
+        ////    };
+        ////    Because _of = () => { };
+        ////    It _should = () => { };
+        ////}
 
         //public class When_calling__SaveTextResource__duplicate_ResourceIdentifier : WithSubject<TextResourceService>
         //{

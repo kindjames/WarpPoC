@@ -103,6 +103,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Util\InMemoryDatabaseFactory.cs" />
+    <Compile Include="Data\UserTestDataFactory.cs" />
     <Compile Include="Util\TestDbAsyncEnumerable.cs" />
     <Compile Include="Util\TestDbAsyncEnumerator.cs" />
     <Compile Include="Util\TestDbSet.cs" />
