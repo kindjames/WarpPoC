@@ -163,8 +163,8 @@ namespace Warp.Services
             //return new ServiceResponse<TextResourceDetailDto>(associatedData, false);
         }
         #endregion SaveTextResource
-        
-        
+
+        #region Scratch
         protected bool ValidateResourceString(SaveTextResourceDto dto)
         {
             bool result = false;
@@ -187,5 +187,7 @@ namespace Warp.Services
 
             throw new NotImplementedException();
         }
+
+        #endregion Scratch
     }
 }
