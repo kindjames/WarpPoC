@@ -40,7 +40,6 @@ Scenario: Failed Save with unique ResourceString and a duplicate ResourceIdentif
 		And returns the mapped Viewmodel to the TextResourceController SaveTextResource method
 
 """
-
 #@3_UniqueResourceString_DifferentResourceIdentifierCode
 #Scenario: Failed Save
 

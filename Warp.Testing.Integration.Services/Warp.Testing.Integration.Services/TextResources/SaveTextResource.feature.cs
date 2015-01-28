@@ -146,8 +146,7 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
 #line 40
   testRunner.And("returns the mapped Viewmodel to the TextResourceController SaveTextResource metho" +
-                    "d", @"
-#@3_UniqueResourceString_DifferentResourceIdentifierCode
+                    "d", @"#@3_UniqueResourceString_DifferentResourceIdentifierCode
 #Scenario: Failed Save
 
 @_DuplicateResourceString_UniqueResourceIdentifier
