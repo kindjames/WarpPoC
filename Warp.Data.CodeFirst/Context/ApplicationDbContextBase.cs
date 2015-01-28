@@ -1,4 +1,3 @@
-using System;
 using System.Data.Common;
 using System.Data.Entity;
 using System.Data.Entity.SqlServer;
@@ -11,7 +10,6 @@ using Warp.Core.Data;
 using Warp.Core.Infrastructure.Configuration;
 using Warp.Core.Infrastructure.General;
 using Warp.Core.Infrastructure.Util;
-using Warp.Data.Entities;
 
 namespace Warp.Data.Context
 {

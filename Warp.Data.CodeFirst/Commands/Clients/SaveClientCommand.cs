@@ -2,7 +2,6 @@
 using System.Linq;
 using FluentValidation;
 using Warp.Core.Cqrs;
-using Warp.Core.Data;
 using Warp.Core.Domain.Enum;
 using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Infrastructure.Validation;

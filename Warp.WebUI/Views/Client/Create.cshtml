@@ -2,6 +2,8 @@
 
 @using (var form = Html.Bootstrap().Begin(new Form().LabelWidthSm(2)))
 {
+    @Html.Bootstrap().ValidationSummary()
+    
     @(form.FormGroup().TextBoxFor(m => m.Name)
           .Label().LabelText(Model.NameLabelText))
     

@@ -42,7 +42,7 @@ namespace Warp.Services
 
             _validationProvider.ValidateAndThrow(saveClientDto);
 
-            if (!_dispatcher.Execute(new CheckClientExistsForCodeQuery { CustomerId = saveClientDto.CustomerId, ClientCode = saveClientDto.Code }))
+            if (_dispatcher.Execute(new CheckClientExistsForCodeQuery { CustomerId = saveClientDto.CustomerId, ClientCode = saveClientDto.Code }))
             {
                 throw new ClientAlreadyExistsException(saveClientDto.CustomerId, saveClientDto.Code);
             }

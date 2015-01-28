@@ -180,6 +180,7 @@ internal static class T4MVCHelpers {
     //      return "http://localhost" + path + "?foo=bar";
     private static string ProcessVirtualPathDefault(string virtualPath) {
         // The path that comes in starts with ~/ and must first be made absolute
+		return virtualPath;
         string path = VirtualPathUtility.ToAbsolute(virtualPath);
         
         // Add your own modifications here before returning the path

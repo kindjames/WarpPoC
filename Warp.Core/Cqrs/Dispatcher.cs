@@ -60,7 +60,7 @@ namespace Warp.Core.Cqrs
 
             var handler = GetCommandHandler(command.GetType());
 
-            ((dynamic) handler).Handle(command);
+            ((dynamic) handler).Handle((dynamic) command);
         }
 
         public TResult Execute<TResult>(IQuery<TResult> query)
@@ -69,7 +69,7 @@ namespace Warp.Core.Cqrs
 
             var handler = GetQueryHandler<TResult>(query.GetType());
 
-            return ((dynamic)handler).Handle(query);
+            return ((dynamic) handler).Handle((dynamic) query);
         }
 
         public TResult Execute<TQuery, TResult>()

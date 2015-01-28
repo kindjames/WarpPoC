@@ -30,7 +30,7 @@ namespace Warp.Core.Infrastructure.Validation
         {
             if (propertyValue is Guid)
             {
-                return (Guid) propertyValue != Guid.Empty;
+                return (Guid) propertyValue == Guid.Empty;
             }
 
             return false;

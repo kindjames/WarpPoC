@@ -44,12 +44,14 @@ namespace Warp.IoC
             c.Register<ITextResourceModelProvider, TextResourceModelProvider>();
 
             // Core
+            var coreAssembly = typeof(IDateTimeProvider).Assembly;
             c.Register<IDateTimeProvider, DateTimeProvider>();
             c.Register<IApplicationConfig, ApplicationConfig>();
             c.Register<IObjectMapper, ObjectMapper>();
             c.Register<ILoggingService, ConsoleLoggingService>();
             c.Register<IValidationProvider, FluentValidationProvider>();
             c.Register<IUniqueIdentifierGenerator, GuidCombGenerator>();
+            c.RegisterAllFluentValidatorsInAssembly(coreAssembly);
 
             // Data
             var dataAssembly = typeof(IDomainDbContext).Assembly;

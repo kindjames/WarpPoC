@@ -99,6 +99,7 @@
     <Compile Include="Cqrs\IQueryHandler.cs" />
     <Compile Include="Cqrs\ICommand.cs" />
     <Compile Include="Cqrs\IQuery.cs" />
+    <Compile Include="Infrastructure\Validation\Dtos\DtoBaseValidator.cs" />
     <Compile Include="Infrastructure\Validation\IValidationProvider.cs" />
     <Compile Include="Infrastructure\Validation\FluentValidationProvider.cs" />
     <Compile Include="Infrastructure\Validation\NotEmptyGuidValidator.cs" />

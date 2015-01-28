@@ -13,7 +13,7 @@ namespace Warp.Data.Context
         {
         }
 
-        public DomainDbContext(IDateTimeProvider dateTimeProvider, DbConnection existingConnection, bool contextOwnsConnection)
+        internal DomainDbContext(IDateTimeProvider dateTimeProvider, DbConnection existingConnection, bool contextOwnsConnection)
             : base(dateTimeProvider, existingConnection, contextOwnsConnection)
         {
         }

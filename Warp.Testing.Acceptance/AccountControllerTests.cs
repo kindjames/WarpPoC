@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Linq;
 using NUnit.Framework;
 using Should;
 using SpecsFor;
 using SpecsFor.Mvc;
 using SpecsFor.Mvc.Helpers;
+using Warp.Data.Migrations;
 using Warp.WebUI.Controllers;
 using Warp.WebUI.ViewModels.Account;
 using Warp.WebUI.ViewModels.DashboardControls;
@@ -30,17 +32,17 @@ namespace Warp.Testing.Integration
                     .Submit();
             }
 
-            //[Test]
-            //public void then_it_save_to_the_database()
-            //{
-            //    using (var context = new InternalMigrationsInitializationContext())
-            //    {
-            //        var user = context.Users
-            //            .SingleOrDefault(u => u.Forename == FirstName && u.Surname == LastName);
+            [Test]
+            public void then_it_save_to_the_database()
+            {
+                using (var context = new MigrationsAndTestingContext())
+                {
+                    var user = context.Users
+                        .SingleOrDefault(u => u.Forename == FirstName && u.Surname == LastName);
 
-            //        user.ShouldNotBeNull();
-            //    }
-            //}
+                    user.ShouldNotBeNull();
+                }
+            }
 
             [Test]
             public void then_it_should_redirect_to_home()
