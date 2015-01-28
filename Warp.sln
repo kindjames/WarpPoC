@@ -48,6 +48,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{A99A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warp.Testing.Integration.Services", "Warp.Testing.Integration.Services\Warp.Testing.Integration.Services\Warp.Testing.Integration.Services.csproj", "{A119E984-CF9E-484B-9914-FE99C8762F14}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warp.Testing.BDD.WebUI", "Warp.Testing.BDD.WebUI\Warp.Testing.BDD.WebUI.csproj", "{8D7BDCC4-D134-4198-A664-5D30A90D5069}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Acceptance|Any CPU = Acceptance|Any CPU
@@ -133,6 +135,12 @@ Global
 		{A119E984-CF9E-484B-9914-FE99C8762F14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A119E984-CF9E-484B-9914-FE99C8762F14}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A119E984-CF9E-484B-9914-FE99C8762F14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D7BDCC4-D134-4198-A664-5D30A90D5069}.Acceptance|Any CPU.ActiveCfg = Release|Any CPU
+		{8D7BDCC4-D134-4198-A664-5D30A90D5069}.Acceptance|Any CPU.Build.0 = Release|Any CPU
+		{8D7BDCC4-D134-4198-A664-5D30A90D5069}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D7BDCC4-D134-4198-A664-5D30A90D5069}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D7BDCC4-D134-4198-A664-5D30A90D5069}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D7BDCC4-D134-4198-A664-5D30A90D5069}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -151,5 +159,6 @@ Global
 		{88398767-0334-4149-AE8C-4DE618968544} = {2DC1C981-0939-4B7B-B9FD-3CB6946645C2}
 		{A99A8269-B271-44B2-8E8D-DF96685CFFDF} = {2DC1C981-0939-4B7B-B9FD-3CB6946645C2}
 		{A119E984-CF9E-484B-9914-FE99C8762F14} = {A99A8269-B271-44B2-8E8D-DF96685CFFDF}
+		{8D7BDCC4-D134-4198-A664-5D30A90D5069} = {88398767-0334-4149-AE8C-4DE618968544}
 	EndGlobalSection
 EndGlobal
