@@ -2,6 +2,8 @@
 
 @using (var form = Html.Bootstrap().Begin(new Form().LabelWidthSm(2)))
 {
+    @Html.Bootstrap().ValidationSummary()
+    
     @(form.FormGroup().TextBoxFor(m => m.Name)
           .Label().LabelText(Model.NameLabelText))
 
@@ -11,8 +13,8 @@
     @(form.FormGroup().DropDownListFromEnumFor(m => m.Status)
           .Label().LabelText(Model.StatusLabelText))
 
-    @*@(form.FormGroup().EditorFor(m => m.AccountManagerId)
-        .Label().LabelText(Model.AccountManagerIdLabelText))*@
+    @(form.FormGroup().EditorFor(m => m.AccountManager)
+        .Label().LabelText(Model.AccountManagerLabelText))
 
     @form.FormGroup().CustomControls(Html.Bootstrap().SubmitButton().Text(Model.SaveButtonText))
 }

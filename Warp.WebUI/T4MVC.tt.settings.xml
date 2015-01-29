@@ -9,7 +9,7 @@
     <!--<Namespace></Namespace>-->
   </ReferencedNamespaces>
   <!--The folder under the project that contains the areas-->
-  <AreasFolder>Areas</AreasFolder>
+  <AreasFolder />
   <!--You can list folders containing portable areas here-->
   <PortableAreas>
     <!--<Area></Area>-->

@@ -48,7 +48,7 @@ namespace Warp.IoC.Util
                 .Where(t => typeof(EntityBase).IsAssignableFrom(t));
         });
 
-        public static void RegisterOpenGenericQueryHandlerForAllEntityTypes(this Container container, Type openQueryType, Type openQueryHandlerType)
+        public static void RegisterOpenGenericQueryHandlerForAllEntityTypesWithEntityResultType(this Container container, Type openQueryType, Type openQueryHandlerType)
         {
             var openQueryHandlerInterfaceType = typeof(IQueryHandler<,>);
 
@@ -62,7 +62,29 @@ namespace Warp.IoC.Util
             }
         }
 
-        public static void RegisterOpenGenericQueryHandlerForAllEntityTypes(this Container container, Type openQueryType, Type openQueryHandlerType, Type resultType)
+        public static void RegisterOpenGenericQueryHandlerForAllEntityTypesWithEnumerableEntityResultType(this Container container, Type openQueryType, Type openQueryHandlerType)
+        {
+            var openQueryHandlerInterfaceType = typeof(IQueryHandler<,>);
+
+            foreach (var entityType in EntityTypes.Value)
+            {
+                var resultType = typeof (IEnumerable<>).MakeGenericType(entityType);
+                var closedQueryType = openQueryType.MakeGenericType(entityType);
+                var closedHandlerInterfaceType = openQueryHandlerInterfaceType.MakeGenericType(closedQueryType, resultType);
+                var closedQueryHandlerType = openQueryHandlerType.MakeGenericType(entityType);
+
+                container.Register(closedHandlerInterfaceType, closedQueryHandlerType);
+            }
+        }
+
+        /// <summary>
+        /// This registers the Query with the Query Handler, for all Entity types. This allows the reuse of a generic Query for all different Entities.
+        /// </summary>
+        /// <param name="container"></param>
+        /// <param name="openQueryType"></param>
+        /// <param name="openQueryHandlerType"></param>
+        /// <param name="resultType"></param>
+        public static void RegisterOpenGenericQueryHandlerForAllEntityTypesWithSpecifiedResultType(this Container container, Type openQueryType, Type openQueryHandlerType, Type resultType)
         {
             var openQueryHandlerInterfaceType = typeof(IQueryHandler<,>);
 
@@ -76,6 +98,11 @@ namespace Warp.IoC.Util
             }
         }
 
+        /// <summary>
+        /// Registers the generic AbstractValidator for all Entity types, e.g. EntityExistsValidator<TheEntity> could validate the Entity exists.
+        /// </summary>
+        /// <param name="container"></param>
+        /// <param name="openValidatorType"></param>
         public static void RegisterOpenGenericValidatorForAllEntityTypes(this Container container, Type openValidatorType)
         {
             foreach (var closedCommandType in EntityTypes.Value.Select(e => openValidatorType.MakeGenericType(e)))
@@ -83,25 +110,10 @@ namespace Warp.IoC.Util
                 container.Register(closedCommandType);
             }
         }
-
-        public static void RegisterControllers(this Container container, params Assembly[] assemblies)
-        {
-            SimpleInjectorMvcExtensions.GetControllerTypesToRegister(container, assemblies)
-                .Where(t => !t.Name.Contains("T4MVC"))
-                .ToList()
-                .ForEach(container.Register);
-        }
-
+        
         /// <summary>
-        /// Registers all implementations of FluentValidation's AbstractValidator in Assembly.
+        /// Registers the Command with the Command Handler for all Entity types. This allows the re-use of a generic Command for all data Entities, e.g. DeleteEntityCommand<TheEntity>
         /// </summary>
-        /// <param name="container"></param>
-        /// <param name="assembly"></param>
-        public static void RegisterAllFluentValidatorsInAssembly(this Container container, Assembly assembly)
-        {
-            container.RegisterManyForOpenGeneric(typeof(AbstractValidator<>), assembly);
-        }
-
         public static void RegisterOpenGenericCommandHandlerForAllEntityTypes(this Container container, Type openCommandType, Type openCommandHandlerType)
         {
             var openCommandHandlerInterfaceType = typeof(ICommandHandler<>);
@@ -114,6 +126,28 @@ namespace Warp.IoC.Util
 
                 container.Register(closedHandlerInterfaceType, closedCommandHandlerType);
             }
+        }
+
+        /// <summary>
+        /// Finds all MVC Controllers in the Assembly(s), excluding T4MVC generated 
+        /// <param name="assemblies">The assemblies containing the Controllers</param>
+        /// </summary>
+        public static void RegisterControllers(this Container container, params Assembly[] assemblies)
+        {
+            SimpleInjectorMvcExtensions.GetControllerTypesToRegister(container, assemblies)
+                .Where(t => !t.Name.Contains("T4MVC"))
+                .ToList()
+                .ForEach(container.Register);
+        }
+
+        /// <summary>
+        /// Registers all implementations of FluentValidation's AbstractValidator in Assembly.
+        /// </summary>
+        /// <param name="container"></param>
+        /// <param name="assembly">The assembly containing the AbstractValidator's</param>
+        public static void RegisterAllFluentValidatorsInAssembly(this Container container, Assembly assembly)
+        {
+            container.RegisterManyForOpenGeneric(typeof(AbstractValidator<>), assembly);
         }
     }
 }

@@ -240,6 +240,7 @@
     <Compile Include="App_Start\Config.Bootstrap.cs" />
     <Compile Include="App_Start\Config.Routes.cs" />
     <Compile Include="App_Start\Config.Bundles.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Infrastructure\FluentValidatorFactory.cs" />
     <Compile Include="AuthenticationController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
@@ -267,6 +268,9 @@
     <Compile Include="TextResourceController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
+    <Compile Include="UserController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\DashboardControls\SideNavigationBarViewModel.cs" />
     <Compile Include="ViewModels\DashboardControls\TopNavigationBarViewModel.cs" />
     <Compile Include="ViewModels\DashboardControls\UserDropdownModel.cs" />
@@ -288,16 +292,16 @@
     <Compile Include="ViewModels\Client\CreateClientViewModel.cs" />
     <Compile Include="ViewModels\TextResources\TextResourcePageViewModel.cs" />
     <Compile Include="ViewModels\TextResources\TextResourceViewModel.cs" />
-    <Compile Include="ViewModels\User\UserViewModel.cs" />
+    <Compile Include="ViewModels\User\SelectUserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\User\UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Client\Create.cshtml" />
-    <Content Include="Views\Client\View.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -310,7 +314,7 @@
     <Content Include="Views\TextResource\Create.cshtml" />
     <Content Include="Views\TextResource\Index.cshtml" />
     <Content Include="Views\TextResource\View.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\UserViewModel.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\SelectUserViewModel.cshtml" />
     <Content Include="TwitterBootstrapMvcLicense.lic" />
     <Content Include="Views\DashboardControls\SideNavigationBar.cshtml" />
     <Content Include="Views\DashboardControls\TopNavigationBar.cshtml" />
@@ -339,6 +343,7 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>T4MVC.cs</LastGenOutput>
     </None>
+    <Content Include="Views\User\List.cshtml" />
     <None Include="Web.Acceptance.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

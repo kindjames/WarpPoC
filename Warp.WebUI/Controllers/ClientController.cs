@@ -24,14 +24,12 @@ namespace Warp.WebUI.Controllers
         }
 
         [HttpGet]
-        [Route("list")]
         public virtual ActionResult Index(ClientSearchModel model)
         {
             return View(model);
         }
 
         [HttpGet]
-        [ChildActionOnly]
         public virtual ActionResult List(ClientListInputModel model)
         {
             var clients = _clientService.GetClients(model.ClientSearchQuery, User.GetCustomerId());
@@ -39,17 +37,6 @@ namespace Warp.WebUI.Controllers
             var viewModel = _objectMapper.MapToMany<ViewClientViewModel>(clients);
 
             return PartialView(viewModel);
-        }
-
-        [HttpGet]
-        [Route("{clientId:guid}")]
-        public virtual ActionResult View(Guid clientId)
-        {
-            var client = _clientService.GetClient(clientId);
-
-            var model = _objectMapper.MapTo<ViewClientViewModel>(client);
-                
-            return View(model);
         }
 
         [HttpGet]
@@ -74,7 +61,7 @@ namespace Warp.WebUI.Controllers
                 {
                     _clientService.SaveClient(dto);
 
-                    return RedirectToAction(MVC.Client.View(dto.Id));
+                    return RedirectToAction(List());
                 }
                 catch (ValidationException ex)
                 {
@@ -86,10 +73,10 @@ namespace Warp.WebUI.Controllers
         }
 
         [HttpGet]
-        [Route("{clientId:guid}/update")]
-        public virtual ActionResult Update(Guid clientId)
+        [Route("{id:guid}/update")]
+        public virtual ActionResult Update(Guid id)
         {
-            var client = _clientService.GetClient(clientId);
+            var client = _clientService.GetClient(id);
 
             var model = _objectMapper.MapTo<UpdateClientViewModel>(client);
 
@@ -97,7 +84,7 @@ namespace Warp.WebUI.Controllers
         }
 
         [HttpPost]
-        [Route("{clientId:guid}/update")]
+        [Route("{id:guid}/update")]
         public virtual ActionResult Update(UpdateClientViewModel model)
         {
             if (ModelState.IsValid)
@@ -107,7 +94,7 @@ namespace Warp.WebUI.Controllers
                 try
                 {
                     _clientService.SaveClient(client);
-                    return RedirectToAction(View(client.Id));
+                    return RedirectToAction(List());
                 }
                 catch (ValidationException ex)
                 {

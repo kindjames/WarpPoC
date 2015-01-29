@@ -1,4 +1,5 @@
-﻿using Warp.Core.Services.Dtos.Users;
+﻿using System.Collections.Generic;
+using Warp.Core.Services.Dtos.Users;
 
 namespace Warp.Core.Services.UserService
 {
@@ -6,5 +7,6 @@ namespace Warp.Core.Services.UserService
     {
         int GetDefaultLanguageIdForUser(int userId);
         UserDto GetUser(int accountManagerId);
+        IEnumerable<UserDto> GetUsers();
     }
 }

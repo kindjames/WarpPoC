@@ -61,8 +61,9 @@ namespace Warp.IoC
             c.RegisterManyForOpenGeneric(typeof(IQueryHandler<,>), dataAssembly);
             c.RegisterAllFluentValidatorsInAssembly(dataAssembly);
             c.RegisterAllImplementationsInAssemblyWithNameEnding("DbContext", dataAssembly);
-            c.RegisterOpenGenericQueryHandlerForAllEntityTypes(typeof(GetEntityQuery<>), typeof(GetEntityQueryHandler<>));
-            c.RegisterOpenGenericQueryHandlerForAllEntityTypes(typeof(CheckEntityExistsQuery<>), typeof(CheckEntityExistsQueryHandler<>), typeof(bool));
+            c.RegisterOpenGenericQueryHandlerForAllEntityTypesWithEnumerableEntityResultType(typeof(GetAllEntitiesQuery<>), typeof(GetAllEntitiesQueryHandler<>));
+            c.RegisterOpenGenericQueryHandlerForAllEntityTypesWithEntityResultType(typeof(GetEntityQuery<>), typeof(GetEntityQueryHandler<>));
+            c.RegisterOpenGenericQueryHandlerForAllEntityTypesWithSpecifiedResultType(typeof(CheckEntityExistsQuery<>), typeof(CheckEntityExistsQueryHandler<>), typeof(bool));
             c.RegisterOpenGenericValidatorForAllEntityTypes(typeof(EntityExistsValidator<>));
 
             // Services

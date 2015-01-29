@@ -48,24 +48,6 @@ namespace Warp.Data.Context
             return Task.FromResult(SaveChanges());
         }
 
-        //public void CreateOrUpdateEntity<TEntity>(Func<TEntity> entity) where TEntity : EntityBase
-        //{
-        //    var a = entity();
-
-        //    var dbEntity = Set<TEntity>()
-        //        .FirstOrDefault(e => e.Id == entity.Id);
-
-        //    if (dbEntity == null)
-        //    {
-        //        Set<TEntity>().Add(entity);
-        //    }
-        //    else
-        //    {
-        //        Set<TEntity>().Attach(entity);
-        //        //Entry(entity).State = EntityState.Modified;
-        //    }
-        //}
-
         public override int SaveChanges()
         {
             var entities = ChangeTracker.Entries()

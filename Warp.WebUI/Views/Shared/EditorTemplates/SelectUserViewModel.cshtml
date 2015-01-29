@@ -1,0 +1,16 @@
+﻿@using Warp.WebUI.Controllers
+@model UserViewModel
+@Html.HiddenFor(m => m.UserId)
+
+@if (Model == null)
+{
+    <span>None selected</span>
+}
+else
+{
+    <span>@Model.Forename @Model.Surname</span>
+}
+
+@Html.Bootstrap().Button().Text("...").TriggerModal("modalId")
+
+@Html.Bootstrap().Begin(new Modal().Id("modalId").Remote(Url.Action(MVC.User.List())))

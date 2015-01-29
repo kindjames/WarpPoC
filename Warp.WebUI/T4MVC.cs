@@ -31,6 +31,7 @@ public static partial class MVC
     public static Warp.WebUI.Controllers.DashboardControlsController DashboardControls = new Warp.WebUI.Controllers.T4MVC_DashboardControlsController();
     public static Warp.WebUI.Controllers.HomeController Home = new Warp.WebUI.Controllers.T4MVC_HomeController();
     public static Warp.WebUI.Controllers.TextResourceController TextResource = new Warp.WebUI.Controllers.T4MVC_TextResourceController();
+    public static Warp.WebUI.Controllers.UserController User = new Warp.WebUI.Controllers.T4MVC_UserController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }
 

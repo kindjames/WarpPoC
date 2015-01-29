@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Warp.Core.Attributes;
 using Warp.Core.Domain.Enum;
+using Warp.WebUI.ViewModels.User;
 
 namespace Warp.WebUI.ViewModels.Client
 {
@@ -15,8 +16,8 @@ namespace Warp.WebUI.ViewModels.Client
         [Required]
         public ClientStatus Status { get; set; }
 
-        //[Required]
-        //public UserViewModel AccountManagerId { get; set; }
+        [Required]
+        public SelectUserViewModel AccountManager { get; set; }
 
         [PopulateWith("NameLabelText")]
         public string NameLabelText { get; set; }

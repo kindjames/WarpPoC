@@ -13,7 +13,8 @@ namespace Warp.WebUI.ViewModels.Client
     {
         public UpdateClientViewModelValidator()
         {
-            RuleFor(vm => vm.Id).NotEmptyGuid();
+            RuleFor(vm => vm.Id)
+                .NotEmptyGuid();
         }
     }
 }

@@ -68,12 +68,6 @@ namespace Warp.WebUI.Controllers
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public virtual System.Web.Mvc.ActionResult View()
-        {
-            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.View);
-        }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public virtual System.Web.Mvc.ActionResult Update()
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Update);
@@ -96,7 +90,6 @@ namespace Warp.WebUI.Controllers
         {
             public readonly string Index = "Index";
             public readonly string List = "List";
-            public readonly string View = "View";
             public readonly string Create = "Create";
             public readonly string Update = "Update";
         }
@@ -106,7 +99,6 @@ namespace Warp.WebUI.Controllers
         {
             public const string Index = "Index";
             public const string List = "List";
-            public const string View = "View";
             public const string Create = "Create";
             public const string Update = "Update";
         }
@@ -128,14 +120,6 @@ namespace Warp.WebUI.Controllers
         {
             public readonly string model = "model";
         }
-        static readonly ActionParamsClass_View s_params_View = new ActionParamsClass_View();
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ActionParamsClass_View ViewParams { get { return s_params_View; } }
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionParamsClass_View
-        {
-            public readonly string clientId = "clientId";
-        }
         static readonly ActionParamsClass_Create s_params_Create = new ActionParamsClass_Create();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ActionParamsClass_Create CreateParams { get { return s_params_Create; } }
@@ -150,7 +134,7 @@ namespace Warp.WebUI.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_Update
         {
-            public readonly string clientId = "clientId";
+            public readonly string id = "id";
             public readonly string model = "model";
         }
         static readonly ViewsClass s_views = new ViewsClass();
@@ -167,13 +151,11 @@ namespace Warp.WebUI.Controllers
                 public readonly string Index = "Index";
                 public readonly string List = "List";
                 public readonly string Update = "Update";
-                public readonly string View = "View";
             }
             public readonly string Create = "~/Views/Client/Create.cshtml";
             public readonly string Index = "~/Views/Client/Index.cshtml";
             public readonly string List = "~/Views/Client/List.cshtml";
             public readonly string Update = "~/Views/Client/Update.cshtml";
-            public readonly string View = "~/Views/Client/View.cshtml";
         }
     }
 
@@ -207,18 +189,6 @@ namespace Warp.WebUI.Controllers
         }
 
         [NonAction]
-        partial void ViewOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, System.Guid clientId);
-
-        [NonAction]
-        public override System.Web.Mvc.ActionResult View(System.Guid clientId)
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.View);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "clientId", clientId);
-            ViewOverride(callInfo, clientId);
-            return callInfo;
-        }
-
-        [NonAction]
         partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
 
         [NonAction]
@@ -242,14 +212,14 @@ namespace Warp.WebUI.Controllers
         }
 
         [NonAction]
-        partial void UpdateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, System.Guid clientId);
+        partial void UpdateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, System.Guid id);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Update(System.Guid clientId)
+        public override System.Web.Mvc.ActionResult Update(System.Guid id)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Update);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "clientId", clientId);
-            UpdateOverride(callInfo, clientId);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            UpdateOverride(callInfo, id);
             return callInfo;
         }
 
