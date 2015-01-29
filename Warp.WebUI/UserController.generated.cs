@@ -54,6 +54,18 @@ namespace Warp.WebUI.Controllers
             return RedirectToActionPermanent(taskResult.Result);
         }
 
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult List()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.List);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult SelectUser()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.SelectUser);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public UserController Actions { get { return MVC.User; } }
@@ -71,15 +83,33 @@ namespace Warp.WebUI.Controllers
         public class ActionNamesClass
         {
             public readonly string List = "List";
+            public readonly string SelectUser = "SelectUser";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
             public const string List = "List";
+            public const string SelectUser = "SelectUser";
         }
 
 
+        static readonly ActionParamsClass_List s_params_List = new ActionParamsClass_List();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_List ListParams { get { return s_params_List; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_List
+        {
+            public readonly string users = "users";
+        }
+        static readonly ActionParamsClass_SelectUser s_params_SelectUser = new ActionParamsClass_SelectUser();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_SelectUser SelectUserParams { get { return s_params_SelectUser; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_SelectUser
+        {
+            public readonly string model = "model";
+        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -91,8 +121,10 @@ namespace Warp.WebUI.Controllers
             public class _ViewNamesClass
             {
                 public readonly string List = "List";
+                public readonly string SelectUser = "SelectUser";
             }
             public readonly string List = "~/Views/User/List.cshtml";
+            public readonly string SelectUser = "~/Views/User/SelectUser.cshtml";
         }
     }
 
@@ -102,13 +134,26 @@ namespace Warp.WebUI.Controllers
         public T4MVC_UserController() : base(Dummy.Instance) { }
 
         [NonAction]
-        partial void ListOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+        partial void ListOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, System.Collections.Generic.IEnumerable<Warp.WebUI.ViewModels.User.UserViewModel> users);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult List()
+        public override System.Web.Mvc.ActionResult List(System.Collections.Generic.IEnumerable<Warp.WebUI.ViewModels.User.UserViewModel> users)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.List);
-            ListOverride(callInfo);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "users", users);
+            ListOverride(callInfo, users);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void SelectUserOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, Warp.WebUI.ViewModels.User.SelectUserViewModel model);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult SelectUser(Warp.WebUI.ViewModels.User.SelectUserViewModel model)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.SelectUser);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
+            SelectUserOverride(callInfo, model);
             return callInfo;
         }
 

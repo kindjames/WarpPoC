@@ -1,0 +1,21 @@
+﻿@model SelectUserViewModel
+@Html.HiddenFor(m => m.UserId)
+
+@if (Model == null)
+{
+    <span>None selected</span>
+}
+else
+{
+    <span>@Model.Forename @Model.Surname</span>
+}
+
+@Html.Bootstrap().Button().Text("...").TriggerModal("modalId")
+
+@using (var modal = Html.Bootstrap().Begin(new Modal().Id("modalId")))
+{
+    
+}
+@section Scripts {
+
+}

@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
 using Warp.Core.Infrastructure.AutoMapper;
 using Warp.Core.Services.UserService;
 using Warp.WebUI.Infrastructure;
@@ -21,13 +22,19 @@ namespace Warp.WebUI.Controllers
         }
 
         [HttpGet]
-        public virtual ActionResult List()
+        public virtual ActionResult List(IEnumerable<UserViewModel> users)
+        {
+            return PartialView(users);
+        }
+
+        [HttpGet]
+        public virtual ActionResult SelectUser(SelectUserViewModel model)
         {
             var users = _userService.GetUsers();
 
-            var viewModel = _objectMapper.MapToMany<UserViewModel>(users);
+            model.UserList = _objectMapper.MapToMany<UserViewModel>(users);
 
-            return PartialView(viewModel);
+            return PartialView(model);
         }
     }
 }
