@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Warp.Data.Entities;
 using Warp.Testing.Unit.Data.Util;
 
-namespace Warp.Testing.Unit.Data.Data
+namespace Warp.Testing.Unit.Data.Data.TextResource
 {
     public class TextResourceIdentifierTestDataFactory : ITestDataFactory<TextResourceIdentifier>
     {

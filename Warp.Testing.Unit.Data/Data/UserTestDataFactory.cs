@@ -5,6 +5,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using Warp.Data.Entities;
+using Warp.Testing.Unit.Data.Data.TextResource;
 using Warp.Testing.Unit.Data.Util;
 
 namespace Warp.Testing.Unit.Data.Data

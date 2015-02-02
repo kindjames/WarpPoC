@@ -4,9 +4,9 @@ using System.Linq;
 using Warp.Data.Entities;
 using Warp.Testing.Unit.Data.Util;
 
-namespace Warp.Testing.Unit.Data.Data
+namespace Warp.Testing.Unit.Data.Data.TextResource
 {
-    public class TextResourceTestDataFactory : ITestDataFactory<TextResource>
+    public class TextResourceTestDataFactory : ITestDataFactory<Warp.Data.Entities.TextResource>
     {
         #region TextResourceIds
         protected Guid tr1Id { get; set; }
@@ -36,7 +36,9 @@ namespace Warp.Testing.Unit.Data.Data
         public Guid tri4Id { get; set; }
         public Guid tri5Id { get; set; }
         public Guid tri6Id { get; set; }
+
         #endregion TextResourceIdentifierIds
+        
         public TextResourceTestDataFactory()
         {
             tr1Id = Guid.NewGuid();
@@ -52,17 +54,17 @@ namespace Warp.Testing.Unit.Data.Data
             tr11Id = Guid.NewGuid();
             tr12Id = Guid.NewGuid();
 
-            tri1Id = TextResourceIdentifiers
+            
         }
 
-        public IEnumerable<TextResource> Build()
+        public IEnumerable<Warp.Data.Entities.TextResource> Build()
         {
             var languages = new LanguageTestDataFactory().Build();
             var textResourceIdentifiers = new TextResourceIdentifierTestDataFactory().Build();
 
             return new[]
             {
-                new TextResource
+                new Warp.Data.Entities.TextResource
                 {
                     Id = Guid.NewGuid(),
                     ResourceString = "Welcome!",
@@ -70,7 +72,7 @@ namespace Warp.Testing.Unit.Data.Data
                     Language = languages.Single(l => l.InvariantCulture == "en"),
                     Client = new Client {Id = Guid.NewGuid()}
                 },
-                new TextResource
+                new Warp.Data.Entities.TextResource
                 {
                     Id = Guid.NewGuid(),
                     ResourceString = "Log In",
@@ -78,7 +80,7 @@ namespace Warp.Testing.Unit.Data.Data
                     Language = languages.Single(l => l.InvariantCulture == "en"),
                     Client = new Client {Id = Guid.NewGuid()}
                 },
-                new TextResource
+                new Warp.Data.Entities.TextResource
                 {
                     Id = Guid.NewGuid(),
                     ResourceString = "Password",
@@ -86,7 +88,7 @@ namespace Warp.Testing.Unit.Data.Data
                     Language = languages.Single(l => l.InvariantCulture == "en"),
                     Client = new Client {Id = Guid.NewGuid()}
                 },
-                new TextResource
+                new Warp.Data.Entities.TextResource
                 {
                     Id = Guid.NewGuid(),
                     ResourceString = "Username",
@@ -94,7 +96,7 @@ namespace Warp.Testing.Unit.Data.Data
                     Language = languages.Single(l => l.InvariantCulture == "en"),
                     Client = new Client {Id = Guid.NewGuid()}
                 },
-                new TextResource
+                new Warp.Data.Entities.TextResource
                 {
                     Id = Guid.NewGuid(),
                     ResourceString = "Remember me for 2 weeks",
@@ -102,7 +104,7 @@ namespace Warp.Testing.Unit.Data.Data
                     Language = languages.Single(l => l.InvariantCulture == "en"),
                     Client = new Client {Id = Guid.NewGuid()}
                 },
-                new TextResource
+                new Warp.Data.Entities.TextResource
                 {
                     Id = Guid.NewGuid(),
                     ResourceString = "E-mail or TMDC Id",
