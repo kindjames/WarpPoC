@@ -187,125 +187,122 @@ namespace Warp.Testing.Unit.Services.TextResources
             The<ITextResourceDbContext>().WhenToldTo(tr => tr.TextResources).Return(new InMemoryDbSet<TextResource>(true)
                 {
                     
- #region TextResources "En"
-            new
-            {
-                
-            }
-            {
-                Id = tr1Id,
-                ClientId = Guid.Empty,
-                LanguageId = languageEnId,
-                ResourceIdentifierId = tri1.Id,
-                ResourceString = "Welcome!",
-                Active = true,
-                DateCreated = DateTime.Now,
-                DateUpdated = DateTime.Now
-            },
+            #region TextResources "En"
+            
+            //{
+            //    Id = tr1Id,
+            //    ClientId = Guid.Empty,
+            //    LanguageId = languageEnId,
+            //    ResourceIdentifierId = tri1.Id,
+            //    ResourceString = "Welcome!",
+            //    Active = true,
+            //    DateCreated = DateTime.Now,
+            //    DateUpdated = DateTime.Now
+            //},
 
-            TextResource trEn2 = new TextResource
-            {
-                Id = tri2Id,
-                ClientId = Guid.Empty,
-                LanguageId = languageEnId,
-                ResourceIdentifierId = tri2.Id,
-                ResourceString = "Username",
-                Active = true,
-                DateCreated = DateTime.Now,
-                DateUpdated = DateTime.Now
-            };
+            //TextResource trEn2 = new TextResource
+            //{
+            //    Id = tri2Id,
+            //    ClientId = Guid.Empty,
+            //    LanguageId = languageEnId,
+            //    ResourceIdentifierId = tri2.Id,
+            //    ResourceString = "Username",
+            //    Active = true,
+            //    DateCreated = DateTime.Now,
+            //    DateUpdated = DateTime.Now
+            //};
 
-            TextResource trEn3 = new TextResource
-            {
-                Id = tri3Id,
-                ClientId = Guid.Empty,
-                LanguageId = languageEnId,
-                ResourceIdentifierId = tri3Id,
-                ResourceString = "Password",
-                Active = true,
-                DateCreated = DateTime.Now,
-                DateUpdated = DateTime.Now
-            };
+            //TextResource trEn3 = new TextResource
+            //{
+            //    Id = tri3Id,
+            //    ClientId = Guid.Empty,
+            //    LanguageId = languageEnId,
+            //    ResourceIdentifierId = tri3Id,
+            //    ResourceString = "Password",
+            //    Active = true,
+            //    DateCreated = DateTime.Now,
+            //    DateUpdated = DateTime.Now
+            //};
 
             #endregion TextResources
 
             #region TextResources "Fr"
 
-            TextResource trFr1 = new TextResource
-            {
-                Id = tr1Id,
-                ClientId = Guid.Empty,
-                LanguageId = languageFrId,
-                ResourceIdentifierId = tri1.Id,
-                ResourceString = "Bienvenue!",
-                Active = true,
-                DateCreated = DateTime.Now,
-                DateUpdated = DateTime.Now
-            };
+            //TextResource trFr1 = new TextResource
+            //{
+            //    Id = tr1Id,
+            //    ClientId = Guid.Empty,
+            //    LanguageId = languageFrId,
+            //    ResourceIdentifierId = tri1.Id,
+            //    ResourceString = "Bienvenue!",
+            //    Active = true,
+            //    DateCreated = DateTime.Now,
+            //    DateUpdated = DateTime.Now
+            //};
 
-            TextResource trFr2 = new TextResource
-            {
-                Id = tri2Id,
-                ClientId = Guid.Empty,
-                LanguageId = languageFrId,
-                ResourceIdentifierId = tri2.Id,
-                ResourceString = "Nom d'utilisateur",
-                Active = true,
-                DateCreated = DateTime.Now,
-                DateUpdated = DateTime.Now
-            };
+            //TextResource trFr2 = new TextResource
+            //{
+            //    Id = tri2Id,
+            //    ClientId = Guid.Empty,
+            //    LanguageId = languageFrId,
+            //    ResourceIdentifierId = tri2.Id,
+            //    ResourceString = "Nom d'utilisateur",
+            //    Active = true,
+            //    DateCreated = DateTime.Now,
+            //    DateUpdated = DateTime.Now
+            //};
 
-            TextResource trFr3 = new TextResource
-            {
-                Id = tri3Id,
-                ClientId = Guid.Empty,
-                LanguageId = languageFrId,
-                ResourceIdentifierId = tri3Id,
-                ResourceString = "Mot de passe",
-                Active = true,
-                DateCreated = DateTime.Now,
-                DateUpdated = DateTime.Now
-            };
+            //TextResource trFr3 = new TextResource
+            //{
+            //    Id = tri3Id,
+            //    ClientId = Guid.Empty,
+            //    LanguageId = languageFrId,
+            //    ResourceIdentifierId = tri3Id,
+            //    ResourceString = "Mot de passe",
+            //    Active = true,
+            //    DateCreated = DateTime.Now,
+            //    DateUpdated = DateTime.Now
+            //};
 
             #endregion TextResources
 
             #region TextResources "Fr"
 
-            TextResource trNl1 = new TextResource
-            {
-                Id = tr1Id,
-                ClientId = Guid.Empty,
-                LanguageId = languageFrId,
-                ResourceIdentifierId = tri1.Id,
-                ResourceString = "Welkom!",
-                Active = true,
-                DateCreated = DateTime.Now,
-                DateUpdated = DateTime.Now
-            };
+            //TextResource trNl1 = new TextResource
+            //{
+            //    Id = tr1Id,
+            //    ClientId = Guid.Empty,
+            //    LanguageId = languageFrId,
+            //    ResourceIdentifierId = tri1.Id,
+            //    ResourceString = "Welkom!",
+            //    Active = true,
+            //    DateCreated = DateTime.Now,
+            //    DateUpdated = DateTime.Now
+            //};
 
-            TextResource trNl2 = new TextResource
-            {
-                Id = tri2Id,
-                ClientId = Guid.Empty,
-                LanguageId = languageFrId,
-                ResourceIdentifierId = tri2.Id,
-                ResourceString = "Gebruikersnaam",
-                Active = true,
-                DateCreated = DateTime.Now,
-                DateUpdated = DateTime.Now
-            };
+            //TextResource trNl2 = new TextResource
+            //{
+            //    Id = tri2Id,
+            //    ClientId = Guid.Empty,
+            //    LanguageId = languageFrId,
+            //    ResourceIdentifierId = tri2.Id,
+            //    ResourceString = "Gebruikersnaam",
+            //    Active = true,
+            //    DateCreated = DateTime.Now,
+            //    DateUpdated = DateTime.Now
+            //};
 
-            TextResource trNl3 = new TextResource
-            {
-                Id = tri3Id,
-                ClientId = Guid.Empty,
-                LanguageId = languageFrId,
-                ResourceIdentifierId = tri3Id,
-                ResourceString = "Wachtwoord",
-                Active = true,
-                DateCreated = DateTime.Now,
-                DateUpdated = DateTime.Now
-            };
+            //TextResource trNl3 = new TextResource
+            //{
+            //    Id = tri3Id,
+            //    ClientId = Guid.Empty,
+            //    LanguageId = languageFrId,
+            //    ResourceIdentifierId = tri3Id,
+            //    ResourceString = "Wachtwoord",
+            //    Active = true,
+            //    DateCreated = DateTime.Now,
+            //    DateUpdated = DateTime.Now
+            //};
 
             #endregion TextResources
 

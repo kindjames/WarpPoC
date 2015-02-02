@@ -102,6 +102,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\TextResource\TextResourceBuilder.cs" />
+    <Compile Include="Data\TextResource\TextResourceIdentifierBuilder.cs" />
     <Compile Include="Data\UserTestDataFactory.cs" />
     <Compile Include="Util\TestDbAsyncEnumerable.cs" />
     <Compile Include="Util\TestDbAsyncEnumerator.cs" />
@@ -114,9 +116,9 @@
     <Compile Include="Commands\TextResources\SaveTextResourceCommandHandlerUnitTests.cs" />
     <Compile Include="Commands\TextResources\SaveTextResourceIdentifierCommandHandlerUnitTests.cs" />
     <Compile Include="DataExceptionTests.cs" />
-    <Compile Include="Data\LanguageTestDataFactory.cs" />
-    <Compile Include="Data\TextResourceIdentifierTestDataFactory.cs" />
-    <Compile Include="Data\TextResourceTestDataFactory.cs" />
+    <Compile Include="Data\TextResource\LanguageTestDataFactory.cs" />
+    <Compile Include="Data\TextResource\TextResourceIdentifierTestDataFactory.cs" />
+    <Compile Include="Data\TextResource\TextResourceTestDataFactory.cs" />
     <Compile Include="Queries\Clients\CheckClientExistsForCodeQueryHandlerTests.cs" />
     <Compile Include="Queries\Customers\GetCustomerNameQueryHandlerTests.cs" />
     <Compile Include="Queries\Languages\GetLanguageIdByCultureQueryTests.cs" />
