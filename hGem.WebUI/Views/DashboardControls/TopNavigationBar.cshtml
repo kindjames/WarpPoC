@@ -1,0 +1,23 @@
+﻿@model hGem.WebUI.ViewModels.DashboardControls.TopNavigationBarViewModel
+
+<div id="navbar" class="navbar navbar-fixed">
+    <button type="button" class="navbar-toggle navbar-btn collapsed" data-toggle="collapse" data-target="#sidebar">
+        <span class="fa fa-bars"></span>
+    </button>
+    <a class="navbar-brand" href="@Url.Action(MVC.Home.Index())">
+        <small>
+            <i class="fa fa-desktop"></i>
+            @Model.ApplicationTitle
+        </small>
+    </a>
+
+    <ul class="nav flaty-nav pull-right">
+        @Html.Action(MVC.DashboardControls.TasksDropdown())
+
+        @Html.Action(MVC.DashboardControls.NotificationsDropdown())
+
+        @Html.Action(MVC.DashboardControls.MessagesDropdown())
+
+        @Html.Action(MVC.DashboardControls.UserDropdown())
+    </ul>
+</div>

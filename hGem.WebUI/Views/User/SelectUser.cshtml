@@ -1,0 +1,25 @@
+﻿@model hGem.WebUI.ViewModels.User.SelectUserViewModel
+@Html.HiddenFor(m => m.UserId)
+
+@if (Model.UserId == Guid.Empty)
+{
+    <span>None selected</span>
+}
+else
+{
+    <span>@Model.Forename @Model.Surname</span>
+}
+
+@Html.Bootstrap().Button().Text("...").TriggerModal("modalId")
+
+@using (var modal = Html.Bootstrap().Begin(new Modal().Id("modalId")))
+{
+    @Html.Action(MVC.User.List(Model.UserList))
+}
+@section Scripts {
+    <script>
+        $('#code').on('shown.bs.modal', function(e) {
+            // do something...
+        })
+    </script>
+}

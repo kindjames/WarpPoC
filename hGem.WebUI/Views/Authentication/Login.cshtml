@@ -1,0 +1,29 @@
+﻿@model hGem.WebUI.ViewModels.Authentication.LoginViewModel
+@{
+    Layout = MVC.Shared.Views._Layout;
+    ViewBag.Title = "Log in";
+    Html.Bootstrap().Globals().ShowRequiredStar(false);
+}
+<body class="login-page">
+    <div class="login-wrapper">
+        @using (var form = Html.Bootstrap().Begin(new Form(MVC.Authentication.Login()).Class("form-login").RouteValues(new { ViewBag.ReturnUrl })))
+        {
+            @Html.AntiForgeryToken()
+            <img src=@Url.Content(Links.Content.Images.HospitalityGemLogo300dpi_png) alt="" />
+            <hr />
+
+            @Html.Bootstrap().ValidationSummary()
+            @(form.FormGroup().TextBoxFor(m => m.UserName).Placeholder(Model.UsernamePlaceholderText).Label().LabelText(Model.UsernameLabelText))
+            @(form.FormGroup().PasswordFor(m => m.Password).Placeholder(Model.PasswordPlaceholderText).Label().LabelText(Model.PasswordLabelText))
+            @(form.FormGroup().CheckBoxFor(m => m.RememberMe).Label().LabelText(Model.RememberMeLabelText))
+            @(form.FormGroup().CustomControls(Html.Bootstrap().SubmitButton().Class("btn btn-primary form-control").Text(Model.LoginButtonText)))
+            <hr />
+            <p class="clearfix">
+                <a href="#" class="pull-left">Forgot Password?</a>
+            </p>
+        }
+    </div>
+    @section Scripts {
+        @Styles.Render(Links.Bundles.Styles.authentication)
+    }
+</body>
