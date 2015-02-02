@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Warp.Data.Entities;
 
 namespace Warp.Testing.Unit.Data.Data.TextResource
@@ -22,7 +18,7 @@ namespace Warp.Testing.Unit.Data.Data.TextResource
 
         public TextResourceIdentifier Build()
         {
-            return new TextResourceIdentifier {Id = };
+            return new TextResourceIdentifier {Id = Guid.NewGuid()};
         }
     }
 }

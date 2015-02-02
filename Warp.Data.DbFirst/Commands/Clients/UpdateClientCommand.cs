@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
-using Warp.Core.Command;
+﻿using System;
+using System.Collections.Generic;
+using Warp.Core.Cqrs;
 using Warp.Core.Infrastructure.AutoMapper;
+using Warp.Core.Infrastructure.General;
+using Warp.Core.Infrastructure.Util;
 using Warp.Core.Infrastructure.Validation;
-using Warp.Core.Query;
-using Warp.Core.Util;
 using Warp.Data.DbFirst.Context;
 using Warp.Data.DbFirst.Entities;
 
@@ -16,8 +17,8 @@ namespace Warp.Data.DbFirst.Commands.Clients
             ContactAddresses = new List<ContactAddressClient>();
         }
 
-        [IdRequired]
-        public int Id { get; set; }
+        [NotEmptyGuid]
+        public Guid Id { get; set; }
         
         public string ClientName { get; set; }
         public int CustomerId { get; set; }
@@ -28,18 +29,16 @@ namespace Warp.Data.DbFirst.Commands.Clients
         public IEnumerable<ContactAddressClient> ContactAddresses { get; set; }
     }
 
+    public class UpdateClientCommand
+
     public sealed class UpdateClientCommandHandler : ICommandHandler<UpdateClientCommand>
     {
         private readonly IDomainDbContext _dbContext;
-        private readonly IQueryDispatcher _queryDispatcher;
-        private readonly IDateTimeProvider _dateTimeProvider;
         private readonly IObjectMapper _objectMapper;
 
-        public UpdateClientCommandHandler(IDomainDbContext dbContext, IQueryDispatcher queryDispatcher, IDateTimeProvider dateTimeProvider, IObjectMapper objectMapper)
+        public UpdateClientCommandHandler(IDomainDbContext dbContext, IObjectMapper objectMapper)
         {
             _dbContext = dbContext;
-            _queryDispatcher = queryDispatcher;
-            _dateTimeProvider = dateTimeProvider;
             _objectMapper = objectMapper;
         }
 

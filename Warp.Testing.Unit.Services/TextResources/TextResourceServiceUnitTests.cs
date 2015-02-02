@@ -6,7 +6,6 @@ using Warp.Core.Services.Dtos.TextResources;
 using Warp.Data.Queries.TextResources;
 using Warp.Services;
 using ThenIt = Machine.Specifications.It;
-using FakeDbSet;
 
 namespace Warp.Testing.Unit.Services.TextResources
 {

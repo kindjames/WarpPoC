@@ -19,7 +19,7 @@ namespace Warp.Data.Migrations
         {
         }
 
-        internal MigrationsAndTestingContext(IDateTimeProvider dateTimeProvider, DbConnection existingConnection, bool contextOwnsConnection)
+        public MigrationsAndTestingContext(IDateTimeProvider dateTimeProvider, DbConnection existingConnection, bool contextOwnsConnection)
             : base(dateTimeProvider, existingConnection, contextOwnsConnection)
         {
         }

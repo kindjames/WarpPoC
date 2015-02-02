@@ -1,15 +1,11 @@
 ﻿using System;
 using Machine.Fakes;
 using Machine.Specifications;
-using Warp.Core.Cqrs;
 using Warp.Core.Services.Dtos.TextResources;
-using Warp.Data.Queries.TextResources;
+using Warp.Data.Commands.TextResources;
+using Warp.Data.Entities;
 using Warp.Services;
 using ThenIt = Machine.Specifications.It;
-using FakeDbSet;
-using Warp.Data.Commands.TextResources;
-using Warp.Data.Context;
-using Warp.Data.Entities;
 
 namespace Warp.Testing.Unit.Services.TextResources
 {

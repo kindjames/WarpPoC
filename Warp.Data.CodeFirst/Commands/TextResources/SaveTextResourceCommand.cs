@@ -1,17 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using FluentValidation;
 using Warp.Core.Cqrs;
 using Warp.Core.Infrastructure.AutoMapper;
-using Warp.Core.Infrastructure.Validation;
 using Warp.Core.Infrastructure.Util;
+using Warp.Core.Infrastructure.Validation;
 using Warp.Data.Context;
 using Warp.Data.Entities;
-using ValidationResult = FluentValidation.Results.ValidationResult;
 
 namespace Warp.Data.Commands.TextResources
 {
@@ -52,9 +47,17 @@ namespace Warp.Data.Commands.TextResources
         {   
             CheckArgument.NotNull(command, "command");
 
-            var textResource = _objectMapper.MapTo<TextResource>(command);
+            var dbEntity = _dbContext.TextResources
+                .FirstOrDefault(e => e.Id == command.Id);
 
-            _dbContext.CreateOrUpdateEntity(textResource);
+            if (dbEntity == null)
+            {
+                _dbContext.TextResources.Add(_objectMapper.MapTo<TextResource>(command));
+            }
+            else
+            {
+                _objectMapper.Map(command, dbEntity);
+            }
 
             _dbContext.SaveChanges();
         }       

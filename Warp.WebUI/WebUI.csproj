@@ -305,9 +305,9 @@
     <Compile Include="ViewModels\Client\CreateClientViewModel.cs" />
     <Compile Include="ViewModels\TextResources\TextResourcePageViewModel.cs" />
     <Compile Include="ViewModels\TextResources\TextResourceViewModel.cs" />
-    <Compile Include="ViewModels\User\SelectUserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\User\SelectUserViewModel.cs" />
     <Compile Include="ViewModels\User\UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
