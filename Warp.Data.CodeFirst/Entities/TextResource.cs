@@ -16,5 +16,10 @@ namespace Warp.Data.Entities
         public virtual Client Client { get; set; }
         public virtual Language Language { get; set; }
         public virtual TextResourceIdentifier TextResourceIdentifier { get; set; }
+
+        public TextResource()
+        {
+            
+        }
     }
 }
