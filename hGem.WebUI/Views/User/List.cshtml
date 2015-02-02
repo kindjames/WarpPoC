@@ -1,0 +1,18 @@
+﻿@model IEnumerable<hGem.WebUI.ViewModels.User.UserViewModel>
+<table>
+    <thead>
+        <tr>
+            <td>Forename</td>
+            <td>Surname</td>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@user.Forename</td>
+            <td>@user.Surname</td>
+        </tr>
+    }
+    </tbody>
+</table>

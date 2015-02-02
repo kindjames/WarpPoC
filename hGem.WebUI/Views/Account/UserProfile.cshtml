@@ -1,0 +1,18 @@
+﻿@model hGem.WebUI.ViewModels.Account.UserProfileModel
+@{
+    ViewBag.PageTitle = "Profile";
+    ViewBag.PageDescription = "Edit user information";
+}
+<div class="row">
+    <div class="col-md-9">
+        @using (var form = Html.Bootstrap().Begin(new Form()))
+        {
+            @(form.FormGroup().TextBoxFor(m => m.FirstName))
+            @(form.FormGroup().TextBoxFor(m => m.LastName))
+            @(form.FormGroup().TextBoxFor(m => m.Email))
+
+            <hr />
+            @Html.Bootstrap().SubmitButton().Text("Save").Class("pull-right")
+        }
+    </div>
+</div>
